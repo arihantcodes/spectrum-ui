@@ -99,7 +99,7 @@ export default function Component() {
   }
 
   return (
-    <Card className="min-h-screen  text-gray-100 p-8">
+    <Card className="min-h-screen  text-gray-100  md:p-8">
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {/* Revenue Card */}
         <Card className="md:col-span-2  border-gray-800">
@@ -115,14 +115,14 @@ export default function Component() {
                 <AreaChart data={revenueData}>
                   <defs>
                     <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8} />
+                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                   <XAxis dataKey="month" stroke="#9ca3af" />
                   <YAxis stroke="#9ca3af" />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none', color: 'white' }} />
                   <Area type="monotone" dataKey="amount" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorRevenue)" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -293,11 +293,10 @@ export default function Component() {
                 ].map((payment) => (
                   <TableRow key={payment.date}>
                     <TableCell>
-                      <span className={`inline-block px-2 py-1 text-xs rounded-full ${
-                        payment.status === 'Success' ? 'bg-green-500/20 text-green-500' :
+                      <span className={`inline-block px-2 py-1 text-xs rounded-full ${payment.status === 'Success' ? 'bg-green-500/20 text-green-500' :
                         payment.status === 'Processing' ? 'bg-yellow-500/20 text-yellow-500' :
-                        'bg-red-500/20 text-red-500'
-                      }`}>
+                          'bg-red-500/20 text-red-500'
+                        }`}>
                         {payment.status}
                       </span>
                     </TableCell>
@@ -343,7 +342,7 @@ export default function Component() {
                     <p className="text-sm">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
                   </div>
                 </div>
-              
+
               </div>
             </ScrollArea>
             <div className="flex space-x-2">
@@ -387,7 +386,7 @@ export default function Component() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs ">Color</span>
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2  lg:grid-cols-3 gap-2">
                 {colors.map((color) => (
                   <Button
                     key={color.value}
@@ -415,7 +414,7 @@ export default function Component() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs ">Radius</span>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 ">
                 {radiusOptions.map((radius) => (
                   <Button
                     key={radius.value}
