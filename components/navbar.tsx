@@ -24,7 +24,7 @@ export const NAVLINKS = [
 
   {
     title: "Examples",
-    href: "/example",
+    href: "/examples",
   },
   {
     title: "Colors",
