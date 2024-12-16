@@ -4,6 +4,16 @@ import { atomWithStorage } from "jotai/utils"
 import { ColorFormat } from "@/lib/colors"
 import { useMounted } from "@/hooks/use-mounted"
 
+//feature-name
+
+//BY harshal 50
+// kdfankjfa
+// dfskJIdsklfn
+// fkl hfj "Faoif 
+ 
+// FD
+//  df"
+
 type Config = {
   format: ColorFormat
 }
