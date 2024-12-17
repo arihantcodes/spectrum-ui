@@ -58,11 +58,11 @@ export const Steppers = async (props: SteppersProps) => {
         {withInstall && (
           <>
             {props.installScript && (
-              <Stepper
+              <Stepper 
                 title="Install the package if you do not have it."
                 step={withInstallOffset - 1}
               >
-                <CodeHighlight lang="shell" code={props.installScript} />
+                <CodeHighlight lang="shell"  code={props.installScript} />
               </Stepper>
             )}
             <Stepper

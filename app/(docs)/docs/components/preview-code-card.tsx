@@ -19,7 +19,7 @@ const PreviewCodeCard = async ({ className, path, children }: PreviewCodeCardPro
 
   return (
     <CodeCard code={demoCode} className={cn('mb-14 mt-5', className)}>
-      <div className="flex items-center justify-center py-10">{children}</div>
+      <div className="flex items-center justify-center ">{children}</div>
     </CodeCard>
   );
 };
