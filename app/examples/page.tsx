@@ -323,12 +323,12 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">Hello! How can I assist you today?</p>
+                    <p className="text-sm text-slate-50">Hello! How can I assist you today?</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-end space-x-2">
                   <div className="bg-purple-600 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">Hi, I'm having trouble with my account settings.</p>
+                    <p className="text-sm text-slate-50">Hi, I'm having trouble with my account settings.</p>
                   </div>
                   <Avatar>
                     <AvatarFallback>U</AvatarFallback>
@@ -339,7 +339,7 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
+                    <p className="text-sm text-slate-50">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
                   </div>
                 </div>
 
