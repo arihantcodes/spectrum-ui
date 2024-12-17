@@ -120,7 +120,7 @@ export default function Component() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                  <XAxis dataKey="month" stroke="#9ca3af" tick={{ fill: "#8b5cf6", fontSize: 12 }} />
+                  <XAxis dataKey="month" stroke="#9ca3af" />
                   <YAxis stroke="#9ca3af" />
                   <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none', color: 'white' }} />
                   <Area type="monotone" dataKey="amount" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorRevenue)" />
@@ -323,12 +323,12 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm text-slate-50">Hello! How can I assist you today?</p>
+                    <p className="text-sm">Hello! How can I assist you today?</p>
                   </div>
                 </div>
                 <div className="flex items-start justify-end space-x-2">
                   <div className="bg-purple-600 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm text-slate-50">Hi, I'm having trouble with my account settings.</p>
+                    <p className="text-sm">Hi, I'm having trouble with my account settings.</p>
                   </div>
                   <Avatar>
                     <AvatarFallback>U</AvatarFallback>
@@ -339,7 +339,7 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm text-slate-50">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
+                    <p className="text-sm">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
                   </div>
                 </div>
 

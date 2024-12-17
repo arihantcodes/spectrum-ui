@@ -222,7 +222,9 @@ export default function CardCollection() {
             <div
               key={index}
               className={\`mb-2 \${
-                msg.role === "ai" ? "text-blue-600" : "text-gray-800"
+              msg.role === "ai"
+                ? "text-blue-600 text-left"
+                : "text-right"
               }\`}
             >
               <strong>{msg.role === "ai" ? "AI: " : "You: "}</strong>
@@ -1950,7 +1952,9 @@ export function AIAssistantCard() {
           <div
             key={index}
             className={`mb-2 ${
-              msg.role === "ai" ? "text-blue-600" : "text-gray-800"
+              msg.role === "ai"
+                ? "text-blue-600 text-left"
+                : "text-right"
             }`}
           >
             <strong>{msg.role === "ai" ? "AI: " : "You: "}</strong>

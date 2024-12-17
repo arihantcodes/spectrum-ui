@@ -138,7 +138,7 @@ export default function RootLayout({
         >
           <Analytics />
           <Navbar />
-          <main className="sm:container mx-auto w-[85vw] h-auto">
+          <main className="sm:container mx-auto w-[90vw] md:w-[85vw] h-auto">
             {children}
           </main>
           <Footer />

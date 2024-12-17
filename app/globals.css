@@ -109,7 +109,7 @@ pre {
 pre>code {
   display: grid;
   max-width: inherit !important;
-  padding: 14px 0 !important;
+  padding: 14px 0;
 }
 
 .code-line {
