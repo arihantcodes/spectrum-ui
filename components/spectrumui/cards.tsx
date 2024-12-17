@@ -1466,7 +1466,7 @@ function QuickNoteCard() {
   ];
   // grid md:grid-cols-2 lg:grid-cols-3 gap-12  grid-cols-1
   return (
-    <div className="flex flex-row flex-wrap gap-12 items-start justify-evenly ml-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-3 gap-6">
       {cardComponents.map(({ name, component: CardComponent, code }) => (
         <div key={name} className="relative group">
           <CardComponent />
