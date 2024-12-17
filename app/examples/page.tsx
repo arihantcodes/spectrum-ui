@@ -191,11 +191,14 @@ export default function Component() {
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#111827",
-                      color: "#FFFFFF",
-                      border: "none",
+                    contentStyle={{ 
+                      backgroundColor: "#111827", 
+                      color: "white",
+                      borderRadius: "0.375rem"
                     }}
+                    cursor={{ fill: 'rgba(255,255,255,0.1)' }}
+                    labelStyle={{ color: 'white' }}
+                    itemStyle={{ color: 'white' }}
                   />
                 </PieChart>
               </ResponsiveContainer>
