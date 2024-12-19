@@ -150,6 +150,9 @@ const config = {
       transitionDuration: {
         mid: "4s",
       },
+      screens: {
+        "3xl": "1400px",
+      },
     },
   },
   plugins: [
