@@ -69,7 +69,7 @@ export default function CardCollection() {
       code: `
   function LoginCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Login</CardTitle>
           <CardDescription>
@@ -108,7 +108,7 @@ export default function CardCollection() {
       code: `
   function SignUpCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Sign Up</CardTitle>
           <CardDescription>Create a new account to get started.</CardDescription>
@@ -152,7 +152,7 @@ export default function CardCollection() {
       code: `
   function PaymentCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Payment Details</CardTitle>
           <CardDescription>
@@ -212,7 +212,7 @@ export default function CardCollection() {
     }
   
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>AI Assistant</CardTitle>
           <CardDescription>Ask me anything about your data</CardDescription>
@@ -254,7 +254,7 @@ export default function CardCollection() {
     const [activeTab, setActiveTab] = useState("account")
   
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Settings</CardTitle>
           <CardDescription>
@@ -451,7 +451,7 @@ export default function CardCollection() {
       code: `
   function MetricsCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Metrics Overview</CardTitle>
           <CardDescription>Your key performance indicators</CardDescription>
@@ -494,7 +494,7 @@ export default function CardCollection() {
       code: `
   function SubscriptionCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Subscription Plan</CardTitle>
           <CardDescription>You are currently on the Pro plan</CardDescription>
@@ -534,7 +534,7 @@ export default function CardCollection() {
       code: `
   function TaskCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Current Tasks</CardTitle>
           <CardDescription>Your team's ongoing tasks</CardDescription>
@@ -590,7 +590,7 @@ export default function CardCollection() {
       code: `
   function CalendarCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Upcoming Events</CardTitle>
           <CardDescription>Your schedule for the next 7 days</CardDescription>
@@ -633,7 +633,7 @@ export default function CardCollection() {
       code: `
   function BillingCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Billing Information</CardTitle>
           <CardDescription>
@@ -678,7 +678,7 @@ export default function CardCollection() {
       code: `
   function FeedbackCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Feedback</CardTitle>
           <CardDescription>Help us improve our product</CardDescription>
@@ -720,7 +720,7 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Team Collaboration</CardTitle>
           <CardDescription>Current project: Website Redesign</CardDescription>
@@ -757,7 +757,7 @@ export default function CardCollection() {
       code: `
   function ProfileCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <div className="flex items-center space-x-4">
             <Avatar>
@@ -814,7 +814,7 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Productivity Tracker</CardTitle>
           <CardDescription>Your daily task overview</CardDescription>
@@ -858,7 +858,7 @@ export default function CardCollection() {
       code: `
   function QuickActionCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Quick Actions</CardTitle>
           <CardDescription>Frequently used actions</CardDescription>
@@ -910,7 +910,7 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Notifications</CardTitle>
           <CardDescription>Stay updated with recent activities</CardDescription>
@@ -966,7 +966,7 @@ export default function CardCollection() {
       code: `
   function QuickSettingsCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Quick Settings</CardTitle>
           <CardDescription>Adjust your preferences</CardDescription>
@@ -1001,7 +1001,7 @@ export default function CardCollection() {
       code: `
   function MusicPlayerCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Now Playing</CardTitle>
           <CardDescription>Your current track</CardDescription>
@@ -1045,7 +1045,7 @@ export default function CardCollection() {
       code: `
   function TaskProgressCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Task Progress</CardTitle>
           <CardDescription>Your project status</CardDescription>
@@ -1088,7 +1088,7 @@ export default function CardCollection() {
       code: `
   function QuickSearchCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Quick Search</CardTitle>
           <CardDescription>Find what you need quickly</CardDescription>
@@ -1120,7 +1120,7 @@ export default function CardCollection() {
       code: `
   function UpcomingEventCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Upcoming Event</CardTitle>
           <CardDescription>Your next scheduled event</CardDescription>
@@ -1162,7 +1162,7 @@ export default function CardCollection() {
       code: `
   function QuickExpenseCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader>
           <CardTitle>Quick Expense</CardTitle>
           <CardDescription>Add a new expense quickly</CardDescription>
@@ -1211,7 +1211,7 @@ export default function CardCollection() {
       code: `
  function DeviceStatusCard() {
     return (
-      <Card className="w-[350px]">
+      <Card className="w-[310px]">
         <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
           <CardTitle className="text-sm font-medium">Device Status</CardTitle>
           <Zap className="w-4 h-4 text-yellow-500" />
@@ -1231,7 +1231,7 @@ export default function CardCollection() {
       code: `
   function QuickPollCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Poll</CardTitle>
       </CardHeader>
@@ -1255,7 +1255,7 @@ export default function CardCollection() {
       code: `
   function DataUsageCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
         <Cloud className="w-4 h-4 text-muted-foreground" />
@@ -1277,7 +1277,7 @@ export default function CardCollection() {
       code: `
 function QuickNoteCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Note</CardTitle>
       </CardHeader>
@@ -1298,7 +1298,7 @@ function QuickNoteCard() {
       code: `
  function SocialShareCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Share</CardTitle>
       </CardHeader>
@@ -1320,7 +1320,7 @@ function QuickNoteCard() {
       code: `
  function QuickContactCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
         <Phone className="w-4 h-4 text-muted-foreground" />
@@ -1346,7 +1346,7 @@ function QuickNoteCard() {
       code: `
  function LocationCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Current Location</CardTitle>
         <Map className="w-4 h-4 text-muted-foreground" />
@@ -1366,7 +1366,7 @@ function QuickNoteCard() {
       code: `
  function VoiceCommandCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Voice Command</CardTitle>
       </CardHeader>
@@ -1386,7 +1386,7 @@ function QuickNoteCard() {
       code: `
  function DownloadProgressCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
         <Download className="w-4 h-4 text-muted-foreground" />
@@ -1409,7 +1409,7 @@ function QuickNoteCard() {
  function ThemeToggleCard() {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Theme</CardTitle>
       </CardHeader>
@@ -1436,7 +1436,7 @@ function QuickNoteCard() {
       function QuickRatingCard() {
   const [starRating, setStarRating] = useState(0);
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Rate Your Experience</CardTitle>
       </CardHeader>
@@ -1482,7 +1482,7 @@ function QuickNoteCard() {
 
 export function LoginCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Login</CardTitle>
         <CardDescription>
@@ -1516,7 +1516,7 @@ export function LoginCard() {
 }
 export function SignUpCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Sign Up</CardTitle>
         <CardDescription>Create a new account to get started.</CardDescription>
@@ -1555,7 +1555,7 @@ export function SignUpCard() {
 }
 export function PaymentCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Payment Details</CardTitle>
         <CardDescription>
@@ -1594,7 +1594,7 @@ export function PaymentCard() {
 }
 export function ProfileCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <div className="flex items-center space-x-4">
           <Avatar>
@@ -1640,7 +1640,7 @@ export function ProfileCard() {
 export function SettingsCard() {
   const [activeTab, setActiveTab] = useState("account");
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Settings</CardTitle>
         <CardDescription>
@@ -1704,7 +1704,7 @@ export function SettingsCard() {
 }
 export function MetricsCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Metrics Overview</CardTitle>
         <CardDescription>Your key performance indicators</CardDescription>
@@ -1742,7 +1742,7 @@ export function MetricsCard() {
 }
 export function SubscriptionCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Subscription Plan</CardTitle>
         <CardDescription>You are currently on the Pro plan</CardDescription>
@@ -1777,7 +1777,7 @@ export function SubscriptionCard() {
 }
 export function TaskCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Current Tasks</CardTitle>
         <CardDescription>Your team's ongoing tasks</CardDescription>
@@ -1821,7 +1821,7 @@ export function TaskCard() {
 }
 export function CalendarCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Upcoming Events</CardTitle>
         <CardDescription>Your schedule for the next 7 days</CardDescription>
@@ -1859,7 +1859,7 @@ export function CalendarCard() {
 }
 export function BillingCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Billing Information</CardTitle>
         <CardDescription>
@@ -1899,7 +1899,7 @@ export function BillingCard() {
 }
 export function FeedbackCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Feedback</CardTitle>
         <CardDescription>Help us improve our product</CardDescription>
@@ -1942,7 +1942,7 @@ export function AIAssistantCard() {
     }
   };
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>AI Assistant</CardTitle>
         <CardDescription>Ask me anything about your data</CardDescription>
@@ -1982,7 +1982,7 @@ export function TeamCollaborationCard() {
     { name: "Charlie", avatar: "C", status: "away" },
   ];
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Team Collaboration</CardTitle>
         <CardDescription>Current project: Website Redesign</CardDescription>
@@ -2014,7 +2014,7 @@ export function TeamCollaborationCard() {
 }
 export function WeatherCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Weather Forecast</CardTitle>
         <CardDescription>San Francisco, CA</CardDescription>
@@ -2054,7 +2054,7 @@ export function ProductivityTrackerCard() {
     { name: "Prepare for client meeting", completed: false },
   ];
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader>
         <CardTitle>Productivity Tracker</CardTitle>
         <CardDescription>Your daily task overview</CardDescription>
@@ -2091,7 +2091,7 @@ export function ProductivityTrackerCard() {
 }
 export function QuickActionCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Actions</CardTitle>
       </CardHeader>
@@ -2107,7 +2107,7 @@ export function QuickActionCard() {
 }
 export function NotificationCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Notifications</CardTitle>
         <Bell className="w-4 h-4 text-muted-foreground" />
@@ -2121,7 +2121,7 @@ export function NotificationCard() {
 }
 export function WeatherMiniCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Weather</CardTitle>
         <Sun className="w-4 h-4 text-yellow-500" />
@@ -2135,7 +2135,7 @@ export function WeatherMiniCard() {
 }
 export function QuickSettingsCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Settings</CardTitle>
       </CardHeader>
@@ -2154,7 +2154,7 @@ export function QuickSettingsCard() {
 }
 export function MusicPlayerCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Now Playing</CardTitle>
         <Music className="w-4 h-4 text-muted-foreground" />
@@ -2171,7 +2171,7 @@ export function MusicPlayerCard() {
 }
 export function TaskProgressCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Task Progress</CardTitle>
         <Check className="w-4 h-4 text-muted-foreground" />
@@ -2187,7 +2187,7 @@ export function TaskProgressCard() {
 }
 export function QuickSearchCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Search</CardTitle>
       </CardHeader>
@@ -2204,7 +2204,7 @@ export function QuickSearchCard() {
 }
 export function UpcomingEventCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Upcoming Event</CardTitle>
         <Calendar className="w-4 h-4 text-muted-foreground" />
@@ -2218,7 +2218,7 @@ export function UpcomingEventCard() {
 }
 export function QuickExpenseCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Expense</CardTitle>
         <CreditCard className="w-4 h-4 text-muted-foreground" />
@@ -2234,7 +2234,7 @@ export function QuickExpenseCard() {
 }
 export function DeviceStatusCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Device Status</CardTitle>
         <Zap className="w-4 h-4 text-yellow-500" />
@@ -2248,7 +2248,7 @@ export function DeviceStatusCard() {
 }
 export function QuickPollCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Poll</CardTitle>
       </CardHeader>
@@ -2266,7 +2266,7 @@ export function QuickPollCard() {
 }
 export function DataUsageCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
         <Cloud className="w-4 h-4 text-muted-foreground" />
@@ -2282,7 +2282,7 @@ export function DataUsageCard() {
 }
 export function QuickNoteCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Quick Note</CardTitle>
       </CardHeader>
@@ -2297,7 +2297,7 @@ export function QuickNoteCard() {
 }
 export function SocialShareCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Share</CardTitle>
       </CardHeader>
@@ -2313,7 +2313,7 @@ export function SocialShareCard() {
 }
 export function QuickContactCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
         <Phone className="w-4 h-4 text-muted-foreground" />
@@ -2333,7 +2333,7 @@ export function QuickContactCard() {
 }
 export function LocationCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Current Location</CardTitle>
         <Map className="w-4 h-4 text-muted-foreground" />
@@ -2347,7 +2347,7 @@ export function LocationCard() {
 }
 export function VoiceCommandCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Voice Command</CardTitle>
       </CardHeader>
@@ -2361,7 +2361,7 @@ export function VoiceCommandCard() {
 }
 export function DownloadProgressCard() {
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
         <Download className="w-4 h-4 text-muted-foreground" />
@@ -2378,7 +2378,7 @@ export function DownloadProgressCard() {
 export function ThemeToggleCard() {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Theme</CardTitle>
       </CardHeader>
@@ -2399,7 +2399,7 @@ export function ThemeToggleCard() {
 export function QuickRatingCard() {
   const [starRating, setStarRating] = useState(0);
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[310px]">
       <CardHeader className="p-4">
         <CardTitle className="text-sm">Rate Your Experience</CardTitle>
       </CardHeader>
