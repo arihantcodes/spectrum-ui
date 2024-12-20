@@ -1,4 +1,4 @@
-"use client"
+"use client";
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import Copy from "../copy";
@@ -245,7 +245,7 @@ export default function CardCollection() {
     )
   }`,
     },
-   
+
     {
       name: "SettingsCard",
       component: SettingsCard,
@@ -706,8 +706,7 @@ export default function CardCollection() {
     )
   }`,
     },
-    
-   
+
     {
       name: "TeamCollaborationCard",
       component: TeamCollaborationCard,
@@ -801,7 +800,7 @@ export default function CardCollection() {
     )
   }`,
     },
-    
+
     {
       name: "ProductivityTrackerCard",
       component: ProductivityTrackerCard,
@@ -1465,18 +1464,18 @@ function QuickNoteCard() {
   `,
     },
   ];
+  // grid md:grid-cols-2 lg:grid-cols-3 gap-12  grid-cols-1
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12  grid-cols-1 ml-2">
-    {cardComponents.map(({ name, component: CardComponent, code }) => (
-      <div key={name} className="relative group">
-        <CardComponent />
-        <div className="absolute top-1 right-5 hidden group-hover:flex">
-          <Copy content={code} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 3xl:grid-cols-3 gap-6">
+      {cardComponents.map(({ name, component: CardComponent, code }) => (
+        <div key={name} className="relative group">
+          <CardComponent />
+          <div className="absolute top-1 right-5 hidden group-hover:flex">
+            <Copy content={code} />
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-  
+      ))}
+    </div>
   );
 }
 
@@ -1952,9 +1951,7 @@ export function AIAssistantCard() {
           <div
             key={index}
             className={`mb-2 ${
-              msg.role === "ai"
-                ? "text-blue-600 text-left"
-                : "text-right"
+              msg.role === "ai" ? "text-blue-600 text-left" : "text-right"
             }`}
           >
             <strong>{msg.role === "ai" ? "AI: " : "You: "}</strong>
