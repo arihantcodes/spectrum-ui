@@ -1,16 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client"
+"use client";
 
-import * as React from "react"
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Textarea } from "@/components/ui/textarea"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import * as React from "react";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
   TableBody,
@@ -18,7 +24,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 import {
   AreaChart,
   Area,
@@ -32,8 +38,17 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts"
-import { Moon, Sun, DollarSign, Users, Activity, Send, Palette, Check } from "lucide-react"
+} from "recharts";
+import {
+  Moon,
+  Sun,
+  DollarSign,
+  Users,
+  Activity,
+  Send,
+  Palette,
+  Check,
+} from "lucide-react";
 
 const revenueData = [
   { month: "Jan", amount: 12000 },
@@ -42,13 +57,13 @@ const revenueData = [
   { month: "Apr", amount: 13800 },
   { month: "May", amount: 14200 },
   { month: "Jun", amount: 15231 },
-]
+];
 
 const subscriptionData = [
   { name: "Basic", value: 400 },
   { name: "Pro", value: 300 },
   { name: "Enterprise", value: 150 },
-]
+];
 
 const exerciseData = [
   { name: "Mon", minutes: 45 },
@@ -58,13 +73,13 @@ const exerciseData = [
   { name: "Fri", minutes: 45 },
   { name: "Sat", minutes: 40 },
   { name: "Sun", minutes: 35 },
-]
-const COLORS = ['#8b5cf6', '#6366f1', '#a78bfa']
+];
+const COLORS = ["#8b5cf6", "#6366f1", "#a78bfa"];
 
 const styles = [
   { name: "Default", value: "default" },
   { name: "New York", value: "new-york" },
-]
+];
 
 const colors = [
   { name: "Zinc", value: "zinc", class: "bg-zinc-500" },
@@ -79,7 +94,7 @@ const colors = [
   { name: "Blue", value: "blue", class: "bg-blue-500" },
   { name: "Yellow", value: "yellow", class: "bg-yellow-500" },
   { name: "Violet", value: "violet", class: "bg-violet-500" },
-]
+];
 
 const radiusOptions = [
   { name: "0", value: "0" },
@@ -87,15 +102,15 @@ const radiusOptions = [
   { name: "0.5", value: "0.5" },
   { name: "0.75", value: "0.75" },
   { name: "1.0", value: "1.0" },
-]
+];
 export default function Component() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date())
-  const [selectedStyle, setSelectedStyle] = React.useState("default")
-  const [selectedColor, setSelectedColor] = React.useState("zinc")
-  const [selectedRadius, setSelectedRadius] = React.useState("0.5")
-  const [mode, setMode] = React.useState("dark")
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const [selectedStyle, setSelectedStyle] = React.useState("default");
+  const [selectedColor, setSelectedColor] = React.useState("zinc");
+  const [selectedRadius, setSelectedRadius] = React.useState("0.5");
+  const [mode, setMode] = React.useState("dark");
   function cn(...classes: (string | boolean | undefined)[]): string {
-    return classes.filter(Boolean).join(' ');
+    return classes.filter(Boolean).join(" ");
   }
 
   return (
@@ -114,7 +129,13 @@ export default function Component() {
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={revenueData}>
                   <defs>
-                    <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient
+                      id="colorRevenue"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
                       <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8} />
                       <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                     </linearGradient>
@@ -122,8 +143,20 @@ export default function Component() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                   <XAxis dataKey="month" stroke="#9ca3af" />
                   <YAxis stroke="#9ca3af" />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none', color: 'white' }} />
-                  <Area type="monotone" dataKey="amount" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorRevenue)" />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#111827",
+                      border: "none",
+                      color: "white",
+                    }}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="amount"
+                    stroke="#8b5cf6"
+                    fillOpacity={1}
+                    fill="url(#colorRevenue)"
+                  />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -151,17 +184,32 @@ export default function Component() {
                     dataKey="value"
                   >
                     {subscriptionData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
                     ))}
                   </Pie>
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }} />
+                  <Tooltip
+                    contentStyle={{ 
+                      backgroundColor: "#111827", 
+                      color: "white",
+                      borderRadius: "0.375rem"
+                    }}
+                    cursor={{ fill: 'rgba(255,255,255,0.1)' }}
+                    labelStyle={{ color: 'white' }}
+                    itemStyle={{ color: 'white' }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
             <div className="flex justify-center mt-4">
               {subscriptionData.map((entry, index) => (
                 <div key={`legend-${index}`} className="flex items-center mx-2">
-                  <div className="w-3 h-3 mr-1" style={{ backgroundColor: COLORS[index % COLORS.length] }}></div>
+                  <div
+                    className="w-3 h-3 mr-1"
+                    style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                  ></div>
                   <span className="text-xs">{entry.name}</span>
                 </div>
               ))}
@@ -194,13 +242,36 @@ export default function Component() {
             <ScrollArea className="h-[200px]">
               <div className="space-y-4">
                 {[
-                  { name: "Sofia Davis", role: "Product Manager", image: "/placeholder.svg?height=32&width=32" },
-                  { name: "Jackson Lee", role: "Designer", image: "/placeholder.svg?height=32&width=32" },
-                  { name: "Isabella Nguyen", role: "Developer", image: "/placeholder.svg?height=32&width=32" },
-                  { name: "William Chen", role: "Marketing", image: "/placeholder.svg?height=32&width=32" },
-                  { name: "Emily Taylor", role: "Customer Support", image: "/placeholder.svg?height=32&width=32" },
+                  {
+                    name: "Sofia Davis",
+                    role: "Product Manager",
+                    image: "/placeholder.svg?height=32&width=32",
+                  },
+                  {
+                    name: "Jackson Lee",
+                    role: "Designer",
+                    image: "/placeholder.svg?height=32&width=32",
+                  },
+                  {
+                    name: "Isabella Nguyen",
+                    role: "Developer",
+                    image: "/placeholder.svg?height=32&width=32",
+                  },
+                  {
+                    name: "William Chen",
+                    role: "Marketing",
+                    image: "/placeholder.svg?height=32&width=32",
+                  },
+                  {
+                    name: "Emily Taylor",
+                    role: "Customer Support",
+                    image: "/placeholder.svg?height=32&width=32",
+                  },
                 ].map((member) => (
-                  <div key={member.name} className="flex items-center space-x-4">
+                  <div
+                    key={member.name}
+                    className="flex items-center space-x-4"
+                  >
                     <Avatar>
                       <AvatarImage src={member.image} />
                       <AvatarFallback>{member.name[0]}</AvatarFallback>
@@ -225,14 +296,18 @@ export default function Component() {
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label>Dark Mode</Label>
-                <div className="text-xs text-gray-400">Toggle dark mode on/off</div>
+                <div className="text-xs text-gray-400">
+                  Toggle dark mode on/off
+                </div>
               </div>
               <Switch />
             </div>
             <div className="flex items-center justify-between">
               <div className="space-y-0.5">
                 <Label>Notifications</Label>
-                <div className="text-xs text-gray-400">Receive push notifications</div>
+                <div className="text-xs text-gray-400">
+                  Receive push notifications
+                </div>
               </div>
               <Switch />
             </div>
@@ -249,7 +324,9 @@ export default function Component() {
         {/* Exercise Minutes Card */}
         <Card className="md:col-span-2  border-gray-800">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Exercise Minutes</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Exercise Minutes
+            </CardTitle>
             <Activity className="h-4 w-4 text-purple-400" />
           </CardHeader>
           <CardContent>
@@ -261,7 +338,13 @@ export default function Component() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                   <XAxis dataKey="name" stroke="#9ca3af" />
                   <YAxis stroke="#9ca3af" />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "#111827",
+                      color: "#FFFFFF",
+                      border: "none",
+                    }}
+                  />
                   <Bar dataKey="minutes" fill="#8b5cf6" />
                 </BarChart>
               </ResponsiveContainer>
@@ -272,7 +355,9 @@ export default function Component() {
         {/* Payments Table Card */}
         <Card className="md:col-span-1 lg:col-span-2  border-gray-800">
           <CardHeader>
-            <CardTitle className="text-sm font-medium">Recent Transactions</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Recent Transactions
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
@@ -286,23 +371,50 @@ export default function Component() {
               </TableHeader>
               <TableBody>
                 {[
-                  { status: "Success", customer: "John Doe", date: "2023-06-20", amount: "$316.00" },
-                  { status: "Processing", customer: "Jane Smith", date: "2023-06-19", amount: "$242.00" },
-                  { status: "Failed", customer: "Bob Johnson", date: "2023-06-18", amount: "$837.00" },
-                  { status: "Success", customer: "Alice Brown", date: "2023-06-17", amount: "$874.00" },
+                  {
+                    status: "Success",
+                    customer: "John Doe",
+                    date: "2023-06-20",
+                    amount: "$316.00",
+                  },
+                  {
+                    status: "Processing",
+                    customer: "Jane Smith",
+                    date: "2023-06-19",
+                    amount: "$242.00",
+                  },
+                  {
+                    status: "Failed",
+                    customer: "Bob Johnson",
+                    date: "2023-06-18",
+                    amount: "$837.00",
+                  },
+                  {
+                    status: "Success",
+                    customer: "Alice Brown",
+                    date: "2023-06-17",
+                    amount: "$874.00",
+                  },
                 ].map((payment) => (
                   <TableRow key={payment.date}>
                     <TableCell>
-                      <span className={`inline-block px-2 py-1 text-xs rounded-full ${payment.status === 'Success' ? 'bg-green-500/20 text-green-500' :
-                        payment.status === 'Processing' ? 'bg-yellow-500/20 text-yellow-500' :
-                          'bg-red-500/20 text-red-500'
-                        }`}>
+                      <span
+                        className={`inline-block px-2 py-1 text-xs rounded-full ${
+                          payment.status === "Success"
+                            ? "bg-green-500/20 text-green-500"
+                            : payment.status === "Processing"
+                            ? "bg-yellow-500/20 text-yellow-500"
+                            : "bg-red-500/20 text-red-500"
+                        }`}
+                      >
                         {payment.status}
                       </span>
                     </TableCell>
                     <TableCell>{payment.customer}</TableCell>
                     <TableCell>{payment.date}</TableCell>
-                    <TableCell className="text-right">{payment.amount}</TableCell>
+                    <TableCell className="text-right">
+                      {payment.amount}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -313,7 +425,9 @@ export default function Component() {
         {/* Support Chat Card */}
         <Card className="md:col-span-1 lg:col-span-2  border-gray-800">
           <CardHeader>
-            <CardTitle className="text-sm font-medium">Customer Support</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              Customer Support
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <ScrollArea className="h-[200px] w-full rounded border border-gray-800 p-4">
@@ -323,12 +437,16 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">Hello! How can I assist you today?</p>
+                    <p className="text-sm">
+                      Hello! How can I assist you today?
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start justify-end space-x-2">
                   <div className="bg-purple-600 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">Hi, I'm having trouble with my account settings.</p>
+                    <p className="text-sm">
+                      Hi, I'm having trouble with my account settings.
+                    </p>
                   </div>
                   <Avatar>
                     <AvatarFallback>U</AvatarFallback>
@@ -339,10 +457,12 @@ export default function Component() {
                     <AvatarFallback>CS</AvatarFallback>
                   </Avatar>
                   <div className="bg-gray-800 rounded-lg p-2 max-w-[80%]">
-                    <p className="text-sm">I'm sorry to hear that. Can you please provide more details about the issue you're experiencing?</p>
+                    <p className="text-sm">
+                      I'm sorry to hear that. Can you please provide more
+                      details about the issue you're experiencing?
+                    </p>
                   </div>
                 </div>
-
               </div>
             </ScrollArea>
             <div className="flex space-x-2">
@@ -392,19 +512,16 @@ export default function Component() {
                     key={color.value}
                     variant="outline"
                     size="sm"
-                    className={cn(
-                      "  ",
-                      selectedColor === color.value && ""
-                    )}
+                    className={cn("  ", selectedColor === color.value && "")}
                     onClick={() => setSelectedColor(color.value)}
                   >
                     <div className="flex items-center gap-2">
-                      <div className={cn("h-4 w-4 rounded-full", color.class)} />
+                      <div
+                        className={cn("h-4 w-4 rounded-full", color.class)}
+                      />
                       <span className="text-sm">{color.name}</span>
                     </div>
-                    {selectedColor === color.value && (
-                      <Check className=" " />
-                    )}
+                    {selectedColor === color.value && <Check className=" " />}
                   </Button>
                 ))}
               </div>
@@ -465,5 +582,5 @@ export default function Component() {
         </Card>
       </div>
     </Card>
-  )
+  );
 }
