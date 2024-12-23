@@ -154,7 +154,9 @@ export default function Component() {
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#111827', border: 'none' }}  itemStyle={{
+              color: '#ffffff', // White text color for better contrast
+            }}  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -354,7 +356,7 @@ export default function Component() {
             </div>
           </CardContent>
         </Card>
-        <Card className="md:col-span-1 lg:col-span-1  border-gray-800">
+        <Card className="md:col-span-1 lg:col-span-1  border-gray-800  ">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Customize</CardTitle>
             <Palette className="h-4 w-4 " />
