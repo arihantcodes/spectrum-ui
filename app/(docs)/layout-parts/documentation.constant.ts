@@ -62,6 +62,12 @@ export const DOCS: Documentation[] = [
       { label: "Button", value: "button", url: "/docs/button" },
       { label: "Card", value: "card", url: "/docs/card" },
       {
+        label: "Custom Cursor",
+        value: "custom-cursor",
+        url: "/docs/custom-cursor",
+        new: true,
+      },
+      {
         label: "Datetime Picker",
         value: "datetime-picker",
         url: "/docs/datetime-picker",
