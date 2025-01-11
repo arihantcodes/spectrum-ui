@@ -30,7 +30,7 @@ cd spectrum-ui
 Run the following command to install the project's dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
@@ -39,7 +39,7 @@ npm install
 Run the development server to test your changes locally:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ---

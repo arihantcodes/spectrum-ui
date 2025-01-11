@@ -71,6 +71,7 @@
     "react-day-picker": "^9.2.1",
     "react-dom": "^18.3.1",
     "react-highlight": "^0.15.0",
+    "react-hook-form": "^7.54.2",
     "react-resizable-panels": "^2.1.6",
     "react-syntax-highlighter": "^15.6.1",
     "react-tweet": "^3.2.1",
@@ -106,6 +107,5 @@
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }
