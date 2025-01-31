@@ -77,7 +77,7 @@ function EventCalendar() {
   return (
     <div className="p-4 mx-auto max-w-3xl">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-4">
           <Button
             variant="outline"
             className="p-2 opacity-75 hover:opacity-100"
@@ -102,7 +102,7 @@ function EventCalendar() {
           </motion.h2>
         </div>
         <Button onClick={() => setIsAddModalOpen(true)}>
-          <Plus className="w-4 h-4 mr-2" />
+          <Plus className="w-4 h-4" />
           Add Event
         </Button>
       </div>
