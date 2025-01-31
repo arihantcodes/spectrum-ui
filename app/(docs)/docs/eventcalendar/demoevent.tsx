@@ -77,7 +77,7 @@ function EventCalendar() {
   return (
     <div className="p-4 mx-auto max-w-3xl">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-4 ml-4">
+        <div className="flex items-center gap-4 mr-4">
           <Button
             variant="outline"
             className="p-2 opacity-75 hover:opacity-100"
