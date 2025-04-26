@@ -17,12 +17,13 @@ import {
 
 // Assuming DOCS is imported from your constant file
 import { DOCS } from "@/app/(docs)/layout-parts/documentation.constant";
+import { Input } from "@/components/ui/input";
 
 export default function EnhancedSidebar() {
   const [openGroups, setOpenGroups] = useState<string[]>(
     DOCS.map((group) => group.groupKey)
   );
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -54,6 +55,15 @@ export default function EnhancedSidebar() {
 
   return (
     <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 border-r border-gray-200 dark:border-gray-800">
+
+      <Input
+        placeholder="search for components"
+        className="hidden md:block p-3 max-w-fit mx-auto"
+        value={searchTerm}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+      />
       <ScrollArea className="flex-1">
         <nav className="p-4 space-y-2">
           {filteredDocs.map((group) => (
