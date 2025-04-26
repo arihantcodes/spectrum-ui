@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, Search } from "lucide-react";
+import { ChevronDown, ChevronRight, Search, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -55,15 +55,24 @@ export default function EnhancedSidebar() {
 
   return (
     <aside className="hidden lg:flex flex-col w-64 h-screen sticky top-0 border-r border-gray-200 dark:border-gray-800">
+      {/* Search Input with clear button */}
+      <div className="relative hidden md:block p-3 max-w-fit mx-auto">
+        <Input
+          placeholder="search for components"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="pr-10"
+        />
+        {searchTerm && (
+          <button
+            onClick={() => setSearchTerm("")}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2"
+          >
+            <X className="h-4 w-4 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200" />
+          </button>
+        )}
+      </div>
 
-      <Input
-        placeholder="search for components"
-        className="hidden md:block p-3 max-w-fit mx-auto"
-        value={searchTerm}
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-        }}
-      />
       <ScrollArea className="flex-1">
         <nav className="p-4 space-y-2">
           {filteredDocs.map((group) => (
@@ -90,6 +99,7 @@ export default function EnhancedSidebar() {
                   <Link
                     key={child.value}
                     href={child.url}
+                    onClick={() => setSearchTerm("")}
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 text-sm rounded-md transition-colors",
                       pathname === child.url
