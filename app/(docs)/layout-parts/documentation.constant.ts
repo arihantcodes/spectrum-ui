@@ -60,7 +60,7 @@ export const DOCS: Documentation[] = [
         url: "/docs/autosize-textarea",
       },
       { label: "Button", value: "button", url: "/docs/button", },
-      { label: "Card", value: "card", url: "/docs/card" ,    },
+      { label: "Card", value: "card", url: "/docs/card", },
       {
         label: "Datetime Picker",
         value: "datetime-picker",
@@ -80,7 +80,7 @@ export const DOCS: Documentation[] = [
         label: "Event Calendar",
         value: "eventcalendar",
         url: "/docs/eventcalendar",
-   
+
       },
       {
         label: "Feadback Card",
@@ -93,7 +93,7 @@ export const DOCS: Documentation[] = [
         value: "floating-label-input",
         url: "/docs/floating-label-input",
       },
-      { label: "Footer", value: "footer", url: "/docs/footer" ,},
+      { label: "Footer", value: "footer", url: "/docs/footer", },
       {
         label: "HTTP Status Code",
         value: "statuscode",
@@ -121,7 +121,7 @@ export const DOCS: Documentation[] = [
         value: "multipleSelector",
         url: "/docs/multiple-selector",
       },
-      { label: "Navbar", value: "navbar", url: "/docs/navbar" ,    new: true,},
+      { label: "Navbar", value: "navbar", url: "/docs/navbar", new: true, },
       {
         label: "Progress With Value",
         value: "progress-with-value",
@@ -137,7 +137,6 @@ export const DOCS: Documentation[] = [
         label: "Skeleton",
         value: "skeleton",
         url: "/docs/skeleton",
-     
       },
     ],
   },

@@ -77,3 +77,24 @@ export const page_routes = ROUTES.map(({ children }) => {
     href: link.url,
   }));
 }).flat();
+
+// this flat will combile the array of arrays (nested array) into the single array
+
+/*
+example 
+[
+  [ { title: 'Introduction', href: '' } ],
+  [ { title: 'Autosize Textarea', href: '/autosize-textarea' }, { title: 'Datetime Picker', href: '/datetime-picker' }, ... ]
+]
+
+converted-to
+
+[
+  { title: 'Introduction', href: '' },
+  { title: 'Autosize Textarea', href: '/autosize-textarea' },
+  { title: 'Datetime Picker', href: '/datetime-picker' },
+  ...
+]
+
+
+*/
