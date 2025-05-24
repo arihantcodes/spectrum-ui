@@ -16,6 +16,23 @@ Click the "Fork" button at the top-right of the repository page to create your o
 
 ---
 
+#### 1. **Docker setup**  
+Run the docker demon and build the image
+```bash
+docker build -t spectrum-ui .
+```
+Now run the image using this command
+```bash
+docker run -p 3000:3000 spectrum-ui
+```
+---
+and visit localhost:3000
+
+#### 1. **Manual setup**  
+
+
+---
+
 #### 2. **Clone Your Fork**  
 Clone your forked repository to your local machine:
 
