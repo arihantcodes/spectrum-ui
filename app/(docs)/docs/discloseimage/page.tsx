@@ -1,4 +1,4 @@
-import DiscloseImage from "@/components/spectrumui/DiscloseImage";
+import DiscloseImage from "@/components/SpectrumUI/DiscloseImage";
 import React from "react";
 
 const page = () => {

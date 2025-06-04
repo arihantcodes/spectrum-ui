@@ -3,16 +3,16 @@
 import { Redis } from "@upstash/redis";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/Card";
+import { Badge } from "@/components/UI/Badge";
+import { Button } from "@/components/UI/Button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogClose,
-} from "@/components/ui/Dialog";
+} from "@/components/UI/Dialog";
 import { X } from "lucide-react";
 import OTPInput from "@/components/OtpInput";
 import Image from "next/image";

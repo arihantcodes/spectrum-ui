@@ -54,9 +54,9 @@ import {
 
 import { z } from "zod";
 
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { Checkbox } from "@/components/ui/CheckBox";
+import { Badge } from "@/components/UI/Badge";
+import { Button } from "@/components/UI/Button";
+import { Checkbox } from "@/components/UI/CheckBox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -64,16 +64,16 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+} from "@/components/UI/DropdownMenu";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
+} from "@/components/UI/Select";
 import {
   Table,
   TableBody,
@@ -81,8 +81,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/Table";
-import { Tabs, TabsContent } from "@/components/ui/Tabs";
+} from "@/components/UI/Table";
+import { Tabs, TabsContent } from "@/components/UI/Tabs";
 import Image from "next/image";
 import { IoNavigate } from "react-icons/io5";
 import { RiLayoutGridFill } from "react-icons/ri";

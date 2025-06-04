@@ -1,5 +1,5 @@
 import React from "react";
-import ImagePreview from "@/app/registry/imagepreview/image-preview-dependecies";
+import ImagePreview from "@/app/Registry/imagepreview/image-preview-dependecies";
 
 const Demoimages = () => {
   return (

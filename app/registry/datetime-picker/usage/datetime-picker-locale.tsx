@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { DateTimePicker } from "@/components/ui/DatetimePicker";
+import { DateTimePicker } from "@/components/UI/DatetimePicker";
 import { zhTW } from "date-fns/locale";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { InlineCode } from "@/components/UI/InlineCode";
 const DatetimePickerLocale = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);
   return (

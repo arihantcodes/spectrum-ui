@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { DateTimePicker } from "@/components/ui/DatetimePicker";
-import { Label } from "@/components/ui/Label";
+import { DateTimePicker } from "@/components/UI/DatetimePicker";
+import { Label } from "@/components/UI/Label";
 
 const DatetimePickerYearRange = () => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);

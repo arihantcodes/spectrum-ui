@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
-import { InlineCode } from "@/components/ui/InlineCode";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
+import { InlineCode } from "@/components/UI/InlineCode";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "nextjs" },

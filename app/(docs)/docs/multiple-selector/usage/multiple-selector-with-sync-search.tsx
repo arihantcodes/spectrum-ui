@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
-import { H4 } from "@/components/ui/HeadingAnchor";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
+import { H4 } from "@/components/UI/HeadingAnchor";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "nextjs" },

@@ -1,8 +1,8 @@
-import { Separator } from "@/components/ui/Separator";
-import { SidebarTrigger } from "@/components/ui/Sidebar";
+import { Separator } from "@/components/UI/Separator";
+import { SidebarTrigger } from "@/components/UI/Sidebar";
 import { RiLayoutGridFill } from "react-icons/ri";
-import { Button } from "./ui/Button";
-import { Input } from "./ui/Input";
+import { Button } from "./UI/Button";
+import { Input } from "./UI/Input";
 import { CommandIcon, SearchIcon } from "lucide-react";
 import { FaCrown } from "react-icons/fa";
 import { ThemeToggle } from "./ThemeToggle";

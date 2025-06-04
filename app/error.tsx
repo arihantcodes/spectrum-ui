@@ -1,7 +1,7 @@
 "use client"; // Error components must be Client Components
 
-import { Button } from "@/components/ui/Button";
-import { NotFound } from "@/components/ui/NotFoundPage";
+import { Button } from "@/components/UI/Button";
+import { NotFound } from "@/components/UI/NotFoundPage";
 import { useEffect } from "react";
 
 export default function Error({

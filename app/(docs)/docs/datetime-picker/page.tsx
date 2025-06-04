@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -15,8 +15,8 @@ import {
   Reference,
   ReferenceBorder,
 } from "@/app/(docs)/docs/components/reference";
-import { P } from "@/components/ui/HeadingAnchor";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { P } from "@/components/UI/HeadingAnchor";
+import { InlineCode } from "@/components/UI/InlineCode";
 import { PropLink } from "@/app/(docs)/docs/components/props-table/prop-link";
 import DatetimePickerForm from "@/app/(docs)/docs/datetime-picker/usage/datetime-picker-form";
 import DatetimePickerRef from "@/app/(docs)/docs/datetime-picker/usage/datetime-picker-ref";

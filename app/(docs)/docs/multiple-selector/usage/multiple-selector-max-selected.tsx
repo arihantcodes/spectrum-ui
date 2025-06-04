@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
-import { toast } from "@/components/ui/UseToast";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
+import { toast } from "@/components/UI/UseToast";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "Nextjs" },

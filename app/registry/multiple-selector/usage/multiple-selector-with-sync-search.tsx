@@ -1,35 +1,37 @@
-'use client';
-import React from 'react';
-import MultipleSelector, { Option } from '@/app/registry/spectrumui/multiple-selector-dependencies';
-import { H4 } from '@/app/registry/spectrumui/heading-with-anchor';
+"use client";
+import React from "react";
+import MultipleSelector, {
+  Option,
+} from "@/app/Registry/spectrumui/multiple-selector-dependencies";
+import { H4 } from "@/app/Registry/spectrumui/heading-with-anchor";
 
 const OPTIONS: Option[] = [
-  { label: 'nextjs', value: 'nextjs' },
-  { label: 'React', value: 'react' },
-  { label: 'Remix', value: 'remix' },
-  { label: 'Vite', value: 'vite' },
-  { label: 'Nuxt', value: 'nuxt' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-  { label: 'Angular', value: 'angular' },
-  { label: 'Ember', value: 'ember' },
-  { label: 'Gatsby', value: 'gatsby' },
-  { label: 'Astro', value: 'astro' },
+  { label: "nextjs", value: "nextjs" },
+  { label: "React", value: "react" },
+  { label: "Remix", value: "remix" },
+  { label: "Vite", value: "vite" },
+  { label: "Nuxt", value: "nuxt" },
+  { label: "Vue", value: "vue" },
+  { label: "Svelte", value: "svelte" },
+  { label: "Angular", value: "angular" },
+  { label: "Ember", value: "ember" },
+  { label: "Gatsby", value: "gatsby" },
+  { label: "Astro", value: "astro" },
 ];
 
 const GROUP_OPTIONS: Option[] = [
-  { label: 'nextjs', value: 'nextjs', group: 'React' },
-  { label: 'React', value: 'react', group: 'React' },
-  { label: 'Remix', value: 'remix', group: 'React' },
-  { label: 'shadcn-ui', value: 'shadcn-ui', group: 'React' },
-  { label: 'mui', value: 'mui', group: 'React' },
-  { label: 'Vite', value: 'vite', group: 'Vue' },
-  { label: 'Nuxt', value: 'nuxt', group: 'Vue' },
-  { label: 'Vue', value: 'vue', group: 'Vue' },
-  { label: 'Quasar', value: 'quasar', group: 'Vue' },
-  { label: 'Angular', value: 'angular', group: 'Angular' },
-  { label: 'Material UI', value: 'material-ui', group: 'Angular' },
-  { label: 'Ng-zorro', value: 'ng-zorro', group: 'Angular' },
+  { label: "nextjs", value: "nextjs", group: "React" },
+  { label: "React", value: "react", group: "React" },
+  { label: "Remix", value: "remix", group: "React" },
+  { label: "shadcn-ui", value: "shadcn-ui", group: "React" },
+  { label: "mui", value: "mui", group: "React" },
+  { label: "Vite", value: "vite", group: "Vue" },
+  { label: "Nuxt", value: "nuxt", group: "Vue" },
+  { label: "Vue", value: "vue", group: "Vue" },
+  { label: "Quasar", value: "quasar", group: "Vue" },
+  { label: "Angular", value: "angular", group: "Angular" },
+  { label: "Material UI", value: "material-ui", group: "Angular" },
+  { label: "Ng-zorro", value: "ng-zorro", group: "Angular" },
 ];
 
 const mockSearch = (value: string): Option[] => {

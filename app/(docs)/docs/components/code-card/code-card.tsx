@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 import PackageManagerTabs from "@/components/PackageManagerTabs";
 import { AppWindowMac, Command, FileCode } from "lucide-react";
 
-import { ScrollArea, ScrollBar } from "@/components/ui/ScrollArea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { ScrollArea, ScrollBar } from "@/components/UI/ScrollArea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
 
 interface CodeCardProps {
   children?: React.ReactNode;

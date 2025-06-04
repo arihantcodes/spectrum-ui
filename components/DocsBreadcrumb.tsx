@@ -5,7 +5,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/Breadcrumb";
+} from "@/components/UI/Breadcrumb";
 import { Fragment } from "react";
 
 export default function DocsBreadcrumb({ paths }: { paths: string[] }) {

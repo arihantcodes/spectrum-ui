@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { ScrollArea } from "@/components/ui/ScrollArea";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
+import { Button } from "@/components/UI/Button";
+import { ScrollArea } from "@/components/UI/ScrollArea";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/Sheet";
 import { Home, Menu, MessageSquare, Settings, Users } from "lucide-react";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/Resizable";
+} from "@/components/UI/Resizable";
 
 export default function Navbardemo() {
   const [open, setOpen] = useState(false);

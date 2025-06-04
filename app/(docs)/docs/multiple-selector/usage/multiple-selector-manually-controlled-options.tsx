@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
-import { LoadingButton } from "@/components/ui/LoadingButton";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
+import { LoadingButton } from "@/components/UI/LoadingButton";
 
 const REACT_OPTIONS: Option[] = [
   { label: "nextjs", value: "nextjs" },

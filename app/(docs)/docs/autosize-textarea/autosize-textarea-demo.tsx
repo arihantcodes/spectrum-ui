@@ -1,5 +1,5 @@
 import React from "react";
-import { AutosizeTextarea } from "@/components/ui/AutosizeTextarea";
+import { AutosizeTextarea } from "@/components/UI/AutosizeTextarea";
 
 const AutosizeTextareaDemo = () => {
   return (

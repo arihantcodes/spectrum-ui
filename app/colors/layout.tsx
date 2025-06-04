@@ -8,7 +8,7 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/PageHeading";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 
 export const metadata: Metadata = {
   title: "Tailwind Colors",

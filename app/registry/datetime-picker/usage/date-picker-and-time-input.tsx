@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { DateTimePicker, TimePicker } from "@/components/ui/DatetimePicker";
+import { DateTimePicker, TimePicker } from "@/components/UI/DatetimePicker";
 
 const DatePickerAndTimeInput = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);

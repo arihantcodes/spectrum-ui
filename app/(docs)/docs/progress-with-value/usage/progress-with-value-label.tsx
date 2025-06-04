@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ProgressWithValue } from "@/components/ui/ProgressValue";
+import { ProgressWithValue } from "@/components/UI/ProgressValue";
 
 const PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];
 

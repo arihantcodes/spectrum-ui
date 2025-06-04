@@ -5,12 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { siteConfig } from "@/config/site";
-import { Button, buttonVariants } from "./ui/Button";
+import { Button, buttonVariants } from "./UI/Button";
 import { Icons } from "./Icon";
 import { MainNav } from "./MainNav";
 import { MobileNav } from "./MobileNav";
 import { ThemeToggle } from "./ThemeToggle";
-import { NumberTicker } from "./magicui/NumberTicker";
+import { NumberTicker } from "./MagicUI/NumberTicker";
 
 export function SiteHeader() {
   const pathname = usePathname();

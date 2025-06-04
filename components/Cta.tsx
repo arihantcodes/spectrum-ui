@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "./ui/Button";
-import { RainbowButton } from "./magicui/RainbowButton";
+import { Button } from "./UI/Button";
+import { RainbowButton } from "./MagicUI/RainbowButton";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 

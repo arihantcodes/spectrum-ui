@@ -4,7 +4,7 @@ import {
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import {
@@ -12,8 +12,8 @@ import {
   ReferenceBorder,
 } from "@/app/(docs)/docs/components/reference";
 import Usage from "@/app/(docs)/docs/components/usage";
-import { P } from "@/components/ui/HeadingAnchor";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { P } from "@/components/UI/HeadingAnchor";
+import { InlineCode } from "@/components/UI/InlineCode";
 import { PropLink } from "@/app/(docs)/docs/components/props-table/prop-link";
 import MultipleSelectorDemo from "@/app/(docs)/docs/multiple-selector/multiple-selector-demo";
 import MultipleSelectorControlled from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-controlled";

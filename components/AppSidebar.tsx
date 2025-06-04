@@ -37,7 +37,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/Sidebar";
+} from "@/components/UI/Sidebar";
 import { Icons } from "./Icon";
 
 const data = {

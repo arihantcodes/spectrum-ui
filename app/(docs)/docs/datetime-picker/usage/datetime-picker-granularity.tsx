@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { DateTimePicker } from "@/components/ui/DatetimePicker";
+import { DateTimePicker } from "@/components/UI/DatetimePicker";
 
 const DatetimePickerGranularity = () => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);

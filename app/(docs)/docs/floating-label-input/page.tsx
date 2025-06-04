@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -14,7 +14,7 @@ import {
 } from "@/app/(docs)/docs/components/reference";
 import Usage from "@/app/(docs)/docs/components/usage";
 import FloatingLabelInputCustomize from "@/app/(docs)/docs/floating-label-input/usage/floating-label-customize";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { InlineCode } from "@/components/UI/InlineCode";
 import FloatingLabelInputForm from "@/app/(docs)/docs/floating-label-input/usage/floating-label-input-form";
 
 export const metadata: Metadata = baseMetadata({

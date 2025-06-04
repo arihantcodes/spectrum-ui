@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { P } from "@/components/ui/HeadingAnchor";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { P } from "@/components/UI/HeadingAnchor";
+import { InlineCode } from "@/components/UI/InlineCode";
 
 const YearDropdownDesc = () => {
   const [thisYear, setThisYear] = useState(new Date().getFullYear());

@@ -1,21 +1,24 @@
-'use client';
-import React from 'react';
-import MultipleSelector, { type MultipleSelectorRef,Option } from '@/app/registry/spectrumui/multiple-selector-dependencies';
-import { LoadingButton } from '@/app/registry/spectrumui/loading-button-dependencies';
-import { toast } from '@/app/registry/spectrumui/use-toast';
+"use client";
+import React from "react";
+import MultipleSelector, {
+  type MultipleSelectorRef,
+  Option,
+} from "@/app/Registry/spectrumui/multiple-selector-dependencies";
+import { LoadingButton } from "@/app/Registry/spectrumui/loading-button-dependencies";
+import { toast } from "@/app/Registry/spectrumui/use-toast";
 
 const OPTIONS: Option[] = [
-  { label: 'nextjs', value: 'nextjs' },
-  { label: 'React', value: 'react' },
-  { label: 'Remix', value: 'remix' },
-  { label: 'Vite', value: 'vite' },
-  { label: 'Nuxt', value: 'nuxt' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-  { label: 'Angular', value: 'angular' },
-  { label: 'Ember', value: 'ember', disable: true },
-  { label: 'Gatsby', value: 'gatsby', disable: true },
-  { label: 'Astro', value: 'astro' },
+  { label: "nextjs", value: "nextjs" },
+  { label: "React", value: "react" },
+  { label: "Remix", value: "remix" },
+  { label: "Vite", value: "vite" },
+  { label: "Nuxt", value: "nuxt" },
+  { label: "Vue", value: "vue" },
+  { label: "Svelte", value: "svelte" },
+  { label: "Angular", value: "angular" },
+  { label: "Ember", value: "ember", disable: true },
+  { label: "Gatsby", value: "gatsby", disable: true },
+  { label: "Astro", value: "astro" },
 ];
 
 const MultipleSelectorRef = () => {
@@ -47,7 +50,7 @@ const MultipleSelectorRef = () => {
         <LoadingButton
           onClick={() => {
             toast({
-              title: 'Your ref data',
+              title: "Your ref data",
               description: (
                 <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                   <code className="text-white">

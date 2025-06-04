@@ -1,24 +1,24 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Button } from "@/components/ui/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Button } from "@/components/UI/Button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+} from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { Separator } from "@/components/ui/Separator";
+} from "@/components/UI/Select";
+import { Separator } from "@/components/UI/Separator";
 
 export function CardsShare() {
   return (

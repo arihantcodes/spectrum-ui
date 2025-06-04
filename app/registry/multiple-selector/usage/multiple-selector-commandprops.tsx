@@ -1,22 +1,24 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
-import MultipleSelector, { Option } from '@/app/registry/spectrumui/multiple-selector-dependencies';
+import MultipleSelector, {
+  Option,
+} from "@/app/Registry/spectrumui/multiple-selector-dependencies";
 
-import { InlineCode } from '@/app/registry/spectrumui/inline-code';
+import { InlineCode } from "@/app/Registry/spectrumui/inline-code";
 
 const OPTIONS: Option[] = [
-  { label: 'nextjs', value: 'nextjs' },
-  { label: 'React', value: 'react' },
-  { label: 'Remix', value: 'remix' },
-  { label: 'Vite', value: 'vite' },
-  { label: 'Nuxt', value: 'nuxt' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-  { label: 'Angular', value: 'angular' },
-  { label: 'Ember', value: 'ember', disable: true },
-  { label: 'Gatsby', value: 'gatsby', disable: true },
-  { label: 'Astro', value: 'astro' },
+  { label: "nextjs", value: "nextjs" },
+  { label: "React", value: "react" },
+  { label: "Remix", value: "remix" },
+  { label: "Vite", value: "vite" },
+  { label: "Nuxt", value: "nuxt" },
+  { label: "Vue", value: "vue" },
+  { label: "Svelte", value: "svelte" },
+  { label: "Angular", value: "angular" },
+  { label: "Ember", value: "ember", disable: true },
+  { label: "Gatsby", value: "gatsby", disable: true },
+  { label: "Astro", value: "astro" },
 ];
 
 const MultipleSelectorCommandProps = () => {
@@ -27,8 +29,9 @@ const MultipleSelectorCommandProps = () => {
         Is focus? <InlineCode>{String(isFocus)}</InlineCode>
       </p>
       <p>
-        You can open console and search <InlineCode>command description</InlineCode> and{' '}
-        <InlineCode>input description</InlineCode> to check the customization of{' '}
+        You can open console and search{" "}
+        <InlineCode>command description</InlineCode> and{" "}
+        <InlineCode>input description</InlineCode> to check the customization of{" "}
         <InlineCode>aria-description</InlineCode>.
       </p>
       <MultipleSelector
@@ -39,7 +42,7 @@ const MultipleSelectorCommandProps = () => {
             no results found.
           </p>
         }
-        commandProps={{ 'aria-description': 'command description' }}
+        commandProps={{ "aria-description": "command description" }}
         inputProps={{
           onBlur: () => {
             setIsFocus(false);
@@ -47,7 +50,7 @@ const MultipleSelectorCommandProps = () => {
           onFocus: () => {
             setIsFocus(true);
           },
-          'aria-description': 'input description',
+          "aria-description": "input description",
         }}
       />
     </div>

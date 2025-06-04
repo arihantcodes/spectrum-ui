@@ -35,18 +35,18 @@ import {
   KeyRound,
   ChevronsRight,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/Sheet";
+} from "@/components/UI/Card";
+import { Badge } from "@/components/UI/Badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/UI/Sheet";
 import { useToast } from "@/hooks/use-toast";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";

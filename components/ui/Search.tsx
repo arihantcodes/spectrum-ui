@@ -16,7 +16,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/Command";
+} from "@/components/UI/Command";
 
 export function Search() {
   return (

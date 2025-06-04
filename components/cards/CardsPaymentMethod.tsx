@@ -1,7 +1,7 @@
 "use client";
 
 import { Icons } from "@/components/Icon";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   Card,
   CardContent,
@@ -9,17 +9,17 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
+} from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { RadioGroup, RadioGroupItem } from "@/components/UI/RadioGroup";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
+} from "@/components/UI/Select";
 
 export function CardsPaymentMethod() {
   return (

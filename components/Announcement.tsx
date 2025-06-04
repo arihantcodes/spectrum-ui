@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRightIcon } from "lucide-react";
 import { Blocks, PieChart } from "lucide-react";
 
-import { Separator } from "@/components/ui/Separator";
+import { Separator } from "@/components/UI/Separator";
 
 export function Announcement() {
   return (

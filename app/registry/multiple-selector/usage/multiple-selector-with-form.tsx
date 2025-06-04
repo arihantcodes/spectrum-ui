@@ -11,12 +11,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
-import { toast } from "@/app/registry/spectrumui/use-toast";
-import { LoadingButton } from "@/app/registry/spectrumui/loading-button-dependencies";
+} from "@/components/UI/Form";
+import { toast } from "@/app/Registry/spectrumui/use-toast";
+import { LoadingButton } from "@/app/Registry/spectrumui/loading-button-dependencies";
 import MultipleSelector, {
   Option,
-} from "@/app/registry/spectrumui/multiple-selector-dependencies";
+} from "@/app/Registry/spectrumui/multiple-selector-dependencies";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "Nextjs" },

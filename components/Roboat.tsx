@@ -1,5 +1,5 @@
 import React from "react";
-import { SplineScene } from "./ui/Splite";
+import { SplineScene } from "./UI/Splite";
 
 const Roboat = () => {
   return (

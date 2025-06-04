@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/UI/Button";
+import { Card } from "@/components/UI/Card";
 import Copy from "./HandleCopy";
 
 interface SnippetProps {

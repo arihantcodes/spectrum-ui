@@ -4,7 +4,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from "@/components/UI/Card";
 import Image from "next/image";
 
 export function SectionCards() {

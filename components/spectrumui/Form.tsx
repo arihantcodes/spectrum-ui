@@ -1,21 +1,21 @@
 "use client";
 import React from "react";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { Textarea } from "@/components/ui/Textarea";
-import { Switch } from "@/components/ui/Switch";
-import { Checkbox } from "@/components/ui/CheckBox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
-import { Slider } from "@/components/ui/Slider";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { Textarea } from "@/components/UI/Textarea";
+import { Switch } from "@/components/UI/Switch";
+import { Checkbox } from "@/components/UI/CheckBox";
+import { RadioGroup, RadioGroupItem } from "@/components/UI/RadioGroup";
+import { Slider } from "@/components/UI/Slider";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { Button } from "@/components/ui/Button";
-import { Card } from "../ui/Card";
+} from "@/components/UI/Select";
+import { Button } from "@/components/UI/Button";
+import { Card } from "../UI/Card";
 import { Check, Eye, EyeOff, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import EmojiPicker from "emoji-picker-react";

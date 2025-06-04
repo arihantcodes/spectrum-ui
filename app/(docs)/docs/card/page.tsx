@@ -1,9 +1,9 @@
 import React from "react";
 
 import { PageSubTitle, PageTemplate } from "../components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 
-import CardCollection from "@/components/spectrumui/Cards";
+import CardCollection from "@/components/SpectrumUI/Cards";
 const page = () => {
   return (
     <div>

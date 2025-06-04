@@ -1,6 +1,6 @@
 import React from "react";
 import Link, { LinkProps } from "next/link";
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/UI/Badge";
 
 import { cn } from "@/lib/utils";
 

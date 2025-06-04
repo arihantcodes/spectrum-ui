@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/Collapsible";
-import { ScrollArea } from "@/components/ui/ScrollArea";
+} from "@/components/UI/Collapsible";
+import { ScrollArea } from "@/components/UI/ScrollArea";
 import {
   ChevronDown,
   ChevronRight,

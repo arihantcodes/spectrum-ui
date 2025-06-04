@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { DualRangeSlider } from "@/components/ui/DualRangeSlider";
+import { DualRangeSlider } from "@/components/UI/DualRangeSlider";
 import { useState } from "react";
 
 const DualRangeSliderLabelPosition = () => {

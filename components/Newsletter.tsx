@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Badge } from "./ui/Badge";
+import { Card, CardContent } from "@/components/UI/Card";
+import { Badge } from "./UI/Badge";
 import { Check, FileText, Mail, MessageSquare, Users } from "lucide-react";
 const Newsletter = () => {
   return (

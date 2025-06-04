@@ -1,17 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { Switch } from "@/components/ui/Switch";
-import { Textarea } from "@/components/ui/Textarea";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { Switch } from "@/components/UI/Switch";
+import { Textarea } from "@/components/UI/Textarea";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/Tooltip";
+} from "@/components/UI/Tooltip";
 import {
   Facebook,
   Instagram,

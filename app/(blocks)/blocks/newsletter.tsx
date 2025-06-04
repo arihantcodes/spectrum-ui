@@ -3,7 +3,7 @@ import { ChartAreaInteractive } from "@/components/ChartAreaInteractive";
 import { SubscriberDataTable } from "@/components/DataTable";
 import { SectionCards } from "@/components/SectionCards";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SidebarInset, SidebarProvider } from "@/components/ui/Sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/UI/Sidebar";
 import { subscriberData } from "./data";
 
 import Newsletter from "@/components/Newsletter";

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Check, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   Card,
   CardContent,
@@ -11,19 +11,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup";
-import { Textarea } from "@/components/ui/Textarea";
+} from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { RadioGroup, RadioGroupItem } from "@/components/UI/RadioGroup";
+import { Textarea } from "@/components/UI/Textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { Checkbox } from "@/components/ui/CheckBox";
+} from "@/components/UI/Select";
+import { Checkbox } from "@/components/UI/CheckBox";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 

@@ -1,10 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   DateTimePicker,
   DateTimePickerRef,
-} from "@/components/ui/DatetimePicker";
+} from "@/components/UI/DatetimePicker";
 
 const DatetimePickerRef = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);

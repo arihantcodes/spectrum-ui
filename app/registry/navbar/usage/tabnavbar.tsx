@@ -1,8 +1,8 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/NavigationMenu";
+} from "@/components/UI/NavigationMenu";
 import { Search } from "lucide-react";
 import Link from "next/link";
 

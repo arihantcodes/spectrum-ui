@@ -1,5 +1,5 @@
 import React from "react";
-import { H2 } from "@/components/ui/HeadingAnchor";
+import { H2 } from "@/components/UI/HeadingAnchor";
 
 const HeadingWithAnchorHover = () => {
   return (

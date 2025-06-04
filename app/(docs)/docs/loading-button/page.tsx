@@ -5,7 +5,7 @@ import {
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import LoadingButtonDemo from "@/app/(docs)/docs/loading-button/loading-button-demo";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import {

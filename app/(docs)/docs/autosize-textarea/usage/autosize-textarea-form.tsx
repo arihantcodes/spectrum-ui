@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
-import { toast } from "@/components/ui/UseToast";
-import { AutosizeTextarea } from "@/components/ui/AutosizeTextarea";
-import { LoadingButton } from "@/components/ui/LoadingButton";
+} from "@/components/UI/Form";
+import { toast } from "@/components/UI/UseToast";
+import { AutosizeTextarea } from "@/components/UI/AutosizeTextarea";
+import { LoadingButton } from "@/components/UI/LoadingButton";
 import { useState } from "react";
 
 const FormSchema = z.object({

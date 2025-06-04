@@ -1,16 +1,16 @@
 "use client";
 
 import { SearchIcon } from "lucide-react";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/UI/Input";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTrigger,
   DialogClose,
-} from "@/components/ui/Dialog";
+} from "@/components/UI/Dialog";
 import { ROUTES } from "@/lib/routes-config";
-import { ScrollArea } from "@/components/ui/ScrollArea";
+import { ScrollArea } from "@/components/UI/ScrollArea";
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "./Anchor";
 

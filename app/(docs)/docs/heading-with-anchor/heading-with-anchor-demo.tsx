@@ -1,5 +1,5 @@
 import React from "react";
-import { H1 } from "@/components/ui/HeadingAnchor";
+import { H1 } from "@/components/UI/HeadingAnchor";
 
 const HeadingWithAnchorDemo = () => {
   return (

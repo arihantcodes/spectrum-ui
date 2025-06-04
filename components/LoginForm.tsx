@@ -3,10 +3,10 @@
 import type React from "react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+import { Button } from "@/components/UI/Button";
+import { Card, CardContent } from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 
 export function LoginForm({
   className,

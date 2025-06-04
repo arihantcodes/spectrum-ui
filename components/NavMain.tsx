@@ -2,14 +2,14 @@
 
 import { ChevronsUpDown, Inbox, MailIcon, PlusCircleIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/Sidebar";
+} from "@/components/UI/Sidebar";
 
 export function NavMain({
   items,

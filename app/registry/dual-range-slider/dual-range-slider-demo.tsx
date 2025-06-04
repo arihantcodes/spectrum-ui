@@ -1,7 +1,7 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 // import { DualRangeSlider } from '@/components/ui/dual-range-slider';
-import { DualRangeSlider } from '@/app/registry/spectrumui/dual-range-slider-dependecies'
+import { DualRangeSlider } from "@/app/Registry/spectrumui/dual-range-slider-dependecies";
 
 const DualRangeSliderDemo = () => {
   const [values, setValues] = useState([0, 100]);

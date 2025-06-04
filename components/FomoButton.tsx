@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { FomoButton } from "./ui/MovingBorder";
+import { FomoButton } from "./UI/MovingBorder";
 import { ArrowRight } from "lucide-react";
 
 export function Fomo() {

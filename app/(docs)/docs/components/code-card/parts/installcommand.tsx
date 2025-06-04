@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { type Highlighter, createHighlighter } from "shiki";
 import { useTheme } from "next-themes";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import { Clipboard, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 

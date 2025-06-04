@@ -2,8 +2,8 @@
 import React from "react";
 
 import { PageSubTitle, PageTemplate } from "../components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
-import Inputcollection from "@/components/spectrumui/Form";
+import { Steppers } from "@/components/UI/Steppers";
+import Inputcollection from "@/components/SpectrumUI/Form";
 const page = () => {
   return (
     <div>

@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 import { codeToHtml } from "shiki";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { ScrollArea } from "@/components/ui/ScrollArea";
+import { Button } from "@/components/UI/Button";
+import { Card } from "@/components/UI/Card";
+import { ScrollArea } from "@/components/UI/ScrollArea";
 import { Monitor, Tablet, Smartphone, Printer, Move } from "lucide-react";
 
 interface FileNode {

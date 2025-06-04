@@ -4,14 +4,14 @@ import * as React from "react";
 import { Check, Plus, Send } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Button } from "@/components/ui/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Button } from "@/components/UI/Button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/Card";
+} from "@/components/UI/Card";
 import {
   Command,
   CommandEmpty,
@@ -19,7 +19,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command";
+} from "@/components/UI/Command";
 import {
   Dialog,
   DialogContent,
@@ -27,14 +27,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/Dialog";
-import { Input } from "@/components/ui/Input";
+} from "@/components/UI/Dialog";
+import { Input } from "@/components/UI/Input";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/Tooltip";
+} from "@/components/UI/Tooltip";
 
 const users = [
   {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, CheckCheck, Clipboard } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "./UI/Button";
 import { useState } from "react";
 
 export default function Copy({ content }: { content: string }) {

@@ -5,13 +5,13 @@ import { X } from "lucide-react";
 import * as React from "react";
 import { forwardRef, useEffect } from "react";
 
-import { Badge } from "@/components/ui/Badge";
+import { Badge } from "@/components/UI/Badge";
 import {
   Command,
   CommandGroup,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command";
+} from "@/components/UI/Command";
 import { cn } from "@/lib/utils";
 
 export interface Option {

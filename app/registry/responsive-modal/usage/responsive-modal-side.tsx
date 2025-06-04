@@ -7,8 +7,8 @@ import {
   ResponsiveModalHeader,
   ResponsiveModalTitle,
   ResponsiveModalTrigger,
-} from "@/app/registry/spectrumui/responsive-modal-dependencies";
-import { Button } from "@/components/ui/Button";
+} from "@/app/Registry/spectrumui/responsive-modal-dependencies";
+import { Button } from "@/components/UI/Button";
 
 type Side = "top" | "bottom" | "left" | "right";
 

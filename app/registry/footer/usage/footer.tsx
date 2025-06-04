@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 
 export default function Footer() {
   return (

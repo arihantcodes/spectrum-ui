@@ -10,21 +10,21 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
+} from "@/components/UI/Card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/Chart";
+} from "@/components/UI/Chart";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/ToggleGroup";
+} from "@/components/UI/Select";
+import { ToggleGroup, ToggleGroupItem } from "@/components/UI/ToggleGroup";
 
 import { FaCircle } from "react-icons/fa";
 const chartData = [

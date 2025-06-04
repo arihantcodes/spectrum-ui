@@ -1,5 +1,5 @@
 import React from "react";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "nextjs", group: "React" },

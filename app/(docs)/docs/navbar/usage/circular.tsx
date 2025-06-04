@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Button } from "@/components/ui/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Button } from "@/components/UI/Button";
 import { Bell, Home, Search, Settings } from "lucide-react";
 
 export default function CircularNavbar() {

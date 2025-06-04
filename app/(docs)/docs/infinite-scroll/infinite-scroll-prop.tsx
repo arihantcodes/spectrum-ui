@@ -1,6 +1,6 @@
 import { Props } from "@/app/(docs)/docs/components/props-table/props-table";
 import React from "react";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { InlineCode } from "@/components/UI/InlineCode";
 import { PropLink } from "@/app/(docs)/docs/components/props-table/prop-link";
 
 export const infiniteScrollProp: Props[] = [

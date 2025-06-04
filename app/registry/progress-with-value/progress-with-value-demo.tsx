@@ -1,7 +1,7 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 // import { ProgressWithValue } from '@/components/ui/progress-with-value';
-import { ProgressWithValue } from '@/app/registry/spectrumui/progress-with-value-dependencies';
+import { ProgressWithValue } from "@/app/Registry/spectrumui/progress-with-value-dependencies";
 
 const PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];
 

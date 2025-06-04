@@ -1,7 +1,7 @@
 import { Icons } from "@/components/Icon";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export default function StackedCircularFooter() {

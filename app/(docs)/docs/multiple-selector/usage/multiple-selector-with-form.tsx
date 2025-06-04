@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
-import { toast } from "@/components/ui/UseToast";
-import { LoadingButton } from "@/components/ui/LoadingButton";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
+} from "@/components/UI/Form";
+import { toast } from "@/components/UI/UseToast";
+import { LoadingButton } from "@/components/UI/LoadingButton";
+import MultipleSelector, { Option } from "@/components/UI/MultipleSelector";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "Nextjs" },

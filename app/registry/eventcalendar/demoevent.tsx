@@ -2,15 +2,15 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/Dialog";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
+} from "@/components/UI/Dialog";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {

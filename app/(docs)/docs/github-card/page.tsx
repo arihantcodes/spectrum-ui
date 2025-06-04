@@ -3,10 +3,10 @@
 import type React from "react";
 import { useState } from "react";
 import Head from "next/head";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Card } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Card } from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Button } from "@/components/UI/Button";
 import {
   Twitter,
   Linkedin,

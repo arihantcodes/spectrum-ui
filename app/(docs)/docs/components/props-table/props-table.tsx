@@ -7,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/Table";
+} from "@/components/UI/Table";
 import { PageSubTitle } from "@/app/(docs)/docs/components/page-template";
 import PropInfo from "@/app/(docs)/docs/components/props-table/prop-info";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { InlineCode } from "@/components/UI/InlineCode";
 import { X } from "lucide-react";
 export interface Props {
   prop: string;

@@ -4,8 +4,8 @@ import {
   PageHeaderHeading,
   PageHeaderDescription,
 } from "@/components/PageHeading";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/UI/Card";
+import { Button } from "@/components/UI/Button";
 
 const TermsOfServicePage = () => {
   return (

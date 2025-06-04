@@ -4,10 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import * as React from "react";
-import { Form, FormField, FormItem, FormMessage } from "@/components/ui/Form";
-import { toast } from "@/components/ui/UseToast";
-import { LoadingButton } from "@/components/ui/LoadingButton";
-import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
+import { Form, FormField, FormItem, FormMessage } from "@/components/UI/Form";
+import { toast } from "@/components/UI/UseToast";
+import { LoadingButton } from "@/components/UI/LoadingButton";
+import { FloatingLabelInput } from "@/components/UI/FloatingLabelInput";
 
 const FormSchema = z.object({
   name: z.string().min(2, {

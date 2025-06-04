@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, Github } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/Accordion";
+} from "@/components/UI/Accordion";
 
 export default function IntroductionPage() {
   return (

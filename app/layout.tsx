@@ -10,10 +10,10 @@ import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
-import { Toaster } from "@/components/ui/Sonner";
+import { Toaster } from "@/components/UI/Sonner";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { RainbowButton } from "@/components/magicui/RainbowButton";
+import { RainbowButton } from "@/components/MagicUI/RainbowButton";
 import Cta from "@/components/Cta";
 
 inject();

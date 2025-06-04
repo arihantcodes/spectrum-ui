@@ -4,15 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Spline from "@splinetool/react-spline/next";
 
-import { Cover } from "@/components/ui/Cover";
+import { Cover } from "@/components/UI/Cover";
 
-import { Button } from "@/components/ui/Button";
-import CardCollection from "@/components/spectrumui/Cards";
-import { CardsDemo } from "@/components/cards/CardsDemo";
+import { Button } from "@/components/UI/Button";
+import CardCollection from "@/components/SpectrumUI/Cards";
+import { CardsDemo } from "@/components/Cards/CardsDemo";
 import { Fomo } from "@/components/FomoButton";
 import { siteConfig } from "@/config/site";
 import { Icons } from "@/components/Icon";
-import { NumberTicker } from "@/components/magicui/NumberTicker";
+import { NumberTicker } from "@/components/MagicUI/NumberTicker";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

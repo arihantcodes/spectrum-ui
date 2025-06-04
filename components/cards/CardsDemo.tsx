@@ -1,15 +1,15 @@
-import { CardsActivityGoal } from "@/components/cards/CardsActivityGoal";
-import { CardsCalendar } from "@/components/cards/CardsCalendar";
-import { CardsChat } from "@/components/cards/CardsChat";
-import { CardsCookieSettings } from "@/components/cards/CardsCookieSettings";
-import { CardsCreateAccount } from "@/components/cards/CardsCreateAccount";
-import { CardsDataTable } from "@/components/cards/CardsDataTable";
-import { CardsMetric } from "@/components/cards/CardsMetric";
-import { CardsPaymentMethod } from "@/components/cards/CardsPaymentMethod";
-import { CardsReportIssue } from "@/components/cards/CardsReportIssue";
-import { CardsShare } from "@/components/cards/CardsShare";
-import { CardsStats } from "@/components/cards/CardsStats";
-import { CardsTeamMembers } from "@/components/cards/TeamMembers";
+import { CardsActivityGoal } from "@/components/Cards/CardsActivityGoal";
+import { CardsCalendar } from "@/components/Cards/CardsCalendar";
+import { CardsChat } from "@/components/Cards/CardsChat";
+import { CardsCookieSettings } from "@/components/Cards/CardsCookieSettings";
+import { CardsCreateAccount } from "@/components/Cards/CardsCreateAccount";
+import { CardsDataTable } from "@/components/Cards/CardsDataTable";
+import { CardsMetric } from "@/components/Cards/CardsMetric";
+import { CardsPaymentMethod } from "@/components/Cards/CardsPaymentMethod";
+import { CardsReportIssue } from "@/components/Cards/CardsReportIssue";
+import { CardsShare } from "@/components/Cards/CardsShare";
+import { CardsStats } from "@/components/Cards/CardsStats";
+import { CardsTeamMembers } from "@/components/Cards/TeamMembers";
 
 export function CardsDemo() {
   return (

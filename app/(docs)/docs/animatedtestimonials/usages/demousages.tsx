@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";

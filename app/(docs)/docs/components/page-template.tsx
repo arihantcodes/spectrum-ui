@@ -1,5 +1,5 @@
 import React from "react";
-import { H1, H2, P } from "@/components/ui/HeadingAnchor";
+import { H1, H2, P } from "@/components/UI/HeadingAnchor";
 import { cn } from "@/lib/utils";
 
 interface PageTemplateProps {

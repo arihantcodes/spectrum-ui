@@ -7,12 +7,12 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTrigger,
-} from "@/components/ui/AlertDialog";
-import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { Textarea } from "@/components/ui/Textarea";
+} from "@/components/UI/AlertDialog";
+import { Button } from "@/components/UI/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { Textarea } from "@/components/UI/Textarea";
 
 const ShineButton = () => {
   return (

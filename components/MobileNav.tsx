@@ -7,18 +7,18 @@ import * as React from "react";
 
 import { Icons } from "@/components/Icon";
 
-import { ScrollArea } from "@/components/ui/ScrollArea";
+import { ScrollArea } from "@/components/UI/ScrollArea";
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "@/components/ui/Sheet";
+} from "@/components/UI/Sheet";
 
 import { siteConfig } from "@/config/site";
 
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/Button";
+import { Button } from "./UI/Button";
 
 interface NavItem {
   title?: string;

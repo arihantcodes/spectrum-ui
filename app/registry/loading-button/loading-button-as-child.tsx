@@ -1,6 +1,6 @@
-import React from 'react';
-import { LoadingButton } from '@/app/registry/spectrumui/loading-button-dependencies';
-import Link from 'next/link';
+import React from "react";
+import { LoadingButton } from "@/app/Registry/spectrumui/loading-button-dependencies";
+import Link from "next/link";
 
 const LoadingButtonAsChild = () => {
   return (

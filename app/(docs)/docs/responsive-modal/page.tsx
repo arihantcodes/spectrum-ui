@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";

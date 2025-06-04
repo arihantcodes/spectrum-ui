@@ -1,4 +1,4 @@
-import { FomoButton } from "@/components/ui/MovingBorder";
+import { FomoButton } from "@/components/UI/MovingBorder";
 import { ComponentPropsWithoutRef, CSSProperties, FC } from "react";
 
 import { cn } from "@/lib/utils";

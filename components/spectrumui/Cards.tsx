@@ -9,23 +9,23 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Label } from "@/components/ui/Label";
-import { Switch } from "@/components/ui/Switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+} from "@/components/UI/Card";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
+import { Label } from "@/components/UI/Label";
+import { Switch } from "@/components/UI/Switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/Select";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
-import { Badge } from "@/components/ui/Badge";
-import { Progress } from "@/components/ui/Progress";
-import { Slider } from "@/components/ui/Slider";
+} from "@/components/UI/Select";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/UI/Avatar";
+import { Badge } from "@/components/UI/Badge";
+import { Progress } from "@/components/UI/Progress";
+import { Slider } from "@/components/UI/Slider";
 import {
   Bell,
   Calendar,
@@ -57,7 +57,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/Chart";
+} from "@/components/UI/Chart";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis } from "recharts";
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/Card";
-import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/UI/Card";
+import { Input } from "@/components/UI/Input";
+import { Button } from "@/components/UI/Button";
 import {
   CheckCircle,
   XCircle,

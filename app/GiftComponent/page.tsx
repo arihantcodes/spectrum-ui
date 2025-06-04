@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import { Textarea } from "@/components/ui/Textarea";
-import { Label } from "@/components/ui/Label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
+import { Textarea } from "@/components/UI/Textarea";
+import { Label } from "@/components/UI/Label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/Card";
 import { Upload, X } from "lucide-react";
-import { toast } from "@/components/ui/UseToast";
+import { toast } from "@/components/UI/UseToast";
 
 const ComponentSubmissionForm = () => {
   const [formData, setFormData] = useState({

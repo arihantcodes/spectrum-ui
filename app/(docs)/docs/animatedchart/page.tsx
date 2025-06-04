@@ -2,7 +2,7 @@ import React from "react";
 import { PageSubTitle, PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
 
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import { Chart } from "./animateddemo";
 
 const page = () => {

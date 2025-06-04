@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/UI/Button";
+import { Input } from "@/components/UI/Input";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/NavigationMenu";
+} from "@/components/UI/NavigationMenu";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import Link from "next/link";

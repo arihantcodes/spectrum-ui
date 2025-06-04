@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import {
   AutosizeTextarea,
   AutosizeTextAreaRef,
-} from "@/components/ui/AutosizeTextarea";
+} from "@/components/UI/AutosizeTextarea";
 
 const AutosizeTextareaWithRef = () => {
   const ref = React.useRef<AutosizeTextAreaRef>(null);

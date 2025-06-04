@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { Spinner } from "@/components/ui/Spinner";
-import { Button } from "@/components/ui/Button";
+import { Spinner } from "@/components/UI/Spinner";
+import { Button } from "@/components/UI/Button";
 
 const SpinnerToggle = () => {
   const [show, setShow] = useState(false);

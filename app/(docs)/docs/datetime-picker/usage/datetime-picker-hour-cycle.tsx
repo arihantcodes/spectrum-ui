@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { DateTimePicker } from "@/components/ui/DatetimePicker";
-import { Label } from "@/components/ui/Label";
+import { DateTimePicker } from "@/components/UI/DatetimePicker";
+import { Label } from "@/components/UI/Label";
 
 const DatetimePickerHourCycle = () => {
   const [date12, setDate12] = useState<Date | undefined>(undefined);

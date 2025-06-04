@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage } from "@/components/ui/Avatar";
+import { Avatar, AvatarImage } from "@/components/UI/Avatar";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
@@ -8,8 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "./ui/DropdownMenu";
-import { Button } from "./ui/Button";
+} from "./UI/DropdownMenu";
+import { Button } from "./UI/Button";
 import Link from "next/link";
 
 const AuthButton: React.FC = () => {

@@ -7,8 +7,8 @@ import {
   ResponsiveModalHeader,
   ResponsiveModalTitle,
   ResponsiveModalTrigger,
-} from "@/components/ui/ResponsiveModal";
-import { Button } from "@/components/ui/Button";
+} from "@/components/UI/ResponsiveModal";
+import { Button } from "@/components/UI/Button";
 
 type Side = "top" | "bottom" | "left" | "right";
 

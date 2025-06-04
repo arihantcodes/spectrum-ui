@@ -1,7 +1,7 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import ResponsiveInputShowcase from "./spectrumui/Form";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/UI/Tabs";
+import ResponsiveInputShowcase from "./SpectrumUI/Form";
 
 export function Tabspreview() {
   const codeString = `

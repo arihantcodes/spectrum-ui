@@ -3,9 +3,9 @@ import React from "react";
 import MultipleSelector, {
   type MultipleSelectorRef,
   Option,
-} from "@/components/ui/MultipleSelector";
-import { LoadingButton } from "@/components/ui/LoadingButton";
-import { toast } from "@/components/ui/UseToast";
+} from "@/components/UI/MultipleSelector";
+import { LoadingButton } from "@/components/UI/LoadingButton";
+import { toast } from "@/components/UI/UseToast";
 
 const OPTIONS: Option[] = [
   { label: "nextjs", value: "nextjs" },

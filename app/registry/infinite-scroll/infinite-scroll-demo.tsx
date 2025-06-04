@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import InfiniteScroll from "@/components/ui/InfiniteScroll";
+import InfiniteScroll from "@/components/UI/InfiniteScroll";
 import { Loader2 } from "lucide-react";
 
 interface DummyProductResponse {

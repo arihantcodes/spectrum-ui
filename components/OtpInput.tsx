@@ -1,6 +1,6 @@
 import type React from "react";
 import { useState, useRef, type KeyboardEvent } from "react";
-import { Input } from "@/components/ui/Input";
+import { Input } from "@/components/UI/Input";
 
 interface OTPInputProps {
   length: number;

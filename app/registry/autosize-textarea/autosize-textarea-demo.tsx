@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // import { AutosizeTextarea } from '@/components/ui/autosize-textarea';
-import { AutosizeTextarea } from '@/app/registry/spectrumui/autosize-textarea';
+import { AutosizeTextarea } from "@/app/Registry/spectrumui/autosize-textarea";
 
 const AutosizeTextareaDemo = () => {
   return (

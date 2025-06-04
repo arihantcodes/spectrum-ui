@@ -2,7 +2,7 @@ import React from "react";
 import {
   FloatingInput,
   FloatingLabel,
-} from "@/components/ui/FloatingLabelInput";
+} from "@/components/UI/FloatingLabelInput";
 
 const FloatingLabelInputCustomize = () => {
   return (

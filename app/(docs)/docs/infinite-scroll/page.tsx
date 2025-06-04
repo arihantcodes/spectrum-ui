@@ -4,7 +4,7 @@ import {
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import InfiniteScrollDemo from "@/app/(docs)/docs/infinite-scroll/infinite-scroll-demo";

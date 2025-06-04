@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert } from "@/components/ui/Alert";
+import { Alert } from "@/components/UI/Alert";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { CircleDollarSign } from "lucide-react";

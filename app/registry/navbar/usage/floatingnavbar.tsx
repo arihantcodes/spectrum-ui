@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/UI/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu";
+} from "@/components/UI/DropdownMenu";
 import { Home, Menu, MessageSquare, Plus, Settings, Users } from "lucide-react";
 
 export default function Floatingnavbar() {

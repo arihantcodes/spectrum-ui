@@ -1,6 +1,6 @@
 import { Props } from "@/app/(docs)/docs/components/props-table/props-table";
 import React from "react";
-import { InlineCode } from "@/components/ui/InlineCode";
+import { InlineCode } from "@/components/UI/InlineCode";
 
 export const datetimePickerProp: Props[] = [
   {

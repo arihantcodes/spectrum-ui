@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/Steppers";
+import { Steppers } from "@/components/UI/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -13,8 +13,8 @@ import AutosizeTextareaWithMaxHeight from "@/app/(docs)/docs/autosize-textarea/u
 import AutosizeTextareaCustomize from "@/app/(docs)/docs/autosize-textarea/usage/autosize-textarea-customize";
 import AutosizeTextareaWithRef from "@/app/(docs)/docs/autosize-textarea/usage/autosize-textarea-with-ref";
 import AutosizeTextareaForm from "@/app/(docs)/docs/autosize-textarea/usage/autosize-textarea-form";
-import { InlineCode } from "@/components/ui/InlineCode";
-import { P } from "@/components/ui/HeadingAnchor";
+import { InlineCode } from "@/components/UI/InlineCode";
+import { P } from "@/components/UI/HeadingAnchor";
 
 export const metadata: Metadata = baseMetadata({
   title: "Spectrum UI-Autosize Textarea",
