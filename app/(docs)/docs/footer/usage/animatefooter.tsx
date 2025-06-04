@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import * as React from "react";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export default function AnimatedWaveFooter() {
   return (
@@ -51,19 +51,34 @@ export default function AnimatedWaveFooter() {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Home
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 About Us
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Services
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Products
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Contact
               </a>
             </nav>
@@ -119,5 +134,5 @@ export default function AnimatedWaveFooter() {
         }
       `}</style>
     </footer>
-  )
+  );
 }

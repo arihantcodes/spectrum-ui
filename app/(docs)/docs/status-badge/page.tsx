@@ -3,14 +3,12 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 
 import StatusDemo from "./statusdemo";
-
-
 
 export const metadata: Metadata = baseMetadata({
   title: "Spectrum UI- Status Badge",
@@ -22,9 +20,10 @@ const DualRangeSliderPage = () => {
   return (
     <PageTemplate title="Status Badge">
       <PreviewCodeCard
-       cli='https://ui.spectrumhq.in/r/status_badge.json'
-      path="app/(docs)/docs/status-badge/statusdemo.tsx">
-       <StatusDemo/>
+        cli="https://ui.spectrumhq.in/r/status_badge.json"
+        path="app/(docs)/docs/status-badge/statusdemo.tsx"
+      >
+        <StatusDemo />
       </PreviewCodeCard>
 
       <PageSubTitle>Installation</PageSubTitle>
@@ -34,9 +33,6 @@ const DualRangeSliderPage = () => {
         withEnd
         installScript="npm i lucide-react"
       />
-
-   
-      
     </PageTemplate>
   );
 };

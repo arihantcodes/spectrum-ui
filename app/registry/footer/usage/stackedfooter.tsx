@@ -1,8 +1,8 @@
-import { Icons } from "@/components/icon"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Icons } from "@/components/Icon";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export default function StackedCircularFooter() {
   return (
@@ -10,14 +10,24 @@ export default function StackedCircularFooter() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center">
           <div className="mb-8 rounded-full bg-primary/10 p-8">
-          <Icons.logo className="icon-class w-2" />
+            <Icons.logo className="icon-class w-2" />
           </div>
           <nav className="mb-8 flex flex-wrap justify-center gap-6">
-            <a href="#" className="hover:text-primary">Home</a>
-            <a href="#" className="hover:text-primary">About</a>
-            <a href="#" className="hover:text-primary">Services</a>
-            <a href="#" className="hover:text-primary">Products</a>
-            <a href="#" className="hover:text-primary">Contact</a>
+            <a href="#" className="hover:text-primary">
+              Home
+            </a>
+            <a href="#" className="hover:text-primary">
+              About
+            </a>
+            <a href="#" className="hover:text-primary">
+              Services
+            </a>
+            <a href="#" className="hover:text-primary">
+              Products
+            </a>
+            <a href="#" className="hover:text-primary">
+              Contact
+            </a>
           </nav>
           <div className="mb-8 flex space-x-4">
             <Button variant="outline" size="icon" className="rounded-full">
@@ -40,10 +50,19 @@ export default function StackedCircularFooter() {
           <div className="mb-8 w-full max-w-md">
             <form className="flex space-x-2">
               <div className="flex-grow">
-                <Label htmlFor="email" className="sr-only">Email</Label>
-                <Input id="email" placeholder="Enter your email" type="email" className="rounded-full" />
+                <Label htmlFor="email" className="sr-only">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  placeholder="Enter your email"
+                  type="email"
+                  className="rounded-full"
+                />
               </div>
-              <Button type="submit" className="rounded-full">Subscribe</Button>
+              <Button type="submit" className="rounded-full">
+                Subscribe
+              </Button>
             </form>
           </div>
           <div className="text-center">
@@ -54,5 +73,5 @@ export default function StackedCircularFooter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -2,8 +2,8 @@
 import React from "react";
 
 import { PageSubTitle, PageTemplate } from "../components/page-template";
-import { Steppers } from "@/components/ui/steppers";
-import Inputcollection from "@/components/spectrumui/form";
+import { Steppers } from "@/components/ui/Steppers";
+import Inputcollection from "@/components/spectrumui/Form";
 const page = () => {
   return (
     <div>
@@ -13,7 +13,6 @@ const page = () => {
           withInstall
           codePath="components/spectrumui/form.tsx"
           installScript="npx shadcn@latest add input"
-         
           withEnd
         />
         <PageSubTitle>Usage</PageSubTitle>

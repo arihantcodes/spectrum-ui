@@ -1,11 +1,11 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { ScrollArea } from "@/components/ui/scroll-area";
+} from "@/components/ui/Collapsible";
+import { ScrollArea } from "@/components/ui/ScrollArea";
 import {
   ChevronRight,
   Home,

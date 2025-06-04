@@ -4,18 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import Spline from "@splinetool/react-spline/next";
 
-import { Cover } from "@/components/ui/cover";
+import { Cover } from "@/components/ui/Cover";
 
-import { Button } from "@/components/ui/button";
-import CardCollection from "@/components/spectrumui/cards";
-import { CardsDemo } from "@/components/cards";
-import  { Fomo } from "@/components/sponserbutton";
+import { Button } from "@/components/ui/Button";
+import CardCollection from "@/components/spectrumui/Cards";
+import { CardsDemo } from "@/components/cards/CardsDemo";
+import { Fomo } from "@/components/FomoButton";
 import { siteConfig } from "@/config/site";
-import { Icons } from "@/components/icon";
-import { NumberTicker } from "@/components/magicui/number-ticker";
+import { Icons } from "@/components/Icon";
+import { NumberTicker } from "@/components/magicui/NumberTicker";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
 
 const Homepage = () => {
   const [star, setStar] = useState(0);
@@ -49,7 +48,9 @@ const Homepage = () => {
             </Cover>
           </h1>
           <p className="text-center text-sm md:text-lg mt-4 md:mt-8 text-neutral-500 dark:text-neutral-500 max-w-2xl">
-          250+ free and open-source animated components and effects built with Next Js, Typescript, Tailwind CSS, and Motion.Perfect companion for shadcn/ui.
+            250+ free and open-source animated components and effects built with
+            Next Js, Typescript, Tailwind CSS, and Motion.Perfect companion for
+            shadcn/ui.
           </p>
           <h1 className="mt-6 text-center text-lg md:text-2xl font-bold text-gray-400">
             Built With

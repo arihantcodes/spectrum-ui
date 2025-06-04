@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import { DualRangeSlider } from '@/components/ui/dual-range-slider';
+"use client";
+import React, { useState } from "react";
+import { DualRangeSlider } from "@/components/ui/DualRangeSlider";
 
 const DualRangeSliderDemo = () => {
   const [values, setValues] = useState([0, 100]);

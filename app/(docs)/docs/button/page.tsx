@@ -2,7 +2,7 @@
 import React from "react";
 import ButtonCollection from "@/components/spectrumui/ButtonCollection";
 import { PageSubTitle, PageTemplate } from "../components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 const page = () => {
   return (
     <div>
@@ -12,7 +12,6 @@ const page = () => {
           withInstall
           codePath="components/spectrumui/ButtonCollection.tsx"
           installScript="npx shadcn@latest add button"
-         
           withEnd
         />
         <PageSubTitle>Usage</PageSubTitle>

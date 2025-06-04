@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import * as React from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import * as React from "react";
 import {
   Form,
   FormControl,
@@ -11,15 +11,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { toast } from '@/components/ui/use-toast';
-import { AutosizeTextarea } from '@/components/ui/autosize-textarea';
-import { LoadingButton } from '@/components/ui/loading-button';
-import { useState } from 'react';
+} from "@/components/ui/Form";
+import { toast } from "@/components/ui/UseToast";
+import { AutosizeTextarea } from "@/components/ui/AutosizeTextarea";
+import { LoadingButton } from "@/components/ui/LoadingButton";
+import { useState } from "react";
 
 const FormSchema = z.object({
   bio: z.string().min(10, {
-    message: 'Bio must be at least 10 characters.',
+    message: "Bio must be at least 10 characters.",
   }),
 });
 
@@ -43,7 +43,7 @@ const AutosizeTextareaForm = () => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: 'Your submitted data',
+        title: "Your submitted data",
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
             <code className="text-white">{JSON.stringify(data, null, 2)}</code>
@@ -51,7 +51,7 @@ const AutosizeTextareaForm = () => {
         ),
       });
       if (isClearBio) {
-        form.setValue('bio', '');
+        form.setValue("bio", "");
       }
     }, 500);
   }

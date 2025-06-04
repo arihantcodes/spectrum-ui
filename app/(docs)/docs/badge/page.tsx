@@ -3,13 +3,12 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import Link from "next/link";
 import EventBadge from "./badgedemo";
-
 
 export const metadata: Metadata = baseMetadata({
   title: "Spectrum UI- 3D Event Badge",
@@ -20,9 +19,11 @@ export const metadata: Metadata = baseMetadata({
 const DualRangeSliderPage = () => {
   return (
     <PageTemplate title="Vercel 3D Event Badge">
-      <PreviewCodeCard path="app/(docs)/docs/badge/badgedemo.tsx"
-      cli="https://ui.spectrumhq.in/r/event_badge_3d.json">
-       <EventBadge/>
+      <PreviewCodeCard
+        path="app/(docs)/docs/badge/badgedemo.tsx"
+        cli="https://ui.spectrumhq.in/r/event_badge_3d.json"
+      >
+        <EventBadge />
       </PreviewCodeCard>
 
       <PageSubTitle>Installation</PageSubTitle>
@@ -33,9 +34,6 @@ const DualRangeSliderPage = () => {
         installScript="npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline leva
 "
       />
-
-   
-      
     </PageTemplate>
   );
 };

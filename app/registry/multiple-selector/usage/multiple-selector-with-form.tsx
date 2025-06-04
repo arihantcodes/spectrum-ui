@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import * as React from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import * as React from "react";
 import {
   Form,
   FormControl,
@@ -11,23 +11,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { toast } from '@/app/registry/spectrumui/use-toast';
-import { LoadingButton } from '@/app/registry/spectrumui/loading-button-dependencies';
-import MultipleSelector, { Option } from '@/app/registry/spectrumui/multiple-selector-dependencies';
+} from "@/components/ui/Form";
+import { toast } from "@/app/registry/spectrumui/use-toast";
+import { LoadingButton } from "@/app/registry/spectrumui/loading-button-dependencies";
+import MultipleSelector, {
+  Option,
+} from "@/app/registry/spectrumui/multiple-selector-dependencies";
 
 const OPTIONS: Option[] = [
-  { label: 'nextjs', value: 'Nextjs' },
-  { label: 'React', value: 'react' },
-  { label: 'Remix', value: 'remix' },
-  { label: 'Vite', value: 'vite' },
-  { label: 'Nuxt', value: 'nuxt' },
-  { label: 'Vue', value: 'vue' },
-  { label: 'Svelte', value: 'svelte' },
-  { label: 'Angular', value: 'angular' },
-  { label: 'Ember', value: 'ember', disable: true },
-  { label: 'Gatsby', value: 'gatsby', disable: true },
-  { label: 'Astro', value: 'astro' },
+  { label: "nextjs", value: "Nextjs" },
+  { label: "React", value: "react" },
+  { label: "Remix", value: "remix" },
+  { label: "Vite", value: "vite" },
+  { label: "Nuxt", value: "nuxt" },
+  { label: "Vue", value: "vue" },
+  { label: "Svelte", value: "svelte" },
+  { label: "Angular", value: "angular" },
+  { label: "Ember", value: "ember", disable: true },
+  { label: "Gatsby", value: "gatsby", disable: true },
+  { label: "Astro", value: "astro" },
 ];
 
 const optionSchema = z.object({
@@ -53,7 +55,7 @@ const MultipleSelectorWithForm = () => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: 'Your submitted data',
+        title: "Your submitted data",
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
             <code className="text-white">{JSON.stringify(data, null, 2)}</code>

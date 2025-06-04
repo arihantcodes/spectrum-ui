@@ -1,32 +1,32 @@
-import { Props } from '@/app/(docs)/docs/components/props-table/props-table';
-import React from 'react';
-import { InlineCode } from '@/components/ui/inline-code';
+import { Props } from "@/app/(docs)/docs/components/props-table/props-table";
+import React from "react";
+import { InlineCode } from "@/components/ui/InlineCode";
 
 export const headingWithAnchorProp: Props[] = [
   {
-    prop: 'className',
+    prop: "className",
     required: false,
     description: (
       <>
         <p>Customize the style by adding tailwind.</p>
       </>
     ),
-    type: 'string',
+    type: "string",
   },
   {
-    prop: 'anchor',
+    prop: "anchor",
     required: false,
     description: (
       <>
         <p>anchor</p>
       </>
     ),
-    type: 'string',
+    type: "string",
   },
   {
-    prop: 'anchorAlignment',
+    prop: "anchorAlignment",
     required: false,
-    default: 'spaced',
+    default: "spaced",
     description: (
       <>
         <p>Alignment of anchor</p>
@@ -35,7 +35,7 @@ export const headingWithAnchorProp: Props[] = [
     type: `'close' | 'spaced'`,
   },
   {
-    prop: 'anchorVisibility',
+    prop: "anchorVisibility",
     required: false,
     description: (
       <>
@@ -43,20 +43,22 @@ export const headingWithAnchorProp: Props[] = [
       </>
     ),
     type: `'hover' | 'always' | 'never'`,
-    default: 'always',
+    default: "always",
   },
   {
-    prop: 'disableCopyToClipboard',
+    prop: "disableCopyToClipboard",
     required: false,
     description: (
       <>
-        <p>When clicking the anchor, it will copy the anchor link to clipboard.</p>
+        <p>
+          When clicking the anchor, it will copy the anchor link to clipboard.
+        </p>
         <p>
           If you want to disable, set it to <InlineCode>true</InlineCode>.
         </p>
       </>
     ),
-    type: 'boolean',
-    default: 'false',
+    type: "boolean",
+    default: "false",
   },
 ];

@@ -1,9 +1,8 @@
-import React from 'react';
-import Link, { LinkProps } from 'next/link';
-import { Badge } from '@/components/ui/badge';
+import React from "react";
+import Link, { LinkProps } from "next/link";
+import { Badge } from "@/components/ui/Badge";
 
-import { cn } from '@/lib/utils';
-
+import { cn } from "@/lib/utils";
 
 interface ReferenceProps extends LinkProps {
   icon?: React.ReactNode;
@@ -11,8 +10,6 @@ interface ReferenceProps extends LinkProps {
 }
 
 export const Reference = ({ icon, text, ...props }: ReferenceProps) => {
-
-
   return (
     <Link {...props} target="_blank">
       <Badge variant="secondary" className="flex gap-2">
@@ -23,6 +20,9 @@ export const Reference = ({ icon, text, ...props }: ReferenceProps) => {
   );
 };
 
-export const ReferenceBorder = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-  return <div {...props} className={cn('mb-5 flex gap-3', className)} />;
+export const ReferenceBorder = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return <div {...props} className={cn("mb-5 flex gap-3", className)} />;
 };

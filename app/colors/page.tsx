@@ -1,7 +1,7 @@
-import { getColors } from "@/lib/colors"
-import { ColorPalette } from "@/components/color-palette"
+import { getColors } from "@/lib/colors";
+import { ColorPalette } from "@/components/ColorPalette";
 
-const colors = getColors()
+const colors = getColors();
 
 export default function ColorsPage() {
   return (
@@ -10,5 +10,5 @@ export default function ColorsPage() {
         <ColorPalette key={colorPalette.name} colorPalette={colorPalette} />
       ))}
     </div>
-  )
+  );
 }

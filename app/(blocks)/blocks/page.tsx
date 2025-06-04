@@ -1,11 +1,11 @@
 "use client";
-import { BlocksPage } from "@/components/blocks-page";
+import { BlocksPage } from "@/components/BlocksPage";
 
 import { useTheme } from "next-themes";
 import NewsletterDashboard from "./newsletter";
 import Dashboardblock from "./dashboard";
 import Link from "next/link";
-import { Icons } from "@/components/icon";
+import { Icons } from "@/components/Icon";
 
 const sampleFiles = [
   {
@@ -2913,18 +2913,18 @@ export default function BlocksPageDemo() {
   return (
     <div className="container-wrapper h-full p-12">
       <div className="w-full flex justify-end mb-12 ">
-      <Link
-              href="https://shadcnblocks.com"
-              className="hidden md:flex items-center gap-2 bg-neutral-100 dark:bg-neutral-800 rounded-md px-5 h-12  hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-            >
-              <Icons.shadcnblock className="h-5 w-5" />
-              <div className="flex flex-col">
-                <span className="text-sm font-medium ">Shadcnblocks.com</span>
-                <span className="text-xs text-neutral-400">
-                  600+ extra shadcn blocks
-                </span>
-              </div>
-            </Link>
+        <Link
+          href="https://shadcnblocks.com"
+          className="hidden md:flex items-center gap-2 bg-neutral-100 dark:bg-neutral-800 rounded-md px-5 h-12  hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+        >
+          <Icons.shadcnblock className="h-5 w-5" />
+          <div className="flex flex-col">
+            <span className="text-sm font-medium ">Shadcnblocks.com</span>
+            <span className="text-xs text-neutral-400">
+              600+ extra shadcn blocks
+            </span>
+          </div>
+        </Link>
       </div>
       <BlocksPage
         title="A Newsletter Dashboard"

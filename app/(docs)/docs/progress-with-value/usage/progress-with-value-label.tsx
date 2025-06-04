@@ -1,17 +1,19 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { ProgressWithValue } from '@/components/ui/progress-with-value';
+"use client";
+import React, { useEffect, useState } from "react";
+import { ProgressWithValue } from "@/components/ui/ProgressValue";
 
 const PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];
 
 const LABEL_DEMOS = [
   {
-    title: 'No Label',
+    title: "No Label",
     label: () => null,
   },
   {
-    title: 'Custom label',
-    label: (value?: number | null) => <span className="text-amber-400">current: {value}%</span>,
+    title: "Custom label",
+    label: (value?: number | null) => (
+      <span className="text-amber-400">current: {value}%</span>
+    ),
   },
 ];
 
@@ -31,7 +33,11 @@ const ProgressWithValueLabel = () => {
       {LABEL_DEMOS.map((demo) => (
         <div key={demo.title}>
           <div className="text-blue-500">{demo.title}</div>
-          <ProgressWithValue value={value} position="follow" label={demo.label} />
+          <ProgressWithValue
+            value={value}
+            position="follow"
+            label={demo.label}
+          />
         </div>
       ))}
     </div>

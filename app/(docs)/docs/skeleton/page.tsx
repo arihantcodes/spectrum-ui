@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -22,8 +22,10 @@ const SkeletonLoadingPage = () => {
       title="Skeleton"
       description="Use to show a placeholder while content is loading."
     >
-      <PreviewCodeCard path="app/(docs)/docs/skeleton/skeleton-demo.tsx" 
-      cli='https://ui.spectrumhq.in/r/skeleton.json'>
+      <PreviewCodeCard
+        path="app/(docs)/docs/skeleton/skeleton-demo.tsx"
+        cli="https://ui.spectrumhq.in/r/skeleton.json"
+      >
         <SkeletonDemo />
       </PreviewCodeCard>
 

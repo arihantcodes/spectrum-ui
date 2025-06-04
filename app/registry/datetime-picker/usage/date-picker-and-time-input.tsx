@@ -1,6 +1,6 @@
-'use client';
-import React, { useState } from 'react';
-import { DateTimePicker, TimePicker } from '@/components/ui/datetime-picker';
+"use client";
+import React, { useState } from "react";
+import { DateTimePicker, TimePicker } from "@/components/ui/DatetimePicker";
 
 const DatePickerAndTimeInput = () => {
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -10,7 +10,15 @@ const DatePickerAndTimeInput = () => {
     <div className="flex flex-col gap-3 md:flex-row md:gap-10">
       <div className="w-72 space-y-2">
         <p>Date Picker</p>
-        <DateTimePicker granularity="day" value={date} onChange={setDate} locale={undefined} weekStartsOn={undefined} showWeekNumber={undefined} showOutsideDays={undefined} />
+        <DateTimePicker
+          granularity="day"
+          value={date}
+          onChange={setDate}
+          locale={undefined}
+          weekStartsOn={undefined}
+          showWeekNumber={undefined}
+          showOutsideDays={undefined}
+        />
       </div>
       <div className="w-72 space-y-2">
         <p>Time Input</p>

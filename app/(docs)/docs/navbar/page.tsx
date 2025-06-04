@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -27,8 +27,10 @@ export const metadata: Metadata = baseMetadata({
 const DualRangeSliderPage = () => {
   return (
     <PageTemplate title="Navbars">
-      <PreviewCodeCard path="app/(docs)/docs/navbar/navbardemo.tsx"
-      cli="https://ui.spectrumhq.in/r/navbar-demo.json">
+      <PreviewCodeCard
+        path="app/(docs)/docs/navbar/navbardemo.tsx"
+        cli="https://ui.spectrumhq.in/r/navbar-demo.json"
+      >
         <Navbardemo />
       </PreviewCodeCard>
 
@@ -59,7 +61,6 @@ const DualRangeSliderPage = () => {
         title="Floating Navbar"
         path="app/(docs)/docs/navbar/usage/floatingnavbar.tsx"
         cli="https://ui.spectrumhq.in/r/floating-navbar.json"
-
       >
         <Floatingnavbar />
       </Usage>
@@ -67,7 +68,6 @@ const DualRangeSliderPage = () => {
         title="Sidebar Navbar"
         path="app/(docs)/docs/navbar/usage/sidenav.tsx"
         cli="https://ui.spectrumhq.in/r/sidenav-navbar.json"
-
       >
         <Sidenavbar />
       </Usage>

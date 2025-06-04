@@ -1,6 +1,6 @@
-import React from 'react';
-import { LoadingButton } from '@/components/ui/loading-button';
-import Link from 'next/link';
+import React from "react";
+import { LoadingButton } from "@/components/ui/LoadingButton";
+import Link from "next/link";
 
 const LoadingButtonAsChild = () => {
   return (

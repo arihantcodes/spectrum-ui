@@ -2,15 +2,15 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Plus, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/Dialog";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
@@ -150,7 +150,7 @@ function EventCalendar() {
                   >
                     <div className="relative w-4 h-4">
                       <Image
-                        src={subscription.icon }
+                        src={subscription.icon}
                         alt={subscription.name}
                         className="rounded-sm object-cover"
                         fill
@@ -222,5 +222,4 @@ function EventCalendar() {
   );
 }
 
-
-export default EventCalendar
+export default EventCalendar;

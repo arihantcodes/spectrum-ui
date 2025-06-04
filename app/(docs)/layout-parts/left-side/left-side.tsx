@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import Search from "@/components/search";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/Button";
+import Search from "@/components/Search";
+import { ScrollArea } from "@/components/ui/ScrollArea";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from "@/components/ui/Collapsible";
 
 // Assuming DOCS is imported from your constant file
 import { DOCS } from "@/app/(docs)/layout-parts/documentation.constant";

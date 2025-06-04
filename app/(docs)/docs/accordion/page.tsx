@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -43,12 +43,7 @@ const SkeletonLoadingPage = () => {
       </PreviewCodeCard>
 
       <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        
-        codePath="components/ui/accordion.tsx"
-        withEnd
-      />
+      <Steppers withInstall codePath="components/ui/accordion.tsx" withEnd />
     </PageTemplate>
   );
 };

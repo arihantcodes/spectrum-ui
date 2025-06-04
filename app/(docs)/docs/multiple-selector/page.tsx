@@ -1,43 +1,48 @@
-
-import React from 'react';
-import { PageSubTitle, PageTemplate } from '@/app/(docs)/docs/components/page-template';
-import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
-import { Steppers } from '@/components/ui/steppers';
-import { Metadata } from 'next';
-import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
-import { Reference, ReferenceBorder } from '@/app/(docs)/docs/components/reference';
-import Usage from '@/app/(docs)/docs/components/usage';
-import { P } from '@/components/ui/heading-with-anchor';
-import { InlineCode } from '@/components/ui/inline-code';
-import { PropLink } from '@/app/(docs)/docs/components/props-table/prop-link';
-import MultipleSelectorDemo from '@/app/(docs)/docs/multiple-selector/multiple-selector-demo';
-import MultipleSelectorControlled from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-controlled';
-import MultipleSelectorWithDisabledOption from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-disable-option';
-import MultipleSelectorWithAsyncSearch from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search';
-import MultipleSelectorWithMaxSelected from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-max-selected';
-import { PropsTable } from '@/app/(docs)/docs/components/props-table/props-table';
-import { multipleSelectorProp } from '@/app/(docs)/docs/multiple-selector/multiple-selector-prop';
-import MultipleSelectorNoPlaceholderWhenSelected from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-no-placeholder-when-selected';
-import MultipleSelectorWithForm from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-form';
-import MultipleSelectorDisabled from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-disabled';
-import MultipleSelectorWithGroup from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-group';
-import MultipleSelectorNoDefaultSelect from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-no-default-select';
-import MultipleSelectorWithFixedOption from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-fixed-option';
-import MultipleSelectorCreatable from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-creatable';
-import MultipleSelectorWithAsyncSearchAndCreatable from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-creatable';
-import MultipleSelectorWithAsyncSearchAndCreatableAndGroup from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-creatable-and-group';
-import MultipleSelectorMaxTextLength from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-max-text-length';
-import MultipleSelectorRef from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-ref';
-import MultipleSelectorCommandProps from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-commandprops';
-import MultipleSelectorWithAsyncSearchAndOnFocus from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-onfocus';
-import MultipleSelectorManuallyControlledOptions from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-manually-controlled-options';
-import MultipleSelectorHideClearAll from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-hide-clear-all';
-import MultipleSelectorWithSyncSearch from '@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-sync-search';
+import React from "react";
+import {
+  PageSubTitle,
+  PageTemplate,
+} from "@/app/(docs)/docs/components/page-template";
+import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
+import { Steppers } from "@/components/ui/Steppers";
+import { Metadata } from "next";
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
+import {
+  Reference,
+  ReferenceBorder,
+} from "@/app/(docs)/docs/components/reference";
+import Usage from "@/app/(docs)/docs/components/usage";
+import { P } from "@/components/ui/HeadingAnchor";
+import { InlineCode } from "@/components/ui/InlineCode";
+import { PropLink } from "@/app/(docs)/docs/components/props-table/prop-link";
+import MultipleSelectorDemo from "@/app/(docs)/docs/multiple-selector/multiple-selector-demo";
+import MultipleSelectorControlled from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-controlled";
+import MultipleSelectorWithDisabledOption from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-disable-option";
+import MultipleSelectorWithAsyncSearch from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search";
+import MultipleSelectorWithMaxSelected from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-max-selected";
+import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table";
+import { multipleSelectorProp } from "@/app/(docs)/docs/multiple-selector/multiple-selector-prop";
+import MultipleSelectorNoPlaceholderWhenSelected from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-no-placeholder-when-selected";
+import MultipleSelectorWithForm from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-form";
+import MultipleSelectorDisabled from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-disabled";
+import MultipleSelectorWithGroup from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-group";
+import MultipleSelectorNoDefaultSelect from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-no-default-select";
+import MultipleSelectorWithFixedOption from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-fixed-option";
+import MultipleSelectorCreatable from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-creatable";
+import MultipleSelectorWithAsyncSearchAndCreatable from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-creatable";
+import MultipleSelectorWithAsyncSearchAndCreatableAndGroup from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-creatable-and-group";
+import MultipleSelectorMaxTextLength from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-max-text-length";
+import MultipleSelectorRef from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-ref";
+import MultipleSelectorCommandProps from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-commandprops";
+import MultipleSelectorWithAsyncSearchAndOnFocus from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-onfocus";
+import MultipleSelectorManuallyControlledOptions from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-manually-controlled-options";
+import MultipleSelectorHideClearAll from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-hide-clear-all";
+import MultipleSelectorWithSyncSearch from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-sync-search";
 
 export const metadata: Metadata = baseMetadata({
-  title: 'Spectrum UI-Multiple Selector',
+  title: "Spectrum UI-Multiple Selector",
   description:
-    'Fast,composable, fully-featured multiple selector for React. such as async search with debounce, maximum selected count, grouping, creatable selector ...etc.',
+    "Fast,composable, fully-featured multiple selector for React. such as async search with debounce, maximum selected count, grouping, creatable selector ...etc.",
 });
 
 const MultipleSelectorPage = () => {
@@ -46,9 +51,10 @@ const MultipleSelectorPage = () => {
       title="Multiple Selector"
       description="Fast, composable, fully-featured multiple selector for React."
     >
-    
-      <PreviewCodeCard path="app/(docs)/docs/multiple-selector/multiple-selector-demo.tsx"
-      cli='https://ui.spectrumhq.in/r/multiple-selector-demo.json'>
+      <PreviewCodeCard
+        path="app/(docs)/docs/multiple-selector/multiple-selector-demo.tsx"
+        cli="https://ui.spectrumhq.in/r/multiple-selector-demo.json"
+      >
         <MultipleSelectorDemo />
       </PreviewCodeCard>
 
@@ -59,26 +65,35 @@ const MultipleSelectorPage = () => {
         installScript="npx shadcn@latest add command badge"
         steps={[
           {
-            title: "If you found that you can't select options using mouse click.",
+            title:
+              "If you found that you can't select options using mouse click.",
             children: (
               <>
                 <P className="leading-relaxed text-muted-foreground">
-                  Thanks to <PropLink href="https://github.com/njdowdy">@njdowdy</PropLink> for the{' '}
+                  Thanks to{" "}
+                  <PropLink href="https://github.com/njdowdy">
+                    @njdowdy
+                  </PropLink>{" "}
+                  for the{" "}
                   <PropLink href="https://github.com/hsuanyi-chou/shadcn-ui-expansions/issues/57#issuecomment-1997767639">
                     short-term workaround
                   </PropLink>
-                  . This is related to <InlineCode>Command</InlineCode> component in shadcn-ui.
+                  . This is related to <InlineCode>Command</InlineCode>{" "}
+                  component in shadcn-ui.
                 </P>
                 <P className="leading-relaxed text-muted-foreground">
-                  Adjusting the line 120 in shadcn's <InlineCode>Command.tsx</InlineCode> (which is{' '}
+                  Adjusting the line 120 in shadcn's{" "}
+                  <InlineCode>Command.tsx</InlineCode> (which is{" "}
                   <InlineCode>CommandItem's className</InlineCode>) to:
                 </P>
                 <P className="leading-relaxed text-muted-foreground">
                   <InlineCode>
-                    "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5
-                    text-sm outline-none aria-[selected='true']:bg-accent
+                    "relative flex cursor-default select-none items-center
+                    rounded-sm px-2 py-1.5 text-sm outline-none
+                    aria-[selected='true']:bg-accent
                     aria-[selected='true']:text-accent-foreground
-                    data-[disabled=&apos;true&apos;]:pointer-events-none data-[disabled=&apos;true&apos;]:opacity-50",
+                    data-[disabled=&apos;true&apos;]:pointer-events-none
+                    data-[disabled=&apos;true&apos;]:opacity-50",
                   </InlineCode>
                 </P>
               </>
@@ -92,28 +107,28 @@ const MultipleSelectorPage = () => {
       <Usage
         title="Disable Option"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-disable-option.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-disable-option.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-disable-option.json"
       >
         <MultipleSelectorWithDisabledOption />
       </Usage>
       <Usage
         title="Disabled"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-disabled.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-disabled.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-disabled.json"
       >
         <MultipleSelectorDisabled />
       </Usage>
       <Usage
         title="Disable First Item selected"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-no-default-select.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-no-default-select.json"
         description={
           <>
             <P className="text-muted-foreground">
-              The first item selected is a default behavior by{' '}
+              The first item selected is a default behavior by{" "}
               <PropLink href="https://github.com/pacocoursey/cmdk">
                 <InlineCode>cmdk</InlineCode>
-              </PropLink>{' '}
-              and there is no way to control it. You can learn more about the{' '}
+              </PropLink>{" "}
+              and there is no way to control it. You can learn more about the{" "}
               <PropLink href="https://github.com/pacocoursey/cmdk/issues/171">
                 <InlineCode>issue</InlineCode>
               </PropLink>
@@ -131,24 +146,26 @@ const MultipleSelectorPage = () => {
       <Usage
         title="Controlled Component"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-controlled.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-controlled.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-controlled.json"
       >
         <MultipleSelectorControlled />
       </Usage>
       <Usage
         title="Hide Clear All Button"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-hide-clear-all.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-hide-clear-all.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-hide-clear-all.json"
       >
         <MultipleSelectorHideClearAll />
       </Usage>
       <Usage
         title="Creatable Selector"
         description={
-          <P className="text-muted-foreground">Create option when there is no option matched.</P>
+          <P className="text-muted-foreground">
+            Create option when there is no option matched.
+          </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-creatable.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-creatable.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-creatable.json"
       >
         <MultipleSelectorCreatable />
       </Usage>
@@ -157,22 +174,24 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              The async search is debounced by default. The delay time is 500ms if you do not
-              provide it.
+              The async search is debounced by default. The delay time is 500ms
+              if you do not provide it.
             </P>
             <P className="text-muted-foreground">
-              You can provide <InlineCode>delay</InlineCode> to customize the time. The{' '}
-              <InlineCode>delay</InlineCode> prop only works with <InlineCode>onSearch</InlineCode>.
+              You can provide <InlineCode>delay</InlineCode> to customize the
+              time. The <InlineCode>delay</InlineCode> prop only works with{" "}
+              <InlineCode>onSearch</InlineCode>.
             </P>
             <P className="text-muted-foreground">
-              The empty text <b>will not</b> trigger the search. On the other hand, if the search
-              had been triggered, and user delete all the texts, it will not trigger the search
-              again and keep the current options with empty text.
+              The empty text <b>will not</b> trigger the search. On the other
+              hand, if the search had been triggered, and user delete all the
+              texts, it will not trigger the search again and keep the current
+              options with empty text.
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-async-search.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search.json"
       >
         <MultipleSelectorWithAsyncSearch />
       </Usage>
@@ -181,12 +200,12 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              Only works with <InlineCode>onSearch</InlineCode> prop. Trigger search when{' '}
-              <InlineCode>onFocus</InlineCode>.
+              Only works with <InlineCode>onSearch</InlineCode> prop. Trigger
+              search when <InlineCode>onFocus</InlineCode>.
             </P>
             <P className="text-muted-foreground">
-              For example, when user click on the input, it will trigger the search to get initial
-              options.
+              For example, when user click on the input, it will trigger the
+              search to get initial options.
             </P>
             <P className="text-muted-foreground">
               The empty text <b>will</b> trigger the search.
@@ -194,7 +213,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-onfocus.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-onfocus.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-onfocus.json"
       >
         <MultipleSelectorWithAsyncSearchAndOnFocus />
       </Usage>
@@ -203,13 +222,13 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              If you combine the async search and creatable, you can create option when there is no
-              option matched.
+              If you combine the async search and creatable, you can create
+              option when there is no option matched.
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-creatable.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable.json"
       >
         <MultipleSelectorWithAsyncSearchAndCreatable />
       </Usage>
@@ -218,13 +237,13 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              If you combine the async search and creatable and group, you can still create option
-              when there is no option matched.
+              If you combine the async search and creatable and group, you can
+              still create option when there is no option matched.
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-creatable-and-group.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable-and-group.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable-and-group.json"
       >
         <MultipleSelectorWithAsyncSearchAndCreatableAndGroup />
       </Usage>
@@ -234,15 +253,16 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              Sync search is for search locally without any request to the server. This will not
-              show loading indicator even if you provide it. The rest props are the same as async
-              search. i.e.: <InlineCode>creatable</InlineCode>, <InlineCode>groupBy</InlineCode>,{' '}
-              <InlineCode>delay</InlineCode>.
+              Sync search is for search locally without any request to the
+              server. This will not show loading indicator even if you provide
+              it. The rest props are the same as async search. i.e.:{" "}
+              <InlineCode>creatable</InlineCode>,{" "}
+              <InlineCode>groupBy</InlineCode>, <InlineCode>delay</InlineCode>.
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-sync-search.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-sync-search.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-sync-search.json"
       >
         <MultipleSelectorWithSyncSearch />
       </Usage>
@@ -252,16 +272,17 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              If you want to controlled options yourself, you can provide{' '}
+              If you want to controlled options yourself, you can provide{" "}
               <InlineCode>options</InlineCode> prop.
             </P>
             <P className="text-muted-foreground">
-              Otherwise, <InlineCode>defaultOptions</InlineCode> is a better choice.
+              Otherwise, <InlineCode>defaultOptions</InlineCode> is a better
+              choice.
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-manually-controlled-options.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-manually-controlled-options.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-manually-controlled-options.json"
       >
         <MultipleSelectorManuallyControlledOptions />
       </Usage>
@@ -270,12 +291,13 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              Grouping options by specific key of <InlineCode>object</InlineCode>
+              Grouping options by specific key of{" "}
+              <InlineCode>object</InlineCode>
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-group.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-with-group.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-with-group.json"
       >
         <MultipleSelectorWithGroup />
       </Usage>
@@ -283,20 +305,24 @@ const MultipleSelectorPage = () => {
         title="Maximum Selected Count"
         description={
           <P className="text-muted-foreground">
-            Following example is set to 3. The default of max selected is{' '}
+            Following example is set to 3. The default of max selected is{" "}
             <InlineCode>Number.MAX_SAFE_INTEGER</InlineCode>
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-max-selected.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-max-selected.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-max-selected.json"
       >
         <MultipleSelectorWithMaxSelected />
       </Usage>
       <Usage
         title="Maximum Text Length"
-        description={<P className="text-muted-foreground">Following example is set to 5.</P>}
+        description={
+          <P className="text-muted-foreground">
+            Following example is set to 5.
+          </P>
+        }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-max-text-length.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-max-text-length.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-max-text-length.json"
       >
         <MultipleSelectorMaxTextLength />
       </Usage>
@@ -305,17 +331,17 @@ const MultipleSelectorPage = () => {
         description={
           <>
             <P className="text-muted-foreground">
-              If you would like to work as a normal input that hide the placeholder when there are
-              options selected.
+              If you would like to work as a normal input that hide the
+              placeholder when there are options selected.
             </P>
             <P className="text-muted-foreground">
-              Just set <InlineCode>hidePlaceholderWhenSelected</InlineCode> to{' '}
+              Just set <InlineCode>hidePlaceholderWhenSelected</InlineCode> to{" "}
               <InlineCode>true</InlineCode>
             </P>
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-no-placeholder-when-selected.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-no-placeholder-when-selected.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-no-placeholder-when-selected.json"
       >
         <MultipleSelectorNoPlaceholderWhenSelected />
       </Usage>
@@ -323,30 +349,34 @@ const MultipleSelectorPage = () => {
         title="Fixed Options"
         description={
           <P className="text-muted-foreground">
-            Provide <InlineCode>fixed: true</InlineCode> in your <InlineCode>value</InlineCode>
+            Provide <InlineCode>fixed: true</InlineCode> in your{" "}
+            <InlineCode>value</InlineCode>
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-fixed-option.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-fixed-option.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-fixed-option.json"
       >
         <MultipleSelectorWithFixedOption />
       </Usage>
-      <Usage title="ref" path="app/(docs)/docs//multiple-selector/usage/multiple-selector-ref.tsx"
-      cli='https://ui.spectrumhq.in/r/multiple-selector-ref.json'>
+      <Usage
+        title="ref"
+        path="app/(docs)/docs//multiple-selector/usage/multiple-selector-ref.tsx"
+        cli="https://ui.spectrumhq.in/r/multiple-selector-ref.json"
+      >
         <MultipleSelectorRef />
       </Usage>
       <Usage
         title="CommandProps and CommandInputProps Customization"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-commandprops.tsx"
-        cli='https://ui.spectrumhq.in/r/multiple-selector-commandprops.json'
+        cli="https://ui.spectrumhq.in/r/multiple-selector-commandprops.json"
       >
         <MultipleSelectorCommandProps />
       </Usage>
       <Usage
         title="Form"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-form.tsx"
-        cli='
-        https://ui.spectrumhq.in/r/multiple-selector-with-form.json'
+        cli="
+        https://ui.spectrumhq.in/r/multiple-selector-with-form.json"
       >
         <MultipleSelectorWithForm />
       </Usage>

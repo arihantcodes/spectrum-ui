@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 import {
   CheckCircle,
   XCircle,
@@ -57,15 +57,13 @@ const statusCodes: ResponseMessage[] = [
   // Add more status codes here...
 ];
 
-
 const categoryColors = {
   informational: "bg-blue-500/10 border border-blue-800 text-blue-300",
   success: "bg-green-500/10 border border-green-800  text-green-300",
   redirection: "bg-yellow-500/10 border border-yellow-800 text-yellow-300",
   clientError: "bg-orange-500/10 border border-orange-800 text-orange-300",
-  serverError: "bg-red-500/10 border border-red-800 text-red-300"
-}
-
+  serverError: "bg-red-500/10 border border-red-800 text-red-300",
+};
 
 const categoryIcons: { [key in ResponseMessage["category"]]: JSX.Element } = {
   informational: <Info className="w-5 h-5" />,

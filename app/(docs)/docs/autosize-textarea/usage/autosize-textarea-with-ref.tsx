@@ -1,6 +1,9 @@
-'use client';
-import React, { useState } from 'react';
-import { AutosizeTextarea, AutosizeTextAreaRef } from '@/components/ui/autosize-textarea';
+"use client";
+import React, { useState } from "react";
+import {
+  AutosizeTextarea,
+  AutosizeTextAreaRef,
+} from "@/components/ui/AutosizeTextarea";
 
 const AutosizeTextareaWithRef = () => {
   const ref = React.useRef<AutosizeTextAreaRef>(null);
@@ -13,7 +16,11 @@ const AutosizeTextareaWithRef = () => {
   return (
     <div className="flex w-full flex-col gap-2 px-10">
       <p>current max height from ref: {currMaxHeight}</p>
-      <AutosizeTextarea ref={ref} maxHeight={200} placeholder="with ref example." />
+      <AutosizeTextarea
+        ref={ref}
+        maxHeight={200}
+        placeholder="with ref example."
+      />
     </div>
   );
 };

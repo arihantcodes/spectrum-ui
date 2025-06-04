@@ -1,5 +1,4 @@
-import { NotFound } from "@/components/ui/ghost-404-page"
-
+import { NotFound } from "@/components/ui/NotFoundPage";
 
 const Page = () => {
   return (
@@ -7,6 +6,6 @@ const Page = () => {
       <NotFound />
     </div>
   );
-}
+};
 
-export default Page
+export default Page;

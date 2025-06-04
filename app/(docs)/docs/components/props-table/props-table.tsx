@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+"use client";
+import React from "react";
 import {
   Table,
   TableBody,
@@ -7,11 +7,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { PageSubTitle } from '@/app/(docs)/docs/components/page-template';
-import PropInfo from '@/app/(docs)/docs/components/props-table/prop-info';
-import { InlineCode } from '@/components/ui/inline-code';
-import { X } from 'lucide-react';
+} from "@/components/ui/Table";
+import { PageSubTitle } from "@/app/(docs)/docs/components/page-template";
+import PropInfo from "@/app/(docs)/docs/components/props-table/prop-info";
+import { InlineCode } from "@/components/ui/InlineCode";
+import { X } from "lucide-react";
 export interface Props {
   prop: string;
   required: boolean;
@@ -29,7 +29,7 @@ interface PropsTableProps {
 export const PropsTable = ({ title, props }: PropsTableProps) => {
   return (
     <>
-      <PageSubTitle>{title || 'Properties'}</PageSubTitle>
+      <PageSubTitle>{title || "Properties"}</PageSubTitle>
       <div className="px-5">
         <Table>
           <TableHeader>
@@ -50,7 +50,9 @@ export const PropsTable = ({ title, props }: PropsTableProps) => {
                 <TableCell>
                   <div className="flex items-center gap-[2px]">
                     <InlineCode>{prop.type}</InlineCode>
-                    {prop.typeInfo && <PropInfo className="ml-2">{prop.typeInfo}</PropInfo>}
+                    {prop.typeInfo && (
+                      <PropInfo className="ml-2">{prop.typeInfo}</PropInfo>
+                    )}
                   </div>
                 </TableCell>
                 <TableCell>

@@ -3,7 +3,7 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import  {Steppers}  from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -14,7 +14,7 @@ import Footerdemo from "./footerdemo";
 import AnimatedWaveFooter from "./usage/animatefooter";
 import StackedCircularFooter from "./usage/stackedfooter";
 import ParticleAnimationFooter from "./usage/particlefooter";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = baseMetadata({
   title: "Spectrum UI-Footers",
@@ -25,8 +25,10 @@ export const metadata: Metadata = baseMetadata({
 const DualRangeSliderPage = () => {
   return (
     <PageTemplate title="Footers">
-      <PreviewCodeCard path="app/(docs)/docs/footer/footerdemo.tsx"
-      cli="https://ui.spectrumhq.in/r/footer_demo.json">
+      <PreviewCodeCard
+        path="app/(docs)/docs/footer/footerdemo.tsx"
+        cli="https://ui.spectrumhq.in/r/footer_demo.json"
+      >
         <Footerdemo />
       </PreviewCodeCard>
 

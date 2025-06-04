@@ -2,7 +2,7 @@ import React from "react";
 import { PageSubTitle, PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
 
-import { Steppers } from "@/components/ui/steppers";
+import { Steppers } from "@/components/ui/Steppers";
 import Alertdemo from "./alertdemo";
 import Usage from "../components/usage";
 import Alert02 from "./usage/alerttwo";

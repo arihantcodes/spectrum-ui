@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Bell, Home, Search, Settings } from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar";
+import { Button } from "@/components/ui/Button";
+import { Bell, Home, Search, Settings } from "lucide-react";
 
 export default function CircularNavbar() {
   return (
@@ -15,7 +15,10 @@ export default function CircularNavbar() {
           <Search className="h-6 w-6" />
           <span className="sr-only">Search</span>
         </Button>
-        <Button size="icon" className="rounded-full bg-primary text-primary-foreground">
+        <Button
+          size="icon"
+          className="rounded-full bg-primary text-primary-foreground"
+        >
           <Bell className="h-6 w-6" />
           <span className="sr-only">Notifications</span>
         </Button>
@@ -29,5 +32,5 @@ export default function CircularNavbar() {
         </Avatar>
       </div>
     </nav>
-  )
+  );
 }

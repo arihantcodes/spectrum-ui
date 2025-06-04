@@ -1,37 +1,47 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Textarea } from "@/components/ui/textarea"
+import * as React from "react";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
+import { Switch } from "@/components/ui/Switch";
+import { Textarea } from "@/components/ui/Textarea";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Facebook, Instagram, Linkedin, Moon, Send, Sun, Twitter } from "lucide-react"
+} from "@/components/ui/Tooltip";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Moon,
+  Send,
+  Sun,
+  Twitter,
+} from "lucide-react";
 
 export default function Footerdemo() {
-  const [isDarkMode, setIsDarkMode] = React.useState(true)
-  const [isChatOpen, setIsChatOpen] = React.useState(false)
+  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const [isChatOpen, setIsChatOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.remove("dark");
     }
-  }, [isDarkMode])
+  }, [isDarkMode]);
 
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
-            <h2 className="mb-4 text-3xl font-bold tracking-tight">Stay Connected</h2>
+            <h2 className="mb-4 text-3xl font-bold tracking-tight">
+              Stay Connected
+            </h2>
             <p className="mb-6 text-muted-foreground">
               Join our newsletter for the latest updates and exclusive offers.
             </p>
@@ -55,19 +65,34 @@ export default function Footerdemo() {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Home
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 About Us
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Services
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Products
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a
+                href="#"
+                className="block transition-colors hover:text-primary"
+              >
                 Contact
               </a>
             </nav>
@@ -87,7 +112,11 @@ export default function Footerdemo() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
                       <Facebook className="h-4 w-4" />
                       <span className="sr-only">Facebook</span>
                     </Button>
@@ -100,7 +129,11 @@ export default function Footerdemo() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
                       <Twitter className="h-4 w-4" />
                       <span className="sr-only">Twitter</span>
                     </Button>
@@ -113,7 +146,11 @@ export default function Footerdemo() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
                       <Instagram className="h-4 w-4" />
                       <span className="sr-only">Instagram</span>
                     </Button>
@@ -126,7 +163,11 @@ export default function Footerdemo() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full"
+                    >
                       <Linkedin className="h-4 w-4" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
@@ -183,7 +224,10 @@ export default function Footerdemo() {
             </p>
           </div>
           <form className="flex gap-2">
-            <Textarea placeholder="Type your message..." className="flex-grow" />
+            <Textarea
+              placeholder="Type your message..."
+              className="flex-grow"
+            />
             <Button type="submit" size="icon">
               <Send className="h-4 w-4" />
               <span className="sr-only">Send message</span>
@@ -192,5 +236,5 @@ export default function Footerdemo() {
         </div>
       )}
     </footer>
-  )
+  );
 }

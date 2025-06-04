@@ -1,12 +1,12 @@
-import * as React from "react"
-import { Button } from "@/components/ui/button"
+import * as React from "react";
+import { Button } from "@/components/ui/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Home, Menu, MessageSquare, Plus, Settings, Users } from "lucide-react"
+} from "@/components/ui/DropdownMenu";
+import { Home, Menu, MessageSquare, Plus, Settings, Users } from "lucide-react";
 
 export default function Floatingnavbar() {
   return (
@@ -23,7 +23,10 @@ export default function Floatingnavbar() {
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" className="rounded-full bg-primary text-primary-foreground">
+            <Button
+              size="icon"
+              className="rounded-full bg-primary text-primary-foreground"
+            >
               <Plus className="h-5 w-5" />
               <span className="sr-only">Add</span>
             </Button>
@@ -53,5 +56,5 @@ export default function Floatingnavbar() {
         </Button>
       </nav>
     </div>
-  )
+  );
 }

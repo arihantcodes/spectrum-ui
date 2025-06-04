@@ -1,7 +1,7 @@
 "use client"; // Error components must be Client Components
 
-import { Button } from "@/components/ui/button";
-import { NotFound } from "@/components/ui/ghost-404-page";
+import { Button } from "@/components/ui/Button";
+import { NotFound } from "@/components/ui/NotFoundPage";
 import { useEffect } from "react";
 
 export default function Error({
@@ -17,10 +17,10 @@ export default function Error({
   }, [error]);
 
   return (
-   <>
-   <div className="min-h-screen w-full bg-white">
-      <NotFound />
-    </div>
-   </>
+    <>
+      <div className="min-h-screen w-full bg-white">
+        <NotFound />
+      </div>
+    </>
   );
 }

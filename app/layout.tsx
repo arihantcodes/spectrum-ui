@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
-import { SiteHeader } from "@/components/navbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { SiteHeader } from "@/components/Navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import "./globals.css";
 import { inject } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/Sonner";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { RainbowButton } from "@/components/magicui/rainbow-button";
-import Cta from "@/components/cta";
-
-
+import { RainbowButton } from "@/components/magicui/RainbowButton";
+import Cta from "@/components/Cta";
 
 inject();
 
@@ -145,14 +143,15 @@ export default function RootLayout({
           <Analytics />
 
           <div className="bg-gradient-to-b from-blue-500 to-blue-600 px-4 py-3 text-left font-sans text-base font-medium tracking-tight text-white md:text-center">
-          <Link href="/docs/profile" className="flex items-center justify-center">
-          
-          ✨ Introducing Spectrum CLI – Your favorite UI blocks, now just one command away.
-          <ChevronRight className=" h-4 w-4 mt-1 ml-2 " />
-          
-          </Link>
+            <Link
+              href="/docs/profile"
+              className="flex items-center justify-center"
+            >
+              ✨ Introducing Spectrum CLI – Your favorite UI blocks, now just
+              one command away.
+              <ChevronRight className=" h-4 w-4 mt-1 ml-2 " />
+            </Link>
           </div>
-           
 
           <SiteHeader />
           <main className="flex flex-1 flex-col">{children}</main>

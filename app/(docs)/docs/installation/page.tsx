@@ -1,7 +1,6 @@
+import { Card } from "@/components/ui/Card";
 
-import { Card } from "@/components/ui/card";
-
-import { Snippet } from "@/components/snippet";
+import { Snippet } from "@/components/Snippet";
 
 export default function Component() {
   return (

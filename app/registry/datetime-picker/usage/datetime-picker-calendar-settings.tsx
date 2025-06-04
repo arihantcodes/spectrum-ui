@@ -1,6 +1,6 @@
-'use client';
-import React from 'react';
-import { DateTimePicker } from '@/components/ui/datetime-picker';
+"use client";
+import React from "react";
+import { DateTimePicker } from "@/components/ui/DatetimePicker";
 
 const DatetimePickerCalendarSettings = () => {
   const [date, setDate] = React.useState<Date | undefined>(undefined);
@@ -17,7 +17,11 @@ const DatetimePickerCalendarSettings = () => {
       </div>
       <div className="w-72 space-y-2">
         <p>Disable outside days</p>
-        <DateTimePicker showOutsideDays={false} value={date} onChange={setDate} />
+        <DateTimePicker
+          showOutsideDays={false}
+          value={date}
+          onChange={setDate}
+        />
       </div>
     </div>
   );

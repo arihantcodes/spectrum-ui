@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import * as React from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import * as React from "react";
 import {
   Form,
   FormControl,
@@ -11,11 +11,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { toast } from '@/components/ui/use-toast';
-import { LoadingButton } from '@/components/ui/loading-button';
-import { InlineCode } from '@/components/ui/inline-code';
-import { DateTimePicker } from '@/components/ui/datetime-picker';
+} from "@/components/ui/Form";
+import { toast } from "@/components/ui/UseToast";
+import { LoadingButton } from "@/components/ui/LoadingButton";
+import { InlineCode } from "@/components/ui/InlineCode";
+import { DateTimePicker } from "@/components/ui/DatetimePicker";
 
 const FormSchema = z.object({
   datetime: z.date().optional(),
@@ -39,16 +39,18 @@ const DatetimePickerForm = () => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: 'Your submitted data',
+        title: "Your submitted data",
         description: (
           <>
             <p className="text-red-600">
-              It is a <InlineCode>Date</InlineCode> object, the{' '}
-              <InlineCode>JSON.stringify</InlineCode> will show 0+ timezone. You need to parse to
-              your timezone to match your needs.
+              It is a <InlineCode>Date</InlineCode> object, the{" "}
+              <InlineCode>JSON.stringify</InlineCode> will show 0+ timezone. You
+              need to parse to your timezone to match your needs.
             </p>
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+              <code className="text-white">
+                {JSON.stringify(data, null, 2)}
+              </code>
             </pre>
           </>
         ),

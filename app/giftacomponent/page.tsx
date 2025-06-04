@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Upload, X } from "lucide-react"
-import { toast } from "@/components/ui/use-toast"
+import React, { useState } from "react";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
+import { Label } from "@/components/ui/Label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Upload, X } from "lucide-react";
+import { toast } from "@/components/ui/UseToast";
 
 const ComponentSubmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -19,32 +19,32 @@ const ComponentSubmissionForm = () => {
     installationGuide: "",
     usageGuide: "",
     props: "",
-  })
+  });
 
-  const [previewImage, setPreviewImage] = useState<File | null>(null)
-  const [imagePreview, setImagePreview] = useState<string>("")
-  const [isLoading, setIsLoading] = useState(false)
+  const [previewImage, setPreviewImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
       if (!file.type.startsWith("image/")) {
         toast({
           title: "Invalid file type",
           description: "Please select an image file",
           variant: "destructive",
-        })
-        return
+        });
+        return;
       }
 
       if (file.size > 5 * 1024 * 1024) {
@@ -52,66 +52,77 @@ const ComponentSubmissionForm = () => {
           title: "File too large",
           description: "Image must be smaller than 5MB",
           variant: "destructive",
-        })
-        return
+        });
+        return;
       }
 
-      setPreviewImage(file)
-      const reader = new FileReader()
+      setPreviewImage(file);
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result as string)
-      }
-      reader.readAsDataURL(file)
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   const removeImage = () => {
-    setPreviewImage(null)
-    setImagePreview("")
-  }
+    setPreviewImage(null);
+    setImagePreview("");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
 
     try {
       // Validate required fields
-      if (!formData.code || !formData.title || !formData.tags || !formData.description || !formData.author) {
-        throw new Error("Please fill in all required fields")
+      if (
+        !formData.code ||
+        !formData.title ||
+        !formData.tags ||
+        !formData.description ||
+        !formData.author
+      ) {
+        throw new Error("Please fill in all required fields");
       }
 
       // Check if long code requires guides
-      if (formData.code.length > 60 && (!formData.installationGuide || !formData.usageGuide)) {
-        throw new Error("Installation and usage guides are required for complex components")
+      if (
+        formData.code.length > 60 &&
+        (!formData.installationGuide || !formData.usageGuide)
+      ) {
+        throw new Error(
+          "Installation and usage guides are required for complex components"
+        );
       }
 
-      const formDataToSend = new FormData()
+      const formDataToSend = new FormData();
 
       // Append all form data
       Object.entries(formData).forEach(([key, value]) => {
-        formDataToSend.append(key, value)
-      })
+        formDataToSend.append(key, value);
+      });
 
       // Append image if exists
       if (previewImage) {
-        formDataToSend.append("previewImage", previewImage)
+        formDataToSend.append("previewImage", previewImage);
       }
 
       const response = await fetch("/api/gift-component", {
         method: "POST",
         body: formDataToSend,
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Something went wrong")
+        throw new Error(data.message || "Something went wrong");
       }
 
       toast({
         title: "Success!",
         description: "Component submitted successfully",
-      })
+      });
 
       // Reset form
       setFormData({
@@ -123,25 +134,27 @@ const ComponentSubmissionForm = () => {
         installationGuide: "",
         usageGuide: "",
         props: "",
-      })
-      removeImage()
-
+      });
+      removeImage();
     } catch (error) {
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to submit component",
+        description:
+          error instanceof Error ? error.message : "Failed to submit component",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen py-8 px-4">
       <Card className="max-w-3xl mx-auto">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">Submit a Component</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">
+            Submit a Component
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -315,7 +328,7 @@ const ComponentSubmissionForm = () => {
         </CardContent>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default ComponentSubmissionForm
+export default ComponentSubmissionForm;

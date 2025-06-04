@@ -1,16 +1,24 @@
-"use client"
-import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
+"use client";
+import React, { useState } from "react";
+import { Button } from "@/components/ui/Button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { ChevronDown, ChevronRight, Home, Menu, Package, Settings, Users } from "lucide-react"
+} from "@/components/ui/Collapsible";
+import { ScrollArea } from "@/components/ui/ScrollArea";
+import {
+  ChevronDown,
+  ChevronRight,
+  Home,
+  Menu,
+  Package,
+  Settings,
+  Users,
+} from "lucide-react";
 
 export default function Sidenavbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     //add h-screen to the div class name to make the sidebar full height
@@ -21,10 +29,16 @@ export default function Sidenavbar() {
         } flex flex-col border-r transition-all duration-300 ease-in-out`}
       >
         <div className="flex h-16 items-center justify-between border-b px-4">
-          <span className={`${isOpen ? "block" : "hidden"} text-lg font-semibold`}>
+          <span
+            className={`${isOpen ? "block" : "hidden"} text-lg font-semibold`}
+          >
             Menu
           </span>
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <Menu className="h-6 w-6" />
           </Button>
         </div>
@@ -47,13 +61,25 @@ export default function Sidenavbar() {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="ml-4 space-y-1">
-                <Button variant="ghost" size="sm" className="w-full justify-start">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start"
+                >
                   Category 1
                 </Button>
-                <Button variant="ghost" size="sm" className="w-full justify-start">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start"
+                >
                   Category 2
                 </Button>
-                <Button variant="ghost" size="sm" className="w-full justify-start">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start"
+                >
                   Category 3
                 </Button>
               </CollapsibleContent>
@@ -73,5 +99,5 @@ export default function Sidenavbar() {
         <h1 className="text-2xl font-bold">Main Content Area</h1>
       </main>
     </div>
-  )
+  );
 }

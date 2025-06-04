@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import * as React from 'react';
-import { Form, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { toast } from '@/components/ui/use-toast';
-import { LoadingButton } from '@/components/ui/loading-button';
-import { FloatingLabelInput } from '@/components/ui/floating-label-input';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import * as React from "react";
+import { Form, FormField, FormItem, FormMessage } from "@/components/ui/Form";
+import { toast } from "@/components/ui/UseToast";
+import { LoadingButton } from "@/components/ui/LoadingButton";
+import { FloatingLabelInput } from "@/components/ui/FloatingLabelInput";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
-    message: 'name must be at least 2 characters.',
+    message: "name must be at least 2 characters.",
   }),
 });
 
 const FloatingLabelInputForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
-    defaultValues: { name: '' },
+    defaultValues: { name: "" },
     resolver: zodResolver(FormSchema),
-    mode: 'onTouched',
+    mode: "onTouched",
   });
 
   const [loading, setLoading] = React.useState(false);
@@ -30,7 +30,7 @@ const FloatingLabelInputForm = () => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: 'Your submitted data',
+        title: "Your submitted data",
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
             <code className="text-white">{JSON.stringify(data, null, 2)}</code>

@@ -1,6 +1,6 @@
-'use client';
-import * as React from 'react';
-import { H1, H2, H3, H4, H5, H6 } from '@/components/ui/heading-with-anchor';
+"use client";
+import * as React from "react";
+import { H1, H2, H3, H4, H5, H6 } from "@/components/ui/HeadingAnchor";
 
 const HeadingUsage = () => {
   return (

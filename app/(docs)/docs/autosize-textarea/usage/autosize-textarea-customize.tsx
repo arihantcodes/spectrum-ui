@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import * as React from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import * as React from "react";
 import {
   Form,
   FormControl,
@@ -11,20 +11,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from '@/components/ui/use-toast';
-import { useAutosizeTextArea } from '@/components/ui/autosize-textarea';
-import { LoadingButton } from '@/components/ui/loading-button';
+} from "@/components/ui/Form";
+import { Textarea } from "@/components/ui/Textarea";
+import { toast } from "@/components/ui/UseToast";
+import { useAutosizeTextArea } from "@/components/ui/AutosizeTextarea";
+import { LoadingButton } from "@/components/ui/LoadingButton";
 
 const FormSchema = z.object({
   bio: z
     .string()
     .min(10, {
-      message: 'Bio must be at least 10 characters.',
+      message: "Bio must be at least 10 characters.",
     })
     .max(160, {
-      message: 'Bio must not be longer than 30 characters.',
+      message: "Bio must not be longer than 30 characters.",
     }),
 });
 
@@ -36,7 +36,7 @@ const AutosizeTextareaCustomize = () => {
   const [loading, setLoading] = React.useState(false);
 
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
-  const [triggerAutoSize, setTriggerAutoSize] = React.useState('');
+  const [triggerAutoSize, setTriggerAutoSize] = React.useState("");
   useAutosizeTextArea({
     textAreaRef: textAreaRef?.current,
     triggerAutoSize: triggerAutoSize,
@@ -45,7 +45,7 @@ const AutosizeTextareaCustomize = () => {
   });
 
   /** You can use `form.watch` to trigger auto sizing. */
-  const bio = form.watch('bio');
+  const bio = form.watch("bio");
   React.useEffect(() => {
     if (textAreaRef.current) {
       setTriggerAutoSize(bio);
@@ -58,7 +58,7 @@ const AutosizeTextareaCustomize = () => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: 'Your submitted data',
+        title: "Your submitted data",
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
             <code className="text-white">{JSON.stringify(data, null, 2)}</code>

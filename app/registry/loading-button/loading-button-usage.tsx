@@ -1,6 +1,6 @@
-'use client';
-import * as React from 'react';
-import { LoadingButton } from '@/components/ui/loading-button';
+"use client";
+import * as React from "react";
+import { LoadingButton } from "@/components/ui/LoadingButton";
 
 const LoadingButtonUsage = () => {
   const [loading, setLoading] = React.useState(false);

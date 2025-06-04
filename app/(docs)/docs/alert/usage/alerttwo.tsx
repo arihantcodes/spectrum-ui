@@ -1,5 +1,5 @@
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Alert } from "@/components/ui/Alert";
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { Check, X } from "lucide-react";
 import Image from "next/image";
