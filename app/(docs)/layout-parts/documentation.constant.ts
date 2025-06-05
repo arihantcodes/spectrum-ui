@@ -43,7 +43,8 @@ export const DOCS: Documentation[] = [
     groupKey: "components",
     groupValue: "Components",
     children: [
-      { label: "Alert", value: "alert", url: "/docs/alert",  },
+      { label: "Accordion", value: "accordion", url: "/docs/accordion" },
+      { label: "Alert", value: "alert", url: "/docs/alert", },
       {
         label: "Animated SVG Chart",
         value: "animatedchart",
@@ -60,7 +61,7 @@ export const DOCS: Documentation[] = [
         url: "/docs/autosize-textarea",
       },
       { label: "Button", value: "button", url: "/docs/button", },
-      { label: "Card", value: "card", url: "/docs/card" ,    },
+      { label: "Card", value: "card", url: "/docs/card", },
       {
         label: "Datetime Picker",
         value: "datetime-picker",
@@ -80,14 +81,14 @@ export const DOCS: Documentation[] = [
         label: "Event Calendar",
         value: "eventcalendar",
         url: "/docs/eventcalendar",
-   
+
       },
       {
         label: "Event Badge",
         value: "eventbadge",
         url: "/docs/badge",
         new: true,
-   
+
       },
       {
         label: "Feedback Card",
@@ -100,9 +101,9 @@ export const DOCS: Documentation[] = [
         value: "floating-label-input",
         url: "/docs/floating-label-input",
       },
-      { label: "Footer", value: "footer", url: "/docs/footer" ,},
+      { label: "Footer", value: "footer", url: "/docs/footer", },
       {
-        label:"GitHub Card",
+        label: "GitHub Card",
         value: "github-card",
         url: "/docs/github-card",
         new: true,
@@ -140,9 +141,9 @@ export const DOCS: Documentation[] = [
         url: "/docs/multistepform",
 
       },
-      { label: "Navbar", value: "navbar", url: "/docs/navbar" ,},
+      { label: "Navbar", value: "navbar", url: "/docs/navbar", },
       {
-        label:"Profile Dropdown",
+        label: "Profile Dropdown",
         value: "profile-dropdown",
         url: "/docs/profile",
         new: true,
@@ -162,10 +163,10 @@ export const DOCS: Documentation[] = [
         label: "Skeleton",
         value: "skeleton",
         url: "/docs/skeleton",
-     
+
       },
       {
-        label:"Status Badge",
+        label: "Status Badge",
         value: "status-badge",
         url: "/docs/status-badge",
         new: true,

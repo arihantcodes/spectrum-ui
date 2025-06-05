@@ -38,17 +38,15 @@ const SkeletonLoadingPage = () => {
       title="Accordion"
       description="A vertically stacked set of interactive headings that each reveal a section of content."
     >
-      <PreviewCodeCard path="app/(docs)/docs/accordion/accordion-demo.tsx">
-        {<AccordionDemo />}
+      <PreviewCodeCard
+        path="app/(docs)/docs/accordion/accordion-demo.tsx"
+        cli="https://ui.spectrumhq.in/raccordion-demo.json"
+      >
+        <AccordionDemo />
       </PreviewCodeCard>
 
       <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        
-        codePath="components/ui/accordion.tsx"
-        withEnd
-      />
+      <Steppers withInstall codePath="components/ui/accordion.tsx" withEnd />
     </PageTemplate>
   );
 };
