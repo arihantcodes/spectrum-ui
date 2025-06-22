@@ -30,7 +30,7 @@ cd spectrum-ui
 Run the following command to install the project's dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ---
