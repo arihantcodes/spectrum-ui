@@ -91,6 +91,10 @@ const LandingPage = () => {
       </div>
     </section>
 
+    {/*Code Section */}
+    <div className='h-[130vh] bg-black flex justify-center items-center'>
+        <img src="/code.png" alt="" />
+    </div>
     </>
   );
 };
