@@ -50,6 +50,7 @@ import { DollarSign, TrendingUp, Users } from 'lucide-react';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis } from 'recharts';
+import MasonryGrid from '@/utils/MasonryGrid';
 
 export default function CardCollection() {
   const cardComponents = [
@@ -1404,16 +1405,16 @@ function QuickNoteCard() {
     },
   ];
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12  grid-cols-1 ml-2">
-      {cardComponents.map(({ name, component: CardComponent, code }) => (
-        <div key={name} className="relative group">
+    <MasonryGrid>
+        {cardComponents.map(({ name, component: CardComponent, code },index) => (
+        <div key={name} className="relative grid-item mb-[2rem] max-[619px]:w-full flex justify-center group">
           <CardComponent />
           <div className="absolute top-1 right-5 hidden group-hover:flex">
             <Copy content={code} />
           </div>
         </div>
       ))}
-    </div>
+    </MasonryGrid>
   );
 }
 
@@ -2381,7 +2382,7 @@ export function DataVisualizationCard() {
     }
   };
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="w-[310px] max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle>Data Visualization</CardTitle>
         <CardDescription>Interactive chart types</CardDescription>
