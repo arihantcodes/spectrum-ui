@@ -105,7 +105,7 @@ export const PricingButton: React.FC<{ label: string; productId: string }> = ({
           }
           }
           type="button"
-          className="block w-full h-10 text-sm font-semibold text-center text-black duration-500 bg-white border border-white rounded-lg hover:bg-transparent hover:text-white"
+          className="block w-full h-10 text-sm font-semibold text-center text-white duration-500 bg-black border border-white rounded-lg hover:bg-transparent hover:text-black hover:bg-white"
         >
           {label}
         </button>
