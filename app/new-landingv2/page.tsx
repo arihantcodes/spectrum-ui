@@ -198,6 +198,14 @@ const LandingPage = () => {
 
     </div>
 
+    {/* TESTIMONIAL SECTION */}
+    <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center xl:pt-[25vh] md:pt-[10vh] pt-[15vh]'>
+        <p className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal text-white'>What people who work</p>
+        <p className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>with us think about us?</p>
+
+        <TestimonialSection />
+    </div>
+
     
     </>
   );
