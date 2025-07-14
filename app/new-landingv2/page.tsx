@@ -206,6 +206,20 @@ const LandingPage = () => {
         <TestimonialSection />
     </div>
 
+    {/* CTA SECTION */}
+    <div className='xl:h-[50vh] h-[30vh] bg-black flex flex-col justify-start items-center pt-[9vh]'>
+        <p className='lg:text-5xl text-4xl font-inter font-normal text-white'>Your Product</p>
+        <p className='lg:text-5xl text-4xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Deserves a better UI</p>
+        <button
+         style={{
+            background: 'linear-gradient(90deg, #FFFFFF 39.42%, #2388FF 100%)',
+          }}
+         className='text-black text-sm flex justify-center items-center lg:px-[3vh] lg:py-[1.25vh] px-[2vh] py-[1vh] font-inter font-semibold rounded-3xl lg:mt-[5vh] mt-[3vh]'
+         >
+         Let’s work together →
+        </button>
+    </div>
+
     
     </>
   );
