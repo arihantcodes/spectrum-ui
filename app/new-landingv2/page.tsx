@@ -4,6 +4,7 @@ import { Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { motion } from "framer-motion";
 import { Icons } from '@/components/icon';
 import { ShinyCardGroup } from '@/components/shiny-cards';
 import {
@@ -29,7 +30,7 @@ const LandingPage = () => {
     <section className="relative min-h-screen w-full bg-black text-white overflow-visible">
 
       {/* Top-right glow */}
-      <div className='absolute -top-[216px] -left-[5]  h-[798px] w-[270px] bg-[linear-gradient(86.58deg,_#FFFFFF_33.38%,_transparent_83.2%)] z-10 lg:rotate-[115deg] rotate-[150deg] opacity-[25%] blur-[100px]'>
+      <div className='absolute -top-[276px] -left-[5]  h-[798px] w-[270px] bg-[linear-gradient(86.58deg,_#FFFFFF_33.38%,_transparent_83.2%)] z-10 lg:rotate-[115deg] rotate-[150deg] opacity-[25%] blur-[100px] diagonal-slide-in'>
       </div>
 
       {/* Background image */}
@@ -70,10 +71,34 @@ const LandingPage = () => {
 
         {/* HERO */}
         <div className="h-[50vh] flex flex-col justify-start items-center md:gap-[4vh] gap-[3vh] mt-[12vh]">
-            <p className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Premium UI Blocks</p>
-            <p className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>For SaaS & Startups</p>
+            <motion.p
+              initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -10 }}
+              animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+              className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Premium UI Blocks
 
-            <div className='flex md:flex-row flex-col justify-center items-center lg:gap-[5vh] gap-[3vh] lg:mt-[5vh] mt-[3vh]'>
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut", delay: 0.1
+              }}
+              className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>For SaaS & Startups
+
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+              duration: 0.8,
+              ease: "easeOut", delay: 0.2}}
+              className='flex md:flex-row flex-col justify-center items-center lg:gap-[5vh] gap-[3vh] lg:mt-[5vh] mt-[3vh]'>
                 <button
                  style={{
                     background: 'linear-gradient(90deg, #FFFFFF 39.42%, #2388FF 100%)',
@@ -92,28 +117,50 @@ const LandingPage = () => {
                     🌟 660
                   </div>
                 </button>
-            </div>
+            </motion.div>
         </div>
 
         {/*React3d logo */}
-        <img src="/react3dLogo.jpg" alt="React3d Logo" className='md:h-32 h-24 mt-[10vh]' />
+        <motion.img src="/react3dLogo.png" alt="React3d Logo" className='md:h-31 h-24 mt-[10vh]'variants={{
+          idle: { rotate: 0 },
+          spinning: {
+            rotate: 360,
+            transition: {
+              repeat: Infinity,
+              duration: 2,
+              ease: "linear",
+              },
+            },
+          }}
+          initial={{ opacity: 0, y: 30, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          whileHover="spinning" />
       </div>
     </section>
 
     {/*CODE SECTION */}
-    <div className='hidden h-[130vh] w-full bg-black xl:flex justify-center items-start pt-[10vh] px-[10vh]'>
+    <div className='hidden h-[130vh] w-full bg-black xl:flex justify-center items-start pt-[10vh] px-[10vh] overflow-hidden' style={{ perspective: "1000px" }}>
         <NewCodeSection />
     </div>
 
     {/* FEATURE SECTION */}
     <div className='min-h-[80vh] bg-black overflow-auto pt-[15vh] xl:pt-[5vh]'>
         <Link href={siteConfig.links.twitter} className="flex justify-center items-center mb-12">
-          <div className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
+          <motion.div 
+            initial={{ opacity: 0, y: -25, scale: 1.04 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.03 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+            className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
             Feature Your Product on Spectrum UI
-          </div>
+          </motion.div>
         </Link>
         <ShinyCardGroup className="grid h-full max-w-4xl grid-cols-2 gap-6 mx-auto group">
-          <PricingCard color={Color.White} className="col-span-2 md:col-span-1 ">
+          <PricingCard color={Color.White} className="col-span-2 md:col-span-1">
             <FreeCardHighlight className="absolute top-0 right-0 pointer-events-none" />
 
             <PricingCardHeader
@@ -160,7 +207,7 @@ const LandingPage = () => {
               </Bullets>
             </PricingCardContent>
           </PricingCard>
-          <PricingCard color={Color.Yellow} className="col-span-2 md:col-span-1">
+          <PricingCard color={Color.Yellow} className="col-span-2 md:col-span-1 animate-slideUpScale">
             <ProCardHighlight className="absolute top-0 right-0 pointer-events-none" />
 
             <PricingCardHeader
@@ -200,8 +247,20 @@ const LandingPage = () => {
 
     {/* TESTIMONIAL SECTION */}
     <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center xl:pt-[25vh] md:pt-[10vh] pt-[15vh]'>
-        <p className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal text-white'>What people who work</p>
-        <p className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>with us think about us?</p>
+        <motion.p 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal text-white'>What people who work
+        </motion.p>
+        <motion.p 
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>with us think about us?
+        </motion.p>
 
         <TestimonialSection />
     </div>
@@ -222,7 +281,13 @@ const LandingPage = () => {
 
     {/* BACKGROUND SPECTRUM UI TEXT */}
     <div className='xl:h-[30vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
-        <p className='xl:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI</p>
+        <motion.p 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className='xl:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI
+        </motion.p>
     </div>
 
     {/* FOOTER SECTION */}
