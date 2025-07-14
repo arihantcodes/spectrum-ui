@@ -220,12 +220,15 @@ const LandingPage = () => {
         </button>
     </div>
 
-    {/* BACKGROUND SPECTRUM UI SECTION */}
+    {/* BACKGROUND SPECTRUM UI TEXT */}
     <div className='xl:h-[30vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
         <p className='xl:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI</p>
     </div>
 
-    
+    {/* FOOTER SECTION */}
+    <div className='xl:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black xl:-mt-[15vh] -mt-[1vh] relative'>
+      <NewFooter />
+    </div>
     </>
   );
 };
