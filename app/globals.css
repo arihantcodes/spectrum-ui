@@ -348,3 +348,21 @@ pre > code {
     }
   }
 }
+
+@keyframes diagonal-slide-in {
+  from {
+    transform: rotate(115deg) translate(-200px, -200px);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(115deg) translate(0, 0);
+    opacity: 0.25;
+  }
+}
+
+@layer utilities {
+  .diagonal-slide-in {
+    animation: diagonal-slide-in 1s ease-in-out forwards;
+  }
+}
+
