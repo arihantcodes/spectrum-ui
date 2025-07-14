@@ -41,11 +41,36 @@ const LandingPage = () => {
         priority
       />
 
-      
-      
-    </section>
+      <div className="relative z-10 flex flex-col justify-start items-center h-full">
 
-    
+        {/* NAVBAR */}
+        <div className="lg:h-[10vh] h-[9vh] flex justify-center items-center gap-[3vh] mt-[1vh]">
+            <div className="h-[60%] flex justify-center items-center border-2 border-gray-800 rounded-l-3xl pr-[1vh] pl-[1.5vh] py-[1vh]">
+              <img
+              src="/spectrumLogo.svg"
+              alt="Spectrum Logo"
+              className="h-7"
+              />
+            </div>
+
+            <div className="hidden h-[60%] md:flex justify-center items-center gap-[4vh] text-sm font-semibold font-inter text-white pl-[4vh] pr-[0.7vh] border-2 border-gray-800 rounded-l-lg rounded-r-3xl">
+                <p className="text-base cursor-pointer">Docs</p>
+                <p className="text-base cursor-pointer">Block</p>
+                <p className="text-base cursor-pointer">Colors</p>
+                <p className="text-base cursor-pointer">Pricing</p>
+                <button 
+                  style={{
+                    background: 'linear-gradient(90deg, #FFFFFF 39.42%, #2388FF 100%)',
+                  }}
+                  className="text-black text-base flex justify-center items-center px-[2.5vh] py-[0.6vh] rounded-3xl">
+                  Book a Call
+                </button>
+            </div>
+        </div>
+
+        </div>
+
+        </section>
     </>
   );
 };
