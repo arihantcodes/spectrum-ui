@@ -100,6 +100,11 @@ const LandingPage = () => {
       </div>
     </section>
 
+    {/*CODE SECTION */}
+    <div className='hidden h-[130vh] w-full bg-black xl:flex justify-center items-start pt-[10vh] px-[10vh]'>
+        <NewCodeSection />
+    </div>
+
     
     </>
   );
