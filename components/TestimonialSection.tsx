@@ -1,4 +1,6 @@
 
+import { motion } from "framer-motion";
+import { easeOut } from "framer-motion";
 import Image from "next/image";
 
 export default function TestimonialSection() {
@@ -68,13 +70,39 @@ export default function TestimonialSection() {
     },
   ];
   
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.05
+      }
+    }
+  };
+
+const card = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.3,
+            ease: easeOut
+          } 
+        },
+  };
 
   return (
     <section className="py-20 px-4 flex flex-col items-center">
-      <div className="flex justify-center flex-wrap gap-5 w-full max-w-6xl">
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        className="flex justify-center flex-wrap gap-5 w-full max-w-6xl">
+
         {/* Cards */}
         {testimonials.map((testimonial, i) => (
-          <div key={i} className="w-full md:w-[48%] lg:w-[30%] bg-neutral-900 p-6 rounded-xl flex flex-col justify-between gap-4">
+          <motion.div key={i} variants={card}
+          className="w-full md:w-[48%] lg:w-[30%] bg-neutral-900 p-6 rounded-xl flex flex-col justify-between gap-4">
             <p className="md:text-lg text-base text-neutral-100 font-inter font-normal">{testimonial.text}</p>
             <div className="flex items-center gap-4 mt-[2vh]">
               <Image
@@ -91,10 +119,11 @@ export default function TestimonialSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <button className="text-sm mt-8 px-20 py-2 rounded-full font-inter font-medium bg-white text-black">
+      </motion.div>
+      <button
+       className="text-sm mt-8 px-20 py-2 rounded-full font-inter font-medium bg-white text-black">
         Learn More
       </button>
     </section>
