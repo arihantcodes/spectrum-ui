@@ -82,6 +82,7 @@ const config = {
       fontFamily: {
         code: ["var(--font-geist-mono)"],
         regular: ["var(--font-geist-sans)"],
+        inter: ["var(--font-inter)"],
       },
       keyframes: {
         slideOutToTopFull: {
