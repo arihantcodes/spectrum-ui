@@ -68,9 +68,39 @@ const LandingPage = () => {
             </div>
         </div>
 
+        {/* HERO */}
+        <div className="h-[50vh] flex flex-col justify-start items-center md:gap-[4vh] gap-[3vh] mt-[12vh]">
+            <p className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Premium UI Blocks</p>
+            <p className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>For SaaS & Startups</p>
+
+            <div className='flex md:flex-row flex-col justify-center items-center lg:gap-[5vh] gap-[3vh] lg:mt-[5vh] mt-[3vh]'>
+                <button
+                 style={{
+                    background: 'linear-gradient(90deg, #FFFFFF 39.42%, #2388FF 100%)',
+                  }}
+                 className='text-black text-base flex justify-center items-center lg:px-[3vh] lg:py-[1.25vh] px-[2vh] py-[1vh] font-inter font-semibold rounded-3xl'
+                 >
+                 Explore Components
+                </button>
+                <button className='flex bg-[rgba(38,38,38,0.6)] text-sm lg:px-[3vh] lg:py-[1.45vh] px-[2vh] py-[1vh] font-regular font-medium rounded-3xl'>
+                  <div className="flex items-center">
+                    <Icons.gitHub className="size-4" />
+    
+                    <span className="ml-1 ">Star on GitHub</span>
+                  </div>
+                  <div className="ml-1 flex items-center gap-1 text-sm md:flex">
+                    🌟 660
+                  </div>
+                </button>
+            </div>
         </div>
 
-        </section>
+        {/*React3d logo */}
+        <img src="/react3dLogo.jpg" alt="React3d Logo" className='md:h-32 h-24 mt-[10vh]' />
+      </div>
+    </section>
+
+    
     </>
   );
 };
