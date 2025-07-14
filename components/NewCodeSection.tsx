@@ -1,10 +1,16 @@
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 
 export default function NewCodeSection(){
 
     return(
-        <div className="h-[80%] w-full flex flex-col justify-start border border-[rgba(214,235,253,0.19)] rounded-2xl">
+        <motion.div 
+          initial={{ rotateX: 50, opacity: 0 }}
+          whileInView={{ rotateX: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="h-[80%] w-full flex flex-col justify-start border border-[rgba(214,235,253,0.19)] rounded-2xl"
+          style={{ transformStyle: "preserve-3d" }}>
 
             {/* Title bar */}
             <div className="h-[8%] w-full flex justify-between items-center border-b border-[rgba(214,235,253,0.19)] p-3 ">
@@ -93,6 +99,6 @@ export default function NewCodeSection(){
                 </div>
 
             </div>
-        </div>
+        </motion.div>
     )
 }
