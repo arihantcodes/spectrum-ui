@@ -362,7 +362,7 @@ pre > code {
 
 @layer utilities {
   .diagonal-slide-in {
-    animation: diagonal-slide-in 1s ease-in-out forwards;
+    animation: diagonal-slide-in 0.4s ease-in-out forwards;
   }
 }
 

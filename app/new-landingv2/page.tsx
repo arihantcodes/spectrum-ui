@@ -75,7 +75,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -10 }}
               animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
               transition={{
-                duration: 0.8,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Premium UI Blocks
@@ -85,7 +85,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 30, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
-                duration: 0.8,
+                duration: 0.4,
                 ease: "easeOut", delay: 0.1
               }}
               className='lg:text-7xl md:text-6xl text-4xl font-semibold font-regular bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>For SaaS & Startups
@@ -96,7 +96,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 30, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
-              duration: 0.8,
+              duration: 0.4,
               ease: "easeOut", delay: 0.2}}
               className='flex md:flex-row flex-col justify-center items-center lg:gap-[5vh] gap-[3vh] lg:mt-[5vh] mt-[3vh]'>
                 <button
@@ -134,7 +134,7 @@ const LandingPage = () => {
           }}
           initial={{ opacity: 0, y: 30, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 0.4, ease: "easeOut", delay: 0.3 }}
           whileHover="spinning" />
       </div>
     </section>
