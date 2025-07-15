@@ -13,7 +13,7 @@ export default function NewFooter(){
         />
         
         {/* Footer */}
-        <div className='relative z-10 h-full w-[90%] flex md:flex-row flex-col justify-start items-center xl:p-[10vh] md:p-[2vh] xl:gap-[40vh] md:gap-[10vh] gap-[7vh]' style={{
+        <div className='relative z-10 h-full w-[90%] flex md:flex-row flex-col justify-start items-center lg:p-[10vh] md:p-[2vh] lg:gap-[40vh] md:gap-[10vh] gap-[7vh]' style={{
           borderTop: '2px solid',
           borderImageSource: 'linear-gradient(89.85deg, rgba(255, 255, 255, 0.2) 6.22%, rgba(102, 102, 102, 0.4) 106.35%)',
           borderImageSlice: 1,
@@ -32,7 +32,7 @@ export default function NewFooter(){
               </div>
           </div>
   
-          <div className='md:h-[70%] h-[50%] flex justify-around items-start lg:mt-[8vh] md:mt-[5vh] mt-0 xl:gap-[18vh] md:gap-[5vh] gap-[2vh]'>
+          <div className='md:h-[70%] h-[50%] flex justify-around items-start lg:mt-[8vh] md:mt-[5vh] mt-0 lg:gap-[18vh] md:gap-[5vh] gap-[2vh]'>
             <div className='flex flex-col justify-start items-center md:gap-[2vh] gap-[1vh]'>
                 <p className='text-xs text-[rgba(252,253,255,0.937)] font-inter font-normal '>Documentation</p>
                 <p className='text-xs text-[rgba(241,247,254,0.71)] font-inter font-normal'>Getting Started</p>
