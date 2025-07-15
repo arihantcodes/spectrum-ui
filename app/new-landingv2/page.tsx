@@ -281,12 +281,12 @@ const LandingPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className='lg:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI
+          className='text-[clamp(2rem,12vw,200px)] font-bold text-neutral-800'>SPECTRUM UI
         </motion.p>
     </div>
 
     {/* FOOTER SECTION */}
-    <div className='lg:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black lg:-mt-[15vh] -mt-[1vh] relative'>
+    <div className='lg:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black lg:-mt-[14.5vh] -mt-[1vh] relative'>
       <NewFooter />
     </div>
     </>
