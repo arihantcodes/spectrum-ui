@@ -72,8 +72,8 @@ const LandingPage = () => {
         {/* HERO */}
         <div className="h-[50vh] flex flex-col justify-start items-center md:gap-[4vh] gap-[3vh] mt-[12vh]">
             <motion.p
-              initial={{ opacity: 0, y: 20, scale: 0.8, rotateX: -10 }}
-              animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1}}
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
@@ -145,120 +145,115 @@ const LandingPage = () => {
     </div>
 
     {/* FEATURE SECTION */}
-    <div className='min-h-[80vh] bg-black overflow-auto pt-[15vh] xl:pt-[5vh]'>
+    <div className='xl:min-h-[120vh] min-h-[85vh] w-full bg-black overflow-auto overflow-x-hidden pt-[15vh] xl:pt-[5vh]' style={{ perspective: "1000px" }}>
         <Link href={siteConfig.links.twitter} className="flex justify-center items-center mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: -25, scale: 1.04 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.01 }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-            className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
+          <div className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
             Feature Your Product on Spectrum UI
-          </motion.div>
+          </div>
         </Link>
-        <ShinyCardGroup className="grid h-full max-w-4xl grid-cols-2 gap-6 mx-auto group">
-          <PricingCard color={Color.White} className="col-span-2 md:col-span-1">
-            <FreeCardHighlight className="absolute top-0 right-0 pointer-events-none" />
 
-            <PricingCardHeader
-              title="💜 Support Spectrum UI"
-              description="Support Spectrum UI and get early access + your name on the wall."
-              className="bg-gradient-to-tr from-transparent to-[#ffffff]/10 "
-              color={Color.White}
-            />
-            <Separator />
+        <motion.div 
+          initial={{ rotateX: -50, opacity: 0 }}
+          whileInView={{ rotateX: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full flex justify-center items-center" 
+          style={{ transformStyle: "preserve-3d", willChange: "transform" }}>
 
-            <PricingCardContent>
-              <Cost dollar="$20" />
-              <PricingButton
-                productId="656c8573-32fe-4433-a0d9-ddd45ae267c6"
-                label="Become a Supporter"
+          <ShinyCardGroup className="grid h-full w-full max-w-4xl grid-cols-2 gap-6 mx-auto group">
+            <PricingCard color={Color.White} className="col-span-2 md:col-span-1">
+              <FreeCardHighlight className="absolute top-0 right-0 pointer-events-none" />
+  
+              <PricingCardHeader
+                title="💜 Support Spectrum UI"
+                description="Support Spectrum UI and get early access + your name on the wall."
+                className="bg-gradient-to-tr from-transparent to-[#ffffff]/10 "
+                color={Color.White}
               />
-              <Bullets>
-                <li>
-                  <Bullet
-                    Icon={Check}
-                    label="Show your support for Spectrum UI"
-                    color={Color.White}
-                  />
-                </li>
-
-                <li>
-                  <Bullet
-                    Icon={Check}
-                    label="Get your name listed on our Supporter Wall"
-                    color={Color.White}
-                  />
-                </li>
-                <li>
-                  {' '}
-                  <Bullet
-                    Icon={Check}
-                    label="Priority access to new components & updates"
-                    color={Color.White}
-                  />
-                </li>
-                <li>
-                  <Bullet Icon={Check} label="Warm fuzzy feeling ❤️" color={Color.White} />
-                </li>
-              </Bullets>
-            </PricingCardContent>
-          </PricingCard>
-          <PricingCard color={Color.Yellow} className="col-span-2 md:col-span-1 animate-slideUpScale">
-            <ProCardHighlight className="absolute top-0 right-0 pointer-events-none" />
-
-            <PricingCardHeader
-              title="Golden Banner Promotion"
-              description="Promote your product at the top of every page "
-              className="bg-gradient-to-tr from-black/50 to-[#FFD600]/10 "
-              color={Color.Yellow}
-            />
-            <Separator />
-
-            <PricingCardContent>
-              <Cost dollar="$199" />
-              <PricingButton
-                productId="f0a5e414-d0aa-4f1c-9822-ce9e24f00faf"
-                label="Book the Banner Slot"
+              <Separator />
+  
+              <PricingCardContent>
+                <Cost dollar="$20" />
+                <PricingButton
+                  productId="656c8573-32fe-4433-a0d9-ddd45ae267c6"
+                  label="Become a Supporter"
+                />
+                <Bullets>
+                  <li>
+                    <Bullet
+                      Icon={Check}
+                      label="Show your support for Spectrum UI"
+                      color={Color.White}
+                    />
+                  </li>
+  
+                  <li>
+                    <Bullet
+                      Icon={Check}
+                      label="Get your name listed on our Supporter Wall"
+                      color={Color.White}
+                    />
+                  </li>
+                  <li>
+                    {' '}
+                    <Bullet
+                      Icon={Check}
+                      label="Priority access to new components & updates"
+                      color={Color.White}
+                    />
+                  </li>
+                  <li>
+                    <Bullet Icon={Check} label="Warm fuzzy feeling ❤️" color={Color.White} />
+                  </li>
+                </Bullets>
+              </PricingCardContent>
+            </PricingCard>
+            <PricingCard color={Color.Yellow} className="col-span-2 md:col-span-1 animate-slideUpScale">
+              <ProCardHighlight className="absolute top-0 right-0 pointer-events-none" />
+  
+              <PricingCardHeader
+                title="Golden Banner Promotion"
+                description="Promote your product at the top of every page "
+                className="bg-gradient-to-tr from-black/50 to-[#FFD600]/10 "
+                color={Color.Yellow}
               />
-              <Bullets>
-                <li>
-                  <Bullet Icon={Check} label="Banner on all pages" color={Color.Yellow} />
-                </li>
-
-                <li>
-                  <Bullet Icon={Check} label="Custom link + message" color={Color.Yellow} />
-                </li>
-                <li>
-                  <Bullet Icon={Check} label="3 slots only" color={Color.Yellow} />
-                </li>
-                <li>
-                  <Bullet Icon={Check} label="Seen by 10,000+ devs/month" color={Color.Yellow} />
-                </li>
-              </Bullets>
-            </PricingCardContent>
-          </PricingCard>
-        </ShinyCardGroup>
-
+              <Separator />
+  
+              <PricingCardContent>
+                <Cost dollar="$199" />
+                <PricingButton
+                  productId="f0a5e414-d0aa-4f1c-9822-ce9e24f00faf"
+                  label="Book the Banner Slot"
+                />
+                <Bullets>
+                  <li>
+                    <Bullet Icon={Check} label="Banner on all pages" color={Color.Yellow} />
+                  </li>
+  
+                  <li>
+                    <Bullet Icon={Check} label="Custom link + message" color={Color.Yellow} />
+                  </li>
+                  <li>
+                    <Bullet Icon={Check} label="3 slots only" color={Color.Yellow} />
+                  </li>
+                  <li>
+                    <Bullet Icon={Check} label="Seen by 10,000+ devs/month" color={Color.Yellow} />
+                  </li>
+                </Bullets>
+              </PricingCardContent>
+            </PricingCard>
+          </ShinyCardGroup>
+      </motion.div>
     </div>
 
     {/* TESTIMONIAL SECTION */}
-    <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center xl:pt-[25vh] md:pt-[10vh] pt-[15vh]'>
+    <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center xl:pt-[15vh] md:pt-[10vh] pt-[15vh]'>
         <motion.p 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          
           className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal text-white'>What people who work
         </motion.p>
         <motion.p 
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          
           className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>with us think about us?
         </motion.p>
 
