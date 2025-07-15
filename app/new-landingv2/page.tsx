@@ -140,12 +140,12 @@ const LandingPage = () => {
     </section>
 
     {/*CODE SECTION */}
-    <div className='hidden h-[130vh] w-full bg-black xl:flex justify-center items-start pt-[10vh] px-[10vh] overflow-hidden' style={{ perspective: "1000px" }}>
+    <div className='hidden h-[130vh] w-full bg-black lg:flex justify-center items-start pt-[10vh] px-[10vh] overflow-hidden' style={{ perspective: "1000px" }}>
         <NewCodeSection />
     </div>
 
     {/* FEATURE SECTION */}
-    <div className='xl:min-h-[120vh] min-h-[85vh] w-full bg-black overflow-auto overflow-x-hidden pt-[15vh] xl:pt-[5vh]' style={{ perspective: "1000px" }}>
+    <div className='lg:min-h-[120vh] min-h-[85vh] w-full bg-black overflow-auto overflow-x-hidden pt-[15vh] lg:pt-[5vh]' style={{ perspective: "1000px" }}>
         <Link href={siteConfig.links.twitter} className="flex justify-center items-center mb-12">
           <div className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
             Feature Your Product on Spectrum UI
@@ -247,7 +247,7 @@ const LandingPage = () => {
     </div>
 
     {/* TESTIMONIAL SECTION */}
-    <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center xl:pt-[15vh] md:pt-[10vh] pt-[15vh]'>
+    <div className='min-h-[100vh] w-full bg-black overflow-auto flex flex-col justify-start items-center lg:pt-[15vh] md:pt-[10vh] pt-[15vh]'>
         <motion.p 
           
           className='lg:text-5xl md:text-4xl text-3xl font-inter font-normal text-white'>What people who work
@@ -261,7 +261,7 @@ const LandingPage = () => {
     </div>
 
     {/* CTA SECTION */}
-    <div className='xl:h-[50vh] h-[30vh] bg-black flex flex-col justify-start items-center pt-[9vh]'>
+    <div className='lg:h-[50vh] h-[30vh] bg-black flex flex-col justify-start items-center pt-[9vh]'>
         <p className='lg:text-5xl text-4xl font-inter font-normal text-white'>Your Product</p>
         <p className='lg:text-5xl text-4xl font-inter font-normal bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent'>Deserves a better UI</p>
         <button
@@ -275,18 +275,18 @@ const LandingPage = () => {
     </div>
 
     {/* BACKGROUND SPECTRUM UI TEXT */}
-    <div className='xl:h-[30vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
+    <div className='lg:h-[30vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
         <motion.p 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className='xl:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI
+          className='lg:text-[200px] md:text-[100px] text-[50px] tracking-tighter font-bold text-neutral-800'>SPECTRUM UI
         </motion.p>
     </div>
 
     {/* FOOTER SECTION */}
-    <div className='xl:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black xl:-mt-[15vh] -mt-[1vh] relative'>
+    <div className='lg:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black lg:-mt-[15vh] -mt-[1vh] relative'>
       <NewFooter />
     </div>
     </>
