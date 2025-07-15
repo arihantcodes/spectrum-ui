@@ -7,6 +7,9 @@ import { siteConfig } from '@/config/site';
 import { motion } from "framer-motion";
 import { Icons } from '@/components/icon';
 import { ShinyCardGroup } from '@/components/shiny-cards';
+import { NumberTicker } from '@/components/magicui/number-ticker';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import {
   Bullet,
   Bullets,
@@ -25,6 +28,20 @@ import NewCodeSection from '@/components/NewCodeSection';
 import NewFooter from '@/components/NewFooter';
 
 const LandingPage = () => {
+  const [star, setStar] = useState(0);
+  const fetchGithubData = () => {
+    axios
+      .get('https://api.github.com/repos/arihantcodes/spectrum-ui')
+      .then((response) => {
+        const star = response.data.stargazers_count;
+        setStar(star);
+      })
+      .catch((error) => {});
+  };
+
+  useEffect(() => {
+    fetchGithubData();
+  }, []);
   return (
     <>
     <section className="relative min-h-screen w-full bg-black text-white overflow-visible">
@@ -114,7 +131,8 @@ const LandingPage = () => {
                     <span className="ml-1 ">Star on GitHub</span>
                   </div>
                   <div className="ml-1 flex items-center gap-1 text-sm md:flex">
-                    🌟 660
+                    🌟 
+                    <NumberTicker value={star} className="font-display" />
                   </div>
                 </button>
             </motion.div>
