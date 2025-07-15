@@ -145,7 +145,7 @@ const LandingPage = () => {
     </div>
 
     {/* FEATURE SECTION */}
-    <div className='lg:min-h-[120vh] min-h-[85vh] w-full bg-black overflow-auto overflow-x-hidden pt-[15vh] lg:pt-[5vh]' style={{ perspective: "1000px" }}>
+    <div className='lg:min-h-[100vh] min-h-[85vh] w-full bg-black overflow-auto overflow-x-hidden pt-[15vh] lg:pt-[5vh] pb-[15vh]' style={{ perspective: "1000px" }}>
         <Link href={siteConfig.links.twitter} className="flex justify-center items-center mb-12">
           <div className="px-8 rounded-2xl text-center mt-4 font-semibold font-regular lg:text-5xl md:text-4xl text-3xl mb-8 bg-[linear-gradient(90deg,_#FFFFFF_34.13%,_#2388FF_77.88%)] bg-clip-text text-transparent">
             Feature Your Product on Spectrum UI
