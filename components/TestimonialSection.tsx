@@ -91,7 +91,7 @@ const card = {
   };
 
   return (
-    <section className="py-20 px-4 flex flex-col items-center">
+    <section className="p-20 flex flex-col items-center">
       <motion.div 
         variants={container}
         initial="hidden"
