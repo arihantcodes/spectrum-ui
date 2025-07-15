@@ -275,7 +275,7 @@ const LandingPage = () => {
     </div>
 
     {/* BACKGROUND SPECTRUM UI TEXT */}
-    <div className='lg:h-[30vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
+    <div className='lg:h-[35vh] h-[15vh] flex flex-col justify-end items-center bg-black relative z-0'>
         <motion.p 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ const LandingPage = () => {
     </div>
 
     {/* FOOTER SECTION */}
-    <div className='lg:h-[60vh] h-[40vh] w-full flex justify-center items-center bg-black lg:-mt-[14.5vh] -mt-[1vh] relative'>
+    <div className='lg:h-[55vh] h-[40vh] w-full flex justify-center items-center bg-black lg:-mt-[14.5vh] -mt-[1vh] relative'>
       <NewFooter />
     </div>
     </>
