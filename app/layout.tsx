@@ -102,6 +102,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
+//  👇🏼 These below components have been COMMENTED OUT for isolated new landing page work.
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -144,7 +146,7 @@ export default function RootLayout({
         >
           <Analytics />
 
-          <div className="bg-gradient-to-b from-blue-500 to-blue-600 px-4 py-3 text-left font-sans text-base font-medium tracking-tight text-white md:text-center">
+          {/* <div className="bg-gradient-to-b from-blue-500 to-blue-600 px-4 py-3 text-left font-sans text-base font-medium tracking-tight text-white md:text-center">
             <Link
               href="/docs/profile"
               className="flex items-center justify-center"
@@ -153,9 +155,9 @@ export default function RootLayout({
               one command away.
               <ChevronRight className=" h-4 w-4 mt-1 ml-2 " />
             </Link>
-          </div>
+          </div> */}
 
-          <SiteHeader />
+          {/* <SiteHeader /> */}
           <main className="flex flex-1 flex-col">
             {" "}
             <PostHogProvider>{children}</PostHogProvider>
@@ -163,8 +165,8 @@ export default function RootLayout({
           <CrispChat />
 
           <Toaster />
-          <Cta />
-          <Footer />
+          {/* <Cta /> */}
+          {/* <Footer /> */}
         </ThemeProvider>
         <SpeedInsights />
       </body>
