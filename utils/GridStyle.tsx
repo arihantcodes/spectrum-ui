@@ -15,8 +15,7 @@ export const GridColumns = (
   const parentWidth = containerRef.current?.offsetWidth || 0;
 
   let columns = 0;
-  if (parentWidth >= 1200) columns = 4;
-  else if (parentWidth >= 990) columns = 3;
+  if (parentWidth >= 990) columns = 3;
   else if (parentWidth >= 700) columns = 2;
   else if (parentWidth <= 619) columns = 1;
 
