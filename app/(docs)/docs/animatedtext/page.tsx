@@ -18,7 +18,7 @@ const Textanimation = () => {
     <PageTemplate title="Holographic Scan Reveal" className="mt-6">
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/hologram-text.tsx"
-        cli="https://ui.spectrumhq.in/r/holographic.json"
+        cli="@spectrumui/holographic"
       >
         <ReloadableHologram />
       </PreviewCodeCard>
@@ -26,14 +26,14 @@ const Textanimation = () => {
         withInstall
         codePath="app/(docs)/docs/animatedtext/usage/holo.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/holographic.json"
+        installScript="npx shadcn@latest add @spectrumui/holographic"
       />
 
       <PageSubTitle>Orbital Letters</PageSubTitle>
 
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/orbital-text.tsx"
-        cli="https://ui.spectrumhq.in/r/orbital-letters.json"
+        cli="@spectrumui/orbital-letters"
       >
         <ReloadableOrbital />
       </PreviewCodeCard>
@@ -41,13 +41,13 @@ const Textanimation = () => {
         withInstall
         codePath="app/(docs)/docs/animatedtext/usage/orbital.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/orbital-letters.json"
+        installScript="npx shadcn@latest add @spectrumui/orbital-letters"
       />
       <PageSubTitle>Fluid Ink Morph</PageSubTitle>
 
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/ink-morph.tsx"
-        cli="https://ui.spectrumhq.in/r/ink.json"
+        cli="@spectrumui/ink-morph"
       >
         <ReloadableInk />
       </PreviewCodeCard>
@@ -55,7 +55,7 @@ const Textanimation = () => {
         withInstall
         codePath="app/(docs)/docs/animatedtext/usage/ink.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/ink.json"
+        installScript="npx shadcn@latest add @spectrumui/ink-morph"
       />
     </PageTemplate>
   );

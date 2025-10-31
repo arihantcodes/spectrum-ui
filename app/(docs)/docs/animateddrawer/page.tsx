@@ -17,7 +17,7 @@ const Loginpage = () => {
     <PageTemplate title="Animated Drawer">
       <PreviewCodeCard
         path="app/(docs)/docs/animateddrawer/demo.tsx"
-        cli="https://ui.spectrumhq.in/r/animated_drawer.json"
+        cli="@spectrumui/animated-drawer"
       >
         <AnimatedDrawer />
       </PreviewCodeCard>

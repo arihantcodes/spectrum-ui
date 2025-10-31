@@ -10,7 +10,7 @@ const page = () => {
       <PageTemplate title="Image Preview" className="mt-5">
         <PreviewCodeCard
           path="app/(docs)/docs/imagepreview/usages/useone.tsx"
-          cli="https://ui.spectrumhq.in/r/image_preview.json"
+          cli="@spectrumui/image-preview"
         >
           <Demoimages />
         </PreviewCodeCard>

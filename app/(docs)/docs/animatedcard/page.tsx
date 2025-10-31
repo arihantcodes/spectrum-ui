@@ -20,7 +20,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Animated Card">
       <PreviewCodeCard
         path="app/(docs)/docs/animatedcard/animatedCarddemo.tsx"
-        cli="https://ui.spectrumhq.in/r/animated_card.json"
+        cli="@spectrumui/animated-card"
       >
         <AnimatedCardDemo />
       </PreviewCodeCard>

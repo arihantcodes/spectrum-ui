@@ -10,7 +10,7 @@ const page = () => {
       <PageTemplate title="Event Calendar" className="mt-5">
         <PreviewCodeCard
           path="app/(docs)/docs/eventcalendar/demoevent.tsx"
-          cli="https://ui.spectrumhq.in/r/event_calendar.json"
+          cli="@spectrumui/event-calendar"
         >
           <EventCalendar />
         </PreviewCodeCard>

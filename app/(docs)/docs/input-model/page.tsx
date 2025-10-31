@@ -16,7 +16,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Input Model">
       <PreviewCodeCard
         path="app/(docs)/docs/input-model/input-model.tsx"
-        cli="https://ui.spectrumhq.in/r/input-model.json"
+        cli="@spectrumui/input-model"
       >
         <InputModel />
       </PreviewCodeCard>
@@ -26,7 +26,7 @@ const DualRangeSliderPage = () => {
         withInstall
         codePath="app/(docs)/docs/input-model/input-model.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/input-model.json"
+        installScript="npx shadcn@latest add @spectrumui/input-model"
       />
     </PageTemplate>
   );

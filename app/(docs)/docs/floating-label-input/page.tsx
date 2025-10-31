@@ -33,7 +33,7 @@ const FloatingLabelPage = () => {
       </ReferenceBorder>
       <PreviewCodeCard
         path="app/(docs)/docs/floating-label-input/floating-label-input-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/floating_label_input_demo.json"
+        cli="@spectrumui/floating-label-input-demo"
       >
         <FloatingLabelInputDemo />
       </PreviewCodeCard>
@@ -49,8 +49,8 @@ const FloatingLabelPage = () => {
       <PageSubTitle>Usage</PageSubTitle>
       <Usage
         title="Customize"
-        path="app/(docs)/docs//floating-label-input/usage/floating-label-customize.tsx"
-        cli="https://ui.spectrumhq.in/r/floating_label_customize.json"
+        path="app/(docs)/docs/floating-label-input/usage/floating-label-customize.tsx"
+        cli="@spectrumui/floating-label-customize"
         description={
           <p className="text-muted-foreground">
             You have fully control of the <InlineCode>FloatingLabel</InlineCode>{" "}
@@ -63,8 +63,8 @@ const FloatingLabelPage = () => {
 
       <Usage
         title="Form"
-        path="app/(docs)/docs//floating-label-input/usage/floating-label-input-form.tsx"
-        cli="https://ui.spectrumhq.in/r/floating_label_form.json"
+        path="app/(docs)/docs/floating-label-input/usage/floating-label-input-form.tsx"
+        cli="@spectrumui/floating-label-form"
       >
         <FloatingLabelInputForm />
       </Usage>

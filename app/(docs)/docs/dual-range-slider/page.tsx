@@ -27,7 +27,7 @@ const DualRangeSliderPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/dual-range-slider/dual-range-slider-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/dual_range_slider_demo.json"
+        cli="@spectrumui/dual-range-slider-demo"
       >
         <DualRangeSliderDemo />
       </PreviewCodeCard>
@@ -44,21 +44,21 @@ const DualRangeSliderPage = () => {
       <Usage
         title="Custom Label"
         path="app/(docs)/docs/dual-range-slider/usage/dual-range-slider-custom-label.tsx"
-        cli="https://ui.spectrumhq.in/r/dual_range_slider_custom_label.json"
+        cli="@spectrumui/dual-range-slider-custom-label"
       >
         <DualRangeSliderCustomLabel />
       </Usage>
       <Usage
         title="Label Position"
         path="app/(docs)/docs/dual-range-slider/usage/dual-range-slider-label-position.tsx"
-        cli="https://ui.spectrumhq.in/r/dual_range_slider_label_position.json"
+        cli="@spectrumui/dual-range-slider-label-position"
       >
         <DualRangeSliderLabelPosition />
       </Usage>
       <Usage
         title="Single Slider"
         path="app/(docs)/docs/dual-range-slider/usage/dual-range-slider-single.tsx"
-        cli="https://ui.spectrumhq.in/r/dual_range_slider_single.json"
+        cli="@spectrumui/dual-range-slider-single"
       >
         <DualRangeSliderSingle />
       </Usage>

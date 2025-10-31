@@ -25,7 +25,7 @@ const InfiniteScrollPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/infinite-scroll/infinite-scroll-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/infinite_scroll_demo.json"
+        cli="@spectrumui/infinite-scroll-demo"
       >
         <InfiniteScrollDemo />
       </PreviewCodeCard>

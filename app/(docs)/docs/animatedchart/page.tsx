@@ -17,7 +17,7 @@ const page = () => {
         <PreviewCodeCard
           className=""
           path="app/(docs)/docs/animatedchart/animateddemo.tsx"
-          cli={`${baseurl}/r/animated_SVG_Chart.json`}
+          cli="@spectrumui/animated-SVG-chart"
         >
           <Chart />
         </PreviewCodeCard>

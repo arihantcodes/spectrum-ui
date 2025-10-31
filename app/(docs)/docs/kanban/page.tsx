@@ -18,7 +18,7 @@ const KanbanBoard = () => {
     <PageTemplate title="kanban Board">
       <PreviewCodeCard
         path="app/(docs)/docs/kanban/kanban01.tsx"
-        cli="https://ui.spectrumhq.in/r/kanbanboard.json"
+        cli="@spectrumui/kanbanboard"
       >
         <KanbanGlassForest />
       </PreviewCodeCard>
@@ -27,7 +27,7 @@ const KanbanBoard = () => {
         withInstall
         codePath="app/(docs)/docs/kanban/kanban01.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/kanbanboard.json"
+        installScript="npx shadcn@latest add @spectrumui/kanbanboard"
       />
     </PageTemplate>
   );

@@ -19,7 +19,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Vercel 3D Event Badge">
       <PreviewCodeCard
         path="app/(docs)/docs/badge/badgedemo.tsx"
-        cli="https://ui.spectrumhq.in/r/event_badge_3d.json"
+        cli="@spectrumui/event-badge-3d"
       >
         <EventBadge />
       </PreviewCodeCard>

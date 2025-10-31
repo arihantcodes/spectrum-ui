@@ -29,7 +29,7 @@ const AutosizeTextareaPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/autosize-textarea/autosize-textarea-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/autosize_textarea_demo.json"
+        cli="@spectrumui/autosize-textarea-demo"
       >
         <AutosizeTextareaDemo />
       </PreviewCodeCard>
@@ -45,21 +45,21 @@ const AutosizeTextareaPage = () => {
       <Usage
         title="Max height"
         path="app/(docs)/docs/autosize-textarea/usage/autosize-textarea-with-max-height.tsx"
-        cli="https://ui.spectrumhq.in/r/autosize_textarea_max_height.json"
+        cli="@spectrumui/autosize-textarea-max-height"
       >
         <AutosizeTextareaWithMaxHeight />
       </Usage>
       <Usage
         title="ref"
         path="app/(docs)/docs/autosize-textarea/usage/autosize-textarea-with-ref.tsx"
-        cli="https://ui.spectrumhq.in/r/autosize_textarea_ref.json"
+        cli="@spectrumui/autosize-textarea-ref"
       >
         <AutosizeTextareaWithRef />
       </Usage>
       <Usage
         title="Form"
         path="app/(docs)/docs/autosize-textarea/usage/autosize-textarea-form.tsx"
-        cli="https://ui.spectrumhq.in/r/autosize_textarea_form.json"
+        cli="@spectrumui/autosize-textarea-form"
       >
         <AutosizeTextareaForm />
       </Usage>
@@ -80,7 +80,7 @@ const AutosizeTextareaPage = () => {
           </>
         }
         path="app/(docs)/docs/autosize-textarea/usage/autosize-textarea-customize.tsx"
-        cli="https://ui.spectrumhq.in/r/autosize_textarea_customize.json"
+        cli="@spectrumui/autosize-textarea-customize"
       >
         <AutosizeTextareaCustomize />
       </Usage>

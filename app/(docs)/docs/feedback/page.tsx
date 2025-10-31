@@ -10,7 +10,7 @@ const page = () => {
       <PageTemplate title="Feedback" className="mt-5">
         <PreviewCodeCard
           path="app/(docs)/docs/feedback/feedbackdemo.tsx"
-          cli="https://ui.spectrumhq.in/r/feedback_demo.json"
+          cli="@spectrumui/feedback-demo"
         >
           <Feedback />
         </PreviewCodeCard>

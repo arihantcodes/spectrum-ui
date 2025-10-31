@@ -5,7 +5,7 @@
 
   "items": [
     {
-      "name": "alert-demo",
+      "name": "alert-1",
       "type": "registry:component",
       "title": "Alert demo",
       "description": "component for the alert-demo",
@@ -63,7 +63,7 @@
       "registryDependencies": ["alert"]
     },
     {
-      "name": "animated_card",
+      "name": "animated-card",
       "type": "registry:component",
       "title": "Animated Card",
       "description": "component for the Animated Card",
@@ -82,7 +82,7 @@
       "dependencies": ["framer-motion"]
     },
     {
-      "name": "animated_SVG_Chart",
+      "name": "animated-SVG-chart",
       "type": "registry:component",
       "title": "Animated SVG Chart",
       "description": "component for the Animated SVG Chart",
@@ -96,7 +96,7 @@
       "dependencies": ["motion"]
     },
     {
-      "name": "animated_testimonials",
+      "name": "animated-testimonials",
       "type": "registry:component",
       "title": "Animated Testimonials",
       "description": "component for the Animated Testimonials",
@@ -111,7 +111,7 @@
       "registryDependencies": ["button"]
     },
     {
-      "name": "autosize_textarea_dependecies",
+      "name": "autosize-textarea-dependecies",
       "type": "registry:component",
       "title": "Autosize Textarea Dependencies",
       "description": "component for the Autosize Textarea Dependencies",
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "name": "autosize_textarea_demo",
+      "name": "autosize-textarea-demo",
       "type": "registry:component",
       "title": "Autosize Textarea Demo",
       "description": "component for the Autosize Textarea",
@@ -138,7 +138,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"]
     },
     {
-      "name": "autosize_textarea_max_height",
+      "name": "autosize-textarea-max-height",
       "type": "registry:component",
       "title": "Autosize Textarea Max Height",
       "description": "component for the Autosize Textarea Max Height",
@@ -152,7 +152,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"]
     },
     {
-      "name": "autosize_textarea_ref",
+      "name": "autosize-textarea-ref",
       "type": "registry:component",
       "title": "Autosize Textarea Ref",
       "description": "component for the Autosize Textarea Ref",
@@ -166,7 +166,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"]
     },
     {
-      "name": "autosize_textarea_form",
+      "name": "autosize-textarea-form",
       "type": "registry:component",
       "title": "Autosize Textarea Form",
       "description": "component for the Autosize Textarea Form",
@@ -180,7 +180,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"]
     },
     {
-      "name": "autosize_textarea_customize",
+      "name": "autosize-textarea-customize",
       "type": "registry:component",
       "title": "Autosize Textarea Customize",
       "description": "component for the Autosize Textarea Customize",
@@ -194,7 +194,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"]
     },
     {
-      "name": "datetime_picker_demo",
+      "name": "datetime-picker-demo",
       "type": "registry:component",
       "title": "Datetime Picker Demo",
       "description": "component for the Datetime Picker Demo",
@@ -208,7 +208,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_hour_cycle",
+      "name": "datetime-picker-hour-cycle",
       "type": "registry:component",
       "title": "Datetime Picker Hour",
       "description": "component for the Datetime Picker Hour",
@@ -222,7 +222,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_and_time_input",
+      "name": "datetime-picker-and-time-input",
       "type": "registry:component",
       "title": "Datetime Picker and Time Input",
       "description": "component for the Datetime Picker and Time Input",
@@ -236,7 +236,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_year_range",
+      "name": "datetime-picker-year-range",
       "type": "registry:component",
       "title": "Datetime Year Range",
       "description": "component for the Datetime Year Range",
@@ -250,7 +250,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_locale",
+      "name": "datetime-picker-locale",
       "type": "registry:component",
       "title": "Datetime Picker Locale",
       "description": "component for the Datetime Picker Locale",
@@ -264,7 +264,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_calender_settings",
+      "name": "datetime-picker-calendar-settings",
       "type": "registry:component",
       "title": "Datetime Picker Calendar Settings",
       "description": "component for the Datetime Picker Calendar Settings",
@@ -278,7 +278,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_display_format",
+      "name": "datetime-picker-display-format",
       "type": "registry:component",
       "title": "Datetime Picker Display Format",
       "description": "component for the Datetime Picker Display Format",
@@ -292,7 +292,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_placeholder",
+      "name": "datetime-picker-placeholder",
       "type": "registry:component",
       "title": "Datetime Picker Placeholder",
       "description": "component for the Datetime Picker Placeholder",
@@ -306,7 +306,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_granularity",
+      "name": "datetime-picker-granularity",
       "type": "registry:component",
       "title": "Datetime Picker Granularity",
       "description": "component for the Datetime Picker Granularity",
@@ -320,7 +320,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_disabled",
+      "name": "datetime-picker-disabled",
       "type": "registry:component",
       "title": "Datetime Picker Disabled",
       "description": "component for the Datetime Picker Disabled",
@@ -334,7 +334,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_ref",
+      "name": "datetime-picker-ref",
       "type": "registry:component",
       "title": "Datetime Picker Ref",
       "description": "component for the Datetime Picker Ref",
@@ -348,7 +348,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "datetime_picker_form",
+      "name": "datetime-picker-form",
       "type": "registry:component",
       "title": "Datetime Picker Form",
       "description": "component for the Datetime Picker Form",
@@ -362,7 +362,7 @@
       "registryDependencies": ["datetime-picker"]
     },
     {
-      "name": "dual_range_slider_dependecies",
+      "name": "dual-range-slider-dependecies",
       "type": "registry:component",
       "title": "Dual Range Slider Dependencies",
       "description": "component for the Dual Range Slider Dependencies",
@@ -376,7 +376,7 @@
       "dependencies": ["@radix-ui/react-slider"]
     },
     {
-      "name": "dual_range_slider_demo",
+      "name": "dual-range-slider-demo",
       "type": "registry:component",
       "title": "Dual Range Slider Demo",
       "description": "component for the Dual Range Slider Demo",
@@ -390,7 +390,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/dual_range_slider_dependecies.json"]
     },
     {
-      "name": "dual_range_slider_custom_label",
+      "name": "dual-range-slider-custom-label",
       "type": "registry:component",
       "title": "Dual Range Slider Custom Label",
       "description": "component for the Dual Range Slider Custom Label",
@@ -404,7 +404,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/dual_range_slider_dependecies.json"]
     },
     {
-      "name": "dual_range_slider_label_position",
+      "name": "dual-range-slider-label-position",
       "type": "registry:component",
       "title": "Dual Range Slider Label Position",
       "description": "component for the Dual Range Slider Label Position",
@@ -418,7 +418,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/dual_range_slider_dependecies.json"]
     },
     {
-      "name": "dual_range_slider_single",
+      "name": "dual-range-slider-single",
       "type": "registry:component",
       "title": "Dual Range Slider Single",
       "description": "component for the Dual Range Slider Single",
@@ -432,7 +432,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/dual_range_slider_dependecies.json"]
     },
     {
-      "name": "event_badge_3d",
+      "name": "event-badge-3d",
       "type": "registry:component",
       "title": "Event Badge 3D",
       "description": "component for the Event Badge 3D",
@@ -453,7 +453,7 @@
       ]
     },
     {
-      "name": "event_calendar",
+      "name": "event-calendar",
       "type": "registry:component",
       "title": "Event Calendar",
       "description": "component for the Event Calendar",
@@ -468,7 +468,7 @@
       "registryDependencies": ["button", "dialog", "input", "label"]
     },
     {
-      "name": "feedback_demo",
+      "name": "feedback-demo",
       "type": "registry:component",
       "title": "Feedback Demo",
       "description": "component for the Feedback Demo",
@@ -482,7 +482,7 @@
       "dependencies": ["framer-motion", "lucide-react", "tailwind-merge"]
     },
     {
-      "name": "floating_label_input",
+      "name": "floating-label-input",
       "type": "registry:component",
       "title": "Floating Label Input",
       "description": "component for the Floating Label Input",
@@ -496,7 +496,7 @@
       "registryDependencies": ["input", "label"]
     },
     {
-      "name": "floating_label_input_demo",
+      "name": "floating-label-input-demo",
       "type": "registry:component",
       "title": "Floating Label Input Demo",
       "description": "component for the Floating Label Input Demo",
@@ -510,7 +510,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/floating_label_input.json"]
     },
     {
-      "name": "floating_label_customize",
+      "name": "floating-label-customize",
       "type": "registry:component",
       "title": "Floating Label Customize",
       "description": "component for the Floating Label Customize",
@@ -524,7 +524,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/floating_label_input.json"]
     },
     {
-      "name": "floating_label_form",
+      "name": "floating-label-form",
       "type": "registry:component",
       "title": "Floating Label Form",
       "description": "component for the Floating Label Form",
@@ -538,7 +538,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/floating_label_input.json"]
     },
     {
-      "name": "footers_demo",
+      "name": "footers-demo",
       "type": "registry:component",
       "title": "Footers Demo",
       "description": "component for the Footers Demo",
@@ -553,7 +553,7 @@
       "dependencies": ["lucide-react"]
     },
     {
-      "name": "animatedwave_footer",
+      "name": "animated-wave-footer",
       "type": "registry:component",
       "title": "Animated Wave Footer",
       "description": "component for the Animated Wave Footer",
@@ -568,7 +568,7 @@
       "dependencies": ["lucide-react"]
     },
     {
-      "name": "stackedcircular_footer",
+      "name": "stackedcircular-footer",
       "type": "registry:component",
       "title": "Stacked Circular Footer",
       "description": "component for the Stacked Circular Footer",
@@ -583,7 +583,7 @@
       "dependencies": ["lucide-react"]
     },
     {
-      "name": "floatingparticle_footer",
+      "name": "floatingparticle-footer",
       "type": "registry:component",
       "title": "Floating Particle Footer",
       "description": "component for the Floating Particle Footer",
@@ -612,7 +612,7 @@
       "registryDependencies": ["button", "https://ui.spectrumhq.in/r/icon_dependencies.json"]
     },
     {
-      "name": "http_status_code",
+      "name": "http-status-code",
       "type": "registry:component",
       "title": "HTTP Status Code",
       "description": "component for the HTTP Status Code",
@@ -627,9 +627,9 @@
       "dependencies": ["lucide-react"]
     },
     {
-      "name": "image_preview_dependencies",
+      "name": "image-preview",
       "type": "registry:component",
-      "title": "Image Preview Dependencies",
+      "title": "Image Preview",
       "description": "component for the Image Preview Dependencies",
       "files": [
         {
@@ -670,7 +670,7 @@
       ]
     },
     {
-      "name": "infinite_scroll_demo",
+      "name": "infinite-scroll-demo",
       "type": "registry:component",
       "title": "Infinite Scroll Demo",
       "description": "component for the Infinite Scroll Demo",
@@ -714,7 +714,7 @@
       "registryDependencies": ["https://ui.spectrumhq.in/r/loading_button_dependencies.json"]
     },
     {
-      "name": "loading_button_usage",
+      "name": "loading-button-usage",
       "type": "registry:component",
       "title": "Loading Button Usage",
       "description": "component for the Loading Button Usage",
@@ -1159,7 +1159,7 @@
         "form",
 
         "https://ui.spectrumhq.in/r/use-toast.json",
-        "https://ui.spectrumhq.in/r/loading-button.json",
+        "@spectrumui/loading-button",
         "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
       ],
       "dependencies": ["react-hook-form", "zod", "@hookform/resolvers"]

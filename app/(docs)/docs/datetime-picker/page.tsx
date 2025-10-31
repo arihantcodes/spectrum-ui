@@ -49,7 +49,7 @@ const DatetimePickerPage = () => {
 
       <PreviewCodeCard
         path="app/(docs)/docs/datetime-picker/datetime-picker-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_demo.json"
+        cli="@spectrumui/datetime-picker-demo"
       >
         <DatetimePickerDemo />
       </PreviewCodeCard>
@@ -67,14 +67,14 @@ const DatetimePickerPage = () => {
       <Usage
         title="Hour cycle - 12H / 24H"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-hour-cycle.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_hour_cycle.json"
+        cli="@spectrumui/datetime-picker-hour-cycle"
       >
         <DatetimePickerHourCycle />
       </Usage>
       <Usage
         title="Date picker or Time picker"
         path="app/(docs)/docs/datetime-picker/usage/date-picker-and-time-input.tsx"
-        cli="https://ui.spectrumhq.in/r/date_picker_and_time_input.json"
+        cli="@spectrumui/datetime-picker-and-time-input"
       >
         <DatePickerAndTimeInput />
       </Usage>
@@ -83,7 +83,7 @@ const DatetimePickerPage = () => {
         title="Year Dropdown Range"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-year-range.tsx"
         description={<YearDropdownDesc />}
-        cli="https://ui.spectrumhq.in/r/datetime_year_range.json"
+        cli="@spectrumui/datetime-picker-year-range"
       >
         <DatetimePickerYearRange />
       </Usage>
@@ -91,7 +91,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Locale"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-locale.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_locale.json"
+        cli="@spectrumui/datetime-picker-locale"
         description={
           <>
             <P className="text-muted-foreground">
@@ -109,7 +109,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Week start on Monday, Show week number, Disable outside days"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-calendar-settings.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_calendar_settings.json"
+        cli="@spectrumui/datetime-picker-calendar-settings"
       >
         <DatetimePickerCalendarSettings />
       </Usage>
@@ -117,7 +117,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Display Format"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-display-format.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_display_format.json"
+        cli="@spectrumui/datetime-picker-display-format"
         description={
           <>
             <P className="text-muted-foreground">
@@ -136,7 +136,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Placeholder"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-placeholder.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_placeholder.json"
+        cli="@spectrumui/datetime-picker-placeholder"
       >
         <DatetimePickerPlaceholder />
       </Usage>
@@ -144,7 +144,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Granularity"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-granularity.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_granularity.json"
+        cli="@spectrumui/datetime-picker-granularity"
       >
         <DatetimePickerGranularity />
       </Usage>
@@ -152,7 +152,7 @@ const DatetimePickerPage = () => {
       <Usage
         title="Disabled"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-disabled.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_disabled.json"
+        cli="@spectrumui/datetime-picker-disabled"
       >
         <DatetimePickerDisabled />
       </Usage>
@@ -160,15 +160,15 @@ const DatetimePickerPage = () => {
       <Usage
         title="Ref"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-ref.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_ref.json"
-      >
+        cli="@spectrumui/datetime-picker-ref"
+      > 
         <DatetimePickerRef />
       </Usage>
 
       <Usage
         title="Form"
         path="app/(docs)/docs/datetime-picker/usage/datetime-picker-form.tsx"
-        cli="https://ui.spectrumhq.in/r/datetime_picker_form.json"
+        cli="@spectrumui/datetime-picker-form"
       >
         <DatetimePickerForm />
       </Usage>
