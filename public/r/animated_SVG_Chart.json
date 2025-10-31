@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "animated_SVG_Chart",
+  "name": "animated-SVG-Chart",
   "type": "registry:component",
   "title": "Animated SVG Chart",
   "description": "component for the Animated SVG Chart",

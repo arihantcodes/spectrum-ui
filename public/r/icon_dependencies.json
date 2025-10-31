@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "icon_dependencies",
+  "name": "icon-dependencies",
   "type": "registry:ui",
   "title": "Icon Dependencies",
   "description": "component for the Icon Dependencies",

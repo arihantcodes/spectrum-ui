@@ -5,8 +5,8 @@
   "title": "Multiple Selector With Sync Search And Creatable And Group",
   "description": "component for the Multiple Selector With Sync Search And Creatable And Group",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json",
-    "https://ui.spectrumhq.in/r/heading_with_anchor.json"
+    "@spectrumui/multiple-selector-dependencies",
+    "@spectrumui/heading-with-anchor"
   ],
   "files": [
     {

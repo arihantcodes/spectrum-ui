@@ -5,9 +5,9 @@
   "title": "Multiple Selector Ref",
   "description": "component for the Multiple Selector Ref",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json",
-    "https://ui.spectrumhq.in/r/use-toast.json",
-    "https://ui.spectrumhq.in/r/loading_button_dependencies.json"
+    "@spectrumui/multiple-selector-dependencies",
+    "@spectrumui/use-toast",
+    "@spectrumui/loading-button-dependencies"
   ],
   "files": [
     {

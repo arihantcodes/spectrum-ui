@@ -21,7 +21,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Profile Dropdown">
       <PreviewCodeCard
         path="app/(docs)/docs/profile/profiledemo.tsx"
-        cli="https://ui.spectrumhq.in/r/profile_dropdown.json"
+        cli="@spectrumui/profile-dropdown"
       >
         <WalletProfile />
       </PreviewCodeCard>

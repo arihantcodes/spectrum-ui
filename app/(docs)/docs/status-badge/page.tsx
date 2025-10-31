@@ -20,7 +20,7 @@ const DualRangeSliderPage = () => {
   return (
     <PageTemplate title="Status Badge">
       <PreviewCodeCard
-        cli="https://ui.spectrumhq.in/r/status_badge.json"
+        cli="@spectrumui/status-badge"
         path="app/(docs)/docs/status-badge/statusdemo.tsx"
       >
         <StatusDemo />

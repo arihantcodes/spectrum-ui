@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert-1",
+  "type": "registry:component",
+  "title": "Alert demo",
+  "description": "component for the alert-demo",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "alert"
+  ],
+  "files": [
+    {
+      "path": "app/registry/alertdemo.tsx",
+      "content": "\"use client\";\n\nimport { Alert } from \"@/components/ui/alert\";\nimport { cn } from \"@/lib/utils\";\nimport { motion } from \"framer-motion\";\nimport { PartyPopper } from \"lucide-react\";\n\ninterface Alert04Props {\n  className?: string;\n}\n\nexport default function Alertdemo({ className }: Alert04Props) {\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: -8 }}\n      animate={{ opacity: 1, y: 0 }}\n      className={cn(\"w-full max-w-xl mx-auto\", className)}\n    >\n      <Alert\n        className={cn(\n          \"relative overflow-hidden\",\n          \"bg-gradient-to-b from-violet-50 to-white\",\n          \"dark:from-violet-950/20 dark:to-zinc-950\",\n          \"border border-violet-100 dark:border-violet-900/50\",\n          \"shadow-[0_1px_6px_0_rgba(139,92,246,0.06)]\",\n          \"rounded-xl p-4\",\n          className,\n        )}\n      >\n        <div className=\"flex items-center gap-4\">\n          <motion.div\n            initial={{ rotate: -15, scale: 0.5 }}\n            animate={{ rotate: 0, scale: 1 }}\n            transition={{\n              type: \"spring\",\n              stiffness: 300,\n              damping: 20,\n            }}\n          >\n            <div\n              className={cn(\n                \"p-2.5 rounded-xl\",\n                \"bg-gradient-to-br from-fuchsia-500 via-violet-500 to-indigo-500\",\n                \"dark:from-fuchsia-600 dark:via-violet-600 dark:to-indigo-600\",\n              )}\n            >\n              <PartyPopper className=\"h-5 w-5 text-white\" />\n            </div>\n          </motion.div>\n\n          <div className=\"space-y-1\">\n            <motion.h3\n              initial={{ opacity: 0, x: 20 }}\n              animate={{ opacity: 1, x: 0 }}\n              transition={{ delay: 0.1 }}\n              className={cn(\n                \"font-medium\",\n                \"text-violet-900 dark:text-violet-100\",\n              )}\n            >\n              Amazing milestone! 🎉\n            </motion.h3>\n            <motion.p\n              initial={{ opacity: 0, x: 20 }}\n              animate={{ opacity: 1, x: 0 }}\n              transition={{ delay: 0.2 }}\n              className={cn(\"text-sm\", \"text-violet-600 dark:text-violet-300\")}\n            >\n              You&apos;ve just hit 1,000 followers on your journey!\n            </motion.p>\n          </div>\n        </div>\n\n        {/* Confetti effect */}\n        <div className=\"absolute inset-0 pointer-events-none\">\n          <div className=\"absolute -left-2 -top-2 h-16 w-16 rounded-full bg-fuchsia-400 dark:bg-fuchsia-600/30 blur-2xl opacity-20\" />\n          <div className=\"absolute top-2 right-8 h-12 w-12 rounded-full bg-violet-400 dark:bg-violet-600/30 blur-2xl opacity-20\" />\n          <div className=\"absolute -right-2 -bottom-2 h-16 w-16 rounded-full bg-indigo-400 dark:bg-indigo-600/30 blur-2xl opacity-20\" />\n        </div>\n\n        {/* Celebration badge */}\n        <div className=\"absolute top-4 right-4\">\n          <motion.div\n            initial={{ scale: 0 }}\n            animate={{ scale: 1 }}\n            transition={{\n              type: \"spring\",\n              stiffness: 300,\n              damping: 20,\n              delay: 0.3,\n            }}\n            className={cn(\n              \"text-[11px] font-medium\",\n              \"px-2.5 py-0.5 rounded-full\",\n              \"bg-gradient-to-r from-fuchsia-500/10 via-violet-500/10 to-indigo-500/10\",\n              \"dark:from-fuchsia-500/20 dark:via-violet-500/20 dark:to-indigo-500/20\",\n              \"text-violet-700 dark:text-violet-200\",\n              \"ring-1 ring-violet-500/20 dark:ring-violet-400/20\",\n            )}\n          >\n            Milestone\n          </motion.div>\n        </div>\n      </Alert>\n    </motion.div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/alertdemo.tsx"
+    }
+  ]
+}

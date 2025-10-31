@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dual-range-slider-custom-label",
+  "type": "registry:component",
+  "title": "Dual Range Slider Custom Label",
+  "description": "component for the Dual Range Slider Custom Label",
+  "registryDependencies": [
+    "@spectrumui/dual-range-slider-dependecies"
+  ],
+  "files": [
+    {
+      "path": "app/registry/dual-range-slider/usage/dual-range-slider-custom-label.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { DualRangeSlider } from \"@/components/ui/dual-range-slider\";\nimport { useState } from \"react\";\n\nconst DualRangeSliderCustomLabel = () => {\n  const [values, setValues] = useState([0, 100]);\n\n  return (\n    <div className=\"w-full space-y-5 px-10\">\n      <DualRangeSlider\n        label={(value) => <span>{value}℃</span>}\n        value={values}\n        onValueChange={setValues}\n        min={0}\n        max={100}\n        step={1}\n      />\n    </div>\n  );\n};\nexport default DualRangeSliderCustomLabel;\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/dual-range-slider-custom-label.tsx"
+    }
+  ]
+}

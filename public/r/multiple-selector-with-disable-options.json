@@ -5,7 +5,7 @@
   "title": "Multiple Selector With Disable Options",
   "description": "component for the Multiple Selector With Disable Options",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

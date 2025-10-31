@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "image_preview_dependencies",
+  "name": "image-preview-dependencies",
   "type": "registry:component",
   "title": "Image Preview Dependencies",
   "description": "component for the Image Preview Dependencies",

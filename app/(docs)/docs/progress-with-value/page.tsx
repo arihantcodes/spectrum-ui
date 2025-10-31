@@ -32,7 +32,7 @@ const DualRangeSliderPage = () => {
       </ReferenceBorder>
       <PreviewCodeCard
         path="app/(docs)/docs/progress-with-value/progress-with-value-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/progress_with_value.json"
+        cli="@spectrumui/progress-with-value"
       >
         <ProgressWithValueDemo />
       </PreviewCodeCard>
@@ -49,14 +49,14 @@ const DualRangeSliderPage = () => {
       <Usage
         title="Value Position"
         path="app/(docs)/docs/progress-with-value/usage/progress-with-value-position.tsx"
-        cli="https://ui.spectrumhq.in/r/value_position.json"
+        cli="@spectrumui/value-position"
       >
         <ProgressWithValuePosition />
       </Usage>
       <Usage
         title="Custom Label"
         path="app/(docs)/docs/progress-with-value/usage/progress-with-value-label.tsx"
-        cli="https://ui.spectrumhq.in/r/custom_label.json"
+        cli="@spectrumui/custom-label"
       >
         <ProgressWithValueLabel />
       </Usage>

@@ -11,9 +11,9 @@
   ],
   "registryDependencies": [
     "form",
-    "https://ui.spectrumhq.in/r/use-toast.json",
-    "https://ui.spectrumhq.in/r/loading-button.json",
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/use-toast",
+    "@spectrumui/loading-button",
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

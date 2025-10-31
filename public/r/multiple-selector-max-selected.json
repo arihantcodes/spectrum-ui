@@ -5,8 +5,8 @@
   "title": "Multiple Selector Max Selected",
   "description": "component for the Multiple Selector Max Selected",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json",
-    "https://ui.spectrumhq.in/r/use-toast.json"
+    "@spectrumui/multiple-selector-dependencies",
+    "@spectrumui/use-toast"
   ],
   "files": [
     {

@@ -25,7 +25,7 @@ const ResponsiveModalPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/responsive-modal/responsive-modal-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/responsive_modal.json"
+        cli="@spectrumui/responsive-modal"
       >
         <ResponsiveModalDemo />
       </PreviewCodeCard>
@@ -41,7 +41,7 @@ const ResponsiveModalPage = () => {
       <Usage
         title="Side"
         path="app/(docs)/docs//responsive-modal/usage/responsive-modal-side.tsx"
-        cli="https://ui.spectrumhq.in/r/responsive_modal_side.json"
+        cli="@spectrumui/responsive-modal-side"
       >
         <ResponsiveModalSide />
       </Usage>

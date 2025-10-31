@@ -5,7 +5,7 @@
   "title": "Multiple Selector Fixed Option",
   "description": "component for the Multiple Selector Fixed Option",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

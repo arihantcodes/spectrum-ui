@@ -5,8 +5,8 @@
   "title": "Multiple Selector With Async Search And OnFocus",
   "description": "component for the Multiple Selector With Async Search And OnFocus",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json",
-    "https://ui.spectrumhq.in/r/inline-code.json"
+    "@spectrumui/multiple-selector-dependencies",
+    "@spectrumui/inline-code"
   ],
   "files": [
     {

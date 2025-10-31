@@ -5,7 +5,7 @@
   "title": "Multiple Selector Creatable",
   "description": "component for the Multiple Selector Creatable",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

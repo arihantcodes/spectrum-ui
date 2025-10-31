@@ -5,7 +5,7 @@
   "title": "Multiple Selector Max Text Length",
   "description": "component for the Multiple Selector Max Text Length",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

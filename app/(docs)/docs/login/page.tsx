@@ -17,7 +17,7 @@ const Loginpage = () => {
     <PageTemplate title="Login Card">
       <PreviewCodeCard
         path="app/(docs)/docs/login/login-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/login_card.json"
+        cli="@spectrumui/login-card"
       >
         <LoginPage />
       </PreviewCodeCard>

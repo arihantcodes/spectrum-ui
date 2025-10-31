@@ -48,7 +48,7 @@ const MultipleSelectorPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/multiple-selector/multiple-selector-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-demo.json"
+        cli="@spectrumui/multiple-selector-demo"
       >
         <MultipleSelectorDemo />
       </PreviewCodeCard>
@@ -102,20 +102,20 @@ const MultipleSelectorPage = () => {
       <Usage
         title="Disable Option"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-disable-option.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-disable-option.json"
+        cli="@spectrumui/multiple-selector-with-disable-option"
       >
         <MultipleSelectorWithDisabledOption />
       </Usage>
       <Usage
         title="Disabled"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-disabled.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-disabled.json"
+        cli="@spectrumui/multiple-selector-disabled"
       >
         <MultipleSelectorDisabled />
       </Usage>
       <Usage
         title="Disable First Item selected"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-no-default-select.json"
+        cli="@spectrumui/multiple-selector-no-default-select"
         description={
           <>
             <P className="text-muted-foreground">
@@ -141,14 +141,14 @@ const MultipleSelectorPage = () => {
       <Usage
         title="Controlled Component"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-controlled.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-controlled.json"
+        cli="@spectrumui/multiple-selector-controlled"
       >
         <MultipleSelectorControlled />
       </Usage>
       <Usage
         title="Hide Clear All Button"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-hide-clear-all.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-hide-clear-all.json"
+        cli="@spectrumui/multiple-selector-hide-clear-all"
       >
         <MultipleSelectorHideClearAll />
       </Usage>
@@ -160,7 +160,7 @@ const MultipleSelectorPage = () => {
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-creatable.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-creatable.json"
+        cli="@spectrumui/multiple-selector-creatable"
       >
         <MultipleSelectorCreatable />
       </Usage>
@@ -186,7 +186,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search.json"
+        cli="@spectrumui/multiple-selector-with-async-search"
       >
         <MultipleSelectorWithAsyncSearch />
       </Usage>
@@ -208,7 +208,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-onfocus.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-onfocus.json"
+        cli="@spectrumui/multiple-selector-with-async-search-and-onfocus"
       >
         <MultipleSelectorWithAsyncSearchAndOnFocus />
       </Usage>
@@ -223,7 +223,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-creatable.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable.json"
+        cli="@spectrumui/multiple-selector-with-async-search-and-creatable"
       >
         <MultipleSelectorWithAsyncSearchAndCreatable />
       </Usage>
@@ -238,7 +238,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-async-search-and-creatable-and-group.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-async-search-and-creatable-and-group.json"
+        cli="@spectrumui/multiple-selector-with-async-search-and-creatable-and-group"
       >
         <MultipleSelectorWithAsyncSearchAndCreatableAndGroup />
       </Usage>
@@ -257,7 +257,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-sync-search.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-sync-search.json"
+        cli="@spectrumui/multiple-selector-with-sync-search"
       >
         <MultipleSelectorWithSyncSearch />
       </Usage>
@@ -277,7 +277,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-manually-controlled-options.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-manually-controlled-options.json"
+        cli="@spectrumui/multiple-selector-manually-controlled-options"
       >
         <MultipleSelectorManuallyControlledOptions />
       </Usage>
@@ -292,7 +292,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-group.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-with-group.json"
+        cli="@spectrumui/multiple-selector-with-group"
       >
         <MultipleSelectorWithGroup />
       </Usage>
@@ -305,7 +305,7 @@ const MultipleSelectorPage = () => {
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-max-selected.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-max-selected.json"
+        cli="@spectrumui/multiple-selector-max-selected"
       >
         <MultipleSelectorWithMaxSelected />
       </Usage>
@@ -317,7 +317,7 @@ const MultipleSelectorPage = () => {
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-max-text-length.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-max-text-length.json"
+        cli="@spectrumui/multiple-selector-max-text-length"
       >
         <MultipleSelectorMaxTextLength />
       </Usage>
@@ -336,7 +336,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-no-placeholder-when-selected.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-no-placeholder-when-selected.json"
+        cli="@spectrumui/multiple-selector-no-placeholder-when-selected"
       >
         <MultipleSelectorNoPlaceholderWhenSelected />
       </Usage>
@@ -349,29 +349,28 @@ const MultipleSelectorPage = () => {
           </P>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-fixed-option.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-fixed-option.json"
+        cli="@spectrumui/multiple-selector-fixed-option"
       >
         <MultipleSelectorWithFixedOption />
       </Usage>
       <Usage
         title="ref"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-ref.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-ref.json"
+        cli="@spectrumui/multiple-selector-ref"
       >
         <MultipleSelectorRef />
       </Usage>
       <Usage
         title="CommandProps and CommandInputProps Customization"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-commandprops.tsx"
-        cli="https://ui.spectrumhq.in/r/multiple-selector-commandprops.json"
+        cli="@spectrumui/multiple-selector-commandprops"
       >
         <MultipleSelectorCommandProps />
       </Usage>
       <Usage
         title="Form"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-form.tsx"
-        cli="
-        https://ui.spectrumhq.in/r/multiple-selector-with-form.json"
+        cli="@spectrumui/multiple-selector-with-form"
       >
         <MultipleSelectorWithForm />
       </Usage>

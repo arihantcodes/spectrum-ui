@@ -21,7 +21,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Product Card">
       <PreviewCodeCard
         path="app/(docs)/docs/product-card/product-card.tsx"
-        cli="https://ui.spectrumhq.in/r/product_card.json"
+        cli="@spectrumui/product-card"
       >
         <Productcard />
       </PreviewCodeCard>
@@ -31,7 +31,7 @@ const DualRangeSliderPage = () => {
         withInstall
         codePath="app/(docs)/docs/product-card/product-card.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/product_card.json"
+        installScript="npx shadcn@latest add @spectrumui/product-card"
       />
 
      

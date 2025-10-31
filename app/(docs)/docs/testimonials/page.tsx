@@ -17,7 +17,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Testimonials" className='mt-5'>
       <PreviewCodeCard
         path="app/(docs)/docs/testimonials/testimonialsdemo.tsx"
-        cli="https://ui.spectrumhq.in/r/testimonials.json"
+        cli="@spectrumui/testimonials"
       >
         <Testimonial />
       </PreviewCodeCard>
@@ -27,7 +27,7 @@ const DualRangeSliderPage = () => {
         withInstall
         codePath="app/(docs)/docs/testimonials/testimonialsdemo.tsx"
         withEnd
-        installScript="npx shadcn@latest add https://ui.spectrumhq.in/r/testimonials.json"
+        installScript="npx shadcn@latest add @spectrumui/testimonials"
       />
 
      

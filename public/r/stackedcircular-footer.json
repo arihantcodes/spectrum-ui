@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stackedcircular-footer",
+  "type": "registry:component",
+  "title": "Stacked Circular Footer",
+  "description": "component for the Stacked Circular Footer",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "icon",
+    "button",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "app/registry/footer/usage/stackedfooter.tsx",
+      "content": "import { Icons } from \"@/components/icon\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\nimport { Facebook, Instagram, Linkedin, Twitter } from \"lucide-react\";\n\nexport default function StackedCircularFooter() {\n  return (\n    <footer className=\"bg-background py-12\">\n      <div className=\"container mx-auto px-4 md:px-6\">\n        <div className=\"flex flex-col items-center\">\n          <div className=\"mb-8 rounded-full bg-primary/10 p-8\">\n            <Icons.logo className=\"icon-class w-2\" />\n          </div>\n          <nav className=\"mb-8 flex flex-wrap justify-center gap-6\">\n            <a href=\"#\" className=\"hover:text-primary\">\n              Home\n            </a>\n            <a href=\"#\" className=\"hover:text-primary\">\n              About\n            </a>\n            <a href=\"#\" className=\"hover:text-primary\">\n              Services\n            </a>\n            <a href=\"#\" className=\"hover:text-primary\">\n              Products\n            </a>\n            <a href=\"#\" className=\"hover:text-primary\">\n              Contact\n            </a>\n          </nav>\n          <div className=\"mb-8 flex space-x-4\">\n            <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n              <Facebook className=\"h-4 w-4\" />\n              <span className=\"sr-only\">Facebook</span>\n            </Button>\n            <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n              <Twitter className=\"h-4 w-4\" />\n              <span className=\"sr-only\">Twitter</span>\n            </Button>\n            <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n              <Instagram className=\"h-4 w-4\" />\n              <span className=\"sr-only\">Instagram</span>\n            </Button>\n            <Button variant=\"outline\" size=\"icon\" className=\"rounded-full\">\n              <Linkedin className=\"h-4 w-4\" />\n              <span className=\"sr-only\">LinkedIn</span>\n            </Button>\n          </div>\n          <div className=\"mb-8 w-full max-w-md\">\n            <form className=\"flex space-x-2\">\n              <div className=\"flex-grow\">\n                <Label htmlFor=\"email\" className=\"sr-only\">\n                  Email\n                </Label>\n                <Input\n                  id=\"email\"\n                  placeholder=\"Enter your email\"\n                  type=\"email\"\n                  className=\"rounded-full\"\n                />\n              </div>\n              <Button type=\"submit\" className=\"rounded-full\">\n                Subscribe\n              </Button>\n            </form>\n          </div>\n          <div className=\"text-center\">\n            <p className=\"text-sm text-muted-foreground\">\n              © 2024 Your Company. All rights reserved.\n            </p>\n          </div>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/stacked-footer.tsx"
+    }
+  ]
+}

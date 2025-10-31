@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "datetime-picker-calendar-settings",
+  "type": "registry:component",
+  "title": "Datetime Picker Calendar Settings",
+  "description": "component for the Datetime Picker Calendar Settings",
+  "registryDependencies": [
+    "datetime-picker"
+  ],
+  "files": [
+    {
+      "path": "app/registry/datetime-picker/usage/datetime-picker-calendar-settings.tsx",
+      "content": "\"use client\";\nimport React from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\n\nconst DatetimePickerCalendarSettings = () => {\n  const [date, setDate] = React.useState<Date | undefined>(undefined);\n\n  return (\n    <div className=\"flex flex-col gap-3 lg:flex-row lg:gap-10\">\n      <div className=\"w-72 space-y-2\">\n        <p>Week start on Monday</p>\n        <DateTimePicker weekStartsOn={1} value={date} onChange={setDate} />\n      </div>\n      <div className=\"w-72 space-y-2\">\n        <p>Show week number</p>\n        <DateTimePicker showWeekNumber value={date} onChange={setDate} />\n      </div>\n      <div className=\"w-72 space-y-2\">\n        <p>Disable outside days</p>\n        <DateTimePicker\n          showOutsideDays={false}\n          value={date}\n          onChange={setDate}\n        />\n      </div>\n    </div>\n  );\n};\n\nexport default DatetimePickerCalendarSettings;\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/datetime-picker-calendar-settings.tsx"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "datetime_picker_calender_settings",
+  "name": "datetime-picker-calender-settings",
   "type": "registry:component",
   "title": "Datetime Picker Calendar Settings",
   "description": "component for the Datetime Picker Calendar Settings",

@@ -5,7 +5,7 @@
   "title": "Multiple Selector Hide Clear All",
   "description": "component for the Multiple Selector Hide Clear All",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

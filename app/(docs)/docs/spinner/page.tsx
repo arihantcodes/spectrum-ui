@@ -28,7 +28,7 @@ const SpinnerPage = () => {
     >
       <PreviewCodeCard
         path="app/(docs)/docs/spinner/spinner-demo.tsx"
-        cli="https://ui.spectrumhq.in/r/spinner_demo.json"
+        cli="@spectrumui/spinner-demo"
       >
         <SpinnerDemo />
       </PreviewCodeCard>
@@ -40,14 +40,14 @@ const SpinnerPage = () => {
       <Usage
         title="Size"
         path="app/(docs)/docs//spinner/usage/spinner-size.tsx"
-        cli="https://ui.spectrumhq.in/r/spinner_size.json"
+        cli="@spectrumui/spinner-size"
       >
         <SpinnerSize />
       </Usage>
       <Usage
         title="With text and custom style"
         path="app/(docs)/docs//spinner/usage/spinner-with-text.tsx"
-        cli="https://ui.spectrumhq.in/r/spinner_with_text.json"
+        cli="@spectrumui/spinner-with-text"
       >
         <SpinnerWithText />
       </Usage>
@@ -55,7 +55,7 @@ const SpinnerPage = () => {
       <Usage
         title="Toggle spinner"
         path="app/(docs)/docs//spinner/usage/spinner-toggle.tsx"
-        cli="https://ui.spectrumhq.in/r/spinner_toggle.json"
+        cli="@spectrumui/spinner-toggle"
       >
         <SpinnerToggle />
       </Usage>

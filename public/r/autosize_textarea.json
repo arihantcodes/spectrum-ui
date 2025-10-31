@@ -1,11 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "autosize_textarea",
+  "name": "autosize-textarea",
   "type": "registry:ui",
   "title": "Autosize Textarea",
   "description": "component for the Autosize Textarea",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/autosize_textarea_dependecies.json"
+    "@spectrumui/autosize-textarea-dependecies"
   ],
   "files": [
     {

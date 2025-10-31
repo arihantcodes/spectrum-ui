@@ -5,7 +5,7 @@
   "title": "Multiple Selector No Default Select",
   "description": "component for the Multiple Selector No Default Select",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json"
+    "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [
     {

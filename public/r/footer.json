@@ -6,7 +6,7 @@
   "description": "component for the Footer",
   "registryDependencies": [
     "button",
-    "https://ui.spectrumhq.in/r/icon_dependencies.json"
+    "@spectrumui/icon-dependencies"
   ],
   "files": [
     {

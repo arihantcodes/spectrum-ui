@@ -24,7 +24,7 @@ const DualRangeSliderPage = () => {
     <PageTemplate title="Navbars">
       <PreviewCodeCard
         path="app/(docs)/docs/navbar/navbardemo.tsx"
-        cli="https://ui.spectrumhq.in/r/navbar-demo.json"
+        cli="@spectrumui/navbar-demo"
       >
         <Navbardemo />
       </PreviewCodeCard>
@@ -41,28 +41,28 @@ const DualRangeSliderPage = () => {
       <Usage
         title="Circular Navbar"
         path="app/(docs)/docs/navbar/usage/circular.tsx"
-        cli="https://ui.spectrumhq.in/r/circular-navbar.json"
+        cli="@spectrumui/circular-navbar"
       >
         <CircularNavbar />
       </Usage>
       <Usage
         title="Tab Navbar"
         path="app/(docs)/docs/navbar/usage/tabnavbar.tsx"
-        cli="https://ui.spectrumhq.in/r/tab-navbar.json"
+        cli="@spectrumui/tab-navbar"
       >
         <Tabnavbar />
       </Usage>
       <Usage
         title="Floating Navbar"
         path="app/(docs)/docs/navbar/usage/floatingnavbar.tsx"
-        cli="https://ui.spectrumhq.in/r/floating-navbar.json"
+        cli="@spectrumui/floating-navbar"
       >
         <Floatingnavbar />
       </Usage>
       <Usage
         title="Sidebar Navbar"
         path="app/(docs)/docs/navbar/usage/sidenav.tsx"
-        cli="https://ui.spectrumhq.in/r/sidebar-navbar.json"
+        cli="@spectrumui/sidebar-navbar"
       >
         <Sidenavbar />
       </Usage>

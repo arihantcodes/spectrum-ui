@@ -51,7 +51,7 @@ const LoadingButtonPage = () => {
       <PageSubTitle>Usage</PageSubTitle>
       <Usage
         path="app/(docs)/docs/loading-button/loading-button-usage.tsx"
-        cli="https://ui.spectrumhq.in/r/loading_button_usage.json"
+        cli="@spectrumui/loading-button-usage"
       >
         <LoadingButtonUsage />
       </Usage>

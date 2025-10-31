@@ -5,8 +5,8 @@
   "title": "Multiple Selector Manually Controlled",
   "description": "component for the Multiple Selector Manually Controlled",
   "registryDependencies": [
-    "https://ui.spectrumhq.in/r/multiple-selector-dependencies.json",
-    "https://ui.spectrumhq.in/r/loading_button_dependencies.json"
+    "@spectrumui/multiple-selector-dependencies",
+    "@spectrumui/loading-button-dependencies"
   ],
   "files": [
     {
