@@ -7,7 +7,21 @@ export default function Footer() {
   return (
     <footer className=" py-12 px-4 md:px-6 z-50">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between">
+        <div className="h-[7vh] md:h-[10vh] lg:h-[25vh] w-full flex items-center justify-center -mb-[2.5vh] md:-mb-[3.5vh] lg:-mb-[8vh] relative">
+          <h1 className="absolute text-center text-[2.75rem] md:text-8xl lg:text-[10rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900 select-none z-0">
+            SPECTRUM UI
+          </h1>
+        </div>
+        
+        <div className="flex flex-col md:flex-row justify-between bg-background relative z-10 py-[7vh] lg:py-[10vh]">
+          <div
+            className="hidden md:block absolute inset-0 z-0"
+            style={{
+              backgroundImage: "radial-gradient(ellipse 35% 35% at 50% 0%, rgba(82, 82, 82, 0.25), transparent 70%)",
+              backgroundColor: "transparent",
+            }}
+          />
+          
           <div className="mb-8 md:mb-0">
             <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
               <div className="h-6 w-6 bg-neutral-100 border-neutral-300 border dark:bg-white rounded-md flex items-center justify-center p-1">
@@ -32,9 +46,9 @@ export default function Footer() {
               © {new Date().getFullYear()} Spectrum UI. All rights reserved.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-3 lg:grid-cols-4 gap-0 lg:gap-8">
             <div>
-              <h3 className="font-semibold mb-4">Pages</h3>
+              <h3 className="font-semibold mb-4 mt-3">Pages</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -63,7 +77,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Socials</h3>
+              <h3 className="font-semibold mb-4 mt-3">Socials</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -92,7 +106,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
+              <h3 className="font-semibold mb-4 mt-3">Legal</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -113,11 +127,6 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-        </div>
-        <div className=" w-full flex mt-4 items-center justify-center   ">
-          <h1 className="text-center text-3xl md:text-5xl lg:text-[10rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-700 to-neutral-900 select-none">
-            SPECTRUM UI
-          </h1>
         </div>
       </div>
     </footer>
