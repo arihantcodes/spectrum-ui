@@ -14,15 +14,42 @@ import SpinnerWithText from "@/app/(docs)/docs/spinner/usage/spinner-with-text";
 import SpinnerToggle from "@/app/(docs)/docs/spinner/usage/spinner-toggle";
 import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table";
 import { spinnerProp } from "@/app/(docs)/docs/spinner/spinner-prop";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Spinner",
-  description: "A simple spinner for displaying loading state",
+  title: "Spinner",
+  description: "Loading spinner component for React and Next.js. Beautiful, customizable loading indicators with multiple sizes and styles. Perfect for async operations and data fetching states.",
+  keywords: [
+    "spinner component",
+    "loading spinner",
+    "React spinner",
+    "loading indicator",
+    "Next.js spinner",
+    "Tailwind spinner",
+    "animated spinner",
+    "loading state",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/spinner",
 });
 
 const SpinnerPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Spinner"
+      description="Loading spinner component for React and Next.js. Beautiful, customizable loading indicators with multiple sizes and styles. Perfect for async operations and data fetching states."
+      url="https://ui.spectrumhq.in/docs/spinner"
+      keywords={[
+        "spinner component",
+        "loading spinner",
+        "React spinner",
+        "loading indicator",
+        "Next.js spinner",
+        "Tailwind spinner",
+        "animated spinner",
+        "loading state",
+      ]}
+    >
+      <PageTemplate
       title="Spinner"
       description="A simple spinner for displaying loading state"
     >
@@ -62,6 +89,7 @@ const SpinnerPage = () => {
 
       <PropsTable props={spinnerProp} />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

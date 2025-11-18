@@ -16,18 +16,52 @@ import Usage from "@/app/(docs)/docs/components/usage";
 import FloatingLabelInputCustomize from "@/app/(docs)/docs/floating-label-input/usage/floating-label-customize";
 import { InlineCode } from "@/components/ui/inline-code";
 import FloatingLabelInputForm from "@/app/(docs)/docs/floating-label-input/usage/floating-label-input-form";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Floating Label Input",
-  description: "Material UI design system floating label input",
+  description: "Material UI design system floating label input component for React and Next.js. Beautiful animated labels that float above input fields. Built with Tailwind CSS and TypeScript.",
+  keywords: [
+    "floating label input",
+    "material input",
+    "animated input",
+    "React input component",
+    "Next.js input",
+    "form input",
+    "floating label",
+    "material design input",
+    "animated label",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/floating-label-input",
 });
 
 const FloatingLabelPage = () => {
+  const componentUrl = "https://ui.spectrumhq.in/docs/floating-label-input";
+  const componentName = "Floating Label Input";
+  const componentDescription = "Material UI design system floating label input component for React and Next.js. Beautiful animated labels that float above input fields. Built with Tailwind CSS and TypeScript.";
+  const componentKeywords = [
+    "floating label input",
+    "material input",
+    "animated input",
+    "React input component",
+    "Next.js input",
+    "form input",
+    "floating label",
+    "material design input",
+    "animated label",
+  ];
+
   return (
-    <PageTemplate
-      title="Floating Label Input"
-      description="Material UI design system floating label."
+    <SEOWrapper
+      componentName={componentName}
+      description={componentDescription}
+      url={componentUrl}
+      keywords={componentKeywords}
     >
+      <PageTemplate
+        title="Floating Label Input"
+        description="Material UI design system floating label."
+      >
       <ReferenceBorder>
         <Reference href="https://ui.shadcn.com/docs/components/input" />
       </ReferenceBorder>
@@ -69,6 +103,7 @@ const FloatingLabelPage = () => {
         <FloatingLabelInputForm />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

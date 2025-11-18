@@ -8,17 +8,43 @@ import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import Productcard from "./product-card";
-
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI - Product Card",
+  title: "Product Card",
   description:
-    "A product card component that displays product information including image, title, description, price, and rating.",
+    "Beautiful product card component for React and Next.js. Displays product information including image, title, description, price, and rating. Perfect for e-commerce and product listings.",
+  keywords: [
+    "product card",
+    "React product card",
+    "e-commerce card",
+    "product component",
+    "shopping card",
+    "product display",
+    "Next.js product card",
+    "Tailwind product card",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/product-card",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate title="Product Card">
+    <SEOWrapper
+      componentName="Product Card"
+      description="Beautiful product card component for React and Next.js. Displays product information including image, title, description, price, and rating. Perfect for e-commerce and product listings."
+      url="https://ui.spectrumhq.in/docs/product-card"
+      keywords={[
+        "product card",
+        "React product card",
+        "e-commerce card",
+        "product component",
+        "shopping card",
+        "product display",
+        "Next.js product card",
+        "Tailwind product card",
+      ]}
+    >
+      <PageTemplate title="Product Card">
       <PreviewCodeCard
         path="app/(docs)/docs/product-card/product-card.tsx"
         cli="@spectrumui/product-card"
@@ -36,6 +62,7 @@ const DualRangeSliderPage = () => {
 
      
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

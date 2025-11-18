@@ -12,16 +12,43 @@ import DualRangeSliderCustomLabel from "@/app/(docs)/docs/dual-range-slider/usag
 import Usage from "@/app/(docs)/docs/components/usage";
 import DualRangeSliderLabelPosition from "@/app/(docs)/docs/dual-range-slider/usage/dual-range-slider-label-position";
 import DualRangeSliderSingle from "@/app/(docs)/docs/dual-range-slider/usage/dual-range-slider-single";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Dual Range Slider",
+  title: "Dual Range Slider",
   description:
-    "An enhancement slider that allows you to select a range of values.",
+    "Dual range slider component for React and Next.js. Select a range of values with two handles. Perfect for price filters, date ranges, and numeric selections. Built with Radix UI and Tailwind CSS.",
+  keywords: [
+    "dual range slider",
+    "range slider",
+    "React range slider",
+    "Next.js slider",
+    "price slider",
+    "range input",
+    "dual handle slider",
+    "Radix slider",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/dual-range-slider",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Dual Range Slider"
+      description="Dual range slider component for React and Next.js. Select a range of values with two handles. Perfect for price filters, date ranges, and numeric selections. Built with Radix UI and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/dual-range-slider"
+      keywords={[
+        "dual range slider",
+        "range slider",
+        "React range slider",
+        "Next.js slider",
+        "price slider",
+        "range input",
+        "dual handle slider",
+        "Radix slider",
+      ]}
+    >
+      <PageTemplate
       title="Dual Range Slider"
       description="An enhancement slider that allows you to select a range of values."
     >
@@ -63,6 +90,7 @@ const DualRangeSliderPage = () => {
         <DualRangeSliderSingle />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

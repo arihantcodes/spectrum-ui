@@ -8,16 +8,43 @@ import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import AnimatedCardDemo from "./animatedCarddemo";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Animated Card",
+  title: "Animated Card",
   description:
-    "An animated card component that showcases various tools and technologies.",
+    "Beautiful animated card component for React and Next.js. Showcase tools, technologies, and features with smooth hover animations and transitions. Built with Framer Motion and Tailwind CSS.",
+  keywords: [
+    "animated card",
+    "card component",
+    "React card",
+    "animated UI card",
+    "hover card",
+    "Next.js card",
+    "Framer Motion card",
+    "interactive card",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/animatedcard",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate title="Animated Card">
+    <SEOWrapper
+      componentName="Animated Card"
+      description="Beautiful animated card component for React and Next.js. Showcase tools, technologies, and features with smooth hover animations and transitions. Built with Framer Motion and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/animatedcard"
+      keywords={[
+        "animated card",
+        "card component",
+        "React card",
+        "animated UI card",
+        "hover card",
+        "Next.js card",
+        "Framer Motion card",
+        "interactive card",
+      ]}
+    >
+      <PageTemplate title="Animated Card">
       <PreviewCodeCard
         path="app/(docs)/docs/animatedcard/animatedCarddemo.tsx"
         cli="@spectrumui/animated-card"
@@ -35,6 +62,7 @@ const DualRangeSliderPage = () => {
 
     
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

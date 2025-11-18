@@ -23,7 +23,11 @@ export function HeroContent() {
   };
 
   useEffect(() => {
-    fetchGithubData();
+    // Defer non-critical API call to avoid blocking render
+    const timeoutId = setTimeout(() => {
+      fetchGithubData();
+    }, 100);
+    return () => clearTimeout(timeoutId);
   }, []);
   return (
     <div className="z-[3] flex flex-col items-center gap-16 sm:gap-28 text-center">
@@ -74,9 +78,9 @@ export function HeroContent() {
       </div>
       <section className="w-full max-w-4xl mx-auto px-4 ">
         <AnimateEnter delay={0.9} duration={2} className="space-y-6">
-          <h1 className="text-base font-medium text-muted-foreground uppercase tracking-wider">
+          <h2 className="text-base font-medium text-muted-foreground uppercase tracking-wider">
             Built With
-          </h1>
+          </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 place-items-center">
             <Image
               src="/nextjs.svg"
@@ -84,6 +88,8 @@ export function HeroContent() {
               width={90}
               className="w-[80px] sm:w-[60px] md:w-[90px] transition-transform duration-300 hover:scale-105"
               alt="Next.js"
+              loading="lazy"
+              fetchPriority="low"
             />
             <Image
               src="/shadcn.svg"
@@ -91,6 +97,8 @@ export function HeroContent() {
               width={140}
               className="w-[100px] sm:w-[100px] md:w-[140px] transition-transform duration-300 hover:scale-105"
               alt="shadcn/ui"
+              loading="lazy"
+              fetchPriority="low"
             />
             <Image
               src="/tailwind.svg"
@@ -98,6 +106,8 @@ export function HeroContent() {
               width={120}
               className="w-[100px] sm:w-[90px] md:w-[120px] transition-transform duration-300 hover:scale-105"
               alt="Tailwind CSS"
+              loading="lazy"
+              fetchPriority="low"
             />
             <Image
               src="/aceternity.svg"
@@ -105,6 +115,8 @@ export function HeroContent() {
               width={160}
               className="w-[130px] sm:w-[120px] md:w-[160px] transition-transform duration-300 hover:scale-105"
               alt="Aceternity UI"
+              loading="lazy"
+              fetchPriority="low"
             />
           </div>
         </AnimateEnter>

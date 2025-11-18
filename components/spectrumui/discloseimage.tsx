@@ -16,12 +16,13 @@ export default function DiscloseImage({
   const baseClassName =
     "ease-slow duration-mid absolute bg-sky-500 transition-all animate-out fill-mode-forwards";
 
+  const { alt, ...imgProps } = props;
   return (
     <div className="relative h-64 w-52 overflow-hidden rounded-md bg-yellow-100">
       <img
-        alt=""
+        alt={alt || "Disclose image"}
         onLoad={() => setImageLoaded(true)}
-        {...props}
+        {...imgProps}
         className={cn("h-full w-full object-cover", className)}
       />
 

@@ -14,15 +14,42 @@ import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table
 import { headingWithAnchorProp } from "@/app/(docs)/docs/heading-with-anchor/heading-with-anchor-prop";
 import HeadingWithAnchorHover from "@/app/(docs)/docs/heading-with-anchor/usage/heading-with-anchor-hover";
 import HeadingWithAnchorAlign from "@/app/(docs)/docs/heading-with-anchor/usage/heading-with-anchor-align";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Heading With Anchor",
-  description: "Add anchor for every heading.",
+  description: "Heading component with anchor links for React and Next.js. Automatically generates clickable anchor links for headings, perfect for documentation and long-form content. Built with Radix UI and Tailwind CSS.",
+  keywords: [
+    "heading anchor",
+    "anchor heading",
+    "React heading",
+    "documentation heading",
+    "heading links",
+    "Next.js heading",
+    "typography component",
+    "heading component",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/heading-with-anchor",
 });
 
 const HeadingWithAnchorPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Heading With Anchor"
+      description="Heading component with anchor links for React and Next.js. Automatically generates clickable anchor links for headings, perfect for documentation and long-form content. Built with Radix UI and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/heading-with-anchor"
+      keywords={[
+        "heading anchor",
+        "anchor heading",
+        "React heading",
+        "documentation heading",
+        "heading links",
+        "Next.js heading",
+        "typography component",
+        "heading component",
+      ]}
+    >
+      <PageTemplate
       title="Heading With Anchor"
       description="Add anchor for every heading."
     >
@@ -67,6 +94,7 @@ const HeadingWithAnchorPage = () => {
 
       <PropsTable props={headingWithAnchorProp} />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

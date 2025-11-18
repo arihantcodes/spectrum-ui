@@ -380,7 +380,7 @@ export function LinkButton() {
 
 export function IconButton() {
   return (
-    <Button size="icon">
+    <Button size="icon" aria-label="Add">
       <Plus className="h-4 w-4" />
     </Button>
   );
@@ -639,7 +639,7 @@ export function MessageButton() {
 
 export function DarkModeToggle() {
   return (
-    <Button>
+    <Button aria-label="Toggle dark mode">
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     </Button>
@@ -648,7 +648,7 @@ export function DarkModeToggle() {
 
 export function ShowPasswordToggle() {
   return (
-    <Button>
+    <Button aria-label="Toggle password visibility">
       <Eye className="h-4 w-4" />
     </Button>
   );
@@ -707,7 +707,7 @@ export function CallToActionButton() {
 
 export function ExpandButton() {
   return (
-    <Button className="rounded-2xl h-8 w-8">
+    <Button className="rounded-2xl h-8 w-8 min-h-[44px] min-w-[44px]" aria-label="Expand">
       <Plus className="h-4 w-4" />
     </Button>
   );
@@ -733,7 +733,7 @@ export function CopyButton() {
 
 export function AudioControlButton() {
   return (
-    <Button className="rounded-full bg-white text-black hover:bg-gray-200">
+    <Button className="rounded-full bg-white text-black hover:bg-gray-200 min-h-[44px] min-w-[44px]" aria-label="Play audio">
       <Play className="h-4 w-4" />
     </Button>
   );
@@ -741,9 +741,9 @@ export function AudioControlButton() {
 
 export function NotificationButton() {
   return (
-    <Button className="relative">
+    <Button className="relative" aria-label="Notifications">
       <Bell className="h-4 w-4" />
-      <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+      <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500" aria-hidden="true"></span>
     </Button>
   );
 }

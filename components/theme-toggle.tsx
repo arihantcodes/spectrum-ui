@@ -1,6 +1,6 @@
 "use client";
 
-import type React from "react";
+import React from "react";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -51,6 +51,13 @@ interface ThemeButtonProps {
 }
 
 function ThemeButton({ active, onClick, icon }: ThemeButtonProps) {
+  // Determine label based on icon component
+  let label = "Toggle theme";
+  if (React.isValidElement(icon) && icon.type) {
+    if (icon.type === Sun) label = "Switch to light theme";
+    else if (icon.type === Moon) label = "Switch to dark theme";
+    else if (icon.type === Monitor) label = "Switch to system theme";
+  }
   return (
     <motion.button
       className={`relative flex items-center justify-center w-8 h-8 rounded-full ${
@@ -58,6 +65,8 @@ function ThemeButton({ active, onClick, icon }: ThemeButtonProps) {
       }`}
       onClick={onClick}
       whileTap={{ scale: 0.95 }}
+      aria-label={label}
+      aria-pressed={active}
     >
       {active && (
         <motion.div

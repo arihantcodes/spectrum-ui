@@ -12,16 +12,47 @@ import CircularNavbar from "./usage/circular";
 import Tabnavbar from "./usage/tabnavbar";
 import Floatingnavbar from "./usage/floatingnavbar";
 import Sidenavbar from "./usage/sidenav";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Navbar",
+  title: "Navbar",
   description:
-    "An enhancement slider that allows you to select a range of values.",
+    "Beautiful, responsive navbar components for React and Next.js. Includes circular, tab, floating, and sidebar navigation patterns. Built with Tailwind CSS and TypeScript.",
+  keywords: [
+    "React navbar",
+    "Next.js navbar",
+    "navigation component",
+    "navbar component",
+    "responsive navbar",
+    "mobile navbar",
+    "sidebar navigation",
+    "floating navbar",
+    "circular navbar",
+    "tab navigation",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/navbar",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate title="Navbars">
+    <SEOWrapper
+      componentName="Navbar"
+      description="Beautiful, responsive navbar components for React and Next.js. Includes circular, tab, floating, and sidebar navigation patterns. Built with Tailwind CSS and TypeScript."
+      url="https://ui.spectrumhq.in/docs/navbar"
+      keywords={[
+        "React navbar",
+        "Next.js navbar",
+        "navigation component",
+        "navbar component",
+        "responsive navbar",
+        "mobile navbar",
+        "sidebar navigation",
+        "floating navbar",
+        "circular navbar",
+        "tab navigation",
+      ]}
+    >
+      <PageTemplate title="Navbars">
       <PreviewCodeCard
         path="app/(docs)/docs/navbar/navbardemo.tsx"
         cli="@spectrumui/navbar-demo"
@@ -67,6 +98,7 @@ const DualRangeSliderPage = () => {
         <Sidenavbar />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

@@ -46,10 +46,20 @@ export function SiteHeader() {
             </Link>
 
             <div className="hidden md:flex items-center gap-2">
-              <Link href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">
+              <Link 
+                href={siteConfig.links.github} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visit our GitHub repository"
+              >
                 <Icons.gitHub className="h-5 w-4 mr-2" />
               </Link>
-              <Link href={siteConfig.links.twitter} target="_blank" rel="noopener noreferrer">
+              <Link 
+                href={siteConfig.links.twitter} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Follow us on Twitter"
+              >
                 <Icons.twitter className="h-3 w-4 mr-2" />
               </Link>
             </div>

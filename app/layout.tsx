@@ -172,7 +172,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
+  userScalable: true,
 };
 
 export default function RootLayout({
@@ -184,9 +185,29 @@ export default function RootLayout({
     <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
       <head>
         <link rel="canonical" href={siteConfig.url} />
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="/fonts/geist-sans.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/geist-mono.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        {/* Defer non-critical scripts */}
         <Script
           id="schema-org-website"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -215,6 +236,7 @@ export default function RootLayout({
         <Script
           id="schema-org-organization"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",

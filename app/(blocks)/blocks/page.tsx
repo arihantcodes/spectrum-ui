@@ -1265,7 +1265,7 @@ export function SubscriberDataTable({
   return (
     <>
       <div className="border-y border-neutral-200 dark:border-neutral-800 flex items-center gap-2 px-6 py-3 text-sm">
-        <Image src="/dashboard/users.svg" height={20} width={20} alt="" />
+        <Image src="/dashboard/users.svg" height={20} width={20} alt="Users icon" />
         <span>Subscribers</span>
         <span className="text-neutral-800 dark:text-neutral-400">
           . {activeSubscribers.toLocaleString()} active subscribers
@@ -1599,7 +1599,7 @@ export function SectionCards() {
     ">
       <Card className="@container/card rounded-none ">
         <CardHeader className="relative">
-          <Image src="/dashboard/users.svg" alt="" height={30} width={30} />
+          <Image src="/dashboard/users.svg" alt="Total Revenue icon" height={30} width={30} />
 
           <CardDescription>Total Revenue</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
@@ -1614,7 +1614,7 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-        <Image src="/dashboard/email.svg" alt="" height={30} width={30} />
+        <Image src="/dashboard/email.svg" alt="Email icon" height={30} width={30} />
 
 
           <CardDescription>Email open rate</CardDescription>
@@ -1630,7 +1630,7 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-        <Image src="/dashboard/cursor.svg" alt="" height={30} width={30} />
+        <Image src="/dashboard/cursor.svg" alt="Click rate icon" height={30} width={30} />
 
 
           <CardDescription>Avg click rate</CardDescription>
@@ -1647,7 +1647,7 @@ export function SectionCards() {
      
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-        <Image src="/dashboard/message.svg" alt="" height={30} width={30} />
+        <Image src="/dashboard/message.svg" alt="Message icon" height={30} width={30} />
 
 
           <CardDescription>Replied</CardDescription>
@@ -1663,7 +1663,7 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-        <Image src="/dashboard/user-minus.svg" alt="" height={30} width={30} />
+        <Image src="/dashboard/user-minus.svg" alt="User minus icon" height={30} width={30} />
 
 
           <CardDescription>Email open rate</CardDescription>
@@ -2148,7 +2148,7 @@ export default function Dashboardblock() {
             asChild
             className="md:hidden absolute top-4 left-4 z-50"
           >
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -2198,7 +2198,12 @@ export default function Dashboardblock() {
                   )}
                 </Button>
               </div>
-              <Button variant="ghost" size="icon" onClick={toggleTheme}>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={toggleTheme}
+                aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+              >
                 {theme === "dark" ? (
                   <Sun className="h-5 w-5" />
                 ) : (
@@ -2206,10 +2211,15 @@ export default function Dashboardblock() {
                 )}
               </Button>
               <div className="relative md:block hidden">
+                <label htmlFor="header-search" className="sr-only">
+                  Search
+                </label>
                 <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
+                  id="header-search"
                   placeholder="Search"
                   className="pl-9 pr-4 py-2 w-64 rounded-xl"
+                  aria-label="Search"
                 />
               </div>
             </div>
@@ -2367,7 +2377,15 @@ function SidebarContent({ collapsed, toggleSidebar }: SidebarContentProps) {
         <div className="p-4">
           <div className="relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search" className="pl-9 pr-4 py-2 rounded-xl" />
+            <label htmlFor="sidebar-search" className="sr-only">
+              Search
+            </label>
+            <Input 
+              id="sidebar-search"
+              placeholder="Search" 
+              className="pl-9 pr-4 py-2 rounded-xl"
+              aria-label="Search"
+            />
             <span className="absolute right-3 top-3 text-xs text-muted-foreground">
               ⌘K
             </span>
@@ -2525,10 +2543,10 @@ function OrderColumn({
           )}
         </div>
         <div className="flex items-center">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" aria-label="More options">
             <MoreHorizontal className="w-5 h-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" aria-label="Add new">
             <Plus className="w-5 h-5" />
           </Button>
         </div>
@@ -2591,7 +2609,7 @@ function OrderCard({ order, isSelected }: OrderCardProps): JSX.Element {
                   <span>{order.duration}</span>
                 </div>
               )}
-              <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Button variant="ghost" size="icon" className="h-8 w-8" aria-label="More options">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
             </div>
@@ -2678,7 +2696,7 @@ function AssignmentPanel({
     <div className="h-full flex flex-col overflow-y-auto">
       <div className="p-4 border-b border-border flex items-center justify-between">
         <div className="font-medium">Assign vehicle and driver</div>
-        <Button variant="ghost" size="icon" onClick={onClose}>
+        <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close dialog">
           <X className="h-5 w-5" />
         </Button>
       </div>

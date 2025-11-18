@@ -33,16 +33,45 @@ import MultipleSelectorWithAsyncSearchAndOnFocus from "@/app/(docs)/docs/multipl
 import MultipleSelectorManuallyControlledOptions from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-manually-controlled-options";
 import MultipleSelectorHideClearAll from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-hide-clear-all";
 import MultipleSelectorWithSyncSearch from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-sync-search";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Multiple Selector",
+  title: "Multiple Selector",
   description:
-    "Fast,composable, fully-featured multiple selector for React. such as async search with debounce, maximum selected count, grouping, creatable selector ...etc.",
+    "Fast, composable, fully-featured multiple selector component for React and Next.js. Features async search with debounce, maximum selected count, grouping, creatable options, and more. Built with Radix UI and Tailwind CSS.",
+  keywords: [
+    "multiple selector",
+    "multi select",
+    "React multi select",
+    "Next.js selector",
+    "async search selector",
+    "creatable selector",
+    "grouped selector",
+    "Radix UI selector",
+    "combobox component",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/multiple-selector",
 });
 
 const MultipleSelectorPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Multiple Selector"
+      description="Fast, composable, fully-featured multiple selector component for React and Next.js. Features async search with debounce, maximum selected count, grouping, creatable options, and more. Built with Radix UI and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/multiple-selector"
+      keywords={[
+        "multiple selector",
+        "multi select",
+        "React multi select",
+        "Next.js selector",
+        "async search selector",
+        "creatable selector",
+        "grouped selector",
+        "Radix UI selector",
+        "combobox component",
+      ]}
+    >
+      <PageTemplate
       title="Multiple Selector"
       description="Fast, composable, fully-featured multiple selector for React."
     >
@@ -377,6 +406,7 @@ const MultipleSelectorPage = () => {
 
       <PropsTable props={multipleSelectorProp} />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

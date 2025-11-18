@@ -3,11 +3,46 @@ import PreviewCodeCard from "../components/preview-code-card";
 import { Steppers } from "@/components/ui/steppers";
 import EventCalendar from "./demoevent";
 import { Snippet } from "@/components/snippet";
+import { Metadata } from "next";
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
+
+export const metadata: Metadata = baseMetadata({
+  title: "Event Calendar",
+  description:
+    "Beautiful event calendar component for React and Next.js. Display events, appointments, and schedules with interactive calendar view. Perfect for booking systems, event management, and scheduling apps. Built with date-fns and Framer Motion.",
+  keywords: [
+    "event calendar",
+    "calendar component",
+    "React calendar",
+    "Next.js calendar",
+    "event scheduler",
+    "appointment calendar",
+    "booking calendar",
+    "schedule component",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/eventcalendar",
+});
 
 const page = () => {
   return (
-    <div>
-      <PageTemplate title="Event Calendar" className="mt-5">
+    <SEOWrapper
+      componentName="Event Calendar"
+      description="Beautiful event calendar component for React and Next.js. Display events, appointments, and schedules with interactive calendar view. Perfect for booking systems, event management, and scheduling apps. Built with date-fns and Framer Motion."
+      url="https://ui.spectrumhq.in/docs/eventcalendar"
+      keywords={[
+        "event calendar",
+        "calendar component",
+        "React calendar",
+        "Next.js calendar",
+        "event scheduler",
+        "appointment calendar",
+        "booking calendar",
+        "schedule component",
+      ]}
+    >
+      <div>
+        <PageTemplate title="Event Calendar" className="mt-5">
         <PreviewCodeCard
           path="app/(docs)/docs/eventcalendar/demoevent.tsx"
           cli="@spectrumui/event-calendar"
@@ -36,7 +71,8 @@ const page = () => {
           codePath="lib/utils.ts"
         />
       </PageTemplate>
-    </div>
+      </div>
+    </SEOWrapper>
   );
 };
 

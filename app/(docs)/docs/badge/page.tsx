@@ -7,16 +7,45 @@ import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import EventBadge from "./badgedemo";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI- 3D Event Badge",
+  title: "3D Event Badge",
   description:
-    "An enhancement slider that allows you to select a range of values.",
+    "Stunning 3D event badge component built with Three.js and React Three Fiber. Perfect for showcasing events, conferences, and special occasions with interactive 3D animations.",
+  keywords: [
+    "3D badge",
+    "event badge",
+    "Three.js badge",
+    "React Three Fiber",
+    "3D component",
+    "interactive badge",
+    "animated badge",
+    "3D event card",
+    "WebGL badge",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/badge",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate title="Vercel 3D Event Badge">
+    <SEOWrapper
+      componentName="3D Event Badge"
+      description="Stunning 3D event badge component built with Three.js and React Three Fiber. Perfect for showcasing events, conferences, and special occasions with interactive 3D animations."
+      url="https://ui.spectrumhq.in/docs/badge"
+      keywords={[
+        "3D badge",
+        "event badge",
+        "Three.js badge",
+        "React Three Fiber",
+        "3D component",
+        "interactive badge",
+        "animated badge",
+        "3D event card",
+        "WebGL badge",
+      ]}
+    >
+      <PageTemplate title="Vercel 3D Event Badge">
       <PreviewCodeCard
         path="app/(docs)/docs/badge/badgedemo.tsx"
         cli="@spectrumui/event-badge-3d"
@@ -33,6 +62,7 @@ const DualRangeSliderPage = () => {
 "
       />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

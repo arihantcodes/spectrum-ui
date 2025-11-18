@@ -15,16 +15,43 @@ import AnimatedWaveFooter from "./usage/animatefooter";
 import StackedCircularFooter from "./usage/stackedfooter";
 import ParticleAnimationFooter from "./usage/particlefooter";
 import Footer from "@/components/footer";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Footers",
+  title: "Footer",
   description:
-    "An enhancement slider that allows you to select a range of values.",
+    "Beautiful footer components for React and Next.js. Includes animated wave, stacked circular, and particle animation footers. Perfect for websites, landing pages, and applications. Built with Framer Motion and Tailwind CSS.",
+  keywords: [
+    "footer component",
+    "React footer",
+    "Next.js footer",
+    "animated footer",
+    "website footer",
+    "landing page footer",
+    "footer design",
+    "responsive footer",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/footer",
 });
 
 const DualRangeSliderPage = () => {
   return (
-    <PageTemplate title="Footers">
+    <SEOWrapper
+      componentName="Footer"
+      description="Beautiful footer components for React and Next.js. Includes animated wave, stacked circular, and particle animation footers. Perfect for websites, landing pages, and applications. Built with Framer Motion and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/footer"
+      keywords={[
+        "footer component",
+        "React footer",
+        "Next.js footer",
+        "animated footer",
+        "website footer",
+        "landing page footer",
+        "footer design",
+        "responsive footer",
+      ]}
+    >
+      <PageTemplate title="Footers">
       <PreviewCodeCard
         path="app/(docs)/docs/footer/footerdemo.tsx"
         cli="@spectrumui/footers-demo"
@@ -69,6 +96,7 @@ const DualRangeSliderPage = () => {
         <Footer />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

@@ -5,17 +5,43 @@ import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import KanbanGlassForest from './kanban01';
-
+import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
-  title: 'Spectrum UI-Kanban Board',
+  title: 'Kanban Board',
   description:
-    'Spectrum UI Kanban Board is a drag-and-drop task management tool that allows users to organize tasks into columns, making it easy to visualize and manage workflows. It features a clean and modern design with customizable columns and tasks.',
+    'Drag-and-drop Kanban board component for React and Next.js. Organize tasks into columns with beautiful animations. Perfect for project management, task tracking, and workflow visualization. Built with Framer Motion and Tailwind CSS.',
+  keywords: [
+    "kanban board",
+    "drag and drop",
+    "React kanban",
+    "Next.js kanban",
+    "task board",
+    "project management",
+    "trello board",
+    "workflow board",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/kanban",
 });
 
 const KanbanBoard = () => {
   return (
-    <PageTemplate title="kanban Board">
+    <SEOWrapper
+      componentName="Kanban Board"
+      description="Drag-and-drop Kanban board component for React and Next.js. Organize tasks into columns with beautiful animations. Perfect for project management, task tracking, and workflow visualization. Built with Framer Motion and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/kanban"
+      keywords={[
+        "kanban board",
+        "drag and drop",
+        "React kanban",
+        "Next.js kanban",
+        "task board",
+        "project management",
+        "trello board",
+        "workflow board",
+      ]}
+    >
+      <PageTemplate title="kanban Board">
       <PreviewCodeCard
         path="app/(docs)/docs/kanban/kanban01.tsx"
         cli="@spectrumui/kanbanboard"
@@ -30,6 +56,7 @@ const KanbanBoard = () => {
         installScript="npx shadcn@latest add @spectrumui/kanbanboard"
       />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

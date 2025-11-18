@@ -5,16 +5,43 @@ import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import LoginPage from './login-demo';
+import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
-  title: 'Spectrum UI-Login card',
+  title: 'Login Card',
   description:
-    'Spectrum UI Login page is a simple and elegant login form that allows users to sign in to their accounts. It is designed to be easy to use and visually appealing, with a clean and modern interface.',
+    'Beautiful login card component for React and Next.js. Simple and elegant login form with modern design. Perfect for authentication pages, SaaS applications, and web apps. Built with Framer Motion and Tailwind CSS.',
+  keywords: [
+    "login card",
+    "login form",
+    "React login",
+    "Next.js login",
+    "authentication form",
+    "sign in form",
+    "login UI",
+    "auth component",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/login",
 });
 
 const Loginpage = () => {
   return (
-    <PageTemplate title="Login Card">
+    <SEOWrapper
+      componentName="Login Card"
+      description="Beautiful login card component for React and Next.js. Simple and elegant login form with modern design. Perfect for authentication pages, SaaS applications, and web apps. Built with Framer Motion and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/login"
+      keywords={[
+        "login card",
+        "login form",
+        "React login",
+        "Next.js login",
+        "authentication form",
+        "sign in form",
+        "login UI",
+        "auth component",
+      ]}
+    >
+      <PageTemplate title="Login Card">
       <PreviewCodeCard
         path="app/(docs)/docs/login/login-demo.tsx"
         cli="@spectrumui/login-card"
@@ -29,6 +56,7 @@ const Loginpage = () => {
         installScript="npm i lucide-react framer-motion"
       />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

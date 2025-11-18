@@ -7,15 +7,42 @@ import { ReloadableHologram } from './reload/holo';
 import { ReloadableInk } from './reload/ink';
 import { ReloadableOrbital } from './reload/orbital';
 import { Steppers } from '@/components/ui/steppers';
+import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
-  title: 'Spectrum UI - Text Animations',
-  description: 'A collection of animated text effects for enhancing UI interactions.',
+  title: 'Text Animations',
+  description: 'Collection of animated text effects for React and Next.js. Includes holographic, ink morph, and orbital text animations. Perfect for hero sections, headings, and interactive UI elements. Built with Framer Motion.',
+  keywords: [
+    "text animations",
+    "animated text",
+    "React text animation",
+    "Next.js animation",
+    "holographic text",
+    "ink morph text",
+    "orbital text",
+    "Framer Motion text",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/animatedtext",
 });
 
 const Textanimation = () => {
   return (
-    <PageTemplate title="Holographic Scan Reveal" className="mt-6">
+    <SEOWrapper
+      componentName="Text Animations"
+      description="Collection of animated text effects for React and Next.js. Includes holographic, ink morph, and orbital text animations. Perfect for hero sections, headings, and interactive UI elements. Built with Framer Motion."
+      url="https://ui.spectrumhq.in/docs/animatedtext"
+      keywords={[
+        "text animations",
+        "animated text",
+        "React text animation",
+        "Next.js animation",
+        "holographic text",
+        "ink morph text",
+        "orbital text",
+        "Framer Motion text",
+      ]}
+    >
+      <PageTemplate title="Holographic Scan Reveal" className="mt-6">
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/hologram-text.tsx"
         cli="@spectrumui/holographic"
@@ -58,6 +85,7 @@ const Textanimation = () => {
         installScript="npx shadcn@latest add @spectrumui/ink-morph"
       />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

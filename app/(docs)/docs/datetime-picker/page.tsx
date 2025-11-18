@@ -30,16 +30,45 @@ import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table
 import { datetimePickerProp } from "@/app/(docs)/docs/datetime-picker/datetime-picker-prop";
 import DatetimePickerPlaceholder from "@/app/(docs)/docs/datetime-picker/usage/datetime-picker-placeholder";
 import YearDropdownDesc from "@/app/(docs)/docs/datetime-picker/year-dropdown-desc";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Datetime Picker",
   description:
-    "A datetime picker built on top of shadcn-ui and no additional library needed.",
+    "Powerful datetime picker component for React and Next.js. Built on top of shadcn/ui with no additional dependencies. Supports date, time, and datetime selection with full customization. Perfect for forms and scheduling.",
+  keywords: [
+    "datetime picker",
+    "date picker",
+    "time picker",
+    "React date picker",
+    "Next.js date picker",
+    "calendar component",
+    "date input",
+    "time input",
+    "shadcn date picker",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/datetime-picker",
 });
 
 const DatetimePickerPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Datetime Picker"
+      description="Powerful datetime picker component for React and Next.js. Built on top of shadcn/ui with no additional dependencies. Supports date, time, and datetime selection with full customization. Perfect for forms and scheduling."
+      url="https://ui.spectrumhq.in/docs/datetime-picker"
+      keywords={[
+        "datetime picker",
+        "date picker",
+        "time picker",
+        "React date picker",
+        "Next.js date picker",
+        "calendar component",
+        "date input",
+        "time input",
+        "shadcn date picker",
+      ]}
+    >
+      <PageTemplate
       title="Datetime Picker"
       description="A datetime picker built on top of shadcn-ui and no additional library needed."
     >
@@ -175,6 +204,7 @@ const DatetimePickerPage = () => {
 
       <PropsTable props={datetimePickerProp} />
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

@@ -15,16 +15,43 @@ import {
 import LoadingButtonUsage from "@/app/(docs)/docs/loading-button/loading-button-usage";
 import Usage from "@/app/(docs)/docs/components/usage";
 import LoadingButtonAsChild from "@/app/(docs)/docs/loading-button/loading-button-as-child";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Loading Button",
   description:
-    "Display a button or a component that looks like a button with loading spinner. Everything is just the same as the button in shadcnui.",
+    "Button component with loading state for React and Next.js. Display loading spinner inside buttons during async operations. Fully compatible with shadcn/ui button API. Built with Radix UI and Tailwind CSS.",
+  keywords: [
+    "loading button",
+    "button with spinner",
+    "React loading button",
+    "async button",
+    "Next.js button",
+    "button loading state",
+    "spinner button",
+    "disabled button",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/loading-button",
 });
 
 const LoadingButtonPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Loading Button"
+      description="Button component with loading state for React and Next.js. Display loading spinner inside buttons during async operations. Fully compatible with shadcn/ui button API. Built with Radix UI and Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/loading-button"
+      keywords={[
+        "loading button",
+        "button with spinner",
+        "React loading button",
+        "async button",
+        "Next.js button",
+        "button loading state",
+        "spinner button",
+        "disabled button",
+      ]}
+    >
+      <PageTemplate
       title="Loading Button"
       description="Display a button or a component that looks like a button with loading spinner. Everything is just the same as the button in shadcnui."
     >
@@ -63,6 +90,7 @@ const LoadingButtonPage = () => {
         <LoadingButtonAsChild />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

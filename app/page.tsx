@@ -1,11 +1,9 @@
 'use client';
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
-
 import HomeCardCollection from '@/components/homecard';
 import { HeroSection } from './home';
 
-import Homeform from '@/components/homeform';
 
 const Homepage = () => {
   return (
@@ -24,6 +22,10 @@ const Homepage = () => {
               height={1214}
               alt="Cards"
               className="block dark:hidden"
+              priority={false}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
             <Image
               src="/cards-dark.png"
@@ -31,20 +33,13 @@ const Homepage = () => {
               height={1214}
               alt="Cards"
               className="hidden dark:block"
+              priority={false}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
             />
           </section>
-          <section
-            style={{
-              '--radius': '1rem',
-            } as CSSProperties}
-          className='flex flex-col items-center justify-center '>
-            <h1 className="font-bold text-2xl md:text-4xl text-center  text-neutral-900 dark:text-white mb-12">
-            Want to Collaborate or
-            <br />
-             Work With Me ? Let’s Talk
-            </h1>
-            <Homeform/>
-          </section>
+       
           <section
             className="hidden md:block  [&>div]:p-0 "
             style={{

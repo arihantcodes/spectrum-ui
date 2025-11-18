@@ -15,15 +15,42 @@ import AutosizeTextareaWithRef from "@/app/(docs)/docs/autosize-textarea/usage/a
 import AutosizeTextareaForm from "@/app/(docs)/docs/autosize-textarea/usage/autosize-textarea-form";
 import { InlineCode } from "@/components/ui/inline-code";
 import { P } from "@/components/ui/heading-with-anchor";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
-  title: "Spectrum UI-Autosize Textarea",
-  description: "auto resize textarea height based on content.",
+  title: "Autosize Textarea",
+  description: "Auto-resizing textarea component for React and Next.js. Automatically adjusts height based on content. Perfect for chat inputs, comments, and forms. Built with Tailwind CSS.",
+  keywords: [
+    "autosize textarea",
+    "auto resize textarea",
+    "React textarea",
+    "Next.js textarea",
+    "dynamic textarea",
+    "growing textarea",
+    "auto height textarea",
+    "form textarea",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/autosize-textarea",
 });
 
 const AutosizeTextareaPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Autosize Textarea"
+      description="Auto-resizing textarea component for React and Next.js. Automatically adjusts height based on content. Perfect for chat inputs, comments, and forms. Built with Tailwind CSS."
+      url="https://ui.spectrumhq.in/docs/autosize-textarea"
+      keywords={[
+        "autosize textarea",
+        "auto resize textarea",
+        "React textarea",
+        "Next.js textarea",
+        "dynamic textarea",
+        "growing textarea",
+        "auto height textarea",
+        "form textarea",
+      ]}
+    >
+      <PageTemplate
       title="Autosize Textarea"
       description="Auto resize textarea height based on content."
     >
@@ -85,6 +112,7 @@ const AutosizeTextareaPage = () => {
         <AutosizeTextareaCustomize />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

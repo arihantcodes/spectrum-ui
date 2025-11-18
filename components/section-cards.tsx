@@ -15,7 +15,7 @@ export function SectionCards() {
     >
       <Card className="@container/card rounded-none ">
         <CardHeader className="relative">
-          <Image src="/dashboard/users.svg" alt="" height={30} width={30} />
+          <Image src="/dashboard/users.svg" alt="Total Revenue icon" height={30} width={30} />
 
           <CardDescription>Total Revenue</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
@@ -29,7 +29,7 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-          <Image src="/dashboard/email.svg" alt="" height={30} width={30} />
+          <Image src="/dashboard/email.svg" alt="Email icon" height={30} width={30} />
 
           <CardDescription>Email open rate</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
@@ -43,7 +43,7 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-          <Image src="/dashboard/cursor.svg" alt="" height={30} width={30} />
+          <Image src="/dashboard/cursor.svg" alt="Click rate icon" height={30} width={30} />
 
           <CardDescription>Avg click rate</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
@@ -58,7 +58,7 @@ export function SectionCards() {
 
       <Card className="@container/card rounded-none">
         <CardHeader className="relative">
-          <Image src="/dashboard/message.svg" alt="" height={30} width={30} />
+          <Image src="/dashboard/message.svg" alt="Message icon" height={30} width={30} />
 
           <CardDescription>Replied</CardDescription>
           <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
@@ -74,7 +74,7 @@ export function SectionCards() {
         <CardHeader className="relative">
           <Image
             src="/dashboard/user-minus.svg"
-            alt=""
+            alt="User minus icon"
             height={30}
             width={30}
           />

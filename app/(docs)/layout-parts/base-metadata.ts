@@ -41,7 +41,7 @@ export function baseMetadata({
   twitter,
   article,
 }: BaseMetadataProps): Metadata {
-  const fullTitle = title ? `${title} - React UI Component | Spectrum UI` : siteConfig.name;
+  const fullTitle = title ? `${title} - Spectrum UI` : siteConfig.name;
   const fullDescription = description || siteConfig.description;
   const url = canonicalUrl || siteConfig.url;
   

@@ -10,15 +10,42 @@ import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import Usage from "@/app/(docs)/docs/components/usage";
 import SkeletonDemo from "./skeleton-demo";
 import { SkeletonCard } from "./usage/skeleton-card";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Skeleton",
-  description: "Use to show a placeholder while content is loading.",
+  description: "Skeleton loading component for React and Next.js. Show elegant placeholder content while data is loading. Perfect for improving perceived performance and user experience.",
+  keywords: [
+    "skeleton loader",
+    "skeleton component",
+    "React skeleton",
+    "loading skeleton",
+    "placeholder component",
+    "Next.js skeleton",
+    "skeleton UI",
+    "content placeholder",
+  ],
+  canonicalUrl: "https://ui.spectrumhq.in/docs/skeleton",
 });
 
 const SkeletonLoadingPage = () => {
   return (
-    <PageTemplate
+    <SEOWrapper
+      componentName="Skeleton"
+      description="Skeleton loading component for React and Next.js. Show elegant placeholder content while data is loading. Perfect for improving perceived performance and user experience."
+      url="https://ui.spectrumhq.in/docs/skeleton"
+      keywords={[
+        "skeleton loader",
+        "skeleton component",
+        "React skeleton",
+        "loading skeleton",
+        "placeholder component",
+        "Next.js skeleton",
+        "skeleton UI",
+        "content placeholder",
+      ]}
+    >
+      <PageTemplate
       title="Skeleton"
       description="Use to show a placeholder while content is loading."
     >
@@ -41,6 +68,7 @@ const SkeletonLoadingPage = () => {
         <SkeletonCard />
       </Usage>
     </PageTemplate>
+    </SEOWrapper>
   );
 };
 

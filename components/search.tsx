@@ -57,21 +57,32 @@ export default function Search() {
         <DialogTrigger asChild>
           <div className="relative flex-1 max-w-md cursor-pointer">
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+            <label htmlFor="search-trigger" className="sr-only">
+              Open search dialog
+            </label>
             <Input
+              id="search-trigger"
               className="w-full rounded-md bg-muted border h-9 pl-10 pr-2 text-sm shadow-sm dark:bg-neutral-900"
               placeholder="Search Components..."
               type="search"
+              aria-label="Search Components"
+              readOnly
             />
           </div>
         </DialogTrigger>
         <DialogContent className="p-2 max-w-[650px] sm:top-[38%] top-[45%] z-[5000]">
           <DialogHeader>
+            <label htmlFor="search-input" className="sr-only">
+              Search components
+            </label>
             <input
+              id="search-input"
               value={searchedInput}
               onChange={(e) => setSearchedInput(e.target.value)}
               placeholder="Type something to search..."
               autoFocus
               className="h-14 px-4 bg-transparent border-b text-[15px] outline-none"
+              aria-label="Search components"
             />
           </DialogHeader>
           {filteredResults.length == 0 && searchedInput && (

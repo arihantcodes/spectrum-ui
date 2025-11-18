@@ -396,7 +396,7 @@ export function SubscriberDataTable({
   return (
     <>
       <div className="border-y border-neutral-200 dark:border-neutral-800 flex items-center gap-2 px-6 py-3 text-sm">
-        <Image src="/dashboard/users.svg" height={20} width={20} alt="" />
+        <Image src="/dashboard/users.svg" height={20} width={20} alt="Users icon" />
         <span>Subscribers</span>
         <span className="text-neutral-800 dark:text-neutral-400">
           . {activeSubscribers.toLocaleString()} active subscribers

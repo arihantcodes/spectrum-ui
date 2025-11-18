@@ -28,7 +28,7 @@ export const AnimatedDrawer = () => {
         return (
           <div className="">
             <div className="flex items-center justify-between w-full">
-              <h1 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Wallet Settings</h1>
+              <h2 className="text-lg font-medium text-neutral-900 dark:text-neutral-100">Wallet Settings</h2>
               <Button
                 variant="secondary"
                 size="icon"
@@ -78,7 +78,7 @@ export const AnimatedDrawer = () => {
                 <X className="text-neutral-600 dark:text-neutral-400" size="18" />
               </Button>
             </div>
-            <h1 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Remove Wallet?</h1>
+            <h2 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Remove Wallet?</h2>
 
             <p className="text-neutral-500 dark:text-neutral-400 font-light text-lg">
               This action cannot be undone. Make sure you&apos;ve backed up your recovery phrase before proceeding. 
@@ -114,7 +114,7 @@ export const AnimatedDrawer = () => {
                 <X className="text-neutral-600 dark:text-neutral-400" size="18" />
               </Button>
             </div>
-            <h1 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Recovery Phrase</h1>
+            <h2 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Recovery Phrase</h2>
             <p className="text-neutral-500 dark:text-neutral-400 font-light text-lg">
               Your recovery phrase is the master key to your wallet. Write it down and store it securely. 
               Anyone with this phrase can access your funds.
@@ -122,15 +122,15 @@ export const AnimatedDrawer = () => {
             <div className="border-t border-neutral-200 dark:border-neutral-700 space-y-5 text-neutral-500 dark:text-neutral-400 text-lg">
               <div className="flex items-center gap-4 mt-5">
                 <ShieldIcon />
-                <h1>Store it in a secure location</h1>
+                <h3>Store it in a secure location</h3>
               </div>
               <div className="flex items-center gap-4">
                 <PhraseIcon />
-                <h1>Never share with anyone</h1>
+                <h3>Never share with anyone</h3>
               </div>
               <div className="flex items-center gap-4">
                 <BannedIcon />
-                <h1>We cannot recover it for you</h1>
+                <h3>We cannot recover it for you</h3>
               </div>
             </div>
             <div className="flex items-center justify-start gap-4">
@@ -164,7 +164,7 @@ export const AnimatedDrawer = () => {
                 <X className="text-neutral-600 dark:text-neutral-400" size="18" />
               </Button>
             </div>
-            <h1 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Private Key</h1>
+            <h2 className="font-medium text-xl text-neutral-900 dark:text-neutral-100">Private Key</h2>
             <p className="text-neutral-500 dark:text-neutral-400 font-light text-lg">
               Your private key is a cryptographic key that proves ownership of your wallet. 
               Treat it with the same security as your bank account details.
@@ -173,15 +173,15 @@ export const AnimatedDrawer = () => {
             <div className="border-t border-neutral-200 dark:border-neutral-700 space-y-5 text-neutral-500 dark:text-neutral-400 text-lg">
               <div className="flex items-center gap-4 mt-5">
                 <ShieldIcon />
-                <h1>Store it in a secure location</h1>
+                <h3>Store it in a secure location</h3>
               </div>
               <div className="flex items-center gap-4">
                 <PhraseIcon />
-                <h1>Never share with anyone</h1>
+                <h3>Never share with anyone</h3>
               </div>
               <div className="flex items-center gap-4">
                 <BannedIcon />
-                <h1>We cannot recover it for you</h1>
+                <h3>We cannot recover it for you</h3>
               </div>
             </div>
             <div className="flex items-center justify-start gap-4">
