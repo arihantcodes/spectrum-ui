@@ -22,13 +22,14 @@ export function SiteHeader() {
           </h1>
         </div>
         <div className="relative flex-1 max-w-sm cursor-pointer">
-          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
           <Input
             className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm dark:bg-neutral-900"
             placeholder="Search anything here..."
             type="search"
+            aria-label="Search dashboard"
           />
-          <CommandIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
+          <CommandIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
         </div>
         <div className="flex items-center gap-4">
           <Button className="flex items-center">

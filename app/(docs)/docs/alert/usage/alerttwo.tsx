@@ -41,6 +41,7 @@ export default function Alert02() {
               size="sm"
               variant="ghost"
               className="h-8 w-8 p-0 hover:bg-red-50 dark:hover:bg-red-950/50 text-zinc-400 hover:text-red-600 dark:text-zinc-500 dark:hover:text-red-400 transition-colors"
+              aria-label="Decline invitation"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -54,6 +55,7 @@ export default function Alert02() {
                 "dark:text-zinc-500 dark:hover:text-emerald-400",
                 "transition-colors",
               )}
+              aria-label="Accept invitation"
             >
               <Check className="h-4 w-4" />
             </Button>

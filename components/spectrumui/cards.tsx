@@ -1230,7 +1230,7 @@ function QuickNoteCard() {
       </CardHeader>
       <CardContent className="p-4 pt-0 flex items-center space-x-4">
         <Avatar>
-          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" />
+          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="Arihant jain"/>
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
@@ -1904,6 +1904,7 @@ export function AIAssistantCard() {
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type your message..."
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+          aria-label="Message input for AI assistant"
         />
         <Button onClick={handleSend}>Send</Button>
       </CardFooter>
@@ -1999,13 +2000,18 @@ export function ProductivityTrackerCard() {
             <div key={index} className="flex items-center">
               <input
                 type="checkbox"
+                id={`productivity-task-cards-${index}`}
                 checked={task.completed}
                 onChange={() => {}}
                 className="mr-2"
+                aria-label={`Mark ${task.name} as ${task.completed ? 'incomplete' : 'complete'}`}
               />
-              <span className={task.completed ? 'line-through text-muted-foreground' : ''}>
+              <label
+                htmlFor={`productivity-task-cards-${index}`}
+                className={task.completed ? 'line-through text-muted-foreground cursor-pointer' : 'cursor-pointer'}
+              >
                 {task.name}
-              </span>
+              </label>
             </div>
           ))}
         </div>
@@ -2119,8 +2125,8 @@ export function QuickSearchCard() {
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <div className="flex space-x-2">
-          <Input placeholder="Search..." className="flex-1" />
-          <Button size="sm" variant="ghost">
+          <Input placeholder="Search..." className="flex-1" aria-label="Search input" />
+          <Button size="sm" variant="ghost" aria-label="Search">
             <Search className="h-4 w-4" />
           </Button>
         </div>
@@ -2244,7 +2250,7 @@ export function QuickContactCard() {
       </CardHeader>
       <CardContent className="p-4 pt-0 flex items-center space-x-4">
         <Avatar>
-          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" />
+          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="Arihant jain"/>
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div>
