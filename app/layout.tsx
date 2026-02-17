@@ -258,6 +258,12 @@ export default function RootLayout({
             }),
           }}
         />
+        <Script
+          id="adsense"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119622964025792"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+        />
       </head>
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-regular`}
