@@ -185,6 +185,7 @@ export default function RootLayout({
     <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
       <head>
         <link rel="canonical" href={siteConfig.url} />
+        <meta name="google-adsense-account" content="ca-pub-8119622964025792" />
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://api.github.com" />
