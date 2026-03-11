@@ -12,7 +12,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import Cta from "@/components/cta";
-import CrispChat from "@/components/crips-chat";
 import { PostHogProvider } from "@/components/provider";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     "modern design system",
     "UI components",
     "frontend components",
-    
+
     // Primary Technology Keywords
     "Next.js UI library",
     "Next.js 14 components",
@@ -45,7 +44,7 @@ export const metadata: Metadata = {
     "Vercel components",
     "Next.js app router components",
     "React server components",
-    
+
     // Component Type Keywords
     "React button component",
     "React form components",
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     "React navigation components",
     "dashboard components",
     "admin panel components",
-    
+
     // Quality & Features
     "accessible React components",
     "responsive UI components",
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
     "production-ready components",
     "enterprise UI library",
     "WCAG compliant components",
-    
+
     // Use Cases
     "SaaS UI components",
     "e-commerce components",
@@ -75,7 +74,7 @@ export const metadata: Metadata = {
     "form builder components",
     "admin dashboard UI",
     "web app components",
-    
+
     // Alternative & Comparison
     "shadcn alternative",
     "shadcn ui alternative",
@@ -84,7 +83,7 @@ export const metadata: Metadata = {
     "best React UI library 2024",
     "free UI component library",
     "open source design system",
-    
+
     // Action & Intent Keywords
     "copy paste components",
     "download React components",
@@ -93,7 +92,7 @@ export const metadata: Metadata = {
     "UI template library",
     "component code snippets",
     "ready-to-use React components",
-    
+
     // Framework & Stack
     "Next.js Tailwind template",
     "React TypeScript components",
@@ -101,14 +100,14 @@ export const metadata: Metadata = {
     "Framer Motion React",
     "React Hook Form components",
     "modern React components",
-    
+
     // Learning & Tutorial
     "React components examples",
     "UI component tutorial",
     "how to build React components",
     "React design patterns",
     "component library guide",
-    
+
     // Specific Solutions
     "React component library for startups",
     "fastest React UI library",
@@ -116,7 +115,7 @@ export const metadata: Metadata = {
     "zero-config UI components",
     "headless UI components",
     "composable React components",
-    
+
     ...siteConfig.keywords,
   ],
   authors: [
@@ -295,8 +294,7 @@ export default function RootLayout({
             {" "}
             <PostHogProvider>{children}</PostHogProvider>
           </main>
-          <CrispChat />
-
+          <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
           <Cta />
           <Footer />
