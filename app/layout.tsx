@@ -294,8 +294,7 @@ export default function RootLayout({
             {" "}
             <PostHogProvider>{children}</PostHogProvider>
           </main>
-          <script src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" >
-          </script>
+          <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
           <Cta />
           <Footer />
