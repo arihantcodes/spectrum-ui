@@ -214,7 +214,7 @@ export default async function BlogPage() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      {/* <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Ready to Build Amazing UIs?
@@ -236,7 +236,7 @@ export default async function BlogPage() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
     </>
   );
