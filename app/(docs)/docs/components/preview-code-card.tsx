@@ -6,9 +6,7 @@ import { cn } from '@/lib/utils';
 
 
 
-const CodeCardWrapper = dynamic(() => import('@/app/(docs)/docs/components/code-card-wrapper'), {
-  ssr: false,
-});
+const CodeCardWrapper = dynamic(() => import('@/app/(docs)/docs/components/code-card-wrapper'));
 
 interface PreviewCodeCardProps {
   className?: string;

@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { AnimatedBadge } from './AnimatedBadge';
 import { AnimateEnter } from './AnimateEnter';

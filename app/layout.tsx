@@ -8,6 +8,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 import Footer from "@/components/footer";
 import "./globals.css";
