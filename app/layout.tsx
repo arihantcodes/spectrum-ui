@@ -3,6 +3,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 import Footer from "@/components/footer";
 import "./globals.css";
 import { inject } from "@vercel/analytics";
@@ -266,7 +272,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} font-regular`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} font-regular`}
         suppressHydrationWarning
       >
         <ThemeProvider

@@ -188,8 +188,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         </div>
   
         {/* Article Content */}
-        <div itemProp="articleBody" className="prose prose-neutral dark:prose-invert prose-base sm:prose-lg max-w-none">
-          <div className="text-foreground leading-relaxed space-y-6">{post.content}</div>
+        <div itemProp="articleBody" className="prose prose-neutral dark:prose-invert prose-base sm:prose-lg max-w-none font-inter">
+          <div className="text-neutral-800 dark:text-neutral-200 leading-relaxed space-y-6 font-normal">{post.content}</div>
         </div>
       </article>
 

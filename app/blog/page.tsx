@@ -119,7 +119,7 @@ export default async function BlogPage() {
         }}
       />
       
-      <div className="min-h-screen bg-background text-foreground container-wrapper">
+      <div className="min-h-screen bg-background text-foreground container-wrapper font-inter">
       {/* Navigation */}
       <div className="mt-12">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -155,17 +155,7 @@ export default async function BlogPage() {
       </div>
 
       {/* Blog Introduction */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Spectrum UI Blog
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Learn about UI components, React development, design systems, and frontend best practices. 
-            Expert insights on building scalable web applications with modern tools like Next.js, Tailwind CSS, and shadcn/ui.
-          </p>
-        </div>
-      </div>
+  
 
       {/* Blog Grid with Dotted Borders */}
       <div className="max-w-7xl mx-auto px-6 py-12">
