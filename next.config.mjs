@@ -27,74 +27,58 @@ const nextConfig = {
     } : false,
   },
 
-  // Performance optimizations
+  // Performance optimizations (optimizeCss disabled — breaks CSS HMR in dev)
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    optimizeCss: true,
   },
 
   // Compression
   compress: true,
 
-  // PWA and offline support
+  // Cache headers — aggressive caching in production, no caching in dev
   headers: async () => [
+    // Security headers for all routes
     {
       source: '/(.*)',
       headers: [
-        {
-          key: 'X-Content-Type-Options',
-          value: 'nosniff',
-        },
-        // {
-        //   key: 'X-Frame-Options',
-        //   value: 'DENY',
-        // },
-        {
-          key: 'X-XSS-Protection',
-          value: '1; mode=block',
-        },
-        {
-          key: 'Referrer-Policy',
-          value: 'strict-origin-when-cross-origin',
-        },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-XSS-Protection', value: '1; mode=block' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        // In development: tell browser never to cache pages or JS so HMR works
+        ...(process.env.NODE_ENV !== 'production' ? [
+          { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate' },
+          { key: 'Pragma', value: 'no-cache' },
+        ] : []),
       ],
     },
+    // Fonts are content-hashed — safe to cache forever in all environments
     {
       source: '/fonts/(.*)',
       headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable',
-        },
+        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
       ],
     },
-    {
-      source: '/_next/static/(.*)',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable',
-        },
-      ],
-    },
-    {
-      source: '/images/(.*)',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable',
-        },
-      ],
-    },
-    {
-      source: '/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|avif)',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'public, max-age=31536000, immutable',
-        },
-      ],
-    },
+    // Static JS/CSS chunks — production only (content-hashed, safe to cache forever)
+    ...(process.env.NODE_ENV === 'production' ? [
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|avif)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+    ] : []),
   ],
 };
 

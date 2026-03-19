@@ -46,23 +46,24 @@ export function MainNav() {
         </Link>
 
         <Link
-          href="/colors"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname?.startsWith('/colors') ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Colors
-        </Link>
-        <Link
           href="https://json.spectrumhq.in/"
           className={cn(
             'transition-colors hover:text-foreground/80',
-          
           )}
         >
           Api Testing
-          <span className="text-xs ml-1  px-1.5 py-0.5 rounded-full  bg-yellow-400/30 dark:bg-[#eaec8a]/16 text-yellow-600 dark:text-[#eaec8a] [text-shadow:0_1px_1.5px_rgb(0,0,0,0.16)]">
+          
+        </Link>
+
+        <Link
+          href="/pro"
+          className={cn(
+            'transition-colors hover:text-foreground/80',
+            pathname?.startsWith('/pro') ? 'text-foreground' : 'text-foreground/80',
+          )}
+        >
+          Pro
+          <span className="text-xs ml-1 px-1.5 py-0.5 rounded-full bg-yellow-400/30 dark:bg-[#eaec8a]/16 text-yellow-600 dark:text-[#eaec8a] [text-shadow:0_1px_1.5px_rgb(0,0,0,0.16)]">
             New
           </span>
         </Link>
