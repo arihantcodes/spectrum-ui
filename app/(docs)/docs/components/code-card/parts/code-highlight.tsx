@@ -30,7 +30,7 @@ const CodeHighlight = ({
     const loadHighlighter = async () => {
       const { createHighlighter } = await import('shiki');
       const highlighter = await createHighlighter({
-        themes: ['one-dark-pro', 'github-light'],
+        themes: ['vesper', 'github-light'],
         langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash'],
       });
       setHighlighter(highlighter);
@@ -42,7 +42,7 @@ const CodeHighlight = ({
   useEffect(() => {
     const getShikiTheme = () => {
       const currentTheme = resolvedTheme || theme;
-      return currentTheme === 'dark' ? 'one-dark-pro' : 'github-light';
+      return currentTheme === 'dark' ? 'vesper' : 'github-light';
     };
 
     if (highlighter && code) {
@@ -107,7 +107,7 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_code]:font-medium [&_code]:font-mono [&_code]:text-[15px] [&_code]:tracking-tight [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:p-4 [&_pre]:leading-relaxed',
+              '[&_pre]:!bg-[#ffffff] dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px] [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:p-4 [&_pre]:leading-relaxed',
               lang,
             )}
           />
