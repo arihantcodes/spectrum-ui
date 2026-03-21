@@ -7,7 +7,6 @@ import { useState } from "react";
 import { motion } from "motion/react";
 
 import { cn } from "@//lib/utils";
-import { ArrowRight } from "lucide-react";
 
 export function AnimatedBadge() {
   const [isHover, setIsHover] = useState(false);
