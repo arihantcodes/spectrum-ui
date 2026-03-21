@@ -73,9 +73,9 @@ const CodeHighlight = ({
 
   return (
     <div className="relative  rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all">
-      <div className="bg-neutral-100 dark:bg-neutral-900 px-4 py-2 flex items-center justify-between ">
+      <div className="bg-gray-100 dark:bg-[#0A0A0A] rounded-lg px-4 py-2 flex items-center justify-between ">
         <span></span>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center  space-x-3">
           <Button
             className={cn(
               ' h-8 w-8 z-10',
@@ -99,7 +99,7 @@ const CodeHighlight = ({
 
       <div
         className={cn(
-          'max-h-[130px]  overflow-hidden rounded-md ',
+          'max-h-[130px]  overflow-hidden ',
           expand && 'max-h-[400px] overflow-auto',
         )}
       >
@@ -107,7 +107,7 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_pre]:!bg-[#ffffff] dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px]  [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:p-2 [&_pre]:leading-7 dark:[&_pre]:bg-zinc-900!',
+              '[&_pre]:!bg-[#ffffff] dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px] [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:p-4 [&_pre]:leading-relaxed',
               lang,
             )}
           />

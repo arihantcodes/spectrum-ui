@@ -47,7 +47,7 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Animated SVG Chart" className="mt-5">
+        <PageTemplate title="Animated SVG Chart" className="mt-8">
         <PreviewCodeCard
           className=""
           path="app/(docs)/docs/animatedchart/animateddemo.tsx"

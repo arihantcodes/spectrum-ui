@@ -23,14 +23,14 @@ export function SiteHeader() {
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             {pathname !== '/blocks' && (
               <Link
-                href="https://shadcnblocks.com"
+                href="https://shadcnblocks.com?utm_source=spectrumui&utm_medium=website&utm_campaign=sponsor"
                 className="hidden md:flex items-center gap-2 bg-neutral-100 border dark:bg-secondary rounded-md px-5 h-9 hover:bg-neutral-200 dark:hover:bg-secondary/80 transition-colors"
               >
                 <Icons.shadcnblock className="h-4 w-4" />
                 <div className="flex flex-col xl:flex-row gap-3 items-center">
                   <p className="text-sm font-medium hidden lg:block">Shadcnblocks.com</p>
                   <p className="text-[11px] text-neutral-700 dark:text-neutral-400 hidden xl:block">
-                    [ 600+ extra shadcn blocks]
+                   
                   </p>
                 </div>
               </Link>

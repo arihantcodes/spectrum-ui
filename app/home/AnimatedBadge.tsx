@@ -72,7 +72,7 @@ export function AnimatedBadge() {
               Vercel OSS
             </span>
           </div>
-          <ArrowRight className="h-4 w-4 ml-2" />
+          {/* <ArrowRight className="h-4 w-4 ml-2" /> */}
       </div>
       <div
         aria-hidden

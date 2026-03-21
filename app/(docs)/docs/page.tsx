@@ -1,168 +1,105 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Search, Component as ComponentIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
-export default function IntroductionPage() {
+const componentsList = [
+  { name: "Accordion", description: "A vertically stacked set of interactive headings that each reveal an associated section of content.", href: "/docs/accordion" },
+  { name: "Alert", description: "Displays a callout for user attention.", href: "/docs/alert" },
+  { name: "Animated Card", description: "A beautifully animated card component.", href: "/docs/animatedcard" },
+  { name: "Animated Chart", description: "Interactive and animated SVG charts.", href: "/docs/animatedchart" },
+  { name: "Animated Drawer", description: "A modern, animated sliding drawer.", href: "/docs/animateddrawer" },
+  { name: "Animated Testimonials", description: "An interactive, animated testimonials slider.", href: "/docs/animatedtestimonials" },
+  { name: "Animated Text", description: "Text that animates playfully into view.", href: "/docs/animatedtext" },
+  { name: "Autosize Textarea", description: "A textarea that automatically resizes to its content.", href: "/docs/autosize-textarea" },
+  { name: "Badge", description: "Displays a small badge or label.", href: "/docs/badge" },
+  { name: "Button", description: "Interactive button component with various styles.", href: "/docs/button" },
+  { name: "Card", description: "Displays a card with header, content, and footer.", href: "/docs/card" },
+  { name: "Datetime Picker", description: "A customizable date and time picker.", href: "/docs/datetime-picker" },
+  { name: "Disclose Image", description: "An interactive image disclosure effect.", href: "/docs/discloseimage" },
+  { name: "Dual Range Slider", description: "A slider with two handles for a range of values.", href: "/docs/dual-range-slider" },
+  { name: "Event Calendar", description: "A premium event calendar component.", href: "/docs/eventcalendar" },
+  { name: "Feedback", description: "A widget for submitting user feedback.", href: "/docs/feedback" },
+  { name: "Floating Label Input", description: "Input field with a floating label animation.", href: "/docs/floating-label-input" },
+  { name: "Footer", description: "Pre-designed footer sections for your site.", href: "/docs/footer" },
+  { name: "Github Card", description: "A card displaying GitHub repository status.", href: "/docs/github-card" },
+  { name: "Heading with Anchor", description: "A heading that includes an anchor link.", href: "/docs/heading-with-anchor" },
+  { name: "Image Preview", description: "Preview images on click or hover.", href: "/docs/imagepreview" },
+  { name: "Infinite Scroll", description: "Implement infinite scrolling lists.", href: "/docs/infinite-scroll" },
+  { name: "Input", description: "Standard text input field.", href: "/docs/input" },
+  { name: "Input Model", description: "An input with special modal behavior.", href: "/docs/input-model" },
+  { name: "Kanban", description: "A draggable Kanban board UI.", href: "/docs/kanban" },
+  { name: "Loading Button", description: "A button with a loading spinner state.", href: "/docs/loading-button" },
+  { name: "Login", description: "Pre-built elegant login pages and forms.", href: "/docs/login" },
+  { name: "Multiple Selector", description: "A dropdown that allows multiple selections.", href: "/docs/multiple-selector" },
+  { name: "Multistep Form", description: "A multi-step form wizard layout.", href: "/docs/multistepform" },
+  { name: "Navbar", description: "Pre-designed top navigation bars.", href: "/docs/navbar" },
+  { name: "Product Card", description: "A card tailored for e-commerce products.", href: "/docs/product-card" },
+  { name: "Profile", description: "User profile components and cards.", href: "/docs/profile" },
+  { name: "Progress with Value", description: "A progress bar that displays its numerical value.", href: "/docs/progress-with-value" },
+  { name: "Responsive Modal", description: "A modal that adjusts gracefully to screen sizes.", href: "/docs/responsive-modal" },
+  { name: "Skeleton", description: "Placeholder loading states for content.", href: "/docs/skeleton" },
+  { name: "Spinner", description: "A simple loading spinner.", href: "/docs/spinner" },
+  { name: "Status Badge", description: "A badge indicating an operational status.", href: "/docs/status-badge" },
+  { name: "Status Code", description: "UI for displaying HTTP status code states.", href: "/docs/statuscode" },
+  { name: "Testimonials", description: "Elegant testimonial sections.", href: "/docs/testimonials" },
+];
+
+export default function DocsIndexPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredComponents = componentsList.filter(comp =>
+    comp.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    comp.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="max-w-4xl mx-auto space-y-12 py-8">
-      {/* Hero Section */}
+    <div className="max-w-6xl mx-auto space-y-8 py-8 px-4">
+      {/* Search Header */}
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">Spectrum UI</h1>
-        <p className="text-xl text-muted-foreground">
-          Beautifully designed components built with Aceternity UI ,ShadCN UI
-          and MAGIC UI a that you can copy and paste into your apps. Accessible.
-          Customizable. Open Source.
+        <h1 className="text-3xl font-bold tracking-tight">Components</h1>
+        <p className="text-lg text-muted-foreground">
+          Browse and search through all available Spectrum UI components.
         </p>
-        <div className="flex gap-4">
-          <Button asChild>
-            <Link href="/docs/installation">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link href="https://github.com/arihantcodes/spectrum-ui">
-              <Github className="mr-2 h-4 w-4" />
-              GitHub
-            </Link>
-          </Button>
+        <div className="relative max-w-lg mt-6">
+          <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+          <Input 
+            placeholder="Search components..." 
+            className="pl-10 h-11 text-base bg-background shadow-sm"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
-      {/* Introduction Section */}
-      <div className="space-y-4">
-        <h2 className="text-3xl font-bold tracking-tight">Introduction</h2>
-        <div className="text-muted-foreground space-y-4">
-          <p>
-            Spectrum UI is a collection of re-usable components built using{" "}
-            <Link
-              href="https://ui.aceternity.com/"
-              className="font-medium underline underline-offset-4"
-            >
-              Aceternity UI
-            </Link>{" "}
-            <Link
-              href="https://magicui.design/"
-              className="font-medium underline underline-offset-4"
-            >
-              Magic UI
-            </Link>{" "}
-            and{" "}
-            <Link
-              href="https://ui.shadcn.com"
-              className="font-medium underline underline-offset-4"
-            >
-              ShadCN UI
-            </Link>{" "}
-            that you can copy and paste into your apps.
-          </p>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border p-4">
-              <h3 className="font-semibold mb-2">
-                What do you mean by copy and paste?
-              </h3>
-              <p>
-                Spectrum UI is not a component library. It&apos;s a collection
-                of re-usable components that you can copy and paste into your
-                projects.
-              </p>
-            </div>
-            <div className="rounded-lg border p-4">
-              <h3 className="font-semibold mb-2">What? Why?</h3>
-              <p>
-                The goal is to give you a set of beautiful, accessible, and
-                customizable components that you can use in your projects. Use
-                this as a reference implementation or copy and paste the code
-                into your project and customize it to your needs.
-              </p>
-            </div>
-          </div>
+      {/* Grid */}
+      {filteredComponents.length === 0 ? (
+        <div className="py-20 text-center text-muted-foreground flex flex-col items-center">
+          <ComponentIcon className="h-12 w-12 mb-4 opacity-20" />
+          <p>No components found for &quot;{searchQuery}&quot;</p>
         </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div className="space-y-4">
-        <h2 className="text-3xl font-bold tracking-tight">FAQ</h2>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Is this a component library?</AccordionTrigger>
-            <AccordionContent>
-              No. Spectrum UI is not a component library. It&apos;s a collection
-              of re-usable components that you can copy and paste into your
-              projects.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Can I use this in my project?</AccordionTrigger>
-            <AccordionContent>
-              Yes. Free to use for personal and commercial projects. No
-              attribution required.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Which frameworks are supported?</AccordionTrigger>
-            <AccordionContent>
-              You can use these components in any framework that supports React.
-              This includes Next.js, Gatsby, and others.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-4">
-            <AccordionTrigger>Can I use this with JavaScript?</AccordionTrigger>
-            <AccordionContent>
-              Yes. You can use these components in your JavaScript projects. We
-              use TypeScript for type checking and documentation.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
-
-      {/* Credits Section */}
-      <div className="space-y-4 ">
-        <h2 className="text-3xl font-bold tracking-tight">Credits</h2>
-        <p className="text-muted-foreground gap-4">
-          Built with{" "}
-          <Link
-            href="https://ui.aceternity.com/"
-            className="font-medium underline underline-offset-4 mr-2"
-          >
-            Aceternity UI
-          </Link>
-          ,{" "}
-          <Link
-            href="https://magicui.design/"
-            className="font-medium underline underline-offset-4"
-          >
-            Magic UI
-          </Link>
-          ,{" "}
-          <Link
-            href="https://ui.shadcn.com"
-            className="font-medium underline underline-offset-4"
-          >
-            ShadCN UI
-          </Link>
-          ,{" "}
-          <Link
-            href="https://nextjs.org"
-            className="font-medium underline underline-offset-4"
-          >
-            Next.js
-          </Link>
-          , and{" "}
-          <Link
-            href="https://www.typescriptlang.org"
-            className="font-medium underline underline-offset-4"
-          >
-            TypeScript
-          </Link>
-          .
-        </p>
-      </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredComponents.map((comp) => (
+            <Link key={comp.href} href={comp.href}>
+              <div className="group relative rounded-xl border bg-card h-full transition-all hover:border-foreground/30 hover:shadow-md overflow-hidden">
+                <div className="relative h-32 w-full bg-neutral-100 dark:bg-neutral-900 border-b flex items-center justify-center transition-colors overflow-hidden group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900/50">
+                  <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <ComponentIcon className="relative z-10 h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-all duration-300 group-hover:scale-125 group-hover:text-foreground" />
+                </div>
+                <div className="p-5 flex flex-col gap-2">
+                  <h3 className="font-semibold text-foreground tracking-tight">{comp.name}</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {comp.description}
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
