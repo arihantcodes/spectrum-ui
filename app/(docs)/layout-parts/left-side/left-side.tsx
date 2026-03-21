@@ -53,7 +53,7 @@ export default function EnhancedSidebar() {
   })).filter((group) => group.children.length > 0);
 
   return (
-    <aside className="hidden md:flex flex-col w-full h-screen top-0 border-neutral-200 dark:border-neutral-700">
+    <aside className="hidden md:flex flex-col w-full h-screen  -mt-8 top-0 border-neutral-200 dark:border-neutral-700">
       <ScrollArea className="flex-1 w-full">
         <div className="pr-4 pl-1">
           <div className="w-full md:my-4 lg:mr-3">

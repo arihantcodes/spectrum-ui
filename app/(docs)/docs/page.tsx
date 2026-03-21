@@ -85,8 +85,9 @@ export default function DocsIndexPage() {
           {filteredComponents.map((comp) => (
             <Link key={comp.href} href={comp.href}>
               <div className="group relative rounded-xl border bg-card h-full transition-all hover:border-foreground/30 hover:shadow-md overflow-hidden">
-                <div className="h-32 w-full bg-neutral-100 dark:bg-neutral-900 border-b flex items-center justify-center group-hover:bg-neutral-200 dark:group-hover:bg-neutral-800 transition-colors">
-                  <ComponentIcon className="h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-transform group-hover:scale-110" />
+                <div className="relative h-32 w-full bg-neutral-100 dark:bg-neutral-900 border-b flex items-center justify-center transition-colors overflow-hidden group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900/50">
+                  <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <ComponentIcon className="relative z-10 h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-all duration-300 group-hover:scale-125 group-hover:text-foreground" />
                 </div>
                 <div className="p-5 flex flex-col gap-2">
                   <h3 className="font-semibold text-foreground tracking-tight">{comp.name}</h3>
