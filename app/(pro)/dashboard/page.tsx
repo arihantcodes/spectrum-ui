@@ -1,12 +1,10 @@
 import { auth } from '@/auth'
 import { supabase } from '@/lib/supabase'
-import { signOut } from '@/auth'
 import Link from 'next/link'
 import {
   IconBrandGithub,
   IconExternalLink,
   IconPackage,
-  IconLogout,
 } from '@tabler/icons-react'
 import { formatDate } from '@/lib/utils'
 

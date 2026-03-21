@@ -4,10 +4,8 @@ import { createClient } from '@supabase/supabase-js'
 import {
   IconBrandGithub,
   IconMail,
-  IconLogout,
 } from '@tabler/icons-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { signOut } from '@/auth'
 import { formatDate } from '@/lib/utils'
 
 const supabaseAdmin = createClient(
