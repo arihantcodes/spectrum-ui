@@ -26,7 +26,7 @@ function Stepper({ title, step, children }: StepperProps) {
         </h4>
       </div>
       {children && (
-        <div className="ml-11 mt-2 border-l-2 border-neutral-100 pl-4 text-sm dark:border-neutral-800">
+        <div className="ml-[15px] mt-2 border-l-2 border-neutral-100 pl-[27px] text-sm dark:border-neutral-800">
           {children}
         </div>
       )}
