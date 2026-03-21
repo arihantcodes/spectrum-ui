@@ -13,6 +13,7 @@ const inter = Inter({
 import Footer from "@/components/footer";
 import "./globals.css";
 import { inject } from "@vercel/analytics";
+import { auth } from "@/auth";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -182,11 +183,12 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
       <head>
@@ -296,7 +298,7 @@ export default function RootLayout({
             </Link>
           </div> */}
 
-          <SiteHeader />
+          <SiteHeader session={session} />
           <main className="flex flex-1 flex-col">
             {" "}
             <PostHogProvider>{children}</PostHogProvider>
