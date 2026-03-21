@@ -7,6 +7,7 @@ import {
   IconPackage,
 } from '@tabler/icons-react'
 import { formatDate } from '@/lib/utils'
+import { RestoreAccessButton } from '@/components/dashboard/RestoreAccessButton'
 
 export default async function DashboardPage() {
   const session = await auth()
@@ -122,6 +123,11 @@ export default async function DashboardPage() {
                   <IconBrandGithub size={14} />
                   Open Repo
                 </a>
+                
+                {!order.github_access_granted && (
+                  <RestoreAccessButton paymentId={order.payment_id} />
+                )}
+
                 <a
                   href={order.templates?.preview_url}
                   target="_blank"

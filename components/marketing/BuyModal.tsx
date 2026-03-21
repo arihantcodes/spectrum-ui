@@ -147,19 +147,28 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
                       <input
                         type="text"
                         value={githubUsername}
+                        readOnly={!!(session.user as any)?.githubUsername}
                         onChange={(e) => {
                           setGithubUsername(e.target.value)
                           setError('')
                         }}
                         placeholder="yourusername"
-                        className="w-full bg-[#161616] border border-[#222]
+                        className={`w-full bg-[#161616] border border-[#222]
                           focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1]/20
                           rounded-lg pl-7 pr-4 py-2.5 text-sm text-[#F5F5F5]
-                          placeholder:text-[#333] outline-none transition-all font-mono"
+                          placeholder:text-[#333] outline-none transition-all font-mono
+                          ${(session.user as any)?.githubUsername ? 'opacity-60 cursor-not-allowed border-dashed' : ''}`}
                       />
+                      {(session.user as any)?.githubUsername && (
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#444]">
+                          <IconLock size={14} />
+                        </div>
+                      )}
                     </div>
                     <p className="text-xs text-[#444] mt-1.5">
-                      We&apos;ll add this account to the private repo on purchase
+                      {(session.user as any)?.githubUsername 
+                        ? 'Connected to your profile' 
+                        : "We'll add this account to the private repo on purchase"}
                     </p>
                   </div>
 
