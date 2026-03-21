@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import { supabase } from '@/lib/supabase'
+import { supabaseAdmin as supabase } from '@/lib/supabase-admin'
 import Link from 'next/link'
 import {
   IconBrandGithub,
@@ -158,7 +158,7 @@ export default async function DashboardPage() {
       {!!orders?.length && (
         <p className="text-center text-xs text-neutral-500 dark:text-[#444] mt-8">
           Issue with access?{' '}
-          <a href="mailto:arihant@spectrumhq.in"
+          <a href="mailto:jainari1208@gmail.com"
             className="text-neutral-700 dark:text-[#666] hover:text-neutral-900 dark:hover:text-[#888] transition-colors underline underline-offset-2">
             Email us →
           </a>

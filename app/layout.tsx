@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -20,7 +20,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import Cta from "@/components/cta";
-import { PostHogProvider } from "@/components/provider";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 
 inject();
@@ -278,36 +277,20 @@ export default async function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} font-regular`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Analytics />
           <LinkPrefetch />
-
-          {/* <div className="bg-gradient-to-b from-blue-500 to-blue-600 px-4 py-3 text-left font-sans text-base font-medium tracking-tight text-white md:text-center">
-            <Link
-              href="/docs/profile"
-              className="flex items-center justify-center"
-            >
-              ✨ Introducing Spectrum CLI – Your favorite UI blocks, now just
-              one command away.
-              <ChevronRight className=" h-4 w-4 mt-1 ml-2 " />
-            </Link>
-          </div> */}
 
           <SiteHeader session={session} />
           <main className="flex flex-1 flex-col">
             {" "}
-            <PostHogProvider>{children}</PostHogProvider>
+            {children}
           </main>
           <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
           <Cta />
           <Footer />
-        </ThemeProvider>
+        </Providers>
         <SpeedInsights />
       </body>
     </html>

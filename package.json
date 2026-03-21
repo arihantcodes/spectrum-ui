@@ -18,6 +18,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@dodopayments/nextjs": "^0.3.4",
     "@geist-ui/react": "^2.2.5",
     "@hookform/resolvers": "^3.9.1",
     "@mdx-js/loader": "^3.1.0",
