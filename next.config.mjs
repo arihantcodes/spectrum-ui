@@ -3,6 +3,7 @@ import createMDX from "@next/mdx";
 
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  output: 'standalone',
   
   // Image optimization
   images: {
@@ -27,20 +28,23 @@ const nextConfig = {
     } : false,
   },
 
-  // Include source files read by fs.readFile() in Server Components (PreviewCodeCard, Steppers)
-  // Without this, Vercel excludes them from the deployment since they're not statically imported
-  outputFileTracingIncludes: {
-    '/docs/*': [
-      './app/(docs)/docs/**/*.tsx',
-      './components/**/*.tsx',
-      './components/**/*.ts',
-      './lib/**/*.ts',
-    ],
-  },
-
   // Performance optimizations (optimizeCss disabled — breaks CSS HMR in dev)
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    outputFileTracingIncludes: {
+      '/docs/**/*': [
+        './app/(docs)/docs/**/*.tsx',
+        './components/ui/**/*.tsx',
+        './components/ui/**/*.ts',
+        './lib/**/*.ts',
+      ],
+      '/(docs)/docs/**/*': [
+        './app/(docs)/docs/**/*.tsx',
+        './components/ui/**/*.tsx',
+        './components/ui/**/*.ts',
+        './lib/**/*.ts',
+      ],
+    },
   },
 
   // Compression
