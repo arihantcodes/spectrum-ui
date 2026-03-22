@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icons } from '@/components/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { supabase } from '@/lib/supabase';
+import Link from 'next/link';
+import { type Template } from '@/types';
 
 // ─── Waitlist form ─────────────────────────────────────────────────────────
 function WaitlistForm({ id, size = 'default' }: { id: string; size?: 'default' | 'large' }) {
@@ -361,6 +364,23 @@ function StatCard({ value, label }: { value: string; label: string }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function ProPage() {
+  const [templates, setTemplates] = useState<Template[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTemplates() {
+      const { data, error } = await supabase
+        .from('templates')
+        .select('*')
+        .eq('is_published', true)
+        .order('sort_order', { ascending: true });
+      if (data) setTemplates(data);
+      if (error) console.error('Error fetching templates:', error);
+      setLoading(false);
+    }
+    fetchTemplates();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
 
@@ -454,7 +474,90 @@ export default function ProPage() {
       </section>
 
       {/* ── TEMPLATES ─────────────────────────────────────────────────────── */}
-      
+      <section className="container-wrapper border-b border-neutral-200 dark:border-neutral-800">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+          <div className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-widest 
+              text-muted-foreground mb-3">
+              Templates
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Premium, production-ready starter kits.
+            </h2>
+          </div>
+
+          {loading ? (
+            <p className="text-muted-foreground text-sm">Loading templates...</p>
+          ) : templates.length === 0 ? (
+            <p className="text-muted-foreground text-sm">No templates available yet. Check back soon!</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {templates.map((t) => (
+                <Link key={t.slug} href={`/pro/${t.slug}`}
+                  className="group rounded-xl border
+                    border-neutral-200 dark:border-neutral-800
+                    bg-neutral-50 dark:bg-neutral-900/60
+                    hover:border-neutral-300 dark:hover:border-neutral-700
+                    transition-all duration-300 overflow-hidden
+                    hover:shadow-lg block"
+                >
+                  {/* Thumbnail / Placeholder */}
+                  <div className="aspect-video bg-neutral-100 dark:bg-neutral-800
+                    flex items-center justify-center relative overflow-hidden">
+                    {t.thumbnail_url ? (
+                      <img src={t.thumbnail_url} alt={t.name}
+                        className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" />
+                          <path d="M3 9h18" />
+                          <path d="M9 21V9" />
+                        </svg>
+                        <span className="text-xs font-medium">{t.category ?? 'Template'}</span>
+                      </div>
+                    )}
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm
+                      opacity-0 group-hover:opacity-100 transition-all duration-300
+                      flex items-center justify-center">
+                      <span className="text-white text-sm font-semibold
+                        bg-white/20 border border-white/30 px-4 py-2 rounded-lg">
+                        View Details — ${(t.price / 100).toFixed(0)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-sm font-semibold text-foreground">{t.name}</h3>
+                      <span className="text-xs font-bold text-foreground">
+                        ${(t.price / 100).toFixed(0)}
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">{t.tagline}</p>
+                    {t.tech_stack && t.tech_stack.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mt-3">
+                        {t.tech_stack.map((tech) => (
+                          <span key={tech}
+                            className="text-[10px] font-medium px-2 py-0.5 rounded-full
+                              bg-neutral-100 dark:bg-neutral-800
+                              text-muted-foreground border border-neutral-200 dark:border-neutral-700">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* ── FEATURES ──────────────────────────────────────────────────────── */}
       <section className="container-wrapper border-y 

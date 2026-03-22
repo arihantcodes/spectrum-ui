@@ -47,7 +47,7 @@ export function MainNav() {
             pathname?.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Dashboards
+          Blocks
         </Link>
         <Link href="/blog" className={cn(
           'transition-colors hover:text-foreground/80',

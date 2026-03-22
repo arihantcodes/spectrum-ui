@@ -3,14 +3,15 @@
 import Link from 'next/link';
 
 import { usePathname } from 'next/navigation';
-
-import { siteConfig } from '@/config/site';
 import { Icons } from '@/components/icon';
 import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
 import { ThemeToggle } from './theme-toggle';
+import { UserNav } from './user-nav';
+import { Button } from './ui/button';
+import type { Session } from 'next-auth';
 
-export function SiteHeader() {
+export function SiteHeader({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
   return (
@@ -44,7 +45,7 @@ export function SiteHeader() {
                 <p className="text-sm font-medium hidden lg:block">Sponsor</p>
               </div>
             </Link>
-
+{/* 
             <div className="hidden md:flex items-center gap-2">
               <Link 
                 href={siteConfig.links.github} 
@@ -62,10 +63,19 @@ export function SiteHeader() {
               >
                 <Icons.twitter className="h-3 w-4 mr-2" />
               </Link>
-            </div>
+            </div> */}
 
             <nav className="flex items-center gap-0.5">
               <ThemeToggle />
+              {session ? (
+                <UserNav session={session} />
+              ) : (
+                <Link href="/sign-in">
+                  <Button variant="outline" size="sm" className="ml-2 h-8 text-xs font-semibold">
+                    Sign In
+                  </Button>
+                </Link>
+              )}
             </nav>
           </div>
         </div>
