@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
@@ -13,13 +13,13 @@ const inter = Inter({
 import Footer from "@/components/footer";
 import "./globals.css";
 import { inject } from "@vercel/analytics";
+import { auth } from "@/auth";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import Cta from "@/components/cta";
-import { PostHogProvider } from "@/components/provider";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 
 inject();
@@ -182,11 +182,12 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
       <head>
@@ -195,21 +196,6 @@ export default function RootLayout({
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://api.github.com" />
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/geist-sans.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/geist-mono.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         {/* Defer non-critical scripts */}
         <Script
           id="schema-org-website"
@@ -276,36 +262,20 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} font-regular`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           <Analytics />
           <LinkPrefetch />
 
-          {/* <div className="bg-gradient-to-b from-blue-500 to-blue-600 px-4 py-3 text-left font-sans text-base font-medium tracking-tight text-white md:text-center">
-            <Link
-              href="/docs/profile"
-              className="flex items-center justify-center"
-            >
-              ✨ Introducing Spectrum CLI – Your favorite UI blocks, now just
-              one command away.
-              <ChevronRight className=" h-4 w-4 mt-1 ml-2 " />
-            </Link>
-          </div> */}
-
-          <SiteHeader />
+          <SiteHeader session={session} />
           <main className="flex flex-1 flex-col">
             {" "}
-            <PostHogProvider>{children}</PostHogProvider>
+            {children}
           </main>
           <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
           <Cta />
           <Footer />
-        </ThemeProvider>
+        </Providers>
         <SpeedInsights />
       </body>
     </html>

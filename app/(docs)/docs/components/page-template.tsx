@@ -16,7 +16,7 @@ const PageTemplate = ({
   className,
 }: PageTemplateProps) => {
   return (
-    <section className={cn("flex flex-col gap-3 pb-10", className)}>
+    <section className={cn("flex flex-col gap-3 pb-10", className, "!mt-8")}>
       <H1 className="text-xl">{title}</H1>
       <P className="text-lg">{description}</P>
       {children}

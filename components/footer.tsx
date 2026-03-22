@@ -110,6 +110,14 @@ export default function Footer() {
                     Terms of Service
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/faqs"
+                    className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  >
+                    FAQs
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

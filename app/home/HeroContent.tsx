@@ -52,22 +52,21 @@ export function HeroContent() {
           </p>
         </AnimateEnter>
         <AnimateEnter className="flex items-center justify-center gap-3" delay={0.7} duration={2}>
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2 md:mt-6 w-full sm:w-auto px-5">
-            <Link href="/docs/installation" className="w-full sm:w-auto">
-              <Button size="lg" className="rounded-2xl w-full sm:w-auto px-8">
+          <div className="flex flex-row items-center justify-center gap-3 mt-2 md:mt-6 w-full sm:w-auto px-4">
+            <Link href="/docs/installation" className="w-auto">
+              <Button size="lg" className="rounded-xl w-auto px-4 sm:px-8">
                 Explore Components
               </Button>
             </Link>
 
-            <div className="w-full sm:w-auto">
+            <div className="w-auto">
               <Link target="_blank" href={siteConfig.links.github}>
-                <Button variant="secondary" className="rounded-2xl w-full sm:w-auto px-8 h-11">
+                <Button variant="secondary" className="rounded-xl w-auto px-4 sm:px-8 h-11">
                   <div className="flex items-center">
                     <Icons.gitHub className="size-4" />
-
-                    <span className="ml-1 ">Star on GitHub</span>
+                    <span className="ml-2 hidden sm:inline-block">Star on GitHub</span>
                   </div>
-                  <div className="ml-1 flex items-center gap-1 text-sm md:flex">
+                  <div className="ml-2 flex items-center gap-1 text-sm">
                     🌟
                     <NumberTicker value={star} className="font-display" />
                   </div>

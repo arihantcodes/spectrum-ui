@@ -7,7 +7,6 @@ import { useState } from "react";
 import { motion } from "motion/react";
 
 import { cn } from "@//lib/utils";
-import { ArrowRight } from "lucide-react";
 
 export function AnimatedBadge() {
   const [isHover, setIsHover] = useState(false);
@@ -72,7 +71,7 @@ export function AnimatedBadge() {
               Vercel OSS
             </span>
           </div>
-          <ArrowRight className="h-4 w-4 ml-2" />
+          {/* <ArrowRight className="h-4 w-4 ml-2" /> */}
       </div>
       <div
         aria-hidden

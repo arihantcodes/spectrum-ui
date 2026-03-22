@@ -52,7 +52,12 @@ const mainNav = [
     title: "Blocks",
     href: "/blocks",
   },
+  {
+    title: "Pro",
+    href: "/pro",
+  },
 ];
+
 
 const sidebarNav: NavSection[] = [
   {
