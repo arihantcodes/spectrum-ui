@@ -7,6 +7,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { formatDate } from '@/lib/utils'
 import { supabaseAdmin } from '@/lib/supabase-admin'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 
 export default async function ProfilePage() {
   const session = await auth()
@@ -22,6 +23,10 @@ export default async function ProfilePage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
+      <BreadcrumbNav 
+        items={[{ label: 'Profile' }]} 
+        className="mb-8"
+      />
       
       {/* Header */}
       <div className="flex items-start justify-between mb-10">

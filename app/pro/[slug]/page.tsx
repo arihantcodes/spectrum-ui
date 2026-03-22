@@ -1,18 +1,11 @@
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { notFound } from 'next/navigation'
+import { auth } from '@/auth'
 import { cache } from 'react'
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import {
-  IconBrandGithub,
-  IconExternalLink,
-  IconArrowLeft,
-  IconCheck,
-  IconCode,
-  IconDevices,
-  IconRocket,
-} from '@tabler/icons-react'
+import { IconBrandGithub, IconExternalLink, IconCheck, IconCode, IconDevices, IconRocket } from '@tabler/icons-react'
 import { TemplateBuySection } from './TemplateBuySection'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 
 // ── SSR: Fetch template at build/request time ────────────────────────────────
 const getTemplate = cache(async (slug: string) => {
@@ -58,20 +51,31 @@ export default async function TemplateDetailPage({
   const template = await getTemplate(slug)
   if (!template) notFound()
 
+  // ── Ownership Check ──
+  const session = await auth()
+  let isOwned = false
+  if (session?.user?.email) {
+    const { count } = await supabaseAdmin
+      .from('orders')
+      .select('id', { count: 'exact', head: true })
+      .eq('email', session.user.email)
+      .eq('template_slug', slug)
+      .eq('status', 'active')
+    isOwned = (count ?? 0) > 0
+  }
+
   const priceDisplay = `$${(template.price / 100).toFixed(2).replace(/\.00$/, '')}`
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* ── Breadcrumb ──────────────────────────────────────────────────── */}
+      {/* ── Breadcrumbs ─────────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-6 pt-8">
-        <Link
-          href="/pro"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground
-            hover:text-foreground transition-colors"
-        >
-          <IconArrowLeft size={14} />
-          Back to templates
-        </Link>
+        <BreadcrumbNav 
+          items={[
+            { label: 'Pro', href: '/pro' },
+            { label: template.name }
+          ]} 
+        />
       </div>
 
       {/* ── Hero Section ────────────────────────────────────────────────── */}
@@ -205,6 +209,7 @@ export default async function TemplateDetailPage({
 
                 {/* Buy Button — Client Component */}
                 <TemplateBuySection
+                  isOwned={isOwned}
                   template={{
                     slug: template.slug,
                     name: template.name,

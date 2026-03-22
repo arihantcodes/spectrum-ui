@@ -196,21 +196,6 @@ export default async function RootLayout({
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://api.github.com" />
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/geist-sans.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/geist-mono.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         {/* Defer non-critical scripts */}
         <Script
           id="schema-org-website"

@@ -31,7 +31,7 @@ const Cta = () => {
       <div className="flex items-center gap-3">
         <Link href="https://pro.spectrumhq.in">
           <Button className="rounded-md px-6 text-sm font-medium">
-            Get early access 
+            Get access 
           </Button>
         </Link>
       </div>

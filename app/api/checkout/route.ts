@@ -32,6 +32,21 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // ── Check if already owned ──
+    const { count: ownedCount } = await supabase
+      .from('orders')
+      .select('id', { count: 'exact', head: true })
+      .eq('email', session.user.email)
+      .eq('template_slug', templateSlug)
+      .eq('status', 'active')
+
+    if (ownedCount && ownedCount > 0) {
+      return NextResponse.json(
+        { error: 'You already own this template' },
+        { status: 400 }
+      )
+    }
+
     // ── Fetch Template from DB ──
     // Pull product ID + template details in one query
     const { data: template, error: tError } = await supabase

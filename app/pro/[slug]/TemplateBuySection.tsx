@@ -10,11 +10,27 @@ import { type Template } from '@/types'
 
 interface TemplateBuySectionProps {
   template: Pick<Template, 'slug' | 'name' | 'price' | 'tagline'>
+  isOwned?: boolean
 }
 
-export function TemplateBuySection({ template }: TemplateBuySectionProps) {
+export function TemplateBuySection({ template, isOwned }: TemplateBuySectionProps) {
   const { data: session } = useSession()
   const [buyModalOpen, setBuyModalOpen] = useState(false)
+
+  // Already owned → show dashboard link
+  if (isOwned) {
+    return (
+      <Link
+        href="/dashboard"
+        className="w-full flex items-center justify-center gap-2
+          bg-neutral-900 hover:bg-neutral-800 text-white
+          dark:bg-[#F5F5F5] dark:hover:bg-white dark:text-[#080808]
+          font-semibold text-sm py-3 rounded-xl transition-colors"
+      >
+        Go to Dashboard
+      </Link>
+    )
+  }
 
   // Not signed in → show sign-in button that redirects back
   if (!session) {

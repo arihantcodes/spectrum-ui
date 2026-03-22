@@ -3,8 +3,6 @@
 import Link from 'next/link';
 
 import { usePathname } from 'next/navigation';
-
-import { siteConfig } from '@/config/site';
 import { Icons } from '@/components/icon';
 import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
@@ -47,7 +45,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
                 <p className="text-sm font-medium hidden lg:block">Sponsor</p>
               </div>
             </Link>
-
+{/* 
             <div className="hidden md:flex items-center gap-2">
               <Link 
                 href={siteConfig.links.github} 
@@ -65,7 +63,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
               >
                 <Icons.twitter className="h-3 w-4 mr-2" />
               </Link>
-            </div>
+            </div> */}
 
             <nav className="flex items-center gap-0.5">
               <ThemeToggle />
