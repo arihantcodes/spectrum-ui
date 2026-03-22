@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "app/registry/datetime-picker/usage/datetime-picker-disabled.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\n\nconst DatetimePickerDisabled = () => {\n  const [date, setDate] = useState<Date | undefined>(undefined);\n  return (\n    <DateTimePicker disabled value={date} onChange={setDate} className=\"w-72\" />\n  );\n};\n\nexport default DatetimePickerDisabled;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\r\n\r\nconst DatetimePickerDisabled = () => {\r\n  const [date, setDate] = useState<Date | undefined>(undefined);\r\n  return (\r\n    <DateTimePicker disabled value={date} onChange={setDate} className=\"w-72\" />\r\n  );\r\n};\r\n\r\nexport default DatetimePickerDisabled;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/date-picker-disabled.tsx"
     }

@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "app/registry/loading-button/loading-button-as-child.tsx",
-      "content": "import React from \"react\";\nimport { LoadingButton } from \"@/app/registry/spectrumui/loading-button-dependencies\";\nimport Link from \"next/link\";\n\nconst LoadingButtonAsChild = () => {\n  return (\n    <div className=\"flex flex-col items-center gap-2\">\n      <LoadingButton asChild loading>\n        <p>As a `p` child</p>\n      </LoadingButton>\n      <LoadingButton asChild>\n        <Link href=\"#\">as a `Link` child</Link>\n      </LoadingButton>\n      <LoadingButton asChild variant=\"secondary\">\n        <Link href=\"#\">as a `Link` child with `secondary` variant</Link>\n      </LoadingButton>\n    </div>\n  );\n};\n\nexport default LoadingButtonAsChild;\n",
+      "content": "import React from \"react\";\r\nimport { LoadingButton } from \"@/app/registry/spectrumui/loading-button-dependencies\";\r\nimport Link from \"next/link\";\r\n\r\nconst LoadingButtonAsChild = () => {\r\n  return (\r\n    <div className=\"flex flex-col items-center gap-2\">\r\n      <LoadingButton asChild loading>\r\n        <p>As a `p` child</p>\r\n      </LoadingButton>\r\n      <LoadingButton asChild>\r\n        <Link href=\"#\">as a `Link` child</Link>\r\n      </LoadingButton>\r\n      <LoadingButton asChild variant=\"secondary\">\r\n        <Link href=\"#\">as a `Link` child with `secondary` variant</Link>\r\n      </LoadingButton>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default LoadingButtonAsChild;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/loading-button-as-child.tsx"
     }

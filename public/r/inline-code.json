@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "app/registry/spectrumui/inline-code.tsx",
-      "content": "import * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport function InlineCode({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <code\n      className={cn(\n        \"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\",\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n",
+      "content": "import * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function InlineCode({\r\n  className,\r\n  ...props\r\n}: React.HTMLAttributes<HTMLSpanElement>) {\r\n  return (\r\n    <code\r\n      className={cn(\r\n        \"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/inline-code.tsx"
     }

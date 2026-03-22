@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "app/registry/autosize-textarea/usage/autosize-textarea-with-max-height.tsx",
-      "content": "import React from \"react\";\nimport { AutosizeTextarea } from \"@/components/ui/autosize-textarea\";\n\nconst AutosizeTextareaWithMaxHeight = () => {\n  return (\n    <div className=\"w-full px-10\">\n      <AutosizeTextarea\n        placeholder=\"This textarea with min height 52 and max height 200.\"\n        maxHeight={200}\n      />\n    </div>\n  );\n};\n\nexport default AutosizeTextareaWithMaxHeight;\n",
+      "content": "import React from \"react\";\r\nimport { AutosizeTextarea } from \"@/components/ui/autosize-textarea\";\r\n\r\nconst AutosizeTextareaWithMaxHeight = () => {\r\n  return (\r\n    <div className=\"w-full px-10\">\r\n      <AutosizeTextarea\r\n        placeholder=\"This textarea with min height 52 and max height 200.\"\r\n        maxHeight={200}\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AutosizeTextareaWithMaxHeight;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/autosize-textarea-with-max-height.tsx"
     }
