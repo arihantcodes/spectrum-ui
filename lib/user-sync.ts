@@ -1,10 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
-
-// Initialize a Server-Side Admin Client to safely bypass RLS policies
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { supabaseAdmin } from './supabase-admin'
 
 interface SyncParams {
   email: string

@@ -47,8 +47,11 @@ export async function POST(req: Request) {
     await handlePaymentSucceeded(mockPayload)
 
     return NextResponse.json({ success: true, message: 'Access restoration triggered' })
-  } catch (err: any) {
+  } catch (err) {
     console.error('Error restoring access:', err)
-    return NextResponse.json({ error: err.message }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Failed to restore access. Please check your GitHub username and try again.' }, 
+      { status: 500 }
+    )
   }
 }

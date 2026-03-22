@@ -43,7 +43,7 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           templateSlug:   template.slug,
-          githubUsername: githubUsername.replace('@', '').trim(),
+          githubUsername: githubUsername.replace(/^@/, '').trim(),
         }),
       })
 

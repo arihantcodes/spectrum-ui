@@ -6,13 +6,14 @@ export default auth((req) => {
   const { pathname } = req.nextUrl
   const isLoggedIn   = !!req.auth
 
-  const protectedRoutes = ['/dashboard', '/pro/dashboard', '/create-user', '/profile']
-  const isProtected = protectedRoutes.some(r => pathname.startsWith(r))
+  const protectedRoutes = ['/dashboard', '/create-user', '/profile']
+  const isProtected = protectedRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))
 
   // Redirect to sign in if not logged in
   if (isProtected && !isLoggedIn) {
     const signInUrl = new URL('/sign-in', req.url)
-    signInUrl.searchParams.set('callbackUrl', pathname)
+    const callbackUrl = req.nextUrl.pathname + req.nextUrl.search
+    signInUrl.searchParams.set('callbackUrl', callbackUrl)
     return NextResponse.redirect(signInUrl)
   }
 

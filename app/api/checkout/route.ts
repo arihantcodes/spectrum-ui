@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Pre-fill & Persist GitHub Username ──
-    const cleanGithub = githubUsername.replace('@', '').trim()
+    const cleanGithub = githubUsername.replace(/^@/, '').trim()
     const { syncUser } = await import('@/lib/user-sync')
     syncUser({
       email:          session.user.email,

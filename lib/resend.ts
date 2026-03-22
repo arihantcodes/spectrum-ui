@@ -2,6 +2,15 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 interface PurchaseEmailProps {
   email: string;
   githubUsername: string;
@@ -16,15 +25,18 @@ export async function sendPurchaseEmail({
   githubRepo,
 }: PurchaseEmailProps) {
   try {
+    const escapedTemplate = escapeHtml(templateName);
+    const escapedGithub = escapeHtml(githubUsername);
+
     const { data, error } = await resend.emails.send({
       from: 'Spectrum UI <noreply@spectrumhq.in>', // Use your verified domain here
       to: [email],
-      subject: `Welcome to ${templateName} - Access Granted!`,
+      subject: `Welcome to ${escapedTemplate} - Access Granted!`,
       html: `
         <div>
-          <h1>Thank you for purchasing ${templateName}!</h1>
+          <h1>Thank you for purchasing ${escapedTemplate}!</h1>
           <p>We've successfully processed your payment.</p>
-          <p>We've sent an invitation to your GitHub account <strong>@${githubUsername}</strong> to access the private repository:</p>
+          <p>We've sent an invitation to your GitHub account <strong>@${escapedGithub}</strong> to access the private repository:</p>
           <p><a href="https://github.com/${githubRepo}">https://github.com/${githubRepo}</a></p>
           <p><strong>Next steps:</strong></p>
           <ol>

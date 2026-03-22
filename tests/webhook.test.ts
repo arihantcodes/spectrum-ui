@@ -19,8 +19,8 @@ describe("Webhook Resilience", () => {
       currency: "USD",
       metadata: {
         templateSlug: "nova-saas",
-        githubUsername: "itzamanjain",
-        userEmail: "jainaman0744@gmail.com",
+        githubUsername: "test-user",
+        userEmail: "test@example.com",
       },
     },
   };

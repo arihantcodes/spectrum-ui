@@ -365,6 +365,7 @@ function StatCard({ value, label }: { value: string; label: string }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function ProPage() {
   const [templates, setTemplates] = useState<Template[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTemplates() {
@@ -375,6 +376,7 @@ export default function ProPage() {
         .order('sort_order', { ascending: true });
       if (data) setTemplates(data);
       if (error) console.error('Error fetching templates:', error);
+      setLoading(false);
     }
     fetchTemplates();
   }, []);
@@ -484,8 +486,10 @@ export default function ProPage() {
             </h2>
           </div>
 
-          {templates.length === 0 ? (
+          {loading ? (
             <p className="text-muted-foreground text-sm">Loading templates...</p>
+          ) : templates.length === 0 ? (
+            <p className="text-muted-foreground text-sm">No templates available yet. Check back soon!</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {templates.map((t) => (

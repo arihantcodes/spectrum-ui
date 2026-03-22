@@ -1,17 +1,12 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
-import { createClient } from '@supabase/supabase-js'
 import {
   IconBrandGithub,
   IconMail,
 } from '@tabler/icons-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { formatDate } from '@/lib/utils'
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { supabaseAdmin } from '@/lib/supabase-admin'
 
 export default async function ProfilePage() {
   const session = await auth()

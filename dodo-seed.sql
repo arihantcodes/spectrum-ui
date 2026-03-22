@@ -32,8 +32,15 @@ INSERT INTO templates (
 SET 
   name = EXCLUDED.name, 
   tagline = EXCLUDED.tagline,
+  description = EXCLUDED.description,
   price = EXCLUDED.price,
-  github_repo = EXCLUDED.github_repo;
+  category = EXCLUDED.category,
+  tech_stack = EXCLUDED.tech_stack,
+  preview_url = EXCLUDED.preview_url,
+  thumbnail_url = EXCLUDED.thumbnail_url,
+  github_repo = EXCLUDED.github_repo,
+  is_published = EXCLUDED.is_published,
+  sort_order = EXCLUDED.sort_order;
 
 
 -- 2. If you haven't created the orders table yet, here is the schema to run:

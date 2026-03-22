@@ -13,13 +13,31 @@ export async function handlePaymentSucceeded(payload: any) {
     metadata,
   } = payload.data
 
+  // 0. Validate metadata
+  if (!metadata || !metadata.templateSlug || !metadata.githubUsername || !metadata.userEmail) {
+    console.error(`[Webhook] ERROR: Malformed metadata:`, metadata)
+    throw new Error('Malformed metadata in webhook payload')
+  }
+
   const { templateSlug, githubUsername, userEmail } = metadata as {
     templateSlug:   string
     githubUsername: string
     userEmail:      string
   }
 
-  // 1. Check for existing order (Idempotency)
+  // 1. Fetch template record ONCE for reuse
+  const { data: template, error: templateError } = await supabase
+    .from('templates')
+    .select('name, github_repo')
+    .eq('slug', templateSlug)
+    .single()
+
+  if (templateError || !template) {
+    console.error(`[Webhook] ERROR: Template not found: ${templateSlug}`)
+    throw new Error(`Template not found: ${templateSlug}`)
+  }
+
+  // 2. Check for existing order (Idempotency)
   const { data: existingOrder } = await supabase
     .from('orders')
     .select('*')
@@ -31,18 +49,6 @@ export async function handlePaymentSucceeded(payload: any) {
   if (!order) {
     console.log(`[Webhook] New payment: ${userEmail} → ${templateSlug} (${payment_id})`)
     
-    // Get template details
-    const { data: template } = await supabase
-      .from('templates')
-      .select('name, github_repo')
-      .eq('slug', templateSlug)
-      .single()
-
-    if (!template) {
-      console.error(`[Webhook] ERROR: Template not found: ${templateSlug}`)
-      return
-    }
-
     // Initial insert
     const { data: newOrder, error: insertError } = await supabase
       .from('orders')
@@ -62,59 +68,47 @@ export async function handlePaymentSucceeded(payload: any) {
 
     if (insertError) {
       console.error(`[Webhook] ERROR: Order insert failed: ${insertError.message}`)
-      return
+      throw insertError
     }
     order = newOrder
   } else {
     console.log(`[Webhook] Existing order found for ${payment_id}. Resuming...`)
   }
 
-  // 2. Grant GitHub Access (if not already granted)
+  // 3. Grant GitHub Access (if not already granted)
   if (!order.github_access_granted) {
     try {
-      const { data: template } = await supabase
-        .from('templates')
-        .select('github_repo')
-        .eq('slug', templateSlug)
-        .single()
-      
-      if (template) {
-        await grantRepoAccess(template.github_repo, githubUsername)
-        await supabase
-          .from('orders')
-          .update({ github_access_granted: true })
-          .eq('payment_id', payment_id)
-        console.log(`[Webhook] GitHub access granted: ${githubUsername}`)
-      }
+      await grantRepoAccess(template.github_repo, githubUsername)
+      await supabase
+        .from('orders')
+        .update({ github_access_granted: true })
+        .eq('payment_id', payment_id)
+      console.log(`[Webhook] GitHub access granted: ${githubUsername}`)
     } catch (err) {
       console.error(`[Webhook] ERROR: GitHub access failed:`, err)
+      // Re-throw to ensure webhook retry
+      throw err
     }
   }
 
-  // 3. Send Email (if not already sent)
+  // 4. Send Email (if not already sent)
   if (!order.email_sent) {
     try {
-      const { data: template } = await supabase
-        .from('templates')
-        .select('name, github_repo')
-        .eq('slug', templateSlug)
-        .single()
-
-      if (template) {
-        await sendPurchaseEmail({
-          email:          userEmail,
-          githubUsername: githubUsername,
-          templateName:   template.name,
-          githubRepo:     template.github_repo,
-        })
-        await supabase
-          .from('orders')
-          .update({ email_sent: true })
-          .eq('payment_id', payment_id)
-        console.log(`[Webhook] Welcome email sent: ${userEmail}`)
-      }
+      await sendPurchaseEmail({
+        email:          userEmail,
+        githubUsername: githubUsername,
+        templateName:   template.name,
+        githubRepo:     template.github_repo,
+      })
+      await supabase
+        .from('orders')
+        .update({ email_sent: true })
+        .eq('payment_id', payment_id)
+      console.log(`[Webhook] Welcome email sent: ${userEmail}`)
     } catch (err) {
       console.error(`[Webhook] ERROR: Email failed:`, err)
+      // Re-throw to ensure webhook retry
+      throw err
     }
   }
 }

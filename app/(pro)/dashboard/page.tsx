@@ -22,8 +22,10 @@ export default async function DashboardPage() {
       github_username,
       template_slug,
       amount,
+      currency,
       status,
       github_access_granted,
+      payment_id,
       purchased_at,
       templates (
         name,
@@ -67,9 +69,9 @@ export default async function DashboardPage() {
       <div className="space-y-4">
         {orders?.map((order: any) => (
           <div key={order.id}
-            className="bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222] rounded-xl p-6
-              hover:border-neutral-300 dark:hover:border-[#2A2A2A] transition-colors
-              dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-sm hover:shadow-md dark:shadow-none dark:hover:shadow-none">
+            className="group bg-neutral-50 dark:bg-[#0A0A0A] border border-neutral-200 dark:border-[#222] rounded-2xl p-6
+              hover:border-neutral-300 dark:hover:border-[#333] transition-all duration-300
+              dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-sm hover:shadow-xl dark:shadow-none hover:-translate-y-0.5">
 
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1 min-w-0">
@@ -145,15 +147,32 @@ export default async function DashboardPage() {
             </div>
 
             {/* Footer row */}
-            <div className="mt-4 pt-4 border-t border-neutral-200 dark:border-[#1A1A1A]
-              flex items-center justify-between flex-wrap gap-2">
-              <code className="text-xs text-neutral-800 dark:text-[#333] font-mono bg-neutral-200/50 dark:bg-transparent px-2 py-0.5 rounded">
-                git clone https://github.com/{order.templates?.github_repo}
-              </code>
-              <div className="flex items-center gap-3 text-xs text-neutral-500 dark:text-[#444]">
+            <div className="mt-5 pt-5 border-t border-neutral-200 dark:border-[#1A1A1A]
+              flex items-center justify-between flex-wrap gap-3">
+              <div className="group relative flex items-center">
+                <code className="text-[11px] text-neutral-800 dark:text-[#555] font-mono bg-neutral-200/40 dark:bg-[#161616]/50 px-3 py-1.5 rounded-lg border border-neutral-200/50 dark:border-[#222]/50">
+                  git clone https://github.com/{order.templates?.github_repo}
+                </code>
+                <button 
+                  onClick={() => {
+                    navigator.clipboard.writeText(`git clone https://github.com/${order.templates?.github_repo}`)
+                  }}
+                  className="ml-2 p-1.5 text-neutral-400 hover:text-neutral-900 dark:hover:text-[#888] transition-colors rounded-md hover:bg-neutral-200 dark:hover:bg-[#222]"
+                  title="Copy to clipboard"
+                >
+                  <IconExternalLink size={12} className="rotate-45" /> 
+                </button>
+              </div>
+              <div className="flex items-center gap-3 text-[11px] font-medium text-neutral-500 dark:text-[#444] uppercase tracking-tight">
                 <span>
-                  ${(order.amount / 100).toFixed(0)} · {formatDate(order.purchased_at)}
+                  {new Intl.NumberFormat(order.currency === 'INR' ? 'en-IN' : 'en-US', {
+                    style: 'currency',
+                    currency: order.currency || 'USD',
+                    minimumFractionDigits: (order.amount % 100 === 0) ? 0 : 2
+                  }).format(order.amount / 100)}
                 </span>
+                <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-[#222]" />
+                <span>{formatDate(order.purchased_at)}</span>
               </div>
             </div>
           </div>

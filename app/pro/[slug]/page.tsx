@@ -1,5 +1,6 @@
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { notFound } from 'next/navigation'
+import { cache } from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
@@ -14,7 +15,7 @@ import {
 import { TemplateBuySection } from './TemplateBuySection'
 
 // ── SSR: Fetch template at build/request time ────────────────────────────────
-async function getTemplate(slug: string) {
+const getTemplate = cache(async (slug: string) => {
   const { data, error } = await supabaseAdmin
     .from('templates')
     .select('*')
@@ -24,7 +25,7 @@ async function getTemplate(slug: string) {
 
   if (error || !data) return null
   return data
-}
+})
 
 // ── SEO: Dynamic metadata ────────────────────────────────────────────────────
 export async function generateMetadata({
@@ -57,7 +58,7 @@ export default async function TemplateDetailPage({
   const template = await getTemplate(slug)
   if (!template) notFound()
 
-  const priceDisplay = `$${(template.price / 100).toFixed(0)}`
+  const priceDisplay = `$${(template.price / 100).toFixed(2).replace(/\.00$/, '')}`
 
   return (
     <div className="min-h-screen bg-background text-foreground">

@@ -8,9 +8,9 @@
 import { supabaseAdmin as supabase } from '../lib/supabase-admin';
 
 // --- SETTINGS FOR TEST ---
-const TEST_EMAIL = "jainaman0744@gmail.com";
+const TEST_EMAIL = process.env.TEST_EMAIL || "test@example.com";
 const TEST_SLUG  = "nova-saas";
-const TEST_GH    = "itzamanjain"; 
+const TEST_GH    = process.env.TEST_GITHUB_USER || "test-user"; 
 // -------------------------
 
 async function simulate() {
