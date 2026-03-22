@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-step-form-demo",
-  "type": "registry:component",
   "title": "Multiple Step Form Demo",
   "description": "component for the Multiple Step Form Demo",
   "dependencies": [
@@ -25,5 +24,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multistepformdemo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

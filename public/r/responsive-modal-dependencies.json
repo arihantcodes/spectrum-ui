@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "responsive-modal-dependencies",
-  "type": "registry:component",
   "title": "Responsive Modal Dependencies",
   "description": "component for the Responsive Modal Dependencies",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/responsive-modal-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

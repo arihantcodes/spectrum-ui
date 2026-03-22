@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "infinite-scroll-dependecies",
-  "type": "registry:component",
   "title": "Infinite Scroll Dependencies",
   "description": "component for the Infinite Scroll Dependencies",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/infinite-scroll-dependecies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

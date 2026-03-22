@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-with-async-search-and-onfocus",
-  "type": "registry:component",
   "title": "Multiple Selector With Async Search And OnFocus",
   "description": "component for the Multiple Selector With Async Search And OnFocus",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-with-async-search-and-onfocus.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

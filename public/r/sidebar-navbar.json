@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "sidebar-navbar",
-  "type": "registry:component",
   "title": "Sidebar Navbar",
   "description": "component for the Sidebar Navbar",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/sidebarnavbar.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

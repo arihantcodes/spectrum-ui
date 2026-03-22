@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-locale",
-  "type": "registry:component",
   "title": "Datetime Picker Locale",
   "description": "component for the Datetime Picker Locale",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/datetime-picker-locale.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

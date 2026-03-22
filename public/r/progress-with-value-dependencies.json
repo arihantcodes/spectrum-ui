@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "progress-with-value-dependencies",
-  "type": "registry:component",
   "title": "Progress With Value Dependencies",
   "description": "component for the Progress With Value Dependencies",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/progress-with-value-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

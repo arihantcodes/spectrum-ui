@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "responsive-modal-side",
-  "type": "registry:component",
   "title": "Responsive Modal Side",
   "description": "component for the Responsive Modal Side",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/responsive-modal-side.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

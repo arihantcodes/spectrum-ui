@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "status-badge",
-  "type": "registry:component",
   "title": "Status Badge",
   "description": "component for the Status Badge",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/statusdemo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

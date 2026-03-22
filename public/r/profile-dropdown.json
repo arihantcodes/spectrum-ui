@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "profile-dropdown",
-  "type": "registry:component",
   "title": "Profile Dropdown",
   "description": "component for the Profile Dropdown",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/profiledropdown.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

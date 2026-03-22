@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-hour-cycle",
-  "type": "registry:component",
   "title": "Datetime Picker Hour",
   "description": "component for the Datetime Picker Hour",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/datetime-picker-form.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

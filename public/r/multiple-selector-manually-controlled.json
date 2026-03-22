@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-manually-controlled",
-  "type": "registry:component",
   "title": "Multiple Selector Manually Controlled",
   "description": "component for the Multiple Selector Manually Controlled",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-manually-controlled.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

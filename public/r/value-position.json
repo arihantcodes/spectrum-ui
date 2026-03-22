@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "value-position",
-  "type": "registry:component",
   "title": "Progress With Value Position",
   "description": "component for the Progress With Value Position",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/progress-with-value-position.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

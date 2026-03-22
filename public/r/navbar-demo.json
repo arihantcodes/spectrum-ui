@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "navbar-demo",
-  "type": "registry:component",
   "title": "Navbar Demo",
   "description": "component for the Navbar Demo",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/navbar.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

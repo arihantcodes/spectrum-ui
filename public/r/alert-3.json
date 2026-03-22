@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "alert-3",
-  "type": "registry:component",
   "title": "Alert 3",
   "description": "component for the alert-3",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/alertthree.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

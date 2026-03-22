@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-dependencies",
-  "type": "registry:component",
   "title": "Multiple Selector Dependencies",
   "description": "component for the Multiple Selector Dependencies",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

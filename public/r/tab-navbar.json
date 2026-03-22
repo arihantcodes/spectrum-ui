@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "tab-navbar",
-  "type": "registry:component",
   "title": "Tab Navbar",
   "description": "component for the Tab Navbar",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/tabnavbar.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

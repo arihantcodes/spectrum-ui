@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floating-navbar",
-  "type": "registry:component",
   "title": "Floating Navbar",
   "description": "component for the Floating Navbar",
   "dependencies": [
@@ -18,5 +17,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/floatingnavbar.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

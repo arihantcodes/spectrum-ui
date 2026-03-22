@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-with-disable-options",
-  "type": "registry:component",
   "title": "Multiple Selector With Disable Options",
   "description": "component for the Multiple Selector With Disable Options",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-with-disable-option.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

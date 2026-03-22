@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-wave-footer",
-  "type": "registry:component",
   "title": "Animated Wave Footer",
   "description": "component for the Animated Wave Footer",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/animate-footer.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floating-label-input",
-  "type": "registry:component",
   "title": "Floating Label Input",
   "description": "component for the Floating Label Input",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/floating-label-input.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

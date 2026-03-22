@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-calendar-settings",
-  "type": "registry:component",
   "title": "Datetime Picker Calendar Settings",
   "description": "component for the Datetime Picker Calendar Settings",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/datetime-picker-calendar-settings.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

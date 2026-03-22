@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "orbital-letters",
-  "type": "registry:component",
   "title": "Orbital Letters",
   "description": "component for the Orbital Letters",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/orbital-char.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

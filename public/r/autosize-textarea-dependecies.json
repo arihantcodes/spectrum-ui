@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "autosize-textarea-dependecies",
-  "type": "registry:component",
   "title": "Autosize Textarea Dependencies",
   "description": "component for the Autosize Textarea Dependencies",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/autosize-textarea.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

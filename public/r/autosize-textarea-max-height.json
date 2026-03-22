@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "autosize-textarea-max-height",
-  "type": "registry:component",
   "title": "Autosize Textarea Max Height",
   "description": "component for the Autosize Textarea Max Height",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/autosize-textarea-with-max-height.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

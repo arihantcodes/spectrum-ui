@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "holographic",
-  "type": "registry:component",
   "title": "Holographic Scan Reveal",
   "description": "component for the Holographic Scan Reveal",
   "dependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/hologram-text.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

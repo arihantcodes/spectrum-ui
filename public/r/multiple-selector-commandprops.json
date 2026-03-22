@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-commandprops",
-  "type": "registry:component",
   "title": "Multiple Selector Command Props",
   "description": "component for the Multiple Selector Command Props",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-commandprops.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

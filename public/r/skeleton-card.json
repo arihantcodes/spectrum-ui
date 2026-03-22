@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton-card",
-  "type": "registry:component",
   "title": "Skeleton Card",
   "description": "component for the Skeleton Card",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/skeleton-card.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

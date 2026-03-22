@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-fixed-option",
-  "type": "registry:component",
   "title": "Multiple Selector Fixed Option",
   "description": "component for the Multiple Selector Fixed Option",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-fixed-option.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floatingparticle-footer",
-  "type": "registry:component",
   "title": "Floating Particle Footer",
   "description": "component for the Floating Particle Footer",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/floatingparticle-footer.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

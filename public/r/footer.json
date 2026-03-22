@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "footer",
-  "type": "registry:component",
   "title": "Footer",
   "description": "component for the Footer",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/footer.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "event-calendar",
-  "type": "registry:component",
   "title": "Event Calendar",
   "description": "component for the Event Calendar",
   "dependencies": [
@@ -22,5 +21,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/event-calendar"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

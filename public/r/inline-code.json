@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "inline-code",
-  "type": "registry:component",
   "title": "Inline Code",
   "description": "component for the Inline Code",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/inline-code.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

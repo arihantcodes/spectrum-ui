@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "circular-navbar",
-  "type": "registry:component",
   "title": "Circular Navbar",
   "description": "component for the Circular Navbar",
   "dependencies": [
@@ -18,5 +17,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/circularnavbar.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

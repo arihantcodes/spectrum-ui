@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "product-card",
-  "type": "registry:component",
   "title": "Product Card",
   "description": "component for the Product Card",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/product-card.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-max-selected",
-  "type": "registry:component",
   "title": "Multiple Selector Max Selected",
   "description": "component for the Multiple Selector Max Selected",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-max-selected.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

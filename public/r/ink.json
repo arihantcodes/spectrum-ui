@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "ink",
-  "type": "registry:component",
   "title": "Fluid Ink Morph",
   "description": "component for the Fluid Ink Morph",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/ink-morph.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

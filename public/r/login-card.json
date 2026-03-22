@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "login-card",
-  "type": "registry:component",
   "title": "Login Card",
   "description": "component for the Login Card",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/logincard.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

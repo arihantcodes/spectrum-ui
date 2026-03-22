@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-label",
-  "type": "registry:component",
   "title": "Progress With Value Custom Label",
   "description": "component for the Progress With Value Custom Label",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/progress-with-value-label.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

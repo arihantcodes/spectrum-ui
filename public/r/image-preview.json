@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "image-preview",
-  "type": "registry:component",
   "title": "Image Preview",
   "description": "component for the Image Preview",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/image-preview.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

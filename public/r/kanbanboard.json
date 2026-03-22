@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kanbanboard",
-  "type": "registry:component",
   "title": "Kanban Board",
   "description": "component for the Kanban Board",
   "dependencies": [
@@ -24,5 +23,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/kanbanboard.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "heading-with-anchor",
-  "type": "registry:component",
   "title": "Heading With Anchor",
   "description": "component for the Heading With Anchor",
   "dependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/heading-with-anchor.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

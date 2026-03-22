@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-ref",
-  "type": "registry:component",
   "title": "Multiple Selector Ref",
   "description": "component for the Multiple Selector Ref",
   "registryDependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-ref.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

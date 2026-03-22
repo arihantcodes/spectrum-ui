@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dual-range-slider-label-position",
-  "type": "registry:component",
   "title": "Dual Range Slider Label Position",
   "description": "component for the Dual Range Slider Label Position",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/dual-range-slider-label-position.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

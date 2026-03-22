@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "testimonials",
-  "type": "registry:component",
   "title": "Testimonials",
   "description": "component for the Testimonials",
   "dependencies": [
@@ -18,5 +17,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/testimonials.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

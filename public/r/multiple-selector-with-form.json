@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-with-form",
-  "type": "registry:component",
   "title": "Multiple Selector With Form",
   "description": "component for the Multiple Selector With Form",
   "dependencies": [
@@ -22,5 +21,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-with-form.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

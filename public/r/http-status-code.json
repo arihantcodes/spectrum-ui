@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "http-status-code",
-  "type": "registry:component",
   "title": "HTTP Status Code",
   "description": "component for the HTTP Status Code",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/http-status-code.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

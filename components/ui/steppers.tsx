@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import fs from "fs/promises";
+import nodePath from "path";
 
 const CodeHighlight = dynamic(
   () => import("@/app/(docs)/docs/components/code-card/parts/code-highlight"),
@@ -55,7 +56,8 @@ export async function Steppers({
 
   if (withInstall && codePath) {
     try {
-      codeFromFile = await fs.readFile(codePath, "utf8");
+      const absolutePath = nodePath.join(process.cwd(), codePath);
+      codeFromFile = await fs.readFile(absolutePath, "utf8");
     } catch (error) {
       codeFromFile = "// Could not load file";
     }

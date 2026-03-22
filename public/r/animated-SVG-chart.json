@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-SVG-chart",
-  "type": "registry:component",
   "title": "Animated SVG Chart",
   "description": "component for the Animated SVG Chart",
   "dependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/animatedemo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

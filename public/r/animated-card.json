@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-card",
-  "type": "registry:component",
   "title": "Animated Card",
   "description": "component for the Animated Card",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/animatedcarddemo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

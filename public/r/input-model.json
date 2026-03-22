@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input-model",
-  "type": "registry:component",
   "title": "Input Model",
   "description": "component for the Input Model Demo",
   "registryDependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/inputmodel.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

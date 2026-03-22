@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "event-badge-3d",
-  "type": "registry:component",
   "title": "Event Badge 3D",
   "description": "component for the Event Badge 3D",
   "dependencies": [
@@ -19,5 +18,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/event_badge-3d.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

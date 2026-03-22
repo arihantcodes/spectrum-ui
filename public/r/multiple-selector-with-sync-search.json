@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-with-sync-search",
-  "type": "registry:component",
   "title": "Multiple Selector With Sync Search And Creatable And Group",
   "description": "component for the Multiple Selector With Sync Search And Creatable And Group",
   "registryDependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-with-sync-search.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

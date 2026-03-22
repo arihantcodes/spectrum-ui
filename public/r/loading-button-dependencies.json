@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "loading-button-dependencies",
-  "type": "registry:component",
   "title": "Loading Button Dependencies",
   "description": "component for the Loading Button Dependencies",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/loading-button-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

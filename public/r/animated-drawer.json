@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "animated-drawer",
-  "type": "registry:component",
   "title": "Animated Drawer",
   "description": "component for the Animated Drawer",
   "dependencies": [
@@ -17,5 +16,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/animateddrawer.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

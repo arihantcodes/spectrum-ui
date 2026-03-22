@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "feedback-demo",
-  "type": "registry:component",
   "title": "Feedback Demo",
   "description": "component for the Feedback Demo",
   "dependencies": [
@@ -16,5 +15,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/feedback-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

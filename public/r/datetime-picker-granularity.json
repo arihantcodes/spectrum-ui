@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-granularity",
-  "type": "registry:component",
   "title": "Datetime Picker Granularity",
   "description": "component for the Datetime Picker Granularity",
   "registryDependencies": [
@@ -14,5 +13,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/date-picker-granularity.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

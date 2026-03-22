@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "use-toast",
-  "type": "registry:component",
   "title": "Use Toast",
   "description": "component for the Use Toast",
   "files": [
@@ -11,5 +10,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/use-toast.ts"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

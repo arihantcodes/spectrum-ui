@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "stackedcircular-footer",
-  "type": "registry:component",
   "title": "Stacked Circular Footer",
   "description": "component for the Stacked Circular Footer",
   "dependencies": [
@@ -20,5 +19,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/stacked-footer.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

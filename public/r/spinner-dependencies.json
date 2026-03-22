@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner-dependencies",
-  "type": "registry:component",
   "title": "Skeleton Card",
   "description": "component for the Skeleton Card",
   "dependencies": [
@@ -15,5 +14,6 @@
       "type": "registry:component",
       "target": "components/spectrumui/spinner-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }
