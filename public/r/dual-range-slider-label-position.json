@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dual-range-slider-label-position",
-  "type": "registry:component",
   "title": "Dual Range Slider Label Position",
   "description": "component for the Dual Range Slider Label Position",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/dual-range-slider/usage/dual-range-slider-label-position.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { DualRangeSlider } from \"@/components/ui/dual-range-slider\";\nimport { useState } from \"react\";\n\nconst DualRangeSliderLabelPosition = () => {\n  const [values, setValues] = useState([0, 100]);\n\n  return (\n    <div className=\"w-full space-y-5 px-10\">\n      <div className=\"mb-8\">TOP:</div>\n      <DualRangeSlider\n        label={(value) => value}\n        labelPosition=\"top\"\n        value={values}\n        onValueChange={setValues}\n        min={0}\n        max={100}\n        step={1}\n      />\n      <div>BOTTOM:</div>\n      <DualRangeSlider\n        label={(value) => value}\n        labelPosition=\"bottom\"\n        value={values}\n        onValueChange={setValues}\n        min={0}\n        max={100}\n        step={1}\n      />\n    </div>\n  );\n};\nexport default DualRangeSliderLabelPosition;\n",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { DualRangeSlider } from \"@/components/ui/dual-range-slider\";\r\nimport { useState } from \"react\";\r\n\r\nconst DualRangeSliderLabelPosition = () => {\r\n  const [values, setValues] = useState([0, 100]);\r\n\r\n  return (\r\n    <div className=\"w-full space-y-5 px-10\">\r\n      <div className=\"mb-8\">TOP:</div>\r\n      <DualRangeSlider\r\n        label={(value) => value}\r\n        labelPosition=\"top\"\r\n        value={values}\r\n        onValueChange={setValues}\r\n        min={0}\r\n        max={100}\r\n        step={1}\r\n      />\r\n      <div>BOTTOM:</div>\r\n      <DualRangeSlider\r\n        label={(value) => value}\r\n        labelPosition=\"bottom\"\r\n        value={values}\r\n        onValueChange={setValues}\r\n        min={0}\r\n        max={100}\r\n        step={1}\r\n      />\r\n    </div>\r\n  );\r\n};\r\nexport default DualRangeSliderLabelPosition;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/dual-range-slider-label-position.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

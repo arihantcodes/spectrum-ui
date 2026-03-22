@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "progress-with-value",
-  "type": "registry:component",
   "title": "Progress With Value",
   "description": "component for the Progress With Value",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/progress-with-value/progress-with-value-demo.tsx",
-      "content": "\"use client\";\nimport React, { useEffect, useState } from \"react\";\n// import { ProgressWithValue } from '@/components/ui/progress-with-value';\nimport { ProgressWithValue } from \"@/app/registry/spectrumui/progress-with-value-dependencies\";\n\nconst PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];\n\nconst ProgressWithValueDemo = () => {\n  const [value, setValue] = useState(0);\n  useEffect(() => {\n    let index = 0;\n    const interval = setInterval(() => {\n      setValue(PERCENTAGE[index % PERCENTAGE.length]);\n      index++;\n    }, 1000);\n    return () => clearInterval(interval);\n  }, []);\n  return (\n    <div className=\"w-full px-10\">\n      <ProgressWithValue value={value} position=\"follow\" />\n    </div>\n  );\n};\n\nexport default ProgressWithValueDemo;\n",
+      "content": "\"use client\";\r\nimport React, { useEffect, useState } from \"react\";\r\n// import { ProgressWithValue } from '@/components/ui/progress-with-value';\r\nimport { ProgressWithValue } from \"@/app/registry/spectrumui/progress-with-value-dependencies\";\r\n\r\nconst PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];\r\n\r\nconst ProgressWithValueDemo = () => {\r\n  const [value, setValue] = useState(0);\r\n  useEffect(() => {\r\n    let index = 0;\r\n    const interval = setInterval(() => {\r\n      setValue(PERCENTAGE[index % PERCENTAGE.length]);\r\n      index++;\r\n    }, 1000);\r\n    return () => clearInterval(interval);\r\n  }, []);\r\n  return (\r\n    <div className=\"w-full px-10\">\r\n      <ProgressWithValue value={value} position=\"follow\" />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default ProgressWithValueDemo;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/progresswithvalue.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

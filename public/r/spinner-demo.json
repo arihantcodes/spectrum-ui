@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner-demo",
-  "type": "registry:component",
   "title": "Spinner Demo",
   "description": "component for the Spinner Demo",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/spinner/spinner-demo.tsx",
-      "content": "import React from \"react\";\nimport { Spinner } from \"@/components/ui/spinner\";\n\nconst SpinnerDemo = () => {\n  return <Spinner />;\n};\n\nexport default SpinnerDemo;\n",
+      "content": "import React from \"react\";\r\nimport { Spinner } from \"@/components/ui/spinner\";\r\n\r\nconst SpinnerDemo = () => {\r\n  return <Spinner />;\r\n};\r\n\r\nexport default SpinnerDemo;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/spinner-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

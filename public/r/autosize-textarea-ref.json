@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "autosize-textarea-ref",
-  "type": "registry:component",
   "title": "Autosize Textarea Ref",
   "description": "component for the Autosize Textarea Ref",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/autosize-textarea/usage/autosize-textarea-with-ref.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport {\n  AutosizeTextarea,\n  AutosizeTextAreaRef,\n} from \"@/components/ui/autosize-textarea\";\n\nconst AutosizeTextareaWithRef = () => {\n  const ref = React.useRef<AutosizeTextAreaRef>(null);\n  const [currMaxHeight, setCurrMaxHeight] = useState(0);\n  React.useEffect(() => {\n    if (ref.current) {\n      setCurrMaxHeight(ref.current.maxHeight);\n    }\n  }, []);\n  return (\n    <div className=\"flex w-full flex-col gap-2 px-10\">\n      <p>current max height from ref: {currMaxHeight}</p>\n      <AutosizeTextarea\n        ref={ref}\n        maxHeight={200}\n        placeholder=\"with ref example.\"\n      />\n    </div>\n  );\n};\n\nexport default AutosizeTextareaWithRef;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\nimport {\r\n  AutosizeTextarea,\r\n  AutosizeTextAreaRef,\r\n} from \"@/components/ui/autosize-textarea\";\r\n\r\nconst AutosizeTextareaWithRef = () => {\r\n  const ref = React.useRef<AutosizeTextAreaRef>(null);\r\n  const [currMaxHeight, setCurrMaxHeight] = useState(0);\r\n  React.useEffect(() => {\r\n    if (ref.current) {\r\n      setCurrMaxHeight(ref.current.maxHeight);\r\n    }\r\n  }, []);\r\n  return (\r\n    <div className=\"flex w-full flex-col gap-2 px-10\">\r\n      <p>current max height from ref: {currMaxHeight}</p>\r\n      <AutosizeTextarea\r\n        ref={ref}\r\n        maxHeight={200}\r\n        placeholder=\"with ref example.\"\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default AutosizeTextareaWithRef;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/autosize-textarea-with-ref.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

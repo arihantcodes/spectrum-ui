@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "image-preview",
-  "type": "registry:component",
   "title": "Image Preview",
   "description": "component for the Image Preview",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/imagepreview/usages/useone.tsx",
-      "content": "import React from \"react\";\nimport ImagePreview from \"@/app/registry/imagepreview/image-preview-dependecies\";\n\nconst Demoimages = () => {\n  return (\n    <>\n      <ImagePreview\n        src=\"https://images.pexels.com/photos/1242764/pexels-photo-1242764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\"\n        width={400}\n        height={400}\n      />\n    </>\n  );\n};\n\nexport default Demoimages;\n",
+      "content": "import React from \"react\";\r\nimport ImagePreview from \"@/app/registry/imagepreview/image-preview-dependecies\";\r\n\r\nconst Demoimages = () => {\r\n  return (\r\n    <>\r\n      <ImagePreview\r\n        src=\"https://images.pexels.com/photos/1242764/pexels-photo-1242764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\"\r\n        width={400}\r\n        height={400}\r\n      />\r\n    </>\r\n  );\r\n};\r\n\r\nexport default Demoimages;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/image-preview.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

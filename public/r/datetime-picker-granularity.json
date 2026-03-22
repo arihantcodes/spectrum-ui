@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-granularity",
-  "type": "registry:component",
   "title": "Datetime Picker Granularity",
   "description": "component for the Datetime Picker Granularity",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/datetime-picker/usage/datetime-picker-granularity.tsx",
-      "content": "\"use client\";\nimport React from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\n\nconst DatetimePickerGranularity = () => {\n  const [date, setDate] = React.useState<Date | undefined>(undefined);\n\n  return (\n    <div className=\"flex flex-col gap-3 lg:flex-row lg:gap-10\">\n      <div className=\"w-72 space-y-2\">\n        <p>Minute</p>\n        <DateTimePicker granularity=\"minute\" value={date} onChange={setDate} />\n      </div>\n      <div className=\"w-72 space-y-2\">\n        <p>Hour</p>\n        <DateTimePicker granularity=\"hour\" value={date} onChange={setDate} />\n      </div>\n      <div className=\"w-72 space-y-2\">\n        <p>Day</p>\n        <DateTimePicker granularity=\"day\" value={date} onChange={setDate} />\n      </div>\n    </div>\n  );\n};\n\nexport default DatetimePickerGranularity;\n",
+      "content": "\"use client\";\r\nimport React from \"react\";\r\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\r\n\r\nconst DatetimePickerGranularity = () => {\r\n  const [date, setDate] = React.useState<Date | undefined>(undefined);\r\n\r\n  return (\r\n    <div className=\"flex flex-col gap-3 lg:flex-row lg:gap-10\">\r\n      <div className=\"w-72 space-y-2\">\r\n        <p>Minute</p>\r\n        <DateTimePicker granularity=\"minute\" value={date} onChange={setDate} />\r\n      </div>\r\n      <div className=\"w-72 space-y-2\">\r\n        <p>Hour</p>\r\n        <DateTimePicker granularity=\"hour\" value={date} onChange={setDate} />\r\n      </div>\r\n      <div className=\"w-72 space-y-2\">\r\n        <p>Day</p>\r\n        <DateTimePicker granularity=\"day\" value={date} onChange={setDate} />\r\n      </div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DatetimePickerGranularity;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/date-picker-granularity.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

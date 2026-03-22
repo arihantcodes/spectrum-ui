@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "custom-label",
-  "type": "registry:component",
   "title": "Progress With Value Custom Label",
   "description": "component for the Progress With Value Custom Label",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/progress-with-value/usage/progress-with-value-label.tsx",
-      "content": "\"use client\";\nimport React, { useEffect, useState } from \"react\";\n// import { ProgressWithValue } from '@/components/ui/progress-with-value';\nimport { ProgressWithValue } from \"@/app/registry/spectrumui/progress-with-value-dependencies\";\n\nconst PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];\n\nconst LABEL_DEMOS = [\n  {\n    title: \"No Label\",\n    label: () => null,\n  },\n  {\n    title: \"Custom label\",\n    label: (value?: number | null) => (\n      <span className=\"text-amber-400\">current: {value}%</span>\n    ),\n  },\n];\n\nconst ProgressWithValueLabel = () => {\n  const [value, setValue] = useState(20);\n  useEffect(() => {\n    let index = 0;\n    const interval = setInterval(() => {\n      setValue(PERCENTAGE[index % PERCENTAGE.length]);\n      index++;\n    }, 1000);\n    return () => clearInterval(interval);\n  }, []);\n\n  return (\n    <div className=\"w-full space-y-2 px-10\">\n      {LABEL_DEMOS.map((demo) => (\n        <div key={demo.title}>\n          <div className=\"text-blue-500\">{demo.title}</div>\n          <ProgressWithValue\n            value={value}\n            position=\"follow\"\n            label={demo.label}\n          />\n        </div>\n      ))}\n    </div>\n  );\n};\n\nexport default ProgressWithValueLabel;\n",
+      "content": "\"use client\";\r\nimport React, { useEffect, useState } from \"react\";\r\n// import { ProgressWithValue } from '@/components/ui/progress-with-value';\r\nimport { ProgressWithValue } from \"@/app/registry/spectrumui/progress-with-value-dependencies\";\r\n\r\nconst PERCENTAGE = [0, 10, 15, 30, 45, 50, 65, 80, 90, 100];\r\n\r\nconst LABEL_DEMOS = [\r\n  {\r\n    title: \"No Label\",\r\n    label: () => null,\r\n  },\r\n  {\r\n    title: \"Custom label\",\r\n    label: (value?: number | null) => (\r\n      <span className=\"text-amber-400\">current: {value}%</span>\r\n    ),\r\n  },\r\n];\r\n\r\nconst ProgressWithValueLabel = () => {\r\n  const [value, setValue] = useState(20);\r\n  useEffect(() => {\r\n    let index = 0;\r\n    const interval = setInterval(() => {\r\n      setValue(PERCENTAGE[index % PERCENTAGE.length]);\r\n      index++;\r\n    }, 1000);\r\n    return () => clearInterval(interval);\r\n  }, []);\r\n\r\n  return (\r\n    <div className=\"w-full space-y-2 px-10\">\r\n      {LABEL_DEMOS.map((demo) => (\r\n        <div key={demo.title}>\r\n          <div className=\"text-blue-500\">{demo.title}</div>\r\n          <ProgressWithValue\r\n            value={value}\r\n            position=\"follow\"\r\n            label={demo.label}\r\n          />\r\n        </div>\r\n      ))}\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default ProgressWithValueLabel;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/progress-with-value-label.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "dual-range-slider-demo",
-  "type": "registry:component",
   "title": "Dual Range Slider Demo",
   "description": "component for the Dual Range Slider Demo",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/dual-range-slider/dual-range-slider-demo.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\n// import { DualRangeSlider } from '@/components/ui/dual-range-slider';\nimport { DualRangeSlider } from \"@/app/registry/spectrumui/dual-range-slider-dependecies\";\n\nconst DualRangeSliderDemo = () => {\n  const [values, setValues] = useState([0, 100]);\n\n  return (\n    <div className=\"w-full px-10\">\n      <DualRangeSlider\n        label={(value) => value}\n        value={values}\n        onValueChange={setValues}\n        min={0}\n        max={100}\n        step={1}\n      />\n    </div>\n  );\n};\n\nexport default DualRangeSliderDemo;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\n// import { DualRangeSlider } from '@/components/ui/dual-range-slider';\r\nimport { DualRangeSlider } from \"@/app/registry/spectrumui/dual-range-slider-dependecies\";\r\n\r\nconst DualRangeSliderDemo = () => {\r\n  const [values, setValues] = useState([0, 100]);\r\n\r\n  return (\r\n    <div className=\"w-full px-10\">\r\n      <DualRangeSlider\r\n        label={(value) => value}\r\n        value={values}\r\n        onValueChange={setValues}\r\n        min={0}\r\n        max={100}\r\n        step={1}\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DualRangeSliderDemo;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/dual-range-slider-demo.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

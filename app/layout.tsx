@@ -167,7 +167,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteConfig.url,
+    canonical: "/",
     languages: {
       "en-US": siteConfig.url,
     },
@@ -191,7 +191,6 @@ export default async function RootLayout({
   return (
     <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
       <head>
-        <link rel="canonical" href={siteConfig.url} />
         <meta name="google-adsense-account" content="ca-pub-8119622964025792" />
         {/* Preconnect to external domains for faster loading */}
         <link rel="preconnect" href="https://api.github.com" />

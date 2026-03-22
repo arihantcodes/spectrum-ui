@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "floating-label-customize",
-  "type": "registry:component",
   "title": "Floating Label Customize",
   "description": "component for the Floating Label Customize",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/floating-label-input/usage/floating-label-customize.tsx",
-      "content": "import React from \"react\";\nimport {\n  FloatingInput,\n  FloatingLabel,\n} from \"@/components/ui/floating-label-input\";\n\nconst FloatingLabelInputCustomize = () => {\n  return (\n    <div className=\"relative\">\n      <FloatingInput id=\"floating-customize\" />\n      <FloatingLabel htmlFor=\"floating-customize\">Customize</FloatingLabel>\n    </div>\n  );\n};\n\nexport default FloatingLabelInputCustomize;\n",
+      "content": "import React from \"react\";\r\nimport {\r\n  FloatingInput,\r\n  FloatingLabel,\r\n} from \"@/components/ui/floating-label-input\";\r\n\r\nconst FloatingLabelInputCustomize = () => {\r\n  return (\r\n    <div className=\"relative\">\r\n      <FloatingInput id=\"floating-customize\" />\r\n      <FloatingLabel htmlFor=\"floating-customize\">Customize</FloatingLabel>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default FloatingLabelInputCustomize;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/floating-label-customize.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

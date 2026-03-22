@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-display-format",
-  "type": "registry:component",
   "title": "Datetime Picker Display Format",
   "description": "component for the Datetime Picker Display Format",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/datetime-picker/usage/datetime-picker-display-format.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\n\nconst DatetimePickerDisplayFormat = () => {\n  const [date, setDate] = useState<Date | undefined>(undefined);\n  return (\n    <DateTimePicker\n      displayFormat={{ hour24: \"yyyy/MM/dd\" }}\n      value={date}\n      onChange={setDate}\n      className=\"w-72\"\n    />\n  );\n};\n\nexport default DatetimePickerDisplayFormat;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\r\n\r\nconst DatetimePickerDisplayFormat = () => {\r\n  const [date, setDate] = useState<Date | undefined>(undefined);\r\n  return (\r\n    <DateTimePicker\r\n      displayFormat={{ hour24: \"yyyy/MM/dd\" }}\r\n      value={date}\r\n      onChange={setDate}\r\n      className=\"w-72\"\r\n    />\r\n  );\r\n};\r\n\r\nexport default DatetimePickerDisplayFormat;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/datetime-picker-display-format.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

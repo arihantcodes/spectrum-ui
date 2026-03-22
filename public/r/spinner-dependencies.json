@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner-dependencies",
-  "type": "registry:component",
   "title": "Skeleton Card",
   "description": "component for the Skeleton Card",
   "dependencies": [
@@ -11,9 +10,10 @@
   "files": [
     {
       "path": "app/registry/spectrumui/spinner-dependencies.tsx",
-      "content": "import React from \"react\";\nimport { cn } from \"@/lib/utils\";\nimport { VariantProps, cva } from \"class-variance-authority\";\nimport { Loader2 } from \"lucide-react\";\n\nconst spinnerVariants = cva(\"flex-col items-center justify-center\", {\n  variants: {\n    show: {\n      true: \"flex\",\n      false: \"hidden\",\n    },\n  },\n  defaultVariants: {\n    show: true,\n  },\n});\n\nconst loaderVariants = cva(\"animate-spin text-primary\", {\n  variants: {\n    size: {\n      small: \"size-6\",\n      medium: \"size-8\",\n      large: \"size-12\",\n    },\n  },\n  defaultVariants: {\n    size: \"medium\",\n  },\n});\n\ninterface SpinnerContentProps\n  extends VariantProps<typeof spinnerVariants>,\n    VariantProps<typeof loaderVariants> {\n  className?: string;\n  children?: React.ReactNode;\n}\n\nexport function Spinner({\n  size,\n  show,\n  children,\n  className,\n}: SpinnerContentProps) {\n  return (\n    <span className={spinnerVariants({ show })}>\n      <Loader2 className={cn(loaderVariants({ size }), className)} />\n      {children}\n    </span>\n  );\n}\n",
+      "content": "import React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { VariantProps, cva } from \"class-variance-authority\";\r\nimport { Loader2 } from \"lucide-react\";\r\n\r\nconst spinnerVariants = cva(\"flex-col items-center justify-center\", {\r\n  variants: {\r\n    show: {\r\n      true: \"flex\",\r\n      false: \"hidden\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    show: true,\r\n  },\r\n});\r\n\r\nconst loaderVariants = cva(\"animate-spin text-primary\", {\r\n  variants: {\r\n    size: {\r\n      small: \"size-6\",\r\n      medium: \"size-8\",\r\n      large: \"size-12\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    size: \"medium\",\r\n  },\r\n});\r\n\r\ninterface SpinnerContentProps\r\n  extends VariantProps<typeof spinnerVariants>,\r\n    VariantProps<typeof loaderVariants> {\r\n  className?: string;\r\n  children?: React.ReactNode;\r\n}\r\n\r\nexport function Spinner({\r\n  size,\r\n  show,\r\n  children,\r\n  className,\r\n}: SpinnerContentProps) {\r\n  return (\r\n    <span className={spinnerVariants({ show })}>\r\n      <Loader2 className={cn(loaderVariants({ size }), className)} />\r\n      {children}\r\n    </span>\r\n  );\r\n}\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/spinner-dependencies.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

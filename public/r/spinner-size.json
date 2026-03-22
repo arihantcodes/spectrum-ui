@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner-size",
-  "type": "registry:component",
   "title": "Spinner Size",
   "description": "component for the Spinner Size",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/spinner/usage/spinner-size.tsx",
-      "content": "import React from \"react\";\nimport { Spinner } from \"@/components/ui/spinner\";\n\nconst SpinnerSize = () => {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <Spinner size=\"small\" />\n      <Spinner size=\"medium\" />\n      <Spinner size=\"large\" />\n    </div>\n  );\n};\n\nexport default SpinnerSize;\n",
+      "content": "import React from \"react\";\r\nimport { Spinner } from \"@/components/ui/spinner\";\r\n\r\nconst SpinnerSize = () => {\r\n  return (\r\n    <div className=\"flex items-center gap-3\">\r\n      <Spinner size=\"small\" />\r\n      <Spinner size=\"medium\" />\r\n      <Spinner size=\"large\" />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default SpinnerSize;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/spinner-size.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

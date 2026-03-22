@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-placeholder",
-  "type": "registry:component",
   "title": "Datetime Picker Placeholder",
   "description": "component for the Datetime Picker Placeholder",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/datetime-picker/usage/datetime-picker-placeholder.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\n\nconst DatetimePickerPlaceholder = () => {\n  const [date, setDate] = useState<Date | undefined>(undefined);\n  return (\n    <DateTimePicker\n      value={date}\n      onChange={setDate}\n      placeholder=\"What's your birthday?\"\n      className=\"w-72\"\n    />\n  );\n};\n\nexport default DatetimePickerPlaceholder;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\r\n\r\nconst DatetimePickerPlaceholder = () => {\r\n  const [date, setDate] = useState<Date | undefined>(undefined);\r\n  return (\r\n    <DateTimePicker\r\n      value={date}\r\n      onChange={setDate}\r\n      placeholder=\"What's your birthday?\"\r\n      className=\"w-72\"\r\n    />\r\n  );\r\n};\r\n\r\nexport default DatetimePickerPlaceholder;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/date-picker-placeholder.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

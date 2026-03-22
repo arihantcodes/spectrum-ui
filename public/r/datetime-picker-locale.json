@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "datetime-picker-locale",
-  "type": "registry:component",
   "title": "Datetime Picker Locale",
   "description": "component for the Datetime Picker Locale",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/datetime-picker/usage/datetime-picker-locale.tsx",
-      "content": "\"use client\";\nimport React, { useState } from \"react\";\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\nimport { zhTW } from \"date-fns/locale\";\nimport { InlineCode } from \"@/components/ui/inline-code\";\nconst DatetimePickerLocale = () => {\n  const [date, setDate] = useState<Date | undefined>(undefined);\n  return (\n    <div className=\"flex w-72 flex-col gap-3\">\n      <p>\n        The following example is <InlineCode>zhTW</InlineCode> from{\" \"}\n        <InlineCode>date-fns</InlineCode>.\n      </p>\n      <DateTimePicker\n        locale={zhTW}\n        value={date}\n        onChange={setDate}\n        weekStartsOn={undefined}\n        showWeekNumber={undefined}\n        showOutsideDays={undefined}\n      />\n    </div>\n  );\n};\n\nexport default DatetimePickerLocale;\n",
+      "content": "\"use client\";\r\nimport React, { useState } from \"react\";\r\nimport { DateTimePicker } from \"@/components/ui/datetime-picker\";\r\nimport { zhTW } from \"date-fns/locale\";\r\nimport { InlineCode } from \"@/components/ui/inline-code\";\r\nconst DatetimePickerLocale = () => {\r\n  const [date, setDate] = useState<Date | undefined>(undefined);\r\n  return (\r\n    <div className=\"flex w-72 flex-col gap-3\">\r\n      <p>\r\n        The following example is <InlineCode>zhTW</InlineCode> from{\" \"}\r\n        <InlineCode>date-fns</InlineCode>.\r\n      </p>\r\n      <DateTimePicker\r\n        locale={zhTW}\r\n        value={date}\r\n        onChange={setDate}\r\n        weekStartsOn={undefined}\r\n        showWeekNumber={undefined}\r\n        showOutsideDays={undefined}\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default DatetimePickerLocale;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/datetime-picker-locale.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

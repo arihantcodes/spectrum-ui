@@ -1,7 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "multiple-selector-with-group",
-  "type": "registry:component",
   "title": "Multiple Selector With Group",
   "description": "component for the Multiple Selector With Group",
   "registryDependencies": [
@@ -10,9 +9,10 @@
   "files": [
     {
       "path": "app/registry/multiple-selector/usage/multiple-selector-with-group.tsx",
-      "content": "import React from \"react\";\nimport MultipleSelector, {\n  Option,\n} from \"@/app/registry/spectrumui/multiple-selector-dependencies\";\n\nconst OPTIONS: Option[] = [\n  { label: \"nextjs\", value: \"nextjs\", group: \"React\" },\n  { label: \"React\", value: \"react\", group: \"React\" },\n  { label: \"Remix\", value: \"remix\", group: \"React\" },\n  { label: \"shadcn-ui\", value: \"shadcn-ui\", group: \"React\" },\n  { label: \"mui\", value: \"mui\", group: \"React\" },\n  { label: \"Vite\", value: \"vite\", group: \"Vue\" },\n  { label: \"Nuxt\", value: \"nuxt\", group: \"Vue\" },\n  { label: \"Vue\", value: \"vue\", group: \"Vue\" },\n  { label: \"Quasar\", value: \"quasar\", group: \"Vue\" },\n  { label: \"Angular\", value: \"angular\", group: \"Angular\" },\n  { label: \"Material UI\", value: \"material-ui\", group: \"Angular\" },\n  { label: \"Ng-zorro\", value: \"ng-zorro\", group: \"Angular\" },\n];\n\nconst MultipleSelectorWithGroup = () => {\n  return (\n    <div className=\"w-full px-10\">\n      <MultipleSelector\n        defaultOptions={OPTIONS}\n        placeholder=\"Select frameworks you like...\"\n        emptyIndicator={\n          <p className=\"text-center text-lg leading-10 text-gray-600 dark:text-gray-400\">\n            no results found.\n          </p>\n        }\n        groupBy=\"group\"\n      />\n    </div>\n  );\n};\n\nexport default MultipleSelectorWithGroup;\n",
+      "content": "import React from \"react\";\r\nimport MultipleSelector, {\r\n  Option,\r\n} from \"@/app/registry/spectrumui/multiple-selector-dependencies\";\r\n\r\nconst OPTIONS: Option[] = [\r\n  { label: \"nextjs\", value: \"nextjs\", group: \"React\" },\r\n  { label: \"React\", value: \"react\", group: \"React\" },\r\n  { label: \"Remix\", value: \"remix\", group: \"React\" },\r\n  { label: \"shadcn-ui\", value: \"shadcn-ui\", group: \"React\" },\r\n  { label: \"mui\", value: \"mui\", group: \"React\" },\r\n  { label: \"Vite\", value: \"vite\", group: \"Vue\" },\r\n  { label: \"Nuxt\", value: \"nuxt\", group: \"Vue\" },\r\n  { label: \"Vue\", value: \"vue\", group: \"Vue\" },\r\n  { label: \"Quasar\", value: \"quasar\", group: \"Vue\" },\r\n  { label: \"Angular\", value: \"angular\", group: \"Angular\" },\r\n  { label: \"Material UI\", value: \"material-ui\", group: \"Angular\" },\r\n  { label: \"Ng-zorro\", value: \"ng-zorro\", group: \"Angular\" },\r\n];\r\n\r\nconst MultipleSelectorWithGroup = () => {\r\n  return (\r\n    <div className=\"w-full px-10\">\r\n      <MultipleSelector\r\n        defaultOptions={OPTIONS}\r\n        placeholder=\"Select frameworks you like...\"\r\n        emptyIndicator={\r\n          <p className=\"text-center text-lg leading-10 text-gray-600 dark:text-gray-400\">\r\n            no results found.\r\n          </p>\r\n        }\r\n        groupBy=\"group\"\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default MultipleSelectorWithGroup;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/multiple-selector-with-group.tsx"
     }
-  ]
+  ],
+  "type": "registry:component"
 }

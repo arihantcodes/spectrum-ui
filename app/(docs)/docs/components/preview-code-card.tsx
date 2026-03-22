@@ -1,5 +1,6 @@
 import React from 'react';
 import fs from 'fs/promises';
+import nodePath from 'path';
 import dynamic from 'next/dynamic';
 import { cn } from '@/lib/utils';
 
@@ -16,7 +17,13 @@ interface PreviewCodeCardProps {
 }
 
 const PreviewCodeCard = async ({ className, path, children, cli }: PreviewCodeCardProps) => {
-  const demoCode = await fs.readFile(path, 'utf8');
+  let demoCode: string;
+  try {
+    const absolutePath = nodePath.join(process.cwd(), path);
+    demoCode = await fs.readFile(absolutePath, 'utf8');
+  } catch {
+    demoCode = '// Could not load source file';
+  }
 
   if (!demoCode) {
     return null;
