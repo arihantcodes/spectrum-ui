@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "app/registry/spinner/usage/spinner-with-text.tsx",
-      "content": "import React from \"react\";\nimport { Spinner } from \"@/components/ui/spinner\";\n\nconst SpinnerWithText = () => {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <Spinner>Loading...</Spinner>\n      <Spinner className=\"text-red-400\">\n        <span className=\"text-red-400\">Loading with custom style</span>\n      </Spinner>\n    </div>\n  );\n};\n\nexport default SpinnerWithText;\n",
+      "content": "import React from \"react\";\r\nimport { Spinner } from \"@/components/ui/spinner\";\r\n\r\nconst SpinnerWithText = () => {\r\n  return (\r\n    <div className=\"flex items-center gap-3\">\r\n      <Spinner>Loading...</Spinner>\r\n      <Spinner className=\"text-red-400\">\r\n        <span className=\"text-red-400\">Loading with custom style</span>\r\n      </Spinner>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default SpinnerWithText;\r\n",
       "type": "registry:component",
       "target": "components/spectrumui/spinner-with-text.tsx"
     }
