@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "Início",
+    "components": "Componentes",
+    "templates": "Modelos",
+    "blocks": "Blocos",
+    "blogs": "Blogs",
+    "signIn": "Entrar",
+    "sponsor": "Patrocinar"
+  },
+  "Footer": {
+    "builtBy": "Criado por",
+    "rights": "Todos os direitos reservados.",
+    "pages": "Páginas",
+    "socials": "Redes Sociais",
+    "legal": "Legal",
+    "docs": "Docs",
+    "colors": "Cores",
+    "privacy": "Política de Privacidade",
+    "tos": "Termos de Serviço",
+    "faqs": "Perguntas Frequentes",
+    "language": "Idioma"
+  },
+  "HomePage": {
+    "heroTitle1": "Componentes de UI Instantâneos",
+    "heroTitle2": "Basta Copiar, Colar e Pronto",
+    "heroDescription": "Mais de 250 componentes prontos para produção, criados com Next.js, shadcn/ui e Tailwind CSS.",
+    "explore": "Explorar Componentes",
+    "starGithub": "Estrela no GitHub",
+    "builtWith": "Desenvolvido com",
+    "readyToUse": "Blocos de UI prontos para usar"
+  },
+  "CTA": {
+    "title1": "Pare de construir do zero.",
+    "title2": "Envie rápido com ",
+    "title2Pro": "Spectrum Pro",
+    "description": "Modelos premium Next.js criados no Spectrum UI. Escuro. Animado. Pronto para produção. A partir de $49.",
+    "button": "Obter acesso"
+  }
+}

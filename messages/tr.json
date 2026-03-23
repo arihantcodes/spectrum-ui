@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "Ana Sayfa",
+    "components": "Bileşenler",
+    "templates": "Şablonlar",
+    "blocks": "Bloklar",
+    "blogs": "Bloglar",
+    "signIn": "Giriş Yap",
+    "sponsor": "Sponsor Ol"
+  },
+  "Footer": {
+    "builtBy": "Geliştiren",
+    "rights": "Tüm hakları saklıdır.",
+    "pages": "Sayfalar",
+    "socials": "Sosyal Medya",
+    "legal": "Yasal",
+    "docs": "Belgeler",
+    "colors": "Renkler",
+    "privacy": "Gizlilik Politikası",
+    "tos": "Hizmet Şartları",
+    "faqs": "SSS",
+    "language": "Dil"
+  },
+  "HomePage": {
+    "heroTitle1": "Anında UI Bileşenleri",
+    "heroTitle2": "Kopyala, Yapıştır ve Bitti",
+    "heroDescription": "Next.js, shadcn/ui ve Tailwind CSS ile oluşturulmuş 250+ üretime hazır bileşen.",
+    "explore": "Bileşenleri Keşfet",
+    "starGithub": "GitHub'da Yıldızla",
+    "builtWith": "ile Oluşturuldu",
+    "readyToUse": "Kullanıma Hazır UI Blokları"
+  },
+  "CTA": {
+    "title1": "Sıfırdan inşa etmeyi bırakın.",
+    "title2": "Hızlıca yayına alın: ",
+    "title2Pro": "Spectrum Pro",
+    "description": "Spectrum UI üzerine inşa edilmiş Premium Next.js şablonları. Karanlık. Animasyonlu. Üretime hazır. 49 dolardan başlayan fiyatlarla.",
+    "button": "Erişim sağla"
+  }
+}

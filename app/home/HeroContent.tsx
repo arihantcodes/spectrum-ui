@@ -7,11 +7,13 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icon';
 import { NumberTicker } from '@/components/magicui/number-ticker';
 import Link from 'next/link';
+import { useI18n } from '@/components/i18n-provider';
 import { siteConfig } from '@/config/site';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export function HeroContent() {
+  const { t } = useI18n();
   const [star, setStar] = useState(0);
   const fetchGithubData = () => {
     axios
@@ -38,24 +40,24 @@ export function HeroContent() {
             <AnimatedBadge />
           </AnimateEnter>
           <AnimateEnter delay={0.3} duration={2}>
-            <h1 className="mx-auto text-center max-w-5xl px-4 font-bold text-2xl md:text-6xl leading-tight tracking-tight">
-              <span className="block text-gradient mb-1">Instant UI Components</span>
+            <h1 className="mx-auto text-center max-w-5xl px-4 font-bold text-2xl md:text-6xl leading-tight tracking-tight min-h-[1.2em] md:min-h-[2.4em] flex flex-col justify-center">
+              <span className="block text-gradient mb-1">{t('HomePage.heroTitle1')}</span>
               <span className="">
-                Just Copy, Paste &amp; Done
+                {t('HomePage.heroTitle2')}
               </span>
             </h1>
           </AnimateEnter>
         </div>
         <AnimateEnter delay={0.5} duration={2} className="mb-6 sm:mb-8">
-          <p className="container mx-auto  md:max-w-lg text-[12px] sm:text-base text-foreground">
-            250+ Production ready components, built with Next.js, shadcn/ui and Tailwind CSS.
+          <p className="container mx-auto md:max-w-lg text-[12px] sm:text-base text-foreground min-h-[3em] sm:min-h-[4em] flex items-center justify-center">
+            {t('HomePage.heroDescription')}
           </p>
         </AnimateEnter>
         <AnimateEnter className="flex items-center justify-center gap-3" delay={0.7} duration={2}>
           <div className="flex flex-row items-center justify-center gap-3 mt-2 md:mt-6 w-full sm:w-auto px-4">
             <Link href="/docs/installation" className="w-auto">
               <Button size="lg" className="rounded-xl w-auto px-4 sm:px-8">
-                Explore Components
+                {t('HomePage.explore')}
               </Button>
             </Link>
 
@@ -64,7 +66,7 @@ export function HeroContent() {
                 <Button variant="secondary" className="rounded-xl w-auto px-4 sm:px-8 h-11">
                   <div className="flex items-center">
                     <Icons.gitHub className="size-4" />
-                    <span className="ml-2 hidden sm:inline-block">Star on GitHub</span>
+                    <span className="ml-2 hidden sm:inline-block">{t('HomePage.starGithub')}</span>
                   </div>
                   <div className="ml-2 flex items-center gap-1 text-sm">
                     🌟
@@ -79,7 +81,7 @@ export function HeroContent() {
       <section className="w-full max-w-4xl mx-auto px-4 ">
         <AnimateEnter delay={0.9} duration={2} className="space-y-6">
           <h2 className="text-base font-medium text-muted-foreground uppercase tracking-wider">
-            Built With
+            {t('HomePage.builtWith')}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 place-items-center">
             <Image

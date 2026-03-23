@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { Icons } from './icon';
+import { useI18n } from './i18n-provider';
 
 export function MainNav() {
   const pathname = usePathname();
+  const { t } = useI18n();
 
   return (
     <div className="mr-4  md:flex">
@@ -26,7 +28,7 @@ export function MainNav() {
             pathname === '/docs/installation' ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Components
+          {t('Navbar.components')}
         </Link>
            <Link
           href="/pro"
@@ -35,7 +37,7 @@ export function MainNav() {
             pathname?.startsWith('/pro') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Templates
+          {t('Navbar.templates')}
           <span className="text-xs ml-1 px-1.5 py-0.5 rounded-full bg-yellow-400/30 dark:bg-[#eaec8a]/16 text-yellow-600 dark:text-[#eaec8a] [text-shadow:0_1px_1.5px_rgb(0,0,0,0.16)]">
             Pro
           </span>
@@ -47,13 +49,13 @@ export function MainNav() {
             pathname?.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Blocks
+          {t('Navbar.blocks')}
         </Link>
         <Link href="/blog" className={cn(
           'transition-colors hover:text-foreground/80',
           pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
         )}>
-          Blogs
+          {t('Navbar.blogs')}
         </Link>
       </nav>
     </div>
