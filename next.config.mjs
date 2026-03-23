@@ -4,6 +4,7 @@ import createMDX from "@next/mdx";
 const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   output: 'standalone',
+  transpilePackages: ['shiki'],
   
   // Image optimization
   images: {
@@ -36,12 +37,16 @@ const nextConfig = {
         './app/(docs)/docs/**/*.tsx',
         './components/ui/**/*.tsx',
         './components/ui/**/*.ts',
+        './components/spectrumui/**/*.tsx',
+        './app/registry/**/*.tsx',
         './lib/**/*.ts',
       ],
       '/(docs)/docs/**/*': [
         './app/(docs)/docs/**/*.tsx',
         './components/ui/**/*.tsx',
         './components/ui/**/*.ts',
+        './components/spectrumui/**/*.tsx',
+        './app/registry/**/*.tsx',
         './lib/**/*.ts',
       ],
     },
