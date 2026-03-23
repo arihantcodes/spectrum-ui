@@ -1,6 +1,8 @@
+"use client";
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useI18n } from '@/components/i18n-provider';
 const HomeCardCollection = dynamic(() => import('@/components/homecard'), { 
   ssr: true,
   loading: () => <div className="animate-pulse h-[800px] w-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"></div> 
@@ -9,6 +11,7 @@ import { HeroSection } from './home';
 
 
 const Homepage = () => {
+  const { t } = useI18n();
   return (
     <>
       <div className="container-wrapper">
@@ -50,7 +53,7 @@ const Homepage = () => {
             <div className="flex flex-col justify-center items-center my-12">
               <div className="px-8 rounded-2xl text-center">
                 <h2 className="font-bold text-2xl md:text-4xl mb-4 tracking-tight text-neutral-900 dark:text-white">
-                  Ready-to-Use UI Blocks
+                  {t('HomePage.readyToUse')}
                 </h2>
               </div>
             </div>

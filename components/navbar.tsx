@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Icons } from '@/components/icon';
 import { MobileNav } from '@/components/mobile-nav';
+import { useI18n } from './i18n-provider';
 import { MainNav } from './main-nav';
 import { ThemeToggle } from './theme-toggle';
 import { UserNav } from './user-nav';
@@ -13,6 +14,7 @@ import type { Session } from 'next-auth';
 
 export function SiteHeader({ session }: { session: Session | null }) {
   const pathname = usePathname();
+  const { t } = useI18n();
 
   return (
     <header className="border-grid sticky top-0 z-[50]  w-full border-b bg-background/10 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -42,7 +44,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
             >
 
               <div className="flex flex-col xl:flex-row gap-3 items-center">
-                <p className="text-sm font-medium hidden lg:block">Sponsor</p>
+                <p className="text-sm font-medium hidden lg:block">{t('Navbar.sponsor')}</p>
               </div>
             </Link>
 {/* 
@@ -72,7 +74,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
               ) : (
                 <Link href="/sign-in">
                   <Button variant="outline" size="sm" className="ml-2 h-8 text-xs font-semibold">
-                    Sign In
+                    {t('Navbar.signIn')}
                   </Button>
                 </Link>
               )}

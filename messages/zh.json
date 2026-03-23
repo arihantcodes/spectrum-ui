@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "首页",
+    "components": "组件",
+    "templates": "模板",
+    "blocks": "区块",
+    "blogs": "博客",
+    "signIn": "登录",
+    "sponsor": "赞助"
+  },
+  "Footer": {
+    "builtBy": "由...创建",
+    "rights": "保留所有权利。",
+    "pages": "页面",
+    "socials": "社交媒体",
+    "legal": "法律信息",
+    "docs": "文档",
+    "colors": "颜色",
+    "privacy": "隐私政策",
+    "tos": "服务条款",
+    "faqs": "常见问题",
+    "language": "语言"
+  },
+  "HomePage": {
+    "heroTitle1": "即时 UI 组件",
+    "heroTitle2": "只需复制、粘贴，即可完成",
+    "heroDescription": "250多个生产级组件，基于 Next.js、shadcn/ui 和 Tailwind CSS 构建。",
+    "explore": "探索组件",
+    "starGithub": "GitHub 点星",
+    "builtWith": "构建环境",
+    "readyToUse": "开箱即用的 UI 区块"
+  },
+  "CTA": {
+    "title1": "停止从零开始构建。",
+    "title2": "快速发布，尽在 ",
+    "title2Pro": "Spectrum Pro",
+    "description": "基于 Spectrum UI 构建的高级 Next.js 模板。深色模式、动态效果、生产就绪。起售价仅为 49 美元。",
+    "button": "获取访问权限"
+  }
+}

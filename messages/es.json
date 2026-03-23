@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "Inicio",
+    "components": "Componentes",
+    "templates": "Plantillas",
+    "blocks": "Bloques",
+    "blogs": "Blogs",
+    "signIn": "Iniciar sesión",
+    "sponsor": "Patrocinar"
+  },
+  "Footer": {
+    "builtBy": "Creado por",
+    "rights": "Todos los derechos reservados.",
+    "pages": "Páginas",
+    "socials": "Redes Sociales",
+    "legal": "Legal",
+    "docs": "Docs",
+    "colors": "Colores",
+    "privacy": "Política de Privacidad",
+    "tos": "Términos de Servicio",
+    "faqs": "Preguntas frecuentes",
+    "language": "Idioma"
+  },
+  "HomePage": {
+    "heroTitle1": "Componentes de UI Instantáneos",
+    "heroTitle2": "Solo Copiar, Pegar y Listo",
+    "heroDescription": "Más de 250 componentes listos para producción, creados con Next.js, shadcn/ui y Tailwind CSS.",
+    "explore": "Explorar Componentes",
+    "starGithub": "Estrella en GitHub",
+    "builtWith": "Desarrollado con",
+    "readyToUse": "Bloques de UI listos para usar"
+  },
+  "CTA": {
+    "title1": "Deja de construir desde cero.",
+    "title2": "Envía rápido con ",
+    "title2Pro": "Spectrum Pro",
+    "description": "Plantillas premium de Next.js creadas en Spectrum UI. Oscuras. Animadas. Listas para producción. Desde $49.",
+    "button": "Obtener acceso"
+  }
+}

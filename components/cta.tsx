@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { useI18n } from "./i18n-provider";
 import { Button } from "./ui/button";
 
 const Cta = () => {
+  const { t } = useI18n();
   return (
     <div className="flex flex-col items-center justify-center min-h-[40vh] py-5 mt-4 lg:mt-8 px-4">
 
@@ -13,25 +16,24 @@ const Cta = () => {
         Spectrum Pro — Early Access
       </div> */}
 
-      <h1 className="text-center text-3xl md:text-4xl lg:text-5xl 
-        font-semibold mb-4 md:leading-tight text-foreground max-w-2xl">
-        Stop building from scratch.
-        <br />
-        <span className="bg-gradient-to-r from-[#6366F1] to-purple-400 
-          bg-clip-text text-transparent">
-          Ship fast with Spectrum Pro.
+      <h1 className="text-center font-bold text-2xl md:text-5xl mb-4 leading-[1.1] tracking-tight text-foreground max-w-2xl min-h-[2.2em] md:min-h-[2em] flex flex-col justify-center gap-0">
+        <span className="block">{t('CTA.title1')}</span>
+        <span className="block">
+          {t('CTA.title2')}
+          <span className="text-gradient">
+            {t('CTA.title2Pro')}
+          </span>
         </span>
       </h1>
 
-      <p className="text-[#666] text-base mb-8 text-center max-w-md">
-        Premium Next.js templates built on Spectrum UI. 
-        Dark. Animated. Production-ready. From $49.
+      <p className="text-[#666] text-base mb-8 text-center max-w-md min-h-[3em]">
+        {t('CTA.description')}
       </p>
 
       <div className="flex items-center gap-3">
-        <Link href="https://pro.spectrumhq.in">
-          <Button className="rounded-md px-6 text-sm font-medium">
-            Get access 
+        <Link href="https://ui.spectrumhq.in/pro">
+          <Button className="rounded-3xl px-6 text-sm font-medium">
+            {t('CTA.button')}
           </Button>
         </Link>
       </div>

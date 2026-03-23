@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "components": "Components",
+    "templates": "Templates",
+    "blocks": "Blocks",
+    "blogs": "Blogs",
+    "signIn": "Sign In",
+    "sponsor": "Sponsor"
+  },
+  "Footer": {
+    "builtBy": "Built by",
+    "rights": "All rights reserved.",
+    "pages": "Pages",
+    "socials": "Socials",
+    "legal": "Legal",
+    "docs": "Docs",
+    "colors": "Colors",
+    "privacy": "Privacy Policy",
+    "tos": "Terms of Service",
+    "faqs": "FAQs",
+    "language": "Language"
+  },
+  "HomePage": {
+    "heroTitle1": "Instant UI Components",
+    "heroTitle2": "Just Copy, Paste & Done",
+    "heroDescription": "250+ Production ready components, built with Next.js, shadcn/ui and Tailwind CSS.",
+    "explore": "Explore Components",
+    "starGithub": "Star on GitHub",
+    "builtWith": "Built With",
+    "readyToUse": "Ready-to-Use UI Blocks"
+  },
+  "CTA": {
+    "title1": "Stop building from scratch",
+    "title2": "Ship fast with ",
+    "title2Pro": "Spectrum Pro",
+    "description": "Premium Next.js templates built on Spectrum UI. Dark. Animated. Production-ready. From $49.",
+    "button": "Get access"
+  }
+}

@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
 
+import { useI18n } from "./i18n-provider";
 import { Icons } from "./icon";
 
 export default function Footer() {
+  const { t, locale, setLocale } = useI18n();
   return (
     <footer className=" py-12 px-4 md:px-6 z-50">
       <div className="container mx-auto">
@@ -18,7 +20,7 @@ export default function Footer() {
             </Link>
 
             <h1 className="dark:text-gray-300 mt-4">
-              Build by{" "}
+              {t('Footer.builtBy')}{" "}
               <span className="dark:text-[#039ee4] gap-2">
                 <Link className="underline" href="https://x.com/arihantCodes">@Arihantjain</Link>
                 <span>{" & "}</span>
@@ -28,20 +30,20 @@ export default function Footer() {
               </span>
             </h1>
            
-            <p className="text-sm dark:text-gray-400 mt-5">
-              © {new Date().getFullYear()} Spectrum UI. All rights reserved.
+            <p className="text-sm dark:text-gray-400 mt-5 min-h-[1.5em]">
+              © {new Date().getFullYear()} Spectrum UI. {t('Footer.rights')}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="font-semibold mb-4">Pages</h3>
+              <h3 className="font-semibold mb-4">{t('Footer.pages')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/docs"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    Docs
+                    {t('Footer.docs')}
                   </Link>
                 </li>
                 <li>
@@ -49,7 +51,7 @@ export default function Footer() {
                     href="/blocks"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    Blocks
+                    {t('Footer.blocks')}
                   </Link>
                 </li>
                 <li>
@@ -57,13 +59,13 @@ export default function Footer() {
                     href="/colors"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    Colors
+                    {t('Footer.colors')}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Socials</h3>
+              <h3 className="font-semibold mb-4">{t('Footer.socials')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
@@ -92,14 +94,14 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
+              <h3 className="font-semibold mb-4">{t('Footer.legal')}</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/privacy-policy"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    Privacy Policy
+                    {t('Footer.privacy')}
                   </Link>
                 </li>
                 <li>
@@ -107,7 +109,7 @@ export default function Footer() {
                     href="/tos"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    Terms of Service
+                    {t('Footer.tos')}
                   </Link>
                 </li>
                 <li>
@@ -115,10 +117,27 @@ export default function Footer() {
                     href="/faqs"
                     className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
                   >
-                    FAQs
+                    {t('Footer.faqs')}
                   </Link>
                 </li>
               </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">{t('Footer.language')}</h3>
+              <select 
+                value={locale} 
+                onChange={(e) => setLocale(e.target.value as any)}
+                className="bg-background border rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+              >
+                <option value="en">English 🇺🇸</option>
+                <option value="es">Español 🇪🇸</option>
+                <option value="pt">Português 🇧🇷</option>
+                <option value="zh">简体中文 🇨🇳</option>
+                <option value="fr">Français 🇫🇷</option>
+                <option value="de">Deutsch 德</option>
+                <option value="hi">हिन्दी 🇮🇳</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+              </select>
             </div>
           </div>
         </div>

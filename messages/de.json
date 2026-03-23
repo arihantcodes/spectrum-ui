@@ -1,0 +1,40 @@
+{
+  "Navbar": {
+    "home": "Startseite",
+    "components": "Komponenten",
+    "templates": "Vorlagen",
+    "blocks": "Blöcke",
+    "blogs": "Blogs",
+    "signIn": "Anmelden",
+    "sponsor": "Sponsoren"
+  },
+  "Footer": {
+    "builtBy": "Erstellt von",
+    "rights": "Alle Rechte vorbehalten.",
+    "pages": "Seiten",
+    "socials": "Soziale Medien",
+    "legal": "Rechtliches",
+    "docs": "Dokumentation",
+    "colors": "Farben",
+    "privacy": "Datenschutz",
+    "tos": "Nutzungsbedingungen",
+    "faqs": "FAQs",
+    "language": "Sprache"
+  },
+  "HomePage": {
+    "heroTitle1": "Sofortige UI-Komponenten",
+    "heroTitle2": "Kopieren, Einfügen, Fertig",
+    "heroDescription": "Über 250 produktionsbereite Komponenten, erstellt mit Next.js, shadcn/ui und Tailwind CSS.",
+    "explore": "Komponenten erkunden",
+    "starGithub": "Star auf GitHub",
+    "builtWith": "Erstellt mit",
+    "readyToUse": "Sofort einsatzbereite UI-Blöcke"
+  },
+  "CTA": {
+    "title1": "Hören Sie auf, von Grund auf neu zu bauen.",
+    "title2": "Schneller veröffentlichen mit ",
+    "title2Pro": "Spectrum Pro",
+    "description": "Premium Next.js-Vorlagen, basierend auf Spectrum UI. Dunkel. Animiert. Produktionsfertig. Ab 49 $.",
+    "button": "Zugang anfordern"
+  }
+}

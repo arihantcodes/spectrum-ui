@@ -459,19 +459,7 @@ export default function ProPage() {
         </div>
       </section>
 
-      {/* ── STATS — solid borders, not dashed ─────────────────────────────── */}
-      <section className="container-wrapper border-y 
-        border-neutral-200 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 
-            divide-y sm:divide-y-0 sm:divide-x 
-            divide-neutral-200 dark:divide-neutral-800">
-            <StatCard value="989+" label="GitHub Stars" />
-            <StatCard value="4,000+" label="Developers every month" />
-            <StatCard value="20,000+" label="Monthly pageviews" />
-          </div>
-        </div>
-      </section>
+
 
       {/* ── TEMPLATES ─────────────────────────────────────────────────────── */}
       <section className="container-wrapper border-b border-neutral-200 dark:border-neutral-800">
