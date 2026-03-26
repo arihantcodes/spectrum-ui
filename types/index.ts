@@ -8,6 +8,7 @@ export interface Template {
   price: number;
   category: string | null;
   tech_stack: string[] | null;
+  features: string[] | null;
   preview_url: string | null;
   thumbnail_url: string | null;
   github_repo: string;

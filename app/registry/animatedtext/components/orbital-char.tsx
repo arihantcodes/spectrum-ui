@@ -77,7 +77,7 @@ export function OrbitalChar({ char, index, radius, duration, decay }: Props) {
       requestAnimationFrame(step);
     };
     animateChar();
-  }, [char, index, radius, duration, decay, initialX, initialY, initialRot]);
+  }, [char, index, radius, duration, decay, initialX, initialY, initialRot, springX, springY, springRot, springOpacity, springBlur]);
 
   return (
     <motion.span

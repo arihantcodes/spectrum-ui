@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IconBrandGithub, IconX, IconLock } from '@tabler/icons-react'
 import Link from 'next/link'
-
+import { createPortal } from 'react-dom'
 import { type Template } from '@/types'
 
 interface BuyModalProps {
@@ -19,8 +19,15 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
   const [githubUsername, setGithubUsername] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError]     = useState('')
+  const [mounted, setMounted] = useState(false)
 
-  // Pre-fill GitHub username from session when it loads
+  // Handle mounting state for Portal
+  useEffect(() => {
+    setMounted(true)
+    return () => setMounted(false)
+  }, [])
+
+  // Pre-fill GitHub username from session
   useEffect(() => {
     if (session?.user) {
       const ghUser = (session.user as any)?.githubUsername
@@ -48,13 +55,10 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
       })
 
       const data = await res.json()
-
       if (!res.ok) {
         setError(data.error ?? 'Something went wrong')
         return
       }
-
-      // Redirect to Dodo hosted checkout
       window.location.href = data.checkout_url
     } catch {
       setError('Failed to start checkout. Try again.')
@@ -63,87 +67,93 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
     }
   }
 
-  return (
+  if (!mounted) return null
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50
-            flex items-end sm:items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999]
+            flex items-end sm:items-center justify-center p-4 overflow-y-auto"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 8 }}
-            transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 400 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#111] border border-[#222] rounded-2xl p-6
-              w-full max-w-md
-              [box-shadow:inset_0_1px_0_rgba(255,255,255,0.05),
-                0_24px_64px_rgba(0,0,0,0.6)]"
+            className="bg-background border border-border rounded-3xl p-6 md:p-8
+              w-full max-w-lg shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] my-auto transition-colors"
           >
             {/* Header */}
-            <div className="flex items-start justify-between mb-5">
+            <div className="flex items-start justify-between mb-8">
               <div>
-                <h2 className="font-semibold text-[#F5F5F5] text-lg">
+                <h2 className="font-bold text-foreground text-2xl tracking-tight">
                   {template.name}
                 </h2>
-                <p className="text-sm text-[#666] mt-0.5">
-                  {template.tagline}
-                </p>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-sm text-primary font-bold">Starting from ${template.price / 100}</span>
+                  <span className="text-muted-foreground text-sm">•</span>
+                  <p className="text-sm text-muted-foreground truncate max-w-[200px]">
+                    {template.tagline}
+                  </p>
+                </div>
               </div>
-              <button onClick={onClose}
-                className="text-[#444] hover:text-[#888] transition-colors p-1">
-                <IconX size={18} />
+              <button 
+                onClick={onClose}
+                className="text-muted-foreground hover:text-foreground transition-all 
+                  hover:bg-muted p-2 rounded-full -mt-2 -mr-2"
+              >
+                <IconX size={20} />
               </button>
             </div>
 
-            {/* Not signed in — redirect to sign in, then bounce back with ?buy=slug */}
+            {/* Content Logic */}
             {!session ? (
-              <div className="text-center py-4">
-                <p className="text-sm text-[#666] mb-4">
-                  Sign in to purchase this template
-                </p>
+              <div className="text-center py-8 space-y-6">
+                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto">
+                   <IconLock size={32} className="text-muted-foreground" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-lg">Secure Purchase</h3>
+                  <p className="text-sm text-muted-foreground max-w-[280px] mx-auto">
+                    Sign in with GitHub to purchase this template and receive instant repository access.
+                  </p>
+                </div>
                 <Link
                   href={`/sign-in?callbackUrl=${encodeURIComponent(`/pro?buy=${template.slug}`)}`}
-                  className="inline-flex items-center gap-2
-                    bg-[#F5F5F5] hover:bg-white text-[#080808]
-                    font-semibold text-sm px-5 py-2.5 rounded-lg
-                    transition-colors"
+                  className="inline-flex items-center justify-center gap-2 w-full
+                    bg-foreground text-background hover:opacity-90
+                    font-bold text-sm h-12 rounded-xl transition-all"
                 >
-                  <IconBrandGithub size={16} />
+                  <IconBrandGithub size={18} />
                   Sign in with GitHub
                 </Link>
               </div>
             ) : (
-              <>
-                {/* Signed in — show purchase form */}
+              <div className="space-y-6">
+                {/* Form Fields... */}
                 <div className="space-y-4">
-
-                  {/* Email — pre-filled, read only */}
                   <div>
-                    <label className="text-xs text-[#555] mb-1.5 block font-medium uppercase tracking-wider">
-                      Email
+                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 block">
+                      Account Access
                     </label>
-                    <div className="bg-[#0D0D0D] border border-[#1A1A1A]
-                      rounded-lg px-4 py-2.5 text-sm text-[#555] font-mono">
-                      {session.user?.email}
+                    <div className="flex items-center gap-3 p-3 bg-muted/50 border border-border rounded-xl text-sm">
+                       <span className="text-muted-foreground">Connected:</span>
+                       <span className="font-mono font-medium">{session.user?.email}</span>
                     </div>
                   </div>
 
-                  {/* GitHub username */}
                   <div>
-                    <label className="text-xs text-[#555] mb-1.5 block font-medium uppercase tracking-wider">
+                    <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 block">
                       GitHub Username
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2
-                        text-[#444] text-sm">
-                        @
-                      </span>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-mono">@</span>
                       <input
                         type="text"
                         value={githubUsername}
@@ -152,65 +162,53 @@ export function BuyModal({ isOpen, onClose, template }: BuyModalProps) {
                           setGithubUsername(e.target.value)
                           setError('')
                         }}
-                        placeholder="yourusername"
-                        className={`w-full bg-[#161616] border border-[#222]
-                          focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1]/20
-                          rounded-lg pl-7 pr-4 py-2.5 text-sm text-[#F5F5F5]
-                          placeholder:text-[#333] outline-none transition-all font-mono
-                          ${(session.user as any)?.githubUsername ? 'opacity-60 cursor-not-allowed border-dashed' : ''}`}
+                        placeholder="your-handle"
+                        className={`w-full bg-background border border-border h-12
+                          focus:border-primary focus:ring-4 focus:ring-primary/10
+                          rounded-xl pl-8 pr-4 text-sm font-mono outline-none transition-all
+                          ${(session.user as any)?.githubUsername ? 'opacity-50 cursor-not-allowed' : ''}`}
                       />
-                      {(session.user as any)?.githubUsername && (
-                        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[#444]">
-                          <IconLock size={14} />
-                        </div>
-                      )}
                     </div>
-                    <p className="text-xs text-[#444] mt-1.5">
-                      {(session.user as any)?.githubUsername 
-                        ? 'Connected to your profile' 
-                        : "We'll add this account to the private repo on purchase"}
-                    </p>
                   </div>
-
-                  {/* Error */}
-                  {error && (
-                    <p className="text-xs text-red-400 bg-red-500/8
-                      border border-red-500/15 rounded-lg px-3 py-2">
-                      {error}
-                    </p>
-                  )}
                 </div>
 
-                {/* Price + CTA */}
-                <div className="mt-6 space-y-3">
+                {error && (
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-xs text-red-500 font-medium">
+                    {error}
+                  </div>
+                )}
+
+                <div className="pt-2">
                   <button
                     onClick={handleBuy}
                     disabled={loading || !githubUsername.trim()}
-                    className="w-full bg-[#6366F1] hover:bg-[#4F46E5]
-                      disabled:opacity-40 disabled:cursor-not-allowed
-                      text-white font-semibold text-sm
-                      py-3 rounded-xl transition-colors
-                      flex items-center justify-center gap-2"
+                    className="w-full bg-primary hover:scale-[0.98] active:scale-95
+                      disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed
+                      text-primary-foreground font-bold h-12 rounded-xl transition-all
+                      flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
                   >
                     {loading ? (
-                      'Redirecting to checkout…'
+                      <span className="flex items-center gap-2">
+                        <div className="h-4 w-4 border-2 border-primary-foreground/30 border-t-white rounded-full animate-spin" />
+                        Generating Checkout...
+                      </span>
                     ) : (
                       <>
-                        <IconLock size={15} />
-                        Pay ${template.price / 100} — Get instant access
+                        <IconLock size={18} />
+                        Pay Now — Instant Access
                       </>
                     )}
                   </button>
-
-                  <p className="text-center text-xs text-[#444]">
-                    One-time payment · Full source code · Yours forever
+                  <p className="text-center text-[10px] text-muted-foreground mt-4 font-medium uppercase tracking-widest">
+                    Safe & Secure · 100% Guaranteed Access
                   </p>
                 </div>
-              </>
+              </div>
             )}
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }

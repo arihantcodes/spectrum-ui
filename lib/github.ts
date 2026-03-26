@@ -7,7 +7,10 @@ export async function grantRepoAccess(githubRepo: string, githubUsername: string
     throw new Error('GITHUB_TOKEN is missing in environment variables');
   }
 
-  const url = `https://api.github.com/repos/${githubRepo}/collaborators/${githubUsername}`;
+  // Normalize: handle full URLs by extracting owner/repo
+  const repoSlug = githubRepo.replace(/https?:\/\/github\.com\//, '').replace(/\/$/, '');
+  console.log(`[GitHub] Requesting access for ${githubUsername} to ${repoSlug} (Source: ${githubRepo})`);
+  const url = `https://api.github.com/repos/${repoSlug}/collaborators/${githubUsername}`;
   
   try {
     const response = await fetch(url, {
