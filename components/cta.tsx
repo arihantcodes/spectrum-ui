@@ -17,20 +17,19 @@ const Cta = () => {
         font-semibold mb-4 md:leading-tight text-foreground max-w-2xl">
         Stop building from scratch.
         <br />
-        <span className="bg-gradient-to-r from-[#6366F1] to-purple-400 
-          bg-clip-text text-transparent">
-          Ship fast with Spectrum Pro.
+        <span className="">
+          Ship fast with <span className="bg-gradient-to-r from-[#916B1B] via-[#D4AF37] to-[#916B1B] dark:from-[#B8860B] dark:via-[#FFD700] dark:to-[#B8860B] bg-clip-text text-transparent italic">Spectrum Pro.</span>
         </span>
       </h1>
 
       <p className="text-[#666] text-base mb-8 text-center max-w-md">
         Premium Next.js templates built on Spectrum UI. 
-        Dark. Animated. Production-ready. From $49.
+        Dark. Animated. Production-ready. Starting from $49
       </p>
 
       <div className="flex items-center gap-3">
-        <Link href="https://pro.spectrumhq.in">
-          <Button className="rounded-md px-6 text-sm font-medium">
+        <Link href="/pro">
+          <Button className="rounded-full px-6 text-sm font-medium">
             Get access 
           </Button>
         </Link>
