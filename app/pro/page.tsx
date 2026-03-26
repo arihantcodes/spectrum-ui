@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { type Template } from '@/types';
+import Image from 'next/image';
 
 // ─── Waitlist form ─────────────────────────────────────────────────────────
 function WaitlistForm({ id, size = 'default' }: { id: string; size?: 'default' | 'large' }) {
@@ -505,8 +506,12 @@ export default function ProPage() {
                   <div className="aspect-video bg-neutral-100 dark:bg-neutral-800
                     flex items-center justify-center relative overflow-hidden">
                     {t.thumbnail_url ? (
-                      <img src={t.thumbnail_url} alt={t.name}
-                        className="w-full h-full object-cover" />
+                      <Image 
+                        src={t.thumbnail_url} 
+                        alt={t.name}
+                        fill
+                        className="object-cover" 
+                      />
                     ) : (
                       <div className="flex flex-col items-center gap-2 text-muted-foreground">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none"

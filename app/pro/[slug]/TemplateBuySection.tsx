@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { IconLock, IconBrandGithub } from '@tabler/icons-react'
+import { IconLock } from '@tabler/icons-react'
 import Link from 'next/link'
 import { BuyModal } from '@/components/marketing/BuyModal'
 

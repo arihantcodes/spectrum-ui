@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { IconX, IconDownload, IconExternalLink } from '@tabler/icons-react'
+import { IconX, IconExternalLink } from '@tabler/icons-react'
 import Image from 'next/image'
 import { useEffect } from 'react'
 

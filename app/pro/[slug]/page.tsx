@@ -4,7 +4,6 @@ import { auth } from '@/auth'
 import { cache } from 'react'
 import type { Metadata } from 'next'
 import { 
-  IconCheck, 
   IconInfoCircle, 
   IconBrandNextjs, 
   IconBrandTailwind, 
@@ -21,7 +20,6 @@ import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { ImageGallery } from '@/components/template/Gallery'
 import { Icons } from '@/components/icon'
 import { cn } from '@/lib/utils'
-import Link from 'next/link'
 
 // ── SSR: Fetch template at build/request time ────────────────────────────────
 const getTemplate = cache(async (slug: string) => {
