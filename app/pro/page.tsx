@@ -1,318 +1,99 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Icons } from '@/components/icon';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { type Template } from '@/types';
 import Image from 'next/image';
 
-// ─── Waitlist form ─────────────────────────────────────────────────────────
-function WaitlistForm({ id, size = 'default' }: { id: string; size?: 'default' | 'large' }) {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setLoading(true);
-    try {
-      const response = await fetch('https://chat.spectrumhq.in/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'spectrum pro' }),
-      });
-      if (response.ok) setSubmitted(true);
-    } catch (error) {
-      console.error('Error joining waitlist:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="inline-flex items-center gap-2.5 text-sm text-foreground 
-        border border-border rounded-xl px-5 py-3.5 
-        bg-neutral-50 dark:bg-neutral-900
-        animate-in fade-in zoom-in duration-300">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-        <span>You&apos;re on the list — we&apos;ll reach out soon.</span>
-      </div>
-    );
-  }
-
-  return (
-    <form id={id} onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-2 w-full max-w-md mx-auto">
-      <Input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        className={`flex-1 rounded-xl bg-background border-border 
-          text-foreground placeholder:text-muted-foreground
-          focus-visible:ring-1 focus-visible:ring-foreground/20
-          ${size === 'large' ? 'h-12 text-base' : 'h-11'}`}
-      />
-      <Button
-        type="submit"
-        disabled={loading}
-        className={`rounded-xl whitespace-nowrap font-semibold shrink-0
-          ${size === 'large' ? 'h-12 px-7 text-base' : 'h-11 px-6 text-sm'}`}
-      >
-        {loading ? 'Joining…' : 'Get Access Now →'}
-      </Button>
-    </form>
-  );
-}
-
-// ─── Mockups (unchanged — they're good) ──────────────────────────────────────
-function SaaSMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex flex-col">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50">
-        <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-sm bg-foreground/20" />
-          <div className="h-1.5 w-12 rounded-full bg-foreground/15" />
-        </div>
-        <div className="flex gap-2.5">
-          {[36, 28, 22].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-foreground/10" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-14 rounded-md bg-foreground/15" />
-      </div>
-      <div className="flex-1 flex flex-col items-center justify-center gap-3 px-6 py-5">
-        <div className="h-1.5 w-16 rounded-full bg-foreground/10" />
-        <div className="h-5 w-40 rounded-full bg-foreground/20" />
-        <div className="h-2 w-32 rounded-full bg-foreground/[0.08]" />
-        <div className="h-2 w-24 rounded-full bg-foreground/[0.08]" />
-        <div className="mt-3 flex gap-2">
-          <div className="h-6 w-20 rounded-lg bg-foreground/20" />
-          <div className="h-6 w-20 rounded-lg border border-foreground/10" />
-        </div>
-      </div>
-      <div className="grid grid-cols-3 border-t border-border/50">
-        {['a', 'b', 'c'].map((k, i) => (
-          <div key={k} className={`px-3 py-3 ${i < 2 ? 'border-r border-border/50' : ''}`}>
-            <div className="h-3 w-3 rounded-sm bg-foreground/15 mb-2" />
-            <div className="h-1.5 w-10 rounded-full bg-foreground/15 mb-1" />
-            <div className="h-1 w-8 rounded-full bg-foreground/[0.08]" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StartupMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex flex-col">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50">
-        <div className="h-2 w-14 rounded-full bg-foreground/[0.25]" />
-        <div className="flex gap-2">
-          {[24, 24, 24].map((w, i) => <div key={i} className="h-1.5 rounded-full bg-foreground/10" style={{ width: w }} />)}
-        </div>
-        <div className="h-5 w-12 rounded-md bg-foreground/20" />
-      </div>
-      <div className="flex-1 grid grid-cols-5">
-        <div className="col-span-3 p-4 flex flex-col justify-center gap-2.5">
-          <div className="h-1.5 w-12 rounded-full bg-foreground/[0.12]" />
-          <div className="h-5 w-28 rounded-full bg-foreground/[0.22]" />
-          <div className="h-1.5 w-20 rounded-full bg-foreground/10" />
-          <div className="h-1.5 w-16 rounded-full bg-foreground/10" />
-          <div className="mt-1 h-6 w-16 rounded-md bg-foreground/20" />
-        </div>
-        <div className="col-span-2 p-3 flex flex-col gap-2 border-l border-border/50">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="flex-1 rounded-lg border border-foreground/[0.08] p-2">
-              <div className="h-1.5 w-8 rounded-full bg-foreground/[0.18] mb-1.5" />
-              <div className="h-1 w-12 rounded-full bg-foreground/10" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PortfolioMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex flex-col">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border/50">
-        <div className="flex items-center gap-1.5">
-          <div className="w-4 h-4 rounded-full bg-foreground/20" />
-          <div className="h-1.5 w-14 rounded-full bg-foreground/[0.18]" />
-        </div>
-        <div className="h-5 w-12 rounded-md bg-foreground/[0.18]" />
-      </div>
-      <div className="p-4 flex flex-col gap-2">
-        <div className="h-1.5 w-12 rounded-full bg-foreground/[0.12]" />
-        <div className="h-5 w-36 rounded-full bg-foreground/[0.22]" />
-        <div className="h-1.5 w-28 rounded-full bg-foreground/10" />
-        <div className="h-1.5 w-20 rounded-full bg-foreground/10" />
-        <div className="mt-2 flex gap-2">
-          <div className="h-6 w-16 rounded-md bg-foreground/20" />
-          <div className="h-6 w-16 rounded-md border border-foreground/10" />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-1.5 p-3 mt-auto">
-        {[1, 2, 3, 4].map(i => (
-          <div key={i} className="h-9 rounded-lg border border-foreground/[0.08] bg-foreground/[0.03]" />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function DashboardMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex">
-      <div className="w-1/4 border-r border-border/50 p-3 flex flex-col gap-3">
-        <div className="h-4 w-10/12 rounded bg-foreground/10 mb-2" />
-        {[1, 2, 3, 4].map(i => <div key={i} className="h-1.5 w-full rounded-full bg-foreground/5" />)}
-      </div>
-      <div className="flex-1 p-4 flex flex-col gap-3">
-        <div className="flex justify-between items-center">
-          <div className="h-3 w-16 rounded-full bg-foreground/20" />
-          <div className="h-3 w-3 rounded-full bg-foreground/20" />
-        </div>
-        <div className="flex-1 border border-border/50 rounded-lg bg-foreground/5 p-3 flex gap-2 items-end justify-center">
-          <div className="w-3 h-8 bg-foreground/20 rounded-t-sm" />
-          <div className="w-3 h-12 bg-foreground/15 rounded-t-sm" />
-          <div className="w-3 h-6 bg-foreground/10 rounded-t-sm" />
-          <div className="w-3 h-16 bg-foreground/[0.25] rounded-t-sm" />
-          <div className="w-3 h-10 bg-foreground/15 rounded-t-sm" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CommerceMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex flex-col">
-      <div className="p-3 border-b border-border/50 flex justify-between items-center">
-        <div className="h-2 w-12 bg-foreground/20 rounded-full" />
-        <div className="flex gap-1.5">
-          <div className="h-1.5 w-6 bg-foreground/10 rounded-full" />
-          <div className="h-1.5 w-6 bg-foreground/10 rounded-full" />
-        </div>
-      </div>
-      <div className="p-3 grid grid-cols-2 gap-2 flex-1">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-foreground/5 border border-border/50 rounded flex flex-col items-center justify-center p-2 gap-1.5">
-            <div className="h-6 w-full bg-foreground/10 rounded-sm mb-0.5" />
-            <div className="h-1 w-8 bg-foreground/20 rounded-full" />
-            <div className="h-1 w-4 bg-foreground/10 rounded-full" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BlogMockup() {
-  return (
-    <div className="w-full h-full bg-background border border-border/50 rounded-lg overflow-hidden flex flex-col items-center justify-center p-5">
-      <div className="w-4/5 flex flex-col gap-2.5">
-        <div className="h-4 w-full bg-foreground/20 rounded-md" />
-        <div className="h-1.5 w-1/3 bg-foreground/10 rounded-full mb-2" />
-        <div className="h-1.5 w-full bg-foreground/10 rounded-full" />
-        <div className="h-1.5 w-full bg-foreground/10 rounded-full" />
-        <div className="h-1.5 w-5/6 bg-foreground/10 rounded-full" />
-      </div>
-    </div>
-  );
-}
-
 // ─── Template card ────────────────────────────────────────────────────────────
-function TemplateCard({
-  title,
-  subtitle,
-  Mockup,
-  aspectClass = 'aspect-video',
-}: {
-  title: string;
-  subtitle: string;
-  Mockup: React.ComponentType;
-  aspectClass?: string;
-}) {
-  const [hovered, setHovered] = useState(false);
+function TemplateCard({ template }: { template: Template }) {
   return (
-    <div className="flex flex-col gap-3 group/template">
-      <div
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={`relative overflow-hidden rounded-xl border 
-          border-neutral-200 dark:border-neutral-800 
-          bg-neutral-100 dark:bg-neutral-900 
-          transition-all duration-300 ${aspectClass}`}
-        style={{
-          transform: hovered ? 'scale(1.012)' : 'scale(1)',
-          boxShadow: hovered
-            ? '0 16px 48px -12px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.04)'
-            : 'none',
-        }}
-      >
-        {/* Mockup */}
-        <div
-          className="absolute inset-0 p-1.5 transition-transform duration-500 ease-out"
-          style={{ transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
-        >
-          <Mockup />
-        </div>
-
-        {/* Lock overlay */}
-        <div
-          className={`absolute inset-0 flex items-center justify-center rounded-xl 
-            transition-all duration-500 ease-out 
-            ${hovered ? 'opacity-100' : 'opacity-0'}`}
-          style={{ backdropFilter: 'blur(6px)', background: 'rgba(0,0,0,0.25)' }}
-        >
-          <div
-            className="flex flex-col items-center gap-2 px-5 py-4 rounded-xl 
-              bg-background/95 dark:bg-neutral-900/95 
-              border border-neutral-200 dark:border-neutral-700 
-              shadow-xl transition-all duration-500 ease-out"
-            style={{
-              transform: hovered ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.96)',
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-              className="text-foreground">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-            <span className="text-xs font-semibold text-foreground tracking-wide">
-              Unlock with Pro
-            </span>
+    <Link
+      href={`/pro/${template.slug}`}
+      className="group relative flex flex-col rounded-xl border
+        border-neutral-200 dark:border-neutral-800
+        bg-white dark:bg-neutral-950
+        hover:border-neutral-300 dark:hover:border-neutral-700
+        transition-all duration-300 overflow-hidden
+        hover:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.12)]
+        dark:hover:shadow-[0_8px_40px_-12px_rgba(0,0,0,0.5)]"
+    >
+      {/* Thumbnail */}
+      <div className="aspect-[16/10] bg-neutral-100 dark:bg-neutral-900 relative overflow-hidden">
+        {template.thumbnail_url ? (
+          <Image
+            src={template.thumbnail_url}
+            alt={template.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-2 text-muted-foreground">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M9 21V9" />
+              </svg>
+              <span className="text-[11px] font-medium">{template.category ?? 'Template'}</span>
+            </div>
           </div>
+        )}
+
+        {/* Price badge */}
+        <div className="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-lg
+          text-xs font-bold bg-white dark:bg-neutral-900
+          text-foreground border border-neutral-200 dark:border-neutral-700 shadow-sm">
+          ${(template.price / 100).toFixed(0)}
         </div>
 
-        {/* PRO badge */}
-        <div className="absolute top-3 right-3 z-10 px-2 py-0.5 rounded-full 
-          text-[10px] font-semibold bg-foreground text-background 
-          tracking-wide shadow-sm">
-          PRO
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]
+          opacity-0 group-hover:opacity-100 transition-all duration-300
+          flex items-center justify-center">
+          <span className="text-white text-sm font-semibold
+            bg-white/15 border border-white/20 px-5 py-2.5 rounded-lg
+            backdrop-blur-sm transition-transform duration-300
+            translate-y-2 group-hover:translate-y-0">
+            View Template
+          </span>
         </div>
       </div>
 
-      <div>
-        <p className="text-sm font-semibold text-foreground 
-          group-hover/template:text-primary transition-colors">
-          {title}
-        </p>
-        <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>
+      {/* Info */}
+      <div className="p-4 flex flex-col gap-2 flex-1">
+        <div>
+          <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+            {template.name}
+          </h3>
+          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
+            {template.tagline}
+          </p>
+        </div>
+        {template.tech_stack && template.tech_stack.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
+            {template.tech_stack.slice(0, 5).map((tech) => (
+              <span key={tech}
+                className="text-[10px] font-medium px-2 py-0.5 rounded-md
+                  bg-neutral-100 dark:bg-neutral-800
+                  text-muted-foreground">
+                {tech}
+              </span>
+            ))}
+            {template.tech_stack.length > 5 && (
+              <span className="text-[10px] font-medium px-2 py-0.5 rounded-md
+                bg-neutral-100 dark:bg-neutral-800 text-muted-foreground">
+                +{template.tech_stack.length - 5}
+              </span>
+            )}
+          </div>
+        )}
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -327,19 +108,19 @@ function FeatureCard({
   desc: string;
 }) {
   return (
-    <div className="relative p-7 flex flex-col gap-4 group 
-      hover:bg-neutral-50 dark:hover:bg-neutral-900/60 
+    <div className="relative p-6 md:p-7 flex flex-col gap-4 group
+      hover:bg-neutral-50 dark:hover:bg-neutral-900/60
       transition-colors cursor-default overflow-hidden">
-      <div className="absolute inset-0 
-        bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] 
-        dark:bg-[radial-gradient(#334155_1px,transparent_1px)] 
-        [background-size:16px_16px] 
-        opacity-0 group-hover:opacity-100 
+      <div className="absolute inset-0
+        bg-[radial-gradient(#cbd5e1_1px,transparent_1px)]
+        dark:bg-[radial-gradient(#334155_1px,transparent_1px)]
+        [background-size:16px_16px]
+        opacity-0 group-hover:opacity-100
         transition-opacity duration-500 pointer-events-none" />
 
-      <div className="relative z-10 w-9 h-9 rounded-lg flex items-center justify-center 
-        bg-muted border border-border text-foreground 
-        group-hover:bg-foreground group-hover:text-background 
+      <div className="relative z-10 w-9 h-9 rounded-lg flex items-center justify-center
+        bg-muted border border-border text-foreground
+        group-hover:bg-foreground group-hover:text-background
         group-hover:scale-110 transition-all duration-300 shadow-sm">
         {icon}
       </div>
@@ -351,14 +132,40 @@ function FeatureCard({
   );
 }
 
-// ─── Stat card ────────────────────────────────────────────────────────────────
-function StatCard({ value, label }: { value: string; label: string }) {
+// ─── FAQ Item ────────────────────────────────────────────────────────────────
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="p-8 text-center">
-      <p className="text-4xl font-bold text-foreground tracking-tight tabular-nums">
-        {value}
-      </p>
-      <p className="text-sm text-muted-foreground mt-1.5">{label}</p>
+    <div className="border-b border-neutral-200 dark:border-neutral-800 last:border-b-0">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center justify-between w-full py-5 text-left
+          hover:text-foreground transition-colors"
+      >
+        <span className="text-sm font-medium text-foreground pr-4">{question}</span>
+        <svg
+          width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          className={`shrink-0 text-muted-foreground transition-transform duration-200 ${open ? 'rotate-45' : ''}`}
+        >
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+      </button>
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-300"
+        style={{
+          maxHeight: open ? contentRef.current?.scrollHeight ?? 0 : 0,
+          opacity: open ? 1 : 0,
+        }}
+      >
+        <p className="text-sm text-muted-foreground leading-relaxed pb-5">
+          {answer}
+        </p>
+      </div>
     </div>
   );
 }
@@ -386,203 +193,233 @@ export default function ProPage() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="container-wrapper relative">
-        {/* Subtle grid — light mode */}
+      <section className="container-wrapper relative overflow-hidden">
+        {/* Grid bg */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10
             bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),
                linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
-            bg-[size:96px_96px]
-            [mask-image:radial-gradient(ellipse_60%_60%_at_50%_30%,#000_60%,transparent_100%)]
-            dark:invisible"
+            bg-[size:64px_64px]
+            [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_60%,transparent_100%)]
+            dark:opacity-40"
         />
 
-        <div className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
+        {/* Gradient glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10
+            w-[800px] h-[400px]
+            bg-gradient-to-b from-primary/[0.07] via-primary/[0.03] to-transparent
+            rounded-full blur-3xl"
+        />
 
-          {/* Badge — no "early access", just brand */}
-          <div className="inline-flex items-center gap-2 rounded-full 
-            border border-neutral-200 dark:border-neutral-800 
+        <div className="max-w-5xl mx-auto px-6 pt-28 pb-20 text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 rounded-full
+            border border-neutral-200 dark:border-neutral-800
             bg-neutral-50 dark:bg-neutral-900/80
-            px-3 py-1.5 text-xs font-medium text-muted-foreground mb-8">
-            <div className="h-5 w-5 bg-white border border-neutral-200 
-              dark:border-neutral-700 dark:bg-neutral-900 
+            px-3.5 py-1.5 text-xs font-medium text-muted-foreground mb-8">
+            <div className="h-5 w-5 bg-white border border-neutral-200
+              dark:border-neutral-700 dark:bg-neutral-900
               rounded-md flex items-center justify-center p-0.5 shrink-0">
               <Icons.logo className="h-3.5 w-3.5 text-foreground" />
             </div>
-            Spectrum Pro — Premium templates for developers
+            Spectrum Pro
           </div>
 
-          {/* Headline — confident, no "coming soon" energy */}
-          <h1 className="mx-auto max-w-4xl font-bold 
-            text-4xl md:text-5xl lg:text-[3.75rem] 
-            leading-[1.1] tracking-tight mb-5">
-            Stop building UIs
-            <br />
+          {/* Headline */}
+          <h1 className="mx-auto max-w-4xl font-bold
+            text-4xl md:text-5xl lg:text-6xl
+            leading-[1.08] tracking-tight mb-5">
+            Premium templates &{' '}
             <span className="text-muted-foreground">
-              from scratch every time.
+              blocks for Next.js
             </span>
           </h1>
 
-          {/* Subtext — credibility first, then the ask */}
-          <p className="text-base md:text-lg text-muted-foreground 
-            max-w-lg mx-auto mb-4 leading-relaxed">
-            Premium Next.js templates built on Spectrum UI — the library
-            used by <span className="text-foreground font-medium">
-              4,000+ developers
-            </span> every month.
-            Dark. Animated. Production-ready.
+          {/* Subtext */}
+          <p className="text-base md:text-lg text-muted-foreground
+            max-w-xl mx-auto mb-8 leading-relaxed">
+            High-quality, production-ready templates and UI blocks built with
+            Next.js, Tailwind CSS, and Framer Motion. Buy once, own forever.
           </p>
 
-          {/* Form — no name field, less friction */}
-          <div className="flex flex-col items-center gap-4">
-            <WaitlistForm id="hero-form" />
+          {/* CTAs */}
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <Button asChild size="lg" className="rounded-xl h-12 px-8 text-sm font-semibold">
+              <a href="#templates">Browse Templates</a>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-xl h-12 px-8 text-sm font-semibold">
+              <a href="#how-it-works">How It Works</a>
+            </Button>
+          </div>
 
-            {/* Social proof — this is real, use it confidently */}
-            <div className="flex items-center justify-center gap-5 flex-wrap">
-              {[
-                '989+ GitHub stars',
-                '4,000 devs/month',
-                'No spam',
-              ].map((t) => (
-                <span key={t}
-                  className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" strokeWidth="2.5"
-                    strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  {t}
-                </span>
-              ))}
-            </div>
+          {/* Trust signals */}
+          <div className="flex items-center justify-center gap-6 mt-8 flex-wrap">
+            {[
+              'Full source code',
+              'Private GitHub access',
+              'Lifetime updates',
+            ].map((t) => (
+              <span key={t}
+                className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2.5"
+                  strokeLinecap="round" strokeLinejoin="round"
+                  className="text-green-500 dark:text-green-400">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── STATS — solid borders, not dashed ─────────────────────────────── */}
-      <section className="container-wrapper border-y 
+      {/* ── STATS ─────────────────────────────────────────────────────────── */}
+      <section className="container-wrapper border-y
         border-neutral-200 dark:border-neutral-800">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 
-            divide-y sm:divide-y-0 sm:divide-x 
+          <div className="grid grid-cols-2 sm:grid-cols-4
+            divide-y sm:divide-y-0 sm:divide-x
             divide-neutral-200 dark:divide-neutral-800">
-            <StatCard value="989+" label="GitHub Stars" />
-            <StatCard value="4,000+" label="Developers every month" />
-            <StatCard value="20,000+" label="Monthly pageviews" />
+            {[
+              { value: '989+', label: 'GitHub Stars' },
+              { value: '4,000+', label: 'Monthly Developers' },
+              { value: '20,000+', label: 'Monthly Pageviews' },
+              { value: '100%', label: 'Source Code Access' },
+            ].map(({ value, label }) => (
+              <div key={label} className="p-6 md:p-8 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-foreground tracking-tight tabular-nums">
+                  {value}
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── TEMPLATES ─────────────────────────────────────────────────────── */}
-      <section className="container-wrapper border-b border-neutral-200 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <div className="mb-10">
-            <p className="text-xs font-semibold uppercase tracking-widest 
-              text-muted-foreground mb-3">
-              Templates
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              Premium, production-ready starter kits.
-            </h2>
+      <section id="templates" className="container-wrapper scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest
+                text-primary mb-3">
+                Templates
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                Premium starter kits
+              </h2>
+              <p className="text-sm text-muted-foreground mt-2 max-w-lg">
+                Each template comes with full source code, private GitHub repo access,
+                and is built on the Spectrum design system.
+              </p>
+            </div>
           </div>
 
           {loading ? (
-            <p className="text-muted-foreground text-sm">Loading templates...</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
+                  <div className="aspect-[16/10] bg-neutral-100 dark:bg-neutral-900 animate-pulse" />
+                  <div className="p-4 space-y-2">
+                    <div className="h-4 w-1/2 bg-neutral-100 dark:bg-neutral-800 rounded animate-pulse" />
+                    <div className="h-3 w-3/4 bg-neutral-100 dark:bg-neutral-800 rounded animate-pulse" />
+                  </div>
+                </div>
+              ))}
+            </div>
           ) : templates.length === 0 ? (
-            <p className="text-muted-foreground text-sm">No templates available yet. Check back soon!</p>
+            <div className="text-center py-20 rounded-xl border border-dashed
+              border-neutral-200 dark:border-neutral-800">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                className="mx-auto text-muted-foreground mb-3">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M9 21V9" />
+              </svg>
+              <p className="text-sm text-muted-foreground">
+                New templates dropping soon. Stay tuned.
+              </p>
+            </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {templates.map((t) => (
-                <Link key={t.slug} href={`/pro/${t.slug}`}
-                  className="group rounded-xl border
-                    border-neutral-200 dark:border-neutral-800
-                    bg-neutral-50 dark:bg-neutral-900/60
-                    hover:border-neutral-300 dark:hover:border-neutral-700
-                    transition-all duration-300 overflow-hidden
-                    hover:shadow-lg block"
-                >
-                  {/* Thumbnail / Placeholder */}
-                  <div className="aspect-video bg-neutral-100 dark:bg-neutral-800
-                    flex items-center justify-center relative overflow-hidden">
-                    {t.thumbnail_url ? (
-                      <Image 
-                        src={t.thumbnail_url} 
-                        alt={t.name}
-                        fill
-                        className="object-cover" 
-                      />
-                    ) : (
-                      <div className="flex flex-col items-center gap-2 text-muted-foreground">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
-                          stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="3" width="18" height="18" rx="2" />
-                          <path d="M3 9h18" />
-                          <path d="M9 21V9" />
-                        </svg>
-                        <span className="text-xs font-medium">{t.category ?? 'Template'}</span>
-                      </div>
-                    )}
-
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm
-                      opacity-0 group-hover:opacity-100 transition-all duration-300
-                      flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold
-                        bg-white/20 border border-white/30 px-4 py-2 rounded-lg">
-                        View Details — ${(t.price / 100).toFixed(0)}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Info */}
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="text-sm font-semibold text-foreground">{t.name}</h3>
-                      <span className="text-xs font-bold text-foreground">
-                        ${(t.price / 100).toFixed(0)}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground">{t.tagline}</p>
-                    {t.tech_stack && t.tech_stack.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 mt-3">
-                        {t.tech_stack.map((tech) => (
-                          <span key={tech}
-                            className="text-[10px] font-medium px-2 py-0.5 rounded-full
-                              bg-neutral-100 dark:bg-neutral-800
-                              text-muted-foreground border border-neutral-200 dark:border-neutral-700">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </Link>
+                <TemplateCard key={t.slug} template={t} />
               ))}
             </div>
           )}
         </div>
       </section>
 
-      {/* ── FEATURES ──────────────────────────────────────────────────────── */}
-      <section className="container-wrapper border-y 
-        border-neutral-200 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-          <div className="mb-10">
-            <p className="text-xs font-semibold uppercase tracking-widest 
-              text-muted-foreground mb-3">
-              What you get
+      {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
+      <section id="how-it-works" className="container-wrapper border-y
+        border-neutral-200 dark:border-neutral-800 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+          <div className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-widest
+              text-primary mb-3">
+              How it works
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              Built the right way, every time.
+              From purchase to production in minutes
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 
-            border border-neutral-200 dark:border-neutral-800 
-            rounded-xl overflow-hidden 
-            divide-x divide-y 
-            divide-neutral-200 dark:divide-neutral-800">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            {[
+              {
+                step: '01',
+                title: 'Pick a template',
+                desc: 'Browse our collection and choose the template that fits your project. Each one is designed for a specific use case.',
+              },
+              {
+                step: '02',
+                title: 'Get instant access',
+                desc: 'Complete your purchase and get immediate access to the private GitHub repository with the full source code.',
+              },
+              {
+                step: '03',
+                title: 'Ship your project',
+                desc: 'Clone the repo, customize it to your brand, and deploy. No configuration headaches — it works out of the box.',
+              },
+            ].map(({ step, title, desc }) => (
+              <div key={step} className="flex flex-col gap-4">
+                <span className="text-xs font-bold text-primary tabular-nums">
+                  {step}
+                </span>
+                <h3 className="text-base font-semibold text-foreground">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT YOU GET ──────────────────────────────────────────────────── */}
+      <section className="container-wrapper">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+          <div className="mb-12">
+            <p className="text-xs font-semibold uppercase tracking-widest
+              text-primary mb-3">
+              What you get
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Built the right way, every time
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4
+            border border-neutral-200 dark:border-neutral-800
+            rounded-xl overflow-hidden
+            divide-x divide-y
+            divide-neutral-200 dark:divide-neutral-800
+            [&>*:nth-child(-n+4)]:border-t-0
+            [&>*:first-child]:border-l-0">
             <FeatureCard
               icon={
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
@@ -630,9 +467,117 @@ export default function ProPage() {
               title="Full Source Code"
               desc="Private GitHub repo access on purchase. No license drama, no lock-in. It's yours."
             />
+            <FeatureCard
+              icon={
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              }
+              title="TypeScript First"
+              desc="Fully typed with strict mode. Catch errors at build time, not runtime."
+            />
+            <FeatureCard
+              icon={
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              }
+              title="SEO Optimized"
+              desc="Metadata, Open Graph, sitemaps, and structured data baked into every page."
+            />
+            <FeatureCard
+              icon={
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              }
+              title="Responsive Design"
+              desc="Pixel-perfect on every screen size. Mobile-first layouts that scale beautifully."
+            />
+            <FeatureCard
+              icon={
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              }
+              title="Dark Mode"
+              desc="Light and dark themes built in. Automatic detection with manual toggle support."
+            />
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ───────────────────────────────────────────────────────────── */}
+      <section className="container-wrapper border-t
+        border-neutral-200 dark:border-neutral-800">
+        <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+          <div className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-widest
+              text-primary mb-3">
+              FAQ
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+              Common questions
+            </h2>
+          </div>
+
+          <div>
+            <FAQItem
+              question="What do I get after purchasing?"
+              answer="You get immediate access to a private GitHub repository containing the full source code of the template. Clone it, customize it, and deploy — it's yours to keep forever."
+            />
+            <FAQItem
+              question="Can I use a template for multiple projects?"
+              answer="Yes. Each purchase grants you a license to use the template in unlimited personal and commercial projects. No per-project fees."
+            />
+            <FAQItem
+              question="Do I get updates?"
+              answer="Yes, you get lifetime updates to the template. When we push improvements, bug fixes, or new features, you'll have access to them in the GitHub repo."
+            />
+            <FAQItem
+              question="What tech stack do the templates use?"
+              answer="All templates are built with Next.js 14+ (App Router), TypeScript, Tailwind CSS, and Framer Motion. Some templates include additional integrations like Supabase, Stripe, or NextAuth."
+            />
+            <FAQItem
+              question="Can I get a refund?"
+              answer="Due to the digital nature of the product (full source code access), we generally do not offer refunds. However, if you experience any issues, reach out to us and we'll work with you to resolve them."
+            />
+            <FAQItem
+              question="Do I need a Spectrum Pro subscription?"
+              answer="No subscription needed. Each template is a one-time purchase. Buy what you need, when you need it."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ─────────────────────────────────────────────────────── */}
+      {/* <section className="container-wrapper border-t
+        border-neutral-200 dark:border-neutral-800">
+        <div className="max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
+            Stop building from scratch
+          </h2>
+          <p className="text-base text-muted-foreground max-w-md mx-auto mb-8">
+            Get a production-ready Next.js template and launch your project
+            in hours, not weeks.
+          </p>
+          <Button asChild size="lg" className="rounded-xl h-12 px-8 text-sm font-semibold">
+            <a href="#templates">Browse Templates</a>
+          </Button>
+        </div>
+      </section> */}
     </div>
   );
 }
