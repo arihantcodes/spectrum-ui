@@ -1,16 +1,20 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-const HomeCardCollection = dynamic(() => import('@/components/homecard'), { 
+const HomeCardCollection = dynamic(() => import('@/components/homecard'), {
   ssr: true,
-  loading: () => <div className="animate-pulse h-[800px] w-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"></div> 
+  loading: () => <div className="animate-pulse h-[800px] w-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"></div>
 });
 import { HeroSection } from './home';
+import { PromoBanner } from '@/components/promo-banner';
 
 
 const Homepage = () => {
   return (
     <>
+      {/* Pro Banner */}
+      <PromoBanner />
+
       <div className="container-wrapper">
 
       <HeroSection />
