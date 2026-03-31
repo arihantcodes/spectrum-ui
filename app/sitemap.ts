@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/routes-config";
 import { siteConfig } from "@/config/site";
 import { getAllBlogPosts } from "@/lib/blog";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
@@ -96,5 +97,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...staticPages, ...blogPages, ...componentPages];
+  // Pro template detail pages
+  let templatePages: MetadataRoute.Sitemap = [];
+  try {
+    const { data: templates } = await supabaseAdmin
+      .from("templates")
+      .select("slug, created_at")
+      .eq("is_published", true);
+
+    if (templates) {
+      templatePages = templates.map((t) => ({
+        url: `${baseUrl}/pro/${t.slug}`,
+        lastModified: new Date(t.created_at),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      }));
+    }
+  } catch {
+    templatePages = [];
+  }
+
+  return [...staticPages, ...blogPages, ...componentPages, ...templatePages];
 }
