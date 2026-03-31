@@ -4,36 +4,29 @@ import { Button } from "./ui/button";
 
 const Cta = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[40vh] py-5 mt-4 lg:mt-8 px-4">
+    <div className="flex flex-col items-center justify-center py-20 lg:py-28 px-4">
 
-      {/* <div className="inline-flex items-center gap-2 bg-accent/10 border 
-        border-accent/20 text-accent-text text-xs font-medium px-3 py-1.5 
-        rounded-full mb-6">
-        <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-        Spectrum Pro — Early Access
-      </div> */}
-
-      <h1 className="text-center text-3xl md:text-4xl lg:text-5xl 
-        font-semibold mb-4 md:leading-tight text-foreground max-w-2xl">
-        Stop building from scratch.
-        <br />
-        <span className="">
-          Ship fast with Spectrum Pro
-        </span>
-      </h1>
-
-      <p className="text-[#666] text-base mb-8 text-center max-w-md">
-        Premium Next.js templates built on Spectrum UI. 
-        Dark. Animated. Production-ready. Starting from $49
+      <p className="text-sm font-medium text-muted-foreground mb-6 tracking-wide uppercase">
+        Spectrum Pro
       </p>
 
-      <div className="flex items-center gap-3">
-        <Link href="/pro">
-          <Button className="rounded-full px-6 text-sm font-medium">
-            Get access 
-          </Button>
-        </Link>
-      </div>
+      <h2 className="text-center text-3xl md:text-4xl lg:text-5xl
+        font-semibold leading-tight md:leading-tight text-foreground max-w-2xl">
+        Stop building from scratch.
+        <br />
+        Ship faster with Pro templates.
+      </h2>
+
+      <p className="text-muted-foreground text-base md:text-lg mt-5 mb-10 text-center max-w-lg">
+        Premium Next.js templates built on Spectrum UI.
+        Dark. Animated. Production-ready.
+      </p>
+
+      <Link href="/pro">
+        <Button size="lg" className="rounded-lg px-8 text-sm font-medium">
+          Browse templates — Starting at $49
+        </Button>
+      </Link>
 
     </div>
   );

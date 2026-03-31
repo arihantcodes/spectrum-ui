@@ -6,6 +6,7 @@ import { notFound } from "next/navigation"
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog"
 import { Metadata } from "next"
 import { generateBlogStructuredData, generateBlogBreadcrumbs } from "@/lib/seo-utils"
+import { NewsletterSignup } from "@/components/newsletter-signup"
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts()
@@ -192,6 +193,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <div className="text-neutral-800 dark:text-neutral-200 leading-relaxed space-y-6 font-normal">{post.content}</div>
         </div>
       </article>
+
+      {/* Newsletter Signup */}
+      <section className="mt-16 pt-8 border-t border-border">
+        <NewsletterSignup variant="inline" />
+      </section>
 
       {/* Related Posts Section */}
       <section className="mt-16 pt-8 border-t border-border">

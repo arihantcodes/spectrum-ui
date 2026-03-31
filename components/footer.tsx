@@ -2,11 +2,17 @@
 import Link from "next/link";
 
 import { Icons } from "./icon";
+import { NewsletterSignup } from "./newsletter-signup";
 
 export default function Footer() {
   return (
     <footer className=" py-12 px-4 md:px-6 z-50">
       <div className="container mx-auto">
+        <div className="pb-10 mb-10 border-b border-border">
+          <div className="max-w-md mx-auto">
+            <NewsletterSignup variant="inline" />
+          </div>
+        </div>
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-8 md:mb-0">
             <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">

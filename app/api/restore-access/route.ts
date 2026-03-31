@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { supabaseAdmin as supabase } from '@/lib/supabase-admin'
-import { handlePaymentSucceeded } from '../webhook/route'
+import { handlePaymentSucceeded } from '@/lib/dodo-webhook'
 
 export async function POST(req: Request) {
   const session = await auth()
