@@ -18,7 +18,7 @@ const Cta = () => {
         Stop building from scratch.
         <br />
         <span className="">
-          Ship fast with <span className="bg-gradient-to-r from-[#916B1B] via-[#D4AF37] to-[#916B1B] dark:from-[#B8860B] dark:via-[#FFD700] dark:to-[#B8860B] bg-clip-text text-transparent italic">Spectrum Pro.</span>
+          Ship fast with Spectrum Pro
         </span>
       </h1>
 
