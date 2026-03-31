@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import {
   Card,
@@ -51,19 +51,8 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis } from 'recharts';
 import Copy from './copy';
-import {  GetDimensions,
-  GridColumns,
-  GridStyle,
-  addGridStyle,
-  addGridBorders,} from '@/utils/GridStyle';
-import { useTheme } from 'next-themes';
 
 export default function HomeCardCollection() {
-  const { theme } = useTheme();
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isResizing, setIsResizing] = useState(false);
 
   const cardComponents = [
     {
@@ -1375,87 +1364,19 @@ function QuickNoteCard() {
     },
   ];
 
-  const updateGrid = useCallback(() => {
-    if (!gridRef.current || !containerRef.current) return;
-
-    gridRef.current.style.gridTemplateColumns = '';
-    gridRef.current.style.gridTemplateRows = '';
-    void gridRef.current.offsetHeight;
-
-    const [heights, widths] = GetDimensions({ current: itemsRef.current });
-    const columns = GridColumns(gridRef, containerRef);
-    const gridTemplateRows = GridStyle(heights ?? [], columns);
-    addGridStyle(gridTemplateRows, columns, widths ?? [], gridRef);
-
-    // Pass current theme for border color
-    addGridBorders(
-      containerRef,
-      columns,
-      widths ?? [],
-      gridTemplateRows,
-      theme === 'dark' ? 'dark' : 'light'
-    );
-  }, [theme]);
-
-
-  useLayoutEffect(() => {
-    let resizeTimeout: NodeJS.Timeout;
-    let observer: ResizeObserver;
-  
-    const handleResize = () => {
-      if (!isResizing) {
-        setIsResizing(true);
-      }
-  
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        updateGrid();
-        setIsResizing(false);
-      }, 100);
-    };
-  
-  
-    updateGrid();
-  
-    try {
-      observer = new ResizeObserver(handleResize);
-  
-      window.addEventListener('resize', handleResize);
-    } catch (error) {
-      console.error('ResizeObserver error:', error);
-    }
-  
-    // Cleanup
-    return () => {
-      clearTimeout(resizeTimeout);
-      if (observer) {
-        observer.disconnect();
-      }
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [updateGrid, isResizing, itemsRef.current.length]); 
-
   return (
-    <div ref={containerRef} className="relative max-w-screen-xl mx-auto">
-      <canvas width={100} height={90} className="absolute left-1/2 -translate-x-1/2 z-0"></canvas>
-      <div 
-        ref={gridRef} 
-        className={`grid gap-8 justify-center transition-all duration-200 relative z-10 ${isResizing ? 'overflow-hidden' : ''}`}
-      >
-        {cardComponents.map(({ name, component: CardComponent, code }, index: number) => (
-          <div
-            key={name}
-            ref={(elem: HTMLDivElement | null) => { itemsRef.current[index] = elem; }}
-            className="relative grid-item mb-[2rem] self-start flex justify-center group"
-            style={{ minWidth: '310px' }}
-          >
-            <CardComponent />
-            <div className="absolute top-1 right-5 hidden group-hover:flex">
-              <Copy content={code} />
-            </div>
+    <div className="max-w-screen-xl mx-auto columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
+      {cardComponents.map(({ name, component: CardComponent, code }) => (
+        <div
+          key={name}
+          className="relative break-inside-avoid mb-4 flex justify-center group"
+        >
+          <CardComponent />
+          <div className="absolute top-1 right-5 hidden group-hover:flex">
+            <Copy content={code} />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }

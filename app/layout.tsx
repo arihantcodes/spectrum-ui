@@ -197,6 +197,22 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://api.github.com" />
         {/* Defer non-critical scripts */}
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-K7ZP6JB4MG"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K7ZP6JB4MG');
+            `.trim(),
+          }}
+        />
+        <Script
           id="schema-org-website"
           type="application/ld+json"
           strategy="afterInteractive"
