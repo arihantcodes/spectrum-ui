@@ -29,6 +29,11 @@ import colorSystemsWebApps from "@/content/blog/color-systems-web-apps"
 import formsThatDontSuck from "@/content/blog/forms-that-dont-suck"
 import designHandoffChecklist from "@/content/blog/design-handoff-checklist"
 import spacingSystemsUi from "@/content/blog/spacing-systems-ui"
+import tailwindCssV4MigrationGuide from "@/content/blog/tailwind-css-v4-migration-guide"
+import aiPoweredUiDevelopment from "@/content/blog/ai-powered-ui-development"
+import react19ServerActionsGuide from "@/content/blog/react-19-server-actions-guide"
+import viewTransitionsApiGuide from "@/content/blog/view-transitions-api-guide"
+import buildingProductionComponentLibrary from "@/content/blog/building-production-component-library"
 
 export interface BlogPost {
   slug: string
@@ -166,6 +171,26 @@ const blogPosts: Record<string, BlogPost> = {
   "spacing-systems-ui": {
     slug: "spacing-systems-ui",
     ...spacingSystemsUi,
+  },
+  "tailwind-css-v4-migration-guide": {
+    slug: "tailwind-css-v4-migration-guide",
+    ...tailwindCssV4MigrationGuide,
+  },
+  "ai-powered-ui-development": {
+    slug: "ai-powered-ui-development",
+    ...aiPoweredUiDevelopment,
+  },
+  "react-19-server-actions-guide": {
+    slug: "react-19-server-actions-guide",
+    ...react19ServerActionsGuide,
+  },
+  "view-transitions-api-guide": {
+    slug: "view-transitions-api-guide",
+    ...viewTransitionsApiGuide,
+  },
+  "building-production-component-library": {
+    slug: "building-production-component-library",
+    ...buildingProductionComponentLibrary,
   },
 }
 
