@@ -53,7 +53,7 @@ export function HeroContent() {
         </AnimateEnter>
         <AnimateEnter className="flex items-center justify-center gap-3" delay={0.7} duration={2}>
           <div className="flex flex-row items-center justify-center gap-3 mt-2 md:mt-6 w-full sm:w-auto px-4">
-            <Link href="/docs/installation" className="w-auto">
+            <Link href="/docs" className="w-auto">
               <Button size="lg" className="rounded-xl w-auto px-4 sm:px-8">
                 Explore Components
               </Button>
