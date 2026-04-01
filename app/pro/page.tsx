@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Icons } from '@/components/icon';
-import { Button } from '@/components/ui/button';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { type Template } from '@/types';
@@ -192,8 +190,8 @@ export default function ProPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="container-wrapper relative overflow-hidden">
+      {/* ── HERO + TEMPLATES (value upfront) ─────────────────────────────── */}
+      <section id="templates" className="container-wrapper relative overflow-hidden scroll-mt-20">
         {/* Grid bg */}
         <div
           aria-hidden
@@ -201,125 +199,39 @@ export default function ProPage() {
             bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),
                linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
             bg-[size:64px_64px]
-            [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_60%,transparent_100%)]
+            [mask-image:radial-gradient(ellipse_70%_50%_at_50%_20%,#000_60%,transparent_100%)]
             dark:opacity-40"
         />
 
-        {/* Gradient glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10
-            w-[800px] h-[400px]
-            bg-gradient-to-b from-primary/[0.07] via-primary/[0.03] to-transparent
-            rounded-full blur-3xl"
-        />
-
-        <div className="max-w-5xl mx-auto px-6 pt-28 pb-20 text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full
-            border border-neutral-200 dark:border-neutral-800
-            bg-neutral-50 dark:bg-neutral-900/80
-            px-3.5 py-1.5 text-xs font-medium text-muted-foreground mb-8">
-            <div className="h-5 w-5 bg-white border border-neutral-200
-              dark:border-neutral-700 dark:bg-neutral-900
-              rounded-md flex items-center justify-center p-0.5 shrink-0">
-              <Icons.logo className="h-3.5 w-3.5 text-foreground" />
-            </div>
-            Spectrum Pro
-          </div>
-
-          {/* Headline */}
-          <h1 className="mx-auto max-w-4xl font-bold
-            text-4xl md:text-5xl lg:text-6xl
-            leading-[1.08] tracking-tight mb-5">
-            Premium templates &{' '}
-            <span className="text-muted-foreground">
-              blocks for Next.js
-            </span>
-          </h1>
-
-          {/* Subtext */}
-          <p className="text-base md:text-lg text-muted-foreground
-            max-w-xl mx-auto mb-8 leading-relaxed">
-            High-quality, production-ready templates and UI blocks built with
-            Next.js, Tailwind CSS, and Framer Motion. Buy once, own forever.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            <Button asChild size="lg" className="rounded-xl h-12 px-8 text-sm font-semibold">
-              <a href="#templates">Browse Templates</a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-xl h-12 px-8 text-sm font-semibold">
-              <a href="#how-it-works">How It Works</a>
-            </Button>
-          </div>
-
-          {/* Trust signals */}
-          <div className="flex items-center justify-center gap-6 mt-8 flex-wrap">
-            {[
-              'Full source code',
-              'Private GitHub access',
-              'Lifetime updates',
-            ].map((t) => (
-              <span key={t}
-                className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2.5"
-                  strokeLinecap="round" strokeLinejoin="round"
-                  className="text-green-500 dark:text-green-400">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                {t}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── STATS ─────────────────────────────────────────────────────────── */}
-      <section className="container-wrapper border-y
-        border-neutral-200 dark:border-neutral-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-4
-            divide-y sm:divide-y-0 sm:divide-x
-            divide-neutral-200 dark:divide-neutral-800">
-            {[
-              { value: '989+', label: 'GitHub Stars' },
-              { value: '4,000+', label: 'Monthly Developers' },
-              { value: '20,000+', label: 'Monthly Pageviews' },
-              { value: '100%', label: 'Source Code Access' },
-            ].map(({ value, label }) => (
-              <div key={label} className="p-6 md:p-8 text-center">
-                <p className="text-2xl md:text-3xl font-bold text-foreground tracking-tight tabular-nums">
-                  {value}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TEMPLATES ─────────────────────────────────────────────────────── */}
-      <section id="templates" className="container-wrapper scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest
-                text-primary mb-3">
-                Templates
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                Premium starter kits
-              </h2>
-              <p className="text-sm text-muted-foreground mt-2 max-w-lg">
-                Each template comes with full source code, private GitHub repo access,
-                and is built on the Spectrum design system.
-              </p>
+        <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 md:pt-28 md:pb-20">
+          {/* Compact hero headline */}
+          <div className="max-w-3xl mb-12">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl
+              leading-[1.1] tracking-tight mb-4">
+              Premium Next.js templates.{' '}
+              <span className="text-muted-foreground">Buy once, own forever.</span>
+            </h1>
+            <div className="flex items-center gap-6 flex-wrap">
+              {[
+                'Full source code',
+                'Private GitHub access',
+                'Lifetime updates',
+              ].map((t) => (
+                <span key={t}
+                  className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" strokeWidth="2.5"
+                    strokeLinecap="round" strokeLinejoin="round"
+                    className="text-green-500 dark:text-green-400">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
 
+          {/* Templates grid — immediately visible */}
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
@@ -353,6 +265,30 @@ export default function ProPage() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── STATS ─────────────────────────────────────────────────────────── */}
+      <section className="container-wrapper border-y
+        border-neutral-200 dark:border-neutral-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-4
+            divide-y sm:divide-y-0 sm:divide-x
+            divide-neutral-200 dark:divide-neutral-800">
+            {[
+              { value: '989+', label: 'GitHub Stars' },
+              { value: '4,000+', label: 'Monthly Developers' },
+              { value: '20,000+', label: 'Monthly Pageviews' },
+              { value: '100%', label: 'Source Code Access' },
+            ].map(({ value, label }) => (
+              <div key={label} className="p-6 md:p-8 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-foreground tracking-tight tabular-nums">
+                  {value}
+                </p>
+                <p className="text-xs text-muted-foreground mt-1">{label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

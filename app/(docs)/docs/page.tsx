@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Search, Component as ComponentIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import RequestComponents from "@/components/requestcomponets";
 
 const componentsList = [
   { name: "Accordion", description: "A vertically stacked set of interactive headings that each reveal an associated section of content.", href: "/docs/accordion" },
@@ -63,14 +64,17 @@ export default function DocsIndexPage() {
         <p className="text-lg text-muted-foreground">
           Browse and search through all available Spectrum UI components.
         </p>
-        <div className="relative max-w-lg mt-6">
-          <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
-          <Input 
-            placeholder="Search components..." 
-            className="pl-10 h-11 text-base bg-background shadow-sm"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <div className="flex items-center gap-4 mt-6">
+          <div className="relative max-w-lg flex-1">
+            <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
+            <Input
+              placeholder="Search components..."
+              className="pl-10 h-11 text-base bg-background shadow-sm"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <RequestComponents />
         </div>
       </div>
 

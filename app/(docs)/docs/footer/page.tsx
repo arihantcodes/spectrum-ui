@@ -13,7 +13,7 @@ import Usage from "@/app/(docs)/docs/components/usage";
 import Footerdemo from "./footerdemo";
 import AnimatedWaveFooter from "./usage/animatefooter";
 import StackedCircularFooter from "./usage/stackedfooter";
-import ParticleAnimationFooter from "./usage/particlefooter";
+import GradientFooter from "./usage/particlefooter";
 import Footer from "@/components/footer";
 import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
@@ -82,11 +82,11 @@ const DualRangeSliderPage = () => {
         <StackedCircularFooter />
       </Usage>
       <Usage
-        title="FloatingParticle Footer"
+        title="Gradient Footer"
         path="app/(docs)/docs/footer/usage/particlefooter.tsx"
         cli="@spectrumui/floatingparticle-footer"
       >
-        <ParticleAnimationFooter />
+        <GradientFooter />
       </Usage>
       <Usage
         title="Footer"

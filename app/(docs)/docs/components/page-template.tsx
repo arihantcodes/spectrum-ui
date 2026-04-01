@@ -1,6 +1,7 @@
 import React from "react";
 import { H1, H2, P } from "@/components/ui/heading-with-anchor";
 import { cn } from "@/lib/utils";
+import RequestComponents from "@/components/requestcomponets";
 
 interface PageTemplateProps {
   title?: string;
@@ -19,6 +20,9 @@ const PageTemplate = ({
     <section className={cn("flex flex-col gap-3 pb-10", className, "!mt-8")}>
       <H1 className="text-xl">{title}</H1>
       <P className="text-lg">{description}</P>
+      <div className="mb-4">
+        <RequestComponents />
+      </div>
       {children}
     </section>
   );

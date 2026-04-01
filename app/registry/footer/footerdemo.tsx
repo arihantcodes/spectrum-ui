@@ -21,18 +21,12 @@ import {
   Sun,
   Twitter,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function Footerdemo() {
-  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const { resolvedTheme, setTheme } = useTheme();
   const [isChatOpen, setIsChatOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+  const isDarkMode = resolvedTheme === "dark";
 
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
@@ -183,7 +177,7 @@ export default function Footerdemo() {
               <Switch
                 id="dark-mode"
                 checked={isDarkMode}
-                onCheckedChange={setIsDarkMode}
+                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
               />
               <Moon className="h-4 w-4" />
               <Label htmlFor="dark-mode" className="sr-only">

@@ -328,6 +328,14 @@ pre > code {
 }
 
 @theme inline {
+  @keyframes gradient-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
   @keyframes rainbow {
     0% {
       background-position: 0%;

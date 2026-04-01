@@ -10,13 +10,13 @@ export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <div className="mr-4  md:flex">
+    <div className="mr-4 md:flex shrink-0">
       <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
         <div className="h-6 w-6 bg-neutral-100 border-neutral-300 border dark:bg-white rounded-md flex items-center justify-center p-1">
           <Icons.logo className="h-6 w-6 rounded-md text-black " />
         </div>
 
-        <span className=" font-bold lg:inline-block">Spectrum UI</span>
+        <span className="font-bold whitespace-nowrap">Spectrum UI</span>
       </Link>
       <nav className=" items-center gap-4 text-sm xl:gap-6 hidden md:flex">
         <Link
