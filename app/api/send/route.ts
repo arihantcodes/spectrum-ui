@@ -75,8 +75,9 @@ export async function POST(request: NextRequest) {
       console.error("Failed to store component request:", dbError);
     }
 
+    // Notify admin
     await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "noreply@spectrumhq.in",
       to: process.env.EMAIL || "arihantjain7000@gmail.com",
       subject: "New Component Request",
       html: `
@@ -92,6 +93,29 @@ export async function POST(request: NextRequest) {
         }
       `,
     });
+
+    // Send confirmation email to the user
+    if (email) {
+      await resend.emails.send({
+        from: "noreply@spectrumhq.in",
+        to: email,
+        subject: "We got your component request — Spectrum UI",
+        html: `
+          <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:520px;margin:0 auto;padding:32px 0">
+            <h2 style="margin:0 0 16px;font-size:20px;color:#171717">Thanks for your request!</h2>
+            <p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#525252">
+              We've received your component request and added it to our review queue.
+              If it's a good fit for the Spectrum UI library, we'll build it and let you know when it's live.
+            </p>
+            <div style="margin:20px 0;padding:16px;background:#fafafa;border-radius:8px;border-left:3px solid #525252">
+              <p style="margin:0 0 4px;font-size:13px;font-weight:600;color:#171717">Your request:</p>
+              <p style="margin:0;font-size:14px;line-height:1.5;color:#525252">${description}</p>
+            </div>
+            <p style="margin:0;font-size:13px;color:#a3a3a3">— The Spectrum UI Team</p>
+          </div>
+        `,
+      });
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
