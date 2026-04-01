@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -51,11 +52,27 @@ export async function POST(request: NextRequest) {
     const email = formData.get("email") as string;
     const screenshot = formData.get("screenshot") as File;
 
-    // Convert screenshot to base64 if it exists
+    // Convert screenshot to base64 if provided
     let screenshotBase64 = "";
-    if (screenshot) {
+    if (screenshot && screenshot.size > 0) {
       const bytes = await screenshot.arrayBuffer();
       screenshotBase64 = Buffer.from(bytes).toString("base64");
+    }
+
+    // Store in Supabase
+    const ip = request.headers.get("x-forwarded-for") || request.ip || "";
+    const { error: dbError } = await supabaseAdmin
+      .from("component_requests")
+      .insert({
+        description,
+        url: url || null,
+        email,
+        screenshot_base64: screenshotBase64 || null,
+        ip_address: ip,
+      });
+
+    if (dbError) {
+      console.error("Failed to store component request:", dbError);
     }
 
     await resend.emails.send({
