@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import posthog from "posthog-js";
 
 import CodeHighlight from "@/app/(docs)/docs/components/code-card/parts/code-highlight";
 import { cn } from "@/lib/utils";
@@ -12,13 +13,26 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 interface CodeCardProps {
   children?: React.ReactNode;
   code?: string;
-
   className?: string;
   CLI?: string;
+  componentName?: string;
 }
-const CodeCard = ({ children, code, className, CLI }: CodeCardProps) => {
+
+const CodeCard = ({ children, code, className, CLI, componentName }: CodeCardProps) => {
+  const handleTabChange = (tab: string) => {
+    // Fire PostHog event when user switches between Preview / Code / CLI
+    posthog.capture("tab_switched", {
+      tab,
+      ...(componentName && { component_name: componentName }),
+    });
+  };
+
   return (
-    <Tabs defaultValue="preview" className={cn(className)}>
+    <Tabs
+      defaultValue="preview"
+      className={cn(className)}
+      onValueChange={handleTabChange}
+    >
       <ScrollArea>
         <TabsList className="mb-3 gap-6 bg-transparent">
           <TabsTrigger
@@ -60,11 +74,11 @@ const CodeCard = ({ children, code, className, CLI }: CodeCardProps) => {
       <TabsContent value="preview" className="rounded-md border mt-4">
         {children}
       </TabsContent>
-      <TabsContent value="code" className="rounded-2xl   mt-4">
+      <TabsContent value="code" className="rounded-2xl mt-4">
         <CodeHighlight code={code} inTab />
       </TabsContent>
       <TabsContent value="CLI" className="mt-4">
-        <PackageManagerTabs CLI={CLI || ""} />
+        <PackageManagerTabs CLI={CLI || ""} componentName={componentName} />
       </TabsContent>
     </Tabs>
   );

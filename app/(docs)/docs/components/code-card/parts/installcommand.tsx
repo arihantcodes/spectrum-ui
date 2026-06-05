@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import posthog from "posthog-js";
 
 import { Button } from "@/components/ui/button";
 import { Clipboard, Check } from "lucide-react";
@@ -11,6 +12,8 @@ interface CodeHighlightProps {
   inTab?: boolean;
   withExpand?: boolean;
   lang?: string;
+  componentName?: string;
+  packageManager?: string;
 }
 
 const InstallCommand = ({
@@ -18,6 +21,8 @@ const InstallCommand = ({
   inTab = false,
   withExpand = false,
   lang = "tsx",
+  componentName,
+  packageManager,
 }: CodeHighlightProps) => {
   const [copied, setCopied] = useState(false);
   const [expand, setExpanded] = useState(!withExpand);
@@ -25,13 +30,11 @@ const InstallCommand = ({
   const [highlightedCode, setHighlightedCode] = useState<string>("");
   const { theme, resolvedTheme } = useTheme();
 
-  
-
   useEffect(() => {
     const loadHighlighter = async () => {
       const { createHighlighter } = await import("shiki");
       const highlighter = await createHighlighter({
-        themes: ["vesper", "min-light"], // Load both themes
+        themes: ["vesper", "min-light"],
         langs: ["typescript", "tsx", "javascript", "jsx", "shell", "bash"],
       });
       setHighlighter(highlighter);
@@ -47,7 +50,6 @@ const InstallCommand = ({
     };
     if (highlighter && code) {
       try {
-        // Map common language aliases
         const languageMap: Record<string, string> = {
           tsx: "tsx",
           jsx: "jsx",
@@ -65,11 +67,24 @@ const InstallCommand = ({
         });
         setHighlightedCode(html);
       } catch (error) {
-        // Fallback to plain text if language not supported
         setHighlightedCode(`<pre>${code}</pre>`);
       }
     }
-  }, [highlighter, code, lang, theme, resolvedTheme]); // Add theme dependencies
+  }, [highlighter, code, lang, theme, resolvedTheme]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code || "");
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+    // Fire PostHog event — before_send in provider filters out localhost
+    posthog.capture("cli_command_copied", {
+      command: code,
+      ...(componentName && { component_name: componentName }),
+      ...(packageManager && { package_manager: packageManager }),
+    });
+  };
 
   return (
     <div className="relative  rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all">
@@ -81,13 +96,7 @@ const InstallCommand = ({
         )}
         variant="ghost"
         size="icon"
-        onClick={() => {
-          navigator.clipboard.writeText(code || "");
-          setCopied(true);
-          setTimeout(() => {
-            setCopied(false);
-          }, 3000);
-        }}
+        onClick={handleCopy}
       >
         {copied ? (
           <Check className="h-4 w-4" />
@@ -111,7 +120,7 @@ const InstallCommand = ({
             )}
           />
         ) : (
-          <div className="px-4 py-3 bg-neutral-100 dark:bg-neutral-900text-muted-foreground rounded-md">
+          <div className="px-4 py-3 bg-neutral-100 dark:bg-neutral-900 text-muted-foreground rounded-md">
             <pre className="">{code}</pre>
           </div>
         )}

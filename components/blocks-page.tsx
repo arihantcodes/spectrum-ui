@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import posthog from "posthog-js";
 import {
   Check,
   ChevronDown,
@@ -31,6 +32,7 @@ interface BlocksPageProps {
   defaultFile?: string;
   theme?: "dark" | "light";
   shikiTheme?: string;
+  blockName?: string;
 }
 
 type DeviceType = "desktop" | "tablet" | "mobile" | "print" | "resizable";
@@ -42,6 +44,7 @@ export function BlocksPage({
   defaultFile,
   theme = "dark",
   shikiTheme = "github-dark",
+  blockName,
 }: BlocksPageProps) {
   const [activeTab, setActiveTab] = React.useState<"preview" | "code">(
     "preview",
@@ -58,6 +61,15 @@ export function BlocksPage({
   const [customHeight, setCustomHeight] = React.useState(800);
   const [isResizing, setIsResizing] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
+
+  // Fire block_viewed once on mount
+  React.useEffect(() => {
+    posthog.capture("block_viewed", {
+      block_name: blockName || title,
+      url: typeof window !== "undefined" ? window.location.pathname : "",
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toggleFolder = (path: string) => {
     const newExpanded = new Set(expandedFolders);
@@ -353,7 +365,12 @@ export function BlocksPage({
                             selectedFileNode.content,
                           );
                           setCopied(true);
-                          setTimeout(() => setCopied(false), 1000); // 1 second delay
+                          setTimeout(() => setCopied(false), 1000);
+                          // Fire PostHog event for block code copy
+                          posthog.capture("block_code_copied", {
+                            block_name: blockName || title,
+                            file_name: selectedFileNode.path,
+                          });
                         }
                       }}
                     >

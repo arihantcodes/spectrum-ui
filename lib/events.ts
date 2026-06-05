@@ -1,8 +1,10 @@
 import va from "@vercel/analytics";
+import posthog from "posthog-js";
 import { z } from "zod";
 
 const eventSchema = z.object({
   name: z.enum([
+    // Existing events
     "copy_npm_command",
     "copy_usage_import_code",
     "copy_usage_code",
@@ -15,6 +17,13 @@ const eventSchema = z.object({
     "copy_chart_theme",
     "copy_chart_data",
     "copy_color",
+    // New PostHog events
+    "component_copied",
+    "block_code_copied",
+    "cli_command_copied",
+    "component_viewed",
+    "block_viewed",
+    "tab_switched",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
@@ -27,6 +36,9 @@ export type Event = z.infer<typeof eventSchema>;
 export function trackEvent(input: Event): void {
   const event = eventSchema.parse(input);
   if (event) {
+    // Track in Vercel Analytics
     va.track(event.name, event.properties);
+    // Track in PostHog (before_send in provider handles localhost filtering)
+    posthog.capture(event.name, event.properties);
   }
 }
