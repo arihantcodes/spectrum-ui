@@ -3,7 +3,6 @@
 import Link from 'next/link';
 
 import { usePathname } from 'next/navigation';
-import { Icons } from '@/components/icon';
 import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
 import { ThemeToggle } from './theme-toggle';

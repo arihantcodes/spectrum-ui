@@ -4,8 +4,6 @@ import { BlocksPage } from "@/components/blocks-page";
 import { useTheme } from "next-themes";
 import NewsletterDashboard from "./newsletter";
 import Dashboardblock from "./dashboard";
-import Link from "next/link";
-import { Icons } from "@/components/icon";
 
 const sampleFiles = [
   {
