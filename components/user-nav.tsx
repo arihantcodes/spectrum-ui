@@ -42,11 +42,6 @@ export function UserNav({ session }: { session: Session }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/dashboard" className="cursor-pointer">
-              Dashboard
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
             <Link href="/profile" className="cursor-pointer">
               Profile
             </Link>

@@ -6,7 +6,14 @@ export default auth((req) => {
   const { pathname } = req.nextUrl
   const isLoggedIn   = !!req.auth
 
-  const protectedRoutes = ['/dashboard', '/create-user', '/profile']
+  // Temporarily disabled — not production ready yet
+  const hiddenRoutes = ['/dashboard', '/pro']
+  const isHidden = hiddenRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))
+  if (isHidden) {
+    return NextResponse.redirect(new URL('/', req.url))
+  }
+
+  const protectedRoutes = ['/create-user', '/profile']
   const isProtected = protectedRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))
 
   // Redirect to sign in if not logged in

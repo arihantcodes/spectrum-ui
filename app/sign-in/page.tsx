@@ -6,7 +6,7 @@ export default function SignInPage({
 }: {
   searchParams: { callbackUrl?: string }
 }) {
-  const callbackUrl = searchParams.callbackUrl ?? '/dashboard'
+  const callbackUrl = searchParams.callbackUrl ?? '/'
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#080808] flex items-center justify-center px-4 transition-colors">
