@@ -17,7 +17,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       person_profiles: "identified_only",
       capture_pageview: true,
       capture_pageleave: true,
-      autocapture: true,
+      autocapture: false,
       // Drop all events when running on localhost — prod data only
       before_send: (event) => {
         if (isLocalhost) return null;
