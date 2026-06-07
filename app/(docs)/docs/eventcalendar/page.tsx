@@ -1,6 +1,5 @@
-import { PageSubTitle, PageTemplate } from "../components/page-template";
+import { PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import EventCalendar from "./demoevent";
 import { Snippet } from "@/components/snippet";
 import { Metadata } from "next";
@@ -46,12 +45,13 @@ const page = () => {
         <PreviewCodeCard
           path="app/(docs)/docs/eventcalendar/demoevent.tsx"
           cli="@spectrumui/event-calendar"
-        >
+        
+        installScript="npm i lucide-react framer-motion date-fns"
+        installCodePath="lib/utils.ts"
+      >
           <EventCalendar />
         </PreviewCodeCard>
-
-        <PageSubTitle>Installation</PageSubTitle>
-        <div className="p-0 md:p-4">
+      <div className="p-0 md:p-4">
           <p className="mb-4">
             Create a new file called <code>Eventcalendar.tsx</code> in the
             {" components"} & install the following components
@@ -63,13 +63,6 @@ const page = () => {
           />
         </div>
 
-        <Steppers
-          className=""
-          installScript="npm i lucide-react framer-motion date-fns
- "
-          withInstall
-          codePath="lib/utils.ts"
-        />
       </PageTemplate>
       </div>
     </SEOWrapper>

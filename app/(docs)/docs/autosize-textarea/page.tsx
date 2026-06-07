@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -57,16 +56,11 @@ const AutosizeTextareaPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/autosize-textarea/autosize-textarea-demo.tsx"
         cli="@spectrumui/autosize-textarea-demo"
+      
+        installCodePath="components/ui/autosize-textarea.tsx"
       >
         <AutosizeTextareaDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/autosize-textarea.tsx"
-        withEnd
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

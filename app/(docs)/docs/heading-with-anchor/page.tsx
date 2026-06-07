@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -53,23 +52,12 @@ const HeadingWithAnchorPage = () => {
       title="Heading With Anchor"
       description="Add anchor for every heading."
     >
-      <PreviewCodeCard path="app/(docs)/docs/heading-with-anchor/heading-with-anchor-demo.tsx">
+      <PreviewCodeCard path="app/(docs)/docs/heading-with-anchor/heading-with-anchor-demo.tsx"
+        installScript="npm i @radix-ui/react-slot class-variance-authority"
+        installCodePath="components/ui/heading-with-anchor.tsx"
+      >
         <HeadingDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/heading-with-anchor.tsx"
-        withEnd
-        steps={[
-          {
-            title:
-              "Modify `scroll-m-20` according to your header height and `Link` to `a` if you are not using Next.js",
-          },
-        ]}
-        installScript="npm i @radix-ui/react-slot class-variance-authority"
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

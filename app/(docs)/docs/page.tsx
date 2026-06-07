@@ -57,11 +57,13 @@ export default function DocsIndexPage() {
   );
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8 py-8 px-4">
-      {/* Search Header */}
-      <div className="space-y-4">
+    // min-h-screen keeps the column tall regardless of search results,
+    // preventing any layout shift in the parent flex/grid container.
+    <div className="min-h-screen w-full py-8 px-4 lg:px-8">
+      {/* Search Header — always top-left, never reflows */}
+      <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight">Components</h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-muted-foreground mt-2">
           Browse and search through all available Spectrum UI components.
         </p>
         <div className="flex items-center gap-4 mt-6">
@@ -78,7 +80,7 @@ export default function DocsIndexPage() {
         </div>
       </div>
 
-      {/* Grid */}
+      {/* Results area */}
       {filteredComponents.length === 0 ? (
         <div className="py-20 text-center text-muted-foreground flex flex-col items-center">
           <ComponentIcon className="h-12 w-12 mb-4 opacity-20" />

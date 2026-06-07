@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -79,18 +78,12 @@ const DatetimePickerPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/datetime-picker/datetime-picker-demo.tsx"
         cli="@spectrumui/datetime-picker-demo"
+      
+        installScript="npx shadcn@latest add calendar select input popover"
+        installCodePath="components/ui/datetime-picker.tsx"
       >
         <DatetimePickerDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall={true}
-        codePath="components/ui/datetime-picker.tsx"
-        withEnd
-        installScript="npx shadcn@latest add calendar select input popover"
-        steps={[{ title: "Update react-day-picker to ^9.*" }]}
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

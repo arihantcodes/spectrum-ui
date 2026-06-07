@@ -1,6 +1,5 @@
 import React from 'react';
-import { PageSubTitle, PageTemplate } from '@/app/(docs)/docs/components/page-template';
-import { Steppers } from '@/components/ui/steppers';
+import { PageTemplate } from '@/app/(docs)/docs/components/page-template';
 import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
@@ -44,17 +43,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/testimonials/testimonialsdemo.tsx"
         cli="@spectrumui/testimonials"
+      
+        installScript="npx shadcn@latest add @spectrumui/testimonials"
+        installCodePath="app/(docs)/docs/testimonials/testimonialsdemo.tsx"
       >
         <Testimonial />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/testimonials/testimonialsdemo.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/testimonials"
-      />
 
      
     </PageTemplate>

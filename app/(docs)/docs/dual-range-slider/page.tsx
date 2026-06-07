@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -55,17 +54,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/dual-range-slider/dual-range-slider-demo.tsx"
         cli="@spectrumui/dual-range-slider-demo"
+      
+        installScript="npm i @radix-ui/react-slider"
+        installCodePath="components/ui/dual-range-slider.tsx"
       >
         <DualRangeSliderDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/dual-range-slider.tsx"
-        withEnd
-        installScript="npm i @radix-ui/react-slider"
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

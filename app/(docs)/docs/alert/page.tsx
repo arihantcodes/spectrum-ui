@@ -1,7 +1,6 @@
 import React from "react";
 import { PageSubTitle, PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import Alertdemo from "./alertdemo";
 import Usage from "../components/usage";
 import Alert02 from "./usage/alerttwo";
@@ -50,19 +49,14 @@ const page = () => {
         <PreviewCodeCard
           path="app/(docs)/docs/alert/alertdemo.tsx"
           cli="@spectrumui/alert-1"
-        >
+        
+        installScript="npm i framer-motion lucide-react"
+        installCodePath="lib/utils.ts"
+      >
           <Alertdemo />
         </PreviewCodeCard>
-        <PageSubTitle>Installation</PageSubTitle>
-
-        {/* <PageSubTitle>Installation</PageSubTitle> */}
-
-        <Steppers
-          installScript="npm i framer-motion lucide-react"
-          codePath="lib/utils.ts"
-          withInstall
-          withEnd
-        />
+      {/*
+      */}
 
         <PageSubTitle>Usage</PageSubTitle>
 

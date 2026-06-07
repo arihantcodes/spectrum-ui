@@ -5,7 +5,6 @@ import {
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import LoadingButtonDemo from "@/app/(docs)/docs/loading-button/loading-button-demo";
-import { Steppers } from "@/components/ui/steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import {
@@ -63,17 +62,12 @@ const LoadingButtonPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/loading-button/loading-button-demo.tsx"
         cli="@spectrumui/loading-button-demo"
+      
+        installScript="npm i class-variance-authority @radix-ui/react-slot"
+        installCodePath="components/ui/loading-button.tsx"
       >
         <LoadingButtonDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/loading-button.tsx"
-        installScript="npm i class-variance-authority @radix-ui/react-slot"
-        withEnd
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

@@ -25,7 +25,9 @@ export default function DocsLayout({
             <LeftSide />
           </div>
         </aside>
-        {children}
+        <div className="self-start min-w-0">
+          {children}
+        </div>
       </div>
     </div>
   );

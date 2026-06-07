@@ -8,11 +8,19 @@ interface Props {
   className?: string;
   children?: React.ReactNode;
   CLI?: string;
+  installScript?: string;
+  installCode?: string;
 }
 
-const CodeCardWrapper = ({ code, className, children, CLI }: Props) => {
+const CodeCardWrapper = ({ code, className, children, CLI, installScript, installCode }: Props) => {
   return (
-    <CodeCard code={code} className={className} CLI={CLI}>
+    <CodeCard
+      code={code}
+      className={className}
+      CLI={CLI}
+      installScript={installScript}
+      installCode={installCode}
+    >
       {children}
     </CodeCard>
   );

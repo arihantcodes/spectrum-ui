@@ -1,6 +1,5 @@
 import React from 'react';
-import { PageSubTitle, PageTemplate } from '@/app/(docs)/docs/components/page-template';
-import { Steppers } from '@/components/ui/steppers';
+import { PageTemplate } from '@/app/(docs)/docs/components/page-template';
 import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
@@ -45,16 +44,13 @@ const Loginpage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/animateddrawer/demo.tsx"
         cli="@spectrumui/animated-drawer"
+      
+        installScript="npm i lucide-react motion vaul react-use-measure"
+        installCodePath="app/(docs)/docs/animateddrawer/demo.tsx"
       >
         <AnimatedDrawer />
       </PreviewCodeCard>
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/animateddrawer/demo.tsx"
-        withEnd
-        installScript="npm i lucide-react motion vaul react-use-measure"
-      />
+
     </PageTemplate>
     </SEOWrapper>
   );

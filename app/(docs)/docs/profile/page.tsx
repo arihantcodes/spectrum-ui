@@ -1,9 +1,7 @@
 import React from "react";
 import {
-  PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -49,17 +47,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/profile/profiledemo.tsx"
         cli="@spectrumui/profile-dropdown"
+      
+        installScript="npm i lucide-react framer-motion"
+        installCodePath="app/(docs)/docs/profile/profiledemo.tsx"
       >
         <WalletProfile />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/profile/profiledemo.tsx"
-        withEnd
-        installScript="npm i lucide-react framer-motion"
-      />
 
       <div className="flex items-center gap-2">
         <h2 className="text-neutral-700 dark:text-neutral-400">

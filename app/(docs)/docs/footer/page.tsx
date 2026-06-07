@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -55,17 +54,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/footer/footerdemo.tsx"
         cli="@spectrumui/footers-demo"
+      
+        installScript="npm i lucide-react"
+        installCodePath="app/(docs)/docs/footer/footerdemo.tsx"
       >
         <Footerdemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/footer/footerdemo.tsx"
-        withEnd
-        installScript="npm i lucide-react"
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

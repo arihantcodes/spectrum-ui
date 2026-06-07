@@ -6,7 +6,6 @@ import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import { ReloadableHologram } from './reload/holo';
 import { ReloadableInk } from './reload/ink';
 import { ReloadableOrbital } from './reload/orbital';
-import { Steppers } from '@/components/ui/steppers';
 import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
@@ -46,44 +45,37 @@ const Textanimation = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/hologram-text.tsx"
         cli="@spectrumui/holographic"
+      
+        installScript="npx shadcn@latest add @spectrumui/holographic"
+        installCodePath="app/(docs)/docs/animatedtext/usage/holo.tsx"
       >
         <ReloadableHologram />
       </PreviewCodeCard>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/animatedtext/usage/holo.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/holographic"
-      />
 
       <PageSubTitle>Orbital Letters</PageSubTitle>
 
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/orbital-text.tsx"
         cli="@spectrumui/orbital-letters"
+      
+        installScript="npx shadcn@latest add @spectrumui/orbital-letters"
+        installCodePath="app/(docs)/docs/animatedtext/usage/orbital.tsx"
       >
         <ReloadableOrbital />
       </PreviewCodeCard>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/animatedtext/usage/orbital.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/orbital-letters"
-      />
+
       <PageSubTitle>Fluid Ink Morph</PageSubTitle>
 
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/ink-morph.tsx"
         cli="@spectrumui/ink-morph"
+      
+        installScript="npx shadcn@latest add @spectrumui/ink-morph"
+        installCodePath="app/(docs)/docs/animatedtext/usage/ink.tsx"
       >
         <ReloadableInk />
       </PreviewCodeCard>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/animatedtext/usage/ink.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/ink-morph"
-      />
+
     </PageTemplate>
     </SEOWrapper>
   );

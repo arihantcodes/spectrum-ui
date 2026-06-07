@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -52,12 +51,11 @@ const SkeletonLoadingPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/skeleton/skeleton-demo.tsx"
         cli="@spectrumui/skeleton"
+      
+        installCodePath="components/ui/skeleton.tsx"
       >
         <SkeletonDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers withInstall codePath="components/ui/skeleton.tsx" withEnd />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

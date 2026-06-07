@@ -74,6 +74,7 @@ export async function Steppers({
             lang="bash"
             title="Terminal"
             inTab
+            requireAuth={false}
           />
         </Stepper>
       )}
@@ -85,6 +86,7 @@ export async function Steppers({
             title={codePath}
             withExpand={true}
             inTab={false}
+            requireAuth={true}
           />
         </Stepper>
       )}

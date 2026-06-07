@@ -2,7 +2,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -56,17 +55,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/navbar/navbardemo.tsx"
         cli="@spectrumui/navbar-demo"
+      
+        installScript="npm i lucide-react"
+        installCodePath="app/(docs)/docs/navbar/navbardemo.tsx"
       >
         <Navbardemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/navbar/navbardemo.tsx"
-        withEnd
-        installScript="npm i lucide-react"
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

@@ -1,7 +1,6 @@
 import React from "react";
-import { PageSubTitle, PageTemplate } from "../components/page-template";
+import { PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import AnimatedTestimonialsDemo from "./demoanimatedtest";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -48,24 +47,17 @@ const page = () => {
         <PreviewCodeCard
           path="app/(docs)/docs/animatedtestimonials/usages/demousages.tsx"
           cli="@spectrumui/animated-testimonials"
-        >
+        
+        installScript="npm i lucide-react framer-motion"
+        installCodePath="app/(docs)/docs/animatedtestimonials/usages/demousages.tsx"
+      >
           <AnimatedTestimonialsDemo />
         </PreviewCodeCard>
-
-        <PageSubTitle>Installation</PageSubTitle>
-        <p>
+      <p>
           Create a new file called <code>ImagePreview.tsx</code> in the
           {" components"}
         </p>
 
-        <Steppers
-          className=""
-          installScript="npm i lucide-react framer-motion
- "
-          steps={[{ title: "Create feedback component & paste the code" }]}
-          withInstall
-          codePath="app/(docs)/docs/imagepreview/ImagePreview.tsx"
-        />
         <div>
           <h2>Credits</h2>
           <p>

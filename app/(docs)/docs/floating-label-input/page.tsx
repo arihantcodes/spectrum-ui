@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -68,17 +67,12 @@ const FloatingLabelPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/floating-label-input/floating-label-input-demo.tsx"
         cli="@spectrumui/floating-label-input-demo"
+      
+        installScript="npx shadcn@latest add label input"
+        installCodePath="components/ui/floating-label-input.tsx"
       >
         <FloatingLabelInputDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/floating-label-input.tsx"
-        installScript="npx shadcn@latest add label input"
-        withEnd
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

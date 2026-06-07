@@ -3,7 +3,6 @@ import {
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import Usage from "@/app/(docs)/docs/components/usage";
@@ -78,54 +77,12 @@ const MultipleSelectorPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/multiple-selector/multiple-selector-demo.tsx"
         cli="@spectrumui/multiple-selector-demo"
+      
+        installScript="npx shadcn@latest add command badge"
+        installCodePath="components/ui/multiple-selector.tsx"
       >
         <MultipleSelectorDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/multiple-selector.tsx"
-        installScript="npx shadcn@latest add command badge"
-        steps={[
-          {
-            title:
-              "If you found that you can't select options using mouse click.",
-            children: (
-              <>
-                <P className="leading-relaxed text-muted-foreground">
-                  Thanks to{" "}
-                  <PropLink href="https://github.com/njdowdy">
-                    @njdowdy
-                  </PropLink>{" "}
-                  for the{" "}
-                  <PropLink href="https://github.com/hsuanyi-chou/shadcn-ui-expansions/issues/57#issuecomment-1997767639">
-                    short-term workaround
-                  </PropLink>
-                  . This is related to <InlineCode>Command</InlineCode>{" "}
-                  component in shadcn-ui.
-                </P>
-                <P className="leading-relaxed text-muted-foreground">
-                  Adjusting the line 120 in shadcn&apos;s{" "}
-                  <InlineCode>Command.tsx</InlineCode> (which is{" "}
-                  <InlineCode>CommandItem&apos;s className</InlineCode>) to:
-                </P>
-                <P className="leading-relaxed text-muted-foreground">
-                  <InlineCode>
-                    &quot;relative flex cursor-default select-none items-center
-                    rounded-sm px-2 py-1.5 text-sm outline-none
-                    aria-[selected=&apos;true&apos;]:bg-accent
-                    aria-[selected=&apos;true&apos;]:text-accent-foreground
-                    data-[disabled=&apos;true&apos;]:pointer-events-none
-                    data-[disabled=&apos;true&apos;]:opacity-50&quot;,
-                  </InlineCode>
-                </P>
-              </>
-            ),
-          },
-        ]}
-        withEnd
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

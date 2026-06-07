@@ -1,9 +1,7 @@
 import React from "react";
 import {
-  PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -48,17 +46,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/product-card/product-card.tsx"
         cli="@spectrumui/product-card"
+      
+        installScript="npx shadcn@latest add @spectrumui/product-card"
+        installCodePath="app/(docs)/docs/product-card/product-card.tsx"
       >
         <Productcard />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/product-card/product-card.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/product-card"
-      />
 
      
     </PageTemplate>

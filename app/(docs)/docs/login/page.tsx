@@ -1,6 +1,5 @@
 import React from 'react';
-import { PageSubTitle, PageTemplate } from '@/app/(docs)/docs/components/page-template';
-import { Steppers } from '@/components/ui/steppers';
+import { PageTemplate } from '@/app/(docs)/docs/components/page-template';
 import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
@@ -45,16 +44,13 @@ const Loginpage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/login/login-demo.tsx"
         cli="@spectrumui/login-card"
+      
+        installScript="npm i lucide-react framer-motion"
+        installCodePath="app/(docs)/docs/login/login-demo.tsx"
       >
         <LoginPage />
       </PreviewCodeCard>
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/login/login-demo.tsx"
-        withEnd
-        installScript="npm i lucide-react framer-motion"
-      />
+
     </PageTemplate>
     </SEOWrapper>
   );

@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -56,12 +55,11 @@ const SpinnerPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/spinner/spinner-demo.tsx"
         cli="@spectrumui/spinner-demo"
+      
+        installCodePath="components/ui/spinner.tsx"
       >
         <SpinnerDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers withInstall codePath="components/ui/spinner.tsx" withEnd />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

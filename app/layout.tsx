@@ -19,7 +19,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
-import Cta from "@/components/cta";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 
 inject();
@@ -288,7 +287,7 @@ gtag('config', 'G-K7ZP6JB4MG');
           </main>
           <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
-          <Cta />
+          {/* <Cta /> */}
           <Footer />
         </Providers>
         <SpeedInsights />

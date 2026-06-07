@@ -1,8 +1,6 @@
 import {
-  PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -49,18 +47,13 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/badge/badgedemo.tsx"
         cli="@spectrumui/event-badge-3d"
+      
+        installScript="npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline leva"
+        installCodePath="app/(docs)/docs/badge/badgedemo.tsx"
       >
         <EventBadge />
       </PreviewCodeCard>
 
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/badge/badgedemo.tsx"
-        withEnd
-        installScript="npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline leva
-"
-      />
     </PageTemplate>
     </SEOWrapper>
   );

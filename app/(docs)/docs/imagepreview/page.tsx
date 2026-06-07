@@ -1,7 +1,6 @@
 import React from "react";
-import { PageSubTitle, PageTemplate } from "../components/page-template";
+import { PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import Demoimages from "./usages/useone";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -46,24 +45,17 @@ const page = () => {
         <PreviewCodeCard
           path="app/(docs)/docs/imagepreview/usages/useone.tsx"
           cli="@spectrumui/image-preview"
-        >
+        
+        installScript="npm i lucide-react"
+        installCodePath="app/(docs)/docs/imagepreview/ImagePreview.tsx"
+      >
           <Demoimages />
         </PreviewCodeCard>
-
-        <PageSubTitle>Installation</PageSubTitle>
-        <p>
+      <p>
           Create a new file called <code>ImagePreview.tsx</code> in the
           {" components"}
         </p>
 
-        <Steppers
-          className=""
-          installScript="npm i lucide-react 
- "
-          steps={[{ title: "Create feedback component & paste the code" }]}
-          withInstall
-          codePath="app/(docs)/docs/imagepreview/ImagePreview.tsx"
-        />
       </PageTemplate>
       </div>
     </SEOWrapper>

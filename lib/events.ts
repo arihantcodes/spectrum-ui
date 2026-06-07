@@ -17,13 +17,22 @@ const eventSchema = z.object({
     "copy_chart_theme",
     "copy_chart_data",
     "copy_color",
-    // New PostHog events
+    // Existing PostHog events
     "component_copied",
     "block_code_copied",
     "cli_command_copied",
     "component_viewed",
     "block_viewed",
     "tab_switched",
+    // Auth-gate funnel events
+    "view_code_clicked",
+    "copy_code_clicked",
+    "copy_cli_clicked",
+    "login_modal_opened",
+    "github_login_started",
+    "google_login_started",
+    "login_successful",
+    "code_unlocked",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

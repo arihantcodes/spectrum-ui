@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -53,16 +52,11 @@ const ResponsiveModalPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/responsive-modal/responsive-modal-demo.tsx"
         cli="@spectrumui/responsive-modal"
+      
+        installCodePath="components/ui/responsive-modal.tsx"
       >
         <ResponsiveModalDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/responsive-modal.tsx"
-        withEnd
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

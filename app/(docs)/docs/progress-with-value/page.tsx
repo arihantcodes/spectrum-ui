@@ -3,7 +3,6 @@ import {
   PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
-import { Steppers } from "@/components/ui/steppers";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -60,17 +59,12 @@ const DualRangeSliderPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/progress-with-value/progress-with-value-demo.tsx"
         cli="@spectrumui/progress-with-value"
+      
+        installScript="npm i @radix-ui/react-progress"
+        installCodePath="components/ui/progress-with-value.tsx"
       >
         <ProgressWithValueDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/progress-with-value.tsx"
-        withEnd
-        installScript="npm i @radix-ui/react-progress"
-      />
 
       <PageSubTitle>Usage</PageSubTitle>
       <Usage

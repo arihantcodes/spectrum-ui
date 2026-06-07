@@ -1,7 +1,6 @@
 import React from "react";
-import { PageSubTitle, PageTemplate } from "../components/page-template";
+import { PageTemplate } from "../components/page-template";
 import PreviewCodeCard from "../components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import { Chart } from "./animateddemo";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
@@ -52,19 +51,13 @@ const page = () => {
           className=""
           path="app/(docs)/docs/animatedchart/animateddemo.tsx"
           cli="@spectrumui/animated-SVG-chart"
-        >
+        
+        installScript="npm i framer-motion mini-svg-data-uri"
+        installCodePath="lib/sample.ts"
+      >
           <Chart />
         </PreviewCodeCard>
 
-        <PageSubTitle>Installation</PageSubTitle>
-
-        <Steppers
-          className=""
-          installScript="npm i framer-motion mini-svg-data-uri"
-          steps={[{ title: "Create feedback component & paste the code" }]}
-          withInstall
-          codePath="lib/sample.ts"
-        />
       </PageTemplate>
       </div>
     </SEOWrapper>

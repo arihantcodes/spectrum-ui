@@ -1,10 +1,8 @@
 import React from "react";
 import {
-  PageSubTitle,
   PageTemplate,
 } from "@/app/(docs)/docs/components/page-template";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
-import { Steppers } from "@/components/ui/steppers";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 import InfiniteScrollDemo from "@/app/(docs)/docs/infinite-scroll/infinite-scroll-demo";
@@ -53,16 +51,11 @@ const InfiniteScrollPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/infinite-scroll/infinite-scroll-demo.tsx"
         cli="@spectrumui/infinite-scroll-demo"
+      
+        installCodePath="components/ui/infinite-scroll.tsx"
       >
         <InfiniteScrollDemo />
       </PreviewCodeCard>
-
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="components/ui/infinite-scroll.tsx"
-        withEnd
-      />
 
       <PropsTable props={infiniteScrollProp} />
     </PageTemplate>

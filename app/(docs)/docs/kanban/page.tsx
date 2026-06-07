@@ -1,6 +1,5 @@
 import React from 'react';
-import { PageSubTitle, PageTemplate } from '@/app/(docs)/docs/components/page-template';
-import { Steppers } from '@/components/ui/steppers';
+import { PageTemplate } from '@/app/(docs)/docs/components/page-template';
 import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
 import { Metadata } from 'next';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
@@ -45,16 +44,13 @@ const KanbanBoard = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/kanban/kanban01.tsx"
         cli="@spectrumui/kanbanboard"
+      
+        installScript="npx shadcn@latest add @spectrumui/kanbanboard"
+        installCodePath="app/(docs)/docs/kanban/kanban01.tsx"
       >
         <KanbanGlassForest />
       </PreviewCodeCard>
-      <PageSubTitle>Installation</PageSubTitle>
-      <Steppers
-        withInstall
-        codePath="app/(docs)/docs/kanban/kanban01.tsx"
-        withEnd
-        installScript="npx shadcn@latest add @spectrumui/kanbanboard"
-      />
+
     </PageTemplate>
     </SEOWrapper>
   );
