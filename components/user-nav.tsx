@@ -14,6 +14,7 @@ import {
 import { signOut } from "next-auth/react"
 import Link from "next/link"
 import type { Session } from "next-auth"
+import { Bookmark , LogOut, User2} from "lucide-react"
 
 export function UserNav({ session }: { session: Session }) {
   const user = session?.user
@@ -42,16 +43,25 @@ export function UserNav({ session }: { session: Session }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/profile" className="cursor-pointer">
+            <Link href="/profile" className="cursor-pointer flex items-center gap-2">
+            <User2 className="h-4 w-4" />
               Profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/bookmarks" className="cursor-pointer flex items-center gap-2">
+              <Bookmark className="h-4 w-4" />
+              Bookmarks
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })} className="cursor-pointer">
+          <LogOut className="h-4 w-4" />
           Log out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
 }
+

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { PostHogProvider } from "@/components/provider";
 import { AuthGateProvider } from "@/lib/auth-gate-store";
 import { AuthGateModal } from "@/components/auth-gate-modal";
+import { BookmarkProvider } from "@/lib/bookmark-store";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -17,11 +18,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
       >
         <PostHogProvider>
           <AuthGateProvider>
-            {children}
-            <AuthGateModal />
+            <BookmarkProvider>
+              {children}
+              <AuthGateModal />
+            </BookmarkProvider>
           </AuthGateProvider>
         </PostHogProvider>
       </ThemeProvider>
     </SessionProvider>
   );
 }
+

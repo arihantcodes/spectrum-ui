@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Search, Component as ComponentIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import RequestComponents from "@/components/requestcomponets";
+import { BookmarkButton } from "@/components/bookmark-button";
+
 
 const componentsList = [
   { name: "Accordion", description: "A vertically stacked set of interactive headings that each reveal an associated section of content.", href: "/docs/accordion" },
@@ -88,22 +90,36 @@ export default function DocsIndexPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredComponents.map((comp) => (
-            <Link key={comp.href} href={comp.href}>
-              <div className="group relative rounded-xl border bg-card h-full transition-all hover:border-foreground/30 hover:shadow-md overflow-hidden">
-                <div className="relative h-32 w-full bg-neutral-100 dark:bg-neutral-900 border-b flex items-center justify-center transition-colors overflow-hidden group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900/50">
-                  <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <ComponentIcon className="relative z-10 h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-all duration-300 group-hover:scale-125 group-hover:text-foreground" />
-                </div>
-                <div className="p-5 flex flex-col gap-2">
-                  <h3 className="font-semibold text-foreground tracking-tight">{comp.name}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {comp.description}
-                  </p>
+          {filteredComponents.map((comp) => {
+            const slug = comp.href.replace('/docs/', '');
+            return (
+              <div key={comp.href} className="relative group/card">
+                <Link href={comp.href}>
+                  <div className="group relative rounded-xl border bg-card h-full transition-all hover:border-foreground/30 hover:shadow-md overflow-hidden">
+                    <div className="relative h-32 w-full bg-neutral-100 dark:bg-neutral-900 border-b flex items-center justify-center transition-colors overflow-hidden group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <ComponentIcon className="relative z-10 h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-all duration-300 group-hover:scale-125 group-hover:text-foreground" />
+                    </div>
+                    <div className="p-5 flex flex-col gap-2">
+                      <h3 className="font-semibold text-foreground tracking-tight">{comp.name}</h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {comp.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+                {/* Bookmark button — rendered outside the Link to prevent nav */}
+                <div className="absolute top-2 right-2 z-10 opacity-0 group-hover/card:opacity-100 transition-opacity duration-200">
+                  <BookmarkButton
+                    slug={slug}
+                    type="component"
+                    title={comp.name}
+                    className="bg-background/80 backdrop-blur-sm border border-border/50 shadow-sm"
+                  />
                 </div>
               </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

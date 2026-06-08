@@ -28,7 +28,7 @@ const Homepage = () => {
   return (
     <>
       {/* Pro Banner */}
-      <PromoBanner />
+      {/* <PromoBanner /> */}
 
       <div className="container-wrapper">
         <HeroSection />

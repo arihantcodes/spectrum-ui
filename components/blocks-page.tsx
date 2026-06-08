@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface FileNode {
   name: string;
@@ -33,6 +34,8 @@ interface BlocksPageProps {
   theme?: "dark" | "light";
   shikiTheme?: string;
   blockName?: string;
+  /** Slug used for bookmarking — defaults to blockName */
+  blockSlug?: string;
 }
 
 type DeviceType = "desktop" | "tablet" | "mobile" | "print" | "resizable";
@@ -45,6 +48,7 @@ export function BlocksPage({
   theme = "dark",
   shikiTheme = "github-dark",
   blockName,
+  blockSlug,
 }: BlocksPageProps) {
   const [activeTab, setActiveTab] = React.useState<"preview" | "code">(
     "preview",
@@ -272,6 +276,14 @@ export function BlocksPage({
             </div>
             <span className="text-sm text-muted-foreground">{title}</span>
           </div>
+          {/* Bookmark button */}
+          {(blockSlug ?? blockName) && (
+            <BookmarkButton
+              slug={(blockSlug ?? blockName ?? title).toLowerCase().replace(/\s+/g, "-")}
+              type="block"
+              title={blockName ?? title}
+            />
+          )}
         </div>
 
         {/* Content */}

@@ -33,6 +33,10 @@ const eventSchema = z.object({
     "google_login_started",
     "login_successful",
     "code_unlocked",
+    // Bookmark events
+    "bookmark_added",
+    "bookmark_removed",
+    "bookmarks_page_viewed",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
