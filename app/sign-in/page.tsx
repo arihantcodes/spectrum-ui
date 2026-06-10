@@ -1,5 +1,24 @@
 import { signIn } from '@/auth'
-import { IconBrandGoogle, IconBrandGithub } from '@tabler/icons-react'
+import { Icons } from '@/components/icon'
+
+function GitHubIcon() {
+  return (
+    <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+  )
+}
+
+function GoogleIcon() {
+  return (
+    <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z" />
+      <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.615 24 12.255 24z" />
+      <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 0 0 0 10.76l3.98-3.09z" />
+      <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.64 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z" />
+    </svg>
+  )
+}
 
 export default function SignInPage({
   searchParams,
@@ -7,86 +26,105 @@ export default function SignInPage({
   searchParams: { callbackUrl?: string }
 }) {
   const callbackUrl = searchParams.callbackUrl ?? '/'
-  // Always route through /create-user so the DB upsert runs.
-  // create-user will redirect existing users straight to dashboard.
   const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#080808] flex items-center justify-center px-4 transition-colors">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen bg-neutral-50 dark:bg-[#080808] flex items-center justify-center px-4 transition-colors">
 
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <h1 className="text-xl font-semibold text-neutral-900 dark:text-[#F5F5F5]">
-            Sign in to Spectrum Pro
-          </h1>
-          <p className="text-sm text-neutral-500 dark:text-[#666] mt-1">
-            Access your purchased templates
-          </p>
-        </div>
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-        {/* Auth buttons */}
-        <div className="bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222] rounded-xl p-6
-          dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-sm">
-          <div className="flex flex-col gap-3">
+      <div className="relative w-full max-w-[400px]">
 
-            {/* GitHub — primary, most devs use this */}
-            <form action={async () => {
-              'use server'
-              await signIn('github', { redirectTo: postAuthRedirect })
-            }}>
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-3
-                  bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-[#F5F5F5] dark:hover:bg-white dark:text-[#080808]
-                  font-semibold text-sm py-3 px-4 rounded-lg
-                  transition-colors"
-              >
-                <IconBrandGithub size={18} />
-                Continue with GitHub
-              </button>
-            </form>
+        {/* Card */}
+        <div className="bg-white dark:bg-[#0f0f0f] rounded-2xl border border-neutral-200 dark:border-[#1f1f1f] shadow-xl dark:shadow-2xl shadow-neutral-200/60 dark:shadow-black/40 overflow-hidden">
 
-            {/* Divider */}
-            <div className="flex items-center gap-3">
-              <div className="flex-1 h-px bg-neutral-200 dark:bg-[#222]" />
-              <span className="text-xs text-neutral-400 dark:text-[#444]">or</span>
-              <div className="flex-1 h-px bg-neutral-200 dark:bg-[#222]" />
+          {/* Top accent bar */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent" />
+
+          <div className="px-8 pt-8 pb-7">
+
+            {/* Brand mark */}
+            <div className="flex justify-center mb-6">
+              <div className="h-9 w-9 bg-neutral-100 border border-neutral-300 dark:bg-white rounded-xl flex items-center justify-center p-1.5 shadow-sm">
+                <Icons.logo className="h-full w-full text-black" />
+              </div>
             </div>
 
-            {/* Google */}
-            <form action={async () => {
-              'use server'
-              await signIn('google', { redirectTo: postAuthRedirect })
-            }}>
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center gap-3
-                  bg-white hover:bg-neutral-50 text-neutral-900 dark:bg-transparent dark:hover:bg-[#161616] dark:text-[#F5F5F5]
-                  border border-neutral-200 dark:border-[#222] hover:border-neutral-300 dark:hover:border-[#333]
-                  font-medium text-sm py-3 px-4 rounded-lg
-                  transition-all"
-              >
-                <IconBrandGoogle size={18} />
-                Continue with Google
-              </button>
-            </form>
+            {/* Heading */}
+            <div className="text-center mb-6">
+              <h1 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-[#F5F5F5]">
+                Create your free account
+              </h1>
+              <p className="text-sm text-neutral-500 dark:text-neutral-500 mt-1.5 leading-relaxed">
+                Instant access to component code, CLI&nbsp;commands, and more.
+              </p>
+            </div>
+
+            {/* Auth buttons */}
+            <div className="flex flex-col gap-2.5">
+
+              {/* GitHub */}
+              <form action={async () => {
+                'use server'
+                await signIn('github', { redirectTo: postAuthRedirect })
+              }}>
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2.5
+                    bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-950
+                    text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a]
+                    font-medium text-sm h-10 px-4 rounded-lg
+                    transition-colors duration-150 shadow-sm"
+                >
+                  <GitHubIcon />
+                  Continue with GitHub
+                </button>
+              </form>
+
+              {/* Divider */}
+              <div className="flex items-center gap-3 my-0.5">
+                <div className="flex-1 h-px bg-neutral-100 dark:bg-[#1f1f1f]" />
+                <span className="text-[11px] text-neutral-400 dark:text-neutral-600 tracking-wide">OR</span>
+                <div className="flex-1 h-px bg-neutral-100 dark:bg-[#1f1f1f]" />
+              </div>
+
+              {/* Google */}
+              <form action={async () => {
+                'use server'
+                await signIn('google', { redirectTo: postAuthRedirect })
+              }}>
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-2.5
+                    bg-white hover:bg-neutral-50 active:bg-neutral-100
+                    dark:bg-[#1a1a1a] dark:hover:bg-[#222] dark:text-[#F5F5F5]
+                    text-neutral-700
+                    border border-neutral-200 dark:border-[#2a2a2a]
+                    font-medium text-sm h-10 px-4 rounded-lg
+                    transition-colors duration-150 shadow-sm"
+                >
+                  <GoogleIcon />
+                  Continue with Google
+                </button>
+              </form>
+            </div>
+
           </div>
 
-          <p className="text-xs text-neutral-500 dark:text-[#444] text-center mt-5 leading-relaxed">
-            By signing in you agree to our{' '}
-            <a href="/terms" className="text-neutral-600 dark:text-[#666] hover:text-neutral-900 dark:hover:text-[#888] transition-colors">
-              Terms
-            </a>
-            .
-          </p>
+          {/* Footer strip */}
+          <div className="px-8 py-3.5 bg-neutral-50 dark:bg-[#0a0a0a] border-t border-neutral-100 dark:border-[#1a1a1a]">
+            <p className="text-[11px] text-neutral-400 dark:text-neutral-600 text-center">
+              Free forever · No credit card required ·{' '}
+              <a
+                href="/tos"
+                className="underline underline-offset-2 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+              >
+                Terms
+              </a>
+            </p>
+          </div>
         </div>
-
-        {/* Note about GitHub */}
-        <p className="text-xs text-neutral-500 dark:text-[#555] text-center mt-4 leading-relaxed">
-          Sign in with GitHub to automatically link your account
-          for template repo access.
-        </p>
 
       </div>
     </div>

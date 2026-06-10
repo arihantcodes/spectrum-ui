@@ -85,7 +85,7 @@ const CodeCard = ({
               size={16}
               aria-hidden="true"
             />
-            CLI
+            CLI <span className="text-[12px] font-normal text-muted-foreground/70 ml-1">(one command installation)</span>
           </TabsTrigger>
 
           {/* Installation — only shown when installScript or installCode are provided */}

@@ -21,16 +21,6 @@ export function SiteHeader({ session }: { session: Session | null }) {
           <MainNav />
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-
-            <Link
-              href="https://github.com/sponsors/arihantcodes"
-              className="hidden md:flex items-center gap-2 bg-neutral-100 border dark:bg-secondary rounded-md px-5 h-9 hover:bg-neutral-200 dark:hover:bg-secondary/80 transition-colors"
-            >
-
-              <div className="flex flex-col xl:flex-row gap-3 items-center">
-                <p className="text-sm font-medium hidden lg:block">Sponsor</p>
-              </div>
-            </Link>
 {/* 
             <div className="hidden md:flex items-center gap-2">
               <Link 
@@ -57,8 +47,8 @@ export function SiteHeader({ session }: { session: Session | null }) {
                 <UserNav session={session} />
               ) : (
                 <Link href={`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`}>
-                  <Button variant="outline" size="sm" className="ml-2 h-8 text-xs font-semibold">
-                    Sign In
+                  <Button size="sm" className="ml-2 h-8 px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-sm font-medium transition-colors shadow-sm">
+                    Login 
                   </Button>
                 </Link>
               )}
