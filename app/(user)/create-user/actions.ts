@@ -2,6 +2,7 @@
 
 import { auth } from '@/auth'
 import { syncUser } from '@/lib/user-sync'
+import { notifyNewSignup } from '@/lib/slack'
 import { redirect } from 'next/navigation'
 
 export async function completeUserProfile(formData: FormData) {
@@ -26,6 +27,20 @@ export async function completeUserProfile(formData: FormData) {
     image: session.user.image,
     githubUsername: githubUsername || null
   })
+
+  // Notify Slack about new signup (non-blocking — won't break signup if Slack fails)
+  try {
+    await notifyNewSignup({
+      name: session.user.name,
+      email: session.user.email,
+      githubUsername: githubUsername || session.user.githubUsername || null,
+      avatarUrl: session.user.image || null,
+      provider: session.user.githubUsername ? 'GitHub' : 'Google',
+      convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+    })
+  } catch (err) {
+    console.error('[completeUserProfile] Slack notification failed:', err)
+  }
 
   // Once saved to DB, push them to their intended destination
   redirect(redirectTo)
