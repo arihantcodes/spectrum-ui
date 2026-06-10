@@ -82,12 +82,14 @@ export function AuthGateModal() {
 
   const handleGitHub = () => {
     trackEvent({ name: 'github_login_started' });
-    signIn('github', { callbackUrl: window.location.href });
+    const next = encodeURIComponent(window.location.pathname + window.location.search);
+    signIn('github', { callbackUrl: `/create-user?next=${next}` });
   };
 
   const handleGoogle = () => {
     trackEvent({ name: 'google_login_started' });
-    signIn('google', { callbackUrl: window.location.href });
+    const next = encodeURIComponent(window.location.pathname + window.location.search);
+    signIn('google', { callbackUrl: `/create-user?next=${next}` });
   };
 
   return (

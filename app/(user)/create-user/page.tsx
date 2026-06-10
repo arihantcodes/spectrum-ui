@@ -2,13 +2,19 @@ import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { completeUserProfile } from './actions'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { SubmitButton } from './submit-button'
 import { IconBrandGithub } from '@tabler/icons-react'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 
-export default async function CreateUserPage() {
+export default async function CreateUserPage({
+  searchParams,
+}: {
+  searchParams: { next?: string }
+}) {
   const session = await auth()
   if (!session?.user) redirect('/sign-in')
+
+  const nextUrl = searchParams.next ?? '/dashboard'
 
   // If already exists in DB, send them securely to dashboard
   const { data: existingUser } = await supabaseAdmin
@@ -18,7 +24,7 @@ export default async function CreateUserPage() {
     .single()
     
   if (existingUser) {
-    redirect('/dashboard')
+    redirect(nextUrl)
   }
 
   const { user } = session
@@ -31,7 +37,7 @@ export default async function CreateUserPage() {
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-neutral-900 dark:text-[#F5F5F5] mb-2">Almost there!</h1>
           <p className="text-sm text-neutral-500 dark:text-[#666]">
-            Confirm your details to access your templates.
+            Confirm your details to access code.
           </p>
         </div>
 
@@ -43,6 +49,8 @@ export default async function CreateUserPage() {
         </div>
 
         <form action={completeUserProfile} className="space-y-5">
+          {/* Thread the next URL through so actions.ts can redirect there */}
+          <input type="hidden" name="next" value={nextUrl} />
           
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-neutral-700 dark:text-[#888] uppercase tracking-wider">
@@ -83,15 +91,13 @@ export default async function CreateUserPage() {
                 required
                 defaultValue={defaultGithub}
                 placeholder="e.g. torvalds"
-                className="w-full bg-white dark:bg-[#0C0C0C] border border-neutral-300 dark:border-[#333] focus:border-[#6366F1] dark:focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] text-neutral-900 dark:text-[#F5F5F5] pl-10 pr-4 py-2.5 rounded-lg text-sm outline-none transition-all placeholder:text-neutral-400 dark:placeholder:text-[#444]"
+                className="w-full bg-white dark:bg-[#0C0C0C] border border-neutral-300 dark:border-[#333] focus:border-neutral-900 dark:focus:border-neutral-100 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-neutral-100 text-neutral-900 dark:text-[#F5F5F5] pl-10 pr-4 py-2.5 rounded-lg text-sm outline-none transition-all placeholder:text-neutral-400 dark:placeholder:text-[#444]"
               />
             </div>
           </div>
 
           <div className="pt-4">
-            <Button type="submit" className="w-full bg-[#6366F1] hover:bg-[#4F46E5] text-white py-6 rounded-xl font-semibold shadow-sm text-sm">
-              Complete Setup →
-            </Button>
+            <SubmitButton />
           </div>
 
         </form>

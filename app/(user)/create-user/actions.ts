@@ -16,6 +16,9 @@ export async function completeUserProfile(formData: FormData) {
     throw new Error("Invalid GitHub username")
   }
 
+  const nextUrl = formData.get('next')
+  const redirectTo = typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/dashboard'
+
   // Reuse the robust server-side syncUser logic we built!
   await syncUser({
     email: session.user.email,
@@ -24,6 +27,6 @@ export async function completeUserProfile(formData: FormData) {
     githubUsername: githubUsername || null
   })
 
-  // Once saved to DB, push them into the authenticated application
-  redirect('/dashboard')
+  // Once saved to DB, push them to their intended destination
+  redirect(redirectTo)
 }

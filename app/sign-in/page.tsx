@@ -7,6 +7,9 @@ export default function SignInPage({
   searchParams: { callbackUrl?: string }
 }) {
   const callbackUrl = searchParams.callbackUrl ?? '/'
+  // Always route through /create-user so the DB upsert runs.
+  // create-user will redirect existing users straight to dashboard.
+  const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#080808] flex items-center justify-center px-4 transition-colors">
@@ -30,7 +33,7 @@ export default function SignInPage({
             {/* GitHub — primary, most devs use this */}
             <form action={async () => {
               'use server'
-              await signIn('github', { redirectTo: callbackUrl })
+              await signIn('github', { redirectTo: postAuthRedirect })
             }}>
               <button
                 type="submit"
@@ -54,7 +57,7 @@ export default function SignInPage({
             {/* Google */}
             <form action={async () => {
               'use server'
-              await signIn('google', { redirectTo: callbackUrl })
+              await signIn('google', { redirectTo: postAuthRedirect })
             }}>
               <button
                 type="submit"

@@ -3,6 +3,7 @@
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PostHogProvider } from "@/components/provider";
+import { PostHogIdentify } from "@/components/posthog-identify";
 import { AuthGateProvider } from "@/lib/auth-gate-store";
 import { AuthGateModal } from "@/components/auth-gate-modal";
 import { BookmarkProvider } from "@/lib/bookmark-store";
@@ -17,6 +18,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         disableTransitionOnChange
       >
         <PostHogProvider>
+          <PostHogIdentify />
           <AuthGateProvider>
             <BookmarkProvider>
               {children}

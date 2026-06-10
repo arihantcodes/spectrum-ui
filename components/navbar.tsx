@@ -56,7 +56,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
               {session ? (
                 <UserNav session={session} />
               ) : (
-                <Link href="/sign-in">
+                <Link href={`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`}>
                   <Button variant="outline" size="sm" className="ml-2 h-8 text-xs font-semibold">
                     Sign In
                   </Button>
