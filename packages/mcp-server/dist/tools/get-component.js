@@ -1,4 +1,5 @@
 import { loadRegistry, inferCategory } from "../data/registry-loader.js";
+import { track } from "../utils/telemetry.js";
 /** Get full metadata for a specific component by name (exact or partial match). */
 export async function getComponent(nameOrQuery) {
     const registry = await loadRegistry();
@@ -10,8 +11,11 @@ export async function getComponent(nameOrQuery) {
         item = registry.items.find((i) => i.name.toLowerCase().includes(q) ||
             i.title.toLowerCase().includes(q));
     }
-    if (!item)
+    if (!item) {
+        // Track: user asked for something we don't have
+        track({ event: "component_not_found", query: nameOrQuery, found: false });
         return null;
+    }
     const cliCommand = `bunx --bun shadcn@latest add @spectrumui/${item.name}`;
     const cliCommandNpx = `npx shadcn@latest add @spectrumui/${item.name}`;
     return {

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Icons } from "./icon";
 import { NewsletterSignup } from "./newsletter-signup";
+import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -24,15 +25,8 @@ export default function Footer() {
             </Link>
 
             <h1 className="dark:text-gray-300 mt-4">
-              Build by{" "}
-              <span className="dark:text-[#039ee4] gap-2">
-                <Link className="underline" href="https://x.com/arihantCodes">@Arihantjain</Link>
-                <span>{" & "}</span>
-                <Link href="https://linkedin.com/in/itzamanjain" className="underline">
-                @itzamanjain
-                </Link>
-              </span>
-            </h1>
+              Build with ❤️ for community 
+               </h1>
            
             <p className="text-sm dark:text-gray-400 mt-5">
               © {new Date().getFullYear()} Spectrum UI. All rights reserved.

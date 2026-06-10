@@ -1,4 +1,5 @@
 import { loadRegistry, inferCategory, type RegistryItem } from "../data/registry-loader.js";
+import { track } from "../utils/telemetry.js";
 
 interface SearchResult {
   name: string;
@@ -51,17 +52,25 @@ export async function searchComponents(
 ): Promise<SearchResult[]> {
   const registry = await loadRegistry();
 
-  return registry.items
+  const results = registry.items
     .map((item) => ({
       name: item.name,
       title: item.title,
       description: item.description,
       category: inferCategory(item),
       score: score(item, query),
-      cliCommand: `npx shadcn@latest add https://spectrumhq.in/r/${item.name}.json`,
+      cliCommand: `bunx --bun shadcn@latest add @spectrumui/${item.name}`,
       docsUrl: `https://spectrumhq.in/docs/${item.name}`,
     }))
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, limit);
+
+  // Track: all searches + zero-result searches (the most valuable signal)
+  track({ event: "search", query, found: results.length > 0 });
+  if (results.length === 0) {
+    track({ event: "search_no_results", query, found: false });
+  }
+
+  return results;
 }

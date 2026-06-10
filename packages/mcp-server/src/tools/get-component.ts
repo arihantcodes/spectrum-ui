@@ -1,4 +1,5 @@
 import { loadRegistry, inferCategory } from "../data/registry-loader.js";
+import { track } from "../utils/telemetry.js";
 
 export interface ComponentDetail {
   name: string;
@@ -34,7 +35,11 @@ export async function getComponent(
     );
   }
 
-  if (!item) return null;
+  if (!item) {
+    // Track: user asked for something we don't have
+    track({ event: "component_not_found", query: nameOrQuery, found: false });
+    return null;
+  }
 
   const cliCommand = `bunx --bun shadcn@latest add @spectrumui/${item.name}`;
   const cliCommandNpx = `npx shadcn@latest add @spectrumui/${item.name}`;

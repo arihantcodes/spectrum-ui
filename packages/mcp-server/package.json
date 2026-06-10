@@ -1,6 +1,6 @@
 {
   "name": "@spectrumui/mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for Spectrum UI — lets AI assistants browse, search, and install Spectrum UI components directly into your codebase",
   "keywords": ["mcp", "spectrum-ui", "components", "ai", "claude", "cursor"],
   "author": "Aman Jain <aman.044063@tmu.ac.in>",
