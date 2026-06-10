@@ -24,7 +24,7 @@ export default function Footer() {
             </Link>
 
             <h1 className="dark:text-gray-300 mt-4">
-              Build with ❤️ for community 
+              Build with ❤️ for the community.
                </h1>
            
             <p className="text-sm dark:text-gray-400 mt-5">
