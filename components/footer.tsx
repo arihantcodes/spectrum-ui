@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Icons } from "./icon";
 import { NewsletterSignup } from "./newsletter-signup";
-import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
