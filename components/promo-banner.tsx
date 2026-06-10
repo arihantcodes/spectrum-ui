@@ -2,75 +2,64 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-function getTimeLeft() {
-  // Set deadline to 3 days from first visit (stored in localStorage)
-  const now = Date.now();
-  let deadline: number;
-
-  if (typeof window !== "undefined") {
-    const stored = localStorage.getItem("promo-deadline");
-    if (stored) {
-      deadline = parseInt(stored, 10);
-    } else {
-      deadline = now + 3 * 24 * 60 * 60 * 1000;
-      localStorage.setItem("promo-deadline", deadline.toString());
-    }
-  } else {
-    deadline = now + 3 * 24 * 60 * 60 * 1000;
-  }
-
-  const diff = Math.max(0, deadline - now);
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  return { days, hours, minutes, seconds };
-}
+import { X } from "lucide-react";
 
 export function PromoBanner() {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    setTime(getTimeLeft());
-    const interval = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(interval);
+    // Show unless user dismissed in this session
+    const dismissed = sessionStorage.getItem("mcp-banner-dismissed");
+    if (!dismissed) setVisible(true);
   }, []);
 
-  const pad = (n: number) => n.toString().padStart(2, "0");
+  const dismiss = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    sessionStorage.setItem("mcp-banner-dismissed", "1");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
 
   return (
-    <Link
-      href="/pro"
-      className="block w-full bg-[#2563EB] hover:bg-[#1d4ed8] transition-colors"
-    >
-      <div className="flex items-center justify-center gap-3 py-2.5 px-4 text-white">
-        <span className="text-sm font-medium">
-          <span className="font-bold">Introducing Spectrum Pro</span>
-          {" "}&mdash;
-          <span className="hidden sm:inline">
-            {" "}Launch price: <span className="font-bold">$49</span>
-            {" "}<span className="line-through opacity-75">(goes up to $79)</span>
+    <div className="relative w-full bg-neutral-950 dark:bg-white border-b border-neutral-800 dark:border-neutral-200">
+      <Link href="/docs/mcp" className="block">
+        <div className="flex items-center justify-center gap-3 py-2.5 px-10 text-white dark:text-neutral-900">
+          {/* Pulse dot */}
+          <span className="flex-shrink-0 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="text-green-400 text-xs font-semibold uppercase tracking-wide hidden sm:inline">New</span>
           </span>
-        </span>
-        <span className="hidden sm:inline text-xs sm:text-sm opacity-90">Offer ends in</span>
-        {mounted && (
-          <span className="hidden sm:inline-flex items-center gap-0.5 font-mono text-xs sm:text-sm bg-white/15 px-2.5 py-1 rounded-md border border-white/20">
-            {time.days}d : {pad(time.hours)}h : {pad(time.minutes)}m : {pad(time.seconds)}s
+
+          <span className="text-sm font-medium">
+            <span className="font-bold">Spectrum UI MCP Server</span>
+            <span className="hidden sm:inline text-white/70 dark:text-neutral-600">
+              {" "}— Install components directly from Claude, Cursor & Windsurf
+            </span>
           </span>
-        )}
-        <svg
-          width="14" height="14" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          className="opacity-75"
-        >
-          <path d="M5 12h14" />
-          <path d="m12 5 7 7-7 7" />
-        </svg>
-      </div>
-    </Link>
+
+          <span className="hidden md:inline-flex items-center gap-1.5 bg-white/10 dark:bg-neutral-900/10 border border-white/20 dark:border-neutral-900/20 rounded-full px-3 py-0.5 text-xs font-mono text-white/90 dark:text-neutral-700">
+            npx -y @spectrumui/mcp
+          </span>
+
+          <span className="text-white/60 dark:text-neutral-500 text-xs flex items-center gap-1 ml-1">
+            Learn more
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </Link>
+
+      {/* Dismiss button */}
+      <button
+        onClick={dismiss}
+        aria-label="Dismiss banner"
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-md text-white/50 dark:text-neutral-500 hover:text-white dark:hover:text-neutral-900 hover:bg-white/10 dark:hover:bg-neutral-900/10 transition-colors"
+      >
+        <X size={14} />
+      </button>
+    </div>
   );
 }

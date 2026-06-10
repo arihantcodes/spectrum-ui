@@ -1,0 +1,1 @@
+{"version":3,"file":"list-categories.d.ts","sourceRoot":"","sources":["../../src/tools/list-categories.ts"],"names":[],"mappings":"AAEA,MAAM,WAAW,YAAY;IAC3B,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,UAAU,EAAE,MAAM,EAAE,CAAC;CACtB;AAED,kDAAkD;AAClD,wBAAsB,cAAc,IAAI,OAAO,CAAC,YAAY,EAAE,CAAC,CAa9D"}

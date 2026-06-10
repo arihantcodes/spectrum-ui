@@ -40,6 +40,18 @@ export const DOCS: Documentation[] = [
     ],
   },
   {
+    groupKey: 'integrations',
+    groupValue: 'Integrations',
+    children: [
+      {
+        label: 'MCP Server',
+        value: 'mcp',
+        url: '/docs/mcp',
+        new: true,
+      },
+    ],
+  },
+  {
     groupKey: 'components',
     groupValue: 'Components',
     children: [
