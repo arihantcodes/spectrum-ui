@@ -1,5 +1,7 @@
 import { signIn } from '@/auth'
 import { Icons } from '@/components/icon'
+import { AuthIllustration } from '@/components/auth-illustration'
+import Link from 'next/link'
 
 function GitHubIcon() {
   return (
@@ -29,104 +31,103 @@ export default function SignInPage({
   const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`
 
   return (
-    <div className="min-h-screen bg-neutral-50 dark:bg-[#080808] flex items-center justify-center px-4 transition-colors">
+    <div className="min-h-screen grid lg:grid-cols-2">
 
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      {/* ─── Left: Sign-in form ─── */}
+      <div className="flex flex-col bg-white dark:bg-[#080808] px-6 sm:px-12 lg:px-16 xl:px-20 transition-colors">
 
-      <div className="relative w-full max-w-[400px]">
-
-        {/* Card */}
-        <div className="bg-white dark:bg-[#0f0f0f] rounded-2xl border border-neutral-200 dark:border-[#1f1f1f] shadow-xl dark:shadow-2xl shadow-neutral-200/60 dark:shadow-black/40 overflow-hidden">
-
-          {/* Top accent bar */}
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent" />
-
-          <div className="px-8 pt-8 pb-7">
-
-            {/* Brand mark */}
-            <div className="flex justify-center mb-6">
-              <div className="h-9 w-9 bg-neutral-100 border border-neutral-300 dark:bg-white rounded-xl flex items-center justify-center p-1.5 shadow-sm">
-                <Icons.logo className="h-full w-full text-black" />
-              </div>
+        {/* Top bar */}
+        <div className="flex items-center justify-between pt-8 pb-4">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="h-8 w-8 bg-neutral-100 dark:bg-white border border-neutral-200 dark:border-transparent rounded-lg flex items-center justify-center p-1.5 shadow-sm group-hover:shadow-md transition-shadow">
+              <Icons.logo className="h-full w-full text-black" />
             </div>
+            <span className="text-sm font-semibold text-neutral-900 dark:text-[#F5F5F5] tracking-tight">Spectrum UI</span>
+          </Link>
 
-            {/* Heading */}
-            <div className="text-center mb-6">
-              <h1 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-[#F5F5F5]">
-                Create your free account
-              </h1>
-              <p className="text-sm text-neutral-500 dark:text-neutral-500 mt-1.5 leading-relaxed">
-                Instant access to component code, CLI&nbsp;commands, and more.
-              </p>
-            </div>
-
-            {/* Auth buttons */}
-            <div className="flex flex-col gap-2.5">
-
-              {/* GitHub */}
-              <form action={async () => {
-                'use server'
-                await signIn('github', { redirectTo: postAuthRedirect })
-              }}>
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2.5
-                    bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-950
-                    text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a]
-                    font-medium text-sm h-10 px-4 rounded-lg
-                    transition-colors duration-150 shadow-sm"
-                >
-                  <GitHubIcon />
-                  Continue with GitHub
-                </button>
-              </form>
-
-              {/* Divider */}
-              <div className="flex items-center gap-3 my-0.5">
-                <div className="flex-1 h-px bg-neutral-100 dark:bg-[#1f1f1f]" />
-                <span className="text-[11px] text-neutral-400 dark:text-neutral-600 tracking-wide">OR</span>
-                <div className="flex-1 h-px bg-neutral-100 dark:bg-[#1f1f1f]" />
-              </div>
-
-              {/* Google */}
-              <form action={async () => {
-                'use server'
-                await signIn('google', { redirectTo: postAuthRedirect })
-              }}>
-                <button
-                  type="submit"
-                  className="w-full flex items-center justify-center gap-2.5
-                    bg-white hover:bg-neutral-50 active:bg-neutral-100
-                    dark:bg-[#1a1a1a] dark:hover:bg-[#222] dark:text-[#F5F5F5]
-                    text-neutral-700
-                    border border-neutral-200 dark:border-[#2a2a2a]
-                    font-medium text-sm h-10 px-4 rounded-lg
-                    transition-colors duration-150 shadow-sm"
-                >
-                  <GoogleIcon />
-                  Continue with Google
-                </button>
-              </form>
-            </div>
-
-          </div>
-
-          {/* Footer strip */}
-          <div className="px-8 py-3.5 bg-neutral-50 dark:bg-[#0a0a0a] border-t border-neutral-100 dark:border-[#1a1a1a]">
-            <p className="text-[11px] text-neutral-400 dark:text-neutral-600 text-center">
-              Free forever · No credit card required ·{' '}
-              <a
-                href="/tos"
-                className="underline underline-offset-2 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
-              >
-                Terms
-              </a>
-            </p>
-          </div>
+          
         </div>
 
+        {/* Centered form */}
+        <div className="flex-1 flex flex-col justify-center max-w-[380px] w-full mx-auto">
+
+          {/* Heading */}
+          <div className="mb-8 text-center">
+            <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-[#F5F5F5] mb-2">
+              Create your free account
+            </h1>
+            <p className="text-sm text-neutral-500 dark:text-[#666] leading-relaxed">
+              Access components, CLI&nbsp;commands, and&nbsp;templates.
+            </p>
+          </div>
+
+          {/* Auth buttons */}
+          <div className="flex flex-col gap-3">
+
+            {/* GitHub */}
+            <form action={async () => {
+              'use server'
+              await signIn('github', { redirectTo: postAuthRedirect })
+            }}>
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2.5
+                  bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-950
+                  text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a]
+                  font-medium text-sm h-11 px-4 rounded-xl
+                  transition-all duration-150 shadow-sm hover:shadow-md cursor-pointer"
+              >
+                <GitHubIcon />
+                Continue with GitHub
+              </button>
+            </form>
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-1">
+              <div className="flex-1 h-px bg-neutral-200 dark:bg-[#1f1f1f]" />
+              <span className="text-[11px] text-neutral-400 dark:text-neutral-600 tracking-widest uppercase">or</span>
+              <div className="flex-1 h-px bg-neutral-200 dark:bg-[#1f1f1f]" />
+            </div>
+
+            {/* Google */}
+            <form action={async () => {
+              'use server'
+              await signIn('google', { redirectTo: postAuthRedirect })
+            }}>
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2.5
+                  bg-white hover:bg-neutral-50 active:bg-neutral-100
+                  dark:bg-[#111] dark:hover:bg-[#1a1a1a] dark:text-[#F5F5F5]
+                  text-neutral-700
+                  border border-neutral-200 dark:border-[#2a2a2a]
+                  font-medium text-sm h-11 px-4 rounded-xl
+                  transition-all duration-150 shadow-sm hover:shadow-md cursor-pointer"
+              >
+                <GoogleIcon />
+                Continue with Google
+              </button>
+            </form>
+          </div>
+
+          {/* Footer terms */}
+          <p className="text-[11px] text-neutral-400 dark:text-neutral-600 text-center mt-8 leading-relaxed">
+            Free forever · No credit card required ·{' '}
+            <a
+              href="/tos"
+              className="underline underline-offset-2 hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors"
+            >
+              Terms
+            </a>
+          </p>
+        </div>
+
+        {/* Bottom spacer */}
+        <div className="pb-8" />
       </div>
+
+      {/* ─── Right: Dashboard illustration ─── */}
+      <AuthIllustration />
     </div>
   )
 }

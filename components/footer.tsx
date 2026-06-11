@@ -1,10 +1,19 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Icons } from "./icon";
 import { NewsletterSignup } from "./newsletter-signup";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on auth/onboarding pages (they have their own layout)
+  const hideOnRoutes = ['/sign-in', '/create-user']
+  if (hideOnRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))) {
+    return null
+  }
+
   return (
     <footer className=" py-12 px-4 md:px-6 z-50">
       <div className="container mx-auto">

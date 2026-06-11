@@ -13,6 +13,12 @@ import type { Session } from 'next-auth';
 export function SiteHeader({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
+  // Hide header on auth/onboarding pages (they have their own layout)
+  const hideOnRoutes = ['/sign-in', '/create-user']
+  if (hideOnRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))) {
+    return null
+  }
+
   return (
     <header className="border-grid sticky top-0 z-[50]  w-full border-b bg-background/10 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container-wrapper ">
