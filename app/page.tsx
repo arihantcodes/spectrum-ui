@@ -6,6 +6,8 @@ const HomeCardCollection = dynamic(() => import('@/components/homecard'), {
 });
 import { HeroSection } from './home';
 import { PromoBanner } from '@/components/promo-banner';
+import { FAQSection } from '@/components/faq-section';
+import Cta from '@/components/cta';
 
 export const metadata: Metadata = {
   title: "Spectrum UI — 250+ Free React & Next.js UI Components",
@@ -22,7 +24,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
 
 const Homepage = () => {
   return (
@@ -44,6 +45,12 @@ const Homepage = () => {
           <HomeCardCollection />
         </div>
       </div>
+
+      <div className="container-wrapper border-t border-border bg-neutral-50/10 dark:bg-neutral-950/10">
+        <FAQSection />
+      </div>
+
+      <Cta />
     </>
   );
 };

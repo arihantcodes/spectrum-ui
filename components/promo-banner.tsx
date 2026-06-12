@@ -41,9 +41,9 @@ export function PromoBanner() {
           </span>
 
           <span className="text-xs sm:text-sm font-medium truncate">
-            <span className="font-bold">Spectrum UI MCP Server</span>
+            <span className="font-bold"> Spectrum UI MCP Server is Live!</span>
             <span className="hidden sm:inline text-white/70 dark:text-neutral-600">
-              {" "}— Install components directly from Claude, Cursor & Windsurf
+              {" "}
             </span>
           </span>
 
