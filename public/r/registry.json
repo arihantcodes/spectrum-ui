@@ -1869,6 +1869,41 @@
         "vaul",
         "react-use-measure"
       ]
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:component",
+      "title": "Command Palette",
+      "description": "A fully customizable, smooth-animated Command Palette (Cmd+K) component",
+      "files": [
+        {
+          "path": "app/registry/command-palette/command-palette.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-palette.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "next-themes"
+      ]
+    },
+    {
+      "name": "command-palette-demo",
+      "type": "registry:component",
+      "title": "Command Palette Demo",
+      "description": "Demo usage for the Command Palette component",
+      "files": [
+        {
+          "path": "app/registry/command-palette/command-palette-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-palette-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/command-palette",
+        "button"
+      ]
     }
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-palette-demo",
+  "title": "Command Palette Demo",
+  "description": "Demo usage for the Command Palette component",
+  "registryDependencies": [
+    "@spectrumui/command-palette",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/command-palette/command-palette-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState, useEffect } from \"react\"\nimport { CommandPalette } from \"./command-palette\"\nimport { Button } from \"@/components/ui/button\"\n\nexport default function CommandPaletteDemo() {\n  const [isOpen, setIsOpen] = useState(false)\n\n  // Listen for global command/control key trigger\n  useEffect(() => {\n    const handleKeyDown = (e: KeyboardEvent) => {\n      if ((e.metaKey || e.ctrlKey) && e.key === \"k\") {\n        e.preventDefault()\n        setIsOpen((open) => !open)\n      }\n    }\n    window.addEventListener(\"keydown\", handleKeyDown)\n    return () => window.removeEventListener(\"keydown\", handleKeyDown)\n  }, [])\n\n  return (\n    <div className=\"flex flex-col items-center justify-center gap-4 py-8 text-center select-none\">\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Press <kbd className=\"bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-1.5 py-0.5 rounded text-xs font-mono font-medium text-neutral-800 dark:text-neutral-200\">⌘K</kbd> or <kbd className=\"bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-1.5 py-0.5 rounded text-xs font-mono font-medium text-neutral-800 dark:text-neutral-200\">Ctrl+K</kbd> to open the palette\n      </p>\n      \n      <Button\n        variant=\"outline\"\n        onClick={() => setIsOpen(true)}\n        className=\"rounded-xl px-5 py-2 hover:bg-neutral-50 dark:hover:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 font-medium text-sm transition-colors cursor-pointer\"\n      >\n        Open Command Palette\n      </Button>\n\n      <CommandPalette isOpen={isOpen} onClose={() => setIsOpen(false)} />\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/command-palette-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

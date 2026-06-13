@@ -55,6 +55,7 @@ const HeadingWithAnchorPage = () => {
       <PreviewCodeCard path="app/(docs)/docs/heading-with-anchor/heading-with-anchor-demo.tsx"
         installScript="npm i @radix-ui/react-slot class-variance-authority"
         installCodePath="components/ui/heading-with-anchor.tsx"
+        cli="@spectrumui/heading-with-anchor"
       >
         <HeadingDemo />
       </PreviewCodeCard>

@@ -94,6 +94,12 @@ export const DOCS: Documentation[] = [
       { label: 'Button', value: 'button', url: '/docs/button' },
       { label: 'Card', value: 'card', url: '/docs/card' },
       {
+        label: 'Command Palette',
+        value: 'command-palette',
+        url: '/docs/command-palette',
+        new: true,
+      },
+      {
         label: 'Datetime Picker',
         value: 'datetime-picker',
         url: '/docs/datetime-picker',
