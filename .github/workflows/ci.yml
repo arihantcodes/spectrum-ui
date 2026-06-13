@@ -16,6 +16,11 @@ jobs:
       NEXT_PUBLIC_SUPABASE_URL: "https://dummy-project.supabase.co"
       NEXT_PUBLIC_SUPABASE_ANON_KEY: "dummy-anon-key"
       SUPABASE_SERVICE_ROLE_KEY: "dummy-service-key"
+      RESEND_API_KEY: "re_dummy_key"
+      DODO_PAYMENTS_API_KEY: "dummy-dodo-key"
+      DODO_PAYMENTS_RETURN_URL: "https://dummy.url"
+      DODO_PAYMENTS_ENVIRONMENT: "test_mode"
+      AUTH_SECRET: "dummy-secret-key-that-is-long-enough-32-chars"
 
     steps:
       - name: Checkout Code
