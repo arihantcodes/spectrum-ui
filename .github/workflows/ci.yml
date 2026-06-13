@@ -12,6 +12,10 @@ jobs:
   validate:
     name: Validate Registry & Build Site
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: "https://dummy-project.supabase.co"
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: "dummy-anon-key"
+      SUPABASE_SERVICE_ROLE_KEY: "dummy-service-key"
 
     steps:
       - name: Checkout Code
