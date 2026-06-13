@@ -88,7 +88,7 @@ const MultipleSelectorPage = () => {
       <Usage
         title="Disable Option"
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-disable-option.tsx"
-        cli="@spectrumui/multiple-selector-with-disable-option"
+        cli="@spectrumui/multiple-selector-with-disable-options"
       >
         <MultipleSelectorWithDisabledOption />
       </Usage>
@@ -263,7 +263,7 @@ const MultipleSelectorPage = () => {
           </>
         }
         path="app/(docs)/docs//multiple-selector/usage/multiple-selector-manually-controlled-options.tsx"
-        cli="@spectrumui/multiple-selector-manually-controlled-options"
+        cli="@spectrumui/multiple-selector-manually-controlled"
       >
         <MultipleSelectorManuallyControlledOptions />
       </Usage>

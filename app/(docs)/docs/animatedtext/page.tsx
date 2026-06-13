@@ -68,9 +68,9 @@ const Textanimation = () => {
 
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/ink-morph.tsx"
-        cli="@spectrumui/ink-morph"
+        cli="@spectrumui/ink"
       
-        installScript="npx shadcn@latest add @spectrumui/ink-morph"
+        installScript="npx shadcn@latest add @spectrumui/ink"
         installCodePath="app/(docs)/docs/animatedtext/usage/ink.tsx"
       >
         <ReloadableInk />
