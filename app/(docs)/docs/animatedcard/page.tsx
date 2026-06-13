@@ -5,7 +5,7 @@ import {
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
-import AnimatedCardDemo from "./animatedCarddemo";
+import AnimatedCardDemo from "./animatedcarddemo";
 import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
@@ -44,10 +44,10 @@ const DualRangeSliderPage = () => {
     >
       <PageTemplate title="Animated Card">
       <PreviewCodeCard
-        path="app/(docs)/docs/animatedcard/animatedCarddemo.tsx"
+        path="app/(docs)/docs/animatedcard/animatedcarddemo.tsx"
         cli="@spectrumui/animated-card"
         installScript="npm i lucide-react framer-motion"
-        installCodePath="app/(docs)/docs/animatedcard/animatedCard.tsx"
+        installCodePath="app/(docs)/docs/animatedcard/animatedcard.tsx"
       >
         <AnimatedCardDemo />
       </PreviewCodeCard>
