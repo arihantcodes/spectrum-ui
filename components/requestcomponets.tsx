@@ -44,15 +44,20 @@ export default function RequestComponents() {
   return (
     <Dialog open={open}  onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="group relative inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-medium text-foreground overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]">
-          <span className="absolute inset-0 rounded-full border border-border" />
+        <button className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl sm:rounded-full px-4 py-3 sm:py-1.5 text-xs font-medium text-foreground overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]">
+          <span className="absolute inset-0 rounded-xl sm:rounded-full border border-border" />
           <span
             className="absolute inset-[-200%] animate-[gradient-spin_3s_linear_infinite]
               bg-[conic-gradient(from_0deg,#f97316,#ec4899,#8b5cf6,#3b82f6,#06b6d4,#f97316)]"
           />
-          <span className="absolute inset-[1.5px] rounded-full bg-background" />
-          <Lightbulb className="relative z-10 h-3.5 w-3.5 text-amber-500" />
-          <span className="relative z-10">Request Component</span>
+          <span className="absolute inset-[1.5px] rounded-[10px] sm:rounded-full bg-background" />
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-1.5 text-center">
+            <span className="opacity-80">Not found what you are looking for?</span>
+            <div className="flex items-center gap-1.5">
+              <Lightbulb className="h-3.5 w-3.5 text-amber-500" />
+              <span>Request a component, we will ship it to you.</span>
+            </div>
+          </div>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[440px] rounded-xl border-border/50 bg-background p-0 gap-0 overflow-hidden">

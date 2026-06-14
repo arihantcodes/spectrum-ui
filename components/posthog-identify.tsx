@@ -34,7 +34,7 @@ export function PostHogIdentify() {
       // Reset so the next anonymous session starts fresh (posthog handles this safely)
       posthog.reset();
     }
-  }, [status, session?.user?.email]);
+  }, [status, session?.user]);
 
   return null; // purely side-effect component, renders nothing
 }

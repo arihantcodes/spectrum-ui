@@ -1975,6 +1975,38 @@
       "registryDependencies": [
         "@spectrumui/dock"
       ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:component",
+      "title": "Bento Grid",
+      "description": "A premium interactive Bento Grid component",
+      "files": [
+        {
+          "path": "app/registry/bento-grid/bento-grid.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/bento-grid.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/bento-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/bento-card.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/spotlight.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/spotlight.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/border-beam.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/border-beam.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
     }
   ]
 }
