@@ -1922,6 +1922,61 @@
       ]
     },
     {
+      "name": "dock",
+      "type": "registry:component",
+      "title": "Dock",
+      "description": "A premium macOS-Style Animated Dock Menu component",
+      "files": [
+        {
+          "path": "app/registry/spectrumui/dock.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/dock.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "dock-demo",
+      "type": "registry:component",
+      "title": "Dock Demo",
+      "description": "Demo usage for the macOS-Style Animated Dock Menu component",
+      "files": [
+        {
+          "path": "app/registry/dock/dock-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/dock-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/dock"
+      ]
+    },
+    {
+      "name": "dock-glass",
+      "type": "registry:component",
+      "title": "Dock Glass",
+      "description": "Glassmorphism variant demo for the macOS-Style Animated Dock Menu component",
+      "files": [
+        {
+          "path": "app/registry/dock/usage/dock-glass.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/dock-glass.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/dock"
+      ]
+    },
+    {
       "name": "bento-grid",
       "type": "registry:component",
       "title": "Bento Grid",

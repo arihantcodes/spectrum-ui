@@ -97,35 +97,28 @@ const InstallCommand = ({
   if (isLocked) {
     return (
       <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden">
-        {/* Neutral placeholder — no command text visible */}
-        <div className="px-4 py-3 bg-neutral-100 dark:bg-neutral-900 select-none">
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-            <div className="h-2 rounded bg-neutral-200 dark:bg-neutral-800 w-48" />
-            <div className="h-2 rounded bg-neutral-200 dark:bg-neutral-800 w-24" />
-          </div>
-        </div>
+      
 
-        {/* Lock action bar */}
-        <div className="flex items-center justify-between gap-3 px-4 py-3 bg-neutral-50 dark:bg-[#0f0f0f] border-t border-neutral-200 dark:border-neutral-800">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-border">
-              <Lock className="h-3.5 w-3.5 text-foreground" />
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Login to copy installation commands
+        <div className="flex flex-col items-center justify-center gap-4 py-10 px-6 bg-neutral-50 dark:bg-[#101010]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-border">
+            <Lock className="h-4 w-4 text-foreground" />
+          </div>
+          <div className="text-center">
+            <p className="text-sm font-semibold text-foreground">Login to view code</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Create a free account to access component source code
             </p>
           </div>
           <Button
-            id="cli-lock-login-btn"
+            id="code-lock-login-btn"
             size="sm"
             onClick={() => {
-              trackEvent({ name: "copy_cli_clicked", properties: { authenticated: false } });
+              trackEvent({ name: 'view_code_clicked', properties: { authenticated: false } });
               openAuthModal();
             }}
-            className="h-8 px-4 shrink-0 text-xs font-medium"
+            className="h-9 px-5 font-medium"
           >
-            Login
+            Login to view code
           </Button>
         </div>
       </div>
