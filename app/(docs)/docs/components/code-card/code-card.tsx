@@ -21,6 +21,8 @@ interface CodeCardProps {
   installScript?: string;
   /** Full source of the component file shown in the Installation tab */
   installCode?: string;
+  /** Optional custom content to show in the installation tab */
+  installContent?: React.ReactNode;
 }
 
 const CodeCard = ({
@@ -31,8 +33,9 @@ const CodeCard = ({
   componentName,
   installScript,
   installCode,
+  installContent,
 }: CodeCardProps) => {
-  const hasInstallTab = !!(installScript || installCode);
+  const hasInstallTab = !!(installScript || installCode || installContent);
 
   const handleTabChange = (tab: string) => {
     posthog.capture("tab_switched", {
@@ -88,7 +91,7 @@ const CodeCard = ({
             CLI <span className="text-[12px] font-normal text-muted-foreground/70 ml-1">(one command installation)</span>
           </TabsTrigger>
 
-          {/* Installation — only shown when installScript or installCode are provided */}
+          {/* Installation — only shown when installScript or installCode or installContent are provided */}
           {hasInstallTab && (
             <TabsTrigger
               value="installation"
@@ -123,36 +126,45 @@ const CodeCard = ({
 
       {/* ── Installation (bash + component source) ──────────── */}
       {hasInstallTab && (
-        <TabsContent value="installation" className="mt-4 flex flex-col gap-4">
-          {/* Step 1 — bash install command */}
-          {installScript && (
-            <div className="flex flex-col gap-1.5">
-              <p className="text-sm font-medium text-muted-foreground px-1">
-                1. Install dependencies
-              </p>
-              <InstallCommand
-                code={installScript}
-                lang="bash"
-                inTab
-                requireAuth
-              />
-            </div>
-          )}
+        <TabsContent value="installation" className="mt-4">
+          <div className="flex flex-col gap-4">
+            {/* Step 1 — bash install command */}
+            {installScript && (
+              <div className="flex flex-col gap-1.5">
+                <p className="text-sm font-medium text-muted-foreground px-1">
+                  1. Install dependencies
+                </p>
+                <InstallCommand
+                  code={installScript}
+                  lang="bash"
+                  inTab
+                  requireAuth
+                />
+              </div>
+            )}
 
-          {/* Step 2 — component source code */}
-          {installCode && (
-            <div className="flex flex-col gap-1.5">
-              <p className="text-sm font-medium text-muted-foreground px-1">
-                {installScript ? "2." : "1."} Copy the component
-              </p>
-              <CodeHighlight
-                code={installCode}
-                inTab
-                withExpand
-                requireAuth
-              />
-            </div>
-          )}
+            {/* Step 2 — component source code */}
+            {installCode && (
+              <div className="flex flex-col gap-1.5">
+                <p className="text-sm font-medium text-muted-foreground px-1">
+                  {installScript ? "2." : "1."} Copy the component
+                </p>
+                <CodeHighlight
+                  code={installCode}
+                  inTab
+                  withExpand
+                  requireAuth
+                />
+              </div>
+            )}
+
+            {/* Step 3 — custom install content (e.g. PropsTable) */}
+            {installContent && (
+              <div className="mt-6">
+                {installContent}
+              </div>
+            )}
+          </div>
         </TabsContent>
       )}
     </Tabs>

@@ -115,6 +115,12 @@ export const DOCS: Documentation[] = [
         url: '/docs/dual-range-slider',
       },
       {
+        label: 'Dock',
+        value: 'dock',
+        url: '/docs/dock',
+        new: true,
+      },
+      {
         label: 'Event Calendar',
         value: 'eventcalendar',
         url: '/docs/eventcalendar',

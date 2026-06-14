@@ -17,6 +17,8 @@ interface PreviewCodeCardProps {
   installScript?: string;
   /** Path to the component source file shown in Installation tab */
   installCodePath?: string;
+  /** Optional custom content to show in the installation tab (e.g. PropsTable) */
+  installContent?: React.ReactNode;
 }
 
 const PreviewCodeCard = async ({
@@ -26,6 +28,7 @@ const PreviewCodeCard = async ({
   cli,
   installScript,
   installCodePath,
+  installContent,
 }: PreviewCodeCardProps) => {
   // Read the demo file
   let demoCode: string;
@@ -56,6 +59,7 @@ const PreviewCodeCard = async ({
       CLI={cli}
       installScript={installScript}
       installCode={installCode}
+      installContent={installContent}
     >
       <div className="flex items-center justify-center py-10">{children}</div>
     </CodeCardWrapper>

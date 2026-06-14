@@ -70,6 +70,11 @@ export const ROUTES: RoutesProps[] = [
         url: `${BASE_PATH}/datetime-picker`,
       },
       {
+        label: "Dock",
+        value: "dock",
+        url: `${BASE_PATH}/dock`,
+      },
+      {
         label: "Dual Range Slider",
         value: "dual-range-slider",
         url: `${BASE_PATH}/dual-range-slider`,
