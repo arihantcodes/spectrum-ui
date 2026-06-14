@@ -94,6 +94,12 @@ export const DOCS: Documentation[] = [
       { label: 'Button', value: 'button', url: '/docs/button' },
       { label: 'Card', value: 'card', url: '/docs/card' },
       {
+        label: 'Bento Grid',
+        value: 'bento-grid',
+        url: '/docs/bento-grid',
+        new: true,
+      },
+      {
         label: 'Command Palette',
         value: 'command-palette',
         url: '/docs/command-palette',

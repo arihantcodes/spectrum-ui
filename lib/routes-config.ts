@@ -55,6 +55,15 @@ export const ROUTES: RoutesProps[] = [
         url: `${BASE_PATH}/autosize-textarea`,
       },
       {
+        label: "Bento Grid",
+        value: "bento-grid",
+        url: `${BASE_PATH}/bento-grid`,
+        tag: {
+          label: "new",
+          color: "bg-lime-400",
+        },
+      },
+      {
         label: "Button",
         value: "button",
         url: `${BASE_PATH}/button`,
