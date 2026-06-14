@@ -11,7 +11,7 @@ import { InlineCode } from "@/components/ui/inline-code";
 import { PropLink } from "@/app/(docs)/docs/components/props-table/prop-link";
 import MultipleSelectorDemo from "@/app/(docs)/docs/multiple-selector/multiple-selector-demo";
 import MultipleSelectorControlled from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-controlled";
-import MultipleSelectorWithDisabledOption from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-disable-option";
+import MultipleSelectorWithDisabledOption from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-disable-options";
 import MultipleSelectorWithAsyncSearch from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search";
 import MultipleSelectorWithMaxSelected from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-max-selected";
 import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table";
@@ -29,7 +29,7 @@ import MultipleSelectorMaxTextLength from "@/app/(docs)/docs/multiple-selector/u
 import MultipleSelectorRef from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-ref";
 import MultipleSelectorCommandProps from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-commandprops";
 import MultipleSelectorWithAsyncSearchAndOnFocus from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-async-search-and-onfocus";
-import MultipleSelectorManuallyControlledOptions from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-manually-controlled-options";
+import MultipleSelectorManuallyControlledOptions from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-manually-controlled";
 import MultipleSelectorHideClearAll from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-hide-clear-all";
 import MultipleSelectorWithSyncSearch from "@/app/(docs)/docs/multiple-selector/usage/multiple-selector-with-sync-search";
 import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
@@ -87,7 +87,7 @@ const MultipleSelectorPage = () => {
       <PageSubTitle>Usage</PageSubTitle>
       <Usage
         title="Disable Option"
-        path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-disable-option.tsx"
+        path="app/(docs)/docs//multiple-selector/usage/multiple-selector-with-disable-options.tsx"
         cli="@spectrumui/multiple-selector-with-disable-options"
       >
         <MultipleSelectorWithDisabledOption />
@@ -262,7 +262,7 @@ const MultipleSelectorPage = () => {
             </P>
           </>
         }
-        path="app/(docs)/docs//multiple-selector/usage/multiple-selector-manually-controlled-options.tsx"
+        path="app/(docs)/docs//multiple-selector/usage/multiple-selector-manually-controlled.tsx"
         cli="@spectrumui/multiple-selector-manually-controlled"
       >
         <MultipleSelectorManuallyControlledOptions />

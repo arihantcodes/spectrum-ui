@@ -48,7 +48,7 @@ const SkeletonLoadingPage = () => {
       <PreviewCodeCard
         path="app/(docs)/docs/accordion/accordion-demo.tsx"
         installCodePath="components/ui/accordion.tsx"
-        cli="accordion"
+        cli="@spectrumui/accordion"
       >
         {<AccordionDemo />}
       </PreviewCodeCard>

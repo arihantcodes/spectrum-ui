@@ -8,10 +8,10 @@
   ],
   "files": [
     {
-      "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-option.tsx",
+      "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-options.tsx",
       "content": "import React from \"react\";\nimport MultipleSelector, {\n  Option,\n} from \"@/app/registry/spectrumui/multiple-selector-dependencies\";\n\nconst OPTIONS: Option[] = [\n  { label: \"nextjs\", value: \"Nextjs\" },\n  { label: \"Vite\", value: \"vite\", disable: true },\n  { label: \"Nuxt\", value: \"nuxt\", disable: true },\n  { label: \"Vue\", value: \"vue, disable: true\", disable: true },\n  { label: \"Remix\", value: \"remix\" },\n  { label: \"Svelte\", value: \"svelte\", disable: true },\n  { label: \"Angular\", value: \"angular\", disable: true },\n  { label: \"Ember\", value: \"ember\", disable: true },\n  { label: \"React\", value: \"react\" },\n  { label: \"Gatsby\", value: \"gatsby\", disable: true },\n  { label: \"Astro\", value: \"astro\", disable: true },\n];\n\nconst MultipleSelectorWithDisabledOption = () => {\n  return (\n    <div className=\"flex w-full flex-col gap-5 px-10\">\n      <MultipleSelector\n        defaultOptions={OPTIONS}\n        placeholder=\"Select frameworks you like...\"\n        emptyIndicator={\n          <p className=\"text-center text-lg leading-10 text-gray-600 dark:text-gray-400\">\n            no results found.\n          </p>\n        }\n      />\n    </div>\n  );\n};\n\nexport default MultipleSelectorWithDisabledOption;\n",
       "type": "registry:component",
-      "target": "components/spectrumui/multiple-selector-with-disable-option.tsx"
+      "target": "components/spectrumui/multiple-selector-with-disable-options.tsx"
     }
   ],
   "type": "registry:component"

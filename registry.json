@@ -956,9 +956,9 @@
       "description": "component for the Multiple Selector With Disable Options",
       "files": [
         {
-          "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-option.tsx",
+          "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-options.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/multiple-selector-with-disable-option.tsx"
+          "target": "components/spectrumui/multiple-selector-with-disable-options.tsx"
         }
       ],
       "registryDependencies": [
@@ -1154,7 +1154,7 @@
       "description": "component for the Multiple Selector Manually Controlled",
       "files": [
         {
-          "path": "app/registry/multiple-selector/usage/multiple-selector-manually-controlled-options.tsx",
+          "path": "app/registry/multiple-selector/usage/multiple-selector-manually-controlled.tsx",
           "type": "registry:component",
           "target": "components/spectrumui/multiple-selector-manually-controlled.tsx"
         }
@@ -1646,6 +1646,22 @@
       "registryDependencies": [
         "@spectrumui/responsive-modal-dependencies",
         "button"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:component",
+      "title": "Accordion",
+      "description": "component for the Accordion",
+      "files": [
+        {
+          "path": "app/registry/accordion/accordion-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "accordion"
       ]
     },
     {

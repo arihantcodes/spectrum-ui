@@ -1,11 +1,15 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { CommandPalette } from "./command-palette"
 import { Button } from "@/components/ui/button"
 
 export default function CommandPaletteDemo() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false)
+  }, [])
 
   // Listen for global command/control key trigger
   useEffect(() => {
@@ -33,7 +37,7 @@ export default function CommandPaletteDemo() {
         Open Command Palette
       </Button>
 
-      <CommandPalette isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <CommandPalette isOpen={isOpen} onClose={handleClose} />
     </div>
   )
 }
