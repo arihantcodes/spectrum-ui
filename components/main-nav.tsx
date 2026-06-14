@@ -55,6 +55,12 @@ export function MainNav() {
         )}>
           Blogs
         </Link>
+        <Link href="/founder-story" className={cn(
+          'transition-colors hover:text-foreground/80',
+          pathname === '/founder-story' ? 'text-foreground' : 'text-foreground/80',
+        )}>
+          Founder Story
+        </Link>
       </nav>
     </div>
   );
