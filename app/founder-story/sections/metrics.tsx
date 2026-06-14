@@ -31,7 +31,7 @@ export function MetricsSection() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={containerRef} className="py-48 w-full max-w-5xl mx-auto flex flex-col items-center">
+    <section ref={containerRef} className="py-24 md:py-32 w-full max-w-5xl mx-auto flex flex-col items-center">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 w-full text-center">
         
         {/* Metric 1 */}
