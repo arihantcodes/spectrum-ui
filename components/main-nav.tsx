@@ -56,10 +56,13 @@ export function MainNav() {
           Blogs
         </Link>
         <Link href="/founder-story" className={cn(
-          'transition-colors hover:text-foreground/80',
+          'transition-colors hover:text-foreground/80 flex items-center',
           pathname === '/founder-story' ? 'text-foreground' : 'text-foreground/80',
         )}>
           Founder Story
+          <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
+            New
+          </span>
         </Link>
       </nav>
     </div>
