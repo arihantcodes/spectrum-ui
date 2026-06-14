@@ -1,5 +1,5 @@
 'use client'
-import AnimatedCard from './animatedCard';
+import AnimatedCard from './animatedcard';
 import { easeInOut, motion } from 'framer-motion';
 import { useState } from 'react';
 
@@ -25,7 +25,7 @@ const tools = [
     aboutProduct: 'Beautiful, accessible components built using Radix UI and Tailwind CSS.',
   },
   {
-    imgSrc: 'aceternity.svg',
+    imgSrc: '/aceternity.svg',
     title: 'Aceternity UI',
 
     aboutProduct: 'Beautiful, accessible components built using Shadcn UI and Tailwind CSS.',
@@ -35,9 +35,9 @@ const tools = [
 export default function AnimatedCardDemo() {
   const [touchComponent, setTouchComponent] = useState(false);
 
-  const rotateDegree = [-20, -10, 0, 20];
-  const xAxis = [-300, -50, 240, 330];
-  const yAxis = [-60, -120, -140, -100];
+  const rotateDegree = [-20, -10, 5, 17];
+  const xAxis = [-300, -85, 150, 340];
+  const yAxis = [-65, -120, -135, -94];
   const initialRotation = [0, 6, 12, 17];
   const zIndex = [40, 30, 20, 10];
 

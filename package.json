@@ -11,7 +11,8 @@
     "format:check": "prettier -c .",
     "format": "prettier --write .",
     "prepare": "husky",
-    "test": "node tests/dummy.test.js"
+    "test:registry": "node tests/registry.test.js",
+    "test": "npm run test:registry"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

@@ -956,9 +956,9 @@
       "description": "component for the Multiple Selector With Disable Options",
       "files": [
         {
-          "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-option.tsx",
+          "path": "app/registry/multiple-selector/usage/multiple-selector-with-disable-options.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/multiple-selector-with-disable-option.tsx"
+          "target": "components/spectrumui/multiple-selector-with-disable-options.tsx"
         }
       ],
       "registryDependencies": [
@@ -1154,7 +1154,7 @@
       "description": "component for the Multiple Selector Manually Controlled",
       "files": [
         {
-          "path": "app/registry/multiple-selector/usage/multiple-selector-manually-controlled-options.tsx",
+          "path": "app/registry/multiple-selector/usage/multiple-selector-manually-controlled.tsx",
           "type": "registry:component",
           "target": "components/spectrumui/multiple-selector-manually-controlled.tsx"
         }
@@ -1649,6 +1649,22 @@
       ]
     },
     {
+      "name": "accordion",
+      "type": "registry:component",
+      "title": "Accordion",
+      "description": "component for the Accordion",
+      "files": [
+        {
+          "path": "app/registry/accordion/accordion-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "accordion"
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:component",
       "title": "Skeleton",
@@ -1868,6 +1884,41 @@
         "motion",
         "vaul",
         "react-use-measure"
+      ]
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:component",
+      "title": "Command Palette",
+      "description": "A fully customizable, smooth-animated Command Palette (Cmd+K) component",
+      "files": [
+        {
+          "path": "app/registry/command-palette/command-palette.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-palette.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "next-themes"
+      ]
+    },
+    {
+      "name": "command-palette-demo",
+      "type": "registry:component",
+      "title": "Command Palette Demo",
+      "description": "Demo usage for the Command Palette component",
+      "files": [
+        {
+          "path": "app/registry/command-palette/command-palette-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-palette-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/command-palette",
+        "button"
       ]
     }
   ]
