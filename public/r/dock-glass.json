@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock-glass",
+  "title": "Dock Glass",
+  "description": "Glassmorphism variant demo for the macOS-Style Animated Dock Menu component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@spectrumui/dock"
+  ],
+  "files": [
+    {
+      "path": "app/registry/dock/usage/dock-glass.tsx",
+      "content": "\"use client\";\n\nimport React from \"react\";\n// import { Dock, DockIcon } from \"@/components/spectrumui/dock\";\nimport { Dock, DockIcon } from \"@/app/registry/spectrumui/dock\";\nimport {\n  Home,\n  User,\n  Code2,\n  FolderGit2,\n  BookOpen,\n  MessageSquare,\n  Settings,\n} from \"lucide-react\";\n\nexport default function DockGlassDemo() {\n  const links = [\n    { icon: <Home className=\"h-full w-full\" />, label: \"Home\" },\n    { icon: <User className=\"h-full w-full\" />, label: \"Profile\" },\n    { icon: <Code2 className=\"h-full w-full\" />, label: \"Projects\" },\n    { icon: <FolderGit2 className=\"h-full w-full\" />, label: \"Repositories\" },\n    { icon: <BookOpen className=\"h-full w-full\" />, label: \"Blog\" },\n    { icon: <MessageSquare className=\"h-full w-full\" />, label: \"Contact\" },\n    { icon: <Settings className=\"h-full w-full\" />, label: \"Settings\" },\n  ];\n\n  return (\n    <div className=\"flex w-full items-center justify-center py-8\">\n      <Dock variant=\"glass\">\n        {links.map((link, idx) => (\n          <DockIcon key={idx} label={link.label}>\n            {link.icon}\n          </DockIcon>\n        ))}\n      </Dock>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/dock-glass.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
