@@ -1,19 +1,27 @@
 "use client"
 
-import React, { useRef } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // Parallax effects
-  const yText = useTransform(scrollYProgress, [0, 1], [0, 200])
-  const yImage = useTransform(scrollYProgress, [0, 1], [0, 400])
+  // Parallax effects (disabled on mobile to avoid translation overflow in vertical stacks)
+  const yText = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : 200])
+  const yImage = useTransform(scrollYProgress, [0, 1], [0, isMobile ? 0 : 300])
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   return (
@@ -59,7 +67,7 @@ export function HeroSection() {
         {/* Right Content (Founder Image) */}
         <motion.div 
           style={{ y: yImage }}
-          className="lg:col-span-5 relative w-full aspect-[4/5] md:aspect-square lg:aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer"
+          className="lg:col-span-5 relative w-full aspect-[16/9] sm:aspect-square lg:aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer"
         >
           {/* Base Image */}
           <motion.img 

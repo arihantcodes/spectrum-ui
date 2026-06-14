@@ -71,8 +71,9 @@ export function RepetitionSection() {
       </div>
 
       {/* Interactive Layout Sandbox Container */}
-      <div className="w-full max-w-2xl px-4 min-h-[380px] flex items-center justify-center relative">
-        <AnimatePresence mode="wait">
+      <div className="w-full overflow-hidden min-h-[200px] xs:min-h-[240px] md:min-h-[360px] flex items-center justify-center relative">
+        <div className="w-[580px] h-[340px] shrink-0 scale-[0.52] xs:scale-[0.66] sm:scale-[0.8] md:scale-100 origin-center">
+          <AnimatePresence mode="wait">
           {/* SaaS Layout */}
           {step === 0 && (
             <motion.div 
@@ -353,7 +354,8 @@ export function RepetitionSection() {
               </motion.div>
             </motion.div>
           )}
-        </AnimatePresence>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Manifesto Quote revealed during collapse/snap */}

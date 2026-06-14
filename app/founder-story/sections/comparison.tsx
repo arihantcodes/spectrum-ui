@@ -28,7 +28,7 @@ function ChaosWindow({ title, content, className, rotate, hoverRotate, x, y, hov
         zIndex: 50
       }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className={`absolute p-4 rounded-xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg w-52 font-mono text-[10px] text-neutral-400 select-none ${className}`}
+      className={`absolute p-3 sm:p-4 rounded-xl border border-neutral-200 dark:border-neutral-800/80 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg w-40 sm:w-52 font-mono text-[8.5px] sm:text-[10px] text-neutral-400 select-none ${className}`}
     >
       <div className="flex items-center space-x-1.5 border-b border-neutral-100 dark:border-neutral-800 pb-2 mb-2">
         <div className="w-1.5 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
@@ -133,7 +133,7 @@ export function ComparisonSection() {
               The Before (Tab Hell)
             </h4>
             
-            <div className="relative w-full h-[280px]">
+            <div className="relative w-full h-[280px] scale-[0.85] sm:scale-100 origin-center">
               <ChaosWindow 
                 title="stackoverflow.com"
                 content="How to override layout boundary component tailwind overrides..."

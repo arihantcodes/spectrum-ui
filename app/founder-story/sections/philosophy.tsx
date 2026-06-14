@@ -22,7 +22,7 @@ export function PhilosophySection() {
         {/* Left Column (Stretches to the height of the grid, parent of sticky container) */}
         <div>
           <div className="lg:sticky lg:top-32 w-full">
-            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden group">
+            <div className="relative w-full aspect-[16/9] sm:aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden group">
               <motion.img 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
