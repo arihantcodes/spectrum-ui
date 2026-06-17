@@ -40,15 +40,15 @@ export function MainNav() {
             Pro
           </span>
         </Link> */}
-        <Link
-          href="/blocks"
+        {/* <Link
+          href="/templates"
           className={cn(
             'transition-colors hover:text-foreground/80',
-            pathname?.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/80',
+            pathname?.startsWith('/templates') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Blocks
-        </Link>
+          Templates
+        </Link> */}
         <Link href="/blog" className={cn(
           'transition-colors hover:text-foreground/80',
           pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',

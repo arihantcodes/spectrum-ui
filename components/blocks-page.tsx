@@ -10,7 +10,10 @@ import {
   File,
   Folder,
   FolderOpen,
+  Download,
 } from "lucide-react";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -65,6 +68,43 @@ export function BlocksPage({
   const [customHeight, setCustomHeight] = React.useState(800);
   const [isResizing, setIsResizing] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
+  const [isDownloading, setIsDownloading] = React.useState(false);
+
+  const handleDownload = async () => {
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+
+      const addFilesToZip = (nodes: FileNode[], currentFolder: JSZip) => {
+        nodes.forEach((node) => {
+          if (node.type === "file" && node.content) {
+            currentFolder.file(node.name, node.content);
+          } else if (node.type === "folder" && node.children) {
+            const newFolder = currentFolder.folder(node.name);
+            if (newFolder) {
+              addFilesToZip(node.children, newFolder);
+            }
+          }
+        });
+      };
+
+      addFilesToZip(files, zip);
+
+      const blob = await zip.generateAsync({ type: "blob" });
+      const downloadName = blockName
+        ? `${blockName.toLowerCase().replace(/\s+/g, "-")}.zip`
+        : "spectrum-ui-block.zip";
+      saveAs(blob, downloadName);
+
+      posthog.capture("block_downloaded", {
+        block_name: blockName || title,
+      });
+    } catch (error) {
+      console.error("Failed to generate zip file", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   // Fire block_viewed once on mount
   React.useEffect(() => {
@@ -276,14 +316,29 @@ export function BlocksPage({
             </div>
             <span className="text-sm text-muted-foreground">{title}</span>
           </div>
-          {/* Bookmark button */}
-          {(blockSlug ?? blockName) && (
-            <BookmarkButton
-              slug={(blockSlug ?? blockName ?? title).toLowerCase().replace(/\s+/g, "-")}
-              type="block"
-              title={blockName ?? title}
-            />
-          )}
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDownload}
+              disabled={isDownloading}
+              className="gap-2"
+            >
+              <Download className="h-4 w-4" />
+              <span className="hidden sm:inline">
+                {isDownloading ? "Zipping..." : "Download"}
+              </span>
+            </Button>
+            {/* Bookmark button */}
+            {(blockSlug ?? blockName) && (
+              <BookmarkButton
+                slug={(blockSlug ?? blockName ?? title).toLowerCase().replace(/\s+/g, "-")}
+                type="block"
+                title={blockName ?? title}
+              />
+            )}
+          </div>
         </div>
 
         {/* Content */}

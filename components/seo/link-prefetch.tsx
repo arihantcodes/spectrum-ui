@@ -20,7 +20,6 @@ export function LinkPrefetch() {
       "/docs/card",
       "/docs/navbar",
       "/docs/modal",
-      "/blocks",
     ];
 
     // Prefetch after a short delay to not impact initial load

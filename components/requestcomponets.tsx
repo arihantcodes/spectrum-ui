@@ -52,8 +52,7 @@ export default function RequestComponents() {
           />
           <span className="absolute inset-[1.5px] rounded-[10px] sm:rounded-full bg-background" />
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-1.5 text-center">
-            <span className="opacity-80">Not found what you are looking for?</span>
-            <div className="flex items-center gap-1.5">
+           <div className="flex items-center gap-1.5">
               <Lightbulb className="h-3.5 w-3.5 text-amber-500" />
               <span>Request a component, we will ship it to you.</span>
             </div>

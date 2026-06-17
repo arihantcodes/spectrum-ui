@@ -45,12 +45,8 @@ const mainNav = [
     href: "/",
   },
   {
-    title: "Documentation",
-    href: "/docs",
-  },
-  {
-    title: "Blocks",
-    href: "/blocks",
+    title: "Colors",
+    href: "/colors",
   },
   {
     title: "Pro",

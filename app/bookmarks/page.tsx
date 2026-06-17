@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'My Bookmarks',
-  description: 'Your saved Spectrum UI components and blocks.',
+  description: 'Your saved Spectrum UI components.',
   robots: { index: false, follow: false },
 };
 
@@ -79,16 +79,13 @@ export default async function BookmarksPage() {
             </div>
             <h2 className="text-xl font-semibold mb-2">No bookmarks yet</h2>
             <p className="text-muted-foreground max-w-sm mb-6">
-              Browse components and blocks, then click the{' '}
+              Browse components, then click the{' '}
               <Bookmark className="inline h-4 w-4 mx-0.5 align-text-bottom" /> bookmark
               icon to save them here for quick access.
             </p>
             <div className="flex gap-3">
               <Button asChild>
                 <Link href="/docs">Browse Components</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/blocks">Browse Blocks</Link>
               </Button>
             </div>
           </div>
@@ -112,12 +109,12 @@ export default async function BookmarksPage() {
           </section>
         )}
 
-        {/* Blocks section */}
+        {/* Templates section */}
         {blocks.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-5">
               <Layers className="h-5 w-5 text-muted-foreground" />
-              <h2 className="text-base font-semibold">Blocks</h2>
+              <h2 className="text-base font-semibold">Templates</h2>
               <Badge variant="secondary" className="text-xs">
                 {blocks.length}
               </Badge>
@@ -138,7 +135,7 @@ function BookmarkCard({ bookmark }: { bookmark: BookmarkRow }) {
   const href =
     bookmark.type === 'component'
       ? `/docs/${bookmark.slug}`
-      : `/blocks/${bookmark.slug}`;
+      : `/templates/${bookmark.slug}`;
 
   const savedAt = new Date(bookmark.created_at).toLocaleDateString('en-US', {
     month: 'short',

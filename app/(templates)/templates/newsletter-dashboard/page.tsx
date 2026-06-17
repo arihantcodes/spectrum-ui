@@ -2,8 +2,8 @@
 import { BlocksPage } from "@/components/blocks-page";
 
 import { useTheme } from "next-themes";
-import NewsletterDashboard from "./newsletter";
-import Dashboardblock from "./dashboard";
+import NewsletterDashboard from "../newsletter";
+import Dashboardblock from "../dashboard";
 
 const sampleFiles = [
   {
@@ -2929,23 +2929,13 @@ export default function BlocksPageDemo() {
   return (
     <div className="container-wrapper h-full p-12">
       <BlocksPage
-        title="A Newsletter Dashboard"
+        title="Newsletter Dashboard"
         previewComponent={<NewsletterDashboard />}
         files={sampleFiles}
         defaultFile="app/dashboard/page.tsx"
         theme={resolvedTheme as "light" | "dark"}
         shikiTheme={currentShikiTheme}
       />
-      <div className="mt-12">
-        <BlocksPage
-          title="A Pharmacy Dashboard"
-          previewComponent={<Dashboardblock />}
-          files={sampleFiles2}
-          defaultFile="app/dashboard/page.tsx"
-          theme={resolvedTheme as "light" | "dark"}
-          shikiTheme={currentShikiTheme}
-        />
-      </div>
     </div>
   );
 }

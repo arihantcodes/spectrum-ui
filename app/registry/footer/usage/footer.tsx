@@ -40,14 +40,7 @@ export default function Footer() {
                     Docs
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="/blocks"
-                    className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
-                  >
-                    Blocks
-                  </Link>
-                </li>
+
                 <li>
                   <Link
                     href="/colors"
