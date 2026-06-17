@@ -3,7 +3,6 @@ import { BlocksPage } from "@/components/blocks-page";
 
 import { useTheme } from "next-themes";
 import NewsletterDashboard from "../newsletter";
-import Dashboardblock from "../dashboard";
 
 const sampleFiles = [
   {

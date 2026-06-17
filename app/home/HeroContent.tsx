@@ -39,16 +39,16 @@ export function HeroContent() {
           </AnimateEnter>
           <AnimateEnter delay={0.3} duration={2}>
             <h1 className="mx-auto text-center max-w-5xl px-4 font-bold text-2xl md:text-6xl leading-tight tracking-tight">
-              <span className="block text-gradient mb-1">Instant UI Components</span>
+              <span className="block text-gradient mb-1">Production-ready Components.</span>
               <span className="">
-                Just Copy, Paste &amp; Done
+                Built to help you ship faster.
               </span>
             </h1>
           </AnimateEnter>
         </div>
         <AnimateEnter delay={0.5} duration={2} className="mb-6 sm:mb-8">
           <p className="container mx-auto  md:max-w-lg text-[12px] sm:text-base text-foreground">
-            250+ Production ready components, built with Next.js, shadcn/ui and Tailwind CSS.
+            250+  React components, blocks, and animations powered by Tailwind CSS and Framer Motion.
           </p>
         </AnimateEnter>
         <AnimateEnter className="flex items-center justify-center gap-3" delay={0.7} duration={2}>
