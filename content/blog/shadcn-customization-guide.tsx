@@ -16,43 +16,35 @@ const blogPost = {
   content: (
     <div className="space-y-6">
       <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        What Makes Shadcn Different from Every Other Component Library
+        The Ownership Model
       </h2>
       <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Shadcn UI isn&apos;t like other React component libraries. With most libraries, you install a package, import components, and hope the default styling works for your project. When it doesn&apos;t, you&apos;re stuck fighting with overrides and !important rules. Shadcn takes a completely different approach. Instead of installing packages, you copy the actual source code directly into your project. You own every single line.
+        Most component libraries lock you into an \`npm\` package. The moment you need a variant they didn't anticipate, you're overriding classes with \`!important\` or waiting on a PR. Shadcn UI flips this model: you copy the raw code into your repository. You own it.
       </p>
       <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        This means you can change whatever you want. Want to tweak the button border radius? Go ahead. Want to add a new variant to your card component? Just edit the file. No waiting for the library maintainer to accept a pull request. No digging through node_modules. The code is right there in your project, and it&apos;s yours to shape however you need.
-      </p>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        But with great power comes the need for a good strategy. If you start making random changes without a plan, you&apos;ll end up with a mess that&apos;s hard to maintain and even harder to update. This guide will show you exactly how to customize shadcn components the right way, whether you&apos;re building with Next.js, React, or any frontend framework that uses Tailwind CSS. Let&apos;s walk through four proven methods that will make your design system truly yours.
-      </p>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        I&apos;ve been using shadcn in production apps for over a year now, and I&apos;ve tried every customization approach you can imagine. Some worked great, some created nightmares. What I&apos;m sharing here is the distilled version of all those experiments. The stuff that actually works when you&apos;re shipping real web applications with real deadlines and real teams.
+        This ownership is powerful, but dangerous without discipline. Haphazard edits to base components create maintenance nightmares and block future updates. The goal isn't to hack components until they work; it's to systematically adapt them into your own design system.
       </p>
 
-      <div className="bg-muted p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
-        <pre className="text-center">
-{`Shadcn Customization Strategy:
-
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  Install     │────▶│  Customize   │────▶│  Extend      │
-│  Component   │     │  Tokens      │     │  with Wrappers│
-│              │     │              │     │              │
-│ npx shadcn   │     │ CSS vars     │     │ New props    │
-│ add button   │     │ in globals   │     │ New features │
-└──────────────┘     └──────────────┘     └──────────────┘
-                                               │
-                          ┌────────────────────┘
-                          ▼
-                   ┌──────────────┐     ┌──────────────┐
-                   │  Compose     │────▶│  Your Brand  │
-                   │  Patterns    │     │  Design System│
-                   │              │     │              │
-                   │ Forms, Cards │     │ Consistent   │
-                   │ Dashboards   │     │ & Scalable   │
-                   └──────────────┘     └──────────────┘`}
-        </pre>
+      <div className="bg-muted p-6 rounded-lg my-6">
+        <h3 className="font-semibold text-foreground mb-4">The Customization Pipeline</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+          <div className="border border-border bg-background p-4 rounded-md">
+            <div className="font-medium text-primary mb-1">1. Install</div>
+            <p className="text-muted-foreground">Pull the raw component via CLI.</p>
+          </div>
+          <div className="border border-border bg-background p-4 rounded-md">
+            <div className="font-medium text-primary mb-1">2. Tokenize</div>
+            <p className="text-muted-foreground">Adjust global CSS variables.</p>
+          </div>
+          <div className="border border-border bg-background p-4 rounded-md">
+            <div className="font-medium text-primary mb-1">3. Wrap</div>
+            <p className="text-muted-foreground">Extend logic without touching base files.</p>
+          </div>
+          <div className="border border-border bg-background p-4 rounded-md">
+            <div className="font-medium text-primary mb-1">4. Compose</div>
+            <p className="text-muted-foreground">Build complex organisms.</p>
+          </div>
+        </div>
       </div>
 
       <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
@@ -191,31 +183,13 @@ export function cn(...inputs: ClassValue[]) {
         Shadcn has an online theme generator that lets you pick colors visually and gives you the exact CSS variables to paste into your globals.css. It generates both light and dark mode values, saving you tons of time. Just pick your brand colors, copy the output, and paste it in. Your entire app updates in seconds. There are also community tools like shadcn-ui-theme-generator that give you even more control over the output.
       </p>
 
-      <div className="bg-muted p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
-        <pre className="text-center">
-{`CSS Variable Theming Flow:
-
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│   globals.css    │     │  Tailwind Config  │     │   Components     │
-│                  │     │                  │     │                  │
-│  --primary:      │────▶│  primary:        │────▶│  bg-primary      │
-│    270 80% 60%   │     │    hsl(var(      │     │  text-primary    │
-│                  │     │    --primary))   │     │  border-primary  │
-│  --secondary:    │     │                  │     │                  │
-│    210 40% 96%   │     │  secondary:      │     │  bg-secondary    │
-│                  │     │    hsl(var(      │     │  text-secondary  │
-│  --destructive:  │     │    --secondary)) │     │                  │
-│    0 84% 60%     │     │                  │     │  bg-destructive  │
-└──────────────────┘     └──────────────────┘     └──────────────────┘
-        │
-        │  Change once here
-        ▼
-┌──────────────────┐
-│  Entire app      │
-│  updates at once │
-│  Light + Dark    │
-└──────────────────┘`}
-        </pre>
+      <div className="bg-muted p-6 rounded-lg my-6 text-sm">
+        <h3 className="font-semibold text-foreground mb-4">Theming Flow</h3>
+        <ul className="space-y-2 text-muted-foreground">
+          <li><strong>1. Definition:</strong> Define \`H S L\` values in \`globals.css\` (e.g., \`--primary: 270 80% 60%\`).</li>
+          <li><strong>2. Configuration:</strong> Map tokens in \`tailwind.config.js\` using \`hsl(var(--primary))\`.</li>
+          <li><strong>3. Consumption:</strong> Use standard utility classes like \`bg-primary\` or \`text-primary\` in your components.</li>
+        </ul>
       </div>
 
       <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
@@ -417,27 +391,13 @@ export function ConfirmButton({
         </ul>
       </div>
 
-      <div className="bg-muted p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
-        <pre className="text-center">
-{`Wrapper Pattern Architecture:
-
-┌───────────────────────────────────────┐
-│           Your App Code               │
-│  <LoadingButton />  <SearchInput />   │
-└──────────────┬────────────────────────┘
-               │ uses
-┌──────────────▼────────────────────────┐
-│         Wrapper Components            │
-│  LoadingButton  SearchInput  etc.     │
-│  (your custom props + logic)          │
-└──────────────┬────────────────────────┘
-               │ wraps
-┌──────────────▼────────────────────────┐
-│         Shadcn UI Primitives          │
-│  Button  Input  Dialog  Card  etc.    │
-│  (Radix UI + Tailwind CSS)            │
-└───────────────────────────────────────┘`}
-        </pre>
+      <div className="bg-muted p-6 rounded-lg my-6 text-sm">
+        <h3 className="font-semibold text-foreground mb-4">Wrapper Pattern Architecture</h3>
+        <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+          <li><strong>Your App Code:</strong> Consumes the wrapped components (<code>&lt;LoadingButton /&gt;</code>, <code>&lt;SearchInput /&gt;</code>).</li>
+          <li><strong>Wrapper Components:</strong> Holds your custom props and business logic (\`loadingText\`, debouncing).</li>
+          <li><strong>Shadcn UI Primitives:</strong> The untouched base layer handling Radix UI accessibility and raw styling.</li>
+        </ol>
       </div>
 
       <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">

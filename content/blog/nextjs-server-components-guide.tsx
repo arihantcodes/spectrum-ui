@@ -38,35 +38,21 @@ const blogPost = {
         Think of it this way: your page starts as a server component. Any part that needs to respond to user clicks, track form state, or use browser features becomes a client component. Everything else stays on the server. This approach means the browser only downloads JavaScript for the interactive parts of your page, not the entire thing.
       </p>
 
-      <div className="bg-muted p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
-        <pre className="text-center">
-{`How Server Components Work in Next.js:
-
-┌─────────────────────────────────────────────┐
-│              Server (Node.js)                │
-│                                             │
-│  ┌─────────────┐  ┌──────────────────────┐  │
-│  │ Page.tsx     │  │ DataDisplay.tsx       │  │
-│  │ (server)     │  │ (server)             │  │
-│  │              │  │                      │  │
-│  │ fetch data   │  │ render static HTML   │  │
-│  │ access DB    │  │ no JS sent to client │  │
-│  └──────┬──────┘  └──────────────────────┘  │
-│         │                                    │
-└─────────┼────────────────────────────────────┘
-          │ passes data as props
-┌─────────▼────────────────────────────────────┐
-│              Browser (Client)                │
-│                                              │
-│  ┌──────────────────────┐                    │
-│  │ InteractiveChart.tsx  │  "use client"     │
-│  │ (client component)   │                    │
-│  │                      │                    │
-│  │ onClick, useState    │                    │
-│  │ JS sent to browser   │                    │
-│  └──────────────────────┘                    │
-└──────────────────────────────────────────────┘`}
-        </pre>
+      <div className="bg-muted p-6 rounded-lg my-6 text-sm">
+        <h3 className="font-semibold text-foreground mb-4">How Server Components Work</h3>
+        <div className="space-y-4 text-muted-foreground">
+          <div className="border border-border bg-background p-4 rounded-md">
+            <h4 className="font-medium text-primary mb-2">1. Server (Node.js)</h4>
+            <p>Components like <code>Page.tsx</code> and <code>DataDisplay.tsx</code> fetch data, access databases, and render static HTML. No JavaScript is sent to the client.</p>
+          </div>
+          <div className="pl-4 border-l-2 border-primary/20 text-xs">
+            ↳ Passes data as props
+          </div>
+          <div className="border border-border bg-background p-4 rounded-md">
+            <h4 className="font-medium text-primary mb-2">2. Browser (Client)</h4>
+            <p>Components marked with <code>"use client"</code> like <code>InteractiveChart.tsx</code> handle interactivity (onClick, useState). Only their JavaScript is sent to the browser.</p>
+          </div>
+        </div>
       </div>
 
       <h3 className="text-xl font-semibold mt-6 mb-3">
@@ -348,25 +334,14 @@ export function LikeButton({ postId, initialLikes }: Props) {
 // If it fails, React automatically reverts the optimistic update`}
       />
 
-      <div className="bg-muted p-6 rounded-lg my-6 font-mono text-sm overflow-x-auto">
-        <pre className="text-center">
-{`Optimistic Update Flow:
-
-┌──────────┐     ┌──────────────┐     ┌──────────┐
-│  User    │────▶│  UI Updates  │────▶│  Server  │
-│  Clicks  │     │  INSTANTLY   │     │  Catches │
-│  Like    │     │  (optimistic)│     │  Up      │
-└──────────┘     └──────────────┘     └────┬─────┘
-                                           │
-                    ┌──────────────────────┘
-                    ▼
-          ┌─────────────────┐
-          │  Success?       │
-          │                 │
-          │  Yes: Keep it   │
-          │  No: Revert UI  │
-          └─────────────────┘`}
-        </pre>
+      <div className="bg-muted p-6 rounded-lg my-6 text-sm">
+        <h3 className="font-semibold text-foreground mb-4">Optimistic Update Flow</h3>
+        <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+          <li><strong>User Clicks:</strong> User initiates an action (e.g., clicking a 'Like' button).</li>
+          <li><strong>UI Updates INSTANTLY:</strong> The UI is immediately updated optimistically before any server request completes.</li>
+          <li><strong>Server Catches Up:</strong> The server processes the mutation in the background.</li>
+          <li><strong>Resolution:</strong> If successful, the optimistic state is finalized. If an error occurs, the UI reverts to its previous state.</li>
+        </ol>
       </div>
 
       <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
