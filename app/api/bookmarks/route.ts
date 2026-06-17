@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const { slug, type, title } = body as {
     slug: string;
-    type: 'component' | 'block';
+    type: 'component' | 'block' | 'template';
     title?: string;
   };
 
@@ -101,7 +101,7 @@ export async function DELETE(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { slug, type } = body as { slug: string; type: 'component' | 'block' };
+  const { slug, type } = body as { slug: string; type: 'component' | 'block' | 'template' };
 
   if (!slug || !type) {
     return NextResponse.json({ error: 'slug and type are required' }, { status: 400 });

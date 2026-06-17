@@ -10,7 +10,7 @@ export interface Bookmark {
   id: string;
   user_id: string;
   slug: string;
-  type: 'component' | 'block';
+  type: 'component' | 'block' | 'template';
   title: string;
   created_at: string;
 }
@@ -18,8 +18,8 @@ export interface Bookmark {
 interface BookmarkStore {
   bookmarks: Bookmark[];
   isLoading: boolean;
-  isBookmarked: (slug: string, type: 'component' | 'block') => boolean;
-  toggleBookmark: (slug: string, type: 'component' | 'block', title?: string) => Promise<void>;
+  isBookmarked: (slug: string, type: 'component' | 'block' | 'template') => boolean;
+  toggleBookmark: (slug: string, type: 'component' | 'block' | 'template', title?: string) => Promise<void>;
 }
 
 const BookmarkContext = createContext<BookmarkStore>({
@@ -60,13 +60,13 @@ export function BookmarkProvider({ children }: { children: React.ReactNode }) {
   }, [status, session]);
 
   const isBookmarked = useCallback(
-    (slug: string, type: 'component' | 'block') =>
+    (slug: string, type: 'component' | 'block' | 'template') =>
       bookmarks.some((b) => b.slug === slug && b.type === type),
     [bookmarks],
   );
 
   const toggleBookmark = useCallback(
-    async (slug: string, type: 'component' | 'block', title?: string) => {
+    async (slug: string, type: 'component' | 'block' | 'template', title?: string) => {
       // Not signed in — open auth gate
       if (!session?.user) {
         openAuthGate();

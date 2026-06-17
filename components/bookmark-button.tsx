@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 interface BookmarkButtonProps {
   slug: string;
-  type: 'component' | 'block';
+  type: 'component' | 'block' | 'template';
   title?: string;
   /** Size variant — defaults to 'icon' (square icon button) */
   variant?: 'icon' | 'default';
