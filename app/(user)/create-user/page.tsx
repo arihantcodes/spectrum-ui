@@ -8,7 +8,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { AuthIllustration } from '@/components/auth-illustration'
 import Link from 'next/link'
 import { Icons } from '@/components/icon'
-
+import { BuildingChips } from './building-chips'
 export default async function CreateUserPage({
   searchParams,
 }: {
@@ -19,14 +19,14 @@ export default async function CreateUserPage({
 
   const nextUrl = searchParams.next ?? '/dashboard'
 
-  // If already exists in DB, send them securely to dashboard
+  // If already exists in DB AND has required fields, send them securely to dashboard
   const { data: existingUser } = await supabaseAdmin
     .from('users')
-    .select('id')
+    .select('id, github_username, building_type')
     .eq('email', session.user.email)
     .single()
     
-  if (existingUser) {
+  if (existingUser?.github_username && existingUser?.building_type) {
     redirect(nextUrl)
   }
 
@@ -47,12 +47,6 @@ export default async function CreateUserPage({
             </div>
             <span className="text-sm font-semibold text-neutral-900 dark:text-[#F5F5F5] tracking-tight">Spectrum UI</span>
           </Link>
-
-          {/* Step indicator */}
-          <div className="flex items-center gap-1.5">
-            <div className="w-6 h-1 rounded-full bg-neutral-900 dark:bg-[#F5F5F5]" />
-            <div className="w-6 h-1 rounded-full bg-neutral-200 dark:bg-[#333]" />
-          </div>
         </div>
 
         {/* Centered form */}
@@ -123,6 +117,8 @@ export default async function CreateUserPage({
                 />
               </div>
             </div>
+
+            <BuildingChips />
 
             <div className="pt-4">
               <SubmitButton />

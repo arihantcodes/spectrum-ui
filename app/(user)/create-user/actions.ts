@@ -20,12 +20,16 @@ export async function completeUserProfile(formData: FormData) {
   const nextUrl = formData.get('next')
   const redirectTo = typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/dashboard'
 
+  const buildingType = formData.get('building_type')
+  const buildingTypeValue = typeof buildingType === 'string' && buildingType.trim() !== '' ? buildingType : null
+
   // Reuse the robust server-side syncUser logic we built!
   await syncUser({
     email: session.user.email,
     name: session.user.name,
     image: session.user.image,
-    githubUsername: githubUsername || null
+    githubUsername: githubUsername || null,
+    buildingType: buildingTypeValue
   })
 
   // Notify Slack about new signup (non-blocking — won't break signup if Slack fails)

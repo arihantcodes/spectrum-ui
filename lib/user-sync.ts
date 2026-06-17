@@ -5,9 +5,10 @@ interface SyncParams {
   name?: string | null
   image?: string | null
   githubUsername?: string | null
+  buildingType?: string | null
 }
 
-export async function syncUser({ email, name, image, githubUsername }: SyncParams) {
+export async function syncUser({ email, name, image, githubUsername, buildingType }: SyncParams) {
   console.log(`[syncUser] Attempting to sync user: ${email}`)
 
   const { data, error } = await supabaseAdmin
@@ -18,6 +19,7 @@ export async function syncUser({ email, name, image, githubUsername }: SyncParam
         name:            name ?? null,
         avatar_url:      image ?? null,
         github_username: githubUsername ?? null,
+        building_type:   buildingType ?? null,
         last_sign_in:    new Date().toISOString(),
       },
       { onConflict: 'email' }

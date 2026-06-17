@@ -1,4 +1,5 @@
-import { signIn } from '@/auth'
+import { auth, signIn } from '@/auth'
+import { redirect } from 'next/navigation'
 import { Icons } from '@/components/icon'
 import { AuthIllustration } from '@/components/auth-illustration'
 import Link from 'next/link'
@@ -22,11 +23,15 @@ function GoogleIcon() {
   )
 }
 
-export default function SignInPage({
+export default async function SignInPage({
   searchParams,
 }: {
   searchParams: { callbackUrl?: string }
 }) {
+  const session = await auth()
+  if (session?.user) {
+    redirect(searchParams.callbackUrl ?? '/dashboard')
+  }
   const callbackUrl = searchParams.callbackUrl ?? '/'
   const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`
 
