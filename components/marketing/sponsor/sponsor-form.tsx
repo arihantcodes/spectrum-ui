@@ -4,7 +4,19 @@ import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { submitSponsorApplication } from "@/app/(marketing)/sponsor/actions"
-import { Check, Loader2, Building, Globe, User, Mail, MessageSquare } from "lucide-react"
+import { Check, Loader2, Building, Globe, Mail, MessageSquare } from "lucide-react"
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+const FormSchema = z.object({
+  contact_email: z.string().email("Please enter a valid email address."),
+  company_name: z.string().min(2, "Company name must be at least 2 characters."),
+  product_link: z.string().url("Please enter a valid URL (e.g., https://acme.com)."),
+  ads_title: z.string().min(3, "Title must be at least 3 characters."),
+  ads_description: z.string().min(10, "Description must be at least 10 characters."),
+})
+
 import {
   Dialog,
   DialogContent,
@@ -25,8 +37,23 @@ const TIERS = [
 export function SponsorForm({ className }: SponsorFormProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedTier, setSelectedTier] = useState("founding")
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      contact_email: "",
+      company_name: "",
+      product_link: "",
+      ads_title: "",
+      ads_description: "",
+    }
+  })
 
   // Listen to hash changes and custom events to auto-open dialog and select tier
   useEffect(() => {
@@ -78,13 +105,13 @@ export function SponsorForm({ className }: SponsorFormProps) {
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  const onSubmit = async (data: z.infer<typeof FormSchema>, e?: React.BaseSyntheticEvent) => {
+    if (!e) return
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+
     setSubmitStatus(null)
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
     // Make sure the selected tier is passed
     const activeTierName = TIERS.find(t => t.id === selectedTier)?.name || selectedTier
     formData.set("sponsor_tier", activeTierName)
@@ -96,6 +123,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
           success: true,
           message: "Thanks for your interest! The team will reach out to you via email shortly.",
         })
+        reset()
         form.reset()
       } else {
         setSubmitStatus({
@@ -108,8 +136,6 @@ export function SponsorForm({ className }: SponsorFormProps) {
         success: false,
         message: "An unexpected error occurred. Please try again later.",
       })
-    } finally {
-      setIsSubmitting(false)
     }
   }
 
@@ -157,7 +183,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
             {/* Row 1: Tier Selector */}
             <div className="space-y-3">
               <label className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
@@ -202,8 +228,34 @@ export function SponsorForm({ className }: SponsorFormProps) {
               </div>
             </div>
 
-            {/* Rows 2 & 3: Inputs Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Input Fields */}
+            <div className="space-y-4">
+              
+              {/* Email */}
+              <div className="space-y-1.5">
+                <label htmlFor="contact_email" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+                  Email
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
+                  <input
+                    id="contact_email"
+                    type="email"
+                    placeholder="jane@acme.com"
+                    {...register("contact_email")}
+                    className={cn(
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      errors.contact_email 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
+                    )}
+                  />
+                </div>
+                {errors.contact_email && (
+                  <p className="text-red-500 text-[10px] mt-1">{errors.contact_email.message}</p>
+                )}
+              </div>
+
               {/* Company Name */}
               <div className="space-y-1.5">
                 <label htmlFor="company_name" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
@@ -213,84 +265,113 @@ export function SponsorForm({ className }: SponsorFormProps) {
                   <Building className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
                   <input
                     id="company_name"
-                    name="company_name"
                     type="text"
-                    required
                     placeholder="Acme Corp"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors"
+                    {...register("company_name")}
+                    className={cn(
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      errors.company_name 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
+                    )}
                   />
                 </div>
+                {errors.company_name && (
+                  <p className="text-red-500 text-[10px] mt-1">{errors.company_name.message}</p>
+                )}
               </div>
 
-              {/* Website URL */}
+              {/* Product Link */}
               <div className="space-y-1.5">
-                <label htmlFor="website" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
-                  Website URL
+                <label htmlFor="product_link" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+                  Product Link
                 </label>
+                <p className="text-[10px] text-neutral-500 mb-1">Link of your product. E.g spectrumhq.in</p>
                 <div className="relative">
                   <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
                   <input
-                    id="website"
-                    name="website"
-                    type="text"
-                    required
-                    placeholder="acme.com"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors"
+                    id="product_link"
+                    type="url"
+                    placeholder="https://spectrumhq.in"
+                    {...register("product_link")}
+                    className={cn(
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      errors.product_link 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
+                    )}
+                  />
+                </div>
+                {errors.product_link && (
+                  <p className="text-red-500 text-[10px] mt-1">{errors.product_link.message}</p>
+                )}
+              </div>
+
+              {/* Brand Logo */}
+              <div className="space-y-1.5">
+                <label htmlFor="image_ads" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+                  Brand Logo
+                </label>
+                <p className="text-[10px] text-neutral-500 mb-1">Please upload your product's logo or icon (1:1 aspect ratio is recommended). For best display quality, export at @2x resolution.</p>
+                <div className="relative mt-2">
+                  <input
+                    id="image_ads"
+                    name="image_ads"
+                    type="file"
+                    accept="image/*"
+                    className="w-full text-xs text-neutral-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-neutral-100 file:text-neutral-700 hover:file:bg-neutral-200 dark:file:bg-neutral-800 dark:file:text-neutral-300 dark:hover:file:bg-neutral-700"
                   />
                 </div>
               </div>
 
-              {/* Contact Person Name */}
+              {/* Ads Title */}
               <div className="space-y-1.5">
-                <label htmlFor="contact_name" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
-                  Contact Name
+                <label htmlFor="ads_title" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+                  Ads Title
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
+                  <MessageSquare className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
                   <input
-                    id="contact_name"
-                    name="contact_name"
+                    id="ads_title"
                     type="text"
-                    required
-                    placeholder="Jane Doe"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors"
+                    placeholder="Acme Developer Tools"
+                    {...register("ads_title")}
+                    className={cn(
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      errors.ads_title 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
+                    )}
                   />
                 </div>
+                {errors.ads_title && (
+                  <p className="text-red-500 text-[10px] mt-1">{errors.ads_title.message}</p>
+                )}
               </div>
 
-              {/* Contact Email */}
+              {/* Ads Description */}
               <div className="space-y-1.5">
-                <label htmlFor="contact_email" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
-                  Contact Email
+                <label htmlFor="ads_description" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
+                  Ads Description
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
-                  <input
-                    id="contact_email"
-                    name="contact_email"
-                    type="email"
-                    required
-                    placeholder="jane@acme.com"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors"
+                  <MessageSquare className="absolute left-3 top-3 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
+                  <textarea
+                    id="ads_description"
+                    rows={2}
+                    placeholder="The fastest way to build your next big idea."
+                    {...register("ads_description")}
+                    className={cn(
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors resize-none",
+                      errors.ads_description 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
+                    )}
                   />
                 </div>
-              </div>
-            </div>
-
-            {/* Message */}
-            <div className="space-y-1.5">
-              <label htmlFor="message" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
-                Message / Details
-              </label>
-              <div className="relative">
-                <MessageSquare className="absolute left-3 top-3 w-3.5 h-3.5 text-neutral-400 dark:text-neutral-600" />
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={3}
-                  placeholder="Tell us about your product or any custom requests..."
-                  className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors resize-none"
-                />
+                {errors.ads_description && (
+                  <p className="text-red-500 text-[10px] mt-1">{errors.ads_description.message}</p>
+                )}
               </div>
             </div>
 
