@@ -55,6 +55,14 @@ export default function Footer() {
                     Colors
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/sponsor"
+                    className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
+                  >
+                    Sponsors
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>

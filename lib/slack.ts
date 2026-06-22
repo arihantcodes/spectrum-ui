@@ -142,3 +142,115 @@ export async function notifyNewSignup({ name, email, githubUsername, avatarUrl, 
   }
 }
 
+type SponsorSubmissionPayload = {
+  companyName: string
+  website: string
+  contactName: string
+  contactEmail: string
+  sponsorTier: string
+  message?: string | null
+}
+
+/**
+ * Send a rich Slack notification when a new sponsor submits the application.
+ */
+export async function notifyNewSponsorSubmission({
+  companyName,
+  website,
+  contactName,
+  contactEmail,
+  sponsorTier,
+  message,
+}: SponsorSubmissionPayload) {
+  try {
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    const websiteUrl = website.startsWith('http') ? website : `https://${website}`
+
+    const blocks: any[] = [
+      {
+        type: 'header',
+        text: {
+          type: 'plain_text',
+          text: '💼 New Sponsor Application!',
+          emoji: true,
+        },
+      },
+      {
+        type: 'section',
+        fields: [
+          {
+            type: 'mrkdwn',
+            text: `*🏢 Company Name*\n${companyName}`,
+          },
+          {
+            type: 'mrkdwn',
+            text: `*🌐 Website*\n<${websiteUrl}|${websiteUrl}>`,
+          },
+        ],
+      },
+      {
+        type: 'section',
+        fields: [
+          {
+            type: 'mrkdwn',
+            text: `*👤 Contact Person*\n${contactName}`,
+          },
+          {
+            type: 'mrkdwn',
+            text: `*📧 Email*\n${contactEmail}`,
+          },
+        ],
+      },
+      {
+        type: 'section',
+        fields: [
+          {
+            type: 'mrkdwn',
+            text: `*🏆 Selected Tier*\n*${sponsorTier}*`,
+          },
+          {
+            type: 'mrkdwn',
+            text: `*🕒 Timestamp*\n${timestamp}`,
+          },
+        ],
+      },
+    ]
+
+    if (message) {
+      blocks.push({
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `*💬 Message*\n${message}`,
+        },
+      })
+    }
+
+    blocks.push({
+      type: 'divider',
+    })
+
+    const response = await fetch('https://slack.com/api/chat.postMessage', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${BOT_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        channel: CHANNEL_ID,
+        text: `💼 New Sponsor Application from ${companyName} (${sponsorTier})`,
+        blocks,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!data.ok) {
+      console.error('[Slack] Sponsor notification error:', data.error)
+    }
+  } catch (error) {
+    console.error('[Slack] Failed to send sponsor notification:', error)
+  }
+}
+
+

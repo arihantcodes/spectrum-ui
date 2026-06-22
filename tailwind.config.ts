@@ -140,6 +140,14 @@ const config = {
             "offset-distance": "100%",
           },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -151,6 +159,8 @@ const config = {
         spotlight: "spotlight 2s ease .75s 1 forwards",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        marquee: "marquee 30s linear infinite",
+        marquee2: "marquee2 30s linear infinite",
       },
       transitionTimingFunction: {
         slow: "cubic-bezier(.405, 0, .025, 1)",
