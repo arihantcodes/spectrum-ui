@@ -312,7 +312,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                 <label htmlFor="image_ads" className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 dark:text-neutral-600">
                   Brand Logo
                 </label>
-                <p className="text-[10px] text-neutral-500 mb-1">Please upload your product's logo or icon (1:1 aspect ratio is recommended). For best display quality, export at @2x resolution.</p>
+                <p className="text-[10px] text-neutral-500 mb-1">Please upload your product&apos;s logo or icon (1:1 aspect ratio is recommended). For best display quality, export at @2x resolution.</p>
                 <div className="relative mt-2">
                   <input
                     id="image_ads"
