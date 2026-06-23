@@ -46,6 +46,32 @@ export async function completeUserProfile(formData: FormData) {
     console.error('[completeUserProfile] Slack notification failed:', err)
   }
 
+  // Track user creation in PostHog
+  try {
+    const posthog = (await import('@/lib/posthog-server')).default()
+    if (posthog) {
+      posthog.capture({
+        distinctId: session.user.email,
+        event: 'user_created',
+        properties: {
+          name: session.user.name,
+          email: session.user.email,
+          githubUsername: githubUsername || session.user.githubUsername || null,
+          provider: session.user.githubUsername ? 'GitHub' : 'Google',
+          convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+          $set: {
+            name: session.user.name,
+            email: session.user.email,
+            github_username: githubUsername || session.user.githubUsername || null,
+          }
+        }
+      })
+      await posthog.shutdown()
+    }
+  } catch (err) {
+    console.error('[completeUserProfile] PostHog event tracking failed:', err)
+  }
+
   // Once saved to DB, push them to their intended destination
   redirect(redirectTo)
 }

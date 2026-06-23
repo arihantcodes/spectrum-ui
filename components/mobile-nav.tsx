@@ -49,12 +49,8 @@ const mainNav = [
     href: "/colors",
   },
   {
-    title: "Sponsors",
+    title: "Sponsor",
     href: "/sponsor",
-  },
-  {
-    title: "Pro",
-    href: "/pro",
   },
 ];
 
