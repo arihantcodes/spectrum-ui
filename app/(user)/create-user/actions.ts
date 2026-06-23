@@ -36,6 +36,14 @@ export async function completeUserProfile(formData: FormData) {
   // Send Day 0 Onboarding Email (non-blocking)
   try {
     await sendFounderWelcomeEmail(session.user.email, session.user.name || '')
+    
+    // Mark as sent in the database
+    const { supabaseAdmin } = await import('@/lib/supabase-admin')
+    await supabaseAdmin
+      .from('users')
+      .update({ welcome_email_sent: true })
+      .eq('email', session.user.email)
+      
   } catch (err) {
     console.error('[completeUserProfile] Welcome email failed:', err)
   }
