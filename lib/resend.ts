@@ -119,3 +119,41 @@ export async function sendPurchaseEmail({
     throw err;
   }
 }
+
+export async function sendFounderWelcomeEmail(email: string, name: string) {
+  try {
+    const firstName = name ? name.split(' ')[0] : 'there';
+    
+    // We use a verified domain sender, but set the reply-to as the personal inbox
+    // so all replies go directly to the founder's Gmail.
+    const { data, error } = await resend.emails.send({
+      from: 'Arihant <arihant@spectrumhq.in>',
+      replyTo: 'jainari1208@gmail.com',
+      to: [email],
+      subject: 'welcome to spectrum ui / quick question',
+      text: `Hey ${firstName}, 
+
+Arihant here, founder of Spectrum UI. I just saw you create an account and wanted to personally welcome you. 
+
+I built this project to help developers stop wasting time on repetitive styling and ship beautiful products faster. 
+
+I have a quick question for you, if you don't mind:
+What are you currently building, and what's the biggest challenge slowing down your UI development right now? 
+
+Just hit reply and let me know. I read every single email, and it helps me decide which components to build next.
+
+Happy coding,
+Arihant`,
+    });
+
+    if (error) {
+      console.error('Failed to send founder welcome email:', error);
+      throw error;
+    }
+
+    return data;
+  } catch (err) {
+    console.error('Error in sendFounderWelcomeEmail:', err);
+    throw err;
+  }
+}

@@ -3,6 +3,7 @@
 import { auth } from '@/auth'
 import { syncUser } from '@/lib/user-sync'
 import { notifyNewSignup } from '@/lib/slack'
+import { sendFounderWelcomeEmail } from '@/lib/resend'
 import { redirect } from 'next/navigation'
 
 export async function completeUserProfile(formData: FormData) {
@@ -31,6 +32,13 @@ export async function completeUserProfile(formData: FormData) {
     githubUsername: githubUsername || null,
     buildingType: buildingTypeValue
   })
+
+  // Send Day 0 Onboarding Email (non-blocking)
+  try {
+    await sendFounderWelcomeEmail(session.user.email, session.user.name || '')
+  } catch (err) {
+    console.error('[completeUserProfile] Welcome email failed:', err)
+  }
 
   // Notify Slack about new signup (non-blocking — won't break signup if Slack fails)
   try {
