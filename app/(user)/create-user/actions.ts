@@ -39,10 +39,14 @@ export async function completeUserProfile(formData: FormData) {
     
     // Mark as sent in the database
     const { supabaseAdmin } = await import('@/lib/supabase-admin')
-    await supabaseAdmin
+    const { error: dbError } = await supabaseAdmin
       .from('users')
       .update({ welcome_email_sent: true })
       .eq('email', session.user.email)
+      
+    if (dbError) {
+      console.error('[completeUserProfile] Failed to update DB for welcome email:', dbError)
+    }
       
   } catch (err) {
     console.error('[completeUserProfile] Welcome email failed:', err)
