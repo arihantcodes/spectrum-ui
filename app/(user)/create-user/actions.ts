@@ -78,22 +78,33 @@ export async function completeUserProfile(formData: FormData) {
   try {
     const posthog = (await import('@/lib/posthog-server')).default()
     if (posthog) {
+      const phProperties = {
+        name: session.user.name,
+        email: session.user.email,
+        githubUsername: githubUsername || session.user.githubUsername || null,
+        provider: session.user.githubUsername ? 'GitHub' : 'Google',
+        convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+        buildingType: buildingTypeValue,
+        $set: {
+          name: session.user.name,
+          email: session.user.email,
+          github_username: githubUsername || session.user.githubUsername || null,
+          building_type: buildingTypeValue,
+        }
+      }
+
       posthog.capture({
         distinctId: session.user.email,
         event: 'user_created',
-        properties: {
-          name: session.user.name,
-          email: session.user.email,
-          githubUsername: githubUsername || session.user.githubUsername || null,
-          provider: session.user.githubUsername ? 'GitHub' : 'Google',
-          convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-          $set: {
-            name: session.user.name,
-            email: session.user.email,
-            github_username: githubUsername || session.user.githubUsername || null,
-          }
-        }
+        properties: phProperties
       })
+
+      posthog.capture({
+        distinctId: session.user.email,
+        event: 'onboarding_completed',
+        properties: phProperties
+      })
+
       await posthog.shutdown()
     }
   } catch (err) {
