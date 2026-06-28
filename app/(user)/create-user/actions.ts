@@ -22,7 +22,10 @@ export async function completeUserProfile(formData: FormData) {
   const redirectTo = typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/dashboard'
 
   const buildingType = formData.get('building_type')
-  const buildingTypeValue = typeof buildingType === 'string' && buildingType.trim() !== '' ? buildingType : null
+  if (typeof buildingType !== 'string' || buildingType.trim() === '') {
+    throw new Error("Building type is required")
+  }
+  const buildingTypeValue = buildingType
 
   // Reuse the robust server-side syncUser logic we built!
   await syncUser({
@@ -48,8 +51,13 @@ export async function completeUserProfile(formData: FormData) {
       console.error('[completeUserProfile] Failed to update DB for welcome email:', dbError)
     }
       
-  } catch (err) {
-    console.error('[completeUserProfile] Welcome email failed:', err)
+  } catch (err: any) {
+    console.error('[completeUserProfile] Welcome email failed. Details:', {
+      message: err?.message,
+      name: err?.name,
+      stack: err?.stack,
+      raw: err,
+    })
   }
 
   // Notify Slack about new signup (non-blocking — won't break signup if Slack fails)

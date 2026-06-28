@@ -36,7 +36,14 @@ export function BuildingChips() {
           </button>
         ))}
       </div>
-      <input type="hidden" name="building_type" value={selected ?? ''} />
+      <input
+        type="text"
+        name="building_type"
+        value={selected ?? ''}
+        required
+        readOnly
+        className="sr-only"
+      />
     </div>
   )
 }

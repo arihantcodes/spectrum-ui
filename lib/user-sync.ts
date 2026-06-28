@@ -11,19 +11,19 @@ interface SyncParams {
 export async function syncUser({ email, name, image, githubUsername, buildingType }: SyncParams) {
   console.log(`[syncUser] Attempting to sync user: ${email}`)
 
+  const payload: any = {
+    email: email,
+    last_sign_in: new Date().toISOString(),
+  }
+
+  if (name !== undefined) payload.name = name ?? null
+  if (image !== undefined) payload.avatar_url = image ?? null
+  if (githubUsername !== undefined) payload.github_username = githubUsername ?? null
+  if (buildingType !== undefined) payload.building_type = buildingType ?? null
+
   const { data, error } = await supabaseAdmin
     .from('users')
-    .upsert(
-      {
-        email:           email,
-        name:            name ?? null,
-        avatar_url:      image ?? null,
-        github_username: githubUsername ?? null,
-        building_type:   buildingType ?? null,
-        last_sign_in:    new Date().toISOString(),
-      },
-      { onConflict: 'email' }
-    )
+    .upsert(payload, { onConflict: 'email' })
     .select()
 
   if (error) {
