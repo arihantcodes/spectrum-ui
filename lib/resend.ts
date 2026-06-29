@@ -1,6 +1,12 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resendClient: Resend | null = null;
+function getResend() {
+  if (!resendClient) {
+    resendClient = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resendClient;
+}
 
 function escapeHtml(str: string) {
   return str
@@ -15,7 +21,7 @@ export async function sendWelcomeNewsletterEmail(email: string, unsubscribeToken
   try {
     const unsubscribeUrl = `https://ui.spectrumhq.in/unsubscribe?token=${unsubscribeToken}&email=${encodeURIComponent(email)}`;
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: 'Spectrum UI <noreply@spectrumhq.in>',
       to: [email],
       subject: 'Welcome to Spectrum UI — You\'re in!',
@@ -87,7 +93,7 @@ export async function sendPurchaseEmail({
     const escapedTemplate = escapeHtml(templateName);
     const escapedGithub = escapeHtml(githubUsername);
 
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: 'Spectrum UI <noreply@spectrumhq.in>', // Use your verified domain here
       to: [email],
       subject: `Welcome to ${escapedTemplate} - Access Granted!`,
@@ -126,7 +132,7 @@ export async function sendFounderWelcomeEmail(email: string, name: string) {
     
     // We use a verified domain sender, but set the reply-to as the personal inbox
     // so all replies go directly to the founder's Gmail.
-    const { data, error } = await resend.emails.send({
+    const { data, error } = await getResend().emails.send({
       from: 'Arihant <arihant@spectrumhq.in>',
       replyTo: 'jainari1208@gmail.com',
       to: [email],

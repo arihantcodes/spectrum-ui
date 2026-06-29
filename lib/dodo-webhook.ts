@@ -1,6 +1,6 @@
 import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { grantRepoAccess } from "@/lib/github";
-import { sendPurchaseEmail } from "@/lib/resend";
+import { sendPurchaseEmail, sendFounderWelcomeEmail } from "@/lib/resend";
 
 export async function handlePaymentSucceeded(payload: any) {
   const { payment_id, total_amount, currency, metadata } = payload.data;
@@ -104,6 +104,26 @@ export async function handlePaymentSucceeded(payload: any) {
       console.error(`[Webhook] ERROR: Email failed:`, err);
       throw err;
     }
+  }
+
+  // Send the founder welcome email if they haven't received it yet (non-blocking / error-resilient)
+  try {
+    const { data: userRecord } = await supabase
+      .from("users")
+      .select("name, welcome_email_sent")
+      .eq("email", userEmail)
+      .single();
+
+    if (userRecord && !userRecord.welcome_email_sent) {
+      await sendFounderWelcomeEmail(userEmail, userRecord.name || "");
+      await supabase
+        .from("users")
+        .update({ welcome_email_sent: true })
+        .eq("email", userEmail);
+      console.log(`[Webhook] Founder welcome email sent to ${userEmail}`);
+    }
+  } catch (err) {
+    console.error(`[Webhook] ERROR: Founder welcome email failed for ${userEmail}:`, err);
   }
 }
 

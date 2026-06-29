@@ -13,6 +13,8 @@ export async function completeUserProfile(formData: FormData) {
     throw new Error("Not authorized")
   }
 
+  const userEmail = session.user.email.toLowerCase()
+
   const githubUsername = formData.get('github_username')
   if (typeof githubUsername !== 'string') {
     throw new Error("Invalid GitHub username")
@@ -24,73 +26,90 @@ export async function completeUserProfile(formData: FormData) {
   const buildingType = formData.get('building_type')
   const buildingTypeValue = typeof buildingType === 'string' && buildingType.trim() !== '' ? buildingType : null
 
+  console.log('[completeUserProfile] Onboarding user:', userEmail, 'Name:', session.user.name, 'API Key present:', !!process.env.RESEND_API_KEY)
+
   // Reuse the robust server-side syncUser logic we built!
   await syncUser({
-    email: session.user.email,
+    email: userEmail,
     name: session.user.name,
     image: session.user.image,
     githubUsername: githubUsername || null,
     buildingType: buildingTypeValue
   })
 
-  // Send Day 0 Onboarding Email (non-blocking)
-  try {
-    await sendFounderWelcomeEmail(session.user.email, session.user.name || '')
-    
-    // Mark as sent in the database
-    const { supabaseAdmin } = await import('@/lib/supabase-admin')
-    const { error: dbError } = await supabaseAdmin
-      .from('users')
-      .update({ welcome_email_sent: true })
-      .eq('email', session.user.email)
-      
-    if (dbError) {
-      console.error('[completeUserProfile] Failed to update DB for welcome email:', dbError)
-    }
-      
-  } catch (err) {
-    console.error('[completeUserProfile] Welcome email failed:', err)
-  }
+  // Define parallel tasks for external services
+  const emailPromise = (async () => {
+    try {
+      const { supabaseAdmin } = await import('@/lib/supabase-admin')
+      const { data: userRecord } = await supabaseAdmin
+        .from('users')
+        .select('welcome_email_sent')
+        .eq('email', userEmail)
+        .single()
 
-  // Notify Slack about new signup (non-blocking — won't break signup if Slack fails)
-  try {
-    await notifyNewSignup({
-      name: session.user.name,
-      email: session.user.email,
-      githubUsername: githubUsername || session.user.githubUsername || null,
-      avatarUrl: session.user.image || null,
-      provider: session.user.githubUsername ? 'GitHub' : 'Google',
-      convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-    })
-  } catch (err) {
-    console.error('[completeUserProfile] Slack notification failed:', err)
-  }
-
-  // Track user creation in PostHog
-  try {
-    const posthog = (await import('@/lib/posthog-server')).default()
-    if (posthog) {
-      posthog.capture({
-        distinctId: session.user.email,
-        event: 'user_created',
-        properties: {
-          name: session.user.name,
-          email: session.user.email,
-          githubUsername: githubUsername || session.user.githubUsername || null,
-          provider: session.user.githubUsername ? 'GitHub' : 'Google',
-          convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-          $set: {
-            name: session.user.name,
-            email: session.user.email,
-            github_username: githubUsername || session.user.githubUsername || null,
-          }
+      if (userRecord && !userRecord.welcome_email_sent) {
+        await sendFounderWelcomeEmail(userEmail, session.user.name || '')
+        
+        const { error: dbError } = await supabaseAdmin
+          .from('users')
+          .update({ welcome_email_sent: true })
+          .eq('email', userEmail)
+          
+        if (dbError) {
+          console.error('[completeUserProfile] Failed to update DB for welcome email:', dbError)
+        } else {
+          console.log('[completeUserProfile] Successfully sent welcome email & updated DB for:', userEmail)
         }
-      })
-      await posthog.shutdown()
+      }
+    } catch (err) {
+      console.error('[completeUserProfile] Welcome email failed:', err)
     }
-  } catch (err) {
-    console.error('[completeUserProfile] PostHog event tracking failed:', err)
-  }
+  })()
+
+  const slackPromise = (async () => {
+    try {
+      await notifyNewSignup({
+        name: session.user.name,
+        email: userEmail,
+        githubUsername: githubUsername || session.user.githubUsername || null,
+        avatarUrl: session.user.image || null,
+        provider: session.user.githubUsername ? 'GitHub' : 'Google',
+        convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+      })
+    } catch (err) {
+      console.error('[completeUserProfile] Slack notification failed:', err)
+    }
+  })()
+
+  const posthogPromise = (async () => {
+    try {
+      const posthog = (await import('@/lib/posthog-server')).default()
+      if (posthog) {
+        posthog.capture({
+          distinctId: userEmail,
+          event: 'user_created',
+          properties: {
+            name: session.user.name,
+            email: userEmail,
+            githubUsername: githubUsername || session.user.githubUsername || null,
+            provider: session.user.githubUsername ? 'GitHub' : 'Google',
+            convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+            $set: {
+              name: session.user.name,
+              email: userEmail,
+              github_username: githubUsername || session.user.githubUsername || null,
+            }
+          }
+        })
+        await posthog.shutdown()
+      }
+    } catch (err) {
+      console.error('[completeUserProfile] PostHog event tracking failed:', err)
+    }
+  })()
+
+  // Wait for all external notifications to complete in parallel to prevent Vercel context suspension
+  await Promise.all([emailPromise, slackPromise, posthogPromise])
 
   // Once saved to DB, push them to their intended destination
   redirect(redirectTo)

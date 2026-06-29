@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     const cleanGithub = githubUsername.replace(/^@/, '').trim()
     const { syncUser } = await import('@/lib/user-sync')
     syncUser({
-      email:          session.user.email,
+      email:          session.user.email.toLowerCase(),
       name:           session.user.name,
       image:          session.user.image,
       githubUsername: cleanGithub,
