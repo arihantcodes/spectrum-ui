@@ -24,7 +24,10 @@ export async function completeUserProfile(formData: FormData) {
   const redirectTo = typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/dashboard'
 
   const buildingType = formData.get('building_type')
-  const buildingTypeValue = typeof buildingType === 'string' && buildingType.trim() !== '' ? buildingType : null
+  if (typeof buildingType !== 'string' || buildingType.trim() === '') {
+    throw new Error("Building type is required")
+  }
+  const buildingTypeValue = buildingType
 
   console.log('[completeUserProfile] Onboarding user:', userEmail, 'Name:', session.user.name, 'API Key present:', !!process.env.RESEND_API_KEY)
 
@@ -61,8 +64,13 @@ export async function completeUserProfile(formData: FormData) {
           console.log('[completeUserProfile] Successfully sent welcome email & updated DB for:', userEmail)
         }
       }
-    } catch (err) {
-      console.error('[completeUserProfile] Welcome email failed:', err)
+    } catch (err: any) {
+      console.error('[completeUserProfile] Welcome email failed. Details:', {
+      message: err?.message,
+      name: err?.name,
+      stack: err?.stack,
+      raw: err,
+    })
     }
   })()
 
@@ -81,35 +89,42 @@ export async function completeUserProfile(formData: FormData) {
     }
   })()
 
-  const posthogPromise = (async () => {
-    try {
-      const posthog = (await import('@/lib/posthog-server')).default()
-      if (posthog) {
-        posthog.capture({
-          distinctId: userEmail,
-          event: 'user_created',
-          properties: {
-            name: session.user.name,
-            email: userEmail,
-            githubUsername: githubUsername || session.user.githubUsername || null,
-            provider: session.user.githubUsername ? 'GitHub' : 'Google',
-            convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-            $set: {
-              name: session.user.name,
-              email: userEmail,
-              github_username: githubUsername || session.user.githubUsername || null,
-            }
-          }
-        })
-        await posthog.shutdown()
+  // Track user creation in PostHog
+  try {
+    const posthog = (await import('@/lib/posthog-server')).default()
+    if (posthog) {
+      const phProperties = {
+        name: session.user.name,
+        email: session.user.email,
+        githubUsername: githubUsername || session.user.githubUsername || null,
+        provider: session.user.githubUsername ? 'GitHub' : 'Google',
+        convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+        buildingType: buildingTypeValue,
+        $set: {
+          name: session.user.name,
+          email: session.user.email,
+          github_username: githubUsername || session.user.githubUsername || null,
+          building_type: buildingTypeValue,
+        }
       }
-    } catch (err) {
-      console.error('[completeUserProfile] PostHog event tracking failed:', err)
-    }
-  })()
 
-  // Wait for all external notifications to complete in parallel to prevent Vercel context suspension
-  await Promise.all([emailPromise, slackPromise, posthogPromise])
+      posthog.capture({
+        distinctId: session.user.email,
+        event: 'user_created',
+        properties: phProperties
+      })
+
+      posthog.capture({
+        distinctId: session.user.email,
+        event: 'onboarding_completed',
+        properties: phProperties
+      })
+
+      await posthog.shutdown()
+    }
+  } catch (err) {
+    console.error('[completeUserProfile] PostHog event tracking failed:', err)
+  }
 
   // Once saved to DB, push them to their intended destination
   redirect(redirectTo)

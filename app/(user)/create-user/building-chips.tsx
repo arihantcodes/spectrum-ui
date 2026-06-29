@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { trackEvent } from '@/lib/events'
 
 const OPTIONS = [
   'SaaS',
@@ -14,6 +15,10 @@ const OPTIONS = [
 
 export function BuildingChips() {
   const [selected, setSelected] = useState<string | null>(null)
+
+  useEffect(() => {
+    trackEvent({ name: 'onboarding_started' })
+  }, [])
 
   return (
     <div className="space-y-2">
@@ -36,7 +41,14 @@ export function BuildingChips() {
           </button>
         ))}
       </div>
-      <input type="hidden" name="building_type" value={selected ?? ''} />
+      <input
+        type="text"
+        name="building_type"
+        value={selected ?? ''}
+        required
+        readOnly
+        className="sr-only"
+      />
     </div>
   )
 }

@@ -69,6 +69,30 @@ export async function handlePaymentSucceeded(payload: any) {
     }
 
     order = newOrder;
+
+    // Track checkout completion in PostHog
+    try {
+      const posthogClient = (await import('@/lib/posthog-server')).default()
+      if (posthogClient) {
+        posthogClient.capture({
+          distinctId: userEmail,
+          event: 'checkout_completed',
+          properties: {
+            templateSlug,
+            githubUsername,
+            amount: total_amount / 100,
+            currency: currency ?? "USD",
+            paymentId: payment_id,
+            $set: {
+              is_pro: true,
+            }
+          }
+        })
+        await posthogClient.shutdown()
+      }
+    } catch (err) {
+      console.error('[Webhook] PostHog checkout_completed failed:', err)
+    }
   } else {
     console.log(`[Webhook] Existing order found for ${payment_id}. Resuming...`);
   }

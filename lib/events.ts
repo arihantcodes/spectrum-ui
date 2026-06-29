@@ -37,6 +37,14 @@ const eventSchema = z.object({
     "bookmark_added",
     "bookmark_removed",
     "bookmarks_page_viewed",
+    // Retention & Conversion events
+    "theme_toggled",
+    "search_performed",
+    "preview_viewport_changed",
+    "checkout_initiated",
+    "checkout_completed",
+    "onboarding_started",
+    "onboarding_completed",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

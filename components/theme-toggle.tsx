@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { LayoutGroup, motion } from "framer-motion";
 import { Moon, Sun, Monitor } from "lucide-react";
+import { trackEvent } from "@/lib/events";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -24,19 +25,28 @@ export function ThemeToggle() {
       <LayoutGroup id="theme-toggle">
         <ThemeButton
           active={mounted && theme === "light"}
-          onClick={() => setTheme("light")}
+          onClick={() => {
+            setTheme("light");
+            trackEvent({ name: "theme_toggled", properties: { theme: "light" } });
+          }}
           icon={<Sun size={16} />}
           label="Switch to light theme"
         />
         <ThemeButton
           active={mounted && theme === "system"}
-          onClick={() => setTheme("system")}
+          onClick={() => {
+            setTheme("system");
+            trackEvent({ name: "theme_toggled", properties: { theme: "system" } });
+          }}
           icon={<Monitor size={16} />}
           label="Switch to system theme"
         />
         <ThemeButton
           active={mounted && theme === "dark"}
-          onClick={() => setTheme("dark")}
+          onClick={() => {
+            setTheme("dark");
+            trackEvent({ name: "theme_toggled", properties: { theme: "dark" } });
+          }}
           icon={<Moon size={16} />}
           label="Switch to dark theme"
         />

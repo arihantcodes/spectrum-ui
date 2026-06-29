@@ -80,6 +80,25 @@ export async function POST(req: NextRequest) {
       githubUsername: cleanGithub,
     }).catch(err => console.error('[checkout] syncUser failed:', err))
 
+    // Track checkout initiation in PostHog
+    try {
+      const posthog = (await import('@/lib/posthog-server')).default()
+      if (posthog) {
+        posthog.capture({
+          distinctId: session.user.email,
+          event: 'checkout_initiated',
+          properties: {
+            templateSlug,
+            githubUsername: cleanGithub,
+            email: session.user.email,
+          }
+        })
+        await posthog.shutdown()
+      }
+    } catch (err) {
+      console.error('[checkout] PostHog checkout_initiated failed:', err)
+    }
+
     // ── Build Dodo checkout request ──
     const dodoRequest = new NextRequest(req.url, {
       method: 'POST',

@@ -13,6 +13,7 @@ import { ROUTES } from "@/lib/routes-config";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useMemo, useState } from "react";
 import Anchor from "./anchor";
+import { trackEvent } from "@/lib/events";
 
 export default function Search() {
   const [searchedInput, setSearchedInput] = useState("");
@@ -44,6 +45,25 @@ export default function Search() {
       };
     }).filter((group) => group.children.length > 0);
   }, [searchedInput]);
+
+  // Debounced search query tracking to avoid spamming events on every keystroke
+  useEffect(() => {
+    if (!searchedInput.trim()) return;
+
+    const delayDebounceFn = setTimeout(() => {
+      const totalResults = filteredResults.reduce((acc, curr) => acc + curr.children.length, 0);
+      
+      trackEvent({
+        name: "search_performed",
+        properties: {
+          query: searchedInput.trim(),
+          results_count: totalResults,
+        }
+      });
+    }, 1000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchedInput, filteredResults]);
 
   return (
     <div>
