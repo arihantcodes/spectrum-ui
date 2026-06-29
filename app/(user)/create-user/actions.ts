@@ -66,11 +66,11 @@ export async function completeUserProfile(formData: FormData) {
       }
     } catch (err: any) {
       console.error('[completeUserProfile] Welcome email failed. Details:', {
-      message: err?.message,
-      name: err?.name,
-      stack: err?.stack,
-      raw: err,
-    })
+        message: err?.message,
+        name: err?.name,
+        stack: err?.stack,
+        raw: err,
+      })
     }
   })()
 
@@ -89,42 +89,46 @@ export async function completeUserProfile(formData: FormData) {
     }
   })()
 
-  // Track user creation in PostHog
-  try {
-    const posthog = (await import('@/lib/posthog-server')).default()
-    if (posthog) {
-      const phProperties = {
-        name: session.user.name,
-        email: session.user.email,
-        githubUsername: githubUsername || session.user.githubUsername || null,
-        provider: session.user.githubUsername ? 'GitHub' : 'Google',
-        convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-        buildingType: buildingTypeValue,
-        $set: {
+  const posthogPromise = (async () => {
+    try {
+      const posthog = (await import('@/lib/posthog-server')).default()
+      if (posthog) {
+        const phProperties = {
           name: session.user.name,
-          email: session.user.email,
-          github_username: githubUsername || session.user.githubUsername || null,
-          building_type: buildingTypeValue,
+          email: userEmail,
+          githubUsername: githubUsername || session.user.githubUsername || null,
+          provider: session.user.githubUsername ? 'GitHub' : 'Google',
+          convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+          buildingType: buildingTypeValue,
+          $set: {
+            name: session.user.name,
+            email: userEmail,
+            github_username: githubUsername || session.user.githubUsername || null,
+            building_type: buildingTypeValue,
+          }
         }
+
+        posthog.capture({
+          distinctId: userEmail,
+          event: 'user_created',
+          properties: phProperties
+        })
+
+        posthog.capture({
+          distinctId: userEmail,
+          event: 'onboarding_completed',
+          properties: phProperties
+        })
+
+        await posthog.shutdown()
       }
-
-      posthog.capture({
-        distinctId: session.user.email,
-        event: 'user_created',
-        properties: phProperties
-      })
-
-      posthog.capture({
-        distinctId: session.user.email,
-        event: 'onboarding_completed',
-        properties: phProperties
-      })
-
-      await posthog.shutdown()
+    } catch (err) {
+      console.error('[completeUserProfile] PostHog event tracking failed:', err)
     }
-  } catch (err) {
-    console.error('[completeUserProfile] PostHog event tracking failed:', err)
-  }
+  })()
+
+  // Wait for all parallel tasks to complete to prevent execution truncation
+  await Promise.all([emailPromise, slackPromise, posthogPromise])
 
   // Once saved to DB, push them to their intended destination
   redirect(redirectTo)
