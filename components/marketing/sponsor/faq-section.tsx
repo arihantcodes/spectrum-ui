@@ -16,28 +16,36 @@ export interface FaqSectionProps {
 
 const faqs = [
   {
-    question: "How does billing work?",
-    answer: "Monthly placements are billed at the start of each cycle. Newsletter and Launch Feature spots are one-time payments per instance. You can cancel monthly placements anytime — your spot stays active until the end of the billing period."
+    question: "When do I need to pay?",
+    answer: "Payment is collected upfront before your placement goes live. Once we receive your application and confirm the slot, we'll send a payment link. Your ad goes live within 48 hours of payment clearing."
   },
   {
-    question: "What happens when a placement sells out?",
-    answer: "We cap inventory to protect value. If your preferred spot is filled, you can join the waitlist. We notify you the moment a slot opens up."
+    question: "How does billing work?",
+    answer: "Monthly placements are billed at the start of each cycle. Your first payment covers the first month. Renewals are charged automatically on the same date each month. You can cancel anytime — your spot stays active until the end of the paid period."
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit and debit cards via Stripe. For annual commitments or custom packages, we can also arrange bank transfers or invoicing."
+  },
+  {
+    question: "Can I get a refund?",
+    answer: "Since placements go live immediately after payment, we don't offer refunds once your ad is live. If there's a technical issue on our end causing your placement not to show, we'll either fix it within 24 hours or issue a prorated credit."
   },
   {
     question: "Can I track performance?",
-    answer: "Every sponsor link includes UTM parameters. You'll see traffic and conversions directly in your analytics. We also send a monthly report with impression data for your placements."
+    answer: "Every sponsor link includes UTM parameters so you see traffic and conversions directly in your own analytics. We also send a monthly impressions report."
   },
   {
     question: "What do I need to provide?",
-    answer: "A square logo (SVG or PNG, min 128px), a one-line tagline, and a destination URL. For Launch Features, we'll work with you on the content."
+    answer: "A square logo (SVG or PNG, min 128px), a one-line tagline, and a destination URL. That's it — we handle the rest."
   },
   {
-    question: "Can I change my logo or link later?",
-    answer: "Yes. Email us anytime to update your creative assets. Changes go live within 24 hours."
+    question: "What happens when a placement sells out?",
+    answer: "We cap inventory to protect value for existing sponsors. If your preferred slot is filled, submit your application and we'll add you to the waitlist — you'll be notified the moment a spot opens."
   },
   {
     question: "Do you offer custom packages?",
-    answer: "If you want multiple placements bundled or a long-term commitment, reach out. We can put together a custom deal with better rates."
+    answer: "Yes. If you want multiple placements bundled or a long-term commitment, reach out and we'll put together a custom deal with better rates."
   }
 ]
 
@@ -46,24 +54,14 @@ export function FaqSection({ className }: FaqSectionProps) {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={containerRef} className={cn("py-32 w-full max-w-3xl mx-auto", className)}>
-
-      {/* Animated divider */}
-      <div className="w-full flex justify-center mb-20">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={isInView ? { width: "100%" } : { width: 0 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="h-px bg-neutral-200 dark:bg-neutral-800 max-w-xs"
-        />
-      </div>
+    <section ref={containerRef} className={cn("py-16 w-full max-w-3xl mx-auto", className)}>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h2 className="text-3xl md:text-5xl font-medium tracking-tighter text-neutral-900 dark:text-white mb-16">
+        <h2 className="text-2xl md:text-3xl font-medium tracking-tighter text-neutral-900 dark:text-white mb-8">
           Common questions
         </h2>
 

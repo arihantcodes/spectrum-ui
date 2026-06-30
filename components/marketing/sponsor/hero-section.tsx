@@ -1,207 +1,212 @@
 "use client"
 
-import React, { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import React from "react"
+import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { Star, CheckCircle2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export interface HeroSectionProps {
   className?: string
 }
 
 export function HeroSection({ className }: HeroSectionProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95])
-
   return (
-    <section ref={containerRef} className={cn("relative w-full flex flex-col items-center justify-start pt-32 pb-20 md:pt-40 md:pb-28", className)}>
-      <motion.div style={{ opacity, scale }} className="w-full flex flex-col items-center z-10 text-center">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 mb-8"
-        >
-          {/* <Star className="w-3.5 h-3.5 text-neutral-500" /> */}
-          <span className="text-xs font-medium tracking-wide text-neutral-600 dark:text-neutral-300">
-            Founding Sponsors Open
-          </span>
-        </motion.div>
+    <section className={cn("relative w-full pt-24 pb-12 md:pt-32 md:pb-16", className)}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl px-4 text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.1]"
-        >
-          Get your product in front of developers while they build.
-        </motion.h1>
+        {/* ── Left: Copy ── */}
+        <div>
+          {/* Availability badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 mb-8"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
+            <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+              1 spot taken · 2 founding spots left
+            </span>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl mt-6 px-4 text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed"
-        >
-          Spectrum UI is where frontend engineers discover tools and components. 
-          Your brand lives natively inside documentation and code snippets—not in banner ads they scroll past.
-        </motion.p>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl md:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.08] mb-5"
+          >
+            Your brand,<br />
+            inside the code<br />
+            <span className="text-neutral-400 dark:text-neutral-500">
+              they&apos;re copying right now.
+            </span>
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col items-center mt-10 space-y-6"
-        >
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <Link 
-              href="#slots" 
-              className="px-8 py-3.5 rounded-xl bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-8 max-w-md"
+          >
+            Spectrum UI brings 5,000+ frontend developers every month — not scrolling a feed, but actively reading docs and copying components. Your slot lives exactly where they&apos;re looking.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-10"
+          >
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                window.history.pushState(null, "", "#apply?tier=founding")
+                window.dispatchEvent(
+                  new CustomEvent("open-sponsor-modal", { detail: { tier: "founding" } })
+                )
+              }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-medium hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors"
+            >
+              Claim your spot
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <Link
+              href="#slots"
+              className="px-6 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 text-sm font-medium hover:text-neutral-900 dark:hover:text-white hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
             >
               View available spots
             </Link>
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                window.history.pushState(null, '', '#apply?tier=founding');
-                window.dispatchEvent(new CustomEvent('open-sponsor-modal', { detail: { tier: 'founding' } }));
-              }}
-              className="px-8 py-3.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-transparent text-neutral-900 dark:text-white font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900/50 transition-colors"
-            >
-              Apply as Founding Sponsor
-            </button>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-medium text-neutral-500 dark:text-neutral-400">
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5" /> High-intent traffic</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5" /> Native placement</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5" /> Cancel anytime</span>
-          </div>
-        </motion.div>
+        </div>
 
-        {/* Product Placement Mockup */}
+        {/* ── Right: Mockup ── */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-5xl mt-20 px-4"
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:flex flex-col gap-3"
         >
-          <div className="relative rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50 bg-white dark:bg-[#0A0A0A] shadow-2xl overflow-hidden">
-            
-            {/* Browser chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-neutral-200/50 dark:border-neutral-800/50 bg-neutral-50 dark:bg-neutral-900/50">
+          {/* Browser window */}
+          <div className="rounded-2xl border border-neutral-200/70 dark:border-neutral-800/70 bg-white dark:bg-[#0A0A0A] overflow-hidden shadow-xl">
+            {/* Chrome bar */}
+            <div className="flex items-center gap-2 px-3 py-2.5 border-b border-neutral-100 dark:border-neutral-800/60 bg-neutral-50 dark:bg-neutral-900/50">
               <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
-                <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-2.5 h-2.5 rounded-full bg-neutral-200 dark:bg-neutral-700" />
+                ))}
               </div>
-              <div className="flex-1 mx-4">
-                <div className="h-6 bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-md w-64 mx-auto flex items-center justify-center shadow-sm">
-                  <span className="text-[10px] text-neutral-400 dark:text-neutral-500 font-mono">ui.spectrumhq.in/docs/components</span>
+              <div className="flex-1 mx-3">
+                <div className="h-5 bg-white dark:bg-black border border-neutral-100 dark:border-neutral-800 rounded-md w-52 mx-auto flex items-center justify-center">
+                  <span className="text-[9px] text-neutral-400 font-mono">
+                    ui.spectrumhq.in/docs/button
+                  </span>
                 </div>
               </div>
             </div>
 
-            {/* Page content mockup */}
-            <div className="flex min-h-[400px]">
+            {/* Page layout */}
+            <div className="flex" style={{ minHeight: 240 }}>
               {/* Sidebar */}
-              <div className="w-48 border-r border-neutral-200/50 dark:border-neutral-800/50 p-4 hidden md:block bg-neutral-50/30 dark:bg-transparent">
-                <div className="space-y-2">
-                  <div className="text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-3">Getting Started</div>
-                  {["Introduction", "Installation", "Typography"].map((item) => (
-                    <div key={item} className="h-6 rounded-md px-2 flex items-center text-[11px] text-neutral-500 dark:text-neutral-400">
-                      {item}
-                    </div>
-                  ))}
-                  
-                  <div className="text-[10px] font-semibold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mt-6 mb-3">Components</div>
-                  {["Button", "Card", "Dialog", "Input", "Tabs", "Toast"].map((item, i) => (
-                    <div key={item} className={cn(
-                      "h-7 rounded-md px-2 flex items-center text-[11px] transition-colors",
-                      i === 2 ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium" : "text-neutral-500 dark:text-neutral-400"
-                    )}>
-                      {item}
-                    </div>
-                  ))}
+              <div className="w-40 border-r border-neutral-100 dark:border-neutral-800/60 p-3 space-y-1 shrink-0">
+                <div className="text-[8px] uppercase tracking-wider text-neutral-400 font-medium mb-2">
+                  Components
+                </div>
+                {["Accordion", "Button", "Card", "Dialog", "Input"].map((item, i) => (
+                  <div
+                    key={item}
+                    className={cn(
+                      "h-5 rounded px-1.5 flex items-center text-[9px]",
+                      i === 1
+                        ? "bg-neutral-100 dark:bg-neutral-800 font-medium text-neutral-900 dark:text-white"
+                        : "text-neutral-400 dark:text-neutral-600"
+                    )}
+                  >
+                    {item}
+                  </div>
+                ))}
 
-                  {/* Sidebar Sponsor Mockup */}
-                  <div className="mt-8">
-                    <div className="text-[9px] font-mono uppercase text-neutral-400 mb-2 px-2">Sponsored</div>
-                    <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3 flex flex-col gap-2 shadow-sm transition-all hover:border-neutral-300 dark:hover:border-neutral-700">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded bg-neutral-900 dark:bg-white flex items-center justify-center">
-                          <Star className="w-3 h-3 text-white dark:text-black" />
-                        </div>
-                        <div className="text-[11px] font-medium text-neutral-900 dark:text-white">Your Logo</div>
+                {/* Sidebar sponsor slot */}
+                <div className="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/60">
+                  <div className="text-[7px] uppercase tracking-widest text-neutral-400 font-mono mb-1.5">
+                    Sponsored
+                  </div>
+                  <div className="rounded-lg border-2 border-dashed border-neutral-300 dark:border-neutral-700 p-2 space-y-1.5">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-5 h-5 rounded-md bg-neutral-900 dark:bg-white shrink-0" />
+                      <div className="text-[9px] font-semibold text-neutral-900 dark:text-white leading-tight">
+                        Your Brand
                       </div>
-                      <div className="text-[9px] text-neutral-500 leading-tight">
-                        Your product description goes here.
-                      </div>
+                    </div>
+                    <div className="text-[8px] text-neutral-500 leading-tight">
+                      One-line description here.
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Main content */}
-              <div className="flex-1 p-8 md:p-12 text-left">
-                <div className="h-4 bg-neutral-200/60 dark:bg-neutral-800/60 rounded w-24 mb-4" />
-                <div className="h-8 bg-neutral-900/10 dark:bg-neutral-100/10 rounded w-64 mb-6" />
-                <div className="space-y-2 mb-10">
-                  <div className="h-2.5 bg-neutral-200/50 dark:bg-neutral-800/50 rounded w-full max-w-xl" />
-                  <div className="h-2.5 bg-neutral-200/50 dark:bg-neutral-800/50 rounded w-5/6 max-w-lg" />
-                  <div className="h-2.5 bg-neutral-200/50 dark:bg-neutral-800/50 rounded w-4/6 max-w-md" />
+              <div className="flex-1 p-5 space-y-2.5 min-w-0">
+                <div className="h-1.5 bg-neutral-100 dark:bg-neutral-800 rounded w-10" />
+                <div className="h-4 bg-neutral-200/60 dark:bg-neutral-700/40 rounded w-24" />
+                <div className="space-y-1.5 pt-0.5">
+                  {[1, 0.8, 0.55].map((w, i) => (
+                    <div
+                      key={i}
+                      className="h-1.5 bg-neutral-100 dark:bg-neutral-800 rounded"
+                      style={{ width: `${w * 100}%` }}
+                    />
+                  ))}
                 </div>
 
                 {/* Component preview */}
-                <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
-                  <div className="flex items-center gap-4 px-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 h-10">
-                    <div className="text-[11px] font-medium text-neutral-900 dark:text-white border-b-2 border-neutral-900 dark:border-white h-full flex items-center pt-[2px]">Preview</div>
-                    <div className="text-[11px] font-medium text-neutral-500">Code</div>
+                <div className="rounded-lg border border-neutral-100 dark:border-neutral-800 overflow-hidden mt-3">
+                  <div className="flex items-center gap-3 px-3 h-6 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30">
+                    <span className="text-[8px] font-medium text-neutral-900 dark:text-white border-b border-neutral-900 dark:border-white">
+                      Preview
+                    </span>
+                    <span className="text-[8px] text-neutral-400">Code</span>
                   </div>
-                  <div className="h-48 bg-white dark:bg-black flex items-center justify-center p-8">
-                    {/* Mockup Button */}
-                    <div className="h-9 px-4 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-md flex items-center justify-center text-sm font-medium shadow-sm">
+                  <div className="h-14 bg-white dark:bg-black flex items-center justify-center">
+                    <div className="h-5 px-3 bg-neutral-900 dark:bg-white rounded text-[8px] flex items-center font-medium text-white dark:text-black">
                       Open Dialog
                     </div>
                   </div>
                 </div>
 
-                {/* Inline Sponsor Placement */}
-                <div className="mt-8 flex items-start gap-4">
-                  <div className="h-px bg-neutral-200 dark:bg-neutral-800 flex-1 mt-3" />
-                  <div className="text-[10px] text-neutral-400 uppercase tracking-widest font-mono">Component Sponsor</div>
-                  <div className="h-px bg-neutral-200 dark:bg-neutral-800 flex-1 mt-3" />
-                </div>
-                
-                <div className="mt-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/30 p-4 flex items-center justify-between hover:bg-neutral-100 dark:hover:bg-neutral-900/50 transition-colors cursor-pointer">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center shadow-sm">
-                      <Star className="w-5 h-5 text-white dark:text-black" />
+                {/* Inline sponsor slot */}
+                <div className="flex items-center gap-2.5 rounded-lg border-2 border-dashed border-neutral-200 dark:border-neutral-800 p-2 mt-1">
+                  <div className="w-6 h-6 rounded-md bg-neutral-900 dark:bg-white shrink-0" />
+                  <div className="space-y-0.5 min-w-0">
+                    <div className="text-[9px] font-semibold text-neutral-900 dark:text-white truncate">
+                      Your Brand
                     </div>
-                    <div>
-                      <div className="text-sm font-medium text-neutral-900 dark:text-white">Your Brand</div>
-                      <div className="text-xs text-neutral-500 mt-0.5">A short, catchy description of what your product does.</div>
+                    <div className="text-[8px] text-neutral-500 truncate">
+                      Your product in one line.
                     </div>
                   </div>
-                  <div className="hidden sm:flex px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 text-[10px] font-medium text-neutral-600 dark:text-neutral-400">
-                    Learn more
+                  <div className="ml-auto shrink-0 text-[7px] border border-neutral-200 dark:border-neutral-700 rounded-full px-2 py-0.5 text-neutral-400">
+                    Visit
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Caption */}
+          <p className="text-center text-[11px] text-neutral-400 dark:text-neutral-600 font-mono">
+            Sidebar + inline — both placements shown simultaneously
+          </p>
         </motion.div>
 
-      </motion.div>
+      </div>
     </section>
   )
 }

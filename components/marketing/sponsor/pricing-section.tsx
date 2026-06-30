@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import {  Plus, Star } from "lucide-react"
+import { Plus, Star } from "lucide-react"
+import Image from "next/image"
 
 export interface SlotsSectionProps {
   className?: string
@@ -14,7 +15,28 @@ const SPRING_ENTRANCE = {
   damping: 20,
 }
 
-function SlotCard({ label = "Your brand here", tier = "founding" }: { label?: string; tier?: string }) {
+function SlotCard({ label = "Your brand here", tier = "founding", booked = false }: { label?: string; tier?: string; booked?: boolean }) {
+  if (booked) {
+    return (
+      <div className="w-full flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border-2 border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-900/20 min-h-[120px] select-none relative overflow-hidden">
+        <div className="absolute inset-0 bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgba(0,0,0,0.02)_6px,rgba(0,0,0,0.02)_7px)] dark:bg-[repeating-linear-gradient(-45deg,transparent,transparent_6px,rgba(255,255,255,0.015)_6px,rgba(255,255,255,0.015)_7px)]" />
+        <div className="relative w-20 h-5 shrink-0 overflow-hidden">
+          <Image
+            src="https://www.shadcnblocks.com/images/press/logo/shadcnblocks-logo.svg"
+            alt="shadcnblocks.com"
+            fill
+            className="object-contain dark:invert opacity-60"
+            unoptimized
+          />
+        </div>
+        <span className="text-[10px] text-neutral-400 dark:text-neutral-600 font-mono">spot reserved</span>
+        <span className="relative text-[9px] uppercase tracking-wider font-mono px-2 py-0.5 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-500">
+          Booked
+        </span>
+      </div>
+    )
+  }
+
   return (
     <button
       type="button"
@@ -83,14 +105,14 @@ export function SlotsSection({ className }: SlotsSectionProps) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <SlotCard label="Your brand here" tier="founding" />
+            <SlotCard booked />
             <SlotCard label="Your brand here" tier="founding" />
             <SlotCard label="Your brand here" tier="founding" />
           </div>
 
           <div className="mt-4 flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span className="text-xs text-neutral-400 dark:text-neutral-600">3 founding spots available</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+            <span className="text-xs text-neutral-400 dark:text-neutral-600">1 spot taken · <span className="text-amber-500 font-medium">2 founding spots left</span></span>
           </div>
         </motion.div>
 

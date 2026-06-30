@@ -36,10 +36,10 @@ export function StatsSection({ className }: StatsSectionProps) {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section ref={containerRef} className={cn("py-24 md:py-32 w-full max-w-5xl mx-auto flex flex-col items-center", className)}>
+    <section ref={containerRef} className={cn("py-12 md:py-16 w-full max-w-5xl mx-auto flex flex-col items-center", className)}>
 
       {/* Animated divider */}
-      <div className="w-full flex justify-center mb-20">
+      <div className="w-full flex justify-center mb-10">
         <motion.div
           initial={{ width: 0 }}
           animate={isInView ? { width: "100%" } : { width: 0 }}
@@ -59,7 +59,7 @@ export function StatsSection({ className }: StatsSectionProps) {
             <Counter from={0} to={1000} suffix="+" />
           </div>
           <span className="text-xl font-medium text-neutral-500 dark:text-neutral-400">
-            github Stars.
+            GitHub Stars
           </span>
         </motion.div>
 
@@ -87,7 +87,7 @@ export function StatsSection({ className }: StatsSectionProps) {
             <Counter from={0} to={20000} suffix="+" />
           </div>
           <span className="text-xl font-medium text-neutral-500 dark:text-neutral-400">
-            Page Views per months
+            Page views per month
           </span>
         </motion.div>
       </div>

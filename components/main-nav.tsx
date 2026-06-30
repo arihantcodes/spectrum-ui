@@ -65,7 +65,7 @@ export function MainNav() {
           'transition-colors hover:text-foreground/80',
           pathname === '/sponsor' ? 'text-foreground' : 'text-foreground/80',
         )}>
-          Sponsors
+          Sponsor Us
           <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
             New
           </span>

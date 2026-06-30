@@ -1,5 +1,6 @@
 import React from "react"
 import { HeroSection } from "@/components/marketing/sponsor/hero-section"
+import { SponsorsGrid } from "@/components/marketing/sponsor/sponsors-grid"
 import { StatsSection } from "@/components/marketing/sponsor/stats-section"
 import { InventorySection } from "@/components/marketing/sponsor/placements-section"
 import { SlotsSection } from "@/components/marketing/sponsor/pricing-section"
@@ -21,6 +22,7 @@ export default function SponsorPage() {
 
       <main className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col pb-32">
         <HeroSection />
+        <SponsorsGrid />
         <StatsSection />
         <InventorySection />
         <SlotsSection />
