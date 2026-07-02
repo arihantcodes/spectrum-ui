@@ -1922,6 +1922,41 @@
       ]
     },
     {
+      "name": "scratch-card",
+      "type": "registry:component",
+      "title": "Scratch Card",
+      "description": "A scratch-to-reveal coupon card with an HTML5 canvas foil, dust particles on scratch, and a reveal callback at a configurable threshold",
+      "files": [
+        {
+          "path": "app/registry/scratch-card/scratch-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/scratch-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "scratch-card-demo",
+      "type": "registry:component",
+      "title": "Scratch Card Demo",
+      "description": "Demo usage for the Scratch Card component",
+      "files": [
+        {
+          "path": "app/registry/scratch-card/scratch-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/scratch-card-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/scratch-card"
+      ]
+    },
+    {
       "name": "dock",
       "type": "registry:component",
       "title": "Dock",

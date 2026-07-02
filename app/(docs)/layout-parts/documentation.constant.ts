@@ -223,6 +223,12 @@ export const DOCS: Documentation[] = [
         value: 'responsive-modal',
         url: '/docs/responsive-modal',
       },
+      {
+        label: 'Scratch Card',
+        value: 'scratch-card',
+        url: '/docs/scratch-card',
+        new: true,
+      },
       { label: 'Spinner', value: 'spinner', url: '/docs/spinner' },
       {
         label: 'Skeleton',

@@ -1922,6 +1922,41 @@
       ]
     },
     {
+      "name": "scratch-card",
+      "type": "registry:component",
+      "title": "Scratch Card",
+      "description": "A scratch-to-reveal coupon card with an HTML5 canvas foil, dust particles on scratch, and a reveal callback at a configurable threshold",
+      "files": [
+        {
+          "path": "app/registry/scratch-card/scratch-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/scratch-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "scratch-card-demo",
+      "type": "registry:component",
+      "title": "Scratch Card Demo",
+      "description": "Demo usage for the Scratch Card component",
+      "files": [
+        {
+          "path": "app/registry/scratch-card/scratch-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/scratch-card-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/scratch-card"
+      ]
+    },
+    {
       "name": "dock",
       "type": "registry:component",
       "title": "Dock",
@@ -1974,6 +2009,38 @@
       ],
       "registryDependencies": [
         "@spectrumui/dock"
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:component",
+      "title": "Bento Grid",
+      "description": "A premium interactive Bento Grid component",
+      "files": [
+        {
+          "path": "app/registry/bento-grid/bento-grid.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/bento-grid.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/bento-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/bento-card.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/spotlight.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/spotlight.tsx"
+        },
+        {
+          "path": "app/registry/bento-grid/border-beam.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/border-beam.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
       ]
     }
   ]

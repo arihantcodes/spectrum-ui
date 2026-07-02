@@ -176,6 +176,15 @@ export const ROUTES: RoutesProps[] = [
         url: `${BASE_PATH}/responsive-modal`,
       },
       {
+        label: "Scratch Card",
+        value: "scratch-card",
+        url: `${BASE_PATH}/scratch-card`,
+        tag: {
+          label: "new",
+          color: "bg-lime-400",
+        },
+      },
+      {
         label: "Skeleton",
         value: "skeleton",
         url: `${BASE_PATH}/skeleton`,

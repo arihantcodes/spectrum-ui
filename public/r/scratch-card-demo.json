@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scratch-card-demo",
+  "title": "Scratch Card Demo",
+  "description": "Demo usage for the Scratch Card component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@spectrumui/scratch-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/scratch-card/scratch-card-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useCallback, useState } from \"react\"\nimport { ScratchCard } from \"@/components/spectrumui/scratch-card\"\nimport { Check, Copy, RotateCcw, Ticket } from \"lucide-react\"\n\nexport function ScratchCardDemo() {\n  const [resetKey, setResetKey] = useState(0)\n  const [isRevealed, setIsRevealed] = useState(false)\n  const [isCopied, setIsCopied] = useState(false)\n\n  const handleCopy = useCallback(() => {\n    navigator.clipboard.writeText(\"SPECTRUM20\").then(() => {\n      setIsCopied(true)\n      setTimeout(() => setIsCopied(false), 2000)\n    })\n  }, [])\n\n  const handleReset = useCallback(() => {\n    setResetKey((key) => key + 1)\n    setIsRevealed(false)\n    setIsCopied(false)\n  }, [])\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4 py-8\">\n      <ScratchCard\n        key={resetKey}\n        className=\"w-full max-w-[320px]\"\n        ariaLabel=\"Scratch to reveal your coupon code. Press Enter to reveal.\"\n        revealAnnouncement=\"Coupon revealed: SPECTRUM20 for 20% off\"\n        onReveal={() => setIsRevealed(true)}\n      >\n        <div className=\"flex flex-col items-center gap-3 px-6 py-10 text-center\">\n          <span className=\"flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800\">\n            <Ticket\n              className=\"h-5 w-5 text-neutral-600 dark:text-neutral-300\"\n              aria-hidden=\"true\"\n            />\n          </span>\n          <span className=\"text-xs font-medium uppercase tracking-widest text-neutral-400 dark:text-neutral-600\">\n            Coupon unlocked\n          </span>\n          <span className=\"text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100\">\n            20% off\n          </span>\n          <button\n            type=\"button\"\n            onClick={handleCopy}\n            className=\"mt-1 flex items-center gap-2 rounded-xl border border-dashed border-neutral-300 px-4 py-2 font-mono text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-300\"\n          >\n            SPECTRUM20\n            {isCopied ? (\n              <Check className=\"h-3.5 w-3.5\" aria-hidden=\"true\" />\n            ) : (\n              <Copy className=\"h-3.5 w-3.5\" aria-hidden=\"true\" />\n            )}\n            <span className=\"sr-only\">\n              {isCopied ? \"Copied to clipboard\" : \"Copy coupon code\"}\n            </span>\n          </button>\n        </div>\n      </ScratchCard>\n\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Drag across the card to scratch off the foil\n      </p>\n\n      {isRevealed && (\n        <button\n          type=\"button\"\n          onClick={handleReset}\n          className=\"flex items-center gap-2 rounded-xl border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:focus-visible:ring-neutral-300\"\n        >\n          <RotateCcw className=\"h-3.5 w-3.5\" aria-hidden=\"true\" />\n          Scratch again\n        </button>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/scratch-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
