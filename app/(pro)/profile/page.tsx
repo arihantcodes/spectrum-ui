@@ -182,6 +182,8 @@ export default async function ProfilePage() {
             {/*  */}
           </div>
 
+        
+
           {/* Mobile nav */}
           <div className="md:hidden mt-12 pt-6 border-t border-neutral-100 dark:border-[#1a1a1a] space-y-1">
             <SidebarItem icon={IconCreditCard} label="Billing" href="/dashboard" />

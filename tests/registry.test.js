@@ -114,7 +114,7 @@ for (const file of tsxFiles) {
     if (!val) continue;
 
     // Skip dynamic JSX variables, "cli" variable, and whitelisted items
-    if (val === 'cli' || val.startsWith('{') || val.includes('$') || val.includes('.') || (!val.includes('@') && shadcnComponents.has(val))) {
+    if (val === 'cli' || val === 'CLI' || val.startsWith('{') || val.includes('$') || val.includes('.') || val.includes('||') || (!val.includes('@') && shadcnComponents.has(val))) {
       continue;
     }
 

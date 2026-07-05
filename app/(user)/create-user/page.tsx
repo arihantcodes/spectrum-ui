@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { completeUserProfile } from './actions'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { SubmitButton } from './submit-button'
-import { IconBrandGithub } from '@tabler/icons-react'
+import { GitHubUsernameInput } from './github-username-input'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { AuthIllustration } from '@/components/auth-illustration'
 import Link from 'next/link'
@@ -98,25 +98,7 @@ export default async function CreateUserPage({
               />
             </div>
 
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-neutral-900 dark:text-[#CCC] uppercase tracking-wider flex items-center justify-between">
-                <span>GitHub Username</span>
-                <span className="text-[10px] text-neutral-400 dark:text-[#555] normal-case tracking-normal font-normal">Required for repo access</span>
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                  <IconBrandGithub size={16} className="text-neutral-400 dark:text-[#555]" />
-                </div>
-                <input 
-                  type="text" 
-                  name="github_username"
-                  required
-                  defaultValue={defaultGithub}
-                  placeholder="e.g. torvalds"
-                  className="w-full bg-white dark:bg-[#0C0C0C] border border-neutral-300 dark:border-[#333] focus:border-neutral-900 dark:focus:border-neutral-100 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-neutral-100 text-neutral-900 dark:text-[#F5F5F5] pl-10 pr-4 py-2.5 rounded-xl text-sm outline-none transition-all placeholder:text-neutral-400 dark:placeholder:text-[#444]"
-                />
-              </div>
-            </div>
+            <GitHubUsernameInput defaultValue={defaultGithub} />
 
             <BuildingChips />
 

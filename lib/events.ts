@@ -28,6 +28,7 @@ const eventSchema = z.object({
     "view_code_clicked",
     "copy_code_clicked",
     "copy_cli_clicked",
+    "copy_mcp_prompt_clicked",
     "login_modal_opened",
     "github_login_started",
     "google_login_started",
