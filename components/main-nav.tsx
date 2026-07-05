@@ -5,24 +5,28 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { Icons } from './icon';
+import { ScrambleText } from './scramble-text';
 
 export function MainNav() {
   const pathname = usePathname();
 
   return (
     <div className="mr-4 md:flex shrink-0">
-      <Link href="/" className="mr-4 flex items-center gap-2 lg:mr-6">
-        <div className="h-6 w-6 bg-neutral-100 border-neutral-300 border dark:bg-white rounded-md flex items-center justify-center p-1">
-          <Icons.logo className="h-6 w-6 rounded-md text-black " />
+      <Link href="/" className="mr-4 flex items-center gap-2.5 lg:mr-8">
+        <div className="h-7 w-7 bg-neutral-900 dark:bg-white rounded-md flex items-center justify-center p-1.5">
+          <Icons.logo className="h-full w-full text-white dark:text-black" />
         </div>
 
-        <span className="font-bold whitespace-nowrap">Spectrum UI</span>
+        <ScrambleText
+          text="Spectrum UI"
+          className="font-mono text-lg font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px]"
+        />
       </Link>
-      <nav className=" items-center gap-4 text-sm xl:gap-6 hidden md:flex">
+      <nav className="items-center gap-6 xl:gap-8 hidden md:flex font-mono text-sm uppercase tracking-wide">
         <Link
           href="/docs"
           className={cn(
-            'transition-colors hover:text-foreground/80',
+            'transition-colors hover:text-foreground',
             pathname === '/docs/installation' ? 'text-foreground' : 'text-foreground/80',
           )}
         >
@@ -49,26 +53,24 @@ export function MainNav() {
         >
           Templates
         </Link> */}
-        <Link href="/blog" className={cn(
-          'transition-colors hover:text-foreground/80',
-          pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
-        )}>
-          Blogs
-        </Link>
         <Link href="/founder-story" className={cn(
-          'transition-colors hover:text-foreground/80 flex items-center',
+          'transition-colors hover:text-foreground flex items-center whitespace-nowrap',
           pathname === '/founder-story' ? 'text-foreground' : 'text-foreground/80',
         )}>
           Founder Story
         </Link>
+        <Link href="/blog" className={cn(
+          'transition-colors hover:text-foreground',
+          pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
+        )}>
+          Blogs
+        </Link>
         <Link href="/sponsor" className={cn(
-          'transition-colors hover:text-foreground/80',
+          'transition-colors hover:text-foreground whitespace-nowrap',
           pathname === '/sponsor' ? 'text-foreground' : 'text-foreground/80',
         )}>
           Sponsor Us
-          <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
-            New
-          </span>
+          
         </Link>
       </nav>
     </div>

@@ -7,6 +7,8 @@ const HomeCardCollection = dynamic(() => import('@/components/homecard'), {
 import { HeroSection } from './home';
 import { PromoBanner } from '@/components/promo-banner';
 import { FAQSection } from '@/components/faq-section';
+import { BlogSection } from '@/components/blog-section';
+import { ShowcaseSection } from '@/components/showcase';
 import Cta from '@/components/cta';
 
 export const metadata: Metadata = {
@@ -28,29 +30,27 @@ export const metadata: Metadata = {
 const Homepage = () => {
   return (
     <>
-      <PromoBanner />
 
-      <div className="container-wrapper">
+
+      <div className="container-frame border-b border-border">
         <HeroSection />
       </div>
 
-      <div className="container-wrapper">
-        <div className="container py-6">
-          <div className="flex flex-col justify-center items-center my-8 md:my-12">
-            <h2 className="font-bold text-2xl md:text-4xl mb-4 tracking-tight text-neutral-900 dark:text-white">
-              Ready-to-Use UI Blocks
-            </h2>
-          </div>
-
-          <HomeCardCollection />
-        </div>
+      <div className="container-frame border-b border-border">
+        <ShowcaseSection />
       </div>
 
-      <div className="container-wrapper border-t border-border bg-neutral-50/10 dark:bg-neutral-950/10">
+     
+
+      <div className="container-frame border-t border-border">
+        <BlogSection />
+      </div>
+
+      <div className="container-frame border-t border-border bg-neutral-50/10 dark:bg-neutral-950/10">
         <FAQSection />
       </div>
 
-      <Cta />
+
     </>
   );
 };

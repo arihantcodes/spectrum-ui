@@ -3,11 +3,19 @@ import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Inter } from "next/font/google";
+import { Inter, Spectral } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const spectral = Spectral({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-spectral",
   display: "swap",
 });
 import Footer from "@/components/footer";
@@ -273,7 +281,7 @@ gtag('config', 'G-K7ZP6JB4MG');
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} font-regular`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} font-regular`}
         suppressHydrationWarning
       >
         <Providers>
@@ -287,7 +295,7 @@ gtag('config', 'G-K7ZP6JB4MG');
           </main>
           <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
           <Toaster />
-          {/* <Cta /> */}
+        
           <Footer />
         </Providers>
         <SpeedInsights />

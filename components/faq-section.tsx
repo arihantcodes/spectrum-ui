@@ -1,83 +1,135 @@
 "use client"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { motion, useReducedMotion } from "framer-motion"
 
 export const faqs = [
   {
-    question: "Is Spectrum UI a component library?",
-    answer: "No, Spectrum UI is a curated collection of copy-paste React, Next.js, and Tailwind CSS components. Rather than installing it as a heavy package dependency, you copy the source code directly into your own project. This gives you 100% control over the styling, responsiveness, and performance."
+    question: "Do I need to use an AI assistant?",
+    answer:
+      "No. The MCP is the fast path, but every component is browsable and copy-pasteable from the site too. Use whichever fits your flow.",
   },
   {
-    question: "How do I add components to my project?",
-    answer: "You can copy-paste code snippets directly from our documentation. Alternatively, you can use our developer CLI! Simply run 'npx spectrum-ui add <component-name>' in your project terminal to automatically install the component and all of its required dependencies."
+    question: "Which editors and assistants does it work with?",
+    answer:
+      "Anything that supports MCP — Cursor, Claude Code, Windsurf, VS Code with Copilot, and more. One config line and you're connected.",
   },
   {
-    question: "Can I use Spectrum UI with Next.js App Router & Server Components?",
-    answer: "Yes, absolutely! All of our components are designed with Next.js App Router and React Server Components (RSC) best practices in mind. Interactive components are pre-configured with the 'use client' directive, while layout and visual items remain server-renderable for peak speed."
+    question: "Do I own the code?",
+    answer:
+      "Yes. Components are copied into your repo as plain React and Tailwind files. Edit them, restyle them, ship them — they're yours.",
   },
   {
-    question: "What styling dependencies are required?",
-    answer: "Our design system is built entirely on Tailwind CSS and Framer Motion for high-fidelity animations. Some interactive overlays use Radix UI primitives. The installation documentation for each individual component clearly details any package prerequisites."
+    question: "Is it really built on shadcn/ui?",
+    answer:
+      "Yes. Everything follows shadcn/ui and Radix conventions, so components drop straight into an existing shadcn project.",
   },
   {
-    question: "Can I use these components in commercial projects or client work?",
-    answer: "Yes, you can use all free and Pro templates/components in commercial projects, personal portfolios, SaaS apps, and client work. The only restriction is that you cannot redistribute or resell the raw source code as a competing component library or boilerplate."
+    question: "How is this different from copy-pasting from a docs site?",
+    answer:
+      "Your assistant pulls the exact source with the right imports and dependencies, straight into your project. No tab-switching, no missed files.",
   },
   {
-    question: "What is Spectrum UI Pro?",
-    answer: "Spectrum UI Pro is our premium collection of production-ready Next.js templates. Each template features professional animated UI interfaces, fully configured Supabase databases, built-in Dodo Payments integrations, and secure NextAuth authentication out of the box."
+    question: "Will my components break when you ship updates?",
+    answer:
+      "No. The code lives in your repo, so updates never touch it. Pull newer versions only when you want them.",
   },
   {
-    question: "How do I get access to Pro templates after purchasing?",
-    answer: "Access is granted immediately to your GitHub account upon purchase. You can link your GitHub account and manage your template repositories at any time from your Spectrum UI Dashboard."
+    question: "Can I use it in commercial projects?",
+    answer:
+      "Yes. Use it in client work, SaaS products, whatever you're building. Just don't resell the components as your own library.",
   },
   {
-    question: "What is the refund policy?",
-    answer: "Due to the digital nature of our products and the immediate delivery of full source code access, we maintain a strict no-refund policy. We encourage you to try our free components and explore Pro live previews carefully before making a purchase."
+    question: "Is it free to try?",
+    answer:
+      "Yes. Spectrum UI is free and open source. Connect the MCP and start pulling components in minutes.",
   },
-  {
-    question: "How do I get support or report bugs?",
-    answer: "If you run into any issues, you can contact us via email at jainari1208@gmail.com, ask questions in our active developer chat, or send a direct message on X/Twitter @arihantcodes."
-  }
 ]
 
-export function FAQSection() {
-  return (
-    <div className="container max-w-4xl mx-auto py-16 px-4">
-      {/* Title & Description */}
-      <div className="space-y-4 text-center mb-12">
-        <h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-[#F5F5F5] sm:text-4xl">
-          Frequently Asked Questions
-        </h2>
-        <p className="text-sm sm:text-base text-neutral-500 dark:text-[#666] max-w-xl mx-auto">
-          Everything you need to know about Spectrum UI, component installation, CLI usage, and Pro templates.
-        </p>
-      </div>
+const revealEase = [0.22, 1, 0.36, 1] as const
 
-      {/* Accordion container */}
-      <div className="max-w-3xl mx-auto bg-white/40 dark:bg-[#0C0C0C]/40  backdrop-blur-[2px] rounded-2xl p-6 sm:p-8 ">
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((faq, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="border-neutral-200 dark:border-[#1F1F1F] last:border-b-0"
+function PlusMinusIcon() {
+  return (
+    <span
+      aria-hidden
+      className="relative size-4 shrink-0 text-[#080808] transition-all duration-300 ease-out group-hover:text-[#f9452d] group-data-[state=open]:rotate-180 dark:text-neutral-200"
+    >
+      <span className="absolute left-1/2 top-1/2 h-[1.5px] w-[11px] -translate-x-1/2 -translate-y-1/2 bg-current" />
+      <span className="absolute left-1/2 top-1/2 h-[11px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 ease-out group-data-[state=open]:scale-y-0" />
+    </span>
+  )
+}
+
+export function FAQSection() {
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <section className="container py-16">
+      {/* Header */}
+      <motion.div
+        className="flex flex-col gap-3"
+        initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.55, ease: revealEase }}
+      >
+        <div className="flex items-center gap-2.5">
+          <span aria-hidden className="-rotate-90">
+            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d]" />
+          </span>
+          <span className="font-mono text-[12px] font-medium uppercase leading-[16.8px] text-[#171717] dark:text-neutral-200">
+            FAQ
+          </span>
+        </div>
+        <h2 className="font-spectral text-[24px] leading-[28.8px] tracking-[-1px] text-[#2d2f2e] dark:text-neutral-100">
+          Things developers ask
+          <br />
+          before installing
+        </h2>
+      </motion.div>
+
+      {/* Accordion */}
+      <AccordionPrimitive.Root
+        type="single"
+        collapsible
+        defaultValue="faq-0"
+        className="mt-10 w-full max-w-[960px]"
+      >
+        {faqs.map((faq, index) => (
+          <motion.div
+            key={faq.question}
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{
+              duration: 0.55,
+              delay: index * 0.045,
+              ease: revealEase,
+            }}
+          >
+            <AccordionPrimitive.Item
+              value={`faq-${index}`}
+              className="border-b border-[#f5f5f5] transition-colors duration-300 hover:border-[#e8e8e8] dark:border-[#1f1f1f] dark:hover:border-neutral-800"
             >
-              <AccordionTrigger className="text-left py-4 text-neutral-800 dark:text-[#E5E5E5] hover:no-underline hover:text-neutral-950 dark:hover:text-white transition-colors font-medium text-sm sm:text-base">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-neutral-500 dark:text-[#666] leading-relaxed text-sm pb-4">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </div>
+              <AccordionPrimitive.Header className="flex">
+                <AccordionPrimitive.Trigger className="group flex w-full items-center gap-3.5 px-4 py-4 text-left outline-none transition-colors duration-300 hover:bg-[#fafafa] focus-visible:bg-[#fafafa] dark:hover:bg-neutral-900/50 dark:focus-visible:bg-neutral-900/50">
+                  <PlusMinusIcon />
+                  <span className="font-spectral text-lg leading-[1.3] tracking-[-0.4px] text-[#080808]/95 transition-[transform,color] duration-300 ease-out group-hover:translate-x-0.5 group-hover:text-[#080808] dark:text-neutral-100 dark:group-hover:text-white">
+                    {faq.question}
+                  </span>
+                </AccordionPrimitive.Trigger>
+              </AccordionPrimitive.Header>
+              <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-faq-close data-[state=open]:animate-faq-open motion-reduce:animate-none">
+                <div className="pb-[18px] pl-[46px] pr-4">
+                  <p className="max-w-[520px] animate-fade-up font-inter text-base leading-6 tracking-[-0.32px] text-[#080808]/75 motion-reduce:animate-none dark:text-neutral-400">
+                    {faq.answer}
+                  </p>
+                </div>
+              </AccordionPrimitive.Content>
+            </AccordionPrimitive.Item>
+          </motion.div>
+        ))}
+      </AccordionPrimitive.Root>
+    </section>
   )
 }

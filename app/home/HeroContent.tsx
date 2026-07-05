@@ -1,128 +1,124 @@
-'use client';
-import Image from 'next/image';
-import { AnimatedBadge } from './AnimatedBadge';
-import { AnimateEnter } from './AnimateEnter';
-import { GridBackground } from './GridBackground';
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/icon';
-import { NumberTicker } from '@/components/magicui/number-ticker';
-import Link from 'next/link';
-import { siteConfig } from '@/config/site';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
+
+import { AnimateEnter } from "./AnimateEnter";
+import { CornerBadge } from "./CornerBadge";
 
 export function HeroContent() {
-  const [star, setStar] = useState(0);
-  const fetchGithubData = () => {
-    axios
-      .get('https://api.github.com/repos/arihantcodes/spectrum-ui')
-      .then((response) => {
-        const star = response.data.stargazers_count;
-        setStar(star);
-      })
-      .catch((error) => {});
-  };
-
-  useEffect(() => {
-    // Defer non-critical API call to avoid blocking render
-    const timeoutId = setTimeout(() => {
-      fetchGithubData();
-    }, 100);
-    return () => clearTimeout(timeoutId);
-  }, []);
   return (
-    <div className="z-[3] flex flex-col items-center gap-16 sm:gap-28 text-center">
-      <div>
-        <div className="mb-5 sm:mb-8 space-y-4 sm:space-y-6">
-          <AnimateEnter delay={0.1} duration={2} className="w-fit mx-auto">
-            <AnimatedBadge />
-          </AnimateEnter>
-          <AnimateEnter delay={0.3} duration={2}>
-            <h1 className="mx-auto text-center max-w-5xl px-4 font-bold text-2xl md:text-6xl leading-tight tracking-tight">
-              <span className="block text-gradient mb-1">Production-ready Components.</span>
-              <span className="">
-                Built to help you ship faster.
-              </span>
-            </h1>
-          </AnimateEnter>
-        </div>
-        <AnimateEnter delay={0.5} duration={2} className="mb-6 sm:mb-8">
-          <p className="container mx-auto  md:max-w-lg text-[12px] sm:text-base text-foreground">
-            250+  React components, blocks, and animations powered by Tailwind CSS and Framer Motion.
+    <div className="z-[3] flex w-full flex-col ">
+      {/* Hero */}
+      <div className="flex min-h-[68vh] flex-col items-center justify-center gap-3 px-4 py-16 text-center sm:py-24">
+        <AnimateEnter delay={0.1} duration={1} isWhileInView={false}>
+          <CornerBadge />
+        </AnimateEnter>
+
+        <AnimateEnter delay={0.2} duration={1} isWhileInView={false}>
+          <h1 className="max-w-[553px] my-4 font-spectral font-light capitalize text-[34px] leading-[0.95] tracking-[-0.09em] text-black dark:text-white sm:text-[42px] lg:text-[54px] lg:leading-[51px] lg:tracking-[-5px]">
+            The component library
+            <br />
+            your AI agents are missing.
+          </h1>
+        </AnimateEnter>
+
+        <AnimateEnter delay={0.35} duration={1} isWhileInView={false}>
+          <p className="max-w-[548px] font-inter text-[14px] font-normal capitalize leading-[20px] text-[#646464]">
+            Connect the Spectrum UI MCP once, then ask Cursor or Claude for any
+            of 250+ animated components installed in one line, wired to your
+            project.
           </p>
         </AnimateEnter>
-        <AnimateEnter className="flex items-center justify-center gap-3" delay={0.7} duration={2}>
-          <div className="flex flex-row items-center justify-center gap-3 mt-2 md:mt-6 w-full sm:w-auto px-4">
-            <Link href="/docs" className="w-auto">
-              <Button size="lg" className="rounded-xl w-auto px-4 sm:px-8">
-                Explore Components
+
+        <AnimateEnter delay={0.5} duration={1} isWhileInView={false} className="py-3">
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/docs" className="w-full sm:w-auto">
+              <Button
+                className="h-[44px] w-full rounded-[28px] font-inter text-[16px] font-medium leading-[22.4px] sm:w-[161px]"
+              >
+                Install MCP
               </Button>
             </Link>
-
-            <div className="w-auto">
-              <Link target="_blank" href={siteConfig.links.github}>
-                <Button variant="secondary" className="rounded-xl w-auto px-4 sm:px-8 h-11">
-                  <div className="flex items-center">
-                    <Icons.gitHub className="size-4" />
-                    <span className="ml-2 hidden sm:inline-block">Star on GitHub</span>
-                  </div>
-                  <div className="ml-2 flex items-center gap-1 text-sm">
-                    🌟
-                    <NumberTicker value={star} className="font-display" />
-                  </div>
-                </Button>
-              </Link>
-            </div>
+            <Link href="/docs/components" className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                className="h-[44px] w-full rounded-[28px] border-transparent bg-white font-inter text-[16px] font-normal leading-[22.4px] text-black shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_2px_0px_rgba(0,0,0,0.04),0px_2px_4px_0px_rgba(0,0,0,0.04)] hover:bg-white hover:text-black sm:w-[206px] dark:bg-transparent dark:text-white dark:hover:text-white"
+              >
+                Browse components
+              </Button>
+            </Link>
           </div>
         </AnimateEnter>
       </div>
-      <section className="w-full max-w-4xl mx-auto px-4 ">
-        <AnimateEnter delay={0.9} duration={2} className="space-y-6">
-          <h2 className="text-base font-medium text-muted-foreground uppercase tracking-wider">
-            Built With
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 place-items-center">
-            <Image
-              src="/nextjs.svg"
-              height={40}
-              width={90}
-              className="w-[80px] sm:w-[60px] md:w-[90px] transition-transform duration-300 hover:scale-105"
-              alt="Next.js"
-              loading="lazy"
-              fetchPriority="low"
-            />
-            <Image
-              src="/shadcn.svg"
-              height={40}
-              width={140}
-              className="w-[100px] sm:w-[100px] md:w-[140px] transition-transform duration-300 hover:scale-105"
-              alt="shadcn/ui"
-              loading="lazy"
-              fetchPriority="low"
-            />
-            <Image
-              src="/tailwind.svg"
-              height={40}
-              width={120}
-              className="w-[100px] sm:w-[90px] md:w-[120px] transition-transform duration-300 hover:scale-105"
-              alt="Tailwind CSS"
-              loading="lazy"
-              fetchPriority="low"
-            />
-            <Image
-              src="/aceternity.svg"
-              height={40}
-              width={160}
-              className="w-[130px] sm:w-[120px] md:w-[160px] transition-transform duration-300 hover:scale-105"
-              alt="Aceternity UI"
-              loading="lazy"
-              fetchPriority="low"
-            />
-          </div>
-        </AnimateEnter>
-      </section>
 
-      <GridBackground />
+      {/* Built with */}
+      <AnimateEnter
+        delay={0.7}
+        duration={1}
+        isWhileInView={false}
+        className="w-full border-t border-border"
+      >
+        <div className="flex flex-col items-center gap-4 px-4 py-6">
+          <p className="text-sm font-semibold text-foreground">Built with</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 sm:gap-x-0">
+            <div className="flex items-center justify-center sm:px-8">
+              <Image
+                src="/shadcn.svg"
+                alt="shadcn/ui"
+                width={137}
+                height={32}
+                className="h-6 w-auto"
+                loading="lazy"
+              />
+            </div>
+
+            <span className="hidden h-6 w-px shrink-0 bg-border sm:block" />
+
+            <div className="flex items-center justify-center sm:px-8">
+              <Image
+                src="/tailwind.svg"
+                alt="Tailwind CSS"
+                width={194}
+                height={24}
+                className="h-5 w-auto"
+                loading="lazy"
+              />
+            </div>
+
+            <span className="hidden h-6 w-px shrink-0 bg-border sm:block" />
+
+            <div className="flex items-center justify-center gap-2 sm:px-8">
+              <Image
+                src="/framer.svg"
+                alt="Motion"
+                width={20}
+                height={20}
+                className="h-[18px] w-[18px]"
+                loading="lazy"
+              />
+              <span className="text-[15px] font-semibold text-[#797C7C]">
+                Motion
+              </span>
+            </div>
+
+            <span className="hidden h-6 w-px shrink-0 bg-border sm:block" />
+
+            <div className="flex items-center justify-center sm:px-8">
+              <Image
+                src="/nextjs.svg"
+                alt="Next.js"
+                width={120}
+                height={24}
+                className="h-5 w-auto"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </AnimateEnter>
     </div>
   );
 }
