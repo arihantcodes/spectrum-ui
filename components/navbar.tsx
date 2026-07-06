@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
+import { GithubStarButton } from './github-star-button';
 import { ThemeToggle } from './theme-toggle';
 import { UserNav } from './user-nav';
 import { Button } from './ui/button';
@@ -47,13 +48,14 @@ export function SiteHeader({ session }: { session: Session | null }) {
               </Link>
             </div> */}
 
-            <nav className="flex items-center gap-0.5">
+            <nav className="flex items-center gap-1.5 sm:gap-2">
+              <GithubStarButton />
               <ThemeToggle />
               {session ? (
                 <UserNav session={session} />
               ) : (
                 <Link href={`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`}>
-                  <Button size="sm" className="ml-1 sm:ml-2 h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-sm">
+                  <Button size="sm" className="h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-sm">
                     Create Account 
                   </Button>
                 </Link>

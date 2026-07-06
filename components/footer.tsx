@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
@@ -172,7 +172,7 @@ export default function Footer() {
               href="/docs/mcp"
               className="group inline-flex h-12 w-full items-center justify-center whitespace-nowrap rounded-full bg-black px-6 font-inter text-base text-white transition-[transform,background-color] duration-200 ease-out hover:bg-neutral-800 active:scale-[0.97] dark:bg-white dark:text-black dark:hover:bg-neutral-200 sm:w-auto"
             >
-              <Terminal className="mr-2 size-4 opacity-60 transition-all duration-300 ease-out group-hover:rotate-[-8deg] group-hover:opacity-100" />
+
               Install MCP
               <span className="inline-flex w-0 -translate-x-1 items-center justify-end overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:w-5 group-hover:translate-x-0 group-hover:opacity-100">
                 <ArrowRight className="size-4" />
