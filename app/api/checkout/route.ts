@@ -115,6 +115,7 @@ export async function POST(req: NextRequest) {
           name:  session.user.name ?? session.user.email,
         },
         metadata: {
+          type: 'template',
           templateSlug,
           githubUsername: cleanGithub,
           userEmail:      session.user.email,

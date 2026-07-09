@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Spectrum Pro — Premium Next.js Templates Built on Spectrum UI",
+  title: "Spectrum UI Pro — Early Bird Waitlist",
   description:
-    "Production-ready Next.js templates with dark mode, animations, and TypeScript. Built on shadcn/ui and Spectrum UI. Buy once, own forever. Starting at $49.",
+    "Join the Spectrum UI Pro waitlist. Lock early-bird pricing for premium Next.js templates, pro components, and founder support.",
   keywords: [
     "Next.js templates",
     "React templates",
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     canonical: "https://ui.spectrumhq.in/pro",
   },
   openGraph: {
-    title: "Spectrum Pro — Premium Next.js Templates",
+    title: "Spectrum UI Pro — Early Bird Waitlist",
     description:
-      "Production-ready Next.js templates with dark mode, animations, and TypeScript. Buy once, own forever.",
+      "Reserve your spot on the Spectrum UI Pro waitlist. One payment locks early-bird pricing at launch.",
     url: "https://ui.spectrumhq.in/pro",
     type: "website",
   },

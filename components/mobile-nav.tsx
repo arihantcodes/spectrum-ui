@@ -45,6 +45,11 @@ const mainNav = [
     href: "/",
   },
   {
+    title: "Pro",
+    href: "/pro",
+    badge: "Early Bird",
+  },
+  {
     title: "Colors",
     href: "/colors",
   },
@@ -264,8 +269,14 @@ export function MobileNav() {
                       key={item.href}
                       href={item.href}
                       onOpenChange={setIsOpen}
+                      className={item.badge ? 'relative' : undefined}
                     >
                       {item.title}
+                      {item.badge && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 font-medium">
+                          {item.badge}
+                        </span>
+                      )}
                     </MobileLink>
                   ),
               )}

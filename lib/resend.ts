@@ -94,7 +94,7 @@ export async function sendPurchaseEmail({
     const escapedGithub = escapeHtml(githubUsername);
 
     const { data, error } = await getResend().emails.send({
-      from: 'Spectrum UI <noreply@spectrumhq.in>', // Use your verified domain here
+      from: 'Spectrum UI <noreply@spectrumhq.in>',
       to: [email],
       subject: `Welcome to ${escapedTemplate} - Access Granted!`,
       html: `
@@ -122,6 +122,65 @@ export async function sendPurchaseEmail({
     return data;
   } catch (err) {
     console.error('Error in sendPurchaseEmail:', err);
+    throw err;
+  }
+}
+
+interface ProWaitlistEmailProps {
+  email: string;
+  githubUsername: string;
+  amountLabel: string;
+}
+
+export async function sendProWaitlistEmail({
+  email,
+  githubUsername,
+  amountLabel,
+}: ProWaitlistEmailProps) {
+  try {
+    const escapedGithub = escapeHtml(githubUsername);
+
+    const { data, error } = await getResend().emails.send({
+      from: 'Spectrum UI <noreply@spectrumhq.in>',
+      to: [email],
+      subject: "You're on the Spectrum Pro waitlist!",
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
+          <div style="margin-bottom: 32px;">
+            <strong style="font-size: 18px;">Spectrum UI</strong>
+          </div>
+
+          <h1 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">
+            You're on the Pro waitlist!
+          </h1>
+
+          <p style="font-size: 15px; line-height: 1.6; color: #444;">
+            Thanks for reserving your spot on Spectrum Pro. We received your payment of <strong>${escapeHtml(amountLabel)}</strong>.
+          </p>
+
+          <p style="font-size: 15px; line-height: 1.6; color: #444;">
+            Your GitHub account <strong>@${escapedGithub}</strong> is on file. When Pro launches, you'll get first access to premium templates, pro components, and priority support.
+          </p>
+
+          <p style="font-size: 15px; line-height: 1.6; color: #444;">
+            We'll email you the moment Pro goes live — no extra steps needed.
+          </p>
+
+          <p style="font-size: 15px; line-height: 1.6; color: #444; margin-top: 24px;">
+            — Arihant, Spectrum UI
+          </p>
+        </div>
+      `,
+    });
+
+    if (error) {
+      console.error('Failed to send pro waitlist email:', error);
+      throw error;
+    }
+
+    return data;
+  } catch (err) {
+    console.error('Error in sendProWaitlistEmail:', err);
     throw err;
   }
 }
