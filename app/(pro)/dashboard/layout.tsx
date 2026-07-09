@@ -1,6 +1,6 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
-import { supabaseAdmin } from '@/lib/supabase-admin'
+import { isOnboardingComplete } from '@/lib/onboarding'
 
 export default async function DashboardLayout({
   children,
@@ -8,16 +8,9 @@ export default async function DashboardLayout({
   children: React.ReactNode
 }) {
   const session = await auth()
-  if (!session) redirect('/sign-in')
+  if (!session?.user?.email) redirect('/sign-in')
 
-  // Enforce DB existence validation before revealing Dashboard
-  const { data: user } = await supabaseAdmin
-    .from('users')
-    .select('id')
-    .eq('email', session.user?.email!)
-    .single()
-
-  if (!user) {
+  if (!(await isOnboardingComplete(session.user.email))) {
     redirect('/create-user')
   }
 

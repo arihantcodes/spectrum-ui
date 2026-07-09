@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { Icons } from '@/components/icon'
 import { AuthIllustration } from '@/components/auth-illustration'
 import Link from 'next/link'
+import { buildCreateUserUrl, isOnboardingComplete } from '@/lib/onboarding'
 
 function GitHubIcon() {
   return (
@@ -29,11 +30,17 @@ export default async function SignInPage({
   searchParams: { callbackUrl?: string }
 }) {
   const session = await auth()
-  if (session?.user) {
-    redirect(searchParams.callbackUrl ?? '/dashboard')
-  }
   const callbackUrl = searchParams.callbackUrl ?? '/'
-  const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`
+
+  if (session?.user?.email) {
+    const onboardingComplete = await isOnboardingComplete(session.user.email)
+    if (!onboardingComplete) {
+      redirect(buildCreateUserUrl(callbackUrl))
+    }
+    redirect(callbackUrl.startsWith('/') ? callbackUrl : '/')
+  }
+
+  const postAuthRedirect = buildCreateUserUrl(callbackUrl)
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">

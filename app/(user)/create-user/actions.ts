@@ -5,42 +5,48 @@ import { syncUser } from '@/lib/user-sync'
 import { notifyNewSignup } from '@/lib/slack'
 import { sendFounderWelcomeEmail } from '@/lib/resend'
 import { redirect } from 'next/navigation'
+import { validateGithubUsername } from '@/lib/validate-github-username'
 
 export async function completeUserProfile(formData: FormData) {
   const session = await auth()
-  
+
   if (!session?.user?.email) {
-    throw new Error("Not authorized")
+    throw new Error('Not authorized')
   }
 
   const userEmail = session.user.email.toLowerCase()
 
   const githubUsername = formData.get('github_username')
-  if (typeof githubUsername !== 'string') {
-    throw new Error("Invalid GitHub username")
+  if (typeof githubUsername !== 'string' || !githubUsername.trim()) {
+    throw new Error('GitHub username is required')
+  }
+
+  const trimmedGithub = githubUsername.trim()
+  const githubIsValid = await validateGithubUsername(trimmedGithub)
+  if (!githubIsValid) {
+    throw new Error('Please enter a valid GitHub username')
   }
 
   const nextUrl = formData.get('next')
-  const redirectTo = typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/dashboard'
+  const redirectTo =
+    typeof nextUrl === 'string' && nextUrl.startsWith('/') ? nextUrl : '/'
 
-  const buildingType = formData.get('building_type')
-  if (typeof buildingType !== 'string' || buildingType.trim() === '') {
-    throw new Error("Building type is required")
-  }
-  const buildingTypeValue = buildingType
+  console.log(
+    '[completeUserProfile] Onboarding user:',
+    userEmail,
+    'Name:',
+    session.user.name,
+    'API Key present:',
+    !!process.env.RESEND_API_KEY
+  )
 
-  console.log('[completeUserProfile] Onboarding user:', userEmail, 'Name:', session.user.name, 'API Key present:', !!process.env.RESEND_API_KEY)
-
-  // Reuse the robust server-side syncUser logic we built!
   await syncUser({
     email: userEmail,
     name: session.user.name,
     image: session.user.image,
-    githubUsername: githubUsername || null,
-    buildingType: buildingTypeValue
+    githubUsername: trimmedGithub,
   })
 
-  // Define parallel tasks for external services
   const emailPromise = (async () => {
     try {
       const { supabaseAdmin } = await import('@/lib/supabase-admin')
@@ -52,23 +58,30 @@ export async function completeUserProfile(formData: FormData) {
 
       if (userRecord && !userRecord.welcome_email_sent) {
         await sendFounderWelcomeEmail(userEmail, session.user.name || '')
-        
+
         const { error: dbError } = await supabaseAdmin
           .from('users')
           .update({ welcome_email_sent: true })
           .eq('email', userEmail)
-          
+
         if (dbError) {
-          console.error('[completeUserProfile] Failed to update DB for welcome email:', dbError)
+          console.error(
+            '[completeUserProfile] Failed to update DB for welcome email:',
+            dbError
+          )
         } else {
-          console.log('[completeUserProfile] Successfully sent welcome email & updated DB for:', userEmail)
+          console.log(
+            '[completeUserProfile] Successfully sent welcome email & updated DB for:',
+            userEmail
+          )
         }
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const error = err as { message?: string; name?: string; stack?: string }
       console.error('[completeUserProfile] Welcome email failed. Details:', {
-        message: err?.message,
-        name: err?.name,
-        stack: err?.stack,
+        message: error?.message,
+        name: error?.name,
+        stack: error?.stack,
         raw: err,
       })
     }
@@ -79,10 +92,10 @@ export async function completeUserProfile(formData: FormData) {
       await notifyNewSignup({
         name: session.user.name,
         email: userEmail,
-        githubUsername: githubUsername || session.user.githubUsername || null,
+        githubUsername: trimmedGithub || session.user.githubUsername || null,
         avatarUrl: session.user.image || null,
         provider: session.user.githubUsername ? 'GitHub' : 'Google',
-        convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
+        convertedFrom: redirectTo !== '/' ? redirectTo : null,
       })
     } catch (err) {
       console.error('[completeUserProfile] Slack notification failed:', err)
@@ -96,28 +109,26 @@ export async function completeUserProfile(formData: FormData) {
         const phProperties = {
           name: session.user.name,
           email: userEmail,
-          githubUsername: githubUsername || session.user.githubUsername || null,
+          githubUsername: trimmedGithub || session.user.githubUsername || null,
           provider: session.user.githubUsername ? 'GitHub' : 'Google',
-          convertedFrom: redirectTo !== '/dashboard' ? redirectTo : null,
-          buildingType: buildingTypeValue,
+          convertedFrom: redirectTo !== '/' ? redirectTo : null,
           $set: {
             name: session.user.name,
             email: userEmail,
-            github_username: githubUsername || session.user.githubUsername || null,
-            building_type: buildingTypeValue,
-          }
+            github_username: trimmedGithub || session.user.githubUsername || null,
+          },
         }
 
         posthog.capture({
           distinctId: userEmail,
           event: 'user_created',
-          properties: phProperties
+          properties: phProperties,
         })
 
         posthog.capture({
           distinctId: userEmail,
           event: 'onboarding_completed',
-          properties: phProperties
+          properties: phProperties,
         })
 
         await posthog.shutdown()
@@ -127,9 +138,7 @@ export async function completeUserProfile(formData: FormData) {
     }
   })()
 
-  // Wait for all parallel tasks to complete to prevent execution truncation
   await Promise.all([emailPromise, slackPromise, posthogPromise])
 
-  // Once saved to DB, push them to their intended destination
   redirect(redirectTo)
 }
