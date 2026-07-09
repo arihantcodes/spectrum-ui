@@ -1,0 +1,16 @@
+{
+  "name": "Spectrum UI",
+  "short_name": "SpectrumUI",
+  "description": "Beautiful React components for modern web applications",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

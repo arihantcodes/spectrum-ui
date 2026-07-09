@@ -1,15 +1,8 @@
-import { Checkout } from '@dodopayments/nextjs'
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { PRO_CONFIG } from '@/lib/pro-config'
-
-const DodoCheckout = Checkout({
-  bearerToken: process.env.DODO_PAYMENTS_API_KEY!,
-  returnUrl: process.env.DODO_PAYMENTS_RETURN_URL!,
-  environment: process.env.DODO_PAYMENTS_ENVIRONMENT as 'test_mode' | 'live_mode',
-  type: 'session',
-})
+import { createDodoCheckoutSession } from '@/lib/create-dodo-checkout-session'
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,7 +17,10 @@ export async function POST(req: NextRequest) {
 
     if (!PRO_CONFIG.dodoProductId) {
       return NextResponse.json(
-        { error: 'Pro waitlist is not configured yet' },
+        {
+          error:
+            'Pro waitlist is not configured. Set DODO_PRO_WAITLIST_PRODUCT_ID in production.',
+        },
         { status: 503 }
       )
     }
@@ -79,34 +75,24 @@ export async function POST(req: NextRequest) {
       console.error('[pro-waitlist] PostHog event failed:', err)
     }
 
-    const dodoRequest = new NextRequest(req.url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        product_cart: [
-          {
-            product_id: PRO_CONFIG.dodoProductId,
-            quantity: 1,
-          },
-        ],
-        customer: {
-          email: userEmail,
-          name: session.user.name ?? userEmail,
-        },
-        metadata: {
-          type: 'pro_waitlist',
-          githubUsername: cleanGithub,
-          userEmail,
-        },
-      }),
+    const checkoutUrl = await createDodoCheckoutSession({
+      productId: PRO_CONFIG.dodoProductId,
+      customer: {
+        email: userEmail,
+        name: session.user.name ?? userEmail,
+      },
+      metadata: {
+        type: 'pro_waitlist',
+        githubUsername: cleanGithub,
+        userEmail,
+      },
     })
 
-    return DodoCheckout(dodoRequest)
+    return NextResponse.json({ checkout_url: checkoutUrl })
   } catch (err) {
-    console.error('[pro-waitlist] Checkout error:', err)
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    )
+    const message =
+      err instanceof Error ? err.message : 'Failed to create checkout session'
+    console.error('[pro-waitlist] Checkout error:', message, err)
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }

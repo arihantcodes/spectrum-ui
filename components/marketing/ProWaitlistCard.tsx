@@ -56,13 +56,18 @@ export function ProWaitlistCard({ alreadyJoined = false }: ProWaitlistCardProps)
     try {
       const res = await fetch('/api/checkout/pro-waitlist', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           githubUsername: githubUsername.replace(/^@/, '').trim(),
         }),
       })
 
-      const data = (await res.json()) as { error?: string; checkout_url?: string }
+      const contentType = res.headers.get('content-type') ?? ''
+      const data = contentType.includes('application/json')
+        ? ((await res.json()) as { error?: string; checkout_url?: string })
+        : { error: await res.text() }
+
       if (!res.ok) {
         setError(data.error ?? 'Something went wrong')
         return
@@ -70,7 +75,10 @@ export function ProWaitlistCard({ alreadyJoined = false }: ProWaitlistCardProps)
 
       if (data.checkout_url) {
         window.location.href = data.checkout_url
+        return
       }
+
+      setError('Checkout URL missing. Please try again or contact support.')
     } catch {
       setError('Failed to start checkout. Please try again.')
     } finally {

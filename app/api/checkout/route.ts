@@ -1,15 +1,7 @@
-import { Checkout } from '@dodopayments/nextjs'
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
 import { supabaseAdmin as supabase } from '@/lib/supabase-admin'
-
-// Dodo handles the checkout session
-const DodoCheckout = Checkout({
-  bearerToken:  process.env.DODO_PAYMENTS_API_KEY!,
-  returnUrl:    process.env.DODO_PAYMENTS_RETURN_URL!,
-  environment:  process.env.DODO_PAYMENTS_ENVIRONMENT as 'test_mode' | 'live_mode',
-  type:         'session',
-})
+import { createDodoCheckoutSession } from '@/lib/create-dodo-checkout-session'
 
 export async function POST(req: NextRequest) {
   try {
@@ -99,36 +91,25 @@ export async function POST(req: NextRequest) {
       console.error('[checkout] PostHog checkout_initiated failed:', err)
     }
 
-    // ── Build Dodo checkout request ──
-    const dodoRequest = new NextRequest(req.url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        product_cart: [
-          {
-            product_id: template.dodo_product_id,
-            quantity: 1,
-          },
-        ],
-        customer: {
-          email: session.user.email,
-          name:  session.user.name ?? session.user.email,
-        },
-        metadata: {
-          type: 'template',
-          templateSlug,
-          githubUsername: cleanGithub,
-          userEmail:      session.user.email,
-        },
-      }),
+    const checkoutUrl = await createDodoCheckoutSession({
+      productId: template.dodo_product_id,
+      customer: {
+        email: session.user.email,
+        name: session.user.name ?? session.user.email,
+      },
+      metadata: {
+        type: 'template',
+        templateSlug,
+        githubUsername: cleanGithub,
+        userEmail: session.user.email,
+      },
     })
 
-    return DodoCheckout(dodoRequest)
+    return NextResponse.json({ checkout_url: checkoutUrl })
   } catch (err) {
-    console.error('Checkout error:', err)
-    return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 }
-    )
+    const message =
+      err instanceof Error ? err.message : 'Failed to create checkout session'
+    console.error('Checkout error:', message, err)
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
