@@ -1,6 +1,7 @@
 import { IconCheck, IconBrandGithub, IconX, IconClock } from '@tabler/icons-react'
 import Link from 'next/link'
 import { fulfillPaymentById, retrievePayment } from '@/lib/fulfill-payment'
+import { ProWaitlistSuccessTracker } from '@/app/pro/waitlist/success/tracker'
 
 interface PaymentSuccessPageProps {
   searchParams: {
@@ -145,6 +146,7 @@ export default async function PaymentSuccessPage({
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      {isProWaitlist && <ProWaitlistSuccessTracker />}
       <div className="max-w-md w-full text-center">
         <div
           className="w-16 h-16 bg-[#22C55E]/10 border border-[#22C55E]/20

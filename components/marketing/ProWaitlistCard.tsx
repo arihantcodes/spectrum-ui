@@ -43,6 +43,10 @@ export function ProWaitlistCard({ alreadyJoined = false }: ProWaitlistCardProps)
     }
   }, [session?.user?.githubUsername])
 
+  useEffect(() => {
+    trackEvent({ name: 'pro_page_viewed' })
+  }, [])
+
   const handleJoin = async () => {
     if (!githubUsername.trim()) {
       setError('GitHub username is required')

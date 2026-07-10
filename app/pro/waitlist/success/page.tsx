@@ -3,6 +3,7 @@ import { auth } from '@/auth'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { CheckCircle2 } from 'lucide-react'
 import { Icons } from '@/components/icon'
+import { ProWaitlistSuccessTracker } from './tracker'
 
 export default async function ProWaitlistSuccessPage() {
   const session = await auth()
@@ -20,6 +21,7 @@ export default async function ProWaitlistSuccessPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-background">
+      <ProWaitlistSuccessTracker />
       <Link href="/" className="flex items-center gap-2.5 mb-10">
         <div className="h-8 w-8 bg-neutral-100 dark:bg-white border border-neutral-200 dark:border-transparent rounded-lg flex items-center justify-center p-1.5">
           <Icons.logo className="h-full w-full text-black" />
