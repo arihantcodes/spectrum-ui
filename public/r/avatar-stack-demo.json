@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-stack-demo",
+  "title": "Avatar Stack Demo",
+  "description": "Demo usage for the Avatar Stack component",
+  "registryDependencies": [
+    "@spectrumui/avatar-stack"
+  ],
+  "files": [
+    {
+      "path": "app/registry/avatar-stack/avatar-stack-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport {\n  AvatarStack,\n  type AvatarItem,\n} from \"@/components/spectrumui/avatar-stack\"\n\nconst TEAM: AvatarItem[] = [\n  { name: \"Arjun Mehta\", src: \"/avatars/01.png\" },\n  { name: \"Sofia Ramirez\", src: \"/avatars/02.png\" },\n  { name: \"Liam Carter\", src: \"/avatars/03.png\" },\n  { name: \"Priya Nair\" },\n  { name: \"Noah Kim\" },\n  { name: \"Emma Fischer\" },\n  { name: \"David Osei\" },\n]\n\nexport default function AvatarStackDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"flex items-center gap-8 rounded-xl border border-neutral-200 bg-white py-4 pl-5 pr-6 dark:border-neutral-800 dark:bg-neutral-900\">\n        <div className=\"flex flex-col\">\n          <span className=\"text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n            Project team\n          </span>\n          <span className=\"text-xs text-neutral-500 dark:text-neutral-400\">\n            7 members · 3 online\n          </span>\n        </div>\n        <AvatarStack items={TEAM} />\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Hover the stack — then hover a face\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/avatar-stack-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

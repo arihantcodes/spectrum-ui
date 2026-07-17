@@ -87,7 +87,7 @@ function FooterLink({
     <Link
       href={href}
       prefetch={prefetch}
-      className="block py-[7px] font-inter text-sm font-medium leading-[21px] text-black transition-colors duration-200 ease-out hover:text-[#f9452d] dark:text-neutral-300 dark:hover:text-[#f9452d]"
+      className="block py-[7px] font-inter text-sm font-medium leading-[21px] text-black transition-colors duration-200 ease-out hover:text-[#f9452d] dark:text-neutral-300 dark:hover:text-[#E1F435]"
     >
       {children}
     </Link>
@@ -101,37 +101,7 @@ const socialLinks = [
 ];
 
 const linkColumns: { label: string; href: string }[][] = [
-  [
-    { label: "Startups", href: "#" },
-    { label: "Enterprise", href: "#" },
-    { label: "Switch", href: "#" },
-    { label: "OSS Program", href: "#" },
-    { label: "Learn", href: "/docs" },
-  ],
-  [
-    { label: "Customers", href: "#" },
-    { label: "Blog", href: "/blog" },
-    { label: "Pricing", href: "/pro" },
-    { label: "Guides", href: "/docs" },
-    { label: "Feature Requests", href: "#" },
-  ],
-  [
-    { label: "Getting Started", href: "/docs" },
-    { label: "API Reference", href: "/docs" },
-    { label: "Components", href: "/docs" },
-    { label: "Changelog", href: "#" },
-  ],
-  [
-    { label: "Careers", href: "#" },
-    { label: "Wall of Love", href: "#" },
-  ],
-  [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Responsible Disclosure", href: "#" },
-    { label: "Terms Of Service", href: "/tos" },
-    { label: "Security", href: "#" },
-    { label: "DSR/DSAR", href: "#" },
-  ],
+ 
 ];
 
 const WATERMARK = "SPECTRUM UI";

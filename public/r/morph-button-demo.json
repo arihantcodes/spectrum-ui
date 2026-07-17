@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morph-button-demo",
+  "title": "Morph Button Demo",
+  "description": "Demo usage for the Morph Button component",
+  "registryDependencies": [
+    "@spectrumui/morph-button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/morph-button/morph-button-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { MorphButton } from \"@/components/spectrumui/morph-button\"\n\nconst fakeSave = () =>\n  new Promise<void>((resolve) => setTimeout(resolve, 1200))\n\nexport default function MorphButtonDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <MorphButton\n        onAction={fakeSave}\n        loadingLabel=\"Saving\"\n        successLabel=\"Saved\"\n      >\n        Save changes\n      </MorphButton>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Click to run the full idle → loading → success cycle\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/morph-button-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

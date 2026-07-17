@@ -17,7 +17,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Spinner",
-  description: "Loading spinner component for React and Next.js. Beautiful, customizable loading indicators with multiple sizes and styles. Perfect for async operations and data fetching states.",
+  description: "A loading spinner with multiple sizes and variants for async states. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "spinner component",
     "loading spinner",
@@ -35,7 +35,7 @@ const SpinnerPage = () => {
   return (
     <SEOWrapper
       componentName="Spinner"
-      description="Loading spinner component for React and Next.js. Beautiful, customizable loading indicators with multiple sizes and styles. Perfect for async operations and data fetching states."
+      description="A loading spinner with multiple sizes and variants for async states."
       url="https://ui.spectrumhq.in/docs/spinner"
       keywords={[
         "spinner component",
@@ -50,7 +50,7 @@ const SpinnerPage = () => {
     >
       <PageTemplate
       title="Spinner"
-      description="A simple spinner for displaying loading state"
+      description="A loading spinner with multiple sizes and variants for async states."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/spinner/spinner-demo.tsx"

@@ -67,11 +67,6 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const blogPosts = await getAllBlogPosts();
 
-  console.log(
-    'Blog posts fetched:',
-    blogPosts.map((post) => post),
-  );
-
   const baseUrl = "https://ui.spectrumhq.in";
   
   // Generate structured data for blog listing

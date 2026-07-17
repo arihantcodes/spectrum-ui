@@ -16,7 +16,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Dock Menu",
   description:
-    "macOS-Style Animated Dock Menu component for React and Next.js. Features smooth dynamic magnifying hover effect, click bounce animations, and hover tooltips. Built with Framer Motion and Tailwind CSS.",
+    "A macOS-style dock menu that magnifies icons on hover with tooltips. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "dock menu",
     "macOS dock",
@@ -47,7 +47,7 @@ const DockPage = () => {
   return (
     <SEOWrapper
       componentName="Dock Menu"
-      description="macOS-Style Animated Dock Menu component for React and Next.js. Features smooth dynamic magnifying hover effect, click bounce animations, and hover tooltips. Built with Framer Motion and Tailwind CSS."
+      description="A macOS-style dock menu that magnifies icons on hover with tooltips."
       url="https://ui.spectrumhq.in/docs/dock"
       keywords={[
         "dock menu",
@@ -62,7 +62,7 @@ const DockPage = () => {
     >
       <PageTemplate
         title="Dock Menu"
-        description="A sleek, interactive macOS-style floating dock menu with magnifying hover effects."
+        description="A macOS-style dock menu that magnifies icons on hover with tooltips."
       >
         <PreviewCodeCard
           path="app/(docs)/docs/dock/dock-demo.tsx"

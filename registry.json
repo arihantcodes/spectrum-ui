@@ -2042,6 +2042,598 @@
         "framer-motion",
         "lucide-react"
       ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:component",
+      "title": "Like Button",
+      "description": "A heart like button micro-interaction with a spring pop, ring pulse, radial particle burst, and a rolling odometer count",
+      "files": [
+        {
+          "path": "app/registry/like-button/like-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/like-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "like-button-demo",
+      "type": "registry:component",
+      "title": "Like Button Demo",
+      "description": "Demo usage for the Like Button component",
+      "files": [
+        {
+          "path": "app/registry/like-button/like-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/like-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/like-button"
+      ]
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:component",
+      "title": "3D Tilt Card",
+      "description": "A 3D perspective tilt card that rotates toward the pointer with spring smoothing, parallax translateZ depth layers, and a pointer-following glare highlight",
+      "files": [
+        {
+          "path": "app/registry/tilt-card/tilt-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tilt-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "tilt-card-demo",
+      "type": "registry:component",
+      "title": "3D Tilt Card Demo",
+      "description": "Demo usage for the 3D Tilt Card component",
+      "files": [
+        {
+          "path": "app/registry/tilt-card/tilt-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tilt-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/tilt-card"
+      ]
+    },
+    {
+      "name": "hold-to-confirm",
+      "type": "registry:component",
+      "title": "Hold to Confirm",
+      "description": "A press-and-hold confirmation button for destructive actions with a filling progress ring, spring-back on early release, and a success check morph on completion",
+      "files": [
+        {
+          "path": "app/registry/hold-to-confirm/hold-to-confirm.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/hold-to-confirm.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "hold-to-confirm-demo",
+      "type": "registry:component",
+      "title": "Hold to Confirm Demo",
+      "description": "Demo usage for the Hold to Confirm component",
+      "files": [
+        {
+          "path": "app/registry/hold-to-confirm/hold-to-confirm-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/hold-to-confirm-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/hold-to-confirm"
+      ]
+    },
+    {
+      "name": "reaction-bar",
+      "type": "registry:component",
+      "title": "Reaction Bar",
+      "description": "A Slack-style emoji reaction row with popping chips, direction-aware rolling counts, and a staggered emoji-picker popover",
+      "files": [
+        {
+          "path": "app/registry/reaction-bar/reaction-bar.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/reaction-bar.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "reaction-bar-demo",
+      "type": "registry:component",
+      "title": "Reaction Bar Demo",
+      "description": "Demo usage for the Reaction Bar component",
+      "files": [
+        {
+          "path": "app/registry/reaction-bar/reaction-bar-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/reaction-bar-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/reaction-bar"
+      ]
+    },
+    {
+      "name": "star-rating",
+      "type": "registry:component",
+      "title": "Star Rating",
+      "description": "An animated star rating input with hover-preview wave, pop and sparkle burst on commit, rolling value label, and fractional read-only display",
+      "files": [
+        {
+          "path": "app/registry/star-rating/star-rating.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/star-rating.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "star-rating-demo",
+      "type": "registry:component",
+      "title": "Star Rating Demo",
+      "description": "Demo usage for the Star Rating component",
+      "files": [
+        {
+          "path": "app/registry/star-rating/star-rating-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/star-rating-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/star-rating"
+      ]
+    },
+    {
+      "name": "quantity-stepper",
+      "type": "registry:component",
+      "title": "Quantity Stepper",
+      "description": "An animated quantity input for carts and forms with rolling digits, hold-to-repeat acceleration, and a boundary shake",
+      "files": [
+        {
+          "path": "app/registry/quantity-stepper/quantity-stepper.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/quantity-stepper.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "quantity-stepper-demo",
+      "type": "registry:component",
+      "title": "Quantity Stepper Demo",
+      "description": "Demo usage for the Quantity Stepper component",
+      "files": [
+        {
+          "path": "app/registry/quantity-stepper/quantity-stepper-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/quantity-stepper-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/quantity-stepper"
+      ]
+    },
+    {
+      "name": "follow-button",
+      "type": "registry:component",
+      "title": "Follow Button",
+      "description": "A morphing follow/unfollow button with a spring width morph, animated check draw, and a hover-revealed unfollow state",
+      "files": [
+        {
+          "path": "app/registry/follow-button/follow-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/follow-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "follow-button-demo",
+      "type": "registry:component",
+      "title": "Follow Button Demo",
+      "description": "Demo usage for the Follow Button component",
+      "files": [
+        {
+          "path": "app/registry/follow-button/follow-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/follow-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/follow-button"
+      ]
+    },
+    {
+      "name": "notification-bell",
+      "type": "registry:component",
+      "title": "Notification Bell",
+      "description": "A bell icon button with a ring-shake swing, springy unread badge with rolling odometer count, and a pinging dot mode",
+      "files": [
+        {
+          "path": "app/registry/notification-bell/notification-bell.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/notification-bell.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "notification-bell-demo",
+      "type": "registry:component",
+      "title": "Notification Bell Demo",
+      "description": "Demo usage for the Notification Bell component",
+      "files": [
+        {
+          "path": "app/registry/notification-bell/notification-bell-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/notification-bell-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/notification-bell"
+      ]
+    },
+    {
+      "name": "face-rating",
+      "type": "registry:component",
+      "title": "Face Rating",
+      "description": "A five-level feedback rating where one large SVG face morphs its mouth, eyes and color between moods as you hover and click, with a joy bounce on commit",
+      "files": [
+        {
+          "path": "app/registry/face-rating/face-rating.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/face-rating.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "face-rating-demo",
+      "type": "registry:component",
+      "title": "Face Rating Demo",
+      "description": "Demo usage for the Face Rating component",
+      "files": [
+        {
+          "path": "app/registry/face-rating/face-rating-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/face-rating-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/face-rating"
+      ]
+    },
+    {
+      "name": "undo-pill",
+      "type": "registry:component",
+      "title": "Undo Pill",
+      "description": "An inline undo pill with a draining countdown ring that pauses on hover and fires undo or expire callbacks",
+      "files": [
+        {
+          "path": "app/registry/undo-pill/undo-pill.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/undo-pill.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "undo-pill-demo",
+      "type": "registry:component",
+      "title": "Undo Pill Demo",
+      "description": "Demo usage for the Undo Pill component",
+      "files": [
+        {
+          "path": "app/registry/undo-pill/undo-pill-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/undo-pill-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/undo-pill"
+      ]
+    },
+    {
+      "name": "password-strength",
+      "type": "registry:component",
+      "title": "Password Strength",
+      "description": "A password input with an animated four-segment strength meter, crossfading strength label, requirements checklist with drawing check marks, and a visibility toggle",
+      "files": [
+        {
+          "path": "app/registry/password-strength/password-strength.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/password-strength.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "password-strength-demo",
+      "type": "registry:component",
+      "title": "Password Strength Demo",
+      "description": "Demo usage for the Password Strength component",
+      "files": [
+        {
+          "path": "app/registry/password-strength/password-strength-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/password-strength-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/password-strength"
+      ]
+    },
+    {
+      "name": "swipe-to-delete",
+      "type": "registry:component",
+      "title": "Swipe to Delete",
+      "description": "An iOS-style swipeable list-item wrapper that reveals a delete action on drag, pops the icon at the commit threshold, and collapses the row before firing onDelete",
+      "files": [
+        {
+          "path": "app/registry/swipe-to-delete/swipe-to-delete.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/swipe-to-delete.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "swipe-to-delete-demo",
+      "type": "registry:component",
+      "title": "Swipe to Delete Demo",
+      "description": "Demo usage for the Swipe to Delete component",
+      "files": [
+        {
+          "path": "app/registry/swipe-to-delete/swipe-to-delete-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/swipe-to-delete-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/swipe-to-delete"
+      ]
+    },
+    {
+      "name": "task-checkbox",
+      "type": "registry:component",
+      "title": "Task Checkbox",
+      "description": "A satisfying todo checkbox row with spring fill, drawn-in check, confetti burst and animated strikethrough",
+      "files": [
+        {
+          "path": "app/registry/task-checkbox/task-checkbox.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/task-checkbox.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "task-checkbox-demo",
+      "type": "registry:component",
+      "title": "Task Checkbox Demo",
+      "description": "Demo usage for the Task Checkbox component",
+      "files": [
+        {
+          "path": "app/registry/task-checkbox/task-checkbox-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/task-checkbox-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/task-checkbox"
+      ]
+    },
+    {
+      "name": "morph-button",
+      "type": "registry:component",
+      "title": "Morph Button",
+      "description": "A multi-state async action button that morphs between idle, loading, success and error with an arc spinner, drawn-in check, tight error shake and auto-reset",
+      "files": [
+        {
+          "path": "app/registry/morph-button/morph-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/morph-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "morph-button-demo",
+      "type": "registry:component",
+      "title": "Morph Button Demo",
+      "description": "Demo usage for the Morph Button component",
+      "files": [
+        {
+          "path": "app/registry/morph-button/morph-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/morph-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/morph-button"
+      ]
+    },
+    {
+      "name": "animated-switch",
+      "type": "registry:component",
+      "title": "Animated Switch",
+      "description": "An iOS-quality animated toggle switch with a press-to-stretch knob, drag-to-toggle with flick support, and optional crossfading knob icons",
+      "files": [
+        {
+          "path": "app/registry/animated-switch/animated-switch.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/animated-switch.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "animated-switch-demo",
+      "type": "registry:component",
+      "title": "Animated Switch Demo",
+      "description": "Demo usage for the Animated Switch component",
+      "files": [
+        {
+          "path": "app/registry/animated-switch/animated-switch-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/animated-switch-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/animated-switch"
+      ]
+    },
+    {
+      "name": "avatar-stack",
+      "type": "registry:component",
+      "title": "Avatar Stack",
+      "description": "An overlapping avatar stack that fans apart on hover, springs name tooltips over each face and expands hidden members from a +N pill with a stagger",
+      "files": [
+        {
+          "path": "app/registry/avatar-stack/avatar-stack.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/avatar-stack.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "avatar-stack-demo",
+      "type": "registry:component",
+      "title": "Avatar Stack Demo",
+      "description": "Demo usage for the Avatar Stack component",
+      "files": [
+        {
+          "path": "app/registry/avatar-stack/avatar-stack-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/avatar-stack-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/avatar-stack"
+      ]
+    },
+    {
+      "name": "kbd-key",
+      "type": "registry:component",
+      "title": "Kbd Key",
+      "description": "A 3D keycap that physically depresses when the real key is pressed, with combo shortcuts that pulse and fire when every key is held at once",
+      "files": [
+        {
+          "path": "app/registry/kbd-key/kbd-key.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/kbd-key.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "kbd-key-demo",
+      "type": "registry:component",
+      "title": "Kbd Key Demo",
+      "description": "Demo usage for the Kbd Key component",
+      "files": [
+        {
+          "path": "app/registry/kbd-key/kbd-key-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/kbd-key-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/kbd-key"
+      ]
+    },
+    {
+      "name": "share-button",
+      "type": "registry:component",
+      "title": "Share Button",
+      "description": "A share trigger that fans out into copy-link and custom share actions with staggered springs, tooltips and full keyboard support",
+      "files": [
+        {
+          "path": "app/registry/share-button/share-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/share-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "share-button-demo",
+      "type": "registry:component",
+      "title": "Share Button Demo",
+      "description": "Demo usage for the Share Button component",
+      "files": [
+        {
+          "path": "app/registry/share-button/share-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/share-button-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/share-button"
+      ]
     }
   ]
 }

@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { SubmitButton } from './submit-button'
 import { GitHubUsernameInput } from './github-username-input'
 import { supabaseAdmin } from '@/lib/supabase-admin'
-import { AuthIllustration } from '@/components/auth-illustration'
+import { AuthShowcase } from '@/components/auth-showcase'
 import Link from 'next/link'
 import { Icons } from '@/components/icon'
 import { BuildingChips } from './building-chips'
@@ -36,7 +36,10 @@ export default async function CreateUserPage({
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
 
-      {/* ─── Left: Onboarding form ─── */}
+      {/* ─── Left: live component showcase ─── */}
+      <AuthShowcase />
+
+      {/* ─── Right: Onboarding form ─── */}
       <div className="flex flex-col bg-white dark:bg-[#080808] px-6 sm:px-12 lg:px-16 xl:px-20 transition-colors">
 
         {/* Top bar */}
@@ -113,9 +116,6 @@ export default async function CreateUserPage({
         {/* Bottom spacer */}
         <div className="pb-8" />
       </div>
-
-      {/* ─── Right: Dashboard illustration ─── */}
-      <AuthIllustration />
     </div>
   )
 }

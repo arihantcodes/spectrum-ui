@@ -4,6 +4,14 @@ import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Inter, Spectral } from "next/font/google";
+import localFont from "next/font/local";
+
+const calSans = localFont({
+  src: "./fonts/CalSans-SemiBold.woff2",
+  variable: "--font-calsans",
+  weight: "600",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -282,7 +290,7 @@ gtag('config', 'G-K7ZP6JB4MG');
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} font-regular`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} ${calSans.variable} font-regular`}
         suppressHydrationWarning
       >
         <Providers>

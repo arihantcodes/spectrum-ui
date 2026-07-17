@@ -1,22 +1,18 @@
-"use client";
+'use client';
 
-import Link, { LinkProps } from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import Link, { LinkProps } from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
-import * as React from "react";
+import * as React from 'react';
 
-import { Icons } from "@/components/icon";
+import { Icons } from '@/components/icon';
 
-import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 interface NavItem {
   title?: string;
@@ -41,159 +37,166 @@ interface NavSection {
 
 const mainNav = [
   {
-    title: "Home",
-    href: "/",
+    title: 'Home',
+    href: '/',
   },
   {
-    title: "Colors",
-    href: "/colors",
+    title: 'Components',
+    href: '/docs',
   },
   {
-    title: "Sponsor",
-    href: "/sponsor",
+    title: 'Founder Story',
+    href: '/founder-story',
+  },
+  {
+    title: 'Blogs',
+    href: '/blog',
+  },
+  {
+    title: 'Sponsor Us',
+    href: '/sponsor',
   },
 ];
 
-
 const sidebarNav: NavSection[] = [
   {
-    title: "Getting Started",
+    title: 'Getting Started',
     items: [
-      { title: "Introduction", href: "/docs", items: [] },
+      { title: 'Introduction', href: '/docs', items: [] },
       {
-        title: "Installation",
-        href: "/docs/installation",
+        title: 'Installation',
+        href: '/docs/installation',
         items: [],
       },
     ],
   },
   {
-    title: "Components",
-    groupKey: "components",
-    groupValue: "Components",
+    title: 'Components',
+    groupKey: 'components',
+    groupValue: 'Components',
     items: [
-      { label: "Alert", value: "alert", url: "/docs/alert", items: [] },
+      { label: 'Alert', value: 'alert', url: '/docs/alert', items: [] },
       {
-        label: "Animated SVG Chart",
-        value: "animatedchart",
-        url: "/docs/animatedchart",
+        label: 'Animated SVG Chart',
+        value: 'animatedchart',
+        url: '/docs/animatedchart',
         items: [],
       },
       {
-        label: "Animated Testimonials",
-        value: "animatedtestimonials",
-        url: "/docs/animatedtestimonials",
+        label: 'Animated Testimonials',
+        value: 'animatedtestimonials',
+        url: '/docs/animatedtestimonials',
         items: [],
       },
       {
-        label: "Autosize Textarea",
-        value: "autosize-textarea",
-        url: "/docs/autosize-textarea",
+        label: 'Autosize Textarea',
+        value: 'autosize-textarea',
+        url: '/docs/autosize-textarea',
         items: [],
       },
-      { label: "Button", value: "button", url: "/docs/button", items: [] },
-      { label: "Card", value: "card", url: "/docs/card", items: [] },
+      { label: 'Button', value: 'button', url: '/docs/button', items: [] },
+      { label: 'Card', value: 'card', url: '/docs/card', items: [] },
       {
-        label: "Datetime Picker",
-        value: "datetime-picker",
-        url: "/docs/datetime-picker",
-        items: [],
-      },
-      {
-        label: "Dual Range Slider",
-        value: "dual-range-slider",
-        url: "/docs/dual-range-slider",
+        label: 'Datetime Picker',
+        value: 'datetime-picker',
+        url: '/docs/datetime-picker',
         items: [],
       },
       {
-        label: "Event Calendar",
-        value: "eventcalendar",
-        url: "/docs/eventcalendar",
+        label: 'Dual Range Slider',
+        value: 'dual-range-slider',
+        url: '/docs/dual-range-slider',
         items: [],
       },
       {
-        label: "Event Badge",
-        value: "eventbadge",
-        url: "/docs/badge",
+        label: 'Event Calendar',
+        value: 'eventcalendar',
+        url: '/docs/eventcalendar',
+        items: [],
+      },
+      {
+        label: 'Event Badge',
+        value: 'eventbadge',
+        url: '/docs/badge',
         new: true,
         items: [],
       },
       {
-        label: "Feedback Card",
-        value: "feedback",
-        url: "/docs/feedback",
+        label: 'Feedback Card',
+        value: 'feedback',
+        url: '/docs/feedback',
         items: [],
       },
       {
-        label: "Floating Label Input",
-        value: "floating-label-input",
-        url: "/docs/floating-label-input",
+        label: 'Floating Label Input',
+        value: 'floating-label-input',
+        url: '/docs/floating-label-input',
         items: [],
       },
-      { label: "Footer", value: "footer", url: "/docs/footer", items: [] },
+      { label: 'Footer', value: 'footer', url: '/docs/footer', items: [] },
       {
-        label: "HTTP Status Code",
-        value: "statuscode",
-        url: "/docs/statuscode",
-        items: [],
-      },
-      {
-        label: "Image Preview",
-        value: "imagepreview",
-        url: "/docs/imagepreview",
+        label: 'HTTP Status Code',
+        value: 'statuscode',
+        url: '/docs/statuscode',
         items: [],
       },
       {
-        label: "Infinite Scroll",
-        value: "infiniteScroll",
-        url: "/docs/infinite-scroll",
-        items: [],
-      },
-      { label: "Input", value: "input", url: "/docs/input", items: [] },
-      {
-        label: "Loading Button",
-        value: "loading-button",
-        url: "/docs/loading-button",
+        label: 'Image Preview',
+        value: 'imagepreview',
+        url: '/docs/imagepreview',
         items: [],
       },
       {
-        label: "Multiple Selector",
-        value: "multipleSelector",
-        url: "/docs/multiple-selector",
+        label: 'Infinite Scroll',
+        value: 'infiniteScroll',
+        url: '/docs/infinite-scroll',
+        items: [],
+      },
+      { label: 'Input', value: 'input', url: '/docs/input', items: [] },
+      {
+        label: 'Loading Button',
+        value: 'loading-button',
+        url: '/docs/loading-button',
         items: [],
       },
       {
-        label: "Multistep Form",
-        value: "multistepform",
-        url: "/docs/multistepform",
+        label: 'Multiple Selector',
+        value: 'multipleSelector',
+        url: '/docs/multiple-selector',
+        items: [],
+      },
+      {
+        label: 'Multistep Form',
+        value: 'multistepform',
+        url: '/docs/multistepform',
         new: true,
         items: [],
       },
-      { label: "Navbar", value: "navbar", url: "/docs/navbar", items: [] },
+      { label: 'Navbar', value: 'navbar', url: '/docs/navbar', items: [] },
       {
-        label: "Profile Dropdown",
-        value: "profile-dropdown",
-        url: "/docs/profile",
+        label: 'Profile Dropdown',
+        value: 'profile-dropdown',
+        url: '/docs/profile',
         new: true,
         items: [],
       },
       {
-        label: "Progress With Value",
-        value: "progress-with-value",
-        url: "/docs/progress-with-value",
+        label: 'Progress With Value',
+        value: 'progress-with-value',
+        url: '/docs/progress-with-value',
         items: [],
       },
       {
-        label: "Responsive Modal",
-        value: "responsive-modal",
-        url: "/docs/responsive-modal",
+        label: 'Responsive Modal',
+        value: 'responsive-modal',
+        url: '/docs/responsive-modal',
         items: [],
       },
-      { label: "Spinner", value: "spinner", url: "/docs/spinner", items: [] },
+      { label: 'Spinner', value: 'spinner', url: '/docs/spinner', items: [] },
       {
-        label: "Skeleton",
-        value: "skeleton",
-        url: "/docs/skeleton",
+        label: 'Skeleton',
+        value: 'skeleton',
+        url: '/docs/skeleton',
         items: [],
       },
     ],
@@ -253,18 +256,14 @@ export function MobileNav() {
           <Icons.logo className="mr-2 size-4" />
           <span className="font-semibold">Spectrum UI</span>
         </Link>
-        <ScrollArea className="h-[calc(100vh-4rem)] flex-1">
+        <ScrollArea className="min-h-0 flex-1">
           <div className="flex flex-col space-y-4 p-4">
             {/* Main Navigation */}
             <div className="flex flex-col space-y-1.5">
               {mainNav?.map(
                 (item) =>
                   item.href && (
-                    <MobileLink
-                      key={item.href}
-                      href={item.href}
-                      onOpenChange={setIsOpen}
-                    >
+                    <MobileLink key={item.href} href={item.href} onOpenChange={setIsOpen}>
                       {item.title}
                     </MobileLink>
                   ),
@@ -274,10 +273,7 @@ export function MobileNav() {
             {/* Sidebar Navigation */}
             <div className="flex flex-col space-y-6">
               {sidebarNav.map((section, sectionIndex) => (
-                <div
-                  key={section.title || `section-${sectionIndex}`}
-                  className="space-y-2"
-                >
+                <div key={section.title || `section-${sectionIndex}`} className="space-y-2">
                   {section.title && (
                     <h4 className="font-medium text-sm text-muted-foreground px-2">
                       {section.title}
@@ -287,14 +283,10 @@ export function MobileNav() {
                   <div className="flex flex-col space-y-1">
                     {section.items.map((item) => (
                       <MobileLink
-                        key={
-                          item.value ||
-                          item.href ||
-                          `item-${item.title || item.label}`
-                        }
-                        href={item.url || item.href || "#"}
+                        key={item.value || item.href || `item-${item.title || item.label}`}
+                        href={item.url || item.href || '#'}
                         onOpenChange={setIsOpen}
-                        className={item.new ? "relative" : ""}
+                        className={item.new ? 'relative' : ''}
                       >
                         {item.title || item.label}
                         {item.new && (
@@ -310,6 +302,11 @@ export function MobileNav() {
             </div>
           </div>
         </ScrollArea>
+        {/* The header hides the theme switcher on phones, so it lives here */}
+        <div className="flex items-center justify-between border-t border-border px-4 py-3">
+          <span className="text-sm text-muted-foreground">Theme</span>
+          <ThemeToggle />
+        </div>
       </SheetContent>
     </Sheet>
   );
@@ -321,13 +318,7 @@ interface MobileLinkProps extends LinkProps {
   className?: string;
 }
 
-function MobileLink({
-  href,
-  onOpenChange,
-  className,
-  children,
-  ...props
-}: MobileLinkProps) {
+function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
   const router = useRouter();
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -341,10 +332,10 @@ function MobileLink({
           onOpenChange?.(false);
         }}
         className={cn(
-          "p-2 text-[15px] rounded-md flex items-center justify-between",
+          'p-2 text-[15px] rounded-md flex items-center justify-between',
           isActive
-            ? "bg-secondary font-medium text-primary border-l-2 border-primary/70"
-            : "text-foreground hover:bg-secondary/50",
+            ? 'bg-secondary font-medium text-primary border-l-2 border-primary/70'
+            : 'text-foreground hover:bg-secondary/50',
           className,
         )}
         {...props}

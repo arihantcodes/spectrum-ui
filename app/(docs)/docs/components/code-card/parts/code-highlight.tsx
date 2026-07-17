@@ -2,10 +2,11 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
-import { Clipboard, Check, Lock } from 'lucide-react';
+import { Check, FileCode2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuthGate } from '@/hooks/use-auth-gate';
 import { trackEvent } from '@/lib/events';
+import { Copy1Icon, LockBoldIcon } from '@/app/(docs)/layout-parts/docs-icons';
 
 interface CodeHighlightProps {
   code?: string;
@@ -42,7 +43,7 @@ const CodeHighlight = ({
       const { createHighlighter } = await import('shiki');
       const h = await createHighlighter({
         themes: ['vesper', 'github-light'],
-        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash'],
+        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash', 'json'],
       });
       setHighlighter(h);
     };
@@ -57,8 +58,12 @@ const CodeHighlight = ({
     if (highlighter && code) {
       try {
         const languageMap: Record<string, string> = {
-          tsx: 'tsx', jsx: 'jsx', js: 'javascript',
-          ts: 'typescript', shell: 'bash',
+          tsx: 'tsx',
+          jsx: 'jsx',
+          js: 'javascript',
+          ts: 'typescript',
+          shell: 'bash',
+          json: 'json',
         };
         const mappedLang = languageMap[lang] || lang;
         const html = highlighter.codeToHtml(code, {
@@ -84,92 +89,105 @@ const CodeHighlight = ({
     setTimeout(() => setCopied(false), 3000);
   };
 
-  // ── Locked state: clean inline panel ────────────────────────────────────
+  // ── Locked state: "Login to view code" panel ─────────────────────────────
   if (isLocked) {
     return (
-      <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden">
-        {/* Toolbar stub */}
-        <div className="bg-gray-100 dark:bg-[#0A0A0A] px-4 py-2 flex items-center justify-between">
-          <span />
-          <Button
-            className="h-8 w-8 opacity-30 cursor-not-allowed"
-            variant="ghost"
-            size="icon"
-            disabled
-            aria-label="Sign in to copy"
-          >
-            <Clipboard className="h-3 w-3" />
-          </Button>
-        </div>
-
-        {/* Lock panel */}
-        <div className="flex flex-col items-center justify-center gap-4 py-10 px-6 bg-neutral-50 dark:bg-[#101010]">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-border">
-            <Lock className="h-4 w-4 text-foreground" />
-          </div>
-          <div className="text-center">
-            <p className="text-sm font-semibold text-foreground">Login to view code</p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Create a free account to access component source code
-            </p>
-          </div>
-          <Button
-            id="code-lock-login-btn"
-            size="sm"
-            onClick={() => {
-              trackEvent({ name: 'view_code_clicked', properties: { authenticated: false } });
-              openAuthModal();
-            }}
-            className="h-9 px-5 font-medium"
-          >
-            Login to view code
-          </Button>
-        </div>
+      <div
+        className={cn(
+          'flex w-full flex-col items-center overflow-hidden rounded-[14px] border border-black/[0.08] bg-white px-6 dark:border-white/10 dark:bg-[#101010]',
+          // Match the preview panel height so switching tabs doesn't jump the page
+          inTab ? 'min-h-[452px] pt-[109px]' : 'justify-center py-12',
+        )}
+      >
+        <span className="flex size-[34px] items-center justify-center rounded-md border border-[#e5e5e5] dark:border-white/10">
+          <LockBoldIcon className="text-black dark:text-white" />
+        </span>
+        <span className="mt-2 flex max-w-96 flex-col text-center text-sm leading-5">
+          <span className="font-medium text-black dark:text-neutral-100">Login to view code</span>
+          <span className="text-black/60 dark:text-neutral-400">
+            Create a free account to access component source code
+          </span>
+        </span>
+        <button
+          type="button"
+          id="code-lock-login-btn"
+          onClick={() => {
+            trackEvent({ name: 'view_code_clicked', properties: { authenticated: false } });
+            openAuthModal();
+          }}
+          className="mt-7 h-7 rounded-full bg-neutral-900 px-10 text-sm font-medium text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-[#0a0a0a] dark:hover:bg-neutral-100"
+        >
+          Login
+        </button>
       </div>
     );
   }
 
   // ── Unlocked state: normal code block ───────────────────────────────────
   return (
-    <div className="relative rounded-lg border border-neutral-200 dark:border-neutral-800 transition-all">
-      {/* Toolbar */}
-      <div className="bg-gray-100 dark:bg-[#0A0A0A] rounded-lg px-4 py-2 flex items-center justify-between">
-        <span />
-        <div className="flex items-center space-x-3">
-          <Button
-            className={cn(
-              'h-8 w-8 z-10',
-              'bg-background/80 hover:bg-background/90 border border-border',
-              (inTab || lang === 'shell') && 'right-3 top-3',
-            )}
-            variant="ghost"
-            size="icon"
+    <div
+      className={cn(
+        'relative overflow-hidden rounded-[14px] border border-black/[0.08] bg-white transition-all dark:border-white/10 dark:bg-[#101010]',
+        // Match the preview panel height so switching tabs doesn't jump the page
+        inTab && 'min-h-[452px]',
+      )}
+    >
+      {/* Filename header (when a title is provided) */}
+      {title && (
+        <div className="flex h-[41px] items-center gap-2 border-b border-black/[0.05] px-4 dark:border-white/[0.06]">
+          <FileCode2 className="size-4 shrink-0 text-[#686868] dark:text-neutral-400" />
+          <span className="truncate font-mono text-[13px] text-[#686868] dark:text-neutral-400">
+            {title}
+          </span>
+          <button
+            type="button"
             onClick={handleCopy}
             aria-label="Copy code"
+            className="ml-auto flex size-8 items-center justify-center rounded-[10px] opacity-70 transition hover:bg-black/[0.04] hover:opacity-100 dark:hover:bg-white/[0.06]"
           >
-            {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-3 w-3" />}
-          </Button>
+            {copied ? (
+              <Check className="size-4 text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <Copy1Icon className="size-4 text-[#262626] dark:text-neutral-300" />
+            )}
+          </button>
         </div>
-      </div>
+      )}
+
+      {/* Floating copy button */}
+      {!title && (
+        <button
+          type="button"
+          onClick={handleCopy}
+          aria-label="Copy code"
+          className="absolute right-1.5 top-1.5 z-10 flex size-8 items-center justify-center rounded-[10px] bg-white/80 opacity-70 backdrop-blur transition hover:bg-black/[0.04] hover:opacity-100 dark:bg-neutral-900/80 dark:hover:bg-white/[0.06]"
+        >
+          {copied ? (
+            <Check className="size-4 text-emerald-600 dark:text-emerald-400" />
+          ) : (
+            <Copy1Icon className="size-4 text-[#262626] dark:text-neutral-300" />
+          )}
+        </button>
+      )}
 
       {/* Code */}
       <div
         className={cn(
           'max-h-[130px] overflow-hidden',
-          expand && 'max-h-[400px] overflow-auto',
+          expand && (inTab ? 'max-h-[450px] overflow-auto' : 'max-h-[400px] overflow-auto'),
         )}
       >
         {highlightedCode ? (
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_pre]:!bg-[#ffffff] dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px] [&_pre]:overflow-auto [&_pre]:rounded-md [&_pre]:p-4 [&_pre]:leading-relaxed',
+              '[&_pre]:!bg-white dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[13px] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.5]',
               lang,
             )}
           />
         ) : (
-          <div className="px-4 py-3 bg-neutral-100 dark:bg-neutral-900 text-muted-foreground rounded-md">
-            <pre>{code}</pre>
+          <div className="bg-white px-4 py-4 font-mono text-[13px] text-muted-foreground dark:bg-[#101010]">
+            <pre className="overflow-auto">{code}</pre>
           </div>
         )}
       </div>
@@ -178,13 +196,13 @@ const CodeHighlight = ({
       <div
         className={cn(
           'absolute bottom-2 flex w-full items-center justify-center transition-opacity duration-300',
-          inTab && 'bottom-0',
+          inTab && 'bottom-2',
           !withExpand && 'hidden',
         )}
       >
         <Button
           variant="outline"
-          className="rounded-xl"
+          className="h-8 rounded-[10px] text-xs"
           onClick={() => setExpanded((prev) => !prev)}
         >
           {expand ? 'Collapse' : 'Expand'}

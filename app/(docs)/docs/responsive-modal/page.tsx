@@ -14,7 +14,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Responsive Modal",
   description:
-    "Responsive modal/dialog component for React and Next.js. Centers on desktop, slides up on mobile. Perfect for forms, confirmations, and content overlays. Built with Radix UI and Tailwind CSS.",
+    "A dialog that centers on desktop and slides up as a sheet on mobile. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "responsive modal",
     "modal component",
@@ -32,7 +32,7 @@ const ResponsiveModalPage = () => {
   return (
     <SEOWrapper
       componentName="Responsive Modal"
-      description="Responsive modal/dialog component for React and Next.js. Centers on desktop, slides up on mobile. Perfect for forms, confirmations, and content overlays. Built with Radix UI and Tailwind CSS."
+      description="A dialog that centers on desktop and slides up as a sheet on mobile."
       url="https://ui.spectrumhq.in/docs/responsive-modal"
       keywords={[
         "responsive modal",
@@ -47,7 +47,7 @@ const ResponsiveModalPage = () => {
     >
       <PageTemplate
       title="Responsive Modal"
-      description="A dialog that pops up in the center of the screen on desktop and slide up on mobile."
+      description="A dialog that centers on desktop and slides up as a sheet on mobile."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/responsive-modal/responsive-modal-demo.tsx"

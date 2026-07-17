@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "share-button-demo",
+  "title": "Share Button Demo",
+  "description": "Demo usage for the Share Button component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@spectrumui/share-button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/share-button/share-button-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { Mail, MessageCircle, Twitter } from \"lucide-react\"\nimport {\n  ShareButton,\n  type ShareAction,\n} from \"@/components/spectrumui/share-button\"\n\nconst actions: ShareAction[] = [\n  { icon: <Twitter size={15} />, label: \"Share on X\", onSelect: () => {} },\n  { icon: <Mail size={15} />, label: \"Email\", onSelect: () => {} },\n  { icon: <MessageCircle size={15} />, label: \"Message\", onSelect: () => {} },\n]\n\nexport default function ShareButtonDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900\">\n        <p className=\"text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n          Designing calmer micro-interactions\n        </p>\n        <div className=\"mt-4 flex items-center justify-between\">\n          <ShareButton copyValue=\"https://ui.spectrumhq.in\" actions={actions} />\n          <span className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n            128 likes\n          </span>\n        </div>\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Click share — try the copy-link action\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/share-button-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

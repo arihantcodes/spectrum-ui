@@ -15,9 +15,9 @@ export function SiteHeader({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
   // Hide header on auth/onboarding pages (they have their own layout)
-  const hideOnRoutes = ['/sign-in', '/create-user']
-  if (hideOnRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))) {
-    return null
+  const hideOnRoutes = ['/sign-in', '/create-user'];
+  if (hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
+    return null;
   }
 
   return (
@@ -28,7 +28,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
           <MainNav />
 
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
-{/* 
+            {/* 
             <div className="hidden md:flex items-center gap-2">
               <Link 
                 href={siteConfig.links.github} 
@@ -50,13 +50,20 @@ export function SiteHeader({ session }: { session: Session | null }) {
 
             <nav className="flex items-center gap-1.5 sm:gap-2">
               <GithubStarButton />
-              <ThemeToggle />
+              {/* On phones the switcher lives inside the mobile menu — the
+                  header row is too narrow for all three controls */}
+              <div className="hidden sm:block">
+                <ThemeToggle />
+              </div>
               {session ? (
                 <UserNav session={session} />
               ) : (
                 <Link href={`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`}>
-                  <Button size="sm" className="h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-sm">
-                    Create Account 
+                  <Button
+                    size="sm"
+                    className="h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-sm"
+                  >
+                    Create Account
                   </Button>
                 </Link>
               )}

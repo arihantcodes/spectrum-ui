@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-switch-demo",
+  "title": "Animated Switch Demo",
+  "description": "Demo usage for the Animated Switch component",
+  "registryDependencies": [
+    "@spectrumui/animated-switch"
+  ],
+  "files": [
+    {
+      "path": "app/registry/animated-switch/animated-switch-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { AnimatedSwitch } from \"@/components/spectrumui/animated-switch\"\n\nconst SETTINGS = [\n  {\n    title: \"Email notifications\",\n    description: \"Product updates and announcements\",\n    defaultChecked: true,\n  },\n  {\n    title: \"Public profile\",\n    description: \"Anyone can view your profile\",\n    defaultChecked: false,\n  },\n  {\n    title: \"Weekly digest\",\n    description: \"A summary in your inbox every Monday\",\n    defaultChecked: true,\n  },\n]\n\nexport default function AnimatedSwitchDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-sm divide-y divide-neutral-200 rounded-xl border border-neutral-200 bg-white dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900\">\n        {SETTINGS.map((setting) => (\n          <div\n            key={setting.title}\n            className=\"flex items-center justify-between gap-4 px-4 py-3.5\"\n          >\n            <div className=\"flex flex-col\">\n              <span className=\"text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n                {setting.title}\n              </span>\n              <span className=\"text-xs text-neutral-500 dark:text-neutral-400\">\n                {setting.description}\n              </span>\n            </div>\n            <AnimatedSwitch\n              defaultChecked={setting.defaultChecked}\n              label={setting.title}\n            />\n          </div>\n        ))}\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Press and hold to see the knob stretch — or drag it\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/animated-switch-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

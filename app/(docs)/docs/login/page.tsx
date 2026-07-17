@@ -9,7 +9,7 @@ import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 export const metadata: Metadata = baseMetadata({
   title: 'Login Card',
   description:
-    'Beautiful login card component for React and Next.js. Simple and elegant login form with modern design. Perfect for authentication pages, SaaS applications, and web apps. Built with Framer Motion and Tailwind CSS.',
+    'A login form card for authentication pages and SaaS apps. A free React and Next.js component built with Framer Motion and Tailwind CSS.',
   keywords: [
     "login card",
     "login form",
@@ -27,7 +27,7 @@ const Loginpage = () => {
   return (
     <SEOWrapper
       componentName="Login Card"
-      description="Beautiful login card component for React and Next.js. Simple and elegant login form with modern design. Perfect for authentication pages, SaaS applications, and web apps. Built with Framer Motion and Tailwind CSS."
+      description="A login form card for authentication pages and SaaS apps."
       url="https://ui.spectrumhq.in/docs/login"
       keywords={[
         "login card",
@@ -40,7 +40,10 @@ const Loginpage = () => {
         "auth component",
       ]}
     >
-      <PageTemplate title="Login Card">
+      <PageTemplate
+        title="Login Card"
+        description="A login form card for authentication pages and SaaS apps."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/login/login-demo.tsx"
         cli="@spectrumui/login-card"

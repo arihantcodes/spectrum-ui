@@ -218,7 +218,7 @@ export function AccountAccessCard({
         onClick={onSubmit}
         whileHover="hover"
         whileTap={{ scale: 0.97 }}
-        className="mt-[21px] flex h-[30px] w-full items-center justify-center gap-2 rounded-[18px] bg-black text-sm font-medium leading-5 text-[#eff6ff] transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+        className="mt-[21px] flex h-[36px] w-full items-center justify-center gap-2 rounded-[18px] bg-black text-sm font-medium leading-5 text-[#eff6ff] transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
       >
         <motion.span
           variants={{

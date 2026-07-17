@@ -52,7 +52,7 @@ function PlusMinusIcon() {
   return (
     <span
       aria-hidden
-      className="relative size-4 shrink-0 text-[#080808] transition-all duration-300 ease-out group-hover:text-[#f9452d] group-data-[state=open]:rotate-180 dark:text-neutral-200"
+      className="relative size-4 shrink-0 text-[#080808] transition-all duration-300 ease-out group-hover:text-[#f9452d] group-data-[state=open]:rotate-180 dark:text-neutral-200 dark:group-hover:text-[#E1F435]"
     >
       <span className="absolute left-1/2 top-1/2 h-[1.5px] w-[11px] -translate-x-1/2 -translate-y-1/2 bg-current" />
       <span className="absolute left-1/2 top-1/2 h-[11px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 ease-out group-data-[state=open]:scale-y-0" />
@@ -75,7 +75,7 @@ export function FAQSection() {
       >
         <div className="flex items-center gap-2.5">
           <span aria-hidden className="-rotate-90">
-            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d]" />
+            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d] dark:border-[#E1F435]" />
           </span>
           <span className="font-mono text-[12px] font-medium uppercase leading-[16.8px] text-[#171717] dark:text-neutral-200">
             FAQ

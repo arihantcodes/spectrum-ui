@@ -11,18 +11,18 @@ export function MainNav() {
   const pathname = usePathname();
 
   return (
-    <div className="mr-4 md:flex shrink-0">
-      <Link href="/" className="mr-4 flex items-center gap-2.5 lg:mr-8">
+    <div className="mr-2 shrink-0 md:mr-4 md:flex">
+      <Link href="/" className="flex items-center gap-2 md:mr-4 md:gap-2.5 lg:mr-8">
         <div className="h-7 w-7 bg-neutral-900 dark:bg-white rounded-md flex items-center justify-center p-1.5">
           <Icons.logo className="h-full w-full text-white dark:text-black" />
         </div>
 
         <ScrambleText
           text="Spectrum UI"
-          className="font-mono text-lg font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px]"
+          className="font-mono text-sm font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px] sm:text-base"
         />
       </Link>
-      <nav className="items-center gap-6 xl:gap-8 hidden md:flex font-mono text-sm uppercase tracking-wide">
+      <nav className="items-center gap-6 xl:gap-8 hidden md:flex font-mono text-[13px] uppercase tracking-wide">
         <Link
           href="/docs"
           className={cn(
@@ -32,7 +32,7 @@ export function MainNav() {
         >
           Components
         </Link>
-           {/* <Link
+        {/* <Link
           href="/pro"
           className={cn(
             'transition-colors hover:text-foreground/80',
@@ -53,24 +53,24 @@ export function MainNav() {
         >
           Templates
         </Link> */}
-        <Link href="/founder-story" className={cn(
-          'transition-colors hover:text-foreground flex items-center whitespace-nowrap',
-          pathname === '/founder-story' ? 'text-foreground' : 'text-foreground/80',
-        )}>
-          Founder Story
-        </Link>
-        <Link href="/blog" className={cn(
-          'transition-colors hover:text-foreground',
-          pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
-        )}>
+       
+        <Link
+          href="/blog"
+          className={cn(
+            'transition-colors hover:text-foreground',
+            pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
+          )}
+        >
           Blogs
         </Link>
-        <Link href="/sponsor" className={cn(
-          'transition-colors hover:text-foreground whitespace-nowrap',
-          pathname === '/sponsor' ? 'text-foreground' : 'text-foreground/80',
-        )}>
-          Sponsor Us
-          
+        <Link
+          href="/colors"
+          className={cn(
+            'transition-colors hover:text-foreground whitespace-nowrap',
+            pathname === '/Colors' ? 'text-foreground' : 'text-foreground/80',
+          )}
+        >
+         Colors
         </Link>
       </nav>
     </div>

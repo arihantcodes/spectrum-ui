@@ -13,12 +13,14 @@ interface PreviewCodeCardProps {
   children?: React.ReactNode;
   /** spectrum-ui CLI slug e.g. "@spectrumui/animated-card" */
   cli?: string;
-  /** Bash install command shown in Installation tab, e.g. "npm i framer-motion" */
+  /** Bash install command shown in the Installation section, e.g. "npm i framer-motion" */
   installScript?: string;
-  /** Path to the component source file shown in Installation tab */
+  /** Path to the component source file shown in the Installation section */
   installCodePath?: string;
-  /** Optional custom content to show in the installation tab (e.g. PropsTable) */
+  /** Optional custom content to show in the installation section (e.g. PropsTable) */
   installContent?: React.ReactNode;
+  /** Set false to hide the auto-rendered "Installation" section */
+  withInstallation?: boolean;
 }
 
 const PreviewCodeCard = async ({
@@ -29,6 +31,7 @@ const PreviewCodeCard = async ({
   installScript,
   installCodePath,
   installContent,
+  withInstallation,
 }: PreviewCodeCardProps) => {
   // Read the demo file
   let demoCode: string;
@@ -39,7 +42,7 @@ const PreviewCodeCard = async ({
     demoCode = '// Could not load source file';
   }
 
-  // Read the component source file (for Installation tab)
+  // Read the component source file (for the Installation section)
   let installCode: string | undefined;
   if (installCodePath) {
     try {
@@ -55,13 +58,14 @@ const PreviewCodeCard = async ({
   return (
     <CodeCardWrapper
       code={demoCode}
-      className={cn('relative mb-14 mt-5', className)}
+      className={cn('relative mt-8', className)}
       CLI={cli}
       installScript={installScript}
       installCode={installCode}
       installContent={installContent}
+      withInstallation={withInstallation}
     >
-      <div className="flex items-center justify-center py-10">{children}</div>
+      {children}
     </CodeCardWrapper>
   );
 };

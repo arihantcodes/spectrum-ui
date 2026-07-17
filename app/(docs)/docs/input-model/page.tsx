@@ -8,7 +8,7 @@ import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
   title: 'Input Model',
-  description: 'Modal input component for React and Next.js. A dialog-based input form that allows users to enter data in a modal overlay. Perfect for quick data entry and form submissions.',
+  description: 'A modal dialog with an input form for quick data entry. A free React and Next.js component built with Tailwind CSS.',
   keywords: [
     "input modal",
     "modal input",
@@ -26,7 +26,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Input Model"
-      description="Modal input component for React and Next.js. A dialog-based input form that allows users to enter data in a modal overlay. Perfect for quick data entry and form submissions."
+      description="A modal dialog with an input form for quick data entry."
       url="https://ui.spectrumhq.in/docs/input-model"
       keywords={[
         "input modal",
@@ -39,7 +39,10 @@ const DualRangeSliderPage = () => {
         "modal form",
       ]}
     >
-      <PageTemplate title="Input Model">
+      <PageTemplate
+        title="Input Model"
+        description="A modal dialog with an input form for quick data entry."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/input-model/input-model.tsx"
         cli="@spectrumui/input-model"

@@ -1,5 +1,3 @@
-import { ArrowLeft, Clock } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -7,6 +5,7 @@ import { getBlogPost, getAllBlogPosts } from "@/lib/blog"
 import { Metadata } from "next"
 import { generateBlogStructuredData, generateBlogBreadcrumbs } from "@/lib/seo-utils"
 import { NewsletterSignup } from "@/components/newsletter-signup"
+import { BlogCard } from "../blog-card"
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts()
@@ -108,7 +107,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
   const baseUrl = "https://ui.spectrumhq.in"
   const blogUrl = `${baseUrl}/blog/${post.slug}`
-  
+
+  // Related posts: same category first, then fill with the most recent others.
+  const allPosts = await getAllBlogPosts()
+  const others = allPosts.filter((p) => p.slug !== post.slug)
+  const sameCategory = others.filter((p) => p.category && p.category === post.category)
+  const related = [...sameCategory, ...others.filter((p) => !sameCategory.includes(p))].slice(0, 3)
+
+  const authorRole = post.author.role || "Design Engineer"
+
   // Generate structured data
   const structuredData = generateBlogStructuredData({
     title: post.title,
@@ -141,92 +148,130 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           __html: JSON.stringify(breadcrumbData),
         }}
       />
-      
-      <div className="w-full max-w-5xl mx-auto min-h-screen bg-background text-foreground border-x border-border">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-6 sm:py-8">
-      
-      {/* Back Button */}
-      <Link href="/blog">
-        <Button variant="ghost" className="text-muted-foreground hover:text-foreground mb-6 sm:mb-8 -ml-2 sm:-ml-4">
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Blog
-        </Button>
-      </Link>
-  
-      {/* Article Header */}
-      <article itemScope itemType="https://schema.org/BlogPosting">
-        <header className="text-center mb-8 sm:mb-12">
-          <h1 itemProp="headline" className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-xl mx-auto font-bold text-foreground mb-6 leading-snug sm:leading-tight">
-            {post.title}
-          </h1>
-  
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <Avatar className="h-10 w-10 sm:h-12 sm:w-12">
-              <AvatarImage src={post.author.avatar || "/placeholder.svg"} />
-              <AvatarFallback className="text-sm bg-muted">
-                {post.author.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </AvatarFallback>
-            </Avatar>
-            <div itemProp="author" itemScope itemType="https://schema.org/Person" className="text-sm text-center sm:text-left">
-              <span itemProp="name" className="text-foreground font-medium">{post.author.name}</span>
-              <span className="text-muted-foreground ml-2">Design Engineer</span>
-            </div>
-          </div>
-        </header>
-  
-        {/* Article Meta */}
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs sm:text-sm text-muted-foreground mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-border gap-2 sm:gap-0">
-          <div className="flex items-center space-x-1">
-            <Clock className="h-4 w-4" />
-            <span>{post.readTime}</span>
-          </div>
-          <time itemProp="datePublished" dateTime={post.date}>
-            {post.date}
-          </time>
-        </div>
-  
-        {/* Article Content */}
-        <div itemProp="articleBody" className="prose prose-neutral dark:prose-invert prose-base sm:prose-lg max-w-none font-inter">
-          <div className="text-neutral-800 dark:text-neutral-200 leading-relaxed space-y-6 font-normal">{post.content}</div>
-        </div>
-      </article>
 
-      {/* Newsletter Signup */}
-      <section className="mt-16 pt-8 border-t border-border">
-        <NewsletterSignup variant="inline" />
-      </section>
+      <div className="relative min-h-screen font-inter text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+        {/* Page-wide grain overlay */}
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 z-0 bg-noise opacity-[0.035] dark:opacity-[0.05]"
+        />
 
-      {/* Related Posts Section */}
-      <section className="mt-16 pt-8 border-t border-border">
-        <h2 className="text-xl font-semibold mb-6 text-foreground">Related Articles</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          <Link href="/" className="group">
-            <div className="p-4 border border-border rounded-lg hover:bg-accent/20 transition-colors">
-              <h3 className="font-medium text-foreground group-hover:text-primary transition-colors mb-2">
-                Explore Spectrum UI Components
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Discover our collection of React components built with Tailwind CSS and shadcn/ui
-              </p>
-            </div>
+        <div className="relative z-10">
+          {/* Article */}
+          <section className="container-frame border-b border-border">
+            <div className="mx-auto max-w-[768px] px-5 pb-16 pt-10 sm:px-8 sm:pt-14">
+          {/* Back link */}
+          <Link
+            href="/blog"
+            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-[#9a938b] transition-colors hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200"
+          >
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden className="transition-transform duration-300 ease-out group-hover:-translate-x-0.5">
+              <path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            The Journal
           </Link>
-          <Link href="/colors" className="group">
-            <div className="p-4 border border-border rounded-lg hover:bg-accent/20 transition-colors">
-              <h3 className="font-medium text-foreground group-hover:text-primary transition-colors mb-2">
-                Color Palette & Design Tokens
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Browse our carefully curated color palettes and design system tokens
+
+          <article itemScope itemType="https://schema.org/BlogPosting" className="mt-8">
+            {/* Header */}
+            <header className="flex flex-col gap-6">
+              <div className="flex items-center gap-2.5">
+                <span
+                  aria-hidden
+                  className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+                />
+                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+                  {post.category || "Engineering"}
+                  <span className="mx-2 text-neutral-300 dark:text-neutral-600">/</span>
+                  {post.readTime}
+                </span>
+              </div>
+
+              <h1
+                itemProp="headline"
+                className="font-spectral text-[32px] font-light leading-[1.08] tracking-[-0.025em] text-neutral-900 sm:text-[44px] dark:text-neutral-50"
+              >
+                {post.title}
+              </h1>
+
+              <p className="max-w-[62ch] font-inter text-[17px] leading-[1.6] text-[#59544f] dark:text-neutral-400">
+                {post.excerpt}
               </p>
+
+              {/* Byline */}
+              <div className="mt-2 flex items-center justify-between gap-4 border-t border-black/[0.07] pt-6 dark:border-white/[0.08]">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10 ring-1 ring-black/[0.06] dark:ring-white/[0.08]">
+                    <AvatarImage src={post.author.avatar || "/placeholder.svg"} />
+                    <AvatarFallback className="bg-[#F5F3F1] text-[13px] font-medium text-[#59544f] dark:bg-neutral-800 dark:text-neutral-200">
+                      {post.author.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div
+                    itemProp="author"
+                    itemScope
+                    itemType="https://schema.org/Person"
+                    className="flex flex-col leading-tight"
+                  >
+                    <span itemProp="name" className="text-[14px] font-medium text-neutral-900 dark:text-neutral-100">
+                      {post.author.name}
+                    </span>
+                    <span className="text-[12.5px] text-[#9a938b] dark:text-neutral-500">{authorRole}</span>
+                  </div>
+                </div>
+                <time
+                  itemProp="datePublished"
+                  dateTime={post.date}
+                  className="font-mono text-[11px] uppercase tracking-[0.04em] text-[#9a938b] dark:text-neutral-500"
+                >
+                  {post.date}
+                </time>
+              </div>
+            </header>
+
+            {/* Article Content */}
+            <div
+              itemProp="articleBody"
+              className="prose prose-neutral dark:prose-invert mt-10 max-w-none font-inter text-[16.5px] leading-[1.8] text-neutral-700 dark:text-neutral-300 prose-headings:font-spectral prose-headings:font-normal prose-headings:tracking-[-0.01em] prose-headings:text-neutral-900 dark:prose-headings:text-neutral-100 prose-a:text-[#f9452d] prose-a:no-underline hover:prose-a:underline dark:prose-a:text-[#E1F435] prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100"
+            >
+              {post.content}
             </div>
-          </Link>
-        </div>
-      </section>
+          </article>
+            </div>
+          </section>
+
+          {/* Newsletter Signup */}
+          <section className="container-frame border-b border-border">
+            <div className="mx-auto max-w-[768px] px-5 py-16 sm:px-8">
+              <NewsletterSignup variant="inline" />
+            </div>
+          </section>
+
+          {/* Related Posts */}
+          {related.length > 0 && (
+            <section className="container-frame border-b border-border">
+              <div className="mx-auto max-w-[768px] px-5 py-16 sm:px-8">
+                <div className="mb-8 flex items-center gap-2.5">
+                  <span
+                    aria-hidden
+                    className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+                  />
+                  <h2 className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100">
+                    Keep reading
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3">
+                  {related.map((p) => (
+                    <BlogCard key={p.slug} post={p} />
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </div>
-      </>
+    </>
   )
 }

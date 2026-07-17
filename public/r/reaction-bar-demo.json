@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reaction-bar-demo",
+  "title": "Reaction Bar Demo",
+  "description": "Demo usage for the Reaction Bar component",
+  "registryDependencies": [
+    "@spectrumui/reaction-bar"
+  ],
+  "files": [
+    {
+      "path": "app/registry/reaction-bar/reaction-bar-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { ReactionBar } from \"@/components/spectrumui/reaction-bar\"\n\nexport default function ReactionBarDemo() {\n  return (\n    <div className=\"flex w-full items-center justify-center py-10\">\n      <div className=\"w-full max-w-md rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900\">\n        <div className=\"flex items-start gap-3\">\n          <div className=\"flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300\">\n            AK\n          </div>\n          <div className=\"min-w-0 flex-1\">\n            <div className=\"flex items-baseline gap-2\">\n              <span className=\"text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n                Aisha Khan\n              </span>\n              <span className=\"text-xs text-neutral-500 dark:text-neutral-400\">\n                2:14 PM\n              </span>\n            </div>\n            <p className=\"mt-0.5 text-sm text-neutral-600 dark:text-neutral-400\">\n              Just shipped the new onboarding flow — would love your feedback\n              before Friday!\n            </p>\n            <ReactionBar\n              className=\"mt-2.5\"\n              defaultReactions={[\n                { emoji: \"👍\", count: 4, reacted: true },\n                { emoji: \"🎉\", count: 2 },\n                { emoji: \"🚀\", count: 1 },\n              ]}\n            />\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/reaction-bar-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

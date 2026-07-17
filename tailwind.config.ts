@@ -85,6 +85,7 @@ const config = {
         inter: ["var(--font-inter)", "Inter", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
         spectral: ["var(--font-spectral)", "Georgia", "serif"],
+        calsans: ["var(--font-calsans)", "var(--font-geist-sans)", "sans-serif"],
       },
       keyframes: {
         slideOutToTopFull: {

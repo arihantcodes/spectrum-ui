@@ -10,7 +10,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Bento Grid",
   description:
-    "A premium, interactive bento grid component for React and Next.js. Features framer-motion physics, scroll-based animations, and responsive layouts.",
+    "A bento grid layout with physics-based hover effects and scroll animations. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "bento grid",
     "bento box",
@@ -26,7 +26,7 @@ export default function BentoGridPage() {
   return (
     <SEOWrapper
       componentName="Bento Grid"
-      description="A premium, interactive bento grid component for React and Next.js. Features framer-motion physics, scroll-based animations, and responsive layouts."
+      description="A bento grid layout with physics-based hover effects and scroll animations."
       url="https://ui.spectrumhq.in/docs/bento-grid"
       keywords={[
         "bento grid",
@@ -39,7 +39,7 @@ export default function BentoGridPage() {
     >
       <PageTemplate
         title="Bento Grid"
-        description="A premium, interactive bento grid component with physics-based hover effects, dynamic background elements, and scroll animations."
+        description="A bento grid layout with physics-based hover effects and scroll animations."
       >
         <PreviewCodeCard
           path="app/registry/bento-grid/bento-grid-demo.tsx"

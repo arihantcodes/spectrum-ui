@@ -16,7 +16,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Dual Range Slider",
   description:
-    "Dual range slider component for React and Next.js. Select a range of values with two handles. Perfect for price filters, date ranges, and numeric selections. Built with Radix UI and Tailwind CSS.",
+    "A slider with two draggable thumbs for selecting a range of values. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "dual range slider",
     "range slider",
@@ -34,7 +34,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Dual Range Slider"
-      description="Dual range slider component for React and Next.js. Select a range of values with two handles. Perfect for price filters, date ranges, and numeric selections. Built with Radix UI and Tailwind CSS."
+      description="A slider with two draggable thumbs for selecting a range of values."
       url="https://ui.spectrumhq.in/docs/dual-range-slider"
       keywords={[
         "dual range slider",
@@ -49,7 +49,7 @@ const DualRangeSliderPage = () => {
     >
       <PageTemplate
       title="Dual Range Slider"
-      description="An enhancement slider that allows you to select a range of values."
+      description="A slider with two draggable thumbs for selecting a range of values."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/dual-range-slider/dual-range-slider-demo.tsx"

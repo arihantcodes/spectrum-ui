@@ -1,39 +1,13 @@
-import dynamic from "next/dynamic";
 import fs from "fs/promises";
 import nodePath from "path";
+import dynamic from "next/dynamic";
 
-const CodeHighlight = dynamic(
-  () => import("@/app/(docs)/docs/components/code-card/parts/code-highlight"),
-  {
-    ssr: false,
-  },
+const InstallationTabs = dynamic(
+  () =>
+    import(
+      "@/app/(docs)/docs/components/code-card/parts/installation-tabs"
+    ),
 );
-
-interface StepperProps {
-  title?: string;
-  step: number;
-  children?: React.ReactNode;
-}
-
-function Stepper({ title, step, children }: StepperProps) {
-  return (
-    <div className="group">
-      <div className="flex items-center gap-3">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 font-medium shadow-sm transition-colors group-hover:bg-neutral-200 dark:bg-neutral-900/30 dark:text-neutral-400 dark:group-hover:bg-neutral-800/40">
-          {step}
-        </span>
-        <h4 className="text-base font-semibold text-neutral-800 dark:text-neutral-200">
-          {title}
-        </h4>
-      </div>
-      {children && (
-        <div className="ml-[15px] mt-2 border-l-2 border-neutral-100 pl-[27px] text-sm dark:border-neutral-800">
-          {children}
-        </div>
-      )}
-    </div>
-  );
-}
 
 interface SteppersProps {
   className?: string;
@@ -44,13 +18,22 @@ interface SteppersProps {
   withEnd?: boolean;
 }
 
+/** Extract a registry slug from a shadcn add command so the CLI tab can offer
+ * package-manager switching, e.g. "npx shadcn@latest add input" → "input". */
+const slugFromInstallScript = (script?: string) => {
+  if (!script) return undefined;
+  const match = script.match(
+    /^(?:npx|pnpm dlx|bunx(?: --bun)?|yarn dlx) shadcn@latest add (\S+)$/,
+  );
+  return match?.[1];
+};
+
 export async function Steppers({
   className,
   installScript,
   codePath,
   steps = [],
   withInstall = false,
-  withEnd = false,
 }: SteppersProps) {
   let codeFromFile = "";
 
@@ -63,43 +46,30 @@ export async function Steppers({
     }
   }
 
-  let stepCounter = 1;
+  const cli = slugFromInstallScript(installScript);
 
   return (
-    <div className={`space-y-6 py-2 ${className || ""}`}>
-      {withInstall && installScript && (
-        <Stepper title="Install the package" step={stepCounter++}>
-          <CodeHighlight
-            code={installScript}
-            lang="bash"
-            title="Terminal"
-            inTab
-            requireAuth={false}
-          />
-        </Stepper>
-      )}
-
-      {withInstall && codePath && (
-        <Stepper title="Paste this code into your project" step={stepCounter++}>
-          <CodeHighlight
-            code={codeFromFile}
-            title={codePath}
-            withExpand={true}
-            inTab={false}
-            requireAuth={true}
-          />
-        </Stepper>
+    <div className={className}>
+      {withInstall && (
+        <InstallationTabs
+          cli={cli}
+          installScript={cli ? undefined : installScript}
+          installCode={codeFromFile || undefined}
+        />
       )}
 
       {steps.map((s) => (
-        <Stepper key={s.title} title={s.title} step={stepCounter++}>
-          {s.children}
-        </Stepper>
+        <div key={s.title} className="mt-6">
+          <p className="text-sm font-medium text-[#262626] dark:text-neutral-200">
+            {s.title}
+          </p>
+          {s.children && (
+            <div className="mt-2 text-sm text-[#686868] dark:text-neutral-400">
+              {s.children}
+            </div>
+          )}
+        </div>
       ))}
-
-      {withEnd && (
-        <Stepper title="Update import paths as needed" step={stepCounter++} />
-      )}
     </div>
   );
 }

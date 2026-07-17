@@ -9,7 +9,7 @@ import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 export const metadata: Metadata = baseMetadata({
   title: 'Animated Drawer',
   description:
-    'Smooth animated drawer component for React and Next.js. Slide-in side panels with beautiful animations. Perfect for mobile menus, settings panels, and sidebars. Built with Framer Motion and Vaul.',
+    'A drawer panel that slides in smoothly for menus, settings, and sidebars. A free React and Next.js component built with Framer Motion and Vaul.',
   keywords: [
     "animated drawer",
     "drawer component",
@@ -27,7 +27,7 @@ const Loginpage = () => {
   return (
     <SEOWrapper
       componentName="Animated Drawer"
-      description="Smooth animated drawer component for React and Next.js. Slide-in side panels with beautiful animations. Perfect for mobile menus, settings panels, and sidebars. Built with Framer Motion and Vaul."
+      description="A drawer panel that slides in smoothly for menus, settings, and sidebars."
       url="https://ui.spectrumhq.in/docs/animateddrawer"
       keywords={[
         "animated drawer",
@@ -40,7 +40,10 @@ const Loginpage = () => {
         "animated sidebar",
       ]}
     >
-      <PageTemplate title="Animated Drawer">
+      <PageTemplate
+        title="Animated Drawer"
+        description="A drawer panel that slides in smoothly for menus, settings, and sidebars."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/animateddrawer/demo.tsx"
         cli="@spectrumui/animated-drawer"

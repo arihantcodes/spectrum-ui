@@ -11,7 +11,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Animated Card",
   description:
-    "Beautiful animated card component for React and Next.js. Showcase tools, technologies, and features with smooth hover animations and transitions. Built with Framer Motion and Tailwind CSS.",
+    "A card that animates on hover to showcase tools, technologies, and features. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "animated card",
     "card component",
@@ -29,7 +29,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Animated Card"
-      description="Beautiful animated card component for React and Next.js. Showcase tools, technologies, and features with smooth hover animations and transitions. Built with Framer Motion and Tailwind CSS."
+      description="A card that animates on hover to showcase tools, technologies, and features."
       url="https://ui.spectrumhq.in/docs/animatedcard"
       keywords={[
         "animated card",
@@ -42,7 +42,10 @@ const DualRangeSliderPage = () => {
         "interactive card",
       ]}
     >
-      <PageTemplate title="Animated Card">
+      <PageTemplate
+        title="Animated Card"
+        description="A card that animates on hover to showcase tools, technologies, and features."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/animatedcard/animatedcarddemo.tsx"
         cli="@spectrumui/animated-card"

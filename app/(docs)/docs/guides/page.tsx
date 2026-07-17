@@ -1,175 +1,208 @@
-import { Metadata } from "next";
-import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
-import Link from "next/link";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book, Code2, Sparkles, Zap } from "lucide-react";
-import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowUpRight, Check, LayoutGrid, Palette, Sparkles, Zap } from 'lucide-react';
+
+import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
+import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
-  title: "Guides & Tutorials",
-  description: "Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples.",
+  title: 'Guides & Tutorials',
+  description:
+    'Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples.',
   keywords: [
-    "React tutorials",
-    "UI component guide",
-    "Next.js tutorials",
-    "React best practices",
-    "component library tutorial",
-    "modern UI development",
-    "React design patterns",
+    'React tutorials',
+    'UI component guide',
+    'Next.js tutorials',
+    'React best practices',
+    'component library tutorial',
+    'modern UI development',
+    'React design patterns',
   ],
-  canonicalUrl: "https://ui.spectrumhq.in/docs/guides",
+  canonicalUrl: 'https://ui.spectrumhq.in/docs/guides',
 });
 
-export default function GuidesPage() {
-  const guides = [
-    {
-      title: "Getting Started with Spectrum UI",
-      description: "Learn how to set up Spectrum UI in your React or Next.js project in under 5 minutes.",
-      icon: Zap,
-      href: "/docs/installation",
-      tag: "Beginner",
-    },
-    {
-      title: "Building a Dashboard with React Components",
-      description: "Create a fully functional admin dashboard using Spectrum UI components. Includes data tables, charts, and forms.",
-      icon: Code2,
-      href: "/docs/guides/dashboard-tutorial",
-      tag: "Intermediate",
-    },
-    {
-      title: "Best Practices for React UI Components",
-      description: "Learn industry best practices for building accessible, performant, and maintainable React components.",
-      icon: Book,
-      href: "/docs/guides/best-practices",
-      tag: "Advanced",
-    },
-    {
-      title: "Advanced Component Customization",
-      description: "Master the art of customizing Spectrum UI components to match your brand and design system.",
-      icon: Sparkles,
-      href: "/docs/guides/customization-guide",
-      tag: "Advanced",
-    },
-  ];
+const GUIDES = [
+  {
+    title: 'Install Spectrum UI',
+    description: 'Set up Next.js and shadcn/ui, then add your first component in a few minutes.',
+    icon: Zap,
+    href: '/docs/installation',
+    tag: 'Start here',
+  },
+  {
+    title: 'Explore the components',
+    description: 'Browse the full list of components and copy the ones you need.',
+    icon: LayoutGrid,
+    href: '/docs',
+    tag: 'Components',
+  },
+  {
+    title: 'Set up the MCP server',
+    description: 'Connect your AI editor so it can search and add components for you.',
+    icon: Sparkles,
+    href: '/docs/mcp',
+    tag: 'AI tools',
+  },
+  {
+    title: 'Make it your own',
+    description: 'Edit the copied code and change the styles to match your brand.',
+    icon: Palette,
+    href: '/docs/button',
+    tag: 'Styling',
+  },
+];
 
+const LEARNING_POINTS = [
+  'How to add Spectrum UI components to a React or Next.js app',
+  'How to keep your pages fast and easy to use for everyone',
+  'How to change a component so it matches your design',
+  'Patterns that real production apps use',
+  'How to work faster with AI tools like the MCP server',
+];
+
+const POPULAR_PAGES = [
+  {
+    title: 'Installation',
+    description: 'Install and set up Spectrum UI',
+    href: '/docs/installation',
+  },
+  {
+    title: 'Accordion',
+    description: 'Build accessible accordions in React',
+    href: '/docs/accordion',
+  },
+  {
+    title: 'Button',
+    description: 'Create custom button variants with Tailwind',
+    href: '/docs/button',
+  },
+  { title: 'Card', description: 'Design beautiful card layouts', href: '/docs/card' },
+];
+
+const sectionTitle =
+  'scroll-m-24 font-regular text-xl font-medium leading-7 tracking-[-0.01em] text-neutral-900 dark:text-neutral-50';
+
+export default function GuidesPage() {
   return (
     <SEOWrapper
       componentName="Guides & Tutorials"
       description="Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples."
       url="https://ui.spectrumhq.in/docs/guides"
       keywords={[
-        "React tutorials",
-        "UI component guide",
-        "Next.js tutorials",
-        "React best practices",
-        "component library tutorial",
-        "modern UI development",
-        "React design patterns",
+        'React tutorials',
+        'UI component guide',
+        'Next.js tutorials',
+        'React best practices',
+        'component library tutorial',
+        'modern UI development',
+        'React design patterns',
       ]}
     >
-      <main className="relative py-6 lg:gap-10 lg:py-8">
-        <div className="mx-auto w-full min-w-0">
-          <div className="space-y-2 mb-8">
-            <h1 className="text-3xl font-bold tracking-tight">
-              Guides & Tutorials
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Comprehensive guides to help you master React UI development with Spectrum UI.
-              From beginner tutorials to advanced patterns.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 mb-12">
-            {guides.map((guide) => {
-              const Icon = guide.icon;
-              return (
-                <Link key={guide.href} href={guide.href}>
-                  <Card className="h-full transition-all hover:border-primary hover:shadow-lg">
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-2">
-                        <div className="rounded-lg bg-primary/10 p-2">
-                          <Icon className="h-5 w-5 text-primary" />
-                        </div>
-                        <span className="text-xs font-medium px-2 py-1 rounded-full bg-muted">
-                          {guide.tag}
-                        </span>
-                      </div>
-                      <CardTitle className="text-xl">{guide.title}</CardTitle>
-                      <CardDescription className="text-sm mt-2">
-                        {guide.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* SEO Content Section */}
-          <section className="my-12 space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-4">
-                Why Choose Spectrum UI for Your React Projects?
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                Spectrum UI is a comprehensive React component library designed for modern web applications.
-                Built with TypeScript, Tailwind CSS, and accessibility in mind, it provides everything you need
-                to build beautiful, responsive user interfaces quickly and efficiently.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">
-                What You&apos;ll Learn
-              </h2>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>How to integrate Spectrum UI components into your React or Next.js applications</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Best practices for building accessible, performant user interfaces</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Advanced customization techniques to match your brand identity</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Real-world examples and patterns used in production applications</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Performance optimization strategies for React components</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="rounded-lg border p-6 bg-muted/50">
-              <h3 className="text-xl font-semibold mb-2">Popular Tutorials</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                These tutorials are most popular among developers learning to use Spectrum UI:
-              </p>
-              <div className="space-y-2">
-                <Link href="/docs/installation" className="block text-primary hover:underline">
-                  → Quick Start Guide: Install and Setup Spectrum UI
-                </Link>
-                <Link href="/docs/accordion" className="block text-primary hover:underline">
-                  → Building Accessible Accordions in React
-                </Link>
-                <Link href="/docs/button" className="block text-primary hover:underline">
-                  → Creating Custom Button Variants with Tailwind CSS
-                </Link>
-                <Link href="/docs/card" className="block text-primary hover:underline">
-                  → Designing Beautiful Card Layouts for Modern Web Apps
-                </Link>
-              </div>
-            </div>
-          </section>
+      <div className="w-full">
+        {/* Header */}
+        <div className="max-w-2xl animate-fade-up">
+          <p className="font-mono text-[13px] leading-4 text-neutral-400 dark:text-neutral-500">
+            Getting Started
+          </p>
+          <h1 className="mt-2 text-2xl leading-10 text-neutral-900 dark:text-neutral-100 sm:text-3xl">
+            Guides
+          </h1>
+          <p className="mt-2 text-[15px] tracking-wide text-neutral-400 dark:text-neutral-400">
+            Short guides that help you learn Spectrum UI and get more out of it.
+          </p>
         </div>
-      </main>
+
+        {/* Guide cards */}
+        <div
+          className="mt-10 grid animate-fade-up grid-cols-1 gap-4 sm:grid-cols-2"
+          style={{ animationDelay: '60ms' }}
+        >
+          {GUIDES.map((guide) => {
+            const Icon = guide.icon;
+            return (
+              <Link
+                key={guide.href}
+                href={guide.href}
+                className="group flex flex-col rounded-[14px] border border-black/[0.08] bg-white p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-black/[0.16] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 active:translate-y-0 active:shadow-none dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+              >
+                <span className="flex items-start justify-between">
+                  <span className="flex size-9 items-center justify-center rounded-[10px] bg-black/[0.04] transition-colors duration-200 group-hover:bg-black/[0.06] dark:bg-white/[0.06] dark:group-hover:bg-white/[0.09]">
+                    <Icon className="size-4 text-neutral-600 dark:text-neutral-300" />
+                  </span>
+                  <span className="rounded-[6px] bg-black/[0.04] px-1.5 py-0.5 font-mono text-[11px] leading-4 text-neutral-500 dark:bg-white/[0.06] dark:text-neutral-400">
+                    {guide.tag}
+                  </span>
+                </span>
+                <span className="mt-4 flex items-center gap-1 text-sm font-medium leading-5 text-neutral-900 dark:text-neutral-100">
+                  {guide.title}
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-neutral-400 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 dark:text-neutral-500" />
+                </span>
+                <span className="mt-1.5 text-[13px] leading-5 tracking-wide text-neutral-500 dark:text-neutral-400">
+                  {guide.description}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* What you will learn */}
+        <section className="animate-fade-up" style={{ animationDelay: '120ms' }}>
+          <h2 id="what-you-will-learn" className={`mt-14 ${sectionTitle}`}>
+            What you will learn
+          </h2>
+          <ul className="mt-5 flex flex-col gap-3">
+            {LEARNING_POINTS.map((point) => (
+              <li key={point} className="flex items-start gap-2.5">
+                <span className="mt-1 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.06]">
+                  <Check className="size-3 text-neutral-600 dark:text-neutral-300" />
+                </span>
+                <span className="text-sm leading-6 tracking-wide text-neutral-500 dark:text-neutral-400">
+                  {point}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Why Spectrum UI */}
+        <section className="animate-fade-up" style={{ animationDelay: '180ms' }}>
+          <h2 id="why-spectrum-ui" className={`mt-14 ${sectionTitle}`}>
+            Why Spectrum UI?
+          </h2>
+          <p className="mt-4 max-w-2xl text-sm leading-6 tracking-wide text-neutral-500 dark:text-neutral-400">
+            Spectrum UI is a collection of React components for modern web apps. It is built with
+            TypeScript and Tailwind CSS, and it cares about accessibility from the start. You get
+            beautiful and responsive interfaces without writing all the boilerplate yourself. And
+            since the code lives in your project, there is nothing extra to maintain.
+          </p>
+        </section>
+
+        {/* Popular pages */}
+        <section className="animate-fade-up" style={{ animationDelay: '240ms' }}>
+          <h2 id="popular-pages" className={`mt-14 ${sectionTitle}`}>
+            Popular pages
+          </h2>
+          <div className="mt-5 overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-white/[0.02]">
+            <div className="flex flex-col divide-y divide-black/[0.06] dark:divide-white/[0.08]">
+              {POPULAR_PAGES.map((page) => (
+                <Link
+                  key={page.href}
+                  href={page.href}
+                  className="group flex h-12 items-center gap-3 px-4 transition-colors duration-150 hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/20 dark:hover:bg-white/[0.04] dark:focus-visible:ring-white/30"
+                >
+                  <span className="shrink-0 text-sm font-medium leading-5 text-neutral-800 dark:text-neutral-200">
+                    {page.title}
+                  </span>
+                  <span className="hidden truncate text-[13px] leading-5 tracking-wide text-neutral-400 dark:text-neutral-500 sm:inline">
+                    {page.description}
+                  </span>
+                  <ArrowUpRight className="ml-auto h-3.5 w-3.5 shrink-0 -translate-x-0.5 text-neutral-400 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 dark:text-neutral-500" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </SEOWrapper>
   );
 }
-

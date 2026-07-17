@@ -8,7 +8,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper"
 export const metadata: Metadata = baseMetadata({
   title: "Scratch Card",
   description:
-    "Scratch-to-reveal coupon card for React and Next.js. Interactive HTML5 canvas foil that scratches off on drag with dust particles and a reveal callback at a configurable threshold. Built with Framer Motion.",
+    "A scratch-to-reveal card that wipes away a canvas foil overlay on drag. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "scratch card component",
     "React scratch card",
@@ -23,7 +23,7 @@ export const metadata: Metadata = baseMetadata({
 
 export default function ScratchCardDocsPage() {
   const description =
-    "A scratch-to-reveal coupon card built on an HTML5 canvas overlay. Drag to scratch off the foil with dust particles on progress, and trigger a reveal callback once more than half the surface is cleared. Supports keyboard reveal and reduced motion."
+    "A scratch-to-reveal card that wipes away a canvas foil overlay on drag."
 
   return (
     <SEOWrapper

@@ -19,7 +19,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Loading Button",
   description:
-    "Button component with loading state for React and Next.js. Display loading spinner inside buttons during async operations. Fully compatible with shadcn/ui button API. Built with Radix UI and Tailwind CSS.",
+    "A shadcn/ui button with a built-in loading spinner state. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "loading button",
     "button with spinner",
@@ -37,7 +37,7 @@ const LoadingButtonPage = () => {
   return (
     <SEOWrapper
       componentName="Loading Button"
-      description="Button component with loading state for React and Next.js. Display loading spinner inside buttons during async operations. Fully compatible with shadcn/ui button API. Built with Radix UI and Tailwind CSS."
+      description="A shadcn/ui button with a built-in loading spinner state."
       url="https://ui.spectrumhq.in/docs/loading-button"
       keywords={[
         "loading button",
@@ -52,7 +52,7 @@ const LoadingButtonPage = () => {
     >
       <PageTemplate
       title="Loading Button"
-      description="Display a button or a component that looks like a button with loading spinner. Everything is just the same as the button in shadcnui."
+      description="A shadcn/ui button with a built-in loading spinner state."
     >
       <ReferenceBorder>
         <Reference href="https://www.radix-ui.com/themes/docs/components/button" />

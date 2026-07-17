@@ -37,7 +37,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Multiple Selector",
   description:
-    "Fast, composable, fully-featured multiple selector component for React and Next.js. Features async search with debounce, maximum selected count, grouping, creatable options, and more. Built with Radix UI and Tailwind CSS.",
+    "A multi-select input with async search, grouping, and creatable options. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "multiple selector",
     "multi select",
@@ -56,7 +56,7 @@ const MultipleSelectorPage = () => {
   return (
     <SEOWrapper
       componentName="Multiple Selector"
-      description="Fast, composable, fully-featured multiple selector component for React and Next.js. Features async search with debounce, maximum selected count, grouping, creatable options, and more. Built with Radix UI and Tailwind CSS."
+      description="A multi-select input with async search, grouping, and creatable options."
       url="https://ui.spectrumhq.in/docs/multiple-selector"
       keywords={[
         "multiple selector",
@@ -72,7 +72,7 @@ const MultipleSelectorPage = () => {
     >
       <PageTemplate
       title="Multiple Selector"
-      description="Fast, composable, fully-featured multiple selector for React."
+      description="A multi-select input with async search, grouping, and creatable options."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/multiple-selector/multiple-selector-demo.tsx"

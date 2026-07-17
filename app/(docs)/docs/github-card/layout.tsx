@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
+import { PageTemplate } from "@/app/(docs)/docs/components/page-template";
 
 export const metadata: Metadata = baseMetadata({
-  title: "GitHub Card",
+  title: "GitHub Profile Card",
   description:
-    "Interactive GitHub profile card generator component for React and Next.js. Search any GitHub user and generate a beautiful profile card with contribution graph, stats, and social sharing. Built with Tailwind CSS.",
+    "A GitHub profile card generator with stats, contribution graph, and social links. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "GitHub card",
     "GitHub profile card",
@@ -25,5 +27,24 @@ export default function GitHubCardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <SEOWrapper
+      componentName="GitHub Profile Card"
+      description="A GitHub profile card generator with stats, contribution graph, and social links."
+      url="https://ui.spectrumhq.in/docs/github-card"
+      keywords={[
+        "GitHub profile card",
+        "GitHub card generator",
+        "GitHub contribution graph",
+        "React GitHub component",
+      ]}
+    >
+      <PageTemplate
+        title="GitHub Profile Card"
+        description="A GitHub profile card generator with stats, contribution graph, and social links."
+      >
+        {children}
+      </PageTemplate>
+    </SEOWrapper>
+  );
 }

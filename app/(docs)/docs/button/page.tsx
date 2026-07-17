@@ -10,7 +10,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Button",
   description:
-    "Beautiful, pre-designed button components for React and Next.js. Multiple styles including gradient, outline, loading, and icon buttons. Built with Tailwind CSS and shadcn/ui.",
+    "A set of pre-designed buttons including gradient, outline, loading, and icon styles. Free React and Next.js components built with Tailwind CSS and shadcn/ui.",
   keywords: [
     "React button",
     "Next.js button",
@@ -30,7 +30,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Button"
-      description="Beautiful, pre-designed button components for React and Next.js. Multiple styles including gradient, outline, loading, and icon buttons. Built with Tailwind CSS and shadcn/ui."
+      description="A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       url="https://ui.spectrumhq.in/docs/button"
       keywords={[
         "React button",
@@ -46,7 +46,10 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Pre Design Button">
+        <PageTemplate
+          title="Button"
+          description="A set of pre-designed buttons including gradient, outline, loading, and icon styles."
+        >
           <PageSubTitle>Installation</PageSubTitle>
           <Steppers
             withInstall

@@ -13,7 +13,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Infinite Scroll",
   description:
-    "Infinite scroll component for React and Next.js. Load more content as users scroll using IntersectionObserver API. Fully customizable loading spinner and trigger behavior. Perfect for feeds, lists, and pagination.",
+    "An infinite scroll container that loads more content using the IntersectionObserver API. A free React and Next.js component with a customizable loading spinner.",
   keywords: [
     "infinite scroll",
     "scroll component",
@@ -31,7 +31,7 @@ const InfiniteScrollPage = () => {
   return (
     <SEOWrapper
       componentName="Infinite Scroll"
-      description="Infinite scroll component for React and Next.js. Load more content as users scroll using IntersectionObserver API. Fully customizable loading spinner and trigger behavior. Perfect for feeds, lists, and pagination."
+      description="An infinite scroll container that loads more content using the IntersectionObserver API."
       url="https://ui.spectrumhq.in/docs/infinite-scroll"
       keywords={[
         "infinite scroll",
@@ -46,7 +46,7 @@ const InfiniteScrollPage = () => {
     >
       <PageTemplate
       title="Infinite Scroll"
-      description="Simple infinite scroll component. You have fully control over the loading spinner and IntersectionObserver API."
+      description="An infinite scroll container that loads more content using the IntersectionObserver API."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/infinite-scroll/infinite-scroll-demo.tsx"

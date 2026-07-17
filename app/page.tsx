@@ -5,11 +5,9 @@ const HomeCardCollection = dynamic(() => import('@/components/homecard'), {
   loading: () => <div className="animate-pulse h-[400px] w-full bg-neutral-100 dark:bg-neutral-900 rounded-lg"></div>
 });
 import { HeroSection } from './home';
-import { PromoBanner } from '@/components/promo-banner';
 import { FAQSection } from '@/components/faq-section';
 import { BlogSection } from '@/components/blog-section';
 import { ShowcaseSection } from '@/components/showcase';
-import Cta from '@/components/cta';
 
 export const metadata: Metadata = {
   title: "Spectrum UI — 250+ Free React & Next.js UI Components",

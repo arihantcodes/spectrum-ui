@@ -18,7 +18,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Progress With Value",
-  description: "Progress bar component with value display for React and Next.js. Show progress percentage, custom labels, and value positioning. Perfect for file uploads, form completion, and task progress. Built with Radix UI.",
+  description: "A progress bar that displays the current value. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "progress bar",
     "progress component",
@@ -36,7 +36,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Progress With Value"
-      description="Progress bar component with value display for React and Next.js. Show progress percentage, custom labels, and value positioning. Perfect for file uploads, form completion, and task progress. Built with Radix UI."
+      description="A progress bar that displays the current value."
       url="https://ui.spectrumhq.in/docs/progress-with-value"
       keywords={[
         "progress bar",

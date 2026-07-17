@@ -64,7 +64,7 @@ export function ShowcaseSection({
         <span className="flex items-center gap-2.5">
           <span
             aria-hidden
-            className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d]"
+            className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
           />
           <span className="font-mono text-xs font-medium uppercase leading-[16.8px] text-neutral-900 dark:text-neutral-100">
             {tag}

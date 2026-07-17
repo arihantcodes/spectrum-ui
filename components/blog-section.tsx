@@ -16,7 +16,7 @@ export async function BlogSection() {
         {/* Category */}
         <div className="flex items-center gap-2.5">
           <span aria-hidden className="-rotate-90">
-            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d]" />
+            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d] dark:border-[#E1F435]" />
           </span>
           <span className="font-mono text-[12px] font-medium uppercase leading-[16.8px] text-[#171717] dark:text-neutral-200">
             Blogs

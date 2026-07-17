@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd-key-demo",
+  "title": "Kbd Key Demo",
+  "description": "Demo usage for the Kbd Key component",
+  "registryDependencies": [
+    "@spectrumui/kbd-key"
+  ],
+  "files": [
+    {
+      "path": "app/registry/kbd-key/kbd-key-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { motion, useAnimationControls } from \"framer-motion\"\nimport { KbdCombo } from \"@/components/spectrumui/kbd-key\"\n\nexport default function KbdKeyDemo() {\n  const controls = useAnimationControls()\n\n  const handleTrigger = () => {\n    controls.start({\n      boxShadow: [\n        \"0 0 0 0px rgba(163, 163, 163, 0)\",\n        \"0 0 0 4px rgba(163, 163, 163, 0.45)\",\n        \"0 0 0 0px rgba(163, 163, 163, 0)\",\n      ],\n      transition: { duration: 0.6, ease: \"easeOut\" },\n    })\n  }\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <motion.div\n        animate={controls}\n        className=\"flex h-10 w-full max-w-sm items-center justify-between gap-3 rounded-lg border border-neutral-200 bg-white px-3 dark:border-neutral-700 dark:bg-neutral-900\"\n      >\n        <span className=\"flex items-center gap-2 text-sm text-neutral-400\">\n          <svg\n            width=\"14\"\n            height=\"14\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth=\"2\"\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            aria-hidden=\"true\"\n          >\n            <circle cx=\"11\" cy=\"11\" r=\"8\" />\n            <path d=\"m21 21-4.3-4.3\" />\n          </svg>\n          Search documentation…\n        </span>\n        <KbdCombo keys=\"meta+k\" onTrigger={handleTrigger} />\n      </motion.div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Press ⌘ K on your keyboard — the caps react\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/kbd-key-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

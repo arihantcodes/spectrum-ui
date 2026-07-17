@@ -17,7 +17,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Heading With Anchor",
-  description: "Heading component with anchor links for React and Next.js. Automatically generates clickable anchor links for headings, perfect for documentation and long-form content. Built with Radix UI and Tailwind CSS.",
+  description: "A heading component that adds clickable anchor links for section sharing. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "heading anchor",
     "anchor heading",
@@ -35,7 +35,7 @@ const HeadingWithAnchorPage = () => {
   return (
     <SEOWrapper
       componentName="Heading With Anchor"
-      description="Heading component with anchor links for React and Next.js. Automatically generates clickable anchor links for headings, perfect for documentation and long-form content. Built with Radix UI and Tailwind CSS."
+      description="A heading component that adds clickable anchor links for section sharing."
       url="https://ui.spectrumhq.in/docs/heading-with-anchor"
       keywords={[
         "heading anchor",
@@ -50,7 +50,7 @@ const HeadingWithAnchorPage = () => {
     >
       <PageTemplate
       title="Heading With Anchor"
-      description="Add anchor for every heading."
+      description="A heading component that adds clickable anchor links for section sharing."
     >
       <PreviewCodeCard path="app/(docs)/docs/heading-with-anchor/heading-with-anchor-demo.tsx"
         installScript="npm i @radix-ui/react-slot class-variance-authority"
