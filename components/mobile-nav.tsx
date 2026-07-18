@@ -11,6 +11,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 import { cn } from '@/lib/utils';
+import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 
@@ -63,143 +64,24 @@ const sidebarNav: NavSection[] = [
     title: 'Getting Started',
     items: [
       { title: 'Introduction', href: '/docs', items: [] },
-      {
-        title: 'Installation',
-        href: '/docs/installation',
-        items: [],
-      },
+      { title: 'Installation', href: '/docs/installation', items: [] },
+      { title: 'Guides', href: '/docs/guides', items: [] },
     ],
+  },
+  {
+    title: 'Integrations',
+    items: [{ title: 'MCP Server', href: '/docs/mcp', items: [] }],
   },
   {
     title: 'Components',
     groupKey: 'components',
     groupValue: 'Components',
-    items: [
-      { label: 'Alert', value: 'alert', url: '/docs/alert', items: [] },
-      {
-        label: 'Animated SVG Chart',
-        value: 'animatedchart',
-        url: '/docs/animatedchart',
-        items: [],
-      },
-      {
-        label: 'Animated Testimonials',
-        value: 'animatedtestimonials',
-        url: '/docs/animatedtestimonials',
-        items: [],
-      },
-      {
-        label: 'Autosize Textarea',
-        value: 'autosize-textarea',
-        url: '/docs/autosize-textarea',
-        items: [],
-      },
-      { label: 'Button', value: 'button', url: '/docs/button', items: [] },
-      { label: 'Card', value: 'card', url: '/docs/card', items: [] },
-      {
-        label: 'Datetime Picker',
-        value: 'datetime-picker',
-        url: '/docs/datetime-picker',
-        items: [],
-      },
-      {
-        label: 'Dual Range Slider',
-        value: 'dual-range-slider',
-        url: '/docs/dual-range-slider',
-        items: [],
-      },
-      {
-        label: 'Event Calendar',
-        value: 'eventcalendar',
-        url: '/docs/eventcalendar',
-        items: [],
-      },
-      {
-        label: 'Event Badge',
-        value: 'eventbadge',
-        url: '/docs/badge',
-        new: true,
-        items: [],
-      },
-      {
-        label: 'Feedback Card',
-        value: 'feedback',
-        url: '/docs/feedback',
-        items: [],
-      },
-      {
-        label: 'Floating Label Input',
-        value: 'floating-label-input',
-        url: '/docs/floating-label-input',
-        items: [],
-      },
-      { label: 'Footer', value: 'footer', url: '/docs/footer', items: [] },
-      {
-        label: 'HTTP Status Code',
-        value: 'statuscode',
-        url: '/docs/statuscode',
-        items: [],
-      },
-      {
-        label: 'Image Preview',
-        value: 'imagepreview',
-        url: '/docs/imagepreview',
-        items: [],
-      },
-      {
-        label: 'Infinite Scroll',
-        value: 'infiniteScroll',
-        url: '/docs/infinite-scroll',
-        items: [],
-      },
-      { label: 'Input', value: 'input', url: '/docs/input', items: [] },
-      {
-        label: 'Loading Button',
-        value: 'loading-button',
-        url: '/docs/loading-button',
-        items: [],
-      },
-      {
-        label: 'Multiple Selector',
-        value: 'multipleSelector',
-        url: '/docs/multiple-selector',
-        items: [],
-      },
-      {
-        label: 'Multistep Form',
-        value: 'multistepform',
-        url: '/docs/multistepform',
-        new: true,
-        items: [],
-      },
-      { label: 'Navbar', value: 'navbar', url: '/docs/navbar', items: [] },
-      {
-        label: 'Profile Dropdown',
-        value: 'profile-dropdown',
-        url: '/docs/profile',
-        new: true,
-        items: [],
-      },
-      {
-        label: 'Progress With Value',
-        value: 'progress-with-value',
-        url: '/docs/progress-with-value',
-        items: [],
-      },
-      {
-        label: 'Responsive Modal',
-        value: 'responsive-modal',
-        url: '/docs/responsive-modal',
-        items: [],
-      },
-      { label: 'Spinner', value: 'spinner', url: '/docs/spinner', items: [] },
-      {
-        label: 'Skeleton',
-        value: 'skeleton',
-        url: '/docs/skeleton',
-        items: [],
-      },
-    ],
+    items: COMPONENT_CATALOG.map((component) => ({
+      label: component.name,
+      value: component.slug,
+      url: componentDocsPath(component.slug),
+      items: [],
+    })),
   },
 ];
 
