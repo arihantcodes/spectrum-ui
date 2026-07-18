@@ -8,6 +8,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import type { Metadata } from "next";
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
+
+export const metadata: Metadata = baseMetadata({
+  title: "Privacy Policy",
+  description:
+    "Learn what personal, payment, and account data Spectrum UI collects, how third-party processors are used, and how to request access or deletion.",
+  canonicalUrl: "https://ui.spectrumhq.in/privacy-policy",
+});
 
 const PrivacyPolicyPage = () => {
   return (

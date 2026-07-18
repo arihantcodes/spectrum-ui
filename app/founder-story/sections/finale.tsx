@@ -28,10 +28,10 @@ export function FinaleSection() {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl space-y-32"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.2] text-neutral-900 dark:text-white">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.2] text-neutral-900 dark:text-white">
             The goal was never to build components.<br />
             <span className="text-neutral-400 dark:text-neutral-500">The goal was to give developers more time to build ideas.</span>
-          </h1>
+          </h2>
 
           <div className="flex flex-col items-center space-y-12">
             <div className="flex flex-col items-center space-y-4">

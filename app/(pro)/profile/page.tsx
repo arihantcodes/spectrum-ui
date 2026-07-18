@@ -11,6 +11,14 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { createNoIndexMetadata } from '@/lib/metadata'
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum UI Account Profile',
+  description: 'Review private Spectrum UI account details and sign out of the current session.',
+  path: '/profile',
+})
 
 function SidebarItem({ 
   icon: Icon, 

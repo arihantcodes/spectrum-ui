@@ -6,12 +6,13 @@ import { Bookmark, BookmarkX, Component as ComponentIcon, Layers } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
+import { createNoIndexMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'My Bookmarks',
-  description: 'Your saved Spectrum UI components.',
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum UI Bookmarks',
+  description: 'Review components and templates saved to the current Spectrum UI account.',
+  path: '/bookmarks',
+});
 
 interface BookmarkRow {
   id: string;

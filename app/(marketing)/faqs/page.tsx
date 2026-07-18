@@ -1,5 +1,14 @@
 import { FAQSection } from "@/components/faq-section"
 import { BreadcrumbNav } from "@/components/breadcrumb-nav"
+import type { Metadata } from "next"
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata"
+
+export const metadata: Metadata = baseMetadata({
+  title: "Frequently Asked Questions",
+  description:
+    "Answers about installing Spectrum UI, using its MCP server, shadcn/ui compatibility, code ownership, updates, and commercial projects.",
+  canonicalUrl: "https://ui.spectrumhq.in/faqs",
+})
 
 export default function FAQPage() {
   return (
@@ -9,6 +18,7 @@ export default function FAQPage() {
           items={[{ label: 'Frequently Asked Questions' }]} 
           className="mb-6"
         />
+        <h1 className="sr-only">Spectrum UI frequently asked questions</h1>
         <FAQSection />
       </div>
     </div>

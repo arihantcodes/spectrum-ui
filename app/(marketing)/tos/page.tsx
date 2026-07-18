@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { BreadcrumbNav } from '@/components/breadcrumb-nav'
+import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = baseMetadata({
   title: 'Terms of Service — Spectrum UI',
   description: 'Read the Spectrum UI Terms of Service covering usage, licensing, payments, and refund policy.',
-}
+  canonicalUrl: 'https://ui.spectrumhq.in/tos',
+})
 
 const sections = [
   {

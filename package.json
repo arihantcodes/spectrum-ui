@@ -15,7 +15,8 @@
     "check:llms": "node scripts/generate-llms.mjs --check",
     "test:registry": "node tests/registry.test.js",
     "test:catalog": "node tests/component-catalog.test.js",
-    "test": "npm run test:registry && npm run test:catalog"
+    "test:metadata": "node tests/metadata.test.js",
+    "test": "npm run test:registry && npm run test:catalog && npm run test:metadata"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

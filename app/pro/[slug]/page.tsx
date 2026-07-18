@@ -20,6 +20,8 @@ import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { ImageGallery } from '@/components/template/Gallery'
 import { Icons } from '@/components/icon'
 import { cn } from '@/lib/utils'
+import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata'
+import { createNoIndexMetadata } from '@/lib/metadata'
 
 // ── SSR: Fetch template at build/request time ────────────────────────────────
 const getTemplate = cache(async (slug: string) => {
@@ -42,17 +44,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const template = await getTemplate(slug)
-  if (!template) return { title: 'Template Not Found' }
+  if (!template) {
+    return createNoIndexMetadata({
+      title: 'Template Not Found',
+      description: 'The requested Spectrum Pro template could not be found.',
+      path: `/pro/${slug}`,
+    })
+  }
 
-  return {
+  return baseMetadata({
     title: `${template.name} — Spectrum Pro`,
     description: template.tagline ?? `Premium ${template.name} template by Spectrum UI`,
+    canonicalUrl: `https://ui.spectrumhq.in/pro/${slug}`,
     openGraph: {
-      title: `${template.name} — Spectrum Pro`,
-      description: template.tagline ?? undefined,
-      images: template.thumbnail_url ? [template.thumbnail_url] : undefined,
+      images: template.thumbnail_url
+        ? [{ url: template.thumbnail_url, alt: template.name }]
+        : undefined,
     },
-  }
+  })
 }
 
 // ── Helper: Map Tech to Icons ───────────────────────────────────────────────

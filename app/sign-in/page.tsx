@@ -4,6 +4,14 @@ import { buildCreateUserUrl, isOnboardingComplete } from '@/lib/onboarding'
 
 import { AuthShowcase } from '@/components/auth-showcase'
 import { AuthPanel } from '@/components/auth-panel'
+import type { Metadata } from 'next'
+import { createNoIndexMetadata } from '@/lib/metadata'
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Sign In to Spectrum UI',
+  description: 'Sign in to access Spectrum UI bookmarks, purchases, and account features.',
+  path: '/sign-in',
+})
 
 export default async function SignInPage({
   searchParams,

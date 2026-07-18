@@ -314,7 +314,7 @@ export function BlocksPage({
                 Code
               </Button>
             </div>
-            <span className="text-sm text-muted-foreground">{title}</span>
+            <h1 className="text-sm text-muted-foreground">{title}</h1>
           </div>
           {/* Actions */}
           <div className="flex items-center gap-2">

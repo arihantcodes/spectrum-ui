@@ -2,11 +2,10 @@ import { getColors } from "@/lib/colors";
 import { ColorPalette } from "@/components/color-palette";
 import { ColorsToolbar } from "@/components/colors-toolbar";
 import type { Metadata } from "next";
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Color Palette | Spectrum UI",
-  },
+export const metadata: Metadata = baseMetadata({
+  title: "Color Palette",
   description:
     "Explore curated color palettes for React and Next.js. Copy Tailwind CSS and CSS variable values for your design system.",
   keywords: [
@@ -18,18 +17,8 @@ export const metadata: Metadata = {
     "design system colors",
     "React color palette",
   ],
-  alternates: {
-    canonical: "https://ui.spectrumhq.in/colors",
-  },
-  openGraph: {
-    title: "Color Palette | Spectrum UI",
-    description:
-      "Curated color palettes for React, Next.js, and Tailwind CSS projects.",
-    url: "https://ui.spectrumhq.in/colors",
-    type: "website",
-    siteName: "Spectrum UI",
-  },
-};
+  canonicalUrl: "https://ui.spectrumhq.in/colors",
+});
 
 const colors = getColors();
 

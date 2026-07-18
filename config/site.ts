@@ -55,7 +55,7 @@ export const siteConfig = {
   // Enhanced SEO metadata
   seo: {
     title: {
-      default: "Spectrum UI — React & Next.js Component Library",
+      default: "Spectrum UI — Animated React Components & Blocks",
       template: "%s | Spectrum UI",
     },
     robots: {

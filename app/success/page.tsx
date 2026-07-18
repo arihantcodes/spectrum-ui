@@ -1,4 +1,12 @@
 import { CheckCircle } from "lucide-react";
+import type { Metadata } from "next";
+import { createNoIndexMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: "Spectrum UI Payment Confirmation",
+  description: "Confirm that a Spectrum UI payment was processed and review the support contact.",
+  path: "/success",
+});
 
 export default function PaymentSuccess() {
   return (
