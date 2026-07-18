@@ -126,7 +126,7 @@ A drawer panel that slides in smoothly for menus, settings, and sidebars.
 
 An animated testimonials section for showcasing customer reviews and social proof.
 
-- Category: Content
+- Category: Review
 - Documentation: https://ui.spectrumhq.in/docs/animatedtestimonials
 - Verified install command: `npx shadcn@latest add @spectrumui/animated-testimonials`
 
