@@ -13,7 +13,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Skeleton",
-  description: "Use to show a placeholder while content is loading. A free React and Next.js component built with Tailwind CSS.",
+  description: "A loading placeholder that shimmer-animates while content is fetching. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "skeleton loader",
     "skeleton component",
@@ -31,7 +31,7 @@ const SkeletonLoadingPage = () => {
   return (
     <SEOWrapper
       componentName="Skeleton"
-      description="Use to show a placeholder while content is loading."
+      description="A loading placeholder that shimmer-animates while content is fetching."
       url="https://ui.spectrumhq.in/docs/skeleton"
       keywords={[
         "skeleton loader",

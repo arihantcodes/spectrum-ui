@@ -1,10 +1,11 @@
 import { Metadata } from "next";
 import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
+import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Installation",
   description:
-    "Get started with Spectrum UI. Step-by-step installation guide for Next.js, shadcn/ui, and Tailwind CSS. Set up your project in minutes with our easy-to-follow instructions.",
+    "Install Spectrum UI in a Next.js project with Tailwind CSS and shadcn/ui. Step-by-step setup so you can copy-paste React components in minutes.",
   keywords: [
     "Spectrum UI installation",
     "React setup",
@@ -13,9 +14,6 @@ export const metadata: Metadata = baseMetadata({
     "Tailwind CSS setup",
     "UI library setup",
     "component library installation",
-    "getting started React",
-    "Next.js project setup",
-    "frontend setup guide",
   ],
   canonicalUrl: "https://ui.spectrumhq.in/docs/installation",
 });
@@ -25,5 +23,19 @@ export default function InstallationLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <SEOWrapper
+      componentName="Installation"
+      description="Install Spectrum UI in a Next.js project with Tailwind CSS and shadcn/ui."
+      url="https://ui.spectrumhq.in/docs/installation"
+      keywords={[
+        "Spectrum UI installation",
+        "Next.js setup",
+        "Tailwind CSS setup",
+        "shadcn installation",
+      ]}
+    >
+      {children}
+    </SEOWrapper>
+  );
 }

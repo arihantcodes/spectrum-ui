@@ -42,8 +42,8 @@ inject();
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Spectrum UI — React & Next.js Component Library",
+    template: "%s | Spectrum UI",
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
@@ -153,18 +153,27 @@ export const metadata: Metadata = {
   ],
   creator: "Arihant Jain",
   publisher: "Spectrum UI",
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/plain": [
+        { url: "/llms.txt", title: "llms.txt" },
+        { url: "/llms-full.txt", title: "llms-full.txt" },
+      ],
+    },
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: "Spectrum UI — React & Next.js Component Library",
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: "Spectrum UI",
     images: [siteConfig.ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: "Spectrum UI — React & Next.js Component Library",
     description: siteConfig.description,
     images: [siteConfig.ogImage.url],
     creator: "@arihantcodes",

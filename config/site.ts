@@ -1,15 +1,16 @@
 export const siteConfig = {
-  name: "Spectrum UI - Best React UI Component Library for Next.js",
+  name: "Spectrum UI",
   url: "https://ui.spectrumhq.in",
   ogImage: {
     url: "https://ui.spectrumhq.in/og.png",
     width: 1200,
     height: 630,
-    alt: "Spectrum UI - React UI Components Library for Next.js with Tailwind CSS",
+    alt: "Spectrum UI — React UI components for Next.js with Tailwind CSS",
   },
   description:
-    "The best React UI component library for Next.js. 250+ beautifully designed, accessible components built with Tailwind CSS and TypeScript. Copy, paste, and ship faster. Perfect for dashboards, SaaS, and modern web applications. Free and open source alternative to shadcn/ui, Material UI, and Chakra UI.",
-  shortDescription: "Best React UI component library for Next.js with Tailwind CSS - Free, accessible, and production-ready",
+    "Free React UI component library for Next.js. Accessible, copy-paste Tailwind components built with TypeScript. Ship dashboards, SaaS, and modern web apps faster — open source alternative to shadcn/ui.",
+  shortDescription:
+    "Free React & Next.js UI components with Tailwind CSS — accessible and production-ready",
   keywords: [
     // Primary Keywords
     "React UI components",
@@ -198,7 +199,7 @@ export const siteConfig = {
   // Enhanced SEO metadata
   seo: {
     title: {
-      default: "Spectrum UI - Beautiful React Components",
+      default: "Spectrum UI — React & Next.js Component Library",
       template: "%s | Spectrum UI",
     },
     robots: {

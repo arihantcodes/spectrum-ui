@@ -9,18 +9,36 @@ import { FAQSection } from '@/components/faq-section';
 import { ShowcaseSection } from '@/components/showcase';
 
 export const metadata: Metadata = {
-  title: "Spectrum UI — 250+ Free React & Next.js UI Components",
+  title: {
+    absolute: "Spectrum UI — Free React & Next.js UI Components",
+  },
   description:
-    "Copy-paste beautiful UI components built with React, Next.js, Tailwind CSS, and shadcn/ui. 250+ production-ready components, blocks, and templates. Free and open source.",
+    "Copy-paste beautiful UI components built with React, Next.js, Tailwind CSS, and shadcn/ui. Production-ready components, blocks, and templates. Free and open source.",
   alternates: {
     canonical: "https://ui.spectrumhq.in",
   },
   openGraph: {
-    title: "Spectrum UI — 250+ Free React & Next.js UI Components",
+    title: "Spectrum UI — Free React & Next.js UI Components",
     description:
       "Copy-paste beautiful UI components built with React, Next.js, Tailwind CSS, and shadcn/ui. Free and open source.",
     url: "https://ui.spectrumhq.in",
     type: "website",
+    siteName: "Spectrum UI",
+    images: [
+      {
+        url: "https://ui.spectrumhq.in/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Spectrum UI — React UI components for Next.js",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Spectrum UI — Free React & Next.js UI Components",
+    description:
+      "Copy-paste beautiful UI components built with React, Next.js, and Tailwind CSS.",
+    images: ["https://ui.spectrumhq.in/og.png"],
   },
 };
 

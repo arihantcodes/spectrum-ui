@@ -4,30 +4,27 @@ import { generateBlogListingStructuredData, generateBlogBreadcrumbs } from '@/li
 import { BlogList } from './blog-list';
 
 export const metadata: Metadata = {
-  title: 'Blog | Spectrum UI - UI Components & Design System',
-  description: 'Learn about UI components, React development, design systems, and frontend best practices. Expert insights on building scalable web applications with modern tools.',
+  title: {
+    absolute: 'Blog | Spectrum UI',
+  },
+  description:
+    'UI components, React, design systems, and frontend engineering from Spectrum UI. Practical guides for shipping better Next.js interfaces.',
   keywords: [
     'UI components blog',
     'React development',
     'design system',
     'frontend development',
-    'web development',
-    'UI/UX',
-    'component library',
     'Tailwind CSS',
     'Next.js',
-    'shadcn/ui',
-    'engineering blog',
-    'web design',
-    'user interface',
-    'frontend engineering',
-  ].join(', '),
+    'Spectrum UI blog',
+  ],
   authors: [{ name: 'Arihant Jain', url: 'https://ui.spectrumhq.in' }],
   creator: 'Arihant Jain',
   publisher: 'Spectrum UI',
   openGraph: {
-    title: 'Blog | Spectrum UI - UI Components & Design System',
-    description: 'Learn about UI components, React development, design systems, and frontend best practices. Expert insights on building scalable web applications.',
+    title: 'Blog | Spectrum UI',
+    description:
+      'UI components, React, design systems, and frontend engineering from Spectrum UI.',
     url: 'https://ui.spectrumhq.in/blog',
     siteName: 'Spectrum UI',
     images: [
@@ -35,7 +32,7 @@ export const metadata: Metadata = {
         url: 'https://ui.spectrumhq.in/og.png',
         width: 1200,
         height: 630,
-        alt: 'Spectrum UI Blog - UI Components & Design System',
+        alt: 'Spectrum UI Blog',
       },
     ],
     locale: 'en_US',
@@ -43,8 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | Spectrum UI - UI Components & Design System',
-    description: 'Learn about UI components, React development, design systems, and frontend best practices.',
+    title: 'Blog | Spectrum UI',
+    description:
+      'UI components, React, design systems, and frontend engineering from Spectrum UI.',
     creator: '@arihantcodes',
     images: ['https://ui.spectrumhq.in/og.png'],
   },

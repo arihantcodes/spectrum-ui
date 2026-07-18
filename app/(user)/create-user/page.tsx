@@ -26,10 +26,6 @@ export default async function CreateUserPage({
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
-      {/* ─── Left: live component showcase ─── */}
-      <AuthShowcase />
-
-      {/* ─── Right: Onboarding form ─── */}
       <div className="flex flex-col bg-white dark:bg-[#080808] px-6 sm:px-12 lg:px-16 xl:px-20 transition-colors">
         <div className="flex items-center justify-between pt-8 pb-4">
           <Link href="/" className="flex items-center gap-2.5 group">
@@ -70,6 +66,7 @@ export default async function CreateUserPage({
 
         <div className="pb-8" />
       </div>
+      <AuthShowcase />
     </div>
   )
 }

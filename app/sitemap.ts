@@ -16,9 +16,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/docs`,
-      lastModified: new Date("2026-03-22"),
+      lastModified: new Date("2026-07-18"),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/llms-full.txt`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/agents.md`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "monthly",
+      priority: 0.4,
     },
 
     {
