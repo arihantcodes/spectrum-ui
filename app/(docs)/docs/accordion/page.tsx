@@ -10,7 +10,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Accordion",
   description:
-    "Accessible accordion component for React and Next.js. A vertically stacked set of interactive headings that each reveal a section of content. Built with Radix UI and Tailwind CSS.",
+    "A vertically stacked set of interactive headings that each reveal a section of content. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "accordion component",
     "React accordion",
@@ -28,7 +28,7 @@ const SkeletonLoadingPage = () => {
   return (
     <SEOWrapper
       componentName="Accordion"
-      description="Accessible accordion component for React and Next.js. A vertically stacked set of interactive headings that each reveal a section of content. Built with Radix UI and Tailwind CSS."
+      description="A vertically stacked set of interactive headings that each reveal a section of content."
       url="https://ui.spectrumhq.in/docs/accordion"
       keywords={[
         "accordion component",

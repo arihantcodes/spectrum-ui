@@ -37,6 +37,7 @@ export const DOCS: Documentation[] = [
         value: 'installation',
         url: '/docs/installation',
       },
+
     ],
   },
   {
@@ -55,8 +56,20 @@ export const DOCS: Documentation[] = [
     groupKey: 'components',
     groupValue: 'Components',
     children: [
+      { label: 'Accordion', value: 'accordion', url: '/docs/accordion' },
       { label: 'Alert', value: 'alert', url: '/docs/alert' },
-      
+      {
+        label: 'Progress With Value',
+        value: 'progress-with-value',
+        url: '/docs/progress-with-value',
+      },
+
+      {
+        label: '3D Tilt Card',
+        value: 'tilt-card',
+        url: '/docs/tilt-card',
+        new: true,
+      },
       {
         label: 'Animated Card',
         value: 'animatedcard',
@@ -76,66 +89,52 @@ export const DOCS: Documentation[] = [
         url: '/docs/animatedchart',
       },
       {
-        label: 'Animated Text',
-        value: 'animatedtext',
-        url: '/docs/animatedtext',
-        new: true,
+        label: 'Animated Switch',
+        value: 'animated-switch',
+        url: '/docs/animated-switch',
+
       },
-      {
-        label: 'Animated Testimonials',
-        value: 'animatedtestimonials',
-        url: '/docs/animatedtestimonials',
-      },
+ 
       {
         label: 'Autosize Textarea',
         value: 'autosize-textarea',
         url: '/docs/autosize-textarea',
       },
+      {
+        label: 'Avatar Stack',
+        value: 'avatar-stack',
+        url: '/docs/avatar-stack',
+        new: true,
+      },
       { label: 'Button', value: 'button', url: '/docs/button' },
       { label: 'Card', value: 'card', url: '/docs/card' },
-      {
-        label: 'Bento Grid',
-        value: 'bento-grid',
-        url: '/docs/bento-grid',
-        new: true,
-      },
-      {
-        label: 'Command Palette',
-        value: 'command-palette',
-        url: '/docs/command-palette',
-        new: true,
-      },
+      // {
+      //   label: 'Command Palette',
+      //   value: 'command-palette',
+      //   url: '/docs/command-palette',
+      //   new: true,
+      // },
       {
         label: 'Datetime Picker',
         value: 'datetime-picker',
         url: '/docs/datetime-picker',
       },
-      // {
-      //   label: "Disclose Image",
-      //   value: "discloseimage",
-      //   url: "/docs/discloseimage",
-      // },
       {
         label: 'Dual Range Slider',
         value: 'dual-range-slider',
         url: '/docs/dual-range-slider',
       },
       {
-        label: 'Dock',
-        value: 'dock',
-        url: '/docs/dock',
-        new: true,
-      },
-      {
-        label: 'Event Calendar',
-        value: 'eventcalendar',
-        url: '/docs/eventcalendar',
-      },
-      {
         label: 'Event Badge',
         value: 'eventbadge',
         url: '/docs/badge',
 
+      },
+      {
+        label: 'Face Rating',
+        value: 'face-rating',
+        url: '/docs/face-rating',
+        new: true,
       },
       {
         label: 'Feedback Card',
@@ -147,18 +146,19 @@ export const DOCS: Documentation[] = [
         value: 'floating-label-input',
         url: '/docs/floating-label-input',
       },
-      { label: 'Footer', value: 'footer', url: '/docs/footer' },
       {
-        label: 'GitHub Card',
-        value: 'github-card',
-        url: '/docs/github-card',
-
+        label: 'Follow Button',
+        value: 'follow-button',
+        url: '/docs/follow-button',
+        new: true,
       },
       {
-        label: 'HTTP Status Code',
-        value: 'statuscode',
-        url: '/docs/statuscode',
+        label: 'Hold to Confirm',
+        value: 'hold-to-confirm',
+        url: '/docs/hold-to-confirm',
+        new: true,
       },
+      // { label: 'Footer', value: 'footer', url: '/docs/footer' },
       {
         label: 'Image Preview',
         value: 'imagepreview',
@@ -175,17 +175,34 @@ export const DOCS: Documentation[] = [
         value: 'infiniteScroll',
         url: '/docs/infinite-scroll',
       },
-      { label: 'Input', value: 'input', url: '/docs/input' },
       {
         label: 'Kanban Board',
         value: 'kanban',
         url: '/docs/kanban',
-        new: true,
+
       } ,
+      {
+        label: 'Kbd Key',
+        value: 'kbd-key',
+        url: '/docs/kbd-key',
+
+      },
+      {
+        label: 'Like Button',
+        value: 'like-button',
+        url: '/docs/like-button',
+        new: true,
+      },
       {
         label: 'Loading Button',
         value: 'loading-button',
         url: '/docs/loading-button',
+      },
+      {
+        label: 'Morph Button',
+        value: 'morph-button',
+        url: '/docs/morph-button',
+
       },
       {
         label: 'Multiple Selector',
@@ -204,7 +221,18 @@ export const DOCS: Documentation[] = [
 
 
       },
-      { label: 'Navbar', value: 'navbar', url: '/docs/navbar' },
+      {
+        label: 'Notification Bell',
+        value: 'notification-bell',
+        url: '/docs/notification-bell',
+        new: true,
+      },
+      {
+        label: 'Password Strength',
+        value: 'password-strength',
+        url: '/docs/password-strength',
+        new: true,
+      },
       {
         label: 'Profile Dropdown',
         value: 'profile-dropdown',
@@ -212,16 +240,16 @@ export const DOCS: Documentation[] = [
 
       },
       {
-        label: 'Product Card',
-        value: 'product-card',
-        url: '/docs/product-card',
+        label: 'Quantity Stepper',
+        value: 'quantity-stepper',
+        url: '/docs/quantity-stepper',
 
       },
-     
       {
-        label: 'Responsive Modal',
-        value: 'responsive-modal',
-        url: '/docs/responsive-modal',
+        label: 'Reaction Bar',
+        value: 'reaction-bar',
+        url: '/docs/reaction-bar',
+        new: true,
       },
       {
         label: 'Scratch Card',
@@ -229,11 +257,18 @@ export const DOCS: Documentation[] = [
         url: '/docs/scratch-card',
         new: true,
       },
+      {
+        label: 'Share Button',
+        value: 'share-button',
+        url: '/docs/share-button',
+       
+      },
       { label: 'Spinner', value: 'spinner', url: '/docs/spinner' },
       {
-        label: 'Skeleton',
-        value: 'skeleton',
-        url: '/docs/skeleton',
+        label: 'Star Rating',
+        value: 'star-rating',
+        url: '/docs/star-rating',
+        new: true,
       },
       {
         label: 'Status Badge',
@@ -242,13 +277,23 @@ export const DOCS: Documentation[] = [
 
       },
       {
-        label: 'Testimonials',
-        value: 'testimonials',
-        url: '/docs/testimonials',
+        label: 'Swipe to Delete',
+        value: 'swipe-to-delete',
+        url: '/docs/swipe-to-delete',
         new: true,
-      
-      }
-
+      },
+      {
+        label: 'Task Checkbox',
+        value: 'task-checkbox',
+        url: '/docs/task-checkbox',
+        new: true,
+      },
+      {
+        label: 'Undo Pill',
+        value: 'undo-pill',
+        url: '/docs/undo-pill',
+        new: true,
+      },
     ],
   },
 ];

@@ -9,7 +9,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Feedback Card",
   description:
-    "Beautiful feedback card component for React and Next.js. Collect user feedback with rating, comments, and emoji reactions. Perfect for surveys, reviews, and user satisfaction forms. Built with Framer Motion and Tailwind CSS.",
+    "A feedback card that collects ratings and comments with emoji reactions. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "feedback card",
     "feedback component",
@@ -27,7 +27,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Feedback Card"
-      description="Beautiful feedback card component for React and Next.js. Collect user feedback with rating, comments, and emoji reactions. Perfect for surveys, reviews, and user satisfaction forms. Built with Framer Motion and Tailwind CSS."
+      description="A feedback card that collects ratings and comments with emoji reactions."
       url="https://ui.spectrumhq.in/docs/feedback"
       keywords={[
         "feedback card",
@@ -41,7 +41,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Feedback" className="mt-5">
+        <PageTemplate
+          title="Feedback Card"
+          description="A feedback card that collects ratings and comments with emoji reactions."
+          className="mt-5"
+        >
         <PreviewCodeCard
           path="app/(docs)/docs/feedback/feedbackdemo.tsx"
           cli="@spectrumui/feedback-demo"

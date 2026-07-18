@@ -9,7 +9,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Event Calendar",
   description:
-    "Beautiful event calendar component for React and Next.js. Display events, appointments, and schedules with interactive calendar view. Perfect for booking systems, event management, and scheduling apps. Built with date-fns and Framer Motion.",
+    "An interactive calendar for displaying events, appointments, and daily schedules. A free React and Next.js component built with date-fns and Framer Motion.",
   keywords: [
     "event calendar",
     "calendar component",
@@ -27,7 +27,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Event Calendar"
-      description="Beautiful event calendar component for React and Next.js. Display events, appointments, and schedules with interactive calendar view. Perfect for booking systems, event management, and scheduling apps. Built with date-fns and Framer Motion."
+      description="An interactive calendar for displaying events, appointments, and daily schedules."
       url="https://ui.spectrumhq.in/docs/eventcalendar"
       keywords={[
         "event calendar",
@@ -41,7 +41,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Event Calendar" className="mt-5">
+        <PageTemplate
+          title="Event Calendar"
+          description="An interactive calendar for displaying events, appointments, and daily schedules."
+          className="mt-5"
+        >
         <PreviewCodeCard
           path="app/(docs)/docs/eventcalendar/demoevent.tsx"
           cli="@spectrumui/event-calendar"

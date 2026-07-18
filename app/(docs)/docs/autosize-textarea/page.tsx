@@ -18,7 +18,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Autosize Textarea",
-  description: "Auto-resizing textarea component for React and Next.js. Automatically adjusts height based on content. Perfect for chat inputs, comments, and forms. Built with Tailwind CSS.",
+  description: "A textarea that automatically grows and shrinks to fit its content. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "autosize textarea",
     "auto resize textarea",
@@ -36,7 +36,7 @@ const AutosizeTextareaPage = () => {
   return (
     <SEOWrapper
       componentName="Autosize Textarea"
-      description="Auto-resizing textarea component for React and Next.js. Automatically adjusts height based on content. Perfect for chat inputs, comments, and forms. Built with Tailwind CSS."
+      description="A textarea that automatically grows and shrinks to fit its content."
       url="https://ui.spectrumhq.in/docs/autosize-textarea"
       keywords={[
         "autosize textarea",
@@ -51,7 +51,7 @@ const AutosizeTextareaPage = () => {
     >
       <PageTemplate
       title="Autosize Textarea"
-      description="Auto resize textarea height based on content."
+      description="A textarea that automatically grows and shrinks to fit its content."
     >
       <PreviewCodeCard
         path="app/(docs)/docs/autosize-textarea/autosize-textarea-demo.tsx"

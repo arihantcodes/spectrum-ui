@@ -34,7 +34,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Datetime Picker",
   description:
-    "Powerful datetime picker component for React and Next.js. Built on top of shadcn/ui with no additional dependencies. Supports date, time, and datetime selection with full customization. Perfect for forms and scheduling.",
+    "A date and time picker built on shadcn/ui with no extra dependencies. A free React and Next.js component supporting date, time, and datetime selection.",
   keywords: [
     "datetime picker",
     "date picker",
@@ -53,7 +53,7 @@ const DatetimePickerPage = () => {
   return (
     <SEOWrapper
       componentName="Datetime Picker"
-      description="Powerful datetime picker component for React and Next.js. Built on top of shadcn/ui with no additional dependencies. Supports date, time, and datetime selection with full customization. Perfect for forms and scheduling."
+      description="A date and time picker built on shadcn/ui with no extra dependencies."
       url="https://ui.spectrumhq.in/docs/datetime-picker"
       keywords={[
         "datetime picker",
@@ -69,7 +69,7 @@ const DatetimePickerPage = () => {
     >
       <PageTemplate
       title="Datetime Picker"
-      description="A datetime picker built on top of shadcn-ui and no additional library needed."
+      description="A date and time picker built on shadcn/ui with no extra dependencies."
     >
       <ReferenceBorder>
         <Reference href="https://ui.shadcn.com/docs/components/calendar" />

@@ -11,7 +11,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Status Badge",
   description:
-    "Status badge component for React and Next.js. Display status indicators like pending, success, error, and warning with beautiful icons and colors. Perfect for dashboards and admin panels.",
+    "A status badge with icon and color variants for success, error, warning, and pending states. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "status badge",
     "badge component",
@@ -29,7 +29,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Status Badge"
-      description="Status badge component for React and Next.js. Display status indicators like pending, success, error, and warning with beautiful icons and colors. Perfect for dashboards and admin panels."
+      description="A status badge with icon and color variants for success, error, warning, and pending states."
       url="https://ui.spectrumhq.in/docs/status-badge"
       keywords={[
         "status badge",
@@ -42,7 +42,10 @@ const DualRangeSliderPage = () => {
         "status component",
       ]}
     >
-      <PageTemplate title="Status Badge">
+      <PageTemplate
+        title="Status Badge"
+        description="A status badge with icon and color variants for success, error, warning, and pending states."
+      >
       <PreviewCodeCard
         cli="@spectrumui/status-badge"
         path="app/(docs)/docs/status-badge/statusdemo.tsx"

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-bell-demo",
+  "title": "Notification Bell Demo",
+  "description": "Demo usage for the Notification Bell component",
+  "registryDependencies": [
+    "@spectrumui/notification-bell"
+  ],
+  "files": [
+    {
+      "path": "app/registry/notification-bell/notification-bell-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { NotificationBell } from \"@/components/spectrumui/notification-bell\"\n\nexport default function NotificationBellDemo() {\n  const [count, setCount] = useState(0)\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <NotificationBell count={count} />\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <button\n          type=\"button\"\n          onClick={() => setCount((current) => current + 1)}\n          className=\"h-8 rounded-full border border-neutral-200 bg-white px-3 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800\"\n        >\n          Send notification\n        </button>\n        <button\n          type=\"button\"\n          onClick={() => setCount(0)}\n          className=\"h-8 rounded-full border border-neutral-200 bg-white px-3 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800\"\n        >\n          Mark all read\n        </button>\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Send a notification — the bell swings and the badge springs in with a\n        rolling count\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/notification-bell-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

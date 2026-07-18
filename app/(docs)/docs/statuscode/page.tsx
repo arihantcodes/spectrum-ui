@@ -9,7 +9,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "HTTP Status Code",
   description:
-    "HTTP status code component for React and Next.js. Display HTTP status codes with beautiful error pages. Perfect for 404, 500, and other error pages. Built with Tailwind CSS.",
+    "An HTTP status code display for building 404 and error pages. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "HTTP status code",
     "status code component",
@@ -27,7 +27,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="HTTP Status Code"
-      description="HTTP status code component for React and Next.js. Display HTTP status codes with beautiful error pages. Perfect for 404, 500, and other error pages. Built with Tailwind CSS."
+      description="An HTTP status code display for building 404 and error pages."
       url="https://ui.spectrumhq.in/docs/statuscode"
       keywords={[
         "HTTP status code",
@@ -41,7 +41,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="HTTP Status Code" className="mt-5">
+        <PageTemplate
+          title="HTTP Status Code"
+          description="An HTTP status code display for building 404 and error pages."
+          className="mt-5"
+        >
         <PreviewCodeCard
           path="app/(docs)/docs/statuscode/demostatus.tsx"
           cli="@spectrumui/http-status-code"

@@ -335,9 +335,9 @@ export default function GitHubProfileCard() {
 
                 {/* Name and Bio */}
                 <div className="text-center space-y-2">
-                  <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">
+                  <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
                     {userData.name || userData.login}
-                  </h1>
+                  </h2>
                   <p className="text-neutral-600 dark:text-neutral-400 text-sm max-w-xs">
                     {userData.bio || "GitHub Developer"}
                   </p>

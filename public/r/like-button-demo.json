@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "like-button-demo",
+  "title": "Like Button Demo",
+  "description": "Demo usage for the Like Button component",
+  "registryDependencies": [
+    "@spectrumui/like-button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/like-button/like-button-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { LikeButton } from \"@/components/spectrumui/like-button\"\n\nexport default function LikeButtonDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <LikeButton count={1248} />\n        <LikeButton count={99} defaultLiked />\n        <LikeButton showCount={false} />\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Tap a heart — spring pop, ring pulse, particle burst and a rolling count\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/like-button-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

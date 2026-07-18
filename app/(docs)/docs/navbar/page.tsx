@@ -16,7 +16,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Navbar",
   description:
-    "Beautiful, responsive navbar components for React and Next.js. Includes circular, tab, floating, and sidebar navigation patterns. Built with Tailwind CSS and TypeScript.",
+    "A collection of responsive navbars with circular, tab, floating, and sidebar patterns. Free React and Next.js components built with Tailwind CSS.",
   keywords: [
     "React navbar",
     "Next.js navbar",
@@ -36,7 +36,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Navbar"
-      description="Beautiful, responsive navbar components for React and Next.js. Includes circular, tab, floating, and sidebar navigation patterns. Built with Tailwind CSS and TypeScript."
+      description="A collection of responsive navbars with circular, tab, floating, and sidebar patterns."
       url="https://ui.spectrumhq.in/docs/navbar"
       keywords={[
         "React navbar",
@@ -51,7 +51,10 @@ const DualRangeSliderPage = () => {
         "tab navigation",
       ]}
     >
-      <PageTemplate title="Navbars">
+      <PageTemplate
+        title="Navbar"
+        description="A collection of responsive navbars with circular, tab, floating, and sidebar patterns."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/navbar/navbardemo.tsx"
         cli="@spectrumui/navbar-demo"

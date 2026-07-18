@@ -11,7 +11,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Card",
   description:
-    "Pre-designed card components for React and Next.js. Includes login cards, signup cards, pricing cards, profile cards, and dashboard cards. Built with Tailwind CSS and shadcn/ui.",
+    "A set of pre-designed cards for login, signup, pricing, and dashboards. Free React and Next.js components built with Tailwind CSS and shadcn/ui.",
   keywords: [
     "React card",
     "Next.js card",
@@ -31,7 +31,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Card"
-      description="Pre-designed card components for React and Next.js. Includes login cards, signup cards, pricing cards, profile cards, and dashboard cards. Built with Tailwind CSS and shadcn/ui."
+      description="A set of pre-designed cards for login, signup, pricing, and dashboards."
       url="https://ui.spectrumhq.in/docs/card"
       keywords={[
         "React card",
@@ -47,7 +47,10 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Pre Design Cards">
+        <PageTemplate
+          title="Card"
+          description="A set of pre-designed cards for login, signup, pricing, and dashboards."
+        >
           <PageSubTitle>Installation</PageSubTitle>
           <Steppers
             withInstall

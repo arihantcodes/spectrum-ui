@@ -8,7 +8,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper"
 export const metadata: Metadata = baseMetadata({
   title: "Command Palette",
   description:
-    "Accessible keyboard-driven command palette for React and Next.js projects. Browse pages, trigger actions, and change themes using keyboard shortcuts. Built with Framer Motion.",
+    "A keyboard-driven command menu for navigation, actions, and theme switching. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "command palette component",
     "React command palette",
@@ -23,7 +23,7 @@ export const metadata: Metadata = baseMetadata({
 
 export default function CommandPaletteDocsPage() {
   const description =
-    "An interactive, keyboard-driven command menu that provides shortcuts for navigation, switching visual themes, and executing platform actions. Supports Arrow navigation, Enter selection, and Escape exit."
+    "A keyboard-driven command menu for navigation, actions, and theme switching."
 
   return (
     <SEOWrapper

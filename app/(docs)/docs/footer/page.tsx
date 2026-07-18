@@ -19,7 +19,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Footer",
   description:
-    "Beautiful footer components for React and Next.js. Includes animated wave, stacked circular, and particle animation footers. Perfect for websites, landing pages, and applications. Built with Framer Motion and Tailwind CSS.",
+    "A collection of footers with wave, stacked, and particle animation styles. Free React and Next.js components built with Framer Motion and Tailwind CSS.",
   keywords: [
     "footer component",
     "React footer",
@@ -37,7 +37,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Footer"
-      description="Beautiful footer components for React and Next.js. Includes animated wave, stacked circular, and particle animation footers. Perfect for websites, landing pages, and applications. Built with Framer Motion and Tailwind CSS."
+      description="A collection of footers with wave, stacked, and particle animation styles."
       url="https://ui.spectrumhq.in/docs/footer"
       keywords={[
         "footer component",
@@ -50,7 +50,10 @@ const DualRangeSliderPage = () => {
         "responsive footer",
       ]}
     >
-      <PageTemplate title="Footers">
+      <PageTemplate
+        title="Footer"
+        description="A collection of footers with wave, stacked, and particle animation styles."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/footer/footerdemo.tsx"
         cli="@spectrumui/footers-demo"

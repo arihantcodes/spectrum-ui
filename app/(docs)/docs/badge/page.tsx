@@ -10,7 +10,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "3D Event Badge",
   description:
-    "Stunning 3D event badge component built with Three.js and React Three Fiber. Perfect for showcasing events, conferences, and special occasions with interactive 3D animations.",
+    "An interactive 3D event badge rendered with Three.js and React Three Fiber. A free React and Next.js component for events and conferences.",
   keywords: [
     "3D badge",
     "event badge",
@@ -29,7 +29,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="3D Event Badge"
-      description="Stunning 3D event badge component built with Three.js and React Three Fiber. Perfect for showcasing events, conferences, and special occasions with interactive 3D animations."
+      description="An interactive 3D event badge rendered with Three.js and React Three Fiber."
       url="https://ui.spectrumhq.in/docs/badge"
       keywords={[
         "3D badge",
@@ -43,7 +43,10 @@ const DualRangeSliderPage = () => {
         "WebGL badge",
       ]}
     >
-      <PageTemplate title="Vercel 3D Event Badge">
+      <PageTemplate
+        title="3D Event Badge"
+        description="An interactive 3D event badge rendered with Three.js and React Three Fiber."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/badge/badgedemo.tsx"
         cli="@spectrumui/event-badge-3d"

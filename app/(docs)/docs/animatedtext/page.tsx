@@ -10,7 +10,7 @@ import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
 export const metadata: Metadata = baseMetadata({
   title: 'Text Animations',
-  description: 'Collection of animated text effects for React and Next.js. Includes holographic, ink morph, and orbital text animations. Perfect for hero sections, headings, and interactive UI elements. Built with Framer Motion.',
+  description: 'A collection of text effects including holographic, ink morph, and orbital reveals. Free React and Next.js components built with Framer Motion.',
   keywords: [
     "text animations",
     "animated text",
@@ -28,7 +28,7 @@ const Textanimation = () => {
   return (
     <SEOWrapper
       componentName="Text Animations"
-      description="Collection of animated text effects for React and Next.js. Includes holographic, ink morph, and orbital text animations. Perfect for hero sections, headings, and interactive UI elements. Built with Framer Motion."
+      description="A collection of text effects including holographic, ink morph, and orbital reveals."
       url="https://ui.spectrumhq.in/docs/animatedtext"
       keywords={[
         "text animations",
@@ -41,7 +41,13 @@ const Textanimation = () => {
         "Framer Motion text",
       ]}
     >
-      <PageTemplate title="Holographic Scan Reveal" className="mt-6">
+      <PageTemplate
+        title="Text Animations"
+        description="A collection of text effects including holographic, ink morph, and orbital reveals."
+        className="mt-6"
+      >
+      <PageSubTitle>Holographic Scan Reveal</PageSubTitle>
+
       <PreviewCodeCard
         path="app/(docs)/docs/animatedtext/components/hologram-text.tsx"
         cli="@spectrumui/holographic"

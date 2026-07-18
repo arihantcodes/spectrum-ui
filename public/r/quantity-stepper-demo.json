@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "quantity-stepper-demo",
+  "title": "Quantity Stepper Demo",
+  "description": "Demo usage for the Quantity Stepper component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@spectrumui/quantity-stepper"
+  ],
+  "files": [
+    {
+      "path": "app/registry/quantity-stepper/quantity-stepper-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { AnimatePresence, motion } from \"framer-motion\"\nimport { Headphones } from \"lucide-react\"\nimport { QuantityStepper } from \"@/components/spectrumui/quantity-stepper\"\n\nconst UNIT_PRICE = 129\n\nexport default function QuantityStepperDemo() {\n  const [quantity, setQuantity] = useState(1)\n  const total = quantity * UNIT_PRICE\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"flex w-full max-w-sm items-center gap-4 rounded-xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900\">\n        <div className=\"flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400\">\n          <Headphones size={24} aria-hidden=\"true\" />\n        </div>\n        <div className=\"min-w-0 flex-1\">\n          <p className=\"truncate text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n            Aurora Headphones\n          </p>\n          <span className=\"inline-flex overflow-hidden text-sm tabular-nums text-neutral-500 dark:text-neutral-400\">\n            <AnimatePresence mode=\"popLayout\" initial={false}>\n              <motion.span\n                key={total}\n                className=\"inline-block\"\n                initial={{ y: 12, opacity: 0 }}\n                animate={{ y: 0, opacity: 1 }}\n                exit={{ y: -12, opacity: 0 }}\n                // Short tween so the price keeps up with hold-to-repeat\n                transition={{ duration: 0.15, ease: \"easeOut\" }}\n              >\n                ${total.toFixed(2)}\n              </motion.span>\n            </AnimatePresence>\n          </span>\n        </div>\n        <QuantityStepper\n          value={quantity}\n          onValueChange={setQuantity}\n          min={1}\n          max={10}\n        />\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Tap or hold the buttons — digits roll, the price follows, boundaries\n        shake\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/quantity-stepper-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

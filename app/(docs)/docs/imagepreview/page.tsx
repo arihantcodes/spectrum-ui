@@ -9,7 +9,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Image Preview",
   description:
-    "Image preview component for React and Next.js. Display images with zoom, lightbox, and gallery features. Perfect for product images, portfolios, and media galleries. Built with Tailwind CSS.",
+    "An image preview component with zoom, lightbox, and gallery support. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "image preview",
     "image gallery",
@@ -27,7 +27,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Image Preview"
-      description="Image preview component for React and Next.js. Display images with zoom, lightbox, and gallery features. Perfect for product images, portfolios, and media galleries. Built with Tailwind CSS."
+      description="An image preview component with zoom, lightbox, and gallery support."
       url="https://ui.spectrumhq.in/docs/imagepreview"
       keywords={[
         "image preview",
@@ -41,7 +41,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Image Preview" className="mt-5">
+        <PageTemplate
+          title="Image Preview"
+          description="An image preview component with zoom, lightbox, and gallery support."
+          className="mt-5"
+        >
         <PreviewCodeCard
           path="app/(docs)/docs/imagepreview/usages/useone.tsx"
           cli="@spectrumui/image-preview"

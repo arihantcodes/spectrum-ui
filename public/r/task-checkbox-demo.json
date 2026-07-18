@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "task-checkbox-demo",
+  "title": "Task Checkbox Demo",
+  "description": "Demo usage for the Task Checkbox component",
+  "registryDependencies": [
+    "@spectrumui/task-checkbox"
+  ],
+  "files": [
+    {
+      "path": "app/registry/task-checkbox/task-checkbox-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { AnimatePresence, motion } from \"framer-motion\"\nimport { TaskCheckbox } from \"@/components/spectrumui/task-checkbox\"\n\nconst SOFT_SPRING = { type: \"spring\", stiffness: 260, damping: 22 } as const\n\nconst TASKS = [\n  { id: \"wireframes\", label: \"Review onboarding wireframes\" },\n  { id: \"standup\", label: \"Post standup update\" },\n  { id: \"invoice\", label: \"Send the June invoice\" },\n  { id: \"changelog\", label: \"Draft the changelog entry\" },\n]\n\nexport default function TaskCheckboxDemo() {\n  const [done, setDone] = useState<Record<string, boolean>>({\n    wireframes: false,\n    standup: true,\n    invoice: false,\n    changelog: false,\n  })\n\n  const doneCount = TASKS.filter((task) => done[task.id]).length\n  const allDone = doneCount === TASKS.length\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900\">\n        <div className=\"flex items-center justify-between\">\n          <h3 className=\"text-sm font-semibold text-neutral-900 dark:text-neutral-100\">\n            Today\n          </h3>\n          <span className=\"text-xs tabular-nums text-neutral-500 dark:text-neutral-400\">\n            {doneCount}/{TASKS.length}\n          </span>\n        </div>\n\n        <AnimatePresence initial={false}>\n          {allDone && (\n            <motion.div\n              key=\"all-done\"\n              className=\"mt-3 flex w-fit items-center gap-1.5 rounded-full border border-neutral-200 bg-white py-1 pl-2 pr-2.5 dark:border-neutral-800 dark:bg-neutral-900\"\n              initial={{ opacity: 0, scale: 0.8, y: 4 }}\n              animate={{ opacity: 1, scale: 1, y: 0 }}\n              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.15 } }}\n              transition={SOFT_SPRING}\n            >\n              <svg\n                viewBox=\"0 0 24 24\"\n                className=\"h-3 w-3 text-emerald-500\"\n                fill=\"none\"\n                stroke=\"currentColor\"\n                strokeWidth=\"3\"\n                strokeLinecap=\"round\"\n                strokeLinejoin=\"round\"\n                aria-hidden=\"true\"\n              >\n                <path d=\"M5 12.5L10 17.5L19 7.5\" />\n              </svg>\n              <span className=\"text-xs font-medium text-neutral-900 dark:text-neutral-100\">\n                All done\n              </span>\n            </motion.div>\n          )}\n        </AnimatePresence>\n\n        <div className=\"mt-4 flex flex-col gap-3.5\">\n          {TASKS.map((task) => (\n            <TaskCheckbox\n              key={task.id}\n              label={task.label}\n              checked={done[task.id]}\n              onCheckedChange={(checked) =>\n                setDone((previous) => ({ ...previous, [task.id]: checked }))\n              }\n            />\n          ))}\n        </div>\n      </div>\n\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Check a task — fill, check draw, confetti and a strikethrough sweep\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/task-checkbox-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

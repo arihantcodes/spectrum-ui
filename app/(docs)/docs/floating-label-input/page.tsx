@@ -19,7 +19,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 
 export const metadata: Metadata = baseMetadata({
   title: "Floating Label Input",
-  description: "Material UI design system floating label input component for React and Next.js. Beautiful animated labels that float above input fields. Built with Tailwind CSS and TypeScript.",
+  description: "An input whose label floats above the field when focused or filled. A free React and Next.js component built with Tailwind CSS.",
   keywords: [
     "floating label input",
     "material input",
@@ -37,7 +37,7 @@ export const metadata: Metadata = baseMetadata({
 const FloatingLabelPage = () => {
   const componentUrl = "https://ui.spectrumhq.in/docs/floating-label-input";
   const componentName = "Floating Label Input";
-  const componentDescription = "Material UI design system floating label input component for React and Next.js. Beautiful animated labels that float above input fields. Built with Tailwind CSS and TypeScript.";
+  const componentDescription = "An input whose label floats above the field when focused or filled.";
   const componentKeywords = [
     "floating label input",
     "material input",
@@ -59,7 +59,7 @@ const FloatingLabelPage = () => {
     >
       <PageTemplate
         title="Floating Label Input"
-        description="Material UI design system floating label."
+        description="An input whose label floats above the field when focused or filled."
       >
       <ReferenceBorder>
         <Reference href="https://ui.shadcn.com/docs/components/input" />

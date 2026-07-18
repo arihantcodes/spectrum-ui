@@ -9,7 +9,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Animated SVG Chart",
   description:
-    "Animated SVG chart component for React and Next.js. Beautiful data visualization with smooth animations. Perfect for dashboards, analytics, and data presentation. Built with Framer Motion and SVG.",
+    "An animated SVG chart for visualizing data on dashboards and reports. A free React and Next.js component built with Framer Motion and SVG.",
   keywords: [
     "animated chart",
     "SVG chart",
@@ -32,7 +32,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Animated SVG Chart"
-      description="Animated SVG chart component for React and Next.js. Beautiful data visualization with smooth animations. Perfect for dashboards, analytics, and data presentation. Built with Framer Motion and SVG."
+      description="An animated SVG chart for visualizing data on dashboards and reports."
       url="https://ui.spectrumhq.in/docs/animatedchart"
       keywords={[
         "animated chart",
@@ -46,7 +46,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Animated SVG Chart" className="mt-8">
+        <PageTemplate
+          title="Animated SVG Chart"
+          description="An animated SVG chart for visualizing data on dashboards and reports."
+          className="mt-8"
+        >
         <PreviewCodeCard
           className=""
           path="app/(docs)/docs/animatedchart/animateddemo.tsx"

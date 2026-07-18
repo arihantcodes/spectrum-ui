@@ -10,7 +10,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Animated Testimonials",
   description:
-    "Beautiful animated testimonials component for React and Next.js. Display customer reviews and feedback with smooth animations and transitions. Perfect for landing pages and marketing sites.",
+    "An animated testimonials section for showcasing customer reviews and social proof. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "animated testimonials",
     "testimonials component",
@@ -29,7 +29,7 @@ const page = () => {
   return (
     <SEOWrapper
       componentName="Animated Testimonials"
-      description="Beautiful animated testimonials component for React and Next.js. Display customer reviews and feedback with smooth animations and transitions. Perfect for landing pages and marketing sites."
+      description="An animated testimonials section for showcasing customer reviews and social proof."
       url="https://ui.spectrumhq.in/docs/animatedtestimonials"
       keywords={[
         "animated testimonials",
@@ -43,7 +43,11 @@ const page = () => {
       ]}
     >
       <div>
-        <PageTemplate title="Animated Testimonials" className="mt-5">
+        <PageTemplate
+          title="Animated Testimonials"
+          description="An animated testimonials section for showcasing customer reviews and social proof."
+          className="mt-5"
+        >
         <PreviewCodeCard
           path="app/(docs)/docs/animatedtestimonials/usages/demousages.tsx"
           cli="@spectrumui/animated-testimonials"

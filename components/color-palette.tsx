@@ -1,34 +1,49 @@
-import * as React from "react";
+"use client";
+
+import { motion } from "motion/react";
 
 import { type ColorPalette } from "@/lib/colors";
 import { Color } from "@/components/color";
-import {
-  ColorFormatSelector,
-  ColorFormatSelectorSkeleton,
-} from "@/components/color-format-selector";
 
-export function ColorPalette({ colorPalette }: { colorPalette: ColorPalette }) {
+const revealEase = [0.22, 1, 0.36, 1] as const;
+
+export function ColorPalette({
+  colorPalette,
+  index,
+}: {
+  colorPalette: ColorPalette;
+  index: number;
+}) {
+  const firstColor = colorPalette.colors[0];
+  const lastColor = colorPalette.colors[colorPalette.colors.length - 1];
+
   return (
-    <div
+    <motion.section
       id={colorPalette.name}
-      className="rounded-lg shadow-sm ring-1 ring-border"
+      className="scroll-mt-28"
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.55, ease: revealEase }}
     >
-      <div className="flex items-center p-2 pb-0">
-        <div className="flex-1 pl-1 text-sm font-medium">
-          <h2 className="capitalize">{colorPalette.name}</h2>
+      <div className="flex items-baseline justify-between pb-3">
+        <div className="flex items-baseline gap-3">
+          <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h2 className="font-spectral text-[22px] capitalize leading-none tracking-[-0.5px] text-[#2d2f2e] dark:text-neutral-100">
+            {colorPalette.name}
+          </h2>
         </div>
-        <React.Suspense fallback={<ColorFormatSelectorSkeleton />}>
-          <ColorFormatSelector
-            color={colorPalette.colors[0]}
-            className="ml-auto"
-          />
-        </React.Suspense>
+        <span className="hidden font-mono text-[11px] uppercase tabular-nums tracking-wide text-muted-foreground sm:block">
+          {firstColor.hex} — {lastColor.hex}
+        </span>
       </div>
-      <div className="flex flex-col gap-1 p-2 sm:flex-row sm:gap-2">
+      <div className="flex h-24 w-full overflow-hidden rounded-xl ring-1 ring-black/[0.06] dark:ring-white/10 sm:h-32">
         {colorPalette.colors.map((color) => (
           <Color key={color.hex} color={color} />
         ))}
       </div>
-    </div>
+    </motion.section>
   );
 }

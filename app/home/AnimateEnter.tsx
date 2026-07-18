@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 import { cn } from "@//lib/utils";
 
@@ -12,20 +12,39 @@ type AnimateEnterProps = {
   duration?: number;
 };
 
+// Refined ease-out (expo-style): decelerates hard at the tail so elements
+// "settle" into place instead of sliding to a linear stop. This single curve
+// is what separates a premium entrance from a generic fade.
+const PREMIUM_EASE = [0.16, 1, 0.3, 1] as const;
+
 export function AnimateEnter({
   className,
-  delay,
+  delay = 0,
   children,
-  duration = 0.4,
+  duration = 0.6,
   isWhileInView = true,
 }: AnimateEnterProps) {
+  const reduceMotion = useReducedMotion();
+
+  // Fade alone reads flat. Pair opacity with a small rise + de-blur so content
+  // resolves into focus. Reduced-motion users get opacity only — no movement,
+  // no blur — which is the accessible, non-nauseating path.
+  const hidden = reduceMotion
+    ? { opacity: 0 }
+    : { opacity: 0, y: 14, filter: "blur(6px)" };
+  const shown = reduceMotion
+    ? { opacity: 1 }
+    : { opacity: 1, y: 0, filter: "blur(0px)" };
+
+  const transition = { duration, delay, ease: PREMIUM_EASE };
+
   if (!isWhileInView) {
     return (
       <motion.div
         className={cn(className)}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: duration, ease: "easeOut", delay: delay }}
+        initial={hidden}
+        animate={shown}
+        transition={transition}
       >
         {children}
       </motion.div>
@@ -35,10 +54,10 @@ export function AnimateEnter({
   return (
     <motion.div
       className={cn(className)}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: duration, ease: "easeOut", delay: delay }}
-      viewport={{ once: true }}
+      initial={hidden}
+      whileInView={shown}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={transition}
     >
       {children}
     </motion.div>

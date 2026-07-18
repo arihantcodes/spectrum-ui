@@ -16,9 +16,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/docs`,
-      lastModified: new Date("2026-03-22"),
+      lastModified: new Date("2026-07-18"),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/llms-full.txt`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/agents.md`,
+      lastModified: new Date("2026-07-18"),
+      changeFrequency: "monthly",
+      priority: 0.4,
     },
 
     {
@@ -90,6 +108,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: isComponent ? 0.8 : 0.6,
       });
     }
+  }
+
+  // Component pages not (yet) registered in ROUTES; listed here so crawlers still find them
+  const extraComponentPaths = [
+    "/docs/animated-switch",
+    "/docs/animatedcard",
+    "/docs/animateddrawer",
+    "/docs/animatedtext",
+    "/docs/avatar-stack",
+    "/docs/command-palette",
+    "/docs/discloseimage",
+    "/docs/face-rating",
+    "/docs/follow-button",
+    "/docs/github-card",
+    "/docs/heading-with-anchor",
+    "/docs/hold-to-confirm",
+    "/docs/input",
+    "/docs/input-model",
+    "/docs/kanban",
+    "/docs/kbd-key",
+    "/docs/like-button",
+    "/docs/login",
+    "/docs/morph-button",
+    "/docs/notification-bell",
+    "/docs/password-strength",
+    "/docs/product-card",
+    "/docs/quantity-stepper",
+    "/docs/reaction-bar",
+    "/docs/share-button",
+    "/docs/star-rating",
+    "/docs/status-badge",
+    "/docs/swipe-to-delete",
+    "/docs/task-checkbox",
+    "/docs/testimonials",
+    "/docs/tilt-card",
+    "/docs/undo-pill",
+  ];
+  const seenComponentUrls = new Set(componentPages.map((p) => p.url));
+  for (const path of extraComponentPaths) {
+    const url = `${baseUrl}${path}`;
+    if (seenComponentUrls.has(url)) continue;
+    componentPages.push({
+      url,
+      lastModified: new Date("2026-07-14"),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
   }
 
   // Pro template detail pages

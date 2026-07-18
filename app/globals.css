@@ -165,8 +165,19 @@
     @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
   }
 
+  .container-frame {
+    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border mx-auto w-full;
+  }
+
   .container {
     @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
+  }
+
+  /* Grain / noise texture overlay (used on the blog page + card covers) */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
   }
 }
 
@@ -176,6 +187,69 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Chroma text sweep (hero h1): a rainbow band sweeps across the text once on
+   load, settling on solid black (white in dark mode). The gradient is 3x the
+   element width — position 100% shows the transparent tail (text hidden),
+   position 0 shows the solid head. */
+.chroma-text {
+  background-image: linear-gradient(
+    90deg,
+    #000000 0,
+    #000000 33.33%,
+    #c679c4 40%,
+    #fa3d1d 45%,
+    #ffb005 50%,
+    #e1e1fe 55%,
+    #0358f7 60%,
+    transparent 66.67%,
+    transparent
+  );
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  will-change: background-position;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.dark .chroma-text {
+  background-image: linear-gradient(
+    90deg,
+    #ffffff 0,
+    #ffffff 33.33%,
+    #c679c4 40%,
+    #fa3d1d 45%,
+    #ffb005 50%,
+    #e1e1fe 55%,
+    #0358f7 60%,
+    transparent 66.67%,
+    transparent
+  );
+}
+
+.chroma-text-animate {
+  animation: chroma-sweep 0.9s ease-in-out 0.1s forwards;
+  filter: blur(1px);
+}
+
+@keyframes chroma-sweep {
+  to {
+    background-position: 0 0;
+    filter: blur(0);
+  }
+}
+
+/* Without the animation the gradient rests on its transparent tail — force the
+   settled state so the heading is never invisible. */
+@media (prefers-reduced-motion: reduce) {
+  .chroma-text-animate {
+    animation: none;
+    filter: none;
+    background-position: 0 0;
   }
 }
 

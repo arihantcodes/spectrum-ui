@@ -1,7 +1,7 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { AuthIllustration } from '@/components/auth-illustration'
+import { AuthShowcase } from '@/components/auth-showcase'
 import Link from 'next/link'
 import { Icons } from '@/components/icon'
 import { OnboardingForm } from './onboarding-form'
@@ -66,8 +66,7 @@ export default async function CreateUserPage({
 
         <div className="pb-8" />
       </div>
-
-      <AuthIllustration />
+      <AuthShowcase />
     </div>
   )
 }

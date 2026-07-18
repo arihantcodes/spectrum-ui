@@ -83,6 +83,9 @@ const config = {
         code: ["var(--font-geist-mono)"],
         regular: ["var(--font-geist-sans)"],
         inter: ["var(--font-inter)", "Inter", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
+        spectral: ["var(--font-spectral)", "Georgia", "serif"],
+        calsans: ["var(--font-calsans)", "var(--font-geist-sans)", "sans-serif"],
       },
       keyframes: {
         slideOutToTopFull: {
@@ -115,6 +118,16 @@ const config = {
           },
           to: {
             height: "0",
+          },
+        },
+        "fade-up": {
+          from: {
+            opacity: "0",
+            transform: "translateY(6px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
           },
         },
         spotlight: {
@@ -152,6 +165,9 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "faq-open": "accordion-down 0.35s cubic-bezier(0.32, 0.72, 0, 1)",
+        "faq-close": "accordion-up 0.3s cubic-bezier(0.32, 0.72, 0, 1)",
+        "fade-up": "fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both",
         "slide-out-to-top-full":
           "slideOutToTopFull 3s cubic-bezier(.405, 0, .025, 1) forwards",
         "slide-out-to-left-full":

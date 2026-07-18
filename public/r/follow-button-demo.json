@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "follow-button-demo",
+  "title": "Follow Button Demo",
+  "description": "Demo usage for the Follow Button component",
+  "registryDependencies": [
+    "@spectrumui/follow-button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/follow-button/follow-button-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useState } from \"react\"\nimport { AnimatePresence, motion, useReducedMotion } from \"framer-motion\"\nimport { FollowButton } from \"@/components/spectrumui/follow-button\"\n\nconst BASE_FOLLOWERS = 2847\n\nexport default function FollowButtonDemo() {\n  const shouldReduceMotion = useReducedMotion()\n  const [following, setFollowing] = useState(false)\n\n  const followers = BASE_FOLLOWERS + (following ? 1 : 0)\n  // Digits roll upward when the count just went up, downward when it dropped\n  const direction = following ? 1 : -1\n\n  return (\n    <div className=\"flex w-full items-center justify-center py-10\">\n      <div className=\"flex w-full max-w-sm items-center gap-4 rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900\">\n        <div\n          aria-hidden=\"true\"\n          className=\"flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-sm font-semibold text-white dark:bg-white dark:text-neutral-900\"\n        >\n          AJ\n        </div>\n        <div className=\"min-w-0 flex-1\">\n          <p className=\"truncate text-sm font-semibold text-neutral-900 dark:text-neutral-100\">\n            Arihant Jain\n          </p>\n          <p className=\"truncate text-sm text-neutral-500 dark:text-neutral-400\">\n            @arihantcodes\n          </p>\n          <p className=\"mt-0.5 flex items-baseline gap-1 text-xs text-neutral-500 dark:text-neutral-400\">\n            <span className=\"relative inline-flex overflow-hidden font-medium tabular-nums text-neutral-900 dark:text-neutral-100\">\n              <AnimatePresence mode=\"popLayout\" initial={false}>\n                <motion.span\n                  key={followers}\n                  className=\"inline-block\"\n                  initial={{ y: direction * 10, opacity: 0 }}\n                  animate={{ y: 0, opacity: 1 }}\n                  exit={{ y: direction * -10, opacity: 0 }}\n                  transition={\n                    shouldReduceMotion\n                      ? { duration: 0 }\n                      : { type: \"spring\", stiffness: 400, damping: 30 }\n                  }\n                >\n                  {followers.toLocaleString(\"en\")}\n                </motion.span>\n              </AnimatePresence>\n            </span>\n            followers\n          </p>\n        </div>\n        <FollowButton following={following} onFollowingChange={setFollowing} />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/follow-button-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

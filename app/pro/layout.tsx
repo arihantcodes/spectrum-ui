@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Spectrum UI Pro — Early Bird Waitlist",
+  title: {
+    absolute: "Spectrum UI Pro — Early Bird Waitlist",
+  },
   description:
     "Join the Spectrum UI Pro waitlist. Lock early-bird pricing for premium Next.js templates, pro components, and founder support.",
   keywords: [
@@ -11,10 +13,7 @@ export const metadata: Metadata = {
     "shadcn templates",
     "Tailwind CSS templates",
     "SaaS template",
-    "landing page template",
-    "Next.js starter kit",
-    "production-ready template",
-    "Spectrum UI templates",
+    "Spectrum UI Pro",
   ],
   alternates: {
     canonical: "https://ui.spectrumhq.in/pro",
@@ -25,6 +24,7 @@ export const metadata: Metadata = {
       "Reserve your spot on the Spectrum UI Pro waitlist. One payment locks early-bird pricing at launch.",
     url: "https://ui.spectrumhq.in/pro",
     type: "website",
+    siteName: "Spectrum UI",
   },
 };
 

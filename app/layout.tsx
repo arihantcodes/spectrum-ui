@@ -3,11 +3,27 @@ import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/navbar";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Inter } from "next/font/google";
+import { Inter, Spectral } from "next/font/google";
+import localFont from "next/font/local";
+
+const calSans = localFont({
+  src: "./fonts/CalSans-SemiBold.woff2",
+  variable: "--font-calsans",
+  weight: "600",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const spectral = Spectral({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-spectral",
   display: "swap",
 });
 import Footer from "@/components/footer";
@@ -20,13 +36,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
+import { TalkToUs } from "@/components/talk-to-us";
 
 inject();
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Spectrum UI — React & Next.js Component Library",
+    template: "%s | Spectrum UI",
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
@@ -136,18 +153,30 @@ export const metadata: Metadata = {
   ],
   creator: "Arihant Jain",
   publisher: "Spectrum UI",
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": siteConfig.url,
+    },
+    types: {
+      "text/plain": [
+        { url: "/llms.txt", title: "llms.txt" },
+        { url: "/llms-full.txt", title: "llms-full.txt" },
+      ],
+    },
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
-    title: siteConfig.name,
+    title: "Spectrum UI — React & Next.js Component Library",
     description: siteConfig.description,
-    siteName: siteConfig.name,
+    siteName: "Spectrum UI",
     images: [siteConfig.ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: "Spectrum UI — React & Next.js Component Library",
     description: siteConfig.description,
     images: [siteConfig.ogImage.url],
     creator: "@arihantcodes",
@@ -163,12 +192,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": siteConfig.url,
     },
   },
   category: "technology",
@@ -273,7 +296,7 @@ gtag('config', 'G-K7ZP6JB4MG');
         />
       </head>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} font-regular`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} ${calSans.variable} font-regular`}
         suppressHydrationWarning
       >
         <Providers>
@@ -285,9 +308,10 @@ gtag('config', 'G-K7ZP6JB4MG');
             {" "}
             {children}
           </main>
-          <Script id="spectrum-chat" src="https://chat.spectrumhq.in/chat.js" data-color="#1972F5" strategy="lazyOnload" />
+          <TalkToUs />
+
           <Toaster />
-          {/* <Cta /> */}
+        
           <Footer />
         </Providers>
         <SpeedInsights />

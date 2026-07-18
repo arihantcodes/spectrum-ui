@@ -32,6 +32,16 @@ interface BaseMetadataProps {
   };
 }
 
+const CORE_KEYWORDS = [
+  "React UI components",
+  "Next.js components",
+  "Tailwind CSS components",
+  "Spectrum UI",
+  "React component library",
+  "copy paste components",
+  "free UI components",
+];
+
 export function baseMetadata({
   title,
   description,
@@ -41,66 +51,24 @@ export function baseMetadata({
   twitter,
   article,
 }: BaseMetadataProps): Metadata {
-  const fullTitle = title ? `${title} - Spectrum UI` : siteConfig.name;
+  // Absolute title avoids double-branding from the root `%s | Spectrum UI` template
+  const brandedTitle = title
+    ? `${title} | Spectrum UI`
+    : "Spectrum UI — React & Next.js Component Library";
   const fullDescription = description || siteConfig.description;
   const url = canonicalUrl || siteConfig.url;
-  
-  // Generate dynamic OG image URL for each component
-  const ogImageUrl = openGraph?.images?.[0]?.url || 
-    `${siteConfig.url}/api/og?title=${encodeURIComponent(title || siteConfig.name)}`;
+  const ogImageUrl =
+    openGraph?.images?.[0]?.url ||
+    `${siteConfig.url}/api/og?title=${encodeURIComponent(title || "Spectrum UI")}`;
 
-  // SEO-optimized keywords - comprehensive list for maximum coverage
-  const seoKeywords = [
-    ...keywords,
-    // Core Keywords
-    "React UI components",
-    "React component library",
-    "Next.js components",
-    "Tailwind CSS components",
-    "UI library",
-    "design system",
-    "modern UI components",
-    
-    // Technology Stack
-    "Next.js UI library",
-    "Next.js 14 components",
-    "React Tailwind components",
-    "TypeScript React components",
-    "Vercel components",
-    "Next.js app router components",
-    
-    // Quality Keywords
-    "accessible components",
-    "responsive UI components",
-    "production-ready components",
-    "WCAG compliant components",
-    "TypeScript components",
-    "customizable UI components",
-    
-    // Use Cases
-    "dashboard components",
-    "admin panel components",
-    "SaaS UI components",
-    "web app components",
-    "frontend components",
-    
-    // Action Keywords
-    "copy paste components",
-    "free UI components",
-    "open source UI library",
-    "ready-to-use components",
-    
-    // Alternatives
-    "shadcn alternative",
-    "Material UI alternative",
-    "Chakra UI alternative",
-    "best UI library 2024",
-    
-    ...siteConfig.keywords,
-  ];
+  const seoKeywords = Array.from(
+    new Set([...keywords, ...CORE_KEYWORDS].filter(Boolean))
+  );
 
   return {
-    title: fullTitle,
+    title: {
+      absolute: brandedTitle,
+    },
     description: fullDescription,
     keywords: seoKeywords,
     authors: [
@@ -115,16 +83,18 @@ export function baseMetadata({
     openGraph: {
       type: article ? "article" : "website",
       locale: "en_US",
-      url: url,
-      title: openGraph?.title || fullTitle,
+      url,
+      title: openGraph?.title || brandedTitle,
       description: openGraph?.description || fullDescription,
-      siteName: siteConfig.name,
+      siteName: "Spectrum UI",
       images: [
         {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: openGraph?.images?.[0]?.alt || `${title} - React UI Component`,
+          alt:
+            openGraph?.images?.[0]?.alt ||
+            `${title || "Spectrum UI"} — React UI Component`,
         },
       ],
       ...(article && {
@@ -138,7 +108,7 @@ export function baseMetadata({
       card: "summary_large_image",
       site: "@spectrumui",
       creator: "@arihantcodes",
-      title: twitter?.title || fullTitle,
+      title: twitter?.title || brandedTitle,
       description: twitter?.description || fullDescription,
       images: twitter?.images || [ogImageUrl],
     },

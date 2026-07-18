@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "star-rating-demo",
+  "title": "Star Rating Demo",
+  "description": "Demo usage for the Star Rating component",
+  "registryDependencies": [
+    "@spectrumui/star-rating"
+  ],
+  "files": [
+    {
+      "path": "app/registry/star-rating/star-rating-demo.tsx",
+      "content": "\"use client\"\n\nimport React from \"react\"\nimport { StarRating } from \"@/components/spectrumui/star-rating\"\n\nexport default function StarRatingDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"flex flex-col items-center gap-3 rounded-xl border border-neutral-200 bg-white px-8 py-6 dark:border-neutral-800 dark:bg-neutral-900\">\n        <p className=\"text-sm font-medium text-neutral-900 dark:text-neutral-100\">\n          Rate your experience\n        </p>\n        <StarRating showValue label=\"Rate your experience\" />\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Hover to preview, click to commit — arrow keys work too\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/star-rating-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

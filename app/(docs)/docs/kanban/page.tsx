@@ -9,7 +9,7 @@ import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 export const metadata: Metadata = baseMetadata({
   title: 'Kanban Board',
   description:
-    'Drag-and-drop Kanban board component for React and Next.js. Organize tasks into columns with beautiful animations. Perfect for project management, task tracking, and workflow visualization. Built with Framer Motion and Tailwind CSS.',
+    'A drag-and-drop kanban board for organizing tasks into columns. A free React and Next.js component built with Framer Motion and Tailwind CSS.',
   keywords: [
     "kanban board",
     "drag and drop",
@@ -27,7 +27,7 @@ const KanbanBoard = () => {
   return (
     <SEOWrapper
       componentName="Kanban Board"
-      description="Drag-and-drop Kanban board component for React and Next.js. Organize tasks into columns with beautiful animations. Perfect for project management, task tracking, and workflow visualization. Built with Framer Motion and Tailwind CSS."
+      description="A drag-and-drop kanban board for organizing tasks into columns."
       url="https://ui.spectrumhq.in/docs/kanban"
       keywords={[
         "kanban board",
@@ -40,7 +40,10 @@ const KanbanBoard = () => {
         "workflow board",
       ]}
     >
-      <PageTemplate title="kanban Board">
+      <PageTemplate
+        title="Kanban Board"
+        description="A drag-and-drop kanban board for organizing tasks into columns."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/kanban/kanban01.tsx"
         cli="@spectrumui/kanbanboard"

@@ -12,7 +12,7 @@ import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper";
 export const metadata: Metadata = baseMetadata({
   title: "Profile Dropdown",
   description:
-    "Profile dropdown menu component for React and Next.js. Beautiful user profile menu with avatar, settings, and logout options. Perfect for dashboards and applications. Built with Radix UI and Tailwind CSS.",
+    "A user profile dropdown menu with avatar, settings, and logout actions. A free React and Next.js component built with Radix UI and Tailwind CSS.",
   keywords: [
     "profile dropdown",
     "user menu",
@@ -30,7 +30,7 @@ const DualRangeSliderPage = () => {
   return (
     <SEOWrapper
       componentName="Profile Dropdown"
-      description="Profile dropdown menu component for React and Next.js. Beautiful user profile menu with avatar, settings, and logout options. Perfect for dashboards and applications. Built with Radix UI and Tailwind CSS."
+      description="A user profile dropdown menu with avatar, settings, and logout actions."
       url="https://ui.spectrumhq.in/docs/profile"
       keywords={[
         "profile dropdown",
@@ -43,7 +43,10 @@ const DualRangeSliderPage = () => {
         "account menu",
       ]}
     >
-      <PageTemplate title="Profile Dropdown">
+      <PageTemplate
+        title="Profile Dropdown"
+        description="A user profile dropdown menu with avatar, settings, and logout actions."
+      >
       <PreviewCodeCard
         path="app/(docs)/docs/profile/profiledemo.tsx"
         cli="@spectrumui/profile-dropdown"

@@ -1,6 +1,6 @@
 import React from "react";
 import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card";
-import { H3 } from "@/components/ui/heading-with-anchor";
+import { PageSectionTitle } from "@/app/(docs)/docs/components/page-template";
 import { cn } from "@/lib/utils";
 
 interface UsageProps {
@@ -21,9 +21,13 @@ const Usage = ({
 }: UsageProps) => {
   return (
     <div className={cn(className)}>
-      {title && <H3 anchor={title}>{title}</H3>}
-      {description && <div className="my-3">{description}</div>}
-      <PreviewCodeCard path={path} cli={cli}>
+      {title && <PageSectionTitle>{title}</PageSectionTitle>}
+      {description && (
+        <div className="mt-2 text-base leading-[26px] text-[#686868] dark:text-neutral-400">
+          {description}
+        </div>
+      )}
+      <PreviewCodeCard path={path} cli={cli} withInstallation={false} className="mt-4">
         {children}
       </PreviewCodeCard>
     </div>
