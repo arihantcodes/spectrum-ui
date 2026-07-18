@@ -11,6 +11,8 @@
     "format:check": "prettier -c .",
     "format": "prettier --write .",
     "prepare": "husky",
+    "generate:llms": "node scripts/generate-llms.mjs --write",
+    "check:llms": "node scripts/generate-llms.mjs --check",
     "test:registry": "node tests/registry.test.js",
     "test:catalog": "node tests/component-catalog.test.js",
     "test": "npm run test:registry && npm run test:catalog"
