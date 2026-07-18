@@ -1,30 +1,32 @@
-import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
+import { buildCreateUserUrl, isOnboardingComplete } from '@/lib/onboarding'
 
-import { AuthShowcase } from '@/components/auth-showcase';
-import { AuthPanel } from '@/components/auth-panel';
+import { AuthShowcase } from '@/components/auth-showcase'
+import { AuthPanel } from '@/components/auth-panel'
 
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: { callbackUrl?: string };
+  searchParams: { callbackUrl?: string }
 }) {
-  const session = await auth();
-  if (session?.user) {
-    redirect(searchParams.callbackUrl ?? '/dashboard');
+  const session = await auth()
+  const callbackUrl = searchParams.callbackUrl ?? '/'
+
+  if (session?.user?.email) {
+    const onboardingComplete = await isOnboardingComplete(session.user.email)
+    if (!onboardingComplete) {
+      redirect(buildCreateUserUrl(callbackUrl))
+    }
+    redirect(callbackUrl.startsWith('/') ? callbackUrl : '/')
   }
 
-  const callbackUrl = searchParams.callbackUrl ?? '/';
-  const postAuthRedirect = `/create-user${callbackUrl !== '/' ? `?next=${encodeURIComponent(callbackUrl)}` : ''}`;
+  const postAuthRedirect = buildCreateUserUrl(callbackUrl)
 
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <AuthPanel redirectTo={postAuthRedirect} />
-      {/* Left: auth panel */}
-   
-
-      {/* Right: auth showcase */}
       <AuthShowcase />
     </div>
-  );
+  )
 }

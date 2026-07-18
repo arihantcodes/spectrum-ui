@@ -3,13 +3,17 @@
 import { useFormStatus } from 'react-dom'
 import { Button } from '@/components/ui/button'
 
-export function SubmitButton() {
+interface SubmitButtonProps {
+  disabled?: boolean
+}
+
+export function SubmitButton({ disabled = false }: SubmitButtonProps) {
   const { pending } = useFormStatus()
 
   return (
     <Button
       type="submit"
-      disabled={pending}
+      disabled={pending || disabled}
       className="w-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-[#F5F5F5] dark:hover:bg-white dark:text-[#080808] py-6 rounded-xl font-semibold shadow-sm text-sm transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
     >
       {pending ? (

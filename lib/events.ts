@@ -44,8 +44,12 @@ const eventSchema = z.object({
     "preview_viewport_changed",
     "checkout_initiated",
     "checkout_completed",
+    "pro_waitlist_checkout_initiated",
+    "pro_waitlist_joined",
     "onboarding_started",
     "onboarding_completed",
+    "pro_page_viewed",
+    "pro_waitlist_success_viewed",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z

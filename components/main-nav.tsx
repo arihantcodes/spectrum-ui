@@ -35,13 +35,13 @@ export function MainNav() {
         {/* <Link
           href="/pro"
           className={cn(
-            'transition-colors hover:text-foreground/80',
+            'transition-colors hover:text-foreground/80 flex items-center',
             pathname?.startsWith('/pro') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-          Templates
-          <span className="text-xs ml-1 px-1.5 py-0.5 rounded-full bg-yellow-400/30 dark:bg-[#eaec8a]/16 text-yellow-600 dark:text-[#eaec8a] [text-shadow:0_1px_1.5px_rgb(0,0,0,0.16)]">
-            Pro
+          Pro
+          <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 font-medium">
+            Early Bird
           </span>
         </Link> */}
         {/* <Link

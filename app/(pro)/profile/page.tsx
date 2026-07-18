@@ -76,7 +76,7 @@ export default async function ProfilePage() {
     .eq('email', session.user.email)
     .single()
 
-  if (!user) redirect('/create-user')
+  if (!user?.github_username) redirect('/create-user')
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#080808] transition-colors">

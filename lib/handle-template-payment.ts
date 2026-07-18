@@ -1,0 +1,159 @@
+import { supabaseAdmin as supabase } from '@/lib/supabase-admin'
+import { grantRepoAccess } from '@/lib/github'
+import { sendPurchaseEmail, sendFounderWelcomeEmail } from '@/lib/resend'
+
+interface PaymentPayload {
+  data: {
+    payment_id: string
+    total_amount: number
+    currency?: string
+    metadata?: Record<string, string>
+  }
+}
+
+export async function handleTemplatePayment(payload: PaymentPayload) {
+  const { payment_id, total_amount, currency, metadata } = payload.data
+
+  if (
+    !metadata ||
+    !metadata.templateSlug ||
+    !metadata.githubUsername ||
+    !metadata.userEmail
+  ) {
+    console.error(`[Webhook] ERROR: Malformed template metadata:`, metadata)
+    throw new Error('Malformed metadata in webhook payload')
+  }
+
+  const { templateSlug, githubUsername, userEmail } = metadata
+
+  const { data: template, error: templateError } = await supabase
+    .from('templates')
+    .select('name, github_repo')
+    .eq('slug', templateSlug)
+    .single()
+
+  if (templateError || !template) {
+    console.error(`[Webhook] ERROR: Template not found: ${templateSlug}`)
+    throw new Error(`Template not found: ${templateSlug}`)
+  }
+
+  const { data: existingOrder } = await supabase
+    .from('orders')
+    .select('*')
+    .eq('payment_id', payment_id)
+    .single()
+
+  let order = existingOrder
+
+  if (!order) {
+    console.log(
+      `[Webhook] New payment: ${userEmail} → ${templateSlug} (${payment_id})`
+    )
+
+    const { data: newOrder, error: insertError } = await supabase
+      .from('orders')
+      .insert({
+        email: userEmail,
+        github_username: githubUsername,
+        template_slug: templateSlug,
+        payment_id: payment_id,
+        amount: total_amount,
+        currency: currency ?? 'USD',
+        status: 'active',
+        github_access_granted: false,
+        email_sent: false,
+      })
+      .select()
+      .single()
+
+    if (insertError) {
+      console.error(
+        `[Webhook] ERROR: Order insert failed: ${insertError.message}`
+      )
+      throw insertError
+    }
+
+    order = newOrder
+
+    try {
+      const posthogClient = (await import('@/lib/posthog-server')).default()
+      if (posthogClient) {
+        posthogClient.capture({
+          distinctId: userEmail,
+          event: 'checkout_completed',
+          properties: {
+            templateSlug,
+            githubUsername,
+            amount: total_amount / 100,
+            currency: currency ?? 'USD',
+            paymentId: payment_id,
+          },
+        })
+        await posthogClient.shutdown()
+      }
+    } catch (err) {
+      console.error('[Webhook] PostHog checkout_completed failed:', err)
+    }
+  } else {
+    console.log(`[Webhook] Existing order found for ${payment_id}. Resuming...`)
+  }
+
+  if (!order.github_access_granted) {
+    try {
+      await grantRepoAccess(template.github_repo, githubUsername)
+      await supabase
+        .from('orders')
+        .update({ github_access_granted: true })
+        .eq('payment_id', payment_id)
+      console.log(`[Webhook] GitHub access granted: ${githubUsername}`)
+    } catch (err) {
+      console.error(`[Webhook] ERROR: GitHub access failed:`, err)
+      throw err
+    }
+  }
+
+  if (!order.email_sent) {
+    try {
+      await sendPurchaseEmail({
+        email: userEmail,
+        githubUsername: githubUsername,
+        templateName: template.name,
+        githubRepo: template.github_repo,
+      })
+      await supabase
+        .from('orders')
+        .update({ email_sent: true })
+        .eq('payment_id', payment_id)
+      console.log(`[Webhook] Welcome email sent: ${userEmail}`)
+    } catch (err) {
+      console.error(`[Webhook] ERROR: Email failed:`, err)
+      throw err
+    }
+  }
+
+  await sendFounderWelcomeIfNeeded(userEmail)
+}
+
+async function sendFounderWelcomeIfNeeded(userEmail: string) {
+  try {
+    const { data: userRecord } = await supabase
+      .from('users')
+      .select('name, welcome_email_sent')
+      .eq('email', userEmail)
+      .single()
+
+    if (userRecord && !userRecord.welcome_email_sent) {
+      await sendFounderWelcomeEmail(userEmail, userRecord.name || '')
+      await supabase
+        .from('users')
+        .update({ welcome_email_sent: true })
+        .eq('email', userEmail)
+      console.log(`[Webhook] Founder welcome email sent to ${userEmail}`)
+    }
+  } catch (err) {
+    console.error(
+      `[Webhook] ERROR: Founder welcome email failed for ${userEmail}:`,
+      err
+    )
+  }
+}

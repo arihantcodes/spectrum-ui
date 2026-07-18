@@ -1,13 +1,12 @@
 import { auth } from '@/auth'
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 
 export default auth((req) => {
   const { pathname } = req.nextUrl
   const isLoggedIn   = !!req.auth
 
-  // Temporarily disabled — not production ready yet
-  const hiddenRoutes = ['/dashboard', '/pro']
+  // Temporarily disabled — dashboard not production ready yet
+  const hiddenRoutes = ['/dashboard']
   const isHidden = hiddenRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))
   if (isHidden) {
     return NextResponse.redirect(new URL('/', req.url))

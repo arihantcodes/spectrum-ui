@@ -253,4 +253,74 @@ export async function notifyNewSponsorSubmission({
   }
 }
 
+type ProWaitlistPayload = {
+  email: string
+  githubUsername: string
+  amountLabel: string
+  launchPriceUsd: number
+}
+
+export async function notifyProWaitlistSignup({
+  email,
+  githubUsername,
+  amountLabel,
+  launchPriceUsd,
+}: ProWaitlistPayload) {
+  try {
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+    const githubLink = `<https://github.com/${githubUsername}|${githubUsername}>`
+
+    const blocks = [
+      {
+        type: 'header',
+        text: {
+          type: 'plain_text',
+          text: '🚀 New Pro Waitlist Signup!',
+          emoji: true,
+        },
+      },
+      {
+        type: 'section',
+        fields: [
+          { type: 'mrkdwn', text: `*📧 Email*\n${email}` },
+          { type: 'mrkdwn', text: `*🐙 GitHub*\n${githubLink}` },
+        ],
+      },
+      {
+        type: 'section',
+        fields: [
+          { type: 'mrkdwn', text: `*💰 Paid*\n${amountLabel}` },
+          { type: 'mrkdwn', text: `*🎯 Launch Price*\n$${launchPriceUsd}` },
+        ],
+      },
+      {
+        type: 'section',
+        fields: [
+          { type: 'mrkdwn', text: `*🕒 Joined At*\n${timestamp}` },
+        ],
+      },
+      { type: 'divider' },
+    ]
+
+    const response = await fetch('https://slack.com/api/chat.postMessage', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${BOT_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        channel: CHANNEL_ID,
+        text: `🚀 Pro Waitlist — ${email} paid ${amountLabel}`,
+        blocks,
+      }),
+    })
+
+    const data = await response.json()
+    if (!data.ok) {
+      console.error('[Slack] Pro waitlist notification error:', data.error)
+    }
+  } catch (error) {
+    console.error('[Slack] Failed to send pro waitlist notification:', error)
+  }
+}
 

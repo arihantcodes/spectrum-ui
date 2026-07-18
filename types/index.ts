@@ -33,6 +33,18 @@ export interface Order {
   templates?: Template; // Joined template data
 }
 
+export interface ProWaitlistEntry {
+  id: string;
+  email: string;
+  github_username: string;
+  payment_id: string;
+  amount: number;
+  currency: string;
+  status: 'active' | 'refunded' | 'converted';
+  email_sent: boolean;
+  created_at: string;
+}
+
 export interface User {
   id: string;
   email: string;
