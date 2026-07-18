@@ -111,8 +111,8 @@ export function AuthShowcase() {
             Interactions you can feel.
           </h2>
           <p className="mt-3 max-w-[40ch] text-sm leading-relaxed text-white/50">
-            A live taste of the 250+ animated components you’re signing in for.
-            Go ahead — click around.
+            A live sample of animated components from the open-source library. Go ahead — click
+            around.
           </p>
         </Reveal>
       </div>

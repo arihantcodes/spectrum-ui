@@ -292,24 +292,22 @@ export function DocsCatalog() {
       <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl animate-fade-up">
           <h1 className="text-2xl leading-10 text-neutral-900 dark:text-neutral-100 sm:text-3xl">
-            Introduction
+            React components and blocks
           </h1>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            Spectrum UI is a free and open source collection of components for React and Next.js. It
-            is built on top of{' '}
-            <span className="font-medium text-neutral-900 dark:text-neutral-100">shadcn/ui</span>{' '}
-            and{' '}
-            <span className="font-medium text-neutral-900 dark:text-neutral-100">Tailwind CSS</span>
-            .
+            Spectrum UI is an open-source React component and block library featuring
+            animation-ready, copy-paste components built with React, Next.js, Tailwind CSS, Motion,
+            TypeScript, and shadcn/ui for SaaS dashboards, landing pages, AI applications, and admin
+            panels.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            It is not a component library, so there is nothing new to install. Find a component you
-            like, copy the code or add it with the shadcn CLI, and it becomes part of your project.
-            The code is yours. You can change it in any way you want.
+            Choose a component, copy its source or add it with the shadcn CLI, and keep the source in
+            your project. Components can be adapted to the project&apos;s design system and application
+            requirements.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            Every component is written in TypeScript, works on all screen sizes, and looks good in
-            both light and dark mode. Animations use Framer Motion. You can also connect the{' '}
+            Components are authored in TypeScript, and each documentation page lists the source and
+            dependencies for that implementation. You can also connect the{' '}
             <Link
               href="/docs/mcp"
               className="font-medium text-neutral-800 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-500 dark:text-neutral-200 dark:decoration-neutral-600 dark:hover:decoration-neutral-400"

@@ -10,17 +10,17 @@ import { ShowcaseSection } from '@/components/showcase';
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Spectrum UI — Free React & Next.js UI Components",
+    absolute: "Spectrum UI — Animated React Components & Blocks",
   },
   description:
-    "Copy-paste beautiful UI components built with React, Next.js, Tailwind CSS, and shadcn/ui. Production-ready components, blocks, and templates. Free and open source.",
+    "Open-source, animation-ready React components and blocks built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui for SaaS and AI apps.",
   alternates: {
     canonical: "https://ui.spectrumhq.in",
   },
   openGraph: {
-    title: "Spectrum UI — Free React & Next.js UI Components",
+    title: "Spectrum UI — Animated React Components & Blocks",
     description:
-      "Copy-paste beautiful UI components built with React, Next.js, Tailwind CSS, and shadcn/ui. Free and open source.",
+      "Open-source, animation-ready React components and blocks built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui for SaaS and AI apps.",
     url: "https://ui.spectrumhq.in",
     type: "website",
     siteName: "Spectrum UI",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Spectrum UI — Free React & Next.js UI Components",
+    title: "Spectrum UI — Animated React Components & Blocks",
     description:
-      "Copy-paste beautiful UI components built with React, Next.js, and Tailwind CSS.",
+      "Open-source, animation-ready React components and blocks built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui for SaaS and AI apps.",
     images: ["https://ui.spectrumhq.in/og.png"],
   },
 };

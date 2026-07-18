@@ -10,8 +10,9 @@ import { CtaSection } from "@/components/marketing/sponsor/cta-section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Sponsor Spectrum UI | Reach 10,000+ Frontend Developers",
-  description: "Put your product inside the workflow of frontend developers. Limited sponsor inventory across homepage, docs, components, and newsletter.",
+  title: "Sponsor Spectrum UI | Frontend Developer Audience",
+  description:
+    "Reach developers while they browse Spectrum UI documentation and components. Review available sponsor placements across the site and newsletter.",
 }
 
 export default function SponsorPage() {

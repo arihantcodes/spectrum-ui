@@ -54,7 +54,8 @@ export function HeroSection({ className }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-8 max-w-md"
           >
-            Spectrum UI brings 5,000+ frontend developers every month — not scrolling a feed, but actively reading docs and copying components. Your slot lives exactly where they&apos;re looking.
+            Sponsor placements appear beside Spectrum UI documentation and components, where
+            developers are evaluating and copying source for their projects.
           </motion.p>
 
           {/* CTAs */}

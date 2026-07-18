@@ -5,7 +5,7 @@ import { DocsCatalog } from './docs-catalog'
 export const metadata: Metadata = baseMetadata({
   title: 'Components',
   description:
-    'Browse 60+ free React and Next.js UI components from Spectrum UI. Copy-paste accessible Tailwind components for dashboards, SaaS, and modern web apps.',
+    'Browse Spectrum UI’s animation-ready React components and blocks, with copy-paste source for Next.js, Tailwind CSS, Motion, and shadcn/ui projects.',
   keywords: [
     'Spectrum UI components',
     'React UI component list',

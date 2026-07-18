@@ -15,7 +15,7 @@ const sections = [
   {
     id: 'free-library',
     title: '2. Free Component Library',
-    content: `The Spectrum UI component library is provided free of charge. Components are open-source and available under the MIT License. You may use, modify, and distribute components freely in personal and commercial projects. Attribution is appreciated but not required.`,
+    content: `The Spectrum UI component library is provided free of charge. Components in the public repository are open-source under the Apache License 2.0. You may use, modify, and distribute them in personal and commercial projects subject to the license terms, including its notice and attribution requirements. See the repository LICENSE file for the complete terms.`,
   },
   {
     id: 'pro-templates',

@@ -7,8 +7,8 @@
 <h1>Spectrum UI</h1>
 
 <p>
-  The best pre-built component collection for shadcn/ui developers.<br/>
-  250+ production-ready components, blocks, and templates — copy, paste, ship.
+  Animation-ready React components and blocks with copy-paste source.<br/>
+  Built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui.
 </p>
 
 <p>
@@ -39,21 +39,19 @@
 
 ## What is Spectrum UI?
 
-Spectrum UI is an **open-source collection of 250+ production-ready components** built on top of [shadcn/ui](https://ui.shadcn.com) and Tailwind CSS. It is not a separate library — it extends shadcn/ui with pre-designed, copy-paste-ready components, blocks, and full-page templates so you spend zero time on boilerplate UI.
-
-**Stop building buttons. Start shipping products.**
+Spectrum UI is an open-source React component and block library featuring animation-ready, copy-paste components built with React, Next.js, Tailwind CSS, Motion, TypeScript, and [shadcn/ui](https://ui.shadcn.com) — for SaaS dashboards, landing pages, AI applications, and admin panels.
 
 ---
 
 ## Features
 
-- **250+ Components** — Forms, cards, dashboards, marketing sections, navigation, modals, and more — all with dark mode support out of the box.
+- **Components** — Forms, cards, navigation, overlays, feedback controls, and other copy-paste UI source.
 - **Blocks & Sections** — Pre-composed page sections (hero, pricing, FAQ, footer, CTA) ready to drop into any layout.
-- **Pro Templates** — Full-page, production-ready templates for SaaS, landing pages, and dashboards.
-- **Built on shadcn/ui** — Fully compatible with your existing shadcn setup. No lock-in, no new dependencies.
+- **Pro Templates** — Full-page templates for SaaS, landing pages, and dashboards.
+- **shadcn-compatible** — Registry items integrate through the shadcn CLI, with source kept in your project.
 - **Animated Components** — Motion-ready components powered by Framer Motion, Three.js, and Spline.
-- **TypeScript-first** — Every component ships with proper TypeScript types.
-- **Copy-paste DX** — No npm install. Browse, copy, paste, done.
+- **TypeScript source** — Components are authored in TypeScript and TSX.
+- **Copy-paste DX** — Browse the source, copy it manually, or install a registry item with the shadcn CLI.
 
 ---
 
