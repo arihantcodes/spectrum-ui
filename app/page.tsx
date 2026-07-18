@@ -6,7 +6,6 @@ const HomeCardCollection = dynamic(() => import('@/components/homecard'), {
 });
 import { HeroSection } from './home';
 import { FAQSection } from '@/components/faq-section';
-import { BlogSection } from '@/components/blog-section';
 import { ShowcaseSection } from '@/components/showcase';
 
 export const metadata: Metadata = {
@@ -37,13 +36,6 @@ const Homepage = () => {
       <div className="container-frame border-b border-border">
         <ShowcaseSection />
       </div>
-
-     
-
-      <div className="container-frame border-t border-border">
-        <BlogSection />
-      </div>
-
       <div className="container-frame border-t border-border bg-neutral-50/10 dark:bg-neutral-950/10">
         <FAQSection />
       </div>

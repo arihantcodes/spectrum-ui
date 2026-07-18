@@ -45,31 +45,31 @@ export function HeroContent() {
         </AnimateEnter>
 
         <AnimateEnter delay={0.42} isWhileInView={false} className="py-3">
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="flex flex-row items-center justify-center gap-2 sm:gap-3">
             <motion.div
-              className="w-full sm:w-auto"
+              className="shrink-0"
               whileHover={lift}
               whileTap={press}
               transition={CTA_SPRING}
             >
-              <Link href="/docs" className="block w-full">
-                <Button className="h-[44px] w-full rounded-[28px] font-inter text-[16px] font-medium leading-[22.4px] sm:w-[161px]">
+              <Link href="/docs/mcp" className="block">
+                <Button className="h-[44px] rounded-[28px] px-5 font-inter text-[16px] font-medium leading-[22.4px] sm:w-[161px]">
                   Install MCP
                 </Button>
               </Link>
             </motion.div>
             <motion.div
-              className="w-full sm:w-auto"
+              className="shrink-0"
               whileHover={lift}
               whileTap={press}
               transition={CTA_SPRING}
             >
-              <Link href="/docs/components" className="block w-full">
+              <Link href="/docs" className="block">
                 <Button
                   variant="outline"
-                  className="h-[44px] w-full rounded-[28px] border-transparent bg-white font-inter text-[16px] font-normal leading-[22.4px] text-black shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_2px_0px_rgba(0,0,0,0.04),0px_2px_4px_0px_rgba(0,0,0,0.04)] hover:bg-white hover:text-black sm:w-[206px] dark:bg-neutral-900 dark:border-neutral-800 dark:text-white dark:hover:text-white"
+                  className="h-[44px] rounded-[28px] border-transparent bg-white px-5 font-inter text-[16px] font-normal leading-[22.4px] text-black shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_2px_0px_rgba(0,0,0,0.04),0px_2px_4px_0px_rgba(0,0,0,0.04)] hover:bg-white hover:text-black sm:w-[206px] dark:bg-neutral-900 dark:border-neutral-800 dark:text-white dark:hover:text-white"
                 >
-                  Browse components
+                  View components
                 </Button>
               </Link>
             </motion.div>

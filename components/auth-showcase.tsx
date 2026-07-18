@@ -120,13 +120,7 @@ export function AuthShowcase() {
       {/* Live product mock */}
       <div className="relative z-10 mt-8 flex-1 px-10 xl:px-14">
         <Reveal delay={0.16}>
-          <motion.div
-            animate={reduce ? undefined : { y: [0, -6, 0] }}
-            transition={
-              reduce ? undefined : { duration: 7, repeat: Infinity, ease: 'easeInOut' }
-            }
-            className="mx-auto w-full max-w-md overflow-hidden rounded-t-2xl border border-white/10 bg-neutral-950/80 shadow-2xl backdrop-blur-sm"
-          >
+          <div className="mx-auto w-full max-w-md overflow-hidden rounded-t-2xl border border-white/10 bg-neutral-950/80 shadow-2xl backdrop-blur-sm">
             {/* Window bar */}
             <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
               <div className="flex gap-1.5">
@@ -210,7 +204,7 @@ export function AuthShowcase() {
                 <AnimatedSwitch defaultChecked label="Email notifications" />
               </div>
             </div>
-          </motion.div>
+          </div>
         </Reveal>
       </div>
     </div>
