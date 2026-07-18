@@ -91,17 +91,26 @@ const DEFAULT_TABS: FaqTab[] = [
 ];
 
 export function FAQTabsCard({
-  tabs = DEFAULT_TABS,
+  tabs: tabsProp = DEFAULT_TABS,
   defaultTab = 0,
   defaultOpenIndex = 0,
   footerLabel = "Contact Support",
   onFooterClick,
   className,
 }: FAQTabsCardProps) {
-  const [activeTab, setActiveTab] = React.useState(defaultTab);
+  // Explicit `tabs={[]}` bypasses the default param — fall back so we never
+  // read `.faqs` off undefined.
+  const tabs = tabsProp.length > 0 ? tabsProp : DEFAULT_TABS;
+  const clampedDefaultTab = Math.min(
+    Math.max(defaultTab, 0),
+    tabs.length - 1,
+  );
+
+  const [activeTab, setActiveTab] = React.useState(clampedDefaultTab);
   const [openIndex, setOpenIndex] = React.useState(defaultOpenIndex);
 
-  const currentTab = tabs[activeTab] ?? tabs[0];
+  const safeActiveTab = Math.min(Math.max(activeTab, 0), tabs.length - 1);
+  const currentTab = tabs[safeActiveTab] ?? tabs[0];
 
   return (
     <div
@@ -115,7 +124,7 @@ export function FAQTabsCard({
       {/* Tabs */}
       <div className="flex h-9 items-center rounded-full bg-neutral-100 p-1 dark:bg-neutral-900">
         {tabs.map((tab, index) => {
-          const active = index === activeTab;
+          const active = index === safeActiveTab;
           return (
             <button
               key={tab.label}
@@ -151,7 +160,7 @@ export function FAQTabsCard({
       {/* Accordion */}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={activeTab}
+          key={safeActiveTab}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}

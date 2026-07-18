@@ -155,6 +155,9 @@ export const metadata: Metadata = {
   publisher: "Spectrum UI",
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": siteConfig.url,
+    },
     types: {
       "text/plain": [
         { url: "/llms.txt", title: "llms.txt" },
@@ -189,12 +192,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
-    },
-  },
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": siteConfig.url,
     },
   },
   category: "technology",
