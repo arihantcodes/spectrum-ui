@@ -208,7 +208,7 @@ An image that reveals its content behind animated sliding door panels.
 
 - Category: Media
 - Documentation: https://ui.spectrumhq.in/docs/discloseimage
-- Installation: Follow the component documentation for source and dependencies; no CLI command is declared on the page.
+- Verified install command: `npx shadcn@latest add @spectrumui/disclose-image`
 
 ### Dock Menu
 
@@ -280,7 +280,7 @@ A GitHub profile card generator with stats, a contribution graph, and social lin
 
 - Category: Profile
 - Documentation: https://ui.spectrumhq.in/docs/github-card
-- Installation: Follow the component documentation for source and dependencies; no CLI command is declared on the page.
+- Verified install command: `npx shadcn@latest add @spectrumui/github-profile-card`
 
 ### Heading With Anchor
 
