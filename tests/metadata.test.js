@@ -4,11 +4,7 @@ const path = require('node:path');
 const ts = require('typescript');
 
 const projectRoot = path.resolve(__dirname, '..');
-const catalog = require(path.join(
-  projectRoot,
-  'content',
-  'component-catalog.json',
-));
+const catalog = require(path.join(projectRoot, 'content', 'component-catalog.json'));
 const titleSuffix = ' | Spectrum UI';
 
 function truncateAtWord(value, maxLength) {
@@ -17,10 +13,10 @@ function truncateAtWord(value, maxLength) {
 
   const candidate = normalized.slice(0, maxLength - 1);
   const lastSpace = candidate.lastIndexOf(' ');
-  const clipped = (lastSpace > maxLength * 0.6
-    ? candidate.slice(0, lastSpace)
-    : candidate
-  ).replace(/[,:;.!?\s-]+$/, '');
+  const clipped = (lastSpace > maxLength * 0.6 ? candidate.slice(0, lastSpace) : candidate).replace(
+    /[,:;.!?\s-]+$/,
+    '',
+  );
 
   return clipped + '…';
 }
@@ -61,27 +57,19 @@ function readBlogStringProperty(filePath, propertyName) {
 }
 
 const componentTitles = catalog.map(
-  (component) =>
-    `${component.name} — React ${component.category} Component | Spectrum UI`,
+  (component) => `${component.name} — React ${component.category} Component | Spectrum UI`,
 );
 const componentDescriptions = catalog.map(
-  (component) =>
-    `${component.description} Copy-paste React source for Next.js and Tailwind CSS.`,
+  (component) => `${component.description} Copy-paste React source for Next.js and Tailwind CSS.`,
 );
 
 const blogDirectory = path.join(projectRoot, 'content', 'blog');
-const blogFiles = fs
-  .readdirSync(blogDirectory)
-  .filter((fileName) => fileName.endsWith('.tsx'));
+const blogFiles = fs.readdirSync(blogDirectory).filter((fileName) => fileName.endsWith('.tsx'));
 const blogTitles = blogFiles.map((fileName) =>
-  formatBlogTitle(
-    readBlogStringProperty(path.join(blogDirectory, fileName), 'title'),
-  ),
+  formatBlogTitle(readBlogStringProperty(path.join(blogDirectory, fileName), 'title')),
 );
 const blogDescriptions = blogFiles.map((fileName) =>
-  formatDescription(
-    readBlogStringProperty(path.join(blogDirectory, fileName), 'excerpt'),
-  ),
+  formatDescription(readBlogStringProperty(path.join(blogDirectory, fileName), 'excerpt')),
 );
 
 const staticTitles = [
@@ -123,11 +111,7 @@ const staticDescriptions = [
 ].map(formatDescription);
 
 const publicTitles = [...componentTitles, ...blogTitles, ...staticTitles];
-const publicDescriptions = [
-  ...componentDescriptions,
-  ...blogDescriptions,
-  ...staticDescriptions,
-];
+const publicDescriptions = [...componentDescriptions, ...blogDescriptions, ...staticDescriptions];
 
 assert.equal(componentTitles.length, 61);
 assert.ok(componentTitles.every((title) => title.length <= 60));
@@ -139,6 +123,4 @@ assert.equal(new Set(componentDescriptions).size, componentDescriptions.length);
 assert.equal(new Set(publicTitles).size, publicTitles.length);
 assert.equal(new Set(publicDescriptions).size, publicDescriptions.length);
 
-console.log(
-  `Metadata validated: ${publicTitles.length} unique public titles and descriptions`,
-);
+console.log(`Metadata validated: ${publicTitles.length} unique public titles and descriptions`);

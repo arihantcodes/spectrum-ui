@@ -1,4 +1,4 @@
-import componentCatalog from "@/content/component-catalog.json";
+import componentCatalog from '@/content/component-catalog.json';
 
 export interface ComponentCatalogItem {
   slug: string;
@@ -7,8 +7,7 @@ export interface ComponentCatalogItem {
   category: string;
 }
 
-export const COMPONENT_CATALOG =
-  componentCatalog as readonly ComponentCatalogItem[];
+export const COMPONENT_CATALOG = componentCatalog as readonly ComponentCatalogItem[];
 
 export function componentDocsPath(slug: string) {
   return `/docs/${slug}`;
