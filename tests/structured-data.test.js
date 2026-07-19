@@ -6,6 +6,7 @@ const ts = require('typescript');
 
 const projectRoot = path.resolve(__dirname, '..');
 const catalog = require(path.join(projectRoot, 'content', 'component-catalog.json'));
+const componentDocs = require(path.join(projectRoot, 'content', 'component-docs.json'));
 
 const originalResolveFilename = Module._resolveFilename;
 Module._resolveFilename = function resolveAlias(request, parent, isMain, options) {
@@ -92,6 +93,18 @@ for (const component of catalog) {
   assert.equal(breadcrumbs.itemListElement.at(-1).item, url);
   assertSerializable(schema, `${component.name} schema`);
 
+  const componentDoc = componentDocs.find((candidate) => candidate.slug === component.slug);
+  assert.ok(componentDoc, `${component.slug} needs component documentation data`);
+  const componentFaqSchema = generateFAQStructuredData(componentDoc.faqs);
+  assert.equal(componentFaqSchema['@type'], 'FAQPage');
+  assert.deepEqual(
+    componentFaqSchema.mainEntity.map((question) => ({
+      question: question.name,
+      answer: question.acceptedAnswer.text,
+    })),
+    componentDoc.faqs,
+  );
+
   const routeDirectory = path.join(docsRoot, component.slug);
   const wrapperSource = ['layout.tsx', 'page.tsx']
     .map((fileName) => path.join(routeDirectory, fileName))
@@ -146,5 +159,5 @@ assert.equal(safeJson.includes('</script>'), false);
 assert.equal(JSON.parse(safeJson).value, dangerousValue);
 
 console.log(
-  `Structured data validated: site graph, ${catalog.length} components, guides, blog, and ${faqs.length} visible FAQs`,
+  `Structured data validated: site graph, ${catalog.length} component FAQ schemas, guides, blog, and ${faqs.length} site FAQs`,
 );
