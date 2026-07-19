@@ -28,6 +28,7 @@ export default function InstallationLayout({
       componentName="Installation"
       description="Install Spectrum UI in a Next.js project with Tailwind CSS and shadcn/ui."
       url="https://ui.spectrumhq.in/docs/installation"
+      schemaType="techArticle"
       keywords={[
         "Spectrum UI installation",
         "Next.js setup",

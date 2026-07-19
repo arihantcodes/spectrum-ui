@@ -88,6 +88,7 @@ export default function GuidesPage() {
       componentName="Guides & Tutorials"
       description="Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples."
       url="https://ui.spectrumhq.in/docs/guides"
+      schemaType="collectionPage"
       keywords={[
         'React tutorials',
         'UI component guide',

@@ -16,7 +16,8 @@
     "test:registry": "node tests/registry.test.js",
     "test:catalog": "node tests/component-catalog.test.js",
     "test:metadata": "node tests/metadata.test.js",
-    "test": "npm run test:registry && npm run test:catalog && npm run test:metadata"
+    "test:structured-data": "node tests/structured-data.test.js",
+    "test": "npm run test:registry && npm run test:catalog && npm run test:metadata && npm run test:structured-data"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

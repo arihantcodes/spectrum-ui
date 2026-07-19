@@ -3,9 +3,14 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog"
 import { Metadata } from "next"
-import { generateBlogStructuredData, generateBlogBreadcrumbs } from "@/lib/seo-utils"
+import {
+  generateBlogStructuredData,
+  generateBlogBreadcrumbs,
+  toIsoDate,
+} from "@/lib/seo-utils"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { BlogCard } from "../blog-card"
+import { JsonLd } from "@/components/seo/json-ld"
 import {
   createNoIndexMetadata,
   formatMetadataDescription,
@@ -35,10 +40,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const blogUrl = `${baseUrl}/blog/${post.slug}`
   const metadataTitle = formatMetadataTitle(post.title)
   const metadataDescription = formatMetadataDescription(post.excerpt)
-  const publishedDate = new Date(post.date)
-  const publishedTime = Number.isNaN(publishedDate.getTime())
-    ? undefined
-    : publishedDate.toISOString()
+  const publishedTime = toIsoDate(post.date)
   
   return {
     title: { absolute: metadataTitle },
@@ -142,19 +144,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData),
-        }}
-      />
+      <JsonLd id="blog-post-structured-data" data={structuredData} />
+      <JsonLd id="blog-post-breadcrumbs" data={breadcrumbData} />
 
       <div className="relative min-h-screen font-inter text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         {/* Page-wide grain overlay */}

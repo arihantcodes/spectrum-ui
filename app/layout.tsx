@@ -37,6 +37,8 @@ import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 import { TalkToUs } from "@/components/talk-to-us";
+import { JsonLd } from "@/components/seo/json-ld";
+import { generateSiteStructuredData } from "@/lib/site-structured-data";
 
 inject();
 
@@ -141,59 +143,9 @@ gtag('config', 'G-K7ZP6JB4MG');
             `.trim(),
           }}
         />
-        <Script
-          id="schema-org-website"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: siteConfig.name,
-              url: siteConfig.url,
-              description: siteConfig.description,
-              author: {
-                "@type": "Person",
-                name: siteConfig.author.name,
-                url: siteConfig.author.url,
-              },
-              license: siteConfig.license,
-              version: siteConfig.version,
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: `${siteConfig.url}/docs?search={search_term_string}`,
-                },
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
-        />
-        <Script
-          id="schema-org-organization"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Spectrum UI",
-              url: siteConfig.url,
-              logo: `${siteConfig.url}/logo.svg`,
-              description: siteConfig.description,
-              founder: {
-                "@type": "Person",
-                name: siteConfig.author.name,
-                url: siteConfig.author.url,
-              },
-              sameAs: [
-                siteConfig.links.github,
-                siteConfig.links.twitter,
-                siteConfig.links.linkedin,
-              ],
-            }),
-          }}
+        <JsonLd
+          id="spectrum-ui-structured-data"
+          data={generateSiteStructuredData()}
         />
         <Script
           id="adsense"

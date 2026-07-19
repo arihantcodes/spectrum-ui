@@ -2,6 +2,7 @@ import { getAllBlogPosts } from '@/lib/blog';
 import { Metadata } from 'next';
 import { generateBlogListingStructuredData, generateBlogBreadcrumbs } from '@/lib/seo-utils';
 import { BlogList } from './blog-list';
+import { JsonLd } from '@/components/seo/json-ld';
 
 export const metadata: Metadata = {
   title: {
@@ -85,19 +86,8 @@ export default async function BlogPage() {
 
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData),
-        }}
-      />
+      <JsonLd id="blog-structured-data" data={structuredData} />
+      <JsonLd id="blog-breadcrumbs" data={breadcrumbData} />
       
       <BlogList blogPosts={blogPosts} />
     </>
