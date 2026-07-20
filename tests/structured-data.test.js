@@ -48,6 +48,10 @@ const { generateSiteStructuredData } = require(
 );
 const { serializeJsonLd } = require(path.join(projectRoot, 'components', 'seo', 'json-ld.tsx'));
 const { faqs } = require(path.join(projectRoot, 'content', 'faqs.ts'));
+const { TOPIC_HUBS } = require(path.join(projectRoot, 'content', 'topic-hubs.ts'));
+const { createTopicHubStructuredData } = require(
+  path.join(projectRoot, 'lib', 'topic-hub-structured-data.ts'),
+);
 
 function assertSerializable(value, label) {
   const serialized = JSON.stringify(value);
@@ -131,6 +135,27 @@ const guides = generateCollectionPageStructuredData({
 assert.equal(installation['@type'], 'TechArticle');
 assert.equal(guides['@type'], 'CollectionPage');
 
+for (const hub of TOPIC_HUBS) {
+  const { collection, breadcrumbs, faq } = createTopicHubStructuredData(hub);
+  assert.equal(collection['@type'], 'CollectionPage');
+  assert.equal(collection.mainEntity['@type'], 'ItemList');
+  assert.equal(collection.mainEntity.numberOfItems, hub.componentSlugs.length);
+  assert.equal(collection.mainEntity.itemListElement.length, hub.componentSlugs.length);
+  assert.equal(breadcrumbs['@type'], 'BreadcrumbList');
+  assert.equal(breadcrumbs.itemListElement.at(-1).name, hub.label);
+  assert.equal(faq['@type'], 'FAQPage');
+  assert.deepEqual(
+    faq.mainEntity.map((question) => ({
+      question: question.name,
+      answer: question.acceptedAnswer.text,
+    })),
+    hub.faqs,
+  );
+  assertSerializable(collection, `${hub.label} collection schema`);
+  assertSerializable(breadcrumbs, `${hub.label} breadcrumb schema`);
+  assertSerializable(faq, `${hub.label} FAQ schema`);
+}
+
 const blog = generateBlogStructuredData({
   title: 'Example article',
   description: 'An example technical article.',
@@ -159,5 +184,5 @@ assert.equal(safeJson.includes('</script>'), false);
 assert.equal(JSON.parse(safeJson).value, dangerousValue);
 
 console.log(
-  `Structured data validated: site graph, ${catalog.length} component FAQ schemas, guides, blog, and ${faqs.length} site FAQs`,
+  `Structured data validated: site graph, ${catalog.length} component schemas, ${TOPIC_HUBS.length} topic hubs, guides, blog, and ${faqs.length} site FAQs`,
 );

@@ -20,7 +20,8 @@
     "test:component-docs": "npm run check:component-docs && node tests/component-docs.test.js",
     "test:metadata": "node tests/metadata.test.js",
     "test:structured-data": "node tests/structured-data.test.js",
-    "test": "npm run test:registry && npm run test:catalog && npm run test:component-docs && npm run test:metadata && npm run test:structured-data"
+    "test:topic-hubs": "node tests/topic-hubs.test.js",
+    "test": "npm run test:registry && npm run test:catalog && npm run test:component-docs && npm run test:metadata && npm run test:structured-data && npm run test:topic-hubs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

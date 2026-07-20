@@ -1,11 +1,36 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const Module = require('node:module');
 const path = require('node:path');
 const ts = require('typescript');
 
 const projectRoot = path.resolve(__dirname, '..');
 const catalog = require(path.join(projectRoot, 'content', 'component-catalog.json'));
 const titleSuffix = ' | Spectrum UI';
+
+const originalResolveFilename = Module._resolveFilename;
+Module._resolveFilename = function resolveAlias(request, parent, isMain, options) {
+  const resolvedRequest = request.startsWith('@/')
+    ? path.join(projectRoot, request.slice(2))
+    : request;
+  return originalResolveFilename.call(this, resolvedRequest, parent, isMain, options);
+};
+
+require.extensions['.ts'] = function compileTypeScript(module, fileName) {
+  const source = fs.readFileSync(fileName, 'utf8');
+  const output = ts.transpileModule(source, {
+    compilerOptions: {
+      esModuleInterop: true,
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2020,
+    },
+    fileName,
+  }).outputText;
+
+  module._compile(output, fileName);
+};
+
+const { TOPIC_HUBS } = require(path.join(projectRoot, 'content', 'topic-hubs.ts'));
 
 function truncateAtWord(value, maxLength) {
   const normalized = value.replace(/\s+/g, ' ').trim();
@@ -110,14 +135,23 @@ const staticDescriptions = [
   'Read the Spectrum UI Terms of Service covering usage, licensing, payments, and refund policy.',
 ].map(formatDescription);
 
-const publicTitles = [...componentTitles, ...blogTitles, ...staticTitles];
-const publicDescriptions = [...componentDescriptions, ...blogDescriptions, ...staticDescriptions];
+const topicHubTitles = TOPIC_HUBS.map((hub) => formatBlogTitle(hub.metadataTitle));
+const topicHubDescriptions = TOPIC_HUBS.map((hub) => formatDescription(hub.description));
+
+const publicTitles = [...componentTitles, ...blogTitles, ...staticTitles, ...topicHubTitles];
+const publicDescriptions = [
+  ...componentDescriptions,
+  ...blogDescriptions,
+  ...staticDescriptions,
+  ...topicHubDescriptions,
+];
 
 assert.equal(componentTitles.length, 61);
 assert.ok(componentTitles.every((title) => title.length <= 60));
 assert.ok(componentDescriptions.every((description) => description.length <= 155));
 assert.ok(blogTitles.every((title) => title.length <= 60));
 assert.ok(staticTitles.every((title) => title.length <= 60));
+assert.ok(topicHubTitles.every((title) => title.length <= 60));
 assert.ok(publicDescriptions.every((description) => description.length <= 155));
 assert.equal(new Set(componentDescriptions).size, componentDescriptions.length);
 assert.equal(new Set(publicTitles).size, publicTitles.length);
