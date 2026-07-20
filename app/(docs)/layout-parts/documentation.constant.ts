@@ -1,4 +1,5 @@
 import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
+import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 
 interface Documentation {
   groupKey: string;
@@ -56,6 +57,15 @@ export const DOCS: Documentation[] = [
         url: '/docs/mcp',
       },
     ],
+  },
+  {
+    groupKey: 'topicGuides',
+    groupValue: 'Topic Guides',
+    children: TOPIC_HUB_LINKS.map((hub) => ({
+      label: hub.label,
+      value: hub.slug,
+      url: topicHubPath(hub.slug),
+    })),
   },
   {
     groupKey: 'components',

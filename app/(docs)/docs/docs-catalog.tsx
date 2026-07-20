@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Component as ComponentIcon } from 'lucide-react';
 import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
+import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 
 type ComponentItem = {
   name: string;
@@ -108,6 +109,31 @@ export function DocsCatalog() {
           )}
         </div> */}
       </div>
+
+      <section className="mb-12 animate-fade-up" aria-labelledby="topic-guides">
+        <h2
+          id="topic-guides"
+          className="scroll-m-24 text-xl font-medium leading-7 tracking-[-0.01em] text-neutral-900 dark:text-neutral-50"
+        >
+          Explore by topic
+        </h2>
+        <p className="mt-1 font-inter text-[13px] leading-5 tracking-wide text-neutral-500 dark:text-neutral-400">
+          Developer guides that connect related components, code examples, and implementation
+          decisions.
+        </p>
+        <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {TOPIC_HUB_LINKS.map((hub) => (
+            <Link
+              key={hub.slug}
+              href={topicHubPath(hub.slug)}
+              className="group flex min-h-12 items-center justify-between gap-3 rounded-[10px] border border-black/[0.08] bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-200 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+            >
+              {hub.label}
+              <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* Components */}
       <div className="mb-4 animate-fade-up" style={{ animationDelay: '60ms' }}>

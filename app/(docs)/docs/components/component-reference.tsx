@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import type { ComponentDoc } from '@/lib/component-docs';
+import { getTopicHubsForComponent } from '@/content/topic-hubs';
 import { Badge } from '@/components/ui/badge';
 import { InlineCode } from '@/components/ui/inline-code';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -221,6 +222,32 @@ function RelatedComponents({ component }: { component: ComponentDoc }) {
   );
 }
 
+function RelatedTopicGuides({ component }: { component: ComponentDoc }) {
+  const topicHubs = getTopicHubsForComponent(component.slug);
+
+  if (!topicHubs.length) return null;
+
+  return (
+    <Section id="topic-guides" title="Topic guides">
+      <p className={bodyClassName}>
+        See how this component fits into broader interface patterns, implementation decisions, and
+        working examples.
+      </p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {topicHubs.map((hub) => (
+          <Link
+            key={hub.slug}
+            href={hub.href}
+            className="rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {hub.label}
+          </Link>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function ComponentFAQ({ component }: { component: ComponentDoc }) {
   return (
     <Section id="faq" title={`${component.name} FAQ`}>
@@ -264,6 +291,7 @@ export function ComponentReference({ component }: { component: ComponentDoc }) {
       </Section>
 
       <RelatedComponents component={component} />
+      <RelatedTopicGuides component={component} />
       <ComponentFAQ component={component} />
     </div>
   );

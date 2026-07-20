@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import { DOCS } from "@/app/(docs)/layout-parts/documentation.constant";
+import { TOPIC_HUB_GROUPS, TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 import { Icons } from "./icon";
 
 /** Every component doc page, sourced from the docs nav so the footer stays in
@@ -100,9 +101,19 @@ const socialLinks = [
   { label: "X", href: siteConfig.links.twitter, Icon: Icons.twitter },
 ];
 
-const linkColumns: { label: string; href: string }[][] = [
- 
-];
+const linkColumns = TOPIC_HUB_GROUPS.map((group) => ({
+  group,
+  links: TOPIC_HUB_LINKS.flatMap((hub) =>
+    hub.group === group
+      ? [
+          {
+            label: hub.label,
+            href: topicHubPath(hub.slug),
+          },
+        ]
+      : [],
+  ),
+}));
 
 const WATERMARK = "SPECTRUM UI";
 
@@ -183,14 +194,19 @@ export default function Footer() {
           {/* Link columns */}
           <Reveal>
             <nav className="flex flex-wrap justify-center gap-x-[74px] gap-y-10">
-              {linkColumns.map((column, i) => (
-                <ul key={i} className="flex min-w-[110px] flex-col gap-1">
-                  {column.map((item) => (
-                    <li key={item.label}>
-                      <FooterLink href={item.href}>{item.label}</FooterLink>
-                    </li>
-                  ))}
-                </ul>
+              {linkColumns.map((column) => (
+                <div key={column.group} className="min-w-[150px]">
+                  <h3 className="mb-2 font-mono text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
+                    {column.group}
+                  </h3>
+                  <ul className="flex flex-col gap-1">
+                    {column.links.map((item) => (
+                      <li key={item.label}>
+                        <FooterLink href={item.href}>{item.label}</FooterLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </nav>
           </Reveal>

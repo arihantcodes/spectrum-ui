@@ -12,6 +12,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/s
 
 import { cn } from '@/lib/utils';
 import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
+import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 
@@ -71,6 +72,14 @@ const sidebarNav: NavSection[] = [
   {
     title: 'Integrations',
     items: [{ title: 'MCP Server', href: '/docs/mcp', items: [] }],
+  },
+  {
+    title: 'Topic Guides',
+    items: TOPIC_HUB_LINKS.map((hub) => ({
+      title: hub.label,
+      href: topicHubPath(hub.slug),
+      items: [],
+    })),
   },
   {
     title: 'Components',

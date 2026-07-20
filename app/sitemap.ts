@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { getAllBlogPosts } from "@/lib/blog";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
+import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type RouteConfig = Pick<SitemapEntry, "changeFrequency" | "priority">;
@@ -14,6 +15,9 @@ const appDirectory = path.join(projectRoot, "app");
 const pageFilePattern = /^page\.(?:js|jsx|mdx|ts|tsx)$/;
 const componentRoutes = new Set(
   COMPONENT_CATALOG.map((component) => componentDocsPath(component.slug)),
+);
+const topicHubRoutes = new Set(
+  TOPIC_HUB_LINKS.map((hub) => topicHubPath(hub.slug)),
 );
 const nonIndexableRoutes = new Set([
   "/bookmarks",
@@ -95,6 +99,10 @@ function validDate(value: string | null | undefined): Date | undefined {
 
 function getRouteConfig(route: string): RouteConfig {
   if (componentRoutes.has(route)) {
+    return { changeFrequency: "weekly", priority: 0.8 };
+  }
+
+  if (topicHubRoutes.has(route)) {
     return { changeFrequency: "weekly", priority: 0.8 };
   }
 
@@ -186,6 +194,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       sourceFiles.push(
         path.join(appDirectory, "(docs)", "docs", "docs-catalog.tsx"),
         path.join(projectRoot, "content", "component-catalog.json"),
+      );
+    }
+
+    if (topicHubRoutes.has(route)) {
+      sourceFiles.push(
+        path.join(projectRoot, "components", "topic-hub-page.tsx"),
+        path.join(projectRoot, "content", "topic-hubs.ts"),
+        path.join(projectRoot, "lib", "topic-hub-metadata.ts"),
+        path.join(projectRoot, "lib", "topic-hub-structured-data.ts"),
       );
     }
 
