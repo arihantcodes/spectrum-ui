@@ -191,9 +191,9 @@
 }
 
 /* Chroma text sweep (hero h1): a rainbow band sweeps across the text once on
-   load, settling on solid black (white in dark mode). The gradient is 3x the
-   element width — position 100% shows the transparent tail (text hidden),
-   position 0 shows the solid head. */
+   load. The gradient is 3x the element width and both its head AND tail are the
+   solid heading color, so the text is painted (visible) from the very first
+   frame — good for LCP — while only the colorful band moves across (100% -> 0). */
 .chroma-text {
   background-image: linear-gradient(
     90deg,
@@ -204,8 +204,8 @@
     #ffb005 50%,
     #e1e1fe 55%,
     #0358f7 60%,
-    transparent 66.67%,
-    transparent
+    #000000 66.67%,
+    #000000
   );
   background-size: 300% 100%;
   background-position: 100% 0;
@@ -226,20 +226,20 @@
     #ffb005 50%,
     #e1e1fe 55%,
     #0358f7 60%,
-    transparent 66.67%,
-    transparent
+    #ffffff 66.67%,
+    #ffffff
   );
 }
 
 .chroma-text-animate {
+  /* Only the color band sweeps — no blur, so the sharp heading paints on the
+     first frame (keeps LCP at first paint instead of the animation's end). */
   animation: chroma-sweep 0.9s ease-in-out 0.1s forwards;
-  filter: blur(1px);
 }
 
 @keyframes chroma-sweep {
   to {
     background-position: 0 0;
-    filter: blur(0);
   }
 }
 
