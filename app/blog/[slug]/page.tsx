@@ -193,12 +193,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
                   <h1
                     itemProp="headline"
-                    className="font-regular text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-neutral-900 sm:text-[44px] dark:text-neutral-50"
+                    className="text-balance font-regular text-[32px] font-semibold leading-[1.08] tracking-[-0.025em] text-neutral-900 sm:text-[44px] dark:text-neutral-50"
                   >
                     {post.title}
                   </h1>
 
-                  <p className="max-w-[62ch] font-inter text-[17px] leading-[1.6] text-neutral-600 dark:text-neutral-400">
+                  <p className="max-w-[62ch] font-inter text-[17px] leading-[1.7] text-neutral-600 dark:text-neutral-400">
                     {post.excerpt}
                   </p>
 
@@ -244,7 +244,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 {/* Article Content */}
                 <div
                   itemProp="articleBody"
-                  className="prose prose-neutral dark:prose-invert mt-10 max-w-none font-inter text-[15px] leading-[1.75] text-neutral-700 dark:text-neutral-300 prose-headings:font-regular prose-headings:font-semibold prose-headings:tracking-[-0.015em] prose-headings:text-neutral-900 dark:prose-headings:text-neutral-100 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-[3px] dark:prose-a:text-neutral-100 prose-code:font-mono prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100"
+                  className="blog-content prose prose-neutral dark:prose-invert mt-10 max-w-[42em] font-inter text-[15px] leading-[1.75] text-neutral-700 dark:text-neutral-300 prose-headings:font-regular prose-headings:font-semibold prose-headings:tracking-[-0.015em] prose-headings:text-neutral-900 dark:prose-headings:text-neutral-100 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-[3px] dark:prose-a:text-neutral-100 prose-code:font-mono prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100"
                 >
                   {post.content}
                 </div>

@@ -401,6 +401,172 @@ pre > code {
   width: 1.5rem;
 }
 
+/* Blog typography — Method A.
+   The posts are hand-authored TSX rather than markdown, so this shared wrapper
+   gives every article the same Typeset-inspired rhythm without pulling in the
+   Tailwind v4-only shadcn stylesheet. Embedded code keeps its own presentation. */
+.blog-content {
+  --blog-body: #404040;
+  --blog-heading: #171717;
+  --blog-muted: #737373;
+  --blog-border: #e5e5e5;
+  --blog-surface: #f5f5f5;
+  color: var(--blog-body);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark .blog-content {
+  --blog-body: #d4d4d4;
+  --blog-heading: #fafafa;
+  --blog-muted: #a3a3a3;
+  --blog-border: #262626;
+  --blog-surface: #171717;
+}
+
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  color: var(--blog-heading);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.blog-content h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.blog-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.blog-content h4 {
+  font-size: 1.0625rem;
+  line-height: 1.45;
+}
+
+.blog-content h5,
+.blog-content h6 {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.blog-content p,
+.blog-content li,
+.blog-content dd,
+.blog-content dt,
+.blog-content figcaption,
+.blog-content table {
+  color: var(--blog-body);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.blog-content > div > * {
+  margin-bottom: 0 !important;
+}
+
+.blog-content > div > * + * {
+  margin-top: 1.25em !important;
+}
+
+.blog-content > div > h2 {
+  margin-top: 2.5em !important;
+}
+
+.blog-content > div > h3 {
+  margin-top: 2em !important;
+}
+
+.blog-content > div > h4,
+.blog-content > div > h5,
+.blog-content > div > h6 {
+  margin-top: 1.75em !important;
+}
+
+.blog-content a {
+  color: var(--blog-heading);
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 3px;
+}
+
+.blog-content strong {
+  color: var(--blog-heading);
+  font-weight: 600;
+}
+
+.blog-content blockquote {
+  border-color: var(--blog-border);
+  color: var(--blog-muted);
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.blog-content :not(pre) > code,
+.blog-content kbd {
+  border-radius: 0.25rem;
+  background: var(--blog-surface);
+  color: var(--blog-heading);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875em;
+  font-weight: 500;
+  padding: 0.125em 0.35em;
+}
+
+.blog-content pre,
+.blog-content pre code {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.blog-content hr,
+.blog-content th,
+.blog-content td {
+  border-color: var(--blog-border);
+}
+
+/* Dark utilities in the legacy post markup include the `.dark` selector, so
+   match that specificity here to keep the shared palette authoritative. */
+.dark .blog-content h2,
+.dark .blog-content h3,
+.dark .blog-content h4,
+.dark .blog-content h5,
+.dark .blog-content h6,
+.dark .blog-content a,
+.dark .blog-content strong {
+  color: var(--blog-heading);
+}
+
+.dark .blog-content p,
+.dark .blog-content li,
+.dark .blog-content dd,
+.dark .blog-content dt,
+.dark .blog-content figcaption,
+.dark .blog-content table {
+  color: var(--blog-body);
+}
+
+.dark .blog-content blockquote {
+  border-color: var(--blog-border);
+  color: var(--blog-muted);
+}
+
+.dark .blog-content :not(pre) > code,
+.dark .blog-content kbd {
+  background: var(--blog-surface);
+  color: var(--blog-heading);
+}
+
 @theme inline {
   @keyframes gradient-spin {
     from {
