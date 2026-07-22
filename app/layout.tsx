@@ -129,11 +129,11 @@ export default async function RootLayout({
         {/* Defer non-critical scripts */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-K7ZP6JB4MG"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
 window.dataLayer = window.dataLayer || [];
@@ -150,7 +150,7 @@ gtag('config', 'G-K7ZP6JB4MG');
         <Script
           id="adsense"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119622964025792"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
       </head>

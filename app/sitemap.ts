@@ -6,6 +6,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
 import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
+import { comparisons } from "@/lib/comparisons";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type RouteConfig = Pick<SitemapEntry, "changeFrequency" | "priority">;
@@ -35,8 +36,19 @@ const nonIndexableRoutes = new Set([
 
 const routeConfig: Record<string, RouteConfig> = {
   "/": { changeFrequency: "weekly", priority: 1 },
+  "/awesome": { changeFrequency: "weekly", priority: 0.7 },
+  "/best-animated-react-component-libraries": {
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  "/best-react-component-libraries": {
+    changeFrequency: "monthly",
+    priority: 0.7,
+  },
+  "/blocks": { changeFrequency: "weekly", priority: 0.7 },
   "/blog": { changeFrequency: "weekly", priority: 0.8 },
   "/colors": { changeFrequency: "monthly", priority: 0.5 },
+  "/compare": { changeFrequency: "monthly", priority: 0.7 },
   "/docs": { changeFrequency: "weekly", priority: 0.9 },
   "/docs/guides": { changeFrequency: "monthly", priority: 0.7 },
   "/docs/installation": { changeFrequency: "monthly", priority: 0.8 },
@@ -227,6 +239,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   ];
 
+  // Dynamic /compare/[slug] pages are not covered by filesystem discovery.
+  const comparisonSource = path.join(
+    appDirectory,
+    "(marketing)",
+    "compare",
+    "[slug]",
+    "page.tsx",
+  );
+  const comparisonPages = comparisons.map((comparison) =>
+    createEntry({
+      route: "/compare/" + comparison.slug,
+      sourceFiles: [
+        comparisonSource,
+        path.join(projectRoot, "lib", "comparisons.ts"),
+      ],
+      config: { changeFrequency: "monthly", priority: 0.7 },
+    }),
+  );
+
   const [blogPages, templatePages] = await Promise.all([
     getBlogPages(),
     getTemplatePages(),
@@ -234,6 +265,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries = [
     ...staticPages,
     ...machineReadablePages,
+    ...comparisonPages,
     ...blogPages,
     ...templatePages,
   ];
