@@ -1,52 +1,51 @@
-"use client"
+'use client';
 
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { motion, useReducedMotion } from "framer-motion"
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+
+import { AnimateEnter } from '@/app/home/AnimateEnter';
 
 export const faqs = [
   {
-    question: "Do I need to use an AI assistant?",
+    question: 'Do I need to use an AI assistant?',
     answer:
-      "No. The MCP is the fast path, but every component is browsable and copy-pasteable from the site too. Use whichever fits your flow.",
+      'No. The MCP is the fast path, but every component is browsable and copy-pasteable from the site too. Use whichever fits your flow.',
   },
   {
-    question: "Which editors and assistants does it work with?",
+    question: 'Which editors and assistants does it work with?',
     answer:
       "Anything that supports MCP — Cursor, Claude Code, Windsurf, VS Code with Copilot, and more. One config line and you're connected.",
   },
   {
-    question: "Do I own the code?",
+    question: 'Do I own the code?',
     answer:
       "Yes. Components are copied into your repo as plain React and Tailwind files. Edit them, restyle them, ship them — they're yours.",
   },
   {
-    question: "Is it really built on shadcn/ui?",
+    question: 'Is it really built on shadcn/ui?',
     answer:
-      "Yes. Everything follows shadcn/ui and Radix conventions, so components drop straight into an existing shadcn project.",
+      'Yes. Everything follows shadcn/ui and Radix conventions, so components drop straight into an existing shadcn project.',
   },
   {
-    question: "How is this different from copy-pasting from a docs site?",
+    question: 'How is this different from copy-pasting from a docs site?',
     answer:
-      "Your assistant pulls the exact source with the right imports and dependencies, straight into your project. No tab-switching, no missed files.",
+      'Your assistant pulls the exact source with the right imports and dependencies, straight into your project. No tab-switching, no missed files.',
   },
   {
-    question: "Will my components break when you ship updates?",
+    question: 'Will my components break when you ship updates?',
     answer:
-      "No. The code lives in your repo, so updates never touch it. Pull newer versions only when you want them.",
+      'No. The code lives in your repo, so updates never touch it. Pull newer versions only when you want them.',
   },
   {
-    question: "Can I use it in commercial projects?",
+    question: 'Can I use it in commercial projects?',
     answer:
       "Yes. Use it in client work, SaaS products, whatever you're building. Just don't resell the components as your own library.",
   },
   {
-    question: "Is it free to try?",
+    question: 'Is it free to try?',
     answer:
-      "Yes. Spectrum UI is free and open source. Connect the MCP and start pulling components in minutes.",
+      'Yes. Spectrum UI is free and open source. Connect the MCP and start pulling components in minutes.',
   },
-]
-
-const revealEase = [0.22, 1, 0.36, 1] as const
+];
 
 function PlusMinusIcon() {
   return (
@@ -57,22 +56,14 @@ function PlusMinusIcon() {
       <span className="absolute left-1/2 top-1/2 h-[1.5px] w-[11px] -translate-x-1/2 -translate-y-1/2 bg-current" />
       <span className="absolute left-1/2 top-1/2 h-[11px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 ease-out group-data-[state=open]:scale-y-0" />
     </span>
-  )
+  );
 }
 
 export function FAQSection() {
-  const reduceMotion = useReducedMotion()
-
   return (
     <section className="container py-16">
       {/* Header */}
-      <motion.div
-        className="flex flex-col gap-3"
-        initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.55, ease: revealEase }}
-      >
+      <AnimateEnter duration={0.55} className="flex flex-col gap-3">
         <div className="flex items-center gap-2.5">
           <span aria-hidden className="-rotate-90">
             <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d] dark:border-[#E1F435]" />
@@ -86,7 +77,7 @@ export function FAQSection() {
           <br />
           before installing
         </h2>
-      </motion.div>
+      </AnimateEnter>
 
       {/* Accordion */}
       <AccordionPrimitive.Root
@@ -96,17 +87,7 @@ export function FAQSection() {
         className="mt-10 w-full max-w-[960px]"
       >
         {faqs.map((faq, index) => (
-          <motion.div
-            key={faq.question}
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-              duration: 0.55,
-              delay: index * 0.045,
-              ease: revealEase,
-            }}
-          >
+          <AnimateEnter key={faq.question} duration={0.55} delay={index * 0.045}>
             <AccordionPrimitive.Item
               value={`faq-${index}`}
               className="border-b border-[#f5f5f5] transition-colors duration-300 hover:border-[#e8e8e8] dark:border-[#1f1f1f] dark:hover:border-neutral-800"
@@ -127,9 +108,9 @@ export function FAQSection() {
                 </div>
               </AccordionPrimitive.Content>
             </AccordionPrimitive.Item>
-          </motion.div>
+          </AnimateEnter>
         ))}
       </AccordionPrimitive.Root>
     </section>
-  )
+  );
 }

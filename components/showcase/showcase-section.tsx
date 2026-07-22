@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { motion } from "motion/react";
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import { AnimateEnter } from '@/app/home/AnimateEnter';
 
-import { AccountAccessCard } from "./account-access-card";
-import { AIChatCard } from "./ai-chat-card";
-import { CommandSearch } from "./command-search";
-import { FAQTabsCard } from "./faq-tabs-card";
-import { NavListCard, SUPPORT_NAV_ITEMS } from "./nav-list-card";
-import { RecentActivity } from "./recent-activity";
-import { TransferFundsCard } from "./transfer-funds-card";
+import { AccountAccessCard } from './account-access-card';
+import { AIChatCard } from './ai-chat-card';
+import { CommandSearch } from './command-search';
+import { FAQTabsCard } from './faq-tabs-card';
+import { NavListCard, SUPPORT_NAV_ITEMS } from './nav-list-card';
+import { RecentActivity } from './recent-activity';
+import { TransferFundsCard } from './transfer-funds-card';
 
 export interface ShowcaseSectionProps {
   tag?: string;
@@ -21,6 +21,8 @@ export interface ShowcaseSectionProps {
   children?: React.ReactNode;
 }
 
+// Scroll reveal on top of the stall-proof CSS reveal: content is visible at
+// rest and only hidden pre-paint when it starts below the fold.
 function Reveal({
   children,
   delay = 0,
@@ -31,36 +33,22 @@ function Reveal({
   className?: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={className}
-    >
+    <AnimateEnter delay={delay} className={className}>
       {children}
-    </motion.div>
+    </AnimateEnter>
   );
 }
 
 export function ShowcaseSection({
-  tag = "Showcase",
+  tag = 'Showcase',
   heading = "Everything you'll want to steal.",
   className,
   children,
 }: ShowcaseSectionProps) {
   return (
-    <section
-      className={cn("px-4 pb-14 pt-[38px] sm:px-8 lg:px-[50px]", className)}
-    >
+    <section className={cn('px-4 pb-14 pt-[38px] sm:px-8 lg:px-[50px]', className)}>
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex flex-col items-center gap-[3px] text-center"
-      >
+      <AnimateEnter duration={0.5} className="flex flex-col items-center gap-[3px] text-center">
         <span className="flex items-center gap-2.5">
           <span
             aria-hidden
@@ -73,7 +61,7 @@ export function ShowcaseSection({
         <h2 className="font-spectral text-2xl leading-[28.8px] tracking-[-1px] text-[#2d2f2e] dark:text-neutral-200">
           {heading}
         </h2>
-      </motion.div>
+      </AnimateEnter>
 
       {/* Card grid */}
       {children ?? (
