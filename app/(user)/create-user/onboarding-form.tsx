@@ -1,67 +1,68 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
-import { completeUserProfile } from './actions'
-import { GitHubUsernameInput } from './github-username-input'
-import { SubmitButton } from './submit-button'
-import { trackEvent } from '@/lib/events'
-import { useState } from 'react'
+import { useEffect, useState } from 'react';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { trackEvent } from '@/lib/events';
+import { completeUserProfile } from './actions';
+import { GitHubUsernameInput } from './github-username-input';
+import { SubmitButton } from './submit-button';
 
 interface OnboardingFormProps {
-  userName: string
-  userEmail: string
-  defaultGithub: string
-  nextUrl: string
+  userName: string;
+  userEmail: string;
+  userImage: string;
+  defaultGithub: string;
+  nextUrl: string;
 }
 
 export function OnboardingForm({
   userName,
   userEmail,
+  userImage,
   defaultGithub,
   nextUrl,
 }: OnboardingFormProps) {
-  const [githubValid, setGithubValid] = useState(false)
+  const [githubValid, setGithubValid] = useState(false);
 
   useEffect(() => {
-    trackEvent({ name: 'onboarding_started' })
-  }, [])
+    trackEvent({ name: 'onboarding_started' });
+  }, []);
 
   return (
-    <form action={completeUserProfile} className="space-y-5">
-      <input type="hidden" name="next" value={nextUrl} />
-
-      <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-neutral-700 dark:text-[#888] uppercase tracking-wider">
-          Full Name
-        </label>
-        <input
-          type="text"
-          disabled
-          value={userName}
-          className="w-full bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222] text-neutral-500 dark:text-[#666] px-4 py-2.5 rounded-xl text-sm cursor-not-allowed"
-        />
+    <section aria-label="Complete your profile">
+      {/* Signed-in identity — same hairline-ring card as the profile page. */}
+      <div
+        className="auth-enter mt-7 flex items-center gap-3 rounded-2xl bg-card p-4 shadow-[0_0_0_1px_hsl(var(--border)),0_1px_2px_rgba(0,0,0,0.04)]"
+        style={{ animationDelay: '120ms' }}
+      >
+        <Avatar className="size-10 shrink-0 rounded-xl shadow-[0_0_0_1px_hsl(var(--border))]">
+          <AvatarImage src={userImage} alt={userName || 'Signed-in user'} />
+          <AvatarFallback className="rounded-xl bg-muted text-sm font-medium text-muted-foreground">
+            {userName?.[0]?.toUpperCase() ?? 'U'}
+          </AvatarFallback>
+        </Avatar>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-medium text-foreground">
+            {userName || 'Your account'}
+          </p>
+          <p className="mt-0.5 truncate font-mono text-xs text-muted-foreground">{userEmail}</p>
+        </div>
+        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground">
+          <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden />
+          Verified
+        </span>
       </div>
 
-      <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-neutral-700 dark:text-[#888] uppercase tracking-wider">
-          Email Address
-        </label>
-        <input
-          type="email"
-          disabled
-          value={userEmail}
-          className="w-full bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222] text-neutral-500 dark:text-[#666] px-4 py-2.5 rounded-xl text-sm cursor-not-allowed"
-        />
-      </div>
-
-      <GitHubUsernameInput
-        defaultValue={defaultGithub}
-        onValidationChange={setGithubValid}
-      />
-
-      <div className="pt-4">
+      <form
+        action={completeUserProfile}
+        className="auth-enter mt-6 space-y-5"
+        style={{ animationDelay: '180ms' }}
+      >
+        <input type="hidden" name="next" value={nextUrl} />
+        <GitHubUsernameInput defaultValue={defaultGithub} onValidationChange={setGithubValid} />
         <SubmitButton disabled={!githubValid} />
-      </div>
-    </form>
-  )
+      </form>
+    </section>
+  );
 }

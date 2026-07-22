@@ -1,32 +1,20 @@
-import { auth } from '@/auth'
-import { redirect } from 'next/navigation'
-import { buildCreateUserUrl, isOnboardingComplete } from '@/lib/onboarding'
+import { redirect } from 'next/navigation';
 
-import { AuthShowcase } from '@/components/auth-showcase'
-import { AuthPanel } from '@/components/auth-panel'
+import { AuthPage } from '@/components/auth-page';
 
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: { callbackUrl?: string }
+  searchParams: { callbackUrl?: string; mode?: string };
 }) {
-  const session = await auth()
-  const callbackUrl = searchParams.callbackUrl ?? '/'
+  const callbackUrl = searchParams.callbackUrl ?? '/';
 
-  if (session?.user?.email) {
-    const onboardingComplete = await isOnboardingComplete(session.user.email)
-    if (!onboardingComplete) {
-      redirect(buildCreateUserUrl(callbackUrl))
-    }
-    redirect(callbackUrl.startsWith('/') ? callbackUrl : '/')
+  // Keep old bookmarked links working while giving account creation its own
+  // explicit route and page state.
+  if (searchParams.mode === 'signup') {
+    const query = callbackUrl === '/' ? '' : `?callbackUrl=${encodeURIComponent(callbackUrl)}`;
+    redirect(`/sign-up${query}`);
   }
 
-  const postAuthRedirect = buildCreateUserUrl(callbackUrl)
-
-  return (
-    <div className="grid min-h-screen lg:grid-cols-2">
-      <AuthPanel redirectTo={postAuthRedirect} />
-      <AuthShowcase />
-    </div>
-  )
+  return <AuthPage callbackUrl={callbackUrl} mode="signin" />;
 }

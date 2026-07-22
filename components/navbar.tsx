@@ -14,12 +14,6 @@ import type { Session } from 'next-auth';
 export function SiteHeader({ session }: { session: Session | null }) {
   const pathname = usePathname();
 
-  // Hide header on auth/onboarding pages (they have their own layout)
-  const hideOnRoutes = ['/sign-in', '/create-user'];
-  if (hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
-    return null;
-  }
-
   return (
     <header className="border-grid sticky top-0 z-[50]  w-full border-b bg-background/10 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container-wrapper ">
@@ -58,7 +52,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
               {session ? (
                 <UserNav session={session} />
               ) : (
-                <Link href={`/sign-in?callbackUrl=${encodeURIComponent(pathname)}`}>
+                <Link href={`/sign-up?callbackUrl=${encodeURIComponent(pathname)}`}>
                   <Button
                     size="sm"
                     className="h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-sm"
