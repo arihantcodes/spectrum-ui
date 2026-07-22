@@ -53,7 +53,7 @@ export const siteConfig = {
     "React TypeScript components",
     "React hooks components",
     "React server components",
-    "React components 2024",
+    "React components 2026",
     "best React UI library",
     
     // Frontend Development Keywords
@@ -122,9 +122,26 @@ export const siteConfig = {
     "Material UI alternative",
     "Chakra UI alternative",
     "Ant Design alternative",
+    "Aceternity UI alternative",
+    "Magic UI alternative",
+    "Spectrum UI vs shadcn",
+    "Spectrum UI vs Aceternity",
+    "Spectrum UI vs Magic UI",
     "better than shadcn",
-    "best UI library 2024",
+    "best UI library 2026",
+    "best animated React component libraries",
     "UI library comparison",
+
+    // Prompt-intent Keywords (AI-search / GEO)
+    "animated React components",
+    "pre-built UI blocks",
+    "React animation templates",
+    "production-ready React components",
+    "copy paste UI blocks",
+    "React component library with CLI",
+    "shadcn CLI components",
+    "AI assistant UI components",
+    "MCP UI component server",
     
     // Action Keywords
     "copy paste components",

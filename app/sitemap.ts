@@ -3,6 +3,7 @@ import { ROUTES } from "@/lib/routes-config";
 import { siteConfig } from "@/config/site";
 import { getAllBlogPosts } from "@/lib/blog";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { comparisons } from "@/lib/comparisons";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
@@ -75,6 +76,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.2,
     },
+    // GEO/AEO comparison + roundup pages
+    {
+      url: `${baseUrl}/compare`,
+      lastModified: new Date("2026-07-19"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/best-animated-react-component-libraries`,
+      lastModified: new Date("2026-07-19"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/best-react-component-libraries`,
+      lastModified: new Date("2026-07-20"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/awesome`,
+      lastModified: new Date("2026-07-20"),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blocks`,
+      lastModified: new Date("2026-07-20"),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...comparisons.map((c) => ({
+      url: `${baseUrl}/compare/${c.slug}`,
+      lastModified: new Date("2026-07-19"),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 
   let blogPages: MetadataRoute.Sitemap = [];
