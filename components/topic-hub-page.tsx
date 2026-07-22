@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, BookOpen, Check, Code2, Component, Layers3 } from 'lucide-react';
 
+import CommandFigure from '@/app/(docs)/docs/components/code-card/parts/command-figure';
+import CodeHighlight from '@/app/(docs)/docs/components/code-card/parts/code-highlight';
 import { JsonLd } from '@/components/seo/json-ld';
 import { TopicHubFaq } from '@/components/topic-hub-faq';
 import type { TopicHub } from '@/content/topic-hubs';
@@ -54,6 +56,8 @@ function TopicHubStructuredData({ hub }: { hub: TopicHub }) {
 export function TopicHubPage({ hub }: { hub: TopicHub }) {
   const components = getTopicHubComponents(hub);
   const relatedHubs = getRelatedTopicHubs(hub);
+  const exportMatch = hub.codeExample.code.match(/export function (\w+)/);
+  const codeExampleTitle = exportMatch ? `${exportMatch[1]}.tsx` : undefined;
 
   return (
     <>
@@ -227,25 +231,21 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
               title={hub.codeExample.title}
               description={hub.codeExample.description}
             />
-            <div className="mt-8 overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-950 text-neutral-100 dark:border-neutral-800">
-              <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 font-mono text-xs text-neutral-400">
-                <Code2 className="size-4" aria-hidden="true" />
-                Install
-              </div>
-              <div className="space-y-2 border-b border-white/10 px-5 py-4">
-                {hub.codeExample.installCommands.map((command) => (
-                  <pre key={command} className="overflow-x-auto font-mono text-[13px] leading-6">
-                    <code>{command}</code>
-                  </pre>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 font-mono text-xs text-neutral-400">
-                <Code2 className="size-4" aria-hidden="true" />
-                React
-              </div>
-              <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-6 text-neutral-200">
-                <code>{hub.codeExample.code}</code>
-              </pre>
+            <div className="mt-8 space-y-4">
+              {hub.codeExample.installCommands.map((command) => {
+                const addMatch = command.match(/shadcn(?:@latest)?\s+add\s+(.+)$/);
+                return addMatch ? (
+                  <CommandFigure key={command} cli={addMatch[1].trim()} requireAuth={false} />
+                ) : (
+                  <CommandFigure key={command} command={command} requireAuth={false} />
+                );
+              })}
+              <CodeHighlight
+                code={hub.codeExample.code}
+                lang="tsx"
+                requireAuth={false}
+                title={codeExampleTitle}
+              />
             </div>
           </div>
         </section>
