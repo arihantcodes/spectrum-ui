@@ -32,16 +32,15 @@ export function HeroContent() {
             aren't sliced by the tight leading; the margins subtract the same
             amount to keep the layout unchanged. */}
         <h1 className="chroma-text chroma-text-animate max-w-[553px] mt-[calc(1rem-0.12em)] mb-[calc(1rem-0.25em)] pt-[0.12em] pb-[0.25em] font-spectral font-light capitalize text-[30px] leading-[0.95] tracking-[-0.09em] text-black dark:text-white sm:text-[42px] lg:text-[54px] lg:leading-[51px] lg:tracking-[-5px]">
-          Animation-ready React
+          The component library
           <br />
-          components and blocks.
+          your AI agents are missing.
         </h1>
 
         <AnimateEnter delay={0.28} isWhileInView={false}>
           <p className="max-w-[548px] font-inter text-[14px] font-normal capitalize leading-[20px] text-[#646464]">
-            Spectrum UI is an open-source React component and block library with copy-paste source
-            built using React, Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui for SaaS
-            dashboards, landing pages, AI applications, and admin panels.
+            Connect the Spectrum UI MCP once, then ask Cursor or Claude for any of 250+ animated
+            components installed in one line, wired to your project.
           </p>
         </AnimateEnter>
 
