@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, BookOpen, Check, Code2, Component, Layers3 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Code2, Layers3 } from 'lucide-react';
 
 import CommandFigure from '@/app/(docs)/docs/components/code-card/parts/command-figure';
 import CodeHighlight from '@/app/(docs)/docs/components/code-card/parts/code-highlight';
@@ -12,6 +12,28 @@ import { topicHubPath } from '@/lib/topic-hub-links';
 
 const sectionClassName =
   'border-t border-neutral-200 px-5 py-14 dark:border-neutral-800 sm:px-8 md:px-10 md:py-20';
+
+/* Landing-page card language (matches the showcase/blog cards on `/`):
+   soft ring shadow instead of a hard border, 16px radius, springy lift. */
+const cardClassName =
+  'rounded-[16px] bg-white shadow-[0_0_0_1px_rgba(10,10,10,0.05),0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] dark:bg-neutral-950 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_1px_3px_0_rgba(0,0,0,0.5)]';
+const cardHoverClassName =
+  'transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-safe:hover:-translate-y-1 hover:shadow-[0_0_0_1px_rgba(10,10,10,0.08),0_12px_32px_-14px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_12px_32px_-14px_rgba(0,0,0,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-600';
+
+/** Landing signature: accent corner chevron + mono uppercase label. */
+function ChevronTag({ label }: { label: string }) {
+  return (
+    <span className="flex items-center gap-2">
+      <span
+        aria-hidden
+        className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+      />
+      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400">
+        {label}
+      </span>
+    </span>
+  );
+}
 
 // All readable text (headings + prose) is styled by shadcn/typeset — the
 // content elements inside `.typeset` carry NO classes, so the .typeset-docs
@@ -136,19 +158,17 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
         <section className={sectionClassName} aria-labelledby="when-to-use">
           <div className="mx-auto max-w-5xl">
             <SectionHeading id="when-to-use" title="When to use these patterns" />
-            <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-800 md:grid-cols-3">
-              {hub.whenToUse.map((useCase) => (
-                <div key={useCase.title} className="not-typeset bg-white p-6 dark:bg-neutral-950">
-                  <span className="flex size-8 items-center justify-center rounded-full bg-neutral-100 dark:bg-neutral-900">
-                    <Check
-                      className="size-4 text-neutral-700 dark:text-neutral-300"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <h3 className="mt-5 text-base font-medium text-neutral-900 dark:text-neutral-100">
+            <div className="mt-9 grid gap-3.5 md:grid-cols-3">
+              {hub.whenToUse.map((useCase, index) => (
+                <div
+                  key={useCase.title}
+                  className={`not-typeset flex flex-col p-6 ${cardClassName}`}
+                >
+                  <ChevronTag label={`0${index + 1}`} />
+                  <h3 className="mt-5 font-spectral text-lg leading-[1.3] tracking-[-0.4px] text-[#080808]/95 dark:text-neutral-100">
                     {useCase.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                  <p className="mt-2 font-inter text-sm leading-6 tracking-[-0.28px] text-[#646464] dark:text-neutral-400">
                     {useCase.description}
                   </p>
                 </div>
@@ -168,32 +188,24 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
               title={`${hub.label} to explore`}
               description="Open a component page to inspect its live example, editable source, installation command, dependencies, API details, accessibility notes, and related components."
             />
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-9 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
               {components.map((component) => (
                 <Link
                   key={component.slug}
                   href={component.href}
-                  className="group not-typeset flex min-h-40 flex-col rounded-xl border border-neutral-200 bg-white p-5 transition-[transform,border-color,background-color] hover:-translate-y-0.5 hover:border-neutral-300 hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-neutral-700 dark:hover:bg-neutral-900/40"
+                  className={`group not-typeset flex min-h-[168px] flex-col p-5 ${cardClassName} ${cardHoverClassName}`}
                 >
-                  <span className="flex items-start justify-between gap-4">
-                    <span className="flex size-9 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-900">
-                      <Component
-                        className="size-4 text-neutral-700 dark:text-neutral-300"
-                        aria-hidden="true"
-                      />
-                    </span>
-                    <span className="rounded-full border border-neutral-200 px-2.5 py-1 text-[11px] font-medium text-neutral-500 dark:border-neutral-800 dark:text-neutral-500">
-                      {component.category}
-                    </span>
-                  </span>
-                  <span className="mt-5 flex items-center gap-1.5 text-base font-medium text-neutral-900 dark:text-neutral-100">
-                    {component.name}
+                  <span className="flex items-center justify-between gap-4">
+                    <ChevronTag label={component.category} />
                     <ArrowUpRight
-                      className="size-3.5 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                      className="size-4 -translate-x-1 text-neutral-400 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 dark:text-neutral-500"
                       aria-hidden="true"
                     />
                   </span>
-                  <span className="mt-2 text-sm leading-5 text-neutral-600 dark:text-neutral-400">
+                  <span className="mt-5 font-spectral text-lg leading-[1.3] tracking-[-0.4px] text-[#080808]/95 transition-colors duration-300 ease-out group-hover:text-[#f9452d] dark:text-neutral-100 dark:group-hover:text-[#E1F435]">
+                    {component.name}
+                  </span>
+                  <span className="mt-2 font-inter text-sm leading-6 tracking-[-0.28px] text-[#646464] dark:text-neutral-400">
                     {component.description}
                   </span>
                 </Link>
@@ -235,25 +247,24 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
         <section className={sectionClassName} aria-labelledby="guides-heading">
           <div className="mx-auto max-w-5xl">
             <SectionHeading id="guides-heading" title="Linked guides" />
-            <div className="mt-8 grid gap-3 md:grid-cols-3">
+            <div className="mt-9 grid gap-3.5 md:grid-cols-3">
               {hub.guideLinks.map((guide) => (
                 <Link
                   key={guide.href}
                   href={guide.href}
-                  className="group not-typeset rounded-xl border border-neutral-200 p-5 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:hover:bg-neutral-900/40"
+                  className={`group not-typeset flex flex-col p-6 ${cardClassName} ${cardHoverClassName}`}
                 >
-                  <BookOpen
-                    className="size-5 text-neutral-500 dark:text-neutral-400"
-                    aria-hidden="true"
-                  />
-                  <h3 className="mt-5 flex items-center gap-1.5 text-base font-medium text-neutral-900 dark:text-neutral-100">
-                    {guide.title}
+                  <span className="flex items-center justify-between gap-4">
+                    <ChevronTag label="Guide" />
                     <ArrowUpRight
-                      className="size-3.5 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
+                      className="size-4 -translate-x-1 text-neutral-400 opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 dark:text-neutral-500"
                       aria-hidden="true"
                     />
+                  </span>
+                  <h3 className="mt-5 font-spectral text-lg leading-[1.3] tracking-[-0.4px] text-[#080808]/95 transition-colors duration-300 ease-out group-hover:text-[#f9452d] dark:text-neutral-100 dark:group-hover:text-[#E1F435]">
+                    {guide.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                  <p className="mt-2 font-inter text-sm leading-6 tracking-[-0.28px] text-[#646464] dark:text-neutral-400">
                     {guide.description}
                   </p>
                 </Link>
@@ -265,16 +276,18 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
         <section className={sectionClassName} aria-labelledby="related-heading">
           <div className="mx-auto max-w-5xl">
             <SectionHeading id="related-heading" title="Related topic guides" />
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="mt-9 grid gap-3.5 sm:grid-cols-3">
               {relatedHubs.map((related) => (
                 <Link
                   key={related.slug}
                   href={topicHubPath(related.slug)}
-                  className="group not-typeset flex items-center justify-between gap-4 rounded-xl border border-neutral-200 p-5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-900/40"
+                  className={`group not-typeset flex items-center justify-between gap-4 p-5 ${cardClassName} ${cardHoverClassName}`}
                 >
-                  {related.label}
+                  <span className="font-spectral text-base leading-[1.3] tracking-[-0.3px] text-[#080808]/95 transition-colors duration-300 ease-out group-hover:text-[#f9452d] dark:text-neutral-100 dark:group-hover:text-[#E1F435]">
+                    {related.label}
+                  </span>
                   <ArrowRight
-                    className="size-4 shrink-0 transition-transform group-hover:translate-x-1"
+                    className="size-4 shrink-0 text-neutral-400 transition-transform duration-300 ease-out group-hover:translate-x-1 dark:text-neutral-500"
                     aria-hidden="true"
                   />
                 </Link>
