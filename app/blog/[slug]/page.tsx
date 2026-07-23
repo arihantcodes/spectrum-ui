@@ -3,9 +3,19 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog"
 import { Metadata } from "next"
-import { generateBlogStructuredData, generateBlogBreadcrumbs } from "@/lib/seo-utils"
+import {
+  generateBlogStructuredData,
+  generateBlogBreadcrumbs,
+  toIsoDate,
+} from "@/lib/seo-utils"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { BlogCard } from "../blog-card"
+import { JsonLd } from "@/components/seo/json-ld"
+import {
+  createNoIndexMetadata,
+  formatMetadataDescription,
+  formatMetadataTitle,
+} from "@/lib/metadata"
 
 export async function generateStaticParams() {
   const posts = await getAllBlogPosts()
@@ -19,38 +29,37 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const post = await getBlogPost(params.slug)
   
   if (!post) {
-    return {
+    return createNoIndexMetadata({
       title: "Blog Post Not Found",
-      description: "The requested blog post could not be found.",
-    }
+      description: "The requested Spectrum UI blog post could not be found.",
+      path: `/blog/${params.slug}`,
+    })
   }
 
   const baseUrl = "https://ui.spectrumhq.in"
   const blogUrl = `${baseUrl}/blog/${post.slug}`
+  const metadataTitle = formatMetadataTitle(post.title)
+  const metadataDescription = formatMetadataDescription(post.excerpt)
+  const publishedTime = toIsoDate(post.date)
   
   return {
-    title: `${post.title} | Spectrum UI Blog`,
-    description: post.excerpt,
+    title: { absolute: metadataTitle },
+    description: metadataDescription,
     keywords: [
-      "UI components",
-      "React components", 
+      "React components",
       "Tailwind CSS",
       "Next.js",
       "shadcn/ui",
       "design system",
       "frontend development",
-      "web development",
-      "UI/UX",
-      "component library",
       post.category?.toLowerCase() || "",
-      ...post.title.toLowerCase().split(" "),
-    ].filter(Boolean).join(", "),
+    ].filter(Boolean),
     authors: [{ name: post.author.name, url: "https://ui.spectrumhq.in" }],
     creator: post.author.name,
     publisher: "Spectrum UI",
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: metadataTitle,
+      description: metadataDescription,
       url: blogUrl,
       siteName: "Spectrum UI",
       images: [
@@ -63,7 +72,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       ],
       locale: "en_US",
       type: "article",
-      publishedTime: post.date,
+      publishedTime,
       authors: [post.author.name],
       section: post.category || "Engineering",
       tags: [
@@ -76,8 +85,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
+      title: metadataTitle,
+      description: metadataDescription,
       creator: "@arihantcodes",
       images: [`${baseUrl}/og.png`],
     },
@@ -135,19 +144,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData),
-        }}
-      />
+      <JsonLd id="blog-post-structured-data" data={structuredData} />
+      <JsonLd id="blog-post-breadcrumbs" data={breadcrumbData} />
 
       <div className="relative min-h-screen font-inter text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         {/* Page-wide grain overlay */}

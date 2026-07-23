@@ -1,6 +1,14 @@
 import { auth, signOut } from '@/auth';
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 import { supabaseAdmin } from '@/lib/supabase-admin';
+import { createNoIndexMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum UI Account Profile',
+  description: 'Review private Spectrum UI account details and sign out of the current session.',
+  path: '/profile',
+});
 
 import { ProfileView } from './profile-view';
 

@@ -1,0 +1,368 @@
+[
+  {
+    "slug": "accordion",
+    "name": "Accordion",
+    "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+    "category": "Disclosure"
+  },
+  {
+    "slug": "alert",
+    "name": "Animated Alert",
+    "description": "An animated alert that displays notifications, warnings, and success messages.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "animated-switch",
+    "name": "Animated Switch",
+    "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick.",
+    "category": "Control"
+  },
+  {
+    "slug": "animatedcard",
+    "name": "Animated Card",
+    "description": "A card that animates on hover to showcase tools, technologies, and features.",
+    "category": "Card"
+  },
+  {
+    "slug": "animatedchart",
+    "name": "Animated SVG Chart",
+    "description": "An animated SVG chart for visualizing data on dashboards and reports.",
+    "category": "Data"
+  },
+  {
+    "slug": "animateddrawer",
+    "name": "Animated Drawer",
+    "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars.",
+    "category": "Overlay"
+  },
+  {
+    "slug": "animatedtestimonials",
+    "name": "Animated Testimonials",
+    "description": "An animated testimonials section for showcasing customer reviews and social proof.",
+    "category": "Review"
+  },
+  {
+    "slug": "animatedtext",
+    "name": "Text Animations",
+    "description": "A collection of text effects including holographic, ink morph, and orbital reveals.",
+    "category": "Text"
+  },
+  {
+    "slug": "autosize-textarea",
+    "name": "Autosize Textarea",
+    "description": "A textarea that automatically grows and shrinks to fit its content.",
+    "category": "Form"
+  },
+  {
+    "slug": "avatar-stack",
+    "name": "Avatar Stack",
+    "description": "An overlapping avatar row that fans apart on hover with springy name tooltips.",
+    "category": "Profile"
+  },
+  {
+    "slug": "badge",
+    "name": "3D Event Badge",
+    "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber.",
+    "category": "Media"
+  },
+  {
+    "slug": "bento-grid",
+    "name": "Bento Grid",
+    "description": "A bento grid layout with physics-based hover effects and scroll animations.",
+    "category": "Layout"
+  },
+  {
+    "slug": "button",
+    "name": "Button",
+    "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles.",
+    "category": "Action"
+  },
+  {
+    "slug": "card",
+    "name": "Card",
+    "description": "A set of pre-designed cards for login, signup, pricing, and dashboards.",
+    "category": "Card"
+  },
+  {
+    "slug": "command-palette",
+    "name": "Command Palette",
+    "description": "A keyboard-driven command menu for navigation, actions, and theme switching.",
+    "category": "Navigation"
+  },
+  {
+    "slug": "datetime-picker",
+    "name": "Datetime Picker",
+    "description": "A date and time picker built on shadcn/ui with no extra dependencies.",
+    "category": "Form"
+  },
+  {
+    "slug": "discloseimage",
+    "name": "Disclose Image",
+    "description": "An image that reveals its content behind animated sliding door panels.",
+    "category": "Media"
+  },
+  {
+    "slug": "dock",
+    "name": "Dock Menu",
+    "description": "A macOS-style dock menu that magnifies icons on hover with tooltips.",
+    "category": "Navigation"
+  },
+  {
+    "slug": "dual-range-slider",
+    "name": "Dual Range Slider",
+    "description": "A slider with two draggable thumbs for selecting a range of values.",
+    "category": "Form"
+  },
+  {
+    "slug": "eventcalendar",
+    "name": "Event Calendar",
+    "description": "An interactive calendar for displaying events, appointments, and daily schedules.",
+    "category": "Calendar"
+  },
+  {
+    "slug": "face-rating",
+    "name": "Face Rating",
+    "description": "A five-level rating input where an SVG face morphs between moods.",
+    "category": "Rating"
+  },
+  {
+    "slug": "feedback",
+    "name": "Feedback Card",
+    "description": "A feedback card that collects ratings and comments with emoji reactions.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "floating-label-input",
+    "name": "Floating Label Input",
+    "description": "An input whose label floats above the field when focused or filled.",
+    "category": "Form"
+  },
+  {
+    "slug": "follow-button",
+    "name": "Follow Button",
+    "description": "A follow button that morphs its width, fill, and label between states.",
+    "category": "Action"
+  },
+  {
+    "slug": "footer",
+    "name": "Footer",
+    "description": "A collection of footers with wave, stacked, and particle animation styles.",
+    "category": "Layout"
+  },
+  {
+    "slug": "github-card",
+    "name": "GitHub Profile Card",
+    "description": "A GitHub profile card generator with stats, a contribution graph, and social links.",
+    "category": "Profile"
+  },
+  {
+    "slug": "heading-with-anchor",
+    "name": "Heading With Anchor",
+    "description": "A heading component that adds clickable anchor links for section sharing.",
+    "category": "Text"
+  },
+  {
+    "slug": "hold-to-confirm",
+    "name": "Hold to Confirm",
+    "description": "A press-and-hold button that fills a progress ring before confirming destructive actions.",
+    "category": "Action"
+  },
+  {
+    "slug": "imagepreview",
+    "name": "Image Preview",
+    "description": "An image preview component with zoom, lightbox, and gallery support.",
+    "category": "Media"
+  },
+  {
+    "slug": "infinite-scroll",
+    "name": "Infinite Scroll",
+    "description": "An infinite scroll container that loads more content using the IntersectionObserver API.",
+    "category": "Data"
+  },
+  {
+    "slug": "input",
+    "name": "Input",
+    "description": "A form input field or a component that looks like an input field.",
+    "category": "Form"
+  },
+  {
+    "slug": "input-model",
+    "name": "Input Model",
+    "description": "A modal dialog with an input form for quick data entry.",
+    "category": "Form"
+  },
+  {
+    "slug": "kanban",
+    "name": "Kanban Board",
+    "description": "A drag-and-drop kanban board for organizing tasks into columns.",
+    "category": "Data"
+  },
+  {
+    "slug": "kbd-key",
+    "name": "Kbd Key",
+    "description": "A 3D keycap that physically depresses when the matching key is pressed.",
+    "category": "Input"
+  },
+  {
+    "slug": "like-button",
+    "name": "Like Button",
+    "description": "A heart button that pops with a particle burst and rolling count.",
+    "category": "Action"
+  },
+  {
+    "slug": "loading-button",
+    "name": "Loading Button",
+    "description": "A shadcn/ui button with a built-in loading spinner state.",
+    "category": "Action"
+  },
+  {
+    "slug": "login",
+    "name": "Login Card",
+    "description": "A login form card for authentication pages and SaaS apps.",
+    "category": "Auth"
+  },
+  {
+    "slug": "morph-button",
+    "name": "Morph Button",
+    "description": "An async button that morphs between idle, loading, success, and error states.",
+    "category": "Action"
+  },
+  {
+    "slug": "multiple-selector",
+    "name": "Multiple Selector",
+    "description": "A multi-select input with async search, grouping, and creatable options.",
+    "category": "Form"
+  },
+  {
+    "slug": "multistepform",
+    "name": "Multistep Form",
+    "description": "A multi-step form with progress indicators for registration and checkout flows.",
+    "category": "Form"
+  },
+  {
+    "slug": "navbar",
+    "name": "Navbar",
+    "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns.",
+    "category": "Navigation"
+  },
+  {
+    "slug": "notification-bell",
+    "name": "Notification Bell",
+    "description": "A bell button that swings on new notifications with a rolling unread badge.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "password-strength",
+    "name": "Password Strength",
+    "description": "A password input with an animated strength meter and requirements checklist.",
+    "category": "Form"
+  },
+  {
+    "slug": "product-card",
+    "name": "Product Card",
+    "description": "A product card that displays an image, title, price, and rating.",
+    "category": "Card"
+  },
+  {
+    "slug": "profile",
+    "name": "Profile Dropdown",
+    "description": "A user profile dropdown menu with avatar, settings, and logout actions.",
+    "category": "Profile"
+  },
+  {
+    "slug": "progress-with-value",
+    "name": "Progress With Value",
+    "description": "A progress bar that displays the current value.",
+    "category": "Progress"
+  },
+  {
+    "slug": "quantity-stepper",
+    "name": "Quantity Stepper",
+    "description": "A quantity input with rolling digits, hold-to-repeat buttons, and boundary shake.",
+    "category": "Form"
+  },
+  {
+    "slug": "reaction-bar",
+    "name": "Reaction Bar",
+    "description": "A Slack-style emoji reaction bar with animated chips and rolling counts.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "responsive-modal",
+    "name": "Responsive Modal",
+    "description": "A dialog that centers on desktop and slides up as a sheet on mobile.",
+    "category": "Overlay"
+  },
+  {
+    "slug": "scratch-card",
+    "name": "Scratch Card",
+    "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag.",
+    "category": "Media"
+  },
+  {
+    "slug": "share-button",
+    "name": "Share Button",
+    "description": "A share button that fans out into copy-link and custom share actions.",
+    "category": "Action"
+  },
+  {
+    "slug": "skeleton",
+    "name": "Skeleton",
+    "description": "A loading placeholder that shimmer-animates while content is fetching.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "spinner",
+    "name": "Spinner",
+    "description": "A loading spinner with multiple sizes and variants for async states.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "star-rating",
+    "name": "Star Rating",
+    "description": "An animated star rating input with hover preview and sparkle burst effects.",
+    "category": "Rating"
+  },
+  {
+    "slug": "status-badge",
+    "name": "Status Badge",
+    "description": "A status badge with icon and color variants for success, error, warning, and pending states.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "statuscode",
+    "name": "HTTP Status Code",
+    "description": "An HTTP status code display for building 404 and error pages.",
+    "category": "Feedback"
+  },
+  {
+    "slug": "swipe-to-delete",
+    "name": "Swipe to Delete",
+    "description": "A swipeable list item that reveals an iOS-style delete action on drag.",
+    "category": "Action"
+  },
+  {
+    "slug": "task-checkbox",
+    "name": "Task Checkbox",
+    "description": "A todo checkbox that celebrates completion with a confetti burst and strikethrough.",
+    "category": "Form"
+  },
+  {
+    "slug": "testimonials",
+    "name": "Testimonials",
+    "description": "A testimonials section for showcasing customer reviews and social proof.",
+    "category": "Content"
+  },
+  {
+    "slug": "tilt-card",
+    "name": "3D Tilt Card",
+    "description": "A 3D card that tilts toward the pointer with parallax depth and glare.",
+    "category": "Card"
+  },
+  {
+    "slug": "undo-pill",
+    "name": "Undo Pill",
+    "description": "An inline undo pill with a draining countdown ring that pauses on hover.",
+    "category": "Feedback"
+  }
+]

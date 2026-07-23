@@ -1,6 +1,15 @@
 import { redirect } from 'next/navigation';
 
+import type { Metadata } from 'next';
+
 import { AuthPage } from '@/components/auth-page';
+import { createNoIndexMetadata } from '@/lib/metadata';
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Sign In to Spectrum UI',
+  description: 'Sign in to access Spectrum UI bookmarks, purchases, and account features.',
+  path: '/sign-in',
+});
 
 export default async function SignInPage({
   searchParams,

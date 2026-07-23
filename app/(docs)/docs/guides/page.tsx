@@ -4,6 +4,7 @@ import { ArrowUpRight, Check, LayoutGrid, Palette, Sparkles, Zap } from 'lucide-
 
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
+import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 
 export const metadata: Metadata = baseMetadata({
   title: 'Guides & Tutorials',
@@ -88,6 +89,7 @@ export default function GuidesPage() {
       componentName="Guides & Tutorials"
       description="Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples."
       url="https://ui.spectrumhq.in/docs/guides"
+      schemaType="collectionPage"
       keywords={[
         'React tutorials',
         'UI component guide',
@@ -144,6 +146,28 @@ export default function GuidesPage() {
             );
           })}
         </div>
+
+        <section className="animate-fade-up" style={{ animationDelay: '100ms' }}>
+          <h2 id="topic-guides" className={`mt-14 ${sectionTitle}`}>
+            Topic guides
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-6 tracking-wide text-neutral-500 dark:text-neutral-400">
+            Learn a UI category, compare when to use it, browse matching Spectrum UI components, and
+            start from a working code example.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {TOPIC_HUB_LINKS.map((hub) => (
+              <Link
+                key={hub.slug}
+                href={topicHubPath(hub.slug)}
+                className="group flex items-center justify-between gap-4 rounded-[12px] border border-black/[0.08] bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-200 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+              >
+                {hub.label}
+                <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* What you will learn */}
         <section className="animate-fade-up" style={{ animationDelay: '120ms' }}>

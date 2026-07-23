@@ -1,9 +1,17 @@
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 
 import { auth } from '@/auth';
 import { Icons } from '@/components/icon';
 import { isOnboardingComplete } from '@/lib/onboarding';
+import { createNoIndexMetadata } from '@/lib/metadata';
 import { OnboardingForm } from './onboarding-form';
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Complete Your Spectrum UI Profile',
+  description: 'Complete the account details required to use Spectrum UI account features.',
+  path: '/create-user',
+});
 
 export default async function CreateUserPage({
   searchParams,

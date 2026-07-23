@@ -8,11 +8,14 @@ import { SponsorForm } from "@/components/marketing/sponsor/sponsor-form"
 import { FaqSection } from "@/components/marketing/sponsor/faq-section"
 import { CtaSection } from "@/components/marketing/sponsor/cta-section"
 import type { Metadata } from "next"
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata"
 
-export const metadata: Metadata = {
-  title: "Sponsor Spectrum UI | Reach 10,000+ Frontend Developers",
-  description: "Put your product inside the workflow of frontend developers. Limited sponsor inventory across homepage, docs, components, and newsletter.",
-}
+export const metadata: Metadata = baseMetadata({
+  title: "Sponsor Spectrum UI | Frontend Developer Audience",
+  description:
+    "Reach developers while they browse Spectrum UI documentation and components. Review available sponsor placements across the site and newsletter.",
+  canonicalUrl: "https://ui.spectrumhq.in/sponsor",
+})
 
 export default function SponsorPage() {
   return (

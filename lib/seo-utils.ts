@@ -166,6 +166,13 @@ export function generateSEODescription(component: {
   return `${base} Copy, paste, and customize for your Next.js applications. Free and open source.`;
 }
 
+export function toIsoDate(value: string) {
+  const hasNamedMonth = /^[A-Za-z]{3,9}\s+\d{1,2},\s+\d{4}$/.test(value);
+  const parsedDate = new Date(hasNamedMonth ? `${value} UTC` : value);
+
+  return Number.isNaN(parsedDate.getTime()) ? undefined : parsedDate.toISOString();
+}
+
 // Generate blog post structured data
 export function generateBlogStructuredData(blogPost: {
   title: string;
@@ -176,15 +183,17 @@ export function generateBlogStructuredData(blogPost: {
   image: string;
   category: string;
 }) {
+  const datePublished = toIsoDate(blogPost.datePublished) ?? blogPost.datePublished;
+
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": ["BlogPosting", "TechArticle"],
     headline: blogPost.title,
     description: blogPost.description,
     image: blogPost.image,
     url: blogPost.url,
-    datePublished: blogPost.datePublished,
-    dateModified: blogPost.datePublished,
+    datePublished,
+    dateModified: datePublished,
     author: {
       "@type": "Person",
       name: blogPost.author.name,
@@ -280,11 +289,11 @@ export function generateBlogListingStructuredData(posts: Array<{
       },
     },
     blogPost: posts.map(post => ({
-      "@type": "BlogPosting",
+      "@type": ["BlogPosting", "TechArticle"],
       headline: post.title,
       description: post.description,
       url: post.url,
-      datePublished: post.datePublished,
+      datePublished: toIsoDate(post.datePublished) ?? post.datePublished,
       author: {
         "@type": "Person",
         name: post.author.name,
@@ -292,4 +301,3 @@ export function generateBlogListingStructuredData(posts: Array<{
     })),
   };
 }
-

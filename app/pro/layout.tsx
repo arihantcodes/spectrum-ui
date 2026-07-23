@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
+import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "Spectrum UI Pro — Early Bird Waitlist",
-  },
+export const metadata: Metadata = baseMetadata({
+  title: "Spectrum UI Pro — Early-Bird Waitlist",
   description:
     "Join the Spectrum UI Pro waitlist. Lock early-bird pricing for premium Next.js templates, pro components, and founder support.",
   keywords: [
@@ -15,18 +14,8 @@ export const metadata: Metadata = {
     "SaaS template",
     "Spectrum UI Pro",
   ],
-  alternates: {
-    canonical: "https://ui.spectrumhq.in/pro",
-  },
-  openGraph: {
-    title: "Spectrum UI Pro — Early Bird Waitlist",
-    description:
-      "Reserve your spot on the Spectrum UI Pro waitlist. One payment locks early-bird pricing at launch.",
-    url: "https://ui.spectrumhq.in/pro",
-    type: "website",
-    siteName: "Spectrum UI",
-  },
-};
+  canonicalUrl: "https://ui.spectrumhq.in/pro",
+});
 
 export default function ProLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

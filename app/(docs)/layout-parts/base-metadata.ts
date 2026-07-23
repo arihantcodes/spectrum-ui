@@ -1,5 +1,10 @@
 import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
+import { findComponentByName } from "@/lib/component-catalog";
+import {
+  formatMetadataDescription,
+  formatMetadataTitle,
+} from "@/lib/metadata";
 
 interface BaseMetadataProps {
   title?: string;
@@ -32,15 +37,11 @@ interface BaseMetadataProps {
   };
 }
 
-const CORE_KEYWORDS = [
-  "React UI components",
-  "Next.js components",
-  "Tailwind CSS components",
-  "Spectrum UI",
-  "React component library",
-  "copy paste components",
-  "free UI components",
-];
+function brandedMetadataTitle(title: string) {
+  return title.includes("Spectrum UI")
+    ? formatMetadataTitle(title, "")
+    : formatMetadataTitle(title);
+}
 
 export function baseMetadata({
   title,
@@ -51,19 +52,33 @@ export function baseMetadata({
   twitter,
   article,
 }: BaseMetadataProps): Metadata {
-  // Absolute title avoids double-branding from the root `%s | Spectrum UI` template
-  const brandedTitle = title
-    ? `${title} | Spectrum UI`
-    : "Spectrum UI — React & Next.js Component Library";
-  const fullDescription = description || siteConfig.description;
+  const component = title ? findComponentByName(title) : undefined;
+  const brandedTitle = component
+    ? `${component.name} — React ${component.category} Component | Spectrum UI`
+    : title
+      ? brandedMetadataTitle(title)
+      : siteConfig.seo.title.default;
+  const componentDescription = component
+    ? `${component.description} Copy-paste React source for Next.js and Tailwind CSS.`
+    : undefined;
+  const fullDescription = formatMetadataDescription(
+    componentDescription || description || siteConfig.description,
+  );
   const url = canonicalUrl || siteConfig.url;
   const ogImageUrl =
     openGraph?.images?.[0]?.url ||
     `${siteConfig.url}/api/og?title=${encodeURIComponent(title || "Spectrum UI")}`;
 
+  const contextualKeywords = component
+    ? [
+        component.name,
+        `${component.name} React component`,
+        `React ${component.category} component`,
+      ]
+    : siteConfig.keywords;
   const seoKeywords = Array.from(
-    new Set([...keywords, ...CORE_KEYWORDS].filter(Boolean))
-  );
+    new Set([...contextualKeywords, ...keywords].filter(Boolean)),
+  ).slice(0, 12);
 
   return {
     title: {
@@ -84,8 +99,12 @@ export function baseMetadata({
       type: article ? "article" : "website",
       locale: "en_US",
       url,
-      title: openGraph?.title || brandedTitle,
-      description: openGraph?.description || fullDescription,
+      title: openGraph?.title
+        ? brandedMetadataTitle(openGraph.title)
+        : brandedTitle,
+      description: openGraph?.description
+        ? formatMetadataDescription(openGraph.description)
+        : fullDescription,
       siteName: "Spectrum UI",
       images: [
         {
@@ -108,8 +127,12 @@ export function baseMetadata({
       card: "summary_large_image",
       site: "@spectrumui",
       creator: "@arihantcodes",
-      title: twitter?.title || brandedTitle,
-      description: twitter?.description || fullDescription,
+      title: twitter?.title
+        ? brandedMetadataTitle(twitter.title)
+        : brandedTitle,
+      description: twitter?.description
+        ? formatMetadataDescription(twitter.description)
+        : fullDescription,
       images: twitter?.images || [ogImageUrl],
     },
     robots: {

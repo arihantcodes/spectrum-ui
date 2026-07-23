@@ -4,6 +4,46 @@
   "homepage": "https://ui.spectrumhq.in",
   "items": [
     {
+      "name": "disclose-image",
+      "type": "registry:component",
+      "title": "Disclose Image",
+      "description": "An image reveal component with animated sliding door panels.",
+      "files": [
+        {
+          "path": "components/spectrumui/discloseimage.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/discloseimage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "github-profile-card",
+      "type": "registry:component",
+      "title": "GitHub Profile Card",
+      "description": "A GitHub profile card with account stats, a contribution graph, and social links.",
+      "files": [
+        {
+          "path": "components/spectrumui/github-profile-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/github-profile-card.tsx"
+        },
+        {
+          "path": "components/icon.tsx",
+          "type": "registry:component",
+          "target": "components/icon.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "card",
+        "input"
+      ]
+    },
+    {
       "name": "alert-1",
       "type": "registry:component",
       "title": "Alert demo",

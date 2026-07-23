@@ -70,16 +70,16 @@ export function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
               <span className="flex items-center gap-2.5">
                 <span
                   aria-hidden
-                  className="h-[9px] w-[9px] border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+                  className="h-[9px] w-[9px] border-l-2 border-t-2 border-neutral-400 dark:border-neutral-500"
                 />
-                <span className="font-mono text-xs font-medium uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100">
+                <span className="font-inter text-xs font-medium uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100">
                   The Journal
                 </span>
               </span>
-              <h1 className="font-spectral text-[40px] font-light leading-[1.02] tracking-[-0.03em] text-neutral-900 md:text-[54px] dark:text-neutral-50">
+              <h1 className="text-balance font-regular text-[40px] font-semibold leading-[1.02] tracking-[-0.03em] text-neutral-900 md:text-[54px] dark:text-neutral-50">
                 Notes on design & engineering.
               </h1>
-              <p className="max-w-xl font-inter text-[15px] leading-[1.65] text-[#646464] dark:text-neutral-400">
+              <p className="max-w-xl font-inter text-[15px] leading-[1.75] text-neutral-600 dark:text-neutral-400">
                 Essays, guides, and field notes on building interfaces that feel
                 right — design systems, animation, React, and the craft in
                 between.
@@ -102,7 +102,7 @@ export function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
                       "h-9 rounded-full px-4 font-inter text-[13px] leading-none transition-colors duration-200 active:scale-[0.97]",
                       activeCategory === category
                         ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
-                        : "bg-white/60 text-[#59544f] ring-1 ring-inset ring-black/[0.06] hover:bg-white hover:text-neutral-900 dark:bg-white/[0.06] dark:text-neutral-300 dark:ring-white/[0.08] dark:hover:bg-white/[0.12]",
+                        : "bg-white/60 text-neutral-600 ring-1 ring-inset ring-black/[0.06] hover:bg-white hover:text-neutral-900 dark:bg-white/[0.06] dark:text-neutral-300 dark:ring-white/[0.08] dark:hover:bg-white/[0.12]",
                     )}
                   >
                     {category}
@@ -111,12 +111,12 @@ export function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
               </div>
 
               <div className="relative w-full md:w-72">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#777169] dark:text-neutral-400" />
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                 <Input
                   placeholder="Search posts"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-9 rounded-full border-transparent bg-white/70 pl-9 text-[13px] text-neutral-900 ring-1 ring-inset ring-black/[0.06] placeholder:text-[#777169] focus-visible:ring-neutral-400 dark:bg-white/[0.06] dark:text-neutral-100 dark:ring-white/[0.08]"
+                  className="h-9 rounded-full border-transparent bg-white/70 pl-9 font-inter text-[13px] text-neutral-900 ring-1 ring-inset ring-black/[0.06] placeholder:text-neutral-500 focus-visible:ring-neutral-400 dark:bg-white/[0.06] dark:text-neutral-100 dark:ring-white/[0.08]"
                 />
               </div>
             </motion.div>
@@ -127,7 +127,7 @@ export function BlogList({ blogPosts }: { blogPosts: BlogPost[] }) {
         <section className="container-frame border-b border-border">
           <div className="px-5 pb-20 pt-12 sm:px-8 lg:px-[52px]">
             {filteredPosts.length === 0 ? (
-              <div className="py-24 text-center font-inter text-[15px] text-[#777169] dark:text-neutral-400">
+              <div className="py-24 text-center font-inter text-[15px] text-neutral-500 dark:text-neutral-400">
                 No posts found matching your criteria.
               </div>
             ) : (
@@ -225,10 +225,10 @@ function PageButton({
       type="button"
       disabled={disabled}
       className={cn(
-        "flex h-9 min-w-9 items-center justify-center rounded-full px-3 font-inter text-[13px] leading-none transition-all duration-200 active:scale-[0.95]",
+        "flex h-9 min-w-9 items-center justify-center rounded-full px-3 font-inter text-[13px] leading-none transition-[color,background-color,transform] duration-200 active:scale-[0.95]",
         active
           ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
-          : "text-[#59544f] ring-1 ring-inset ring-black/[0.06] hover:bg-white hover:text-neutral-900 dark:text-neutral-300 dark:ring-white/[0.08] dark:hover:bg-white/[0.1]",
+          : "text-neutral-600 ring-1 ring-inset ring-black/[0.06] hover:bg-white hover:text-neutral-900 dark:text-neutral-300 dark:ring-white/[0.08] dark:hover:bg-white/[0.1]",
         disabled && "cursor-not-allowed opacity-40 hover:bg-transparent",
       )}
       {...props}

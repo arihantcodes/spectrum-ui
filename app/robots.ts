@@ -1,55 +1,45 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 
+const privateRoutes = [
+  "/api/",
+  "/bookmarks",
+  "/create-user",
+  "/dashboard",
+  "/demo",
+  "/payment-success",
+  "/pro/waitlist/success",
+  "/profile",
+  "/sign-in",
+  "/success",
+  "/unsubscribe",
+];
+
+const explicitlyAllowedCrawlers = [
+  "GPTBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "Claude-Web",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Google-Extended",
+  "Bingbot",
+  "Applebot-Extended",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/dashboard/", "/sign-in/"],
+        disallow: privateRoutes,
       },
-      {
-        userAgent: "Googlebot",
+      ...explicitlyAllowedCrawlers.map((userAgent) => ({
+        userAgent,
         allow: "/",
-        disallow: ["/api/", "/_next/", "/dashboard/", "/sign-in/"],
-      },
-      // AI / answer-engine crawlers (AEO + GEO)
-      {
-        userAgent: "GPTBot",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "anthropic-ai",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
-      {
-        userAgent: "Applebot-Extended",
-        allow: ["/", "/llms.txt", "/llms-full.txt", "/agents.md", "/docs"],
-        disallow: ["/api/", "/dashboard/", "/sign-in/"],
-      },
+        disallow: privateRoutes,
+      })),
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,

@@ -134,6 +134,7 @@ export default function McpPage() {
       componentName="MCP Server"
       description="Use Spectrum UI with AI coding assistants via the Model Context Protocol."
       url="https://ui.spectrumhq.in/docs/mcp"
+      schemaType="techArticle"
       keywords={["MCP server", "Claude", "Cursor", "AI components"]}
     >
       <main className="mx-auto w-full min-w-0 max-w-3xl">

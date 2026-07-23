@@ -1,6 +1,11 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { BookmarkButton } from '@/components/bookmark-button';
+import { getComponentDocByName } from '@/lib/component-docs';
+import {
+  ComponentOverview,
+  ComponentReference,
+} from '@/app/(docs)/docs/components/component-reference';
 
 interface PageTemplateProps {
   title?: string;
@@ -19,6 +24,7 @@ const slugify = (value: string) =>
 
 const PageTemplate = ({ title, description, children, className, slug }: PageTemplateProps) => {
   const bookmarkSlug = slug ?? (title ? slugify(title) : '');
+  const componentDoc = title ? getComponentDocByName(title) : undefined;
 
   return (
     <section className={cn('flex flex-col', className)}>
@@ -35,10 +41,15 @@ const PageTemplate = ({ title, description, children, className, slug }: PageTem
           />
         )}
       </div>
-      {description && (
-        <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%] font-light">{description}</p>
-      )}
+      {componentDoc ? (
+        <ComponentOverview component={componentDoc} />
+      ) : description ? (
+        <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%] font-light">
+          {description}
+        </p>
+      ) : null}
       {children}
+      {componentDoc ? <ComponentReference component={componentDoc} /> : null}
     </section>
   );
 };

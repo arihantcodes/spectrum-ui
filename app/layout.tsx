@@ -37,110 +37,19 @@ import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 import { TalkToUs } from "@/components/talk-to-us";
+import { JsonLd } from "@/components/seo/json-ld";
+import { generateSiteStructuredData } from "@/lib/site-structured-data";
 
 inject();
 
 export const metadata: Metadata = {
   title: {
-    default: "Spectrum UI — React & Next.js Component Library",
+    default: "Spectrum UI — Animated React Components & Blocks",
     template: "%s | Spectrum UI",
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
-  keywords: [
-    // Critical Top-Ranking Keywords
-    "React UI components",
-    "best UI library",
-    "React component library",
-    "Next.js components",
-    "Tailwind CSS components",
-    "modern design system",
-    "UI components",
-    "frontend components",
-
-    // Primary Technology Keywords
-    "Next.js UI library",
-    "Next.js 14 components",
-    "React Tailwind components",
-    "Tailwind component library",
-    "TypeScript React components",
-    "Vercel components",
-    "Next.js app router components",
-    "React server components",
-
-    // Component Type Keywords
-    "React button component",
-    "React form components",
-    "React modal component",
-    "React card component",
-    "React table component",
-    "React navigation components",
-    "dashboard components",
-    "admin panel components",
-
-    // Quality & Features
-    "accessible React components",
-    "responsive UI components",
-    "dark mode components",
-    "animated React components",
-    "customizable UI components",
-    "production-ready components",
-    "enterprise UI library",
-    "WCAG compliant components",
-
-    // Use Cases
-    "SaaS UI components",
-    "e-commerce components",
-    "landing page components",
-    "authentication components",
-    "data visualization components",
-    "form builder components",
-    "admin dashboard UI",
-    "web app components",
-
-    // Alternative & Comparison
-    "shadcn alternative",
-    "shadcn ui alternative",
-    "Material UI alternative",
-    "Chakra UI alternative",
-    "best React UI library 2024",
-    "free UI component library",
-    "open source design system",
-
-    // Action & Intent Keywords
-    "copy paste components",
-    "download React components",
-    "free Tailwind components",
-    "React UI kit",
-    "UI template library",
-    "component code snippets",
-    "ready-to-use React components",
-
-    // Framework & Stack
-    "Next.js Tailwind template",
-    "React TypeScript components",
-    "Radix UI components",
-    "Framer Motion React",
-    "React Hook Form components",
-    "modern React components",
-
-    // Learning & Tutorial
-    "React components examples",
-    "UI component tutorial",
-    "how to build React components",
-    "React design patterns",
-    "component library guide",
-
-    // Specific Solutions
-    "React component library for startups",
-    "fastest React UI library",
-    "lightweight component library",
-    "zero-config UI components",
-    "headless UI components",
-    "composable React components",
-
-    ...siteConfig.keywords,
-  ],
+  keywords: siteConfig.keywords,
   authors: [
     {
       name: "Spectrum UI",
@@ -169,14 +78,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
-    title: "Spectrum UI — React & Next.js Component Library",
+    title: "Spectrum UI — Animated React Components & Blocks",
     description: siteConfig.description,
     siteName: "Spectrum UI",
     images: [siteConfig.ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Spectrum UI — React & Next.js Component Library",
+    title: "Spectrum UI — Animated React Components & Blocks",
     description: siteConfig.description,
     images: [siteConfig.ogImage.url],
     creator: "@arihantcodes",
@@ -234,59 +143,9 @@ gtag('config', 'G-K7ZP6JB4MG');
             `.trim(),
           }}
         />
-        <Script
-          id="schema-org-website"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: siteConfig.name,
-              url: siteConfig.url,
-              description: siteConfig.description,
-              author: {
-                "@type": "Person",
-                name: siteConfig.author.name,
-                url: siteConfig.author.url,
-              },
-              license: siteConfig.license,
-              version: siteConfig.version,
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: `${siteConfig.url}/docs?search={search_term_string}`,
-                },
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
-        />
-        <Script
-          id="schema-org-organization"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Spectrum UI",
-              url: siteConfig.url,
-              logo: `${siteConfig.url}/logo.svg`,
-              description: siteConfig.description,
-              founder: {
-                "@type": "Person",
-                name: siteConfig.author.name,
-                url: siteConfig.author.url,
-              },
-              sameAs: [
-                siteConfig.links.github,
-                siteConfig.links.twitter,
-                siteConfig.links.linkedin,
-              ],
-            }),
-          }}
+        <JsonLd
+          id="spectrum-ui-structured-data"
+          data={generateSiteStructuredData()}
         />
         <Script
           id="adsense"

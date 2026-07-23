@@ -51,6 +51,13 @@ const nextConfig = {
         './app/registry/**/*.tsx',
         './lib/**/*.ts',
       ],
+      '/sitemap.xml': [
+        './app/**/page.tsx',
+        './content/blog/*.tsx',
+        './content/component-catalog.json',
+        './public/agents.md',
+        './public/llms*.txt',
+      ],
     },
   },
 

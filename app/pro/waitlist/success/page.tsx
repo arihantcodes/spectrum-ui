@@ -4,6 +4,14 @@ import { supabaseAdmin } from '@/lib/supabase-admin'
 import { CheckCircle2 } from 'lucide-react'
 import { Icons } from '@/components/icon'
 import { ProWaitlistSuccessTracker } from './tracker'
+import type { Metadata } from 'next'
+import { createNoIndexMetadata } from '@/lib/metadata'
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum Pro Waitlist Confirmation',
+  description: 'Confirm the current Spectrum Pro waitlist and payment-processing status.',
+  path: '/pro/waitlist/success',
+})
 
 export default async function ProWaitlistSuccessPage() {
   const session = await auth()

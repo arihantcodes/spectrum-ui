@@ -16,14 +16,14 @@ export async function BlogSection() {
         {/* Category */}
         <div className="flex items-center gap-2.5">
           <span aria-hidden className="-rotate-90">
-            <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d] dark:border-[#E1F435]" />
+            <span className="block size-[9px] border-b-2 border-r-2 border-neutral-400 dark:border-neutral-500" />
           </span>
-          <span className="font-mono text-[12px] font-medium uppercase leading-[16.8px] text-[#171717] dark:text-neutral-200">
+          <span className="font-inter text-[12px] font-medium uppercase leading-[16.8px] text-neutral-900 dark:text-neutral-200">
             Blogs
           </span>
         </div>
 
-        <h2 className="font-spectral text-[24px] leading-[28.8px] tracking-[-1px] text-[#2d2f2e] dark:text-neutral-100">
+        <h2 className="text-balance font-regular text-[24px] font-semibold leading-[28.8px] tracking-[-0.02em] text-neutral-900 dark:text-neutral-100">
           Notes from
           <br />
           building components
@@ -38,13 +38,13 @@ export async function BlogSection() {
             href={`/blog/${post.slug}`}
             className="group flex flex-col gap-[15px]"
           >
-            <div className="aspect-square w-full overflow-hidden rounded-[20px] border border-[#e5e5e5] bg-[#f5f3f1] transition-colors group-hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:group-hover:border-neutral-700" />
+            <div className="aspect-square w-full overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-100 transition-colors group-hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:group-hover:border-neutral-700" />
 
             <div className="flex flex-col gap-1">
-              <h3 className="line-clamp-2 font-inter text-[18px] leading-[25.2px] text-black dark:text-neutral-100">
+              <h3 className="line-clamp-2 font-regular text-[18px] font-semibold leading-[25.2px] tracking-[-0.01em] text-neutral-900 dark:text-neutral-100">
                 {post.title}
               </h3>
-              <p className="line-clamp-2 font-inter text-[14px] leading-[19.6px] text-[#6e6e6e] dark:text-neutral-400">
+              <p className="line-clamp-2 font-inter text-[14px] leading-[1.6] text-neutral-600 dark:text-neutral-400">
                 {post.excerpt}
               </p>
             </div>

@@ -2,14 +2,15 @@ import { auth } from '@/auth';
 import { supabaseAdmin } from '@/lib/supabase-admin';
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
+import { createNoIndexMetadata } from '@/lib/metadata';
 
 import { BookmarksView } from './bookmarks-view';
 
-export const metadata: Metadata = {
-  title: 'My Bookmarks',
-  description: 'Your saved Spectrum UI components.',
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum UI Bookmarks',
+  description: 'Review components and templates saved to the current Spectrum UI account.',
+  path: '/bookmarks',
+});
 
 export default async function BookmarksPage() {
   const session = await auth();

@@ -10,6 +10,14 @@ import { formatDate } from '@/lib/utils'
 import { RestoreAccessButton } from '@/components/dashboard/RestoreAccessButton'
 import { CopyButton } from '@/components/dashboard/CopyButton'
 import { BreadcrumbNav } from '@/components/breadcrumb-nav'
+import type { Metadata } from 'next'
+import { createNoIndexMetadata } from '@/lib/metadata'
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum Pro Dashboard',
+  description: 'View purchased Spectrum Pro templates and manage private repository access.',
+  path: '/dashboard',
+})
 
 export default async function DashboardPage() {
   const session = await auth()

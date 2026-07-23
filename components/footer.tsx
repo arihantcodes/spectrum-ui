@@ -100,9 +100,15 @@ const socialLinks = [
   { label: 'X', href: siteConfig.links.twitter, Icon: Icons.twitter },
 ];
 
-const linkColumns: { label: string; href: string }[][] = [];
-
-const WATERMARK = 'SPECTRUM UI';
+/** Primary pages — a compact quick-nav row so the footer stays useful. */
+const primaryLinks = [
+  { label: 'Components', href: '/docs' },
+  { label: 'Guides', href: '/docs/guides' },
+  { label: 'MCP', href: '/docs/mcp' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Colors', href: '/colors' },
+  { label: 'FAQs', href: '/faqs' },
+];
 
 export default function Footer() {
   const pathname = usePathname();
@@ -153,12 +159,13 @@ export default function Footer() {
           <div className="flex flex-col gap-12 px-5 pb-12 sm:px-8 md:px-10 md:pb-14">
             {/* Logo + socials */}
             <Reveal className="flex items-center justify-between gap-4">
-              <Link href="/" className="group flex items-center gap-2">
-                <span className="flex size-7 items-center justify-center rounded-md border border-dashed border-black/10 bg-[#f9f9f9] transition-colors duration-300 group-hover:border-black/25 dark:border-white/15 dark:bg-neutral-900 dark:group-hover:border-white/30">
-                  <Icons.logo className="h-[18px] w-auto text-black transition-transform duration-500 ease-out motion-safe:group-hover:rotate-180 dark:text-white" />
+              {/* Same brand treatment as the navbar (MainNav) */}
+              <Link href="/" className="group flex items-center gap-2 md:gap-2.5">
+                <span className="flex h-7 w-7 items-center justify-center rounded-md bg-neutral-900 p-1.5 dark:bg-white">
+                  <Icons.logo className="h-full w-full text-white transition-transform duration-500 ease-out motion-safe:group-hover:rotate-180 dark:text-black" />
                 </span>
-                <span className="font-mono text-xl font-medium tracking-[-0.03px] text-[#555] transition-colors duration-300 group-hover:text-black dark:text-neutral-400 dark:group-hover:text-white">
-                  SPECTRUM UI
+                <span className="whitespace-nowrap font-mono text-sm font-medium uppercase tracking-[0.5px] text-foreground/80 transition-colors duration-300 group-hover:text-foreground sm:text-base">
+                  Spectrum UI
                 </span>
               </Link>
 
@@ -176,24 +183,6 @@ export default function Footer() {
                   </Link>
                 ))}
               </div>
-            </Reveal>
-
-            {/* Link columns */}
-            <Reveal>
-              <nav className="flex flex-wrap justify-center gap-x-[74px] gap-y-10">
-                {linkColumns.map((column) => (
-                  <ul
-                    key={column.map((item) => item.href).join('|')}
-                    className="flex min-w-[110px] flex-col gap-1"
-                  >
-                    {column.map((item) => (
-                      <li key={item.label}>
-                        <FooterLink href={item.href}>{item.label}</FooterLink>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-              </nav>
             </Reveal>
 
             {/* All components — full internal link map for SEO / crawlability */}
@@ -217,11 +206,28 @@ export default function Footer() {
               </section>
             </Reveal>
 
-            {/* Copyright + closing wordmark */}
+            {/* Bottom row: copyright + primary pages */}
             <Reveal>
-              <p className="text-center font-mono text-sm font-medium tracking-[0.28px] text-black dark:text-neutral-400">
-                © {new Date().getFullYear()} SPECTRUM UI. ALL RIGHTS RESERVED.
-              </p>
+              <div className="flex flex-col-reverse items-center gap-6 border-t border-border pt-8 md:flex-row md:justify-between">
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.28px] text-neutral-500 dark:text-neutral-400">
+                  © {new Date().getFullYear()} Spectrum UI. All rights reserved.
+                </p>
+
+                <nav
+                  aria-label="Footer"
+                  className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1"
+                >
+                  {primaryLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="font-inter text-sm font-medium text-neutral-600 transition-colors duration-200 ease-out hover:text-[#f9452d] dark:text-neutral-400 dark:hover:text-[#E1F435]"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
             </Reveal>
           </div>
         </div>

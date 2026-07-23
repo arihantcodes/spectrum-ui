@@ -3,256 +3,24 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Component as ComponentIcon } from 'lucide-react';
+import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
+import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 
-type ComponentItem = { name: string; description: string; href: string };
-type Category = { name: string; components: ComponentItem[] };
+type ComponentItem = {
+  name: string;
+  description: string;
+  href: string;
+  category: string;
+};
 
-const categories: Category[] = [
-  {
-    name: 'Layout & Structure',
-    components: [
-      {
-        name: 'Accordion',
-        description:
-          'A vertically stacked set of interactive headings that each reveal an associated section of content.',
-        href: '/docs/accordion',
-      },
-      {
-        name: 'Card',
-        description: 'Displays a card with header, content, and footer.',
-        href: '/docs/card',
-      },
-      {
-        name: 'Infinite Scroll',
-        description: 'Implement infinite scrolling lists.',
-        href: '/docs/infinite-scroll',
-      },
-      { name: 'Kanban', description: 'A draggable Kanban board UI.', href: '/docs/kanban' },
-    ],
-  },
-  {
-    name: 'Forms & Inputs',
-    components: [
-      {
-        name: 'Floating Label Input',
-        description: 'Input field with a floating label animation.',
-        href: '/docs/floating-label-input',
-      },
-      {
-        name: 'Autosize Textarea',
-        description: 'A textarea that automatically resizes to its content.',
-        href: '/docs/autosize-textarea',
-      },
-      {
-        name: 'Datetime Picker',
-        description: 'A customizable date and time picker.',
-        href: '/docs/datetime-picker',
-      },
-      {
-        name: 'Dual Range Slider',
-        description: 'A slider with two handles for a range of values.',
-        href: '/docs/dual-range-slider',
-      },
-      {
-        name: 'Multiple Selector',
-        description: 'A dropdown that allows multiple selections.',
-        href: '/docs/multiple-selector',
-      },
-      {
-        name: 'Multistep Form',
-        description: 'A multi-step form wizard layout.',
-        href: '/docs/multistepform',
-      },
-      {
-        name: 'Input Model',
-        description: 'An input with special modal behavior.',
-        href: '/docs/input-model',
-      },
-      {
-        name: 'Animated Switch',
-        description: 'An iOS-style toggle switch with a stretchy knob you can drag or flick.',
-        href: '/docs/animated-switch',
-      },
-      {
-        name: 'Face Rating',
-        description: 'A five-level rating input where an SVG face morphs between moods.',
-        href: '/docs/face-rating',
-      },
-      {
-        name: 'Password Strength',
-        description:
-          'A password input with an animated strength meter and requirements checklist.',
-        href: '/docs/password-strength',
-      },
-      {
-        name: 'Quantity Stepper',
-        description:
-          'A quantity input with rolling digits, hold-to-repeat buttons, and boundary shake.',
-        href: '/docs/quantity-stepper',
-      },
-      {
-        name: 'Star Rating',
-        description: 'An animated star rating input with hover preview and sparkle burst effects.',
-        href: '/docs/star-rating',
-      },
-      {
-        name: 'Task Checkbox',
-        description:
-          'A todo checkbox that celebrates completion with a confetti burst and strikethrough.',
-        href: '/docs/task-checkbox',
-      },
-    ],
-  },
-  {
-    name: 'Buttons & Actions',
-    components: [
-      {
-        name: 'Button',
-        description: 'Interactive button component with various styles.',
-        href: '/docs/button',
-      },
-      {
-        name: 'Loading Button',
-        description: 'A button with a loading spinner state.',
-        href: '/docs/loading-button',
-      },
-      {
-        name: 'Feedback',
-        description: 'A widget for submitting user feedback.',
-        href: '/docs/feedback',
-      },
-      { name: 'Alert', description: 'Displays a callout for user attention.', href: '/docs/alert' },
-      {
-        name: 'Follow Button',
-        description: 'A follow button that morphs its width, fill, and label between states.',
-        href: '/docs/follow-button',
-      },
-      {
-        name: 'Hold to Confirm',
-        description:
-          'A press-and-hold button that fills a progress ring before confirming destructive actions.',
-        href: '/docs/hold-to-confirm',
-      },
-      {
-        name: 'Like Button',
-        description: 'A heart button that pops with a particle burst and rolling count.',
-        href: '/docs/like-button',
-      },
-      {
-        name: 'Morph Button',
-        description: 'An async button that morphs between idle, loading, success, and error states.',
-        href: '/docs/morph-button',
-      },
-      {
-        name: 'Notification Bell',
-        description: 'A bell button that swings on new notifications with a rolling unread badge.',
-        href: '/docs/notification-bell',
-      },
-      {
-        name: 'Reaction Bar',
-        description: 'A Slack-style emoji reaction bar with animated chips and rolling counts.',
-        href: '/docs/reaction-bar',
-      },
-      {
-        name: 'Share Button',
-        description: 'A share button that fans out into copy-link and custom share actions.',
-        href: '/docs/share-button',
-      },
-    ],
-  },
-  {
-    name: 'Status & Progress',
-    components: [
-      { name: 'Badge', description: 'Displays a small badge or label.', href: '/docs/badge' },
-      {
-        name: 'Status Badge',
-        description: 'A badge indicating an operational status.',
-        href: '/docs/status-badge',
-      },
-      {
-        name: 'Progress with Value',
-        description: 'A progress bar that displays its numerical value.',
-        href: '/docs/progress-with-value',
-      },
-      { name: 'Spinner', description: 'A simple loading spinner.', href: '/docs/spinner' },
-      {
-        name: 'Undo Pill',
-        description: 'An inline undo pill with a draining countdown ring that pauses on hover.',
-        href: '/docs/undo-pill',
-      },
-    ],
-  },
-  {
-    name: 'Data & Content',
-    components: [
-      {
-        name: 'Animated Chart',
-        description: 'Interactive and animated SVG charts.',
-        href: '/docs/animatedchart',
-      },
-      { name: 'Profile', description: 'User profile components and cards.', href: '/docs/profile' },
-      {
-        name: 'Avatar Stack',
-        description:
-          'An overlapping avatar row that fans apart on hover with springy name tooltips.',
-        href: '/docs/avatar-stack',
-      },
-      {
-        name: 'Kbd Key',
-        description: 'A 3D keycap that physically depresses when the matching key is pressed.',
-        href: '/docs/kbd-key',
-      },
-    ],
-  },
-  {
-    name: 'Media & Overlays',
-    components: [
-      {
-        name: 'Animated Card',
-        description: 'A beautifully animated card component.',
-        href: '/docs/animatedcard',
-      },
-      {
-        name: 'Animated Drawer',
-        description: 'A modern, animated sliding drawer.',
-        href: '/docs/animateddrawer',
-      },
-      {
-        name: 'Image Preview',
-        description: 'Preview images on click or hover.',
-        href: '/docs/imagepreview',
-      },
-      {
-        name: 'Login',
-        description: 'Pre-built elegant login pages and forms.',
-        href: '/docs/login',
-      },
-      {
-        name: '3D Tilt Card',
-        description: 'A 3D card that tilts toward the pointer with parallax depth and glare.',
-        href: '/docs/tilt-card',
-      },
-      {
-        name: 'Scratch Card',
-        description: 'A scratch-to-reveal card that wipes away a canvas foil overlay on drag.',
-        href: '/docs/scratch-card',
-      },
-      {
-        name: 'Swipe to Delete',
-        description: 'A swipeable list item that reveals an iOS-style delete action on drag.',
-        href: '/docs/swipe-to-delete',
-      },
-    ],
-  },
-];
-
-const allComponents = categories.flatMap((cat) =>
-  cat.components.map((c) => ({ ...c, category: cat.name })),
-);
+const allComponents: ComponentItem[] = COMPONENT_CATALOG.map((component) => ({
+  name: component.name,
+  description: component.description,
+  href: componentDocsPath(component.slug),
+  category: component.category,
+}));
 
 const sortedComponents = [...allComponents].sort((a, b) => a.name.localeCompare(b.name));
-
-const slugOf = (href: string) => href.replace('/docs/', '');
 
 /** One table cell — component name only, used in both browse and search views */
 function ComponentRow({ item }: { item: ComponentItem }) {
@@ -292,24 +60,22 @@ export function DocsCatalog() {
       <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl animate-fade-up">
           <h1 className="text-2xl leading-10 text-neutral-900 dark:text-neutral-100 sm:text-3xl">
-            Introduction
+            React components and blocks
           </h1>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            Spectrum UI is a free and open source collection of components for React and Next.js. It
-            is built on top of{' '}
-            <span className="font-medium text-neutral-900 dark:text-neutral-100">shadcn/ui</span>{' '}
-            and{' '}
-            <span className="font-medium text-neutral-900 dark:text-neutral-100">Tailwind CSS</span>
-            .
+            Spectrum UI is an open-source React component and block library featuring
+            animation-ready, copy-paste components built with React, Next.js, Tailwind CSS, Motion,
+            TypeScript, and shadcn/ui for SaaS dashboards, landing pages, AI applications, and admin
+            panels.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            It is not a component library, so there is nothing new to install. Find a component you
-            like, copy the code or add it with the shadcn CLI, and it becomes part of your project.
-            The code is yours. You can change it in any way you want.
+            Choose a component, copy its source or add it with the shadcn CLI, and keep the source in
+            your project. Components can be adapted to the project&apos;s design system and application
+            requirements.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            Every component is written in TypeScript, works on all screen sizes, and looks good in
-            both light and dark mode. Animations use Framer Motion. You can also connect the{' '}
+            Components are authored in TypeScript, and each documentation page lists the source and
+            dependencies for that implementation. You can also connect the{' '}
             <Link
               href="/docs/mcp"
               className="font-medium text-neutral-800 underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-500 dark:text-neutral-200 dark:decoration-neutral-600 dark:hover:decoration-neutral-400"
@@ -343,6 +109,31 @@ export function DocsCatalog() {
           )}
         </div> */}
       </div>
+
+      <section className="mb-12 animate-fade-up" aria-labelledby="topic-guides">
+        <h2
+          id="topic-guides"
+          className="scroll-m-24 text-xl font-medium leading-7 tracking-[-0.01em] text-neutral-900 dark:text-neutral-50"
+        >
+          Explore by topic
+        </h2>
+        <p className="mt-1 font-inter text-[13px] leading-5 tracking-wide text-neutral-500 dark:text-neutral-400">
+          Developer guides that connect related components, code examples, and implementation
+          decisions.
+        </p>
+        <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {TOPIC_HUB_LINKS.map((hub) => (
+            <Link
+              key={hub.slug}
+              href={topicHubPath(hub.slug)}
+              className="group flex min-h-12 items-center justify-between gap-3 rounded-[10px] border border-black/[0.08] bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-200 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+            >
+              {hub.label}
+              <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* Components */}
       <div className="mb-4 animate-fade-up" style={{ animationDelay: '60ms' }}>

@@ -2,6 +2,14 @@ import { IconCheck, IconBrandGithub, IconX, IconClock } from '@tabler/icons-reac
 import Link from 'next/link'
 import { fulfillPaymentById, retrievePayment } from '@/lib/fulfill-payment'
 import { ProWaitlistSuccessTracker } from '@/app/pro/waitlist/success/tracker'
+import type { Metadata } from 'next'
+import { createNoIndexMetadata } from '@/lib/metadata'
+
+export const metadata: Metadata = createNoIndexMetadata({
+  title: 'Spectrum UI Payment Status',
+  description: 'Review the result of a Spectrum UI payment and the next account-access step.',
+  path: '/payment-success',
+})
 
 interface PaymentSuccessPageProps {
   searchParams: {

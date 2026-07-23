@@ -8,32 +8,18 @@ export const siteConfig = {
     alt: "Spectrum UI — React UI components for Next.js with Tailwind CSS",
   },
   description:
-    "Free React UI component library for Next.js. Accessible, copy-paste Tailwind components built with TypeScript. Ship dashboards, SaaS, and modern web apps faster — open source alternative to shadcn/ui.",
+    "Open-source, animation-ready React components and blocks built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui for SaaS and AI apps.",
   shortDescription:
-    "Free React & Next.js UI components with Tailwind CSS — accessible and production-ready",
+    "Animation-ready React components and blocks with copy-paste source",
   keywords: [
-    // Primary Keywords
-    "React UI components",
     "React component library",
-    "UI library",
-    "design system",
-    "modern UI components",
-    "Spectrum UI",
-    
-    // Next.js Keywords
-    "Next.js components",
-    "Next.js UI library",
-    "Next.js 14 components",
-    "Next.js app router components",
-    "Next.js Tailwind components",
-    "Next.js design system",
-    "Next.js component library",
-    "Next.js UI kit",
-    "Next.js starter template",
-    "Next.js dashboard components",
-    
-    // Tailwind CSS Keywords
+    "React block library",
+    "animation library",
+    "motion components",
     "Tailwind CSS components",
+    "Next.js UI library",
+    "copy-paste UI",
+    "shadcn-compatible",
     "Tailwind UI library",
     "Tailwind component library",
     "Tailwind CSS UI kit",
@@ -96,8 +82,9 @@ export const siteConfig = {
     "dashboard components",
     "admin panel components",
     "SaaS UI components",
-    "e-commerce components",
     "landing page components",
+    "AI application UI",
+    "open source",
     "portfolio components",
     "blog components",
     "authentication components",
@@ -208,7 +195,8 @@ export const siteConfig = {
   },
   locale: "en-US",
   version: "1.0.0",
-  license: "MIT",
+  license: "Apache-2.0",
+  licenseUrl: "https://github.com/arihantcodes/spectrum-ui/blob/main/LICENSE",
   repository: {
     type: "git",
     url: "https://github.com/arihantcodes/spectrum-ui",
@@ -216,7 +204,7 @@ export const siteConfig = {
   // Enhanced SEO metadata
   seo: {
     title: {
-      default: "Spectrum UI — React & Next.js Component Library",
+      default: "Spectrum UI — Animated React Components & Blocks",
       template: "%s | Spectrum UI",
     },
     robots: {
@@ -272,7 +260,8 @@ export const siteConfig = {
   manifest: {
     name: "Spectrum UI",
     shortName: "SpectrumUI",
-    description: "Beautiful React components for modern web applications",
+    description:
+      "Open-source, animation-ready React components and blocks built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui.",
     startUrl: "/",
     display: "standalone",
     backgroundColor: "#ffffff",
