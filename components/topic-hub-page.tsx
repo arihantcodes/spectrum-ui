@@ -13,11 +13,11 @@ import { topicHubPath } from '@/lib/topic-hub-links';
 const sectionClassName =
   'border-t border-neutral-200 px-5 py-14 dark:border-neutral-800 sm:px-8 md:px-10 md:py-20';
 const eyebrowClassName =
-  'font-inter text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-500';
+  'font-regular text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-500';
 const headingClassName =
   'mt-3 max-w-3xl font-regular text-2xl font-semibold tracking-[-0.015em] text-neutral-900 dark:text-neutral-50 sm:text-[28px]';
 const bodyClassName =
-  'font-inter text-[15px] leading-7 text-neutral-600 dark:text-neutral-400 sm:text-base';
+  'font-regular text-[15px] leading-7 text-neutral-600 dark:text-neutral-400 sm:text-base';
 
 function SectionHeading({
   id,
@@ -66,7 +66,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
         <header className="px-5 py-14 sm:px-8 md:px-10 md:py-20 lg:py-24">
           <div className="mx-auto max-w-5xl">
             <nav aria-label="Breadcrumb" className="mb-9">
-              <ol className="flex flex-wrap items-center gap-2 font-inter text-sm text-neutral-500 dark:text-neutral-500">
+              <ol className="flex flex-wrap items-center gap-2 font-regular text-sm text-neutral-500 dark:text-neutral-500">
                 <li>
                   <Link
                     href="/"
@@ -95,7 +95,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
               </ol>
             </nav>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3 py-1.5 font-inter text-xs font-medium text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
+            <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3 py-1.5 font-regular text-xs font-medium text-neutral-600 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-400">
               <Layers3 className="size-3.5" aria-hidden="true" />
               Developer guide
             </div>
@@ -112,14 +112,14 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 href="#components"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 font-inter text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:focus-visible:ring-neutral-600"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 font-regular text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:focus-visible:ring-neutral-600"
               >
                 Browse {components.length} components
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
                 href="#example"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-200 bg-white px-5 font-inter text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-200 bg-white px-5 font-regular text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900"
               >
                 View code example
                 <Code2 className="size-4" aria-hidden="true" />
@@ -164,7 +164,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
                   <h3 className="mt-5 font-regular text-base font-medium text-neutral-900 dark:text-neutral-100">
                     {useCase.title}
                   </h3>
-                  <p className="mt-2 font-inter text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                  <p className="mt-2 font-regular text-sm leading-6 text-neutral-600 dark:text-neutral-400">
                     {useCase.description}
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
                         aria-hidden="true"
                       />
                     </span>
-                    <span className="rounded-full border border-neutral-200 px-2.5 py-1 font-inter text-[11px] font-medium text-neutral-500 dark:border-neutral-800 dark:text-neutral-500">
+                    <span className="rounded-full border border-neutral-200 px-2.5 py-1 font-regular text-[11px] font-medium text-neutral-500 dark:border-neutral-800 dark:text-neutral-500">
                       {component.category}
                     </span>
                   </span>
@@ -210,7 +210,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
                       aria-hidden="true"
                     />
                   </span>
-                  <span className="mt-2 font-inter text-sm leading-5 text-neutral-600 dark:text-neutral-400">
+                  <span className="mt-2 font-regular text-sm leading-5 text-neutral-600 dark:text-neutral-400">
                     {component.description}
                   </span>
                 </Link>
@@ -271,7 +271,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
                       aria-hidden="true"
                     />
                   </h3>
-                  <p className="mt-2 font-inter text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+                  <p className="mt-2 font-regular text-sm leading-6 text-neutral-600 dark:text-neutral-400">
                     {guide.description}
                   </p>
                 </Link>

@@ -34,7 +34,7 @@ function coverGradient(key?: string) {
 
 function CategoryChip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2.5 py-1 font-inter text-[10px] font-medium uppercase leading-none tracking-[0.06em] text-neutral-700 ring-1 ring-inset ring-black/[0.06] backdrop-blur-sm dark:bg-white/[0.08] dark:text-neutral-200 dark:ring-white/[0.1]">
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2.5 py-1 font-regular text-[10px] font-medium uppercase leading-none tracking-[0.06em] text-neutral-700 ring-1 ring-inset ring-black/[0.06] backdrop-blur-sm dark:bg-white/[0.08] dark:text-neutral-200 dark:ring-white/[0.1]">
       <span
         aria-hidden
         className="h-[7px] w-[7px] border-l-[1.5px] border-t-[1.5px] border-neutral-400 dark:border-neutral-500"
@@ -114,10 +114,10 @@ export function BlogCard({ post }: { post: BlogPost }) {
         <h3 className="line-clamp-2 font-regular text-[19px] font-semibold leading-[1.3] tracking-[-0.01em] text-neutral-900 transition-colors group-hover:text-neutral-600 dark:text-neutral-100 dark:group-hover:text-neutral-300">
           {post.title}
         </h3>
-        <p className="line-clamp-2 font-inter text-[13.5px] leading-[1.5] text-neutral-600 dark:text-neutral-400">
+        <p className="line-clamp-2 font-regular text-[13.5px] leading-[1.5] text-neutral-600 dark:text-neutral-400">
           {post.excerpt}
         </p>
-        <div className="mt-1 flex items-center gap-2 font-inter text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500">
+        <div className="mt-1 flex items-center gap-2 font-regular text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500">
           <span>{post.date}</span>
           <span className="h-1 w-1 rounded-full bg-current opacity-50" />
           <span>{post.readTime}</span>
@@ -142,18 +142,18 @@ export function FeaturedBlogCard({ post }: { post: BlogPost }) {
                 aria-hidden
                 className="h-[9px] w-[9px] border-l-2 border-t-2 border-neutral-400 dark:border-neutral-500"
               />
-              <span className="font-inter text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+              <span className="font-regular text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
                 Featured{post.category ? ` · ${post.category}` : ''}
               </span>
             </div>
             <h2 className="max-w-xl font-regular text-[28px] font-semibold leading-[1.12] tracking-[-0.02em] text-neutral-900 md:text-[36px] dark:text-neutral-50">
               {post.title}
             </h2>
-            <p className="max-w-md font-inter text-[14.5px] leading-[1.6] text-neutral-600 line-clamp-3 dark:text-neutral-400">
+            <p className="max-w-md font-regular text-[14.5px] leading-[1.6] text-neutral-600 line-clamp-3 dark:text-neutral-400">
               {post.excerpt}
             </p>
           </div>
-          <div className="flex items-center gap-2 font-inter text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500">
+          <div className="flex items-center gap-2 font-regular text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500">
             <span>{post.date}</span>
             <span className="h-1 w-1 rounded-full bg-current opacity-50" />
             <span>{post.readTime}</span>

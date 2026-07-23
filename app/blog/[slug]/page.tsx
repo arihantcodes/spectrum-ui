@@ -141,7 +141,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <JsonLd id="blog-post-structured-data" data={structuredData} />
       <JsonLd id="blog-post-breadcrumbs" data={breadcrumbData} />
 
-      <div className="relative min-h-screen font-inter text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
+      <div className="relative min-h-screen font-regular text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
         {/* Page-wide grain overlay */}
         <div
           aria-hidden
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               {/* Back link */}
               <Link
                 href="/blog"
-                className="group inline-flex items-center gap-2 font-inter text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200"
+                className="group inline-flex items-center gap-2 font-regular text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-200"
               >
                 <svg
                   width="14"
@@ -184,7 +184,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                       aria-hidden
                       className="h-[9px] w-[9px] border-l-2 border-t-2 border-neutral-400 dark:border-neutral-500"
                     />
-                    <span className="font-inter text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+                    <span className="font-regular text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
                       {post.category || 'Engineering'}
                       <span className="mx-2 text-neutral-300 dark:text-neutral-600">/</span>
                       {post.readTime}
@@ -198,7 +198,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     {post.title}
                   </h1>
 
-                  <p className="max-w-[62ch] font-inter text-[17px] leading-[1.7] text-neutral-600 dark:text-neutral-400">
+                  <p className="max-w-[62ch] font-regular text-[17px] leading-[1.7] text-neutral-600 dark:text-neutral-400">
                     {post.excerpt}
                   </p>
 
@@ -234,7 +234,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     <time
                       itemProp="datePublished"
                       dateTime={post.date}
-                      className="font-inter text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500"
+                      className="font-regular text-[11px] uppercase tracking-[0.04em] text-neutral-500 dark:text-neutral-500"
                     >
                       {post.date}
                     </time>
@@ -244,7 +244,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 {/* Article Content */}
                 <div
                   itemProp="articleBody"
-                  className="blog-content prose prose-neutral dark:prose-invert mt-10 max-w-[42em] font-inter text-[15px] leading-[1.75] text-neutral-700 dark:text-neutral-300 prose-headings:font-regular prose-headings:font-semibold prose-headings:tracking-[-0.015em] prose-headings:text-neutral-900 dark:prose-headings:text-neutral-100 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-[3px] dark:prose-a:text-neutral-100 prose-code:font-mono prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100"
+                  className="blog-content prose prose-neutral dark:prose-invert mt-10 max-w-[42em] font-regular text-[15px] leading-[1.75] text-neutral-700 dark:text-neutral-300 prose-headings:font-regular prose-headings:font-semibold prose-headings:tracking-[-0.015em] prose-headings:text-neutral-900 dark:prose-headings:text-neutral-100 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-[3px] dark:prose-a:text-neutral-100 prose-code:font-mono prose-strong:text-neutral-900 dark:prose-strong:text-neutral-100"
                 >
                   {post.content}
                 </div>
@@ -268,7 +268,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     aria-hidden
                     className="h-[9px] w-[9px] border-l-2 border-t-2 border-neutral-400 dark:border-neutral-500"
                   />
-                  <h2 className="font-inter text-xs font-medium uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100">
+                  <h2 className="font-regular text-xs font-medium uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100">
                     Keep reading
                   </h2>
                 </div>

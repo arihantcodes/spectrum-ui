@@ -46,7 +46,7 @@ export function TopicHubFaq({ faqs }: { faqs: readonly TopicHubFAQ[] }) {
             </AccordionPrimitive.Header>
             <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-faq-close data-[state=open]:animate-faq-open motion-reduce:animate-none">
               <div className="pb-6 pl-[30px] pr-4">
-                <p className="max-w-2xl animate-fade-up font-inter text-[15px] leading-7 text-neutral-600 motion-reduce:animate-none dark:text-neutral-400">
+                <p className="max-w-2xl animate-fade-up font-regular text-[15px] leading-7 text-neutral-600 motion-reduce:animate-none dark:text-neutral-400">
                   {faq.answer}
                 </p>
               </div>
