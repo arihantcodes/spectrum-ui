@@ -5,6 +5,8 @@ export interface ComponentCatalogItem {
   name: string;
   description: string;
   category: string;
+  /** Recently shipped — drives the "New" badge in the docs sidebar. */
+  new?: boolean;
 }
 
 export const COMPONENT_CATALOG = componentCatalog as readonly ComponentCatalogItem[];

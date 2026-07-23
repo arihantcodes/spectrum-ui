@@ -72,7 +72,7 @@ export function SaveAction() {
 }
 ```
 
-## Component reference (61)
+## Component reference (44)
 
 ### Accordion
 
@@ -122,22 +122,6 @@ A drawer panel that slides in smoothly for menus, settings, and sidebars.
 - Documentation: https://ui.spectrumhq.in/docs/animateddrawer
 - Verified install command: `npx shadcn@latest add @spectrumui/animated-drawer`
 
-### Animated Testimonials
-
-An animated testimonials section for showcasing customer reviews and social proof.
-
-- Category: Review
-- Documentation: https://ui.spectrumhq.in/docs/animatedtestimonials
-- Verified install command: `npx shadcn@latest add @spectrumui/animated-testimonials`
-
-### Text Animations
-
-A collection of text effects including holographic, ink morph, and orbital reveals.
-
-- Category: Text
-- Documentation: https://ui.spectrumhq.in/docs/animatedtext
-- Verified install command: `npx shadcn@latest add @spectrumui/holographic`
-
 ### Autosize Textarea
 
 A textarea that automatically grows and shrinks to fit its content.
@@ -162,14 +146,6 @@ An interactive 3D event badge rendered with Three.js and React Three Fiber.
 - Documentation: https://ui.spectrumhq.in/docs/badge
 - Verified install command: `npx shadcn@latest add @spectrumui/event-badge-3d`
 
-### Bento Grid
-
-A bento grid layout with physics-based hover effects and scroll animations.
-
-- Category: Layout
-- Documentation: https://ui.spectrumhq.in/docs/bento-grid
-- Verified install command: `npx shadcn@latest add @spectrumui/bento-grid`
-
 ### Button
 
 A set of pre-designed buttons including gradient, outline, loading, and icon styles.
@@ -186,14 +162,6 @@ A set of pre-designed cards for login, signup, pricing, and dashboards.
 - Documentation: https://ui.spectrumhq.in/docs/card
 - Verified install command: `npx shadcn@latest add card`
 
-### Command Palette
-
-A keyboard-driven command menu for navigation, actions, and theme switching.
-
-- Category: Navigation
-- Documentation: https://ui.spectrumhq.in/docs/command-palette
-- Verified install command: `npx shadcn@latest add @spectrumui/command-palette`
-
 ### Datetime Picker
 
 A date and time picker built on shadcn/ui with no extra dependencies.
@@ -202,22 +170,6 @@ A date and time picker built on shadcn/ui with no extra dependencies.
 - Documentation: https://ui.spectrumhq.in/docs/datetime-picker
 - Verified install command: `npx shadcn@latest add @spectrumui/datetime-picker-demo`
 
-### Disclose Image
-
-An image that reveals its content behind animated sliding door panels.
-
-- Category: Media
-- Documentation: https://ui.spectrumhq.in/docs/discloseimage
-- Verified install command: `npx shadcn@latest add @spectrumui/disclose-image`
-
-### Dock Menu
-
-A macOS-style dock menu that magnifies icons on hover with tooltips.
-
-- Category: Navigation
-- Documentation: https://ui.spectrumhq.in/docs/dock
-- Verified install command: `npx shadcn@latest add @spectrumui/dock-demo`
-
 ### Dual Range Slider
 
 A slider with two draggable thumbs for selecting a range of values.
@@ -225,14 +177,6 @@ A slider with two draggable thumbs for selecting a range of values.
 - Category: Form
 - Documentation: https://ui.spectrumhq.in/docs/dual-range-slider
 - Verified install command: `npx shadcn@latest add @spectrumui/dual-range-slider-demo`
-
-### Event Calendar
-
-An interactive calendar for displaying events, appointments, and daily schedules.
-
-- Category: Calendar
-- Documentation: https://ui.spectrumhq.in/docs/eventcalendar
-- Verified install command: `npx shadcn@latest add @spectrumui/event-calendar`
 
 ### Face Rating
 
@@ -266,30 +210,6 @@ A follow button that morphs its width, fill, and label between states.
 - Documentation: https://ui.spectrumhq.in/docs/follow-button
 - Verified install command: `npx shadcn@latest add @spectrumui/follow-button`
 
-### Footer
-
-A collection of footers with wave, stacked, and particle animation styles.
-
-- Category: Layout
-- Documentation: https://ui.spectrumhq.in/docs/footer
-- Verified install command: `npx shadcn@latest add @spectrumui/footers-demo`
-
-### GitHub Profile Card
-
-A GitHub profile card generator with stats, a contribution graph, and social links.
-
-- Category: Profile
-- Documentation: https://ui.spectrumhq.in/docs/github-card
-- Verified install command: `npx shadcn@latest add @spectrumui/github-profile-card`
-
-### Heading With Anchor
-
-A heading component that adds clickable anchor links for section sharing.
-
-- Category: Text
-- Documentation: https://ui.spectrumhq.in/docs/heading-with-anchor
-- Verified install command: `npx shadcn@latest add @spectrumui/heading-with-anchor`
-
 ### Hold to Confirm
 
 A press-and-hold button that fills a progress ring before confirming destructive actions.
@@ -313,14 +233,6 @@ An infinite scroll container that loads more content using the IntersectionObser
 - Category: Data
 - Documentation: https://ui.spectrumhq.in/docs/infinite-scroll
 - Verified install command: `npx shadcn@latest add @spectrumui/infinite-scroll-demo`
-
-### Input
-
-A form input field or a component that looks like an input field.
-
-- Category: Form
-- Documentation: https://ui.spectrumhq.in/docs/input
-- Verified install command: `npx shadcn@latest add input`
 
 ### Input Model
 
@@ -394,14 +306,6 @@ A multi-step form with progress indicators for registration and checkout flows.
 - Documentation: https://ui.spectrumhq.in/docs/multistepform
 - Verified install command: `npx shadcn@latest add @spectrumui/multiple-step-form-demo`
 
-### Navbar
-
-A collection of responsive navbars with circular, tab, floating, and sidebar patterns.
-
-- Category: Navigation
-- Documentation: https://ui.spectrumhq.in/docs/navbar
-- Verified install command: `npx shadcn@latest add @spectrumui/navbar-demo`
-
 ### Notification Bell
 
 A bell button that swings on new notifications with a rolling unread badge.
@@ -417,14 +321,6 @@ A password input with an animated strength meter and requirements checklist.
 - Category: Form
 - Documentation: https://ui.spectrumhq.in/docs/password-strength
 - Verified install command: `npx shadcn@latest add @spectrumui/password-strength`
-
-### Product Card
-
-A product card that displays an image, title, price, and rating.
-
-- Category: Card
-- Documentation: https://ui.spectrumhq.in/docs/product-card
-- Verified install command: `npx shadcn@latest add @spectrumui/product-card`
 
 ### Profile Dropdown
 
@@ -458,14 +354,6 @@ A Slack-style emoji reaction bar with animated chips and rolling counts.
 - Documentation: https://ui.spectrumhq.in/docs/reaction-bar
 - Verified install command: `npx shadcn@latest add @spectrumui/reaction-bar`
 
-### Responsive Modal
-
-A dialog that centers on desktop and slides up as a sheet on mobile.
-
-- Category: Overlay
-- Documentation: https://ui.spectrumhq.in/docs/responsive-modal
-- Verified install command: `npx shadcn@latest add @spectrumui/responsive-modal`
-
 ### Scratch Card
 
 A scratch-to-reveal card that wipes away a canvas foil overlay on drag.
@@ -481,14 +369,6 @@ A share button that fans out into copy-link and custom share actions.
 - Category: Action
 - Documentation: https://ui.spectrumhq.in/docs/share-button
 - Verified install command: `npx shadcn@latest add @spectrumui/share-button`
-
-### Skeleton
-
-A loading placeholder that shimmer-animates while content is fetching.
-
-- Category: Feedback
-- Documentation: https://ui.spectrumhq.in/docs/skeleton
-- Verified install command: `npx shadcn@latest add @spectrumui/skeleton`
 
 ### Spinner
 
@@ -514,14 +394,6 @@ A status badge with icon and color variants for success, error, warning, and pen
 - Documentation: https://ui.spectrumhq.in/docs/status-badge
 - Verified install command: `npx shadcn@latest add @spectrumui/status-badge`
 
-### HTTP Status Code
-
-An HTTP status code display for building 404 and error pages.
-
-- Category: Feedback
-- Documentation: https://ui.spectrumhq.in/docs/statuscode
-- Verified install command: `npx shadcn@latest add @spectrumui/http-status-code`
-
 ### Swipe to Delete
 
 A swipeable list item that reveals an iOS-style delete action on drag.
@@ -537,14 +409,6 @@ A todo checkbox that celebrates completion with a confetti burst and strikethrou
 - Category: Form
 - Documentation: https://ui.spectrumhq.in/docs/task-checkbox
 - Verified install command: `npx shadcn@latest add @spectrumui/task-checkbox`
-
-### Testimonials
-
-A testimonials section for showcasing customer reviews and social proof.
-
-- Category: Content
-- Documentation: https://ui.spectrumhq.in/docs/testimonials
-- Verified install command: `npx shadcn@latest add @spectrumui/testimonials`
 
 ### 3D Tilt Card
 

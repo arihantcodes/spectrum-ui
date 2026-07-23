@@ -5,7 +5,30 @@ const path = require('node:path');
 const projectRoot = path.resolve(__dirname, '..');
 const docsRoot = path.join(projectRoot, 'app', '(docs)', 'docs');
 const catalog = require(path.join(projectRoot, 'content', 'component-catalog.json'));
-const nonComponentRoutes = new Set(['guides', 'installation', 'mcp']);
+// Non-component doc routes, plus the 17 components delisted from the shipped
+// catalog. Their pages still resolve (as on main) but are not part of the 44.
+const nonComponentRoutes = new Set([
+  'guides',
+  'installation',
+  'mcp',
+  'animatedtestimonials',
+  'animatedtext',
+  'bento-grid',
+  'command-palette',
+  'discloseimage',
+  'dock',
+  'eventcalendar',
+  'footer',
+  'github-card',
+  'heading-with-anchor',
+  'input',
+  'navbar',
+  'product-card',
+  'responsive-modal',
+  'skeleton',
+  'statuscode',
+  'testimonials',
+]);
 
 const routeSlugs = fs
   .readdirSync(docsRoot, { withFileTypes: true })
@@ -20,7 +43,7 @@ const routeSlugs = fs
 
 const catalogSlugs = catalog.map((component) => component.slug).sort();
 
-assert.equal(catalog.length, 61, 'The component catalog should contain 61 routes');
+assert.equal(catalog.length, 44, 'The component catalog should contain 44 routes');
 assert.equal(new Set(catalogSlugs).size, catalog.length, 'Component slugs must be unique');
 assert.equal(
   new Set(catalog.map((component) => component.name)).size,

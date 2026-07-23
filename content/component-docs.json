@@ -57,19 +57,19 @@
         "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
       },
       {
-        "slug": "command-palette",
-        "name": "Command Palette",
-        "description": "A keyboard-driven command menu for navigation, actions, and theme switching."
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
       },
       {
-        "slug": "dock",
-        "name": "Dock Menu",
-        "description": "A macOS-style dock menu that magnifies icons on hover with tooltips."
+        "slug": "animated-switch",
+        "name": "Animated Switch",
+        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
       },
       {
-        "slug": "navbar",
-        "name": "Navbar",
-        "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns."
+        "slug": "animatedcard",
+        "name": "Animated Card",
+        "description": "A card that animates on hover to showcase tools, technologies, and features."
       }
     ],
     "faqs": [
@@ -191,9 +191,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "skeleton",
-        "name": "Skeleton",
-        "description": "A loading placeholder that shimmer-animates while content is fetching."
+        "slug": "spinner",
+        "name": "Spinner",
+        "description": "A loading spinner with multiple sizes and variants for async states."
       }
     ],
     "faqs": [
@@ -446,19 +446,19 @@
         "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       },
       {
-        "slug": "product-card",
-        "name": "Product Card",
-        "description": "A product card that displays an image, title, price, and rating."
-      },
-      {
         "slug": "tilt-card",
         "name": "3D Tilt Card",
         "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
       },
       {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
+      },
+      {
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -560,9 +560,9 @@
         "description": "An animated alert that displays notifications, warnings, and success messages."
       },
       {
-        "slug": "eventcalendar",
-        "name": "Event Calendar",
-        "description": "An interactive calendar for displaying events, appointments, and daily schedules."
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
       }
     ],
     "faqs": [
@@ -597,6 +597,7 @@
     "name": "Animated Drawer",
     "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars.",
     "category": "Overlay",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -653,24 +654,24 @@
     ],
     "related": [
       {
-        "slug": "responsive-modal",
-        "name": "Responsive Modal",
-        "description": "A dialog that centers on desktop and slides up as a sheet on mobile."
-      },
-      {
         "slug": "accordion",
         "name": "Accordion",
         "description": "A vertically stacked set of interactive headings that each reveal a section of content."
       },
       {
-        "slug": "command-palette",
-        "name": "Command Palette",
-        "description": "A keyboard-driven command menu for navigation, actions, and theme switching."
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
       },
       {
-        "slug": "dock",
-        "name": "Dock Menu",
-        "description": "A macOS-style dock menu that magnifies icons on hover with tooltips."
+        "slug": "animated-switch",
+        "name": "Animated Switch",
+        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
+      },
+      {
+        "slug": "animatedcard",
+        "name": "Animated Card",
+        "description": "A card that animates on hover to showcase tools, technologies, and features."
       }
     ],
     "faqs": [
@@ -697,305 +698,6 @@
       {
         "question": "What accessibility checks should I run for Animated Drawer?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "animatedtestimonials",
-    "name": "Animated Testimonials",
-    "description": "An animated testimonials section for showcasing customer reviews and social proof.",
-    "category": "Review",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/animated-testimonials"
-      ],
-      "dependencyCommands": [
-        "npm i lucide-react framer-motion"
-      ],
-      "manualPaths": [
-        "app/(docs)/docs/animatedtestimonials/usages/demousages.tsx",
-        "components/spectrumui/animated_testimonials.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need an animated testimonials section for showcasing customer reviews and social proof",
-      "landing pages",
-      "case-study pages"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: button",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtext",
-        "name": "Text Animations",
-        "description": "A collection of text effects including holographic, ink morph, and orbital reveals."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      },
-      {
-        "slug": "badge",
-        "name": "3D Event Badge",
-        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Animated Testimonials free to use in commercial projects?",
-        "answer": "Yes. The public Animated Testimonials source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Animated Testimonials?",
-        "answer": "Run npx shadcn@latest add @spectrumui/animated-testimonials. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Animated Testimonials require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Animated Testimonials."
-      },
-      {
-        "question": "Does Animated Testimonials use shadcn/ui or Radix UI?",
-        "answer": "Animated Testimonials uses the button shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Animated Testimonials in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Animated Testimonials?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "animatedtext",
-    "name": "Text Animations",
-    "description": "A collection of text effects including holographic, ink morph, and orbital reveals.",
-    "category": "Text",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui"
-    ],
-    "dependencies": [
-      "next-themes",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/holographic",
-        "npx shadcn@latest add @spectrumui/orbital-letters",
-        "npx shadcn@latest add @spectrumui/ink"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "app/(docs)/docs/animatedtext/usage/holo.tsx",
-        "app/(docs)/docs/animatedtext/usage/orbital.tsx",
-        "app/(docs)/docs/animatedtext/usage/ink.tsx",
-        "components/spectrumui/hologram-text.tsx",
-        "components/spectrumui/orbital-text.tsx",
-        "components/spectrumui/orbital-char.tsx",
-        "components/spectrumui/ink-morph.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [
-      {
-        "name": "text",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the text property in the exported source type."
-      },
-      {
-        "name": "scanDuration",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the scanDuration property in the exported source type."
-      },
-      {
-        "name": "chromaJitter",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the chromaJitter property in the exported source type."
-      },
-      {
-        "name": "radius",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the radius property in the exported source type."
-      },
-      {
-        "name": "duration",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the duration property in the exported source type."
-      },
-      {
-        "name": "decay",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the decay property in the exported source type."
-      },
-      {
-        "name": "char",
-        "type": "string",
-        "required": true,
-        "description": "Value accepted by the char property in the exported source type."
-      },
-      {
-        "name": "index",
-        "type": "number",
-        "required": true,
-        "description": "Value accepted by the index property in the exported source type."
-      },
-      {
-        "name": "intensityFrom",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the intensityFrom property in the exported source type."
-      },
-      {
-        "name": "intensityTo",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the intensityTo property in the exported source type."
-      },
-      {
-        "name": "settleMs",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the settleMs property in the exported source type."
-      },
-      {
-        "name": "colorStart",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the colorStart property in the exported source type."
-      },
-      {
-        "name": "colorEnd",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the colorEnd property in the exported source type."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a collection of text effects including holographic, ink morph, and orbital reveals",
-      "landing-page headings",
-      "product launches"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: local UI primitives"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "heading-with-anchor",
-        "name": "Heading With Anchor",
-        "description": "A heading component that adds clickable anchor links for section sharing."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Text Animations free to use in commercial projects?",
-        "answer": "Yes. The public Text Animations source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Text Animations?",
-        "answer": "Run npx shadcn@latest add @spectrumui/holographic or npx shadcn@latest add @spectrumui/orbital-letters or npx shadcn@latest add @spectrumui/ink. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Text Animations require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Text Animations."
-      },
-      {
-        "question": "Does Text Animations use shadcn/ui or Radix UI?",
-        "answer": "Text Animations uses local shadcn/ui primitives."
-      },
-      {
-        "question": "Can I use Text Animations in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Text Animations?",
-        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -1099,9 +801,9 @@
         "description": "An input whose label floats above the field when focused or filled."
       },
       {
-        "slug": "input",
-        "name": "Input",
-        "description": "A form input field or a component that looks like an input field."
+        "slug": "input-model",
+        "name": "Input Model",
+        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -1136,6 +838,7 @@
     "name": "Avatar Stack",
     "description": "An overlapping avatar row that fans apart on hover with springy name tooltips.",
     "category": "Profile",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -1226,11 +929,6 @@
     ],
     "related": [
       {
-        "slug": "github-card",
-        "name": "GitHub Profile Card",
-        "description": "A GitHub profile card generator with stats, a contribution graph, and social links."
-      },
-      {
         "slug": "profile",
         "name": "Profile Dropdown",
         "description": "A user profile dropdown menu with avatar, settings, and logout actions."
@@ -1241,9 +939,14 @@
         "description": "A card that animates on hover to showcase tools, technologies, and features."
       },
       {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
+      },
+      {
+        "slug": "card",
+        "name": "Card",
+        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       }
     ],
     "faqs": [
@@ -1360,11 +1063,6 @@
     ],
     "related": [
       {
-        "slug": "discloseimage",
-        "name": "Disclose Image",
-        "description": "An image that reveals its content behind animated sliding door panels."
-      },
-      {
         "slug": "imagepreview",
         "name": "Image Preview",
         "description": "An image preview component with zoom, lightbox, and gallery support."
@@ -1378,6 +1076,11 @@
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -1403,228 +1106,6 @@
       },
       {
         "question": "What accessibility checks should I run for 3D Event Badge?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "bento-grid",
-    "name": "Bento Grid",
-    "description": "A bento grid layout with physics-based hover effects and scroll animations.",
-    "category": "Layout",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion"
-    ],
-    "dependencies": [
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/bento-grid"
-      ],
-      "dependencyCommands": [
-        "npm install framer-motion lucide-react"
-      ],
-      "manualPaths": [
-        "app/registry/bento-grid/bento-grid.tsx",
-        "components/spectrumui/bento-grid.tsx",
-        "components/spectrumui/bento-card.tsx",
-        "components/spectrumui/spotlight.tsx",
-        "components/spectrumui/border-beam.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      },
-      {
-        "name": "children",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
-        "name": "title",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Value accepted by the title property in the exported source type."
-      },
-      {
-        "name": "description",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Value accepted by the description property in the exported source type."
-      },
-      {
-        "name": "icon",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Value accepted by the icon property in the exported source type."
-      },
-      {
-        "name": "background",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Value accepted by the background property in the exported source type."
-      },
-      {
-        "name": "colSpan",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the colSpan property in the exported source type."
-      },
-      {
-        "name": "rowSpan",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the rowSpan property in the exported source type."
-      },
-      {
-        "name": "tilt",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the tilt property in the exported source type."
-      },
-      {
-        "name": "spotlight",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the spotlight property in the exported source type."
-      },
-      {
-        "name": "borderAnim",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the borderAnim property in the exported source type."
-      },
-      {
-        "name": "mouseX",
-        "type": "MotionValue<number>",
-        "required": true,
-        "description": "Value accepted by the mouseX property in the exported source type."
-      },
-      {
-        "name": "mouseY",
-        "type": "MotionValue<number>",
-        "required": true,
-        "description": "Value accepted by the mouseY property in the exported source type."
-      },
-      {
-        "name": "isHovered",
-        "type": "boolean",
-        "required": true,
-        "description": "Value accepted by the isHovered property in the exported source type."
-      },
-      {
-        "name": "color",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the color property in the exported source type."
-      },
-      {
-        "name": "duration",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the duration property in the exported source type."
-      },
-      {
-        "name": "borderWidth",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the borderWidth property in the exported source type."
-      },
-      {
-        "name": "colorFrom",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the colorFrom property in the exported source type."
-      },
-      {
-        "name": "colorTo",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the colorTo property in the exported source type."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a bento grid layout with physics-based hover effects and scroll animations",
-      "dashboard layouts",
-      "landing pages"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "footer",
-        "name": "Footer",
-        "description": "A collection of footers with wave, stacked, and particle animation styles."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      },
-      {
-        "slug": "animatedtext",
-        "name": "Text Animations",
-        "description": "A collection of text effects including holographic, ink morph, and orbital reveals."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Bento Grid free to use in commercial projects?",
-        "answer": "Yes. The public Bento Grid source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Bento Grid?",
-        "answer": "Run npx shadcn@latest add @spectrumui/bento-grid. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Bento Grid require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Bento Grid."
-      },
-      {
-        "question": "Does Bento Grid use shadcn/ui or Radix UI?",
-        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Bento Grid source."
-      },
-      {
-        "question": "Can I use Bento Grid in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Bento Grid?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
       }
     ]
@@ -1781,19 +1262,19 @@
         "description": "A card that animates on hover to showcase tools, technologies, and features."
       },
       {
-        "slug": "product-card",
-        "name": "Product Card",
-        "description": "A product card that displays an image, title, price, and rating."
-      },
-      {
         "slug": "tilt-card",
         "name": "3D Tilt Card",
         "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
       },
       {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
+      },
+      {
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -1820,133 +1301,6 @@
       {
         "question": "What accessibility checks should I run for Card?",
         "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
-    "slug": "command-palette",
-    "name": "Command Palette",
-    "description": "A keyboard-driven command menu for navigation, actions, and theme switching.",
-    "category": "Navigation",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "framer-motion",
-      "lucide-react",
-      "next-themes"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/command-palette"
-      ],
-      "dependencyCommands": [
-        "npm i framer-motion lucide-react next-themes"
-      ],
-      "manualPaths": [
-        "components/spectrumui/command-palette.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [
-      {
-        "name": "isOpen",
-        "type": "boolean",
-        "required": true,
-        "description": "Value accepted by the isOpen property in the exported source type."
-      },
-      {
-        "name": "onClose",
-        "type": "() => void",
-        "required": true,
-        "description": "Callback exposed by the component source."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a keyboard-driven command menu for navigation, actions, and theme switching",
-      "application shells",
-      "dashboards"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: local UI primitives",
-      "Responsive Tailwind variants present in the source",
-      "Reduced-motion handling present in the source"
-    ],
-    "accessibility": [
-      "The source checks reduced-motion preferences or includes motion-reduce styles.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "dock",
-        "name": "Dock Menu",
-        "description": "A macOS-style dock menu that magnifies icons on hover with tooltips."
-      },
-      {
-        "slug": "navbar",
-        "name": "Navbar",
-        "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns."
-      },
-      {
-        "slug": "accordion",
-        "name": "Accordion",
-        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
-      },
-      {
-        "slug": "animateddrawer",
-        "name": "Animated Drawer",
-        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Command Palette free to use in commercial projects?",
-        "answer": "Yes. The public Command Palette source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Command Palette?",
-        "answer": "Run npx shadcn@latest add @spectrumui/command-palette. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Command Palette require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Command Palette."
-      },
-      {
-        "question": "Does Command Palette use shadcn/ui or Radix UI?",
-        "answer": "Command Palette uses local shadcn/ui primitives."
-      },
-      {
-        "question": "Can I use Command Palette in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Command Palette?",
-        "answer": "The source includes reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -2139,9 +1493,9 @@
         "description": "An input whose label floats above the field when focused or filled."
       },
       {
-        "slug": "input",
-        "name": "Input",
-        "description": "A form input field or a component that looks like an input field."
+        "slug": "input-model",
+        "name": "Input Model",
+        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -2167,267 +1521,6 @@
       },
       {
         "question": "What accessibility checks should I run for Datetime Picker?",
-        "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
-    "slug": "discloseimage",
-    "name": "Disclose Image",
-    "description": "An image that reveals its content behind animated sliding door panels.",
-    "category": "Media",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
-    "dependencies": [],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/disclose-image"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/spectrumui/discloseimage.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [
-      {
-        "name": "doorClassName",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the doorClassName property in the exported source type."
-      },
-      {
-        "name": "vertical",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the vertical property in the exported source type."
-      }
-    ],
-    "useCases": [
-      "interfaces that need an image that reveals its content behind animated sliding door panels",
-      "landing pages",
-      "portfolio pages"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "badge",
-        "name": "3D Event Badge",
-        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
-      },
-      {
-        "slug": "imagepreview",
-        "name": "Image Preview",
-        "description": "An image preview component with zoom, lightbox, and gallery support."
-      },
-      {
-        "slug": "scratch-card",
-        "name": "Scratch Card",
-        "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Disclose Image free to use in commercial projects?",
-        "answer": "Yes. The public Disclose Image source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Disclose Image?",
-        "answer": "Run npx shadcn@latest add @spectrumui/disclose-image. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Disclose Image require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Disclose Image."
-      },
-      {
-        "question": "Does Disclose Image use shadcn/ui or Radix UI?",
-        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Disclose Image source."
-      },
-      {
-        "question": "Can I use Disclose Image in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Disclose Image?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "dock",
-    "name": "Dock Menu",
-    "description": "A macOS-style dock menu that magnifies icons on hover with tooltips.",
-    "category": "Navigation",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui"
-    ],
-    "dependencies": [
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [
-      "@spectrumui/dock"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/dock-demo",
-        "npx shadcn@latest add @spectrumui/dock-glass"
-      ],
-      "dependencyCommands": [
-        "npm i framer-motion"
-      ],
-      "manualPaths": [
-        "components/ui/dock.tsx",
-        "components/spectrumui/dock-demo.tsx",
-        "components/spectrumui/dock-glass.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": true
-    },
-    "props": [
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": true,
-        "description": "Content rendered inside the component."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      },
-      {
-        "name": "magnification",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the magnification property in the exported source type."
-      },
-      {
-        "name": "distance",
-        "type": "number",
-        "required": false,
-        "description": "Value accepted by the distance property in the exported source type."
-      },
-      {
-        "name": "variant",
-        "type": "\"normal\" | \"glass\"",
-        "required": false,
-        "description": "Value accepted by the variant property in the exported source type."
-      },
-      {
-        "name": "label",
-        "type": "string",
-        "required": true,
-        "description": "Value accepted by the label property in the exported source type."
-      },
-      {
-        "name": "onClick",
-        "type": "() => void",
-        "required": false,
-        "description": "Callback exposed by the component source."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a macOS-style dock menu that magnifies icons on hover with tooltips",
-      "application shells",
-      "dashboards"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: local UI primitives",
-      "Spectrum UI registry dependencies: @spectrumui/dock"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "The source includes keyboard event handling; verify it alongside pointer behavior.",
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "command-palette",
-        "name": "Command Palette",
-        "description": "A keyboard-driven command menu for navigation, actions, and theme switching."
-      },
-      {
-        "slug": "navbar",
-        "name": "Navbar",
-        "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns."
-      },
-      {
-        "slug": "accordion",
-        "name": "Accordion",
-        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
-      },
-      {
-        "slug": "animateddrawer",
-        "name": "Animated Drawer",
-        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Dock Menu free to use in commercial projects?",
-        "answer": "Yes. The public Dock Menu source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Dock Menu?",
-        "answer": "Run npx shadcn@latest add @spectrumui/dock-demo or npx shadcn@latest add @spectrumui/dock-glass. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Dock Menu require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Dock Menu."
-      },
-      {
-        "question": "Does Dock Menu use shadcn/ui or Radix UI?",
-        "answer": "Dock Menu uses local shadcn/ui primitives."
-      },
-      {
-        "question": "Can I use Dock Menu in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Dock Menu?",
         "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
@@ -2524,9 +1617,9 @@
         "description": "An input whose label floats above the field when focused or filled."
       },
       {
-        "slug": "input",
-        "name": "Input",
-        "description": "A form input field or a component that looks like an input field."
+        "slug": "input-model",
+        "name": "Input Model",
+        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -2557,122 +1650,11 @@
     ]
   },
   {
-    "slug": "eventcalendar",
-    "name": "Event Calendar",
-    "description": "An interactive calendar for displaying events, appointments, and daily schedules.",
-    "category": "Calendar",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "framer-motion",
-      "lucide-react",
-      "date-fns"
-    ],
-    "registryDependencies": [
-      "button",
-      "dialog",
-      "input",
-      "label"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/event-calendar"
-      ],
-      "dependencyCommands": [
-        "npm i lucide-react framer-motion date-fns"
-      ],
-      "manualPaths": [
-        "lib/utils.ts",
-        "components/spectrumui/event-calendar"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need an interactive calendar for displaying events, appointments, and daily schedules",
-      "scheduling dashboards",
-      "booking flows"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: button, dialog, input, label"
-    ],
-    "accessibility": [
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "animatedchart",
-        "name": "Animated SVG Chart",
-        "description": "An animated SVG chart for visualizing data on dashboards and reports."
-      },
-      {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
-      },
-      {
-        "slug": "infinite-scroll",
-        "name": "Infinite Scroll",
-        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Event Calendar free to use in commercial projects?",
-        "answer": "Yes. The public Event Calendar source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Event Calendar?",
-        "answer": "Run npx shadcn@latest add @spectrumui/event-calendar. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Event Calendar require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Event Calendar."
-      },
-      {
-        "question": "Does Event Calendar use shadcn/ui or Radix UI?",
-        "answer": "Event Calendar uses the button, dialog, input, label shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Event Calendar in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Event Calendar?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "face-rating",
     "name": "Face Rating",
     "description": "A five-level rating input where an SVG face morphs between moods.",
     "category": "Rating",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -2895,9 +1877,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "skeleton",
-        "name": "Skeleton",
-        "description": "A loading placeholder that shimmer-animates while content is fetching."
+        "slug": "spinner",
+        "name": "Spinner",
+        "description": "A loading spinner with multiple sizes and variants for async states."
       }
     ],
     "faqs": [
@@ -3006,9 +1988,9 @@
         "description": "A slider with two draggable thumbs for selecting a range of values."
       },
       {
-        "slug": "input",
-        "name": "Input",
-        "description": "A form input field or a component that looks like an input field."
+        "slug": "input-model",
+        "name": "Input Model",
+        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -3043,6 +2025,7 @@
     "name": "Follow Button",
     "description": "A follow button that morphs its width, fill, and label between states.",
     "category": "Action",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -3199,392 +2182,11 @@
     ]
   },
   {
-    "slug": "footer",
-    "name": "Footer",
-    "description": "A collection of footers with wave, stacked, and particle animation styles.",
-    "category": "Layout",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "input",
-      "label",
-      "switch",
-      "textarea",
-      "tooltip",
-      "icon",
-      "@spectrumui/icon-dependencies"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/footers-demo",
-        "npx shadcn@latest add @spectrumui/stackedcircular-footer",
-        "npx shadcn@latest add @spectrumui/floatingparticle-footer",
-        "npx shadcn@latest add @spectrumui/footer"
-      ],
-      "dependencyCommands": [
-        "npm i lucide-react"
-      ],
-      "manualPaths": [
-        "app/(docs)/docs/footer/footerdemo.tsx",
-        "components/spectrumui/footer-demo.tsx",
-        "components/spectrumui/stacked-footer.tsx",
-        "components/spectrumui/floatingparticle-footer.tsx",
-        "components/spectrumui/footer.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a collection of footers with wave, stacked, and particle animation styles",
-      "dashboard layouts",
-      "landing pages"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: button, input, label, switch, textarea, tooltip, icon",
-      "Spectrum UI registry dependencies: @spectrumui/icon-dependencies",
-      "Responsive Tailwind variants present in the source",
-      "Reduced-motion handling present in the source"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "The source checks reduced-motion preferences or includes motion-reduce styles.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "bento-grid",
-        "name": "Bento Grid",
-        "description": "A bento grid layout with physics-based hover effects and scroll animations."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      },
-      {
-        "slug": "animatedtext",
-        "name": "Text Animations",
-        "description": "A collection of text effects including holographic, ink morph, and orbital reveals."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Footer free to use in commercial projects?",
-        "answer": "Yes. The public Footer source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Footer?",
-        "answer": "Run npx shadcn@latest add @spectrumui/footers-demo or npx shadcn@latest add @spectrumui/stackedcircular-footer or npx shadcn@latest add @spectrumui/floatingparticle-footer or npx shadcn@latest add @spectrumui/footer. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Footer require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Footer."
-      },
-      {
-        "question": "Does Footer use shadcn/ui or Radix UI?",
-        "answer": "Footer uses the button, input, label, switch, textarea, tooltip, icon shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Footer in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Footer?",
-        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
-    "slug": "github-card",
-    "name": "GitHub Profile Card",
-    "description": "A GitHub profile card generator with stats, a contribution graph, and social links.",
-    "category": "Profile",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui"
-    ],
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "avatar",
-      "button",
-      "card",
-      "input"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/github-profile-card"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/spectrumui/github-profile-card.tsx",
-        "components/icon.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a GitHub profile card generator with stats, a contribution graph, and social links",
-      "account pages",
-      "team directories"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: avatar, button, card, input"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "The source includes keyboard event handling; verify it alongside pointer behavior.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
-    ],
-    "related": [
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      },
-      {
-        "slug": "profile",
-        "name": "Profile Dropdown",
-        "description": "A user profile dropdown menu with avatar, settings, and logout actions."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is GitHub Profile Card free to use in commercial projects?",
-        "answer": "Yes. The public GitHub Profile Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install GitHub Profile Card?",
-        "answer": "Run npx shadcn@latest add @spectrumui/github-profile-card. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does GitHub Profile Card require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for GitHub Profile Card."
-      },
-      {
-        "question": "Does GitHub Profile Card use shadcn/ui or Radix UI?",
-        "answer": "GitHub Profile Card uses the avatar, button, card, input shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use GitHub Profile Card in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for GitHub Profile Card?",
-        "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
-    "slug": "heading-with-anchor",
-    "name": "Heading With Anchor",
-    "description": "A heading component that adds clickable anchor links for section sharing.",
-    "category": "Text",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Radix UI"
-    ],
-    "dependencies": [
-      "@radix-ui/react-slot",
-      "class-variance-authority"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/heading-with-anchor"
-      ],
-      "dependencyCommands": [
-        "npm i @radix-ui/react-slot class-variance-authority"
-      ],
-      "manualPaths": [
-        "components/ui/heading-with-anchor.tsx",
-        "components/spectrumui/heading-with-anchor.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": true
-    },
-    "props": [
-      {
-        "name": "anchor",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the anchor property in the exported source type."
-      },
-      {
-        "name": "anchorVisibility",
-        "type": "\"hover\" | \"always\" | \"never\"",
-        "required": false,
-        "description": "Value accepted by the anchorVisibility property in the exported source type."
-      },
-      {
-        "name": "disableCopyToClipboard",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the disableCopyToClipboard property in the exported source type."
-      },
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
-        "name": "variant",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the variant property in the exported source type."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      },
-      {
-        "name": "asChild",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the asChild property in the exported source type."
-      },
-      {
-        "name": "anchorAlignment",
-        "type": "\"close\" | \"spaced\"",
-        "required": false,
-        "description": "Value accepted by the anchorAlignment property in the exported source type."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a heading component that adds clickable anchor links for section sharing",
-      "landing-page headings",
-      "product launches"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: local UI primitives",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "The source uses Radix UI primitives for the interactions detected on this component.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "animatedtext",
-        "name": "Text Animations",
-        "description": "A collection of text effects including holographic, ink morph, and orbital reveals."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Heading With Anchor free to use in commercial projects?",
-        "answer": "Yes. The public Heading With Anchor source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Heading With Anchor?",
-        "answer": "Run npx shadcn@latest add @spectrumui/heading-with-anchor. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Heading With Anchor require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Heading With Anchor."
-      },
-      {
-        "question": "Does Heading With Anchor use shadcn/ui or Radix UI?",
-        "answer": "Heading With Anchor uses local shadcn/ui primitives and imports Radix UI directly."
-      },
-      {
-        "question": "Can I use Heading With Anchor in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Heading With Anchor?",
-        "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
     "slug": "hold-to-confirm",
     "name": "Hold to Confirm",
     "description": "A press-and-hold button that fills a progress ring before confirming destructive actions.",
     "category": "Action",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -3832,11 +2434,6 @@
         "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       },
       {
-        "slug": "discloseimage",
-        "name": "Disclose Image",
-        "description": "An image that reveals its content behind animated sliding door panels."
-      },
-      {
         "slug": "scratch-card",
         "name": "Scratch Card",
         "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag."
@@ -3845,6 +2442,11 @@
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -3990,9 +2592,9 @@
         "description": "An animated alert that displays notifications, warnings, and success messages."
       },
       {
-        "slug": "eventcalendar",
-        "name": "Event Calendar",
-        "description": "An interactive calendar for displaying events, appointments, and daily schedules."
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
       }
     ],
     "faqs": [
@@ -4018,102 +2620,6 @@
       },
       {
         "question": "What accessibility checks should I run for Infinite Scroll?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "input",
-    "name": "Input",
-    "description": "A form input field or a component that looks like an input field.",
-    "category": "Form",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui"
-    ],
-    "dependencies": [],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add input"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/ui/input.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": true
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a form input field or a component that looks like an input field",
-      "authentication flows",
-      "settings forms"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: local UI primitives",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
-      },
-      {
-        "slug": "dual-range-slider",
-        "name": "Dual Range Slider",
-        "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Input free to use in commercial projects?",
-        "answer": "Yes. The public Input source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Input?",
-        "answer": "Run npx shadcn@latest add input. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Input require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Input."
-      },
-      {
-        "question": "Does Input use shadcn/ui or Radix UI?",
-        "answer": "Input uses local shadcn/ui primitives."
-      },
-      {
-        "question": "Can I use Input in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Input?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
       }
     ]
@@ -4303,9 +2809,9 @@
         "description": "An animated alert that displays notifications, warnings, and success messages."
       },
       {
-        "slug": "eventcalendar",
-        "name": "Event Calendar",
-        "description": "An interactive calendar for displaying events, appointments, and daily schedules."
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
       }
     ],
     "faqs": [
@@ -4494,6 +3000,7 @@
     "name": "Like Button",
     "description": "A heart button that pops with a particle burst and rolling count.",
     "category": "Action",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -5454,130 +3961,11 @@
     ]
   },
   {
-    "slug": "navbar",
-    "name": "Navbar",
-    "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns.",
-    "category": "Navigation",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "button",
-      "scroll-area",
-      "sheet",
-      "avatar",
-      "input",
-      "label",
-      "navigation-menu",
-      "dropdown-menu",
-      "collapsible"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/navbar-demo",
-        "npx shadcn@latest add @spectrumui/circular-navbar",
-        "npx shadcn@latest add @spectrumui/tab-navbar",
-        "npx shadcn@latest add @spectrumui/floating-navbar",
-        "npx shadcn@latest add @spectrumui/sidebar-navbar"
-      ],
-      "dependencyCommands": [
-        "npm i lucide-react"
-      ],
-      "manualPaths": [
-        "app/(docs)/docs/navbar/navbardemo.tsx",
-        "components/spectrumui/navbar.tsx",
-        "components/spectrumui/circularnavbar.tsx",
-        "components/spectrumui/tabnavbar.tsx",
-        "components/spectrumui/floatingnavbar.tsx",
-        "components/spectrumui/sidebarnavbar.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a collection of responsive navbars with circular, tab, floating, and sidebar patterns",
-      "application shells",
-      "dashboards"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: button, scroll-area, sheet, avatar, input, label, navigation-menu, dropdown-menu, collapsible",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "command-palette",
-        "name": "Command Palette",
-        "description": "A keyboard-driven command menu for navigation, actions, and theme switching."
-      },
-      {
-        "slug": "dock",
-        "name": "Dock Menu",
-        "description": "A macOS-style dock menu that magnifies icons on hover with tooltips."
-      },
-      {
-        "slug": "accordion",
-        "name": "Accordion",
-        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
-      },
-      {
-        "slug": "animateddrawer",
-        "name": "Animated Drawer",
-        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Navbar free to use in commercial projects?",
-        "answer": "Yes. The public Navbar source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Navbar?",
-        "answer": "Run npx shadcn@latest add @spectrumui/navbar-demo or npx shadcn@latest add @spectrumui/circular-navbar or npx shadcn@latest add @spectrumui/tab-navbar or npx shadcn@latest add @spectrumui/floating-navbar or npx shadcn@latest add @spectrumui/sidebar-navbar. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Navbar require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Navbar."
-      },
-      {
-        "question": "Does Navbar use shadcn/ui or Radix UI?",
-        "answer": "Navbar uses the button, scroll-area, sheet, avatar, input, label, navigation-menu, dropdown-menu, collapsible shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Navbar in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Navbar?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "notification-bell",
     "name": "Notification Bell",
     "description": "A bell button that swings on new notifications with a rolling unread badge.",
     "category": "Feedback",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -5688,9 +4076,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "skeleton",
-        "name": "Skeleton",
-        "description": "A loading placeholder that shimmer-animates while content is fetching."
+        "slug": "spinner",
+        "name": "Spinner",
+        "description": "A loading spinner with multiple sizes and variants for async states."
       }
     ],
     "faqs": [
@@ -5725,6 +4113,7 @@
     "name": "Password Strength",
     "description": "A password input with an animated strength meter and requirements checklist.",
     "category": "Form",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -5911,111 +4300,6 @@
     ]
   },
   {
-    "slug": "product-card",
-    "name": "Product Card",
-    "description": "A product card that displays an image, title, price, and rating.",
-    "category": "Card",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "lucide-react",
-      "next-themes"
-    ],
-    "registryDependencies": [
-      "button",
-      "select",
-      "card"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/product-card"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "app/(docs)/docs/product-card/product-card.tsx",
-        "components/spectrumui/product-card.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a product card that displays an image, title, price, and rating",
-      "SaaS dashboards",
-      "product pages"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: button, select, card",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
-    ],
-    "related": [
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "card",
-        "name": "Card",
-        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
-      },
-      {
-        "slug": "tilt-card",
-        "name": "3D Tilt Card",
-        "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
-      },
-      {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Product Card free to use in commercial projects?",
-        "answer": "Yes. The public Product Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Product Card?",
-        "answer": "Run npx shadcn@latest add @spectrumui/product-card. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Product Card require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Product Card."
-      },
-      {
-        "question": "Does Product Card use shadcn/ui or Radix UI?",
-        "answer": "Product Card uses the button, select, card shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Product Card in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Product Card?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "profile",
     "name": "Profile Dropdown",
     "description": "A user profile dropdown menu with avatar, settings, and logout actions.",
@@ -6078,19 +4362,19 @@
         "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       },
       {
-        "slug": "github-card",
-        "name": "GitHub Profile Card",
-        "description": "A GitHub profile card generator with stats, a contribution graph, and social links."
-      },
-      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
       },
       {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
+      },
+      {
+        "slug": "card",
+        "name": "Card",
+        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       }
     ],
     "faqs": [
@@ -6414,6 +4698,7 @@
     "name": "Reaction Bar",
     "description": "A Slack-style emoji reaction bar with animated chips and rolling counts.",
     "category": "Feedback",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -6525,9 +4810,9 @@
         "description": "A bell button that swings on new notifications with a rolling unread badge."
       },
       {
-        "slug": "skeleton",
-        "name": "Skeleton",
-        "description": "A loading placeholder that shimmer-animates while content is fetching."
+        "slug": "spinner",
+        "name": "Spinner",
+        "description": "A loading spinner with multiple sizes and variants for async states."
       }
     ],
     "faqs": [
@@ -6558,115 +4843,11 @@
     ]
   },
   {
-    "slug": "responsive-modal",
-    "name": "Responsive Modal",
-    "description": "A dialog that centers on desktop and slides up as a sheet on mobile.",
-    "category": "Overlay",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Radix UI"
-    ],
-    "dependencies": [],
-    "registryDependencies": [
-      "@spectrumui/responsive-modal-dependencies",
-      "button"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/responsive-modal",
-        "npx shadcn@latest add @spectrumui/responsive-modal-side"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/ui/responsive-modal.tsx",
-        "components/spectrumui/responsive-modal-demo.tsx",
-        "components/spectrumui/responsive-modal-side.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a dialog that centers on desktop and slides up as a sheet on mobile",
-      "settings workflows",
-      "mobile navigation"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: button",
-      "Spectrum UI registry dependencies: @spectrumui/responsive-modal-dependencies",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "The source uses Radix UI primitives for the interactions detected on this component.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "animateddrawer",
-        "name": "Animated Drawer",
-        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
-      },
-      {
-        "slug": "accordion",
-        "name": "Accordion",
-        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
-      },
-      {
-        "slug": "command-palette",
-        "name": "Command Palette",
-        "description": "A keyboard-driven command menu for navigation, actions, and theme switching."
-      },
-      {
-        "slug": "dock",
-        "name": "Dock Menu",
-        "description": "A macOS-style dock menu that magnifies icons on hover with tooltips."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Responsive Modal free to use in commercial projects?",
-        "answer": "Yes. The public Responsive Modal source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Responsive Modal?",
-        "answer": "Run npx shadcn@latest add @spectrumui/responsive-modal or npx shadcn@latest add @spectrumui/responsive-modal-side. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Responsive Modal require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Responsive Modal."
-      },
-      {
-        "question": "Does Responsive Modal use shadcn/ui or Radix UI?",
-        "answer": "Responsive Modal uses the button shadcn/ui dependencies and imports Radix UI directly."
-      },
-      {
-        "question": "Can I use Responsive Modal in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Responsive Modal?",
-        "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
     "slug": "scratch-card",
     "name": "Scratch Card",
     "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag.",
     "category": "Media",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -6798,11 +4979,6 @@
         "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       },
       {
-        "slug": "discloseimage",
-        "name": "Disclose Image",
-        "description": "An image that reveals its content behind animated sliding door panels."
-      },
-      {
         "slug": "imagepreview",
         "name": "Image Preview",
         "description": "An image preview component with zoom, lightbox, and gallery support."
@@ -6811,6 +4987,11 @@
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -6990,106 +5171,6 @@
     ]
   },
   {
-    "slug": "skeleton",
-    "name": "Skeleton",
-    "description": "A loading placeholder that shimmer-animates while content is fetching.",
-    "category": "Feedback",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui"
-    ],
-    "dependencies": [],
-    "registryDependencies": [
-      "skeleton"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/skeleton",
-        "npx shadcn@latest add @spectrumui/skeleton-card"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/ui/skeleton.tsx",
-        "components/spectrumui/skeleton-demo.tsx",
-        "components/spectrumui/skeleton-card.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a loading placeholder that shimmer-animates while content is fetching",
-      "form workflows",
-      "support tools"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: skeleton"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
-      },
-      {
-        "slug": "notification-bell",
-        "name": "Notification Bell",
-        "description": "A bell button that swings on new notifications with a rolling unread badge."
-      },
-      {
-        "slug": "reaction-bar",
-        "name": "Reaction Bar",
-        "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Skeleton free to use in commercial projects?",
-        "answer": "Yes. The public Skeleton source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Skeleton?",
-        "answer": "Run npx shadcn@latest add @spectrumui/skeleton or npx shadcn@latest add @spectrumui/skeleton-card. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Skeleton require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Skeleton."
-      },
-      {
-        "question": "Does Skeleton use shadcn/ui or Radix UI?",
-        "answer": "Skeleton uses the skeleton shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Skeleton in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Skeleton?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "spinner",
     "name": "Spinner",
     "description": "A loading spinner with multiple sizes and variants for async states.",
@@ -7212,6 +5293,7 @@
     "name": "Star Rating",
     "description": "An animated star rating input with hover preview and sparkle burst effects.",
     "category": "Rating",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -7479,112 +5561,11 @@
     ]
   },
   {
-    "slug": "statuscode",
-    "name": "HTTP Status Code",
-    "description": "An HTTP status code display for building 404 and error pages.",
-    "category": "Feedback",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui"
-    ],
-    "dependencies": [
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "card",
-      "input",
-      "button"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/http-status-code"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "components/spectrumui/http-status-code.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need an HTTP status code display for building 404 and error pages",
-      "form workflows",
-      "support tools"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: card, input, button",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
-    ],
-    "related": [
-      {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
-      },
-      {
-        "slug": "notification-bell",
-        "name": "Notification Bell",
-        "description": "A bell button that swings on new notifications with a rolling unread badge."
-      },
-      {
-        "slug": "reaction-bar",
-        "name": "Reaction Bar",
-        "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is HTTP Status Code free to use in commercial projects?",
-        "answer": "Yes. The public HTTP Status Code source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install HTTP Status Code?",
-        "answer": "Run npx shadcn@latest add @spectrumui/http-status-code. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does HTTP Status Code require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for HTTP Status Code."
-      },
-      {
-        "question": "Does HTTP Status Code use shadcn/ui or Radix UI?",
-        "answer": "HTTP Status Code uses the card, input, button shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use HTTP Status Code in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for HTTP Status Code?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "swipe-to-delete",
     "name": "Swipe to Delete",
     "description": "A swipeable list item that reveals an iOS-style delete action on drag.",
     "category": "Action",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -7739,6 +5720,7 @@
     "name": "Task Checkbox",
     "description": "A todo checkbox that celebrates completion with a confetti burst and strikethrough.",
     "category": "Form",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -7888,117 +5870,11 @@
     ]
   },
   {
-    "slug": "testimonials",
-    "name": "Testimonials",
-    "description": "A testimonials section for showcasing customer reviews and social proof.",
-    "category": "Content",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui",
-      "Next.js"
-    ],
-    "dependencies": [
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [
-      "card"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/testimonials"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "app/(docs)/docs/testimonials/testimonialsdemo.tsx",
-        "components/spectrumui/testimonials.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a testimonials section for showcasing customer reviews and social proof",
-      "application interfaces",
-      "documentation examples"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: card",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "accordion",
-        "name": "Accordion",
-        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
-      },
-      {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Testimonials free to use in commercial projects?",
-        "answer": "Yes. The public Testimonials source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Testimonials?",
-        "answer": "Run npx shadcn@latest add @spectrumui/testimonials. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Testimonials require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Testimonials."
-      },
-      {
-        "question": "Does Testimonials use shadcn/ui or Radix UI?",
-        "answer": "Testimonials uses the card shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Testimonials in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Testimonials?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "tilt-card",
     "name": "3D Tilt Card",
     "description": "A 3D card that tilts toward the pointer with parallax depth and glare.",
     "category": "Card",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",
@@ -8122,14 +5998,14 @@
         "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       },
       {
-        "slug": "product-card",
-        "name": "Product Card",
-        "description": "A product card that displays an image, title, price, and rating."
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       },
       {
-        "slug": "animatedtestimonials",
-        "name": "Animated Testimonials",
-        "description": "An animated testimonials section for showcasing customer reviews and social proof."
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -8164,6 +6040,7 @@
     "name": "Undo Pill",
     "description": "An inline undo pill with a draining countdown ring that pauses on hover.",
     "category": "Feedback",
+    "new": true,
     "technologies": [
       "React",
       "TypeScript",

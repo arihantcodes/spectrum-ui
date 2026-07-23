@@ -33,19 +33,8 @@
     "slug": "animateddrawer",
     "name": "Animated Drawer",
     "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars.",
-    "category": "Overlay"
-  },
-  {
-    "slug": "animatedtestimonials",
-    "name": "Animated Testimonials",
-    "description": "An animated testimonials section for showcasing customer reviews and social proof.",
-    "category": "Review"
-  },
-  {
-    "slug": "animatedtext",
-    "name": "Text Animations",
-    "description": "A collection of text effects including holographic, ink morph, and orbital reveals.",
-    "category": "Text"
+    "category": "Overlay",
+    "new": true
   },
   {
     "slug": "autosize-textarea",
@@ -57,19 +46,14 @@
     "slug": "avatar-stack",
     "name": "Avatar Stack",
     "description": "An overlapping avatar row that fans apart on hover with springy name tooltips.",
-    "category": "Profile"
+    "category": "Profile",
+    "new": true
   },
   {
     "slug": "badge",
     "name": "3D Event Badge",
     "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber.",
     "category": "Media"
-  },
-  {
-    "slug": "bento-grid",
-    "name": "Bento Grid",
-    "description": "A bento grid layout with physics-based hover effects and scroll animations.",
-    "category": "Layout"
   },
   {
     "slug": "button",
@@ -84,28 +68,10 @@
     "category": "Card"
   },
   {
-    "slug": "command-palette",
-    "name": "Command Palette",
-    "description": "A keyboard-driven command menu for navigation, actions, and theme switching.",
-    "category": "Navigation"
-  },
-  {
     "slug": "datetime-picker",
     "name": "Datetime Picker",
     "description": "A date and time picker built on shadcn/ui with no extra dependencies.",
     "category": "Form"
-  },
-  {
-    "slug": "discloseimage",
-    "name": "Disclose Image",
-    "description": "An image that reveals its content behind animated sliding door panels.",
-    "category": "Media"
-  },
-  {
-    "slug": "dock",
-    "name": "Dock Menu",
-    "description": "A macOS-style dock menu that magnifies icons on hover with tooltips.",
-    "category": "Navigation"
   },
   {
     "slug": "dual-range-slider",
@@ -114,16 +80,11 @@
     "category": "Form"
   },
   {
-    "slug": "eventcalendar",
-    "name": "Event Calendar",
-    "description": "An interactive calendar for displaying events, appointments, and daily schedules.",
-    "category": "Calendar"
-  },
-  {
     "slug": "face-rating",
     "name": "Face Rating",
     "description": "A five-level rating input where an SVG face morphs between moods.",
-    "category": "Rating"
+    "category": "Rating",
+    "new": true
   },
   {
     "slug": "feedback",
@@ -141,31 +102,15 @@
     "slug": "follow-button",
     "name": "Follow Button",
     "description": "A follow button that morphs its width, fill, and label between states.",
-    "category": "Action"
-  },
-  {
-    "slug": "footer",
-    "name": "Footer",
-    "description": "A collection of footers with wave, stacked, and particle animation styles.",
-    "category": "Layout"
-  },
-  {
-    "slug": "github-card",
-    "name": "GitHub Profile Card",
-    "description": "A GitHub profile card generator with stats, a contribution graph, and social links.",
-    "category": "Profile"
-  },
-  {
-    "slug": "heading-with-anchor",
-    "name": "Heading With Anchor",
-    "description": "A heading component that adds clickable anchor links for section sharing.",
-    "category": "Text"
+    "category": "Action",
+    "new": true
   },
   {
     "slug": "hold-to-confirm",
     "name": "Hold to Confirm",
     "description": "A press-and-hold button that fills a progress ring before confirming destructive actions.",
-    "category": "Action"
+    "category": "Action",
+    "new": true
   },
   {
     "slug": "imagepreview",
@@ -178,12 +123,6 @@
     "name": "Infinite Scroll",
     "description": "An infinite scroll container that loads more content using the IntersectionObserver API.",
     "category": "Data"
-  },
-  {
-    "slug": "input",
-    "name": "Input",
-    "description": "A form input field or a component that looks like an input field.",
-    "category": "Form"
   },
   {
     "slug": "input-model",
@@ -207,7 +146,8 @@
     "slug": "like-button",
     "name": "Like Button",
     "description": "A heart button that pops with a particle burst and rolling count.",
-    "category": "Action"
+    "category": "Action",
+    "new": true
   },
   {
     "slug": "loading-button",
@@ -240,28 +180,18 @@
     "category": "Form"
   },
   {
-    "slug": "navbar",
-    "name": "Navbar",
-    "description": "A collection of responsive navbars with circular, tab, floating, and sidebar patterns.",
-    "category": "Navigation"
-  },
-  {
     "slug": "notification-bell",
     "name": "Notification Bell",
     "description": "A bell button that swings on new notifications with a rolling unread badge.",
-    "category": "Feedback"
+    "category": "Feedback",
+    "new": true
   },
   {
     "slug": "password-strength",
     "name": "Password Strength",
     "description": "A password input with an animated strength meter and requirements checklist.",
-    "category": "Form"
-  },
-  {
-    "slug": "product-card",
-    "name": "Product Card",
-    "description": "A product card that displays an image, title, price, and rating.",
-    "category": "Card"
+    "category": "Form",
+    "new": true
   },
   {
     "slug": "profile",
@@ -285,31 +215,21 @@
     "slug": "reaction-bar",
     "name": "Reaction Bar",
     "description": "A Slack-style emoji reaction bar with animated chips and rolling counts.",
-    "category": "Feedback"
-  },
-  {
-    "slug": "responsive-modal",
-    "name": "Responsive Modal",
-    "description": "A dialog that centers on desktop and slides up as a sheet on mobile.",
-    "category": "Overlay"
+    "category": "Feedback",
+    "new": true
   },
   {
     "slug": "scratch-card",
     "name": "Scratch Card",
     "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag.",
-    "category": "Media"
+    "category": "Media",
+    "new": true
   },
   {
     "slug": "share-button",
     "name": "Share Button",
     "description": "A share button that fans out into copy-link and custom share actions.",
     "category": "Action"
-  },
-  {
-    "slug": "skeleton",
-    "name": "Skeleton",
-    "description": "A loading placeholder that shimmer-animates while content is fetching.",
-    "category": "Feedback"
   },
   {
     "slug": "spinner",
@@ -321,7 +241,8 @@
     "slug": "star-rating",
     "name": "Star Rating",
     "description": "An animated star rating input with hover preview and sparkle burst effects.",
-    "category": "Rating"
+    "category": "Rating",
+    "new": true
   },
   {
     "slug": "status-badge",
@@ -330,39 +251,31 @@
     "category": "Feedback"
   },
   {
-    "slug": "statuscode",
-    "name": "HTTP Status Code",
-    "description": "An HTTP status code display for building 404 and error pages.",
-    "category": "Feedback"
-  },
-  {
     "slug": "swipe-to-delete",
     "name": "Swipe to Delete",
     "description": "A swipeable list item that reveals an iOS-style delete action on drag.",
-    "category": "Action"
+    "category": "Action",
+    "new": true
   },
   {
     "slug": "task-checkbox",
     "name": "Task Checkbox",
     "description": "A todo checkbox that celebrates completion with a confetti burst and strikethrough.",
-    "category": "Form"
-  },
-  {
-    "slug": "testimonials",
-    "name": "Testimonials",
-    "description": "A testimonials section for showcasing customer reviews and social proof.",
-    "category": "Content"
+    "category": "Form",
+    "new": true
   },
   {
     "slug": "tilt-card",
     "name": "3D Tilt Card",
     "description": "A 3D card that tilts toward the pointer with parallax depth and glare.",
-    "category": "Card"
+    "category": "Card",
+    "new": true
   },
   {
     "slug": "undo-pill",
     "name": "Undo Pill",
     "description": "An inline undo pill with a draining countdown ring that pauses on hover.",
-    "category": "Feedback"
+    "category": "Feedback",
+    "new": true
   }
 ]
