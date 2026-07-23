@@ -15,9 +15,9 @@ const sectionClassName =
 const eyebrowClassName =
   'font-regular text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-500';
 const headingClassName =
-  'mt-3 max-w-3xl font-regular text-2xl font-semibold tracking-[-0.015em] text-neutral-900 dark:text-neutral-50 sm:text-[28px]';
+  'mt-3 max-w-3xl font-regular text-xl font-semibold tracking-[-0.01em] text-neutral-900 dark:text-neutral-50 sm:text-2xl';
 const bodyClassName =
-  'font-regular text-[15px] leading-7 text-neutral-600 dark:text-neutral-400 sm:text-base';
+  'font-regular text-[15px] leading-[1.75] text-neutral-700 dark:text-neutral-300';
 
 function SectionHeading({
   id,
@@ -99,7 +99,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
               <Layers3 className="size-3.5" aria-hidden="true" />
               Developer guide
             </div>
-            <h1 className="mt-5 max-w-4xl text-balance font-regular text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-neutral-900 dark:text-neutral-50 sm:text-5xl lg:text-[56px]">
+            <h1 className="mt-5 max-w-3xl text-balance font-regular text-[30px] font-semibold leading-[1.15] tracking-[-0.02em] text-neutral-900 dark:text-neutral-50 sm:text-[38px]">
               {hub.title}
             </h1>
             <div className="mt-7 flex max-w-3xl flex-col gap-4">
