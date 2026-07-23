@@ -1,6 +1,20 @@
+@import "./typeset.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* shadcn/typeset docs preset. Reuses the project's already-loaded Geist fonts
+   (--font-geist-sans / --font-geist-mono) rather than loading Geist a second
+   time, so var(--font-geist) in the shadcn snippet maps to what we already have. */
+.typeset-docs {
+  --typeset-font-body: var(--font-geist-sans);
+  --typeset-font-heading: var(--font-geist-sans);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 15px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
 
 @layer base {
   :root {
