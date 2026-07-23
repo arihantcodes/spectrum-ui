@@ -2,41 +2,41 @@ export const faqs: Array<{ question: string; answer: string }> = [
   {
     question: 'Do I need to use an AI assistant?',
     answer:
-      'No. Every public component can be browsed and copied from the site. The MCP server is an optional way to browse, search, and install components from a compatible AI assistant.',
+      'No. The MCP is the fast path, but every component is browsable and copy-pasteable from the site too. Use whichever fits your flow.',
   },
   {
     question: 'Which editors and assistants does it work with?',
     answer:
-      'Use any editor or assistant that supports the Model Context Protocol. The MCP guide lists the current setup examples and configuration steps.',
+      "Anything that supports MCP — Cursor, Claude Code, Windsurf, VS Code with Copilot, and more. One config line and you're connected.",
   },
   {
-    question: 'What can I do with the copied code?',
+    question: 'Do I own the code?',
     answer:
-      'The public component source is copied into your repository as React, TypeScript, and Tailwind CSS files. You can modify and distribute it under the Apache License 2.0 terms.',
+      "Yes. Components are copied into your repo as plain React and Tailwind files. Edit them, restyle them, ship them — they're yours.",
   },
   {
-    question: 'Is it built for shadcn/ui projects?',
+    question: 'Is it really built on shadcn/ui?',
     answer:
-      'Yes. Spectrum UI is designed for projects that use shadcn/ui conventions. Each component page lists the source and dependencies needed for that specific component.',
+      'Yes. Everything follows shadcn/ui and Radix conventions, so components drop straight into an existing shadcn project.',
   },
   {
-    question: 'How is the MCP server different from copying from the docs?',
+    question: 'How is this different from copy-pasting from a docs site?',
     answer:
-      'The MCP server lets a compatible assistant browse and search the component registry, then add selected source files to your project. You can still copy the same public component source from the docs.',
+      'Your assistant pulls the exact source with the right imports and dependencies, straight into your project. No tab-switching, no missed files.',
   },
   {
-    question: 'Will updates overwrite components in my project?',
+    question: 'Will my components break when you ship updates?',
     answer:
-      'No automatic updater edits the component files in your repository. You decide whether to install a newer version and how to merge its changes.',
+      'No. The code lives in your repo, so updates never touch it. Pull newer versions only when you want them.',
   },
   {
-    question: 'Can I use Spectrum UI in commercial projects?',
+    question: 'Can I use it in commercial projects?',
     answer:
-      'Yes. The public component source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms. Spectrum UI Pro products use separate purchase terms.',
+      "Yes. Use it in client work, SaaS products, whatever you're building. Just don't resell the components as your own library.",
   },
   {
-    question: 'Is Spectrum UI free?',
+    question: 'Is it free to try?',
     answer:
-      'The public component library is free and open source under the Apache License 2.0. Spectrum UI Pro products are separate paid offerings.',
+      'Yes. Spectrum UI is free and open source. Connect the MCP and start pulling components in minutes.',
   },
 ];

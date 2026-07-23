@@ -1,11 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import Script from "next/script";
+import { useEffect, useRef, useState } from 'react';
+import Script from 'next/script';
+import { usePathname } from 'next/navigation';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
-const BUBBLE_ID = "spectrum-chat-bubble";
+const BUBBLE_ID = 'spectrum-chat-bubble';
 
 /** Inlined from public/new-icon/Chat.svg — rendered via <img> the SVG is a
  *  separate document, so currentColor can't inherit the theme color there;
@@ -27,33 +28,50 @@ const ChatIcon = (props: React.SVGProps<SVGSVGElement>) => (
  *  and drive the chat by programmatically clicking it (a .click() fires even
  *  on display:none elements). */
 export function TalkToUs() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const pendingOpen = useRef(false);
+  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile'];
+  const hidden = hideOnRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`),
+  );
 
   // Mirror the widget's open state: it toggles an `open` class on its bubble.
   useEffect(() => {
-    let observer: MutationObserver | null = null;
+    let stateObserver: MutationObserver | null = null;
+    let discoveryObserver: MutationObserver | null = null;
 
-    const attach = () => {
+    if (hidden) {
       const bubble = document.getElementById(BUBBLE_ID);
-      if (!bubble) return false;
-      observer = new MutationObserver(() => {
-        setOpen(bubble.classList.contains("open"));
-      });
-      observer.observe(bubble, { attributes: true, attributeFilter: ["class"] });
-      return true;
-    };
+      if (bubble?.classList.contains('open')) bubble.click();
+    } else {
+      const attach = () => {
+        const bubble = document.getElementById(BUBBLE_ID);
+        if (!bubble) return false;
+        stateObserver = new MutationObserver(() => {
+          setOpen(bubble.classList.contains('open'));
+        });
+        stateObserver.observe(bubble, {
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+        return true;
+      };
 
-    // The script loads lazily — poll until its bubble exists, then observe.
-    if (attach()) return () => observer?.disconnect();
-    const timer = setInterval(() => {
-      if (attach()) clearInterval(timer);
-    }, 500);
+      // The script loads lazily. Watch for its bubble once instead of polling.
+      if (!attach()) {
+        discoveryObserver = new MutationObserver(() => {
+          if (attach()) discoveryObserver?.disconnect();
+        });
+        discoveryObserver.observe(document.body, { childList: true, subtree: true });
+      }
+    }
+
     return () => {
-      clearInterval(timer);
-      observer?.disconnect();
+      discoveryObserver?.disconnect();
+      stateObserver?.disconnect();
     };
-  }, []);
+  }, [hidden]);
 
   const toggleChat = () => {
     const bubble = document.getElementById(BUBBLE_ID);
@@ -64,6 +82,10 @@ export function TalkToUs() {
       pendingOpen.current = true;
     }
   };
+
+  if (hidden) {
+    return <style>{`#${BUBBLE_ID} { display: none !important; }`}</style>;
+  }
 
   return (
     <>
@@ -86,11 +108,11 @@ export function TalkToUs() {
       <Button
         onClick={toggleChat}
         aria-expanded={open}
-        aria-label={open ? "Close chat" : "Open chat"}
+        aria-label={open ? 'Close chat' : 'Open chat'}
         className="fixed bottom-4 right-4 z-50 gap-1.5 rounded-full border border-neutral-200 px-3 py-2.5 h-[40px] font-inter text-base font-normal tracking-wide shadow-md [&_svg]:size-6"
       >
         <ChatIcon aria-hidden className="size-6 shrink-0" />
-        {open ? "Close chat" : "Talk to us"}
+        {open ? 'Close chat' : 'Talk to us'}
       </Button>
     </>
   );

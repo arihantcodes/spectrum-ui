@@ -1,80 +1,64 @@
-import { auth } from '@/auth'
-import { redirect } from 'next/navigation'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { AuthShowcase } from '@/components/auth-showcase'
-import Link from 'next/link'
-import { Icons } from '@/components/icon'
-import { OnboardingForm } from './onboarding-form'
-import { isOnboardingComplete } from '@/lib/onboarding'
-import type { Metadata } from 'next'
-import { createNoIndexMetadata } from '@/lib/metadata'
+import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
+
+import { auth } from '@/auth';
+import { Icons } from '@/components/icon';
+import { isOnboardingComplete } from '@/lib/onboarding';
+import { createNoIndexMetadata } from '@/lib/metadata';
+import { OnboardingForm } from './onboarding-form';
 
 export const metadata: Metadata = createNoIndexMetadata({
   title: 'Complete Your Spectrum UI Profile',
   description: 'Complete the account details required to use Spectrum UI account features.',
   path: '/create-user',
-})
+});
 
 export default async function CreateUserPage({
   searchParams,
 }: {
-  searchParams: { next?: string }
+  searchParams: { next?: string };
 }) {
-  const session = await auth()
-  if (!session?.user?.email) redirect('/sign-in')
+  const session = await auth();
+  if (!session?.user?.email) redirect('/sign-in');
 
-  const nextUrl = searchParams.next ?? '/'
+  const nextUrl = searchParams.next ?? '/';
 
   if (await isOnboardingComplete(session.user.email)) {
-    redirect(nextUrl.startsWith('/') ? nextUrl : '/')
+    redirect(nextUrl.startsWith('/') ? nextUrl : '/');
   }
 
-  const { user } = session
-  const defaultGithub = user.githubUsername ?? ''
+  const { user } = session;
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
-      <div className="flex flex-col bg-white dark:bg-[#080808] px-6 sm:px-12 lg:px-16 xl:px-20 transition-colors">
-        <div className="flex items-center justify-between pt-8 pb-4">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="h-8 w-8 bg-neutral-100 dark:bg-white border border-neutral-200 dark:border-transparent rounded-lg flex items-center justify-center p-1.5 shadow-sm group-hover:shadow-md transition-shadow">
-              <Icons.logo className="h-full w-full text-black" />
-            </div>
-            <span className="text-sm font-semibold text-neutral-900 dark:text-[#F5F5F5] tracking-tight">
-              Spectrum UI
-            </span>
-          </Link>
+    // Same framed band as sign-in/sign-up: side borders at 1400px, bottom
+    // border hands off to the footer; the global navbar provides the chrome.
+    <div className="container-frame border-b border-border bg-background">
+      <div className="mx-auto flex min-h-[calc(100svh-2.5rem)] w-full max-w-[400px] flex-col justify-center px-5 py-12">
+        <div className="auth-enter flex justify-center">
+          {/* Same rounded-tile logo treatment as the navbar — the bare mark
+              reads as a harsh black box at this size. */}
+          <span className="flex size-10 items-center justify-center rounded-xl bg-foreground p-2 shadow-[0_1px_2px_rgba(0,0,0,0.2)]">
+            <Icons.logo className="size-full text-background" />
+          </span>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center max-w-[420px] w-full mx-auto">
-          <div className="flex items-center gap-5 mb-8">
-            <Avatar className="h-16 w-16 ring-4 ring-neutral-100 dark:ring-[#161616] shadow-md shrink-0">
-              <AvatarImage src={user.image ?? ''} alt={user.name ?? ''} />
-              <AvatarFallback className="text-xl bg-neutral-100 dark:bg-[#1a1a1a] text-neutral-600 dark:text-[#888]">
-                {user.name?.[0]?.toUpperCase() ?? 'U'}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <h1 className="text-2xl font-bold text-neutral-900 dark:text-[#F5F5F5] mb-1 tracking-tight">
-                Almost there!
-              </h1>
-              <p className="text-sm text-neutral-500 dark:text-[#666]">
-                Confirm your details to access code.
-              </p>
-            </div>
-          </div>
-
-          <OnboardingForm
-            userName={user.name ?? ''}
-            userEmail={user.email ?? ''}
-            defaultGithub={defaultGithub}
-            nextUrl={nextUrl}
-          />
+        <div className="auth-enter mt-2 text-center" style={{ animationDelay: '60ms' }}>
+          <h1 className="mt-2 font-spectral text-[30px] font-normal leading-[1.05] tracking-[-0.055em] text-foreground [text-wrap:balance] sm:text-[34px]">
+            One Last Detail.
+          </h1>
+          <p className="text-sm text-neutral-500 max-w-[20rem] mx-auto">
+            Enter your github Username then you can access all the components.
+          </p>
         </div>
 
-        <div className="pb-8" />
+        <OnboardingForm
+          userName={user.name ?? ''}
+          userEmail={user.email ?? ''}
+          userImage={user.image ?? ''}
+          defaultGithub={user.githubUsername ?? ''}
+          nextUrl={nextUrl}
+        />
       </div>
-      <AuthShowcase />
     </div>
-  )
+  );
 }

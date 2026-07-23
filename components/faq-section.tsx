@@ -1,10 +1,13 @@
-"use client"
+'use client';
 
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { motion, useReducedMotion } from "framer-motion"
-import { faqs } from "@/content/faqs"
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
 
-const revealEase = [0.22, 1, 0.36, 1] as const
+import { AnimateEnter } from '@/app/home/AnimateEnter';
+
+import { faqs } from '@/content/faqs';
+
+// Single source of truth for the visible FAQs + the FAQPage JSON-LD on /faqs.
+export { faqs };
 
 function PlusMinusIcon() {
   return (
@@ -15,22 +18,14 @@ function PlusMinusIcon() {
       <span className="absolute left-1/2 top-1/2 h-[1.5px] w-[11px] -translate-x-1/2 -translate-y-1/2 bg-current" />
       <span className="absolute left-1/2 top-1/2 h-[11px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 ease-out group-data-[state=open]:scale-y-0" />
     </span>
-  )
+  );
 }
 
 export function FAQSection() {
-  const reduceMotion = useReducedMotion()
-
   return (
     <section className="container py-16">
       {/* Header */}
-      <motion.div
-        className="flex flex-col gap-3"
-        initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.55, ease: revealEase }}
-      >
+      <AnimateEnter duration={0.55} className="flex flex-col gap-3">
         <div className="flex items-center gap-2.5">
           <span aria-hidden className="-rotate-90">
             <span className="block size-[9px] border-b-2 border-r-2 border-[#f9452d] dark:border-[#E1F435]" />
@@ -44,7 +39,7 @@ export function FAQSection() {
           <br />
           before installing
         </h2>
-      </motion.div>
+      </AnimateEnter>
 
       {/* Accordion */}
       <AccordionPrimitive.Root
@@ -54,17 +49,7 @@ export function FAQSection() {
         className="mt-10 w-full max-w-[960px]"
       >
         {faqs.map((faq, index) => (
-          <motion.div
-            key={faq.question}
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{
-              duration: 0.55,
-              delay: index * 0.045,
-              ease: revealEase,
-            }}
-          >
+          <AnimateEnter key={faq.question} duration={0.55} delay={index * 0.045}>
             <AccordionPrimitive.Item
               value={`faq-${index}`}
               className="border-b border-[#f5f5f5] transition-colors duration-300 hover:border-[#e8e8e8] dark:border-[#1f1f1f] dark:hover:border-neutral-800"
@@ -85,9 +70,9 @@ export function FAQSection() {
                 </div>
               </AccordionPrimitive.Content>
             </AccordionPrimitive.Item>
-          </motion.div>
+          </AnimateEnter>
         ))}
       </AccordionPrimitive.Root>
     </section>
-  )
+  );
 }
