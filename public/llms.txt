@@ -47,7 +47,7 @@ npx shadcn@latest add @spectrumui/accordion
 
 Components can also be copied manually from their documentation source. Install only the dependencies listed for that component.
 
-## Components (61)
+## Components (44)
 
 - [Accordion](https://ui.spectrumhq.in/docs/accordion): A vertically stacked set of interactive headings that each reveal a section of content.
 - [Animated Alert](https://ui.spectrumhq.in/docs/alert): An animated alert that displays notifications, warnings, and success messages.
@@ -55,31 +55,20 @@ Components can also be copied manually from their documentation source. Install 
 - [Animated Card](https://ui.spectrumhq.in/docs/animatedcard): A card that animates on hover to showcase tools, technologies, and features.
 - [Animated SVG Chart](https://ui.spectrumhq.in/docs/animatedchart): An animated SVG chart for visualizing data on dashboards and reports.
 - [Animated Drawer](https://ui.spectrumhq.in/docs/animateddrawer): A drawer panel that slides in smoothly for menus, settings, and sidebars.
-- [Animated Testimonials](https://ui.spectrumhq.in/docs/animatedtestimonials): An animated testimonials section for showcasing customer reviews and social proof.
-- [Text Animations](https://ui.spectrumhq.in/docs/animatedtext): A collection of text effects including holographic, ink morph, and orbital reveals.
 - [Autosize Textarea](https://ui.spectrumhq.in/docs/autosize-textarea): A textarea that automatically grows and shrinks to fit its content.
 - [Avatar Stack](https://ui.spectrumhq.in/docs/avatar-stack): An overlapping avatar row that fans apart on hover with springy name tooltips.
 - [3D Event Badge](https://ui.spectrumhq.in/docs/badge): An interactive 3D event badge rendered with Three.js and React Three Fiber.
-- [Bento Grid](https://ui.spectrumhq.in/docs/bento-grid): A bento grid layout with physics-based hover effects and scroll animations.
 - [Button](https://ui.spectrumhq.in/docs/button): A set of pre-designed buttons including gradient, outline, loading, and icon styles.
 - [Card](https://ui.spectrumhq.in/docs/card): A set of pre-designed cards for login, signup, pricing, and dashboards.
-- [Command Palette](https://ui.spectrumhq.in/docs/command-palette): A keyboard-driven command menu for navigation, actions, and theme switching.
 - [Datetime Picker](https://ui.spectrumhq.in/docs/datetime-picker): A date and time picker built on shadcn/ui with no extra dependencies.
-- [Disclose Image](https://ui.spectrumhq.in/docs/discloseimage): An image that reveals its content behind animated sliding door panels.
-- [Dock Menu](https://ui.spectrumhq.in/docs/dock): A macOS-style dock menu that magnifies icons on hover with tooltips.
 - [Dual Range Slider](https://ui.spectrumhq.in/docs/dual-range-slider): A slider with two draggable thumbs for selecting a range of values.
-- [Event Calendar](https://ui.spectrumhq.in/docs/eventcalendar): An interactive calendar for displaying events, appointments, and daily schedules.
 - [Face Rating](https://ui.spectrumhq.in/docs/face-rating): A five-level rating input where an SVG face morphs between moods.
 - [Feedback Card](https://ui.spectrumhq.in/docs/feedback): A feedback card that collects ratings and comments with emoji reactions.
 - [Floating Label Input](https://ui.spectrumhq.in/docs/floating-label-input): An input whose label floats above the field when focused or filled.
 - [Follow Button](https://ui.spectrumhq.in/docs/follow-button): A follow button that morphs its width, fill, and label between states.
-- [Footer](https://ui.spectrumhq.in/docs/footer): A collection of footers with wave, stacked, and particle animation styles.
-- [GitHub Profile Card](https://ui.spectrumhq.in/docs/github-card): A GitHub profile card generator with stats, a contribution graph, and social links.
-- [Heading With Anchor](https://ui.spectrumhq.in/docs/heading-with-anchor): A heading component that adds clickable anchor links for section sharing.
 - [Hold to Confirm](https://ui.spectrumhq.in/docs/hold-to-confirm): A press-and-hold button that fills a progress ring before confirming destructive actions.
 - [Image Preview](https://ui.spectrumhq.in/docs/imagepreview): An image preview component with zoom, lightbox, and gallery support.
 - [Infinite Scroll](https://ui.spectrumhq.in/docs/infinite-scroll): An infinite scroll container that loads more content using the IntersectionObserver API.
-- [Input](https://ui.spectrumhq.in/docs/input): A form input field or a component that looks like an input field.
 - [Input Model](https://ui.spectrumhq.in/docs/input-model): A modal dialog with an input form for quick data entry.
 - [Kanban Board](https://ui.spectrumhq.in/docs/kanban): A drag-and-drop kanban board for organizing tasks into columns.
 - [Kbd Key](https://ui.spectrumhq.in/docs/kbd-key): A 3D keycap that physically depresses when the matching key is pressed.
@@ -89,25 +78,19 @@ Components can also be copied manually from their documentation source. Install 
 - [Morph Button](https://ui.spectrumhq.in/docs/morph-button): An async button that morphs between idle, loading, success, and error states.
 - [Multiple Selector](https://ui.spectrumhq.in/docs/multiple-selector): A multi-select input with async search, grouping, and creatable options.
 - [Multistep Form](https://ui.spectrumhq.in/docs/multistepform): A multi-step form with progress indicators for registration and checkout flows.
-- [Navbar](https://ui.spectrumhq.in/docs/navbar): A collection of responsive navbars with circular, tab, floating, and sidebar patterns.
 - [Notification Bell](https://ui.spectrumhq.in/docs/notification-bell): A bell button that swings on new notifications with a rolling unread badge.
 - [Password Strength](https://ui.spectrumhq.in/docs/password-strength): A password input with an animated strength meter and requirements checklist.
-- [Product Card](https://ui.spectrumhq.in/docs/product-card): A product card that displays an image, title, price, and rating.
 - [Profile Dropdown](https://ui.spectrumhq.in/docs/profile): A user profile dropdown menu with avatar, settings, and logout actions.
 - [Progress With Value](https://ui.spectrumhq.in/docs/progress-with-value): A progress bar that displays the current value.
 - [Quantity Stepper](https://ui.spectrumhq.in/docs/quantity-stepper): A quantity input with rolling digits, hold-to-repeat buttons, and boundary shake.
 - [Reaction Bar](https://ui.spectrumhq.in/docs/reaction-bar): A Slack-style emoji reaction bar with animated chips and rolling counts.
-- [Responsive Modal](https://ui.spectrumhq.in/docs/responsive-modal): A dialog that centers on desktop and slides up as a sheet on mobile.
 - [Scratch Card](https://ui.spectrumhq.in/docs/scratch-card): A scratch-to-reveal card that wipes away a canvas foil overlay on drag.
 - [Share Button](https://ui.spectrumhq.in/docs/share-button): A share button that fans out into copy-link and custom share actions.
-- [Skeleton](https://ui.spectrumhq.in/docs/skeleton): A loading placeholder that shimmer-animates while content is fetching.
 - [Spinner](https://ui.spectrumhq.in/docs/spinner): A loading spinner with multiple sizes and variants for async states.
 - [Star Rating](https://ui.spectrumhq.in/docs/star-rating): An animated star rating input with hover preview and sparkle burst effects.
 - [Status Badge](https://ui.spectrumhq.in/docs/status-badge): A status badge with icon and color variants for success, error, warning, and pending states.
-- [HTTP Status Code](https://ui.spectrumhq.in/docs/statuscode): An HTTP status code display for building 404 and error pages.
 - [Swipe to Delete](https://ui.spectrumhq.in/docs/swipe-to-delete): A swipeable list item that reveals an iOS-style delete action on drag.
 - [Task Checkbox](https://ui.spectrumhq.in/docs/task-checkbox): A todo checkbox that celebrates completion with a confetti burst and strikethrough.
-- [Testimonials](https://ui.spectrumhq.in/docs/testimonials): A testimonials section for showcasing customer reviews and social proof.
 - [3D Tilt Card](https://ui.spectrumhq.in/docs/tilt-card): A 3D card that tilts toward the pointer with parallax depth and glare.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
 

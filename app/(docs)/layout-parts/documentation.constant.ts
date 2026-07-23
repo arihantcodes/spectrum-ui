@@ -74,6 +74,7 @@ export const DOCS: Documentation[] = [
       label: component.name,
       value: component.slug,
       url: componentDocsPath(component.slug),
+      ...(component.new ? { new: true } : {}),
     })),
   },
 ];

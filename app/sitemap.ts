@@ -32,6 +32,25 @@ const nonIndexableRoutes = new Set([
   "/sign-in",
   "/success",
   "/unsubscribe",
+  // Delisted components: pages still resolve but are not part of the shipped
+  // 44-component catalog, so keep them out of the sitemap.
+  "/docs/animatedtestimonials",
+  "/docs/animatedtext",
+  "/docs/bento-grid",
+  "/docs/command-palette",
+  "/docs/discloseimage",
+  "/docs/dock",
+  "/docs/eventcalendar",
+  "/docs/footer",
+  "/docs/github-card",
+  "/docs/heading-with-anchor",
+  "/docs/input",
+  "/docs/navbar",
+  "/docs/product-card",
+  "/docs/responsive-modal",
+  "/docs/skeleton",
+  "/docs/statuscode",
+  "/docs/testimonials",
 ]);
 
 const routeConfig: Record<string, RouteConfig> = {
