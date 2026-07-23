@@ -1,24 +1,14 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useAuthGateStore } from '@/lib/auth-gate-store';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { DialogTitle, DialogDescription } from '@radix-ui/react-dialog';
+import { Icons } from '@/components/icon';
 import { trackEvent } from '@/lib/events';
-import {
-  Code2,
-  Terminal,
-  Star,
-  Zap,
-  Lock,
-} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Code2, Terminal, Star, Zap } from 'lucide-react';
 
 // GitHub SVG icon (not in lucide)
 function GitHubIcon({ className }: { className?: string }) {
@@ -71,95 +61,168 @@ const benefits = [
   { icon: Zap, text: 'Early access to new components' },
 ];
 
+type Provider = 'github' | 'google';
+
 export function AuthGateModal() {
   const { isOpen, close } = useAuthGateStore();
+  const [pending, setPending] = useState<Provider | null>(null);
 
   useEffect(() => {
     if (isOpen) {
       trackEvent({ name: 'login_modal_opened' });
+    } else {
+      // Reset connecting state when the gate is dismissed.
+      setPending(null);
     }
   }, [isOpen]);
 
-  const handleGitHub = () => {
-    trackEvent({ name: 'github_login_started' });
+  const handleProvider = (provider: Provider) => {
+    if (pending) return;
+    trackEvent({
+      name: provider === 'github' ? 'github_login_started' : 'google_login_started',
+    });
+    setPending(provider);
     const next = window.location.pathname + window.location.search;
-    signIn('github', { redirectTo: `/create-user?next=${encodeURIComponent(next)}` });
-  };
-
-  const handleGoogle = () => {
-    trackEvent({ name: 'google_login_started' });
-    const next = window.location.pathname + window.location.search;
-    signIn('google', { redirectTo: `/create-user?next=${encodeURIComponent(next)}` });
+    signIn(provider, { redirectTo: `/create-user?next=${encodeURIComponent(next)}` });
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
       <DialogContent
-        className="sm:max-w-[440px] p-0 overflow-hidden border border-border/60 shadow-2xl"
+        className="w-[calc(100vw-2rem)] gap-0 overflow-hidden border-border/60 bg-background p-0 shadow-[0_1px_2px_rgba(0,0,0,0.08),0_24px_64px_-24px_rgba(0,0,0,0.35)] sm:max-w-[420px] sm:rounded-[22px] dark:border-white/[0.08] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_40px_120px_-40px_rgba(0,0,0,0.9)]"
         aria-describedby="auth-gate-description"
       >
-        {/* Top border accent */}
-        <div className="h-px w-full bg-border" />
+        {/* Ambient glow — same neutral, materials-first language as the auth
+            page. Sits behind the content and never intercepts pointer events. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(120%_80%_at_50%_0%,rgba(0,0,0,0.04),transparent_70%)] dark:bg-[radial-gradient(120%_80%_at_50%_0%,rgba(255,255,255,0.08),transparent_70%)]"
+        />
 
-        <div className="px-7 pt-6 pb-8 flex flex-col gap-6">
-          {/* Header */}
-          <DialogHeader className="gap-2 text-left">
-            <div className="flex items-center gap-2.5 mb-1">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-border">
-                <Lock className="h-4 w-4 text-foreground" />
-              </div>
-              <DialogTitle className="text-xl font-semibold tracking-tight">
-                Create your free developer account
-              </DialogTitle>
-            </div>
+        <div className="relative flex flex-col px-7 pb-8 pt-9">
+          {/* Header — logo tile mirrors the auth flow and the navbar mark. */}
+          <div className="auth-enter flex flex-col items-center text-center">
+            <span className="flex size-11 items-center justify-center rounded-2xl bg-foreground p-2.5 shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+              <Icons.logo className="size-full text-background" />
+            </span>
+
+            <DialogTitle className="mt-5 font-spectral text-[24px] font-normal leading-[1.1] tracking-tighter text-foreground [text-wrap:balance]">
+              Create your free account
+            </DialogTitle>
             <DialogDescription
               id="auth-gate-description"
-              className="text-sm text-muted-foreground leading-relaxed"
+              className="mx-auto mt-2 max-w-[19rem] text-[15px] leading-relaxed text-muted-foreground"
             >
-              Get instant access to component code, CLI commands, and more — completely free.
+              Instant access to component code, CLI commands, and more.
             </DialogDescription>
-          </DialogHeader>
+          </div>
 
-          {/* Benefits */}
-          <ul className="flex flex-col gap-2.5" role="list" aria-label="Benefits">
+          {/* Benefits — translucent material tiles, same surface treatment as
+              the auth page's secondary controls. */}
+          <ul
+            className="auth-enter mt-6 flex flex-col gap-1"
+            style={{ animationDelay: '60ms' }}
+            role="list"
+            aria-label="What you get"
+          >
             {benefits.map(({ icon: Icon, text }) => (
-              <li key={text} className="flex items-center gap-3 text-sm text-muted-foreground">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900 border border-border">
-                  <Icon className="h-3.5 w-3.5 text-foreground" />
-                </div>
+              <li
+                key={text}
+                className="flex items-center gap-3 rounded-xl px-1 py-1.5 text-[14px] text-foreground/80"
+              >
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black/[0.045] text-foreground shadow-[0_0_0_1px_hsl(var(--border))] dark:bg-white/[0.07] dark:text-foreground dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]">
+                  <Icon className="size-4" strokeWidth={1.75} />
+                </span>
                 <span>{text}</span>
               </li>
             ))}
           </ul>
 
-          {/* Auth Buttons */}
-          <div className="flex flex-col gap-3">
-            <Button
+          {/* Auth buttons — GitHub is the one lit control (dev audience);
+              Google is a translucent material pill. Pill geometry throughout. */}
+          <div
+            className="auth-enter mt-6 flex flex-col gap-3"
+            style={{ animationDelay: '120ms' }}
+          >
+            <ProviderButton
               id="auth-gate-github-btn"
-              onClick={handleGitHub}
-              className="w-full h-11 bg-[#24292e] hover:bg-[#1a1e22] dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-white font-medium transition-all duration-200 flex items-center gap-2.5"
+              variant="primary"
+              icon={<GitHubIcon className="size-[18px]" />}
+              busy={pending === 'github'}
+              disabled={pending !== null}
+              onClick={() => handleProvider('github')}
             >
-              <GitHubIcon className="h-4 w-4" />
               Continue with GitHub
-            </Button>
+            </ProviderButton>
 
-            <Button
+            <ProviderButton
               id="auth-gate-google-btn"
-              onClick={handleGoogle}
-              variant="outline"
-              className="w-full h-11 font-medium transition-all duration-200 flex items-center gap-2.5 hover:bg-muted/60"
+              variant="soft"
+              icon={<GoogleIcon className="size-[18px]" />}
+              busy={pending === 'google'}
+              disabled={pending !== null}
+              onClick={() => handleProvider('google')}
             >
-              <GoogleIcon className="h-4 w-4" />
               Continue with Google
-            </Button>
+            </ProviderButton>
           </div>
 
           {/* Footer */}
-          <p className="text-center text-xs text-muted-foreground/70">
+          <p
+            className="auth-enter mt-6 text-center text-xs text-muted-foreground/80"
+            style={{ animationDelay: '160ms' }}
+          >
             Free forever&nbsp;·&nbsp;No credit card required
           </p>
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+function ProviderButton({
+  variant,
+  icon,
+  busy,
+  children,
+  className,
+  ...props
+}: {
+  variant: 'primary' | 'soft';
+  icon: React.ReactNode;
+  busy: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="button"
+      aria-busy={busy}
+      className={cn(
+        'flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-6 text-[15px] font-medium outline-none',
+        'transition-[transform,background-color,box-shadow,opacity] duration-150 ease-out',
+        'active:scale-[0.98]',
+        'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+        'disabled:cursor-wait disabled:opacity-60 disabled:active:scale-100',
+        variant === 'primary'
+          ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3),0_8px_24px_-8px_rgba(0,0,0,0.4)] dark:shadow-[0_0_28px_rgba(255,255,255,0.22),0_1px_3px_rgba(0,0,0,0.5)]'
+          : 'bg-black/[0.045] text-foreground shadow-[0_0_0_1px_hsl(var(--border))] hover:bg-black/[0.08] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/[0.1]',
+        className,
+      )}
+      {...props}
+    >
+      {busy ? (
+        <>
+          <span
+            aria-hidden="true"
+            className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent motion-reduce:animate-none"
+          />
+          Connecting…
+        </>
+      ) : (
+        <>
+          {icon}
+          <span>{children}</span>
+        </>
+      )}
+    </button>
   );
 }
