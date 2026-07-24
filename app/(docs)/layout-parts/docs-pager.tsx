@@ -9,17 +9,20 @@ import {
   ChevronRightIcon,
 } from "@/app/(docs)/layout-parts/docs-icons";
 import { DOCS } from "@/app/(docs)/layout-parts/documentation.constant";
+import { compareComponentNames } from "@/lib/component-catalog";
 
 interface FlatDoc {
   label: string;
   url: string;
 }
 
-/** Same ordering as the sidebar: components A→Z, other groups curated order. */
+/** Same ordering as the sidebar: components A→Z (letters first), other groups curated order. */
 const FLAT_DOCS: FlatDoc[] = DOCS.flatMap((group) => {
   const children =
     group.groupKey === "components"
-      ? [...group.children].sort((a, b) => a.label.localeCompare(b.label))
+      ? [...group.children].sort((a, b) =>
+          compareComponentNames(a.label, b.label),
+        )
       : group.children;
   return children
     .filter((child) => !child.url.startsWith("http"))

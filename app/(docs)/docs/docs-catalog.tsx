@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Component as ComponentIcon } from 'lucide-react';
-import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
+import { COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 
 type ComponentItem = {
@@ -20,7 +20,9 @@ const allComponents: ComponentItem[] = COMPONENT_CATALOG.map((component) => ({
   category: component.category,
 }));
 
-const sortedComponents = [...allComponents].sort((a, b) => a.name.localeCompare(b.name));
+const sortedComponents = [...allComponents].sort((a, b) =>
+  compareComponentNames(a.name, b.name),
+);
 
 /** One table cell — component name only, used in both browse and search views */
 function ComponentRow({ item }: { item: ComponentItem }) {

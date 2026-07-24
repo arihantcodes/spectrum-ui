@@ -59,15 +59,6 @@ export const DOCS: Documentation[] = [
     ],
   },
   {
-    groupKey: 'topicGuides',
-    groupValue: 'Topic Guides',
-    children: TOPIC_HUB_LINKS.map((hub) => ({
-      label: hub.label,
-      value: hub.slug,
-      url: topicHubPath(hub.slug),
-    })),
-  },
-  {
     groupKey: 'components',
     groupValue: 'Components',
     children: COMPONENT_CATALOG.map((component) => ({
@@ -75,6 +66,15 @@ export const DOCS: Documentation[] = [
       value: component.slug,
       url: componentDocsPath(component.slug),
       ...(component.new ? { new: true } : {}),
+    })),
+  },
+  {
+    groupKey: 'topicGuides',
+    groupValue: 'Topic Guides',
+    children: TOPIC_HUB_LINKS.map((hub) => ({
+      label: hub.label,
+      value: hub.slug,
+      url: topicHubPath(hub.slug),
     })),
   },
 ];

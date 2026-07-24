@@ -18,3 +18,15 @@ export function componentDocsPath(slug: string) {
 export function findComponentByName(name: string) {
   return COMPONENT_CATALOG.find((component) => component.name === name);
 }
+
+/** A–Z sort with letter-leading names first; number-leading names (e.g. "3D") go last. */
+export function compareComponentNames(a: string, b: string) {
+  const aStartsWithDigit = /^\d/.test(a);
+  const bStartsWithDigit = /^\d/.test(b);
+
+  if (aStartsWithDigit !== bStartsWithDigit) {
+    return aStartsWithDigit ? 1 : -1;
+  }
+
+  return a.localeCompare(b, undefined, { sensitivity: "base" });
+}

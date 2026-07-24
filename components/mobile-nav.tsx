@@ -4,14 +4,20 @@ import Link, { LinkProps } from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import * as React from 'react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
 import { Icons } from '@/components/icon';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
 
 import { cn } from '@/lib/utils';
-import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
+import { COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -74,21 +80,23 @@ const sidebarNav: NavSection[] = [
     items: [{ title: 'MCP Server', href: '/docs/mcp', items: [] }],
   },
   {
+    title: 'Components',
+    groupKey: 'components',
+    groupValue: 'Components',
+    items: [...COMPONENT_CATALOG]
+      .sort((a, b) => compareComponentNames(a.name, b.name))
+      .map((component) => ({
+        label: component.name,
+        value: component.slug,
+        url: componentDocsPath(component.slug),
+        items: [],
+      })),
+  },
+  {
     title: 'Topic Guides',
     items: TOPIC_HUB_LINKS.map((hub) => ({
       title: hub.label,
       href: topicHubPath(hub.slug),
-      items: [],
-    })),
-  },
-  {
-    title: 'Components',
-    groupKey: 'components',
-    groupValue: 'Components',
-    items: COMPONENT_CATALOG.map((component) => ({
-      label: component.name,
-      value: component.slug,
-      url: componentDocsPath(component.slug),
       items: [],
     })),
   },
@@ -162,33 +170,13 @@ export function MobileNav() {
             </div>
 
             {/* Sidebar Navigation */}
-            <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-4">
               {sidebarNav.map((section, sectionIndex) => (
-                <div key={section.title || `section-${sectionIndex}`} className="space-y-2">
-                  {section.title && (
-                    <h4 className="font-medium text-sm text-muted-foreground px-2">
-                      {section.title}
-                    </h4>
-                  )}
-
-                  <div className="flex flex-col space-y-1">
-                    {section.items.map((item) => (
-                      <MobileLink
-                        key={item.value || item.href || `item-${item.title || item.label}`}
-                        href={item.url || item.href || '#'}
-                        onOpenChange={setIsOpen}
-                        className={item.new ? 'relative' : ''}
-                      >
-                        {item.title || item.label}
-                        {item.new && (
-                          <span className="absolute right-2 top-1 px-1.5 py-0.5 text-[10px] font-medium rounded-sm bg-primary/20 text-primary">
-                            NEW
-                          </span>
-                        )}
-                      </MobileLink>
-                    ))}
-                  </div>
-                </div>
+                <MobileNavSection
+                  key={section.title || `section-${sectionIndex}`}
+                  section={section}
+                  onOpenChange={setIsOpen}
+                />
               ))}
             </div>
           </div>
@@ -207,6 +195,51 @@ interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void;
   children: React.ReactNode;
   className?: string;
+}
+
+function MobileNavSection({
+  section,
+  onOpenChange,
+}: {
+  section: NavSection;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const [open, setOpen] = React.useState(true);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} className="space-y-2">
+      {section.title && (
+        <CollapsibleTrigger className="flex w-full items-center justify-between rounded-md px-2 py-1 text-left outline-none hover:bg-secondary/50">
+          <h4 className="font-medium text-sm text-muted-foreground">{section.title}</h4>
+          {open ? (
+            <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+          ) : (
+            <ChevronRight className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+          )}
+        </CollapsibleTrigger>
+      )}
+
+      <CollapsibleContent>
+        <div className="flex flex-col space-y-1">
+          {section.items.map((item) => (
+            <MobileLink
+              key={item.value || item.href || `item-${item.title || item.label}`}
+              href={item.url || item.href || '#'}
+              onOpenChange={onOpenChange}
+              className={item.new ? 'relative' : ''}
+            >
+              {item.title || item.label}
+              {item.new && (
+                <span className="absolute right-2 top-1 px-1.5 py-0.5 text-[10px] font-medium rounded-sm bg-primary/20 text-primary">
+                  NEW
+                </span>
+              )}
+            </MobileLink>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
 }
 
 function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
