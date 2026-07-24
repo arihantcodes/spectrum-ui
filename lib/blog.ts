@@ -34,11 +34,28 @@ import aiPoweredUiDevelopment from "@/content/blog/ai-powered-ui-development"
 import react19ServerActionsGuide from "@/content/blog/react-19-server-actions-guide"
 import viewTransitionsApiGuide from "@/content/blog/view-transitions-api-guide"
 import buildingProductionComponentLibrary from "@/content/blog/building-production-component-library"
+import { BLOG_FAQS } from "@/content/blog-faqs"
+
+/**
+ * Editorial shelves for the /blog listing, in display order. `category`
+ * stays coarse for metadata/JSON-LD; `topic` is what readers browse by.
+ */
+export const BLOG_TOPICS = [
+  "Design Systems",
+  "Interface Craft",
+  "CSS & Layout",
+  "React & Performance",
+  "Workflow & Career",
+] as const
+
+export type BlogTopic = (typeof BLOG_TOPICS)[number]
 
 export interface BlogPost {
   slug: string
   title: string
   excerpt: string
+  /** One-line card description — short enough to never wrap twice. */
+  tagline: string
   author: {
     name: string
     role?: string
@@ -46,160 +63,60 @@ export interface BlogPost {
   }
   date: string
   readTime: string
-  icon: string
   category?: string
+  topic: BlogTopic
+  /** Optional Q&A that renders a visible FAQ + emits FAQPage JSON-LD (AEO). */
+  faqs?: { question: string; answer: string }[]
   content: React.ReactNode
 }
 
-const blogPosts: Record<string, BlogPost> = {
-  "spectrum-ui-development-speed": {
-    slug: "spectrum-ui-development-speed",
-    ...spectrumUiDevelopmentSpeed,
-  },
-  "shadcn-customization-guide": {
-    slug: "shadcn-customization-guide",
-    ...shadcnCustomizationGuide,
-  },
-  "nextjs-server-components-guide": {
-    slug: "nextjs-server-components-guide",
-    ...nextjsServerComponentsGuide,
-  },
-  "common-ui-ux-mistakes": {
-    slug: "common-ui-ux-mistakes",
-    ...commonUiUxMistakes,
-  },
-  "scalable-design-system": {
-    slug: "scalable-design-system",
-    ...scalableDesignSystem,
-  },
-  "design-engineer-playbook": {
-    slug: "design-engineer-playbook",
-    ...designEngineerPlaybook,
-  },
-  "figma-to-functional-workflow": {
-    slug: "figma-to-functional-workflow",
-    ...figmaToFunctionalWorkflow,
-  },
-  "design-systems-engineers-love": {
-    slug: "design-systems-engineers-love",
-    ...designSystemsEngineersLove,
-  },
-  "art-of-prototyping": {
-    slug: "art-of-prototyping",
-    ...artOfPrototyping,
-  },
-  "motion-design-for-engineers": {
-    slug: "motion-design-for-engineers",
-    ...motionDesignForEngineers,
-  },
-  "design-tokens-single-source": {
-    slug: "design-tokens-single-source",
-    ...designTokensSingleSource,
-  },
-  "accessibility-day-one": {
-    slug: "accessibility-day-one",
-    ...accessibilityDayOne,
-  },
-  "psychology-of-ui": {
-    slug: "psychology-of-ui",
-    ...psychologyOfUi,
-  },
-  "collaboration-patterns-design-engineering": {
-    slug: "collaboration-patterns-design-engineering",
-    ...collaborationPatternsDesignEngineering,
-  },
-  "future-of-design-engineering": {
-    slug: "future-of-design-engineering",
-    ...futureOfDesignEngineering,
-  },
-  "responsive-design-modern-css": {
-    slug: "responsive-design-modern-css",
-    ...responsiveDesignModernCss,
-  },
-  "tailwind-tips-tricks": {
-    slug: "tailwind-tips-tricks",
-    ...tailwindTipsTricks,
-  },
-  "component-api-design": {
-    slug: "component-api-design",
-    ...componentApiDesign,
-  },
-  "dark-mode-done-right": {
-    slug: "dark-mode-done-right",
-    ...darkModeDoneRight,
-  },
-  "micro-interactions-guide": {
-    slug: "micro-interactions-guide",
-    ...microInteractionsGuide,
-  },
-  "design-engineer-tools-2026": {
-    slug: "design-engineer-tools-2026",
-    ...designEngineerTools2026,
-  },
-  "typography-for-developers": {
-    slug: "typography-for-developers",
-    ...typographyForDevelopers,
-  },
-  "css-grid-layouts": {
-    slug: "css-grid-layouts",
-    ...cssGridLayouts,
-  },
-  "performance-ui-engineering": {
-    slug: "performance-ui-engineering",
-    ...performanceUiEngineering,
-  },
-  "design-engineer-interview-prep": {
-    slug: "design-engineer-interview-prep",
-    ...designEngineerInterviewPrep,
-  },
-  "storybook-design-systems": {
-    slug: "storybook-design-systems",
-    ...storybookDesignSystems,
-  },
-  "color-systems-web-apps": {
-    slug: "color-systems-web-apps",
-    ...colorSystemsWebApps,
-  },
-  "forms-that-dont-suck": {
-    slug: "forms-that-dont-suck",
-    ...formsThatDontSuck,
-  },
-  "design-handoff-checklist": {
-    slug: "design-handoff-checklist",
-    ...designHandoffChecklist,
-  },
-  "spacing-systems-ui": {
-    slug: "spacing-systems-ui",
-    ...spacingSystemsUi,
-  },
-  "tailwind-css-v4-migration-guide": {
-    slug: "tailwind-css-v4-migration-guide",
-    ...tailwindCssV4MigrationGuide,
-  },
-  "ai-powered-ui-development": {
-    slug: "ai-powered-ui-development",
-    ...aiPoweredUiDevelopment,
-  },
-  "react-19-server-actions-guide": {
-    slug: "react-19-server-actions-guide",
-    ...react19ServerActionsGuide,
-  },
-  "view-transitions-api-guide": {
-    slug: "view-transitions-api-guide",
-    ...viewTransitionsApiGuide,
-  },
-  "building-production-component-library": {
-    slug: "building-production-component-library",
-    ...buildingProductionComponentLibrary,
-  },
+export type BlogPostInput = Omit<BlogPost, "slug">
+
+const blogPosts: Record<string, BlogPostInput> = {
+  "spectrum-ui-development-speed": spectrumUiDevelopmentSpeed,
+  "shadcn-customization-guide": shadcnCustomizationGuide,
+  "nextjs-server-components-guide": nextjsServerComponentsGuide,
+  "common-ui-ux-mistakes": commonUiUxMistakes,
+  "scalable-design-system": scalableDesignSystem,
+  "design-engineer-playbook": designEngineerPlaybook,
+  "figma-to-functional-workflow": figmaToFunctionalWorkflow,
+  "design-systems-engineers-love": designSystemsEngineersLove,
+  "art-of-prototyping": artOfPrototyping,
+  "motion-design-for-engineers": motionDesignForEngineers,
+  "design-tokens-single-source": designTokensSingleSource,
+  "accessibility-day-one": accessibilityDayOne,
+  "psychology-of-ui": psychologyOfUi,
+  "collaboration-patterns-design-engineering": collaborationPatternsDesignEngineering,
+  "future-of-design-engineering": futureOfDesignEngineering,
+  "responsive-design-modern-css": responsiveDesignModernCss,
+  "tailwind-tips-tricks": tailwindTipsTricks,
+  "component-api-design": componentApiDesign,
+  "dark-mode-done-right": darkModeDoneRight,
+  "micro-interactions-guide": microInteractionsGuide,
+  "design-engineer-tools-2026": designEngineerTools2026,
+  "typography-for-developers": typographyForDevelopers,
+  "css-grid-layouts": cssGridLayouts,
+  "performance-ui-engineering": performanceUiEngineering,
+  "design-engineer-interview-prep": designEngineerInterviewPrep,
+  "storybook-design-systems": storybookDesignSystems,
+  "color-systems-web-apps": colorSystemsWebApps,
+  "forms-that-dont-suck": formsThatDontSuck,
+  "design-handoff-checklist": designHandoffChecklist,
+  "spacing-systems-ui": spacingSystemsUi,
+  "tailwind-css-v4-migration-guide": tailwindCssV4MigrationGuide,
+  "ai-powered-ui-development": aiPoweredUiDevelopment,
+  "react-19-server-actions-guide": react19ServerActionsGuide,
+  "view-transitions-api-guide": viewTransitionsApiGuide,
+  "building-production-component-library": buildingProductionComponentLibrary,
 }
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const posts = Object.values(blogPosts)
-  // Sort by date (newest first)
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  return Object.entries(blogPosts)
+    .map(([slug, post]) => ({ slug, faqs: BLOG_FAQS[slug], ...post }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  return blogPosts[slug] || null
+  const post = blogPosts[slug]
+  return post ? { slug, faqs: BLOG_FAQS[slug], ...post } : null
 }

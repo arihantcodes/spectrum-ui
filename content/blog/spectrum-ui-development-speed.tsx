@@ -1,115 +1,83 @@
-import CodeBlock from '@/components/blog-code';
+import type { BlogPostInput } from '@/lib/blog';
+import { Callout } from '@/components/blog/prose';
+import Link from 'next/link';
 
-const blogPost = {
+const post: BlogPostInput = {
   title: 'How Spectrum UI Accelerates Development Speed and Design Consistency',
   excerpt:
-    "We spend too much time rebuilding the same primitives. Spectrum UI solves this by providing composable, accessible components that you own, cutting development time without sacrificing quality.",
+    'We spend too much time rebuilding the same primitives. Spectrum UI solves this by providing composable, accessible components that you own, cutting development time without sacrificing quality.',
+  tagline: 'Copy the component, own the code.',
   author: {
     name: 'Arihant Jain',
-    role: 'Engineering',
+    role: 'Design Engineer',
     avatar: '/arihant.jpeg',
   },
   date: 'Oct 25, 2025',
-  readTime: '8 min read',
-  icon: '⚡',
+  readTime: '3 min read',
   category: 'Design Engineering',
+  topic: 'Design Systems',
   content: (
-    <div className="space-y-6">
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        The Reality of Frontend Development
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Rebuilding the same button, modal, or dropdown menu for the tenth time is a massive drain on engineering resources. Teams waste countless hours debating padding, hover states, and focus outlines instead of shipping actual product features. 
-      </p>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        The tradeoff historically has been: move fast and ship an inconsistent, inaccessible mess, or move slow and build perfect custom components from scratch. Spectrum UI eliminates this tradeoff. You get the speed of a UI library with the control and consistency of a bespoke design system.
+    <>
+      <p>
+        Count the hours you’ve lost rebuilding a dropdown — the markup, the keyboard handling, the
+        focus trap, the dark-mode colors, again. Most product work reinvents the same primitives on
+        every project. Spectrum UI removes that tax, and because you copy the code in,{' '}
+        <strong>you still own every line</strong>.
       </p>
 
-      <div className="bg-muted p-6 rounded-lg my-6">
-        <h3 className="font-medium text-foreground mb-4">The Workflow Shift</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-dashed border-destructive/50 bg-destructive/5 p-4 rounded-md">
-            <h4 className="font-semibold text-sm mb-2 text-destructive">The Old Way</h4>
-            <ul className="text-sm space-y-2 text-muted-foreground">
-              <li>1. Design from scratch</li>
-              <li>2. Build custom component</li>
-              <li>3. Fight CSS specificity</li>
-              <li>4. Discover accessibility bugs</li>
-              <li>5. Repeat for every new view</li>
-            </ul>
-          </div>
-          <div className="border border-dashed border-primary/50 bg-primary/5 p-4 rounded-md">
-            <h4 className="font-semibold text-sm mb-2 text-primary">The Spectrum Way</h4>
-            <ul className="text-sm space-y-2 text-muted-foreground">
-              <li>1. Copy the primitive</li>
-              <li>2. Paste into your codebase</li>
-              <li>3. Compose and customize</li>
-              <li>4. Ship feature</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <h2 id="copy-in-not-install">Copy in, not install</h2>
+      <p>
+        Spectrum UI isn’t a package you pull from <code>node_modules</code>. Point the shadcn CLI at
+        its registry and the component’s source is written straight into your project, where you can
+        read it, edit it, and ship it like any other file you wrote.
+      </p>
+      <p>
+        Run <code>npx shadcn add</code> with the component you want and it lands in{' '}
+        <code>components/ui</code>, fully editable. There’s no wrapper API to learn and no black box
+        to fight when a design changes. Upgrades work the way you already know from shadcn, so
+        there’s nothing new to memorize.
+      </p>
+      <Callout>
+        Because the source lives in your repo, delete what you don’t use. An owned component you can
+        trim beats a dependency that ships code you’ll never call.
+      </Callout>
 
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Why Traditional Component Libraries Fail
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Traditional npm-installed component libraries trap you in their ecosystem. When you need a variant they don't support, you end up writing hacky CSS overrides or filing feature requests that take months to resolve. Spectrum UI adopts the <i>copy-paste</i> philosophy. The code lives in your repository. You own it.
+      <h2 id="components-you-own">44 components you own</h2>
+      <p>
+        <Link href="/components">Spectrum UI</Link> ships 44 React components built on Tailwind and
+        shadcn primitives — dialogs, comboboxes, data tables, the pieces that are tedious and easy to
+        get wrong. It’s the boring, must-get-right catalog, finished once.
+      </p>
+      <p>
+        Each one arrives accessible and themed, so a feature that used to cost a day of
+        primitive-wrangling starts from working parts. That’s the difference between a starting line
+        and a blank page. You spend your hours on the parts that are actually your product.
       </p>
 
-      <CodeBlock
-        filename="CustomButton.tsx"
-        language="tsx"
-        code={`// The Spectrum UI approach: You own the code.
-import { Button } from '@/components/ui/button'
-
-export function GradientButton({ children, ...props }) {
-  return (
-    <Button
-      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90"
-      {...props}
-    >
-      {children}
-    </Button>
-  )
-}`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Enforcing Consistency Through Tokens
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Consistency isn't achieved through design reviews; it's achieved through constraints. Spectrum UI uses CSS variables to define a strict set of design tokens. When every developer pulls from the same token scale, the app naturally converges on a cohesive look and feel.
+      <h2 id="tokens-keep-it-consistent">Tokens keep it consistent</h2>
+      <p>
+        Every component reads from <strong>the same CSS variables</strong>, so consistency isn’t a
+        review comment — it’s the default. Set <code>--primary</code> once and the whole set matches. Change the
+        radius token and every corner in the app rounds together.
+      </p>
+      <p>
+        That’s the quiet payoff of a shared token layer: 44 components can’t drift apart when they
+        all point at the same handful of values. New teammates inherit that consistency without
+        reading a style guide.
       </p>
 
-      <CodeBlock
-        filename="theme.css"
-        language="css"
-        code={`@layer base {
-  :root {
-    --primary: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-  }
-}`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Accessibility Is Non-Negotiable
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Building an accessible dropdown menu or modal from scratch takes days. Spectrum UI primitives are built on top of Radix UI, meaning keyboard navigation, focus trapping, and screen reader announcements are handled out of the box. You get enterprise-grade accessibility without the overhead.
+      <h2 id="start-with-one">Start with one</h2>
+      <p>
+        Don’t adopt the whole set at once. Add a single button, retheme it to your brand, and see how
+        it feels inside your app — it’s the fastest way to judge fit without committing to anything.
       </p>
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Summary
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Stop treating UI components like special snowflakes. Leverage Spectrum UI to handle the repetitive boilerplate, enforce strict design constraints, and ensure baseline accessibility. This lets you focus your engineering cycles on building actual product logic rather than wrestling with flexbox alignment for the hundredth time.
+      <p>
+        If it fits, add the next component when you actually need it. Grow the set at the pace of
+        real features, not all at once. Copied-in code you own beats an install you can’t change
+        every time the design shifts.
       </p>
-    </div>
+    </>
   ),
 };
 
-export default blogPost;
+export default post;

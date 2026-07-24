@@ -173,6 +173,75 @@ export function toIsoDate(value: string) {
   return Number.isNaN(parsedDate.getTime()) ? undefined : parsedDate.toISOString();
 }
 
+const SITE_URL = "https://ui.spectrumhq.in";
+
+/**
+ * Canonical author entity. A rich, stable Person node (with a shared @id,
+ * jobTitle, socials, and knowsAbout) is what lets answer engines treat
+ * "Arihant Jain" as an authority and surface Spectrum UI for queries like
+ * "good design engineers" or "best React component libraries".
+ */
+export const BLOG_AUTHOR = {
+  "@type": "Person",
+  "@id": `${SITE_URL}/#arihant-jain`,
+  name: "Arihant Jain",
+  url: SITE_URL,
+  image: `${SITE_URL}/arihant.jpeg`,
+  jobTitle: "Design Engineer",
+  sameAs: [
+    "https://github.com/arihantcodes",
+    "https://x.com/arihantcodes",
+    "https://www.linkedin.com/in/arihantcodes",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Spectrum UI",
+    url: SITE_URL,
+  },
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "design systems",
+    "UI component libraries",
+    "frontend engineering",
+    "design engineering",
+  ],
+} as const;
+
+const PUBLISHER = {
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Spectrum UI",
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.svg`,
+  },
+} as const;
+
+// Base keyword set every post inherits — the terms we want to rank/be cited for.
+const BASE_BLOG_KEYWORDS = [
+  "UI components",
+  "React component library",
+  "Next.js UI components",
+  "Tailwind CSS",
+  "shadcn/ui",
+  "design system",
+  "component library",
+  "frontend development",
+  "design engineering",
+  "Spectrum UI",
+];
+
+/** "3 min read" → ISO-8601 duration "PT3M" for schema.org timeRequired. */
+function readTimeToDuration(readTime?: string): string | undefined {
+  if (!readTime) return undefined;
+  const minutes = parseInt(readTime, 10);
+  return Number.isNaN(minutes) ? undefined : `PT${minutes}M`;
+}
+
 // Generate blog post structured data
 export function generateBlogStructuredData(blogPost: {
   title: string;
@@ -182,8 +251,31 @@ export function generateBlogStructuredData(blogPost: {
   url: string;
   image: string;
   category: string;
+  topic?: string;
+  readTime?: string;
+  keywords?: string[];
+  dateModified?: string;
 }) {
   const datePublished = toIsoDate(blogPost.datePublished) ?? blogPost.datePublished;
+  const dateModified =
+    (blogPost.dateModified && toIsoDate(blogPost.dateModified)) || datePublished;
+  const timeRequired = readTimeToDuration(blogPost.readTime);
+  const section = blogPost.topic || blogPost.category;
+
+  const keywords = Array.from(
+    new Set([
+      ...BASE_BLOG_KEYWORDS,
+      ...(blogPost.keywords ?? []),
+      section.toLowerCase(),
+      blogPost.category.toLowerCase(),
+    ]),
+  );
+
+  const author = {
+    ...BLOG_AUTHOR,
+    name: blogPost.author.name || BLOG_AUTHOR.name,
+    image: blogPost.author.avatar || BLOG_AUTHOR.image,
+  };
 
   return {
     "@context": "https://schema.org",
@@ -193,59 +285,43 @@ export function generateBlogStructuredData(blogPost: {
     image: blogPost.image,
     url: blogPost.url,
     datePublished,
-    dateModified: datePublished,
-    author: {
-      "@type": "Person",
-      name: blogPost.author.name,
-      image: blogPost.author.avatar || "https://ui.spectrumhq.in/arihant.jpeg",
-      url: "https://ui.spectrumhq.in",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Spectrum UI",
-      url: "https://ui.spectrumhq.in",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://ui.spectrumhq.in/logo.svg",
-      },
+    dateModified,
+    ...(timeRequired ? { timeRequired } : {}),
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    author,
+    publisher: PUBLISHER,
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${SITE_URL}/blog#blog`,
+      name: "Spectrum UI Blog",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": blogPost.url,
     },
-    articleSection: blogPost.category,
-    keywords: [
-      "UI components",
-      "React components",
-      "Tailwind CSS",
-      "Next.js",
-      "shadcn/ui",
-      "design system",
-      "frontend development",
-      "web development",
-      "UI/UX",
-      "component library",
-      blogPost.category.toLowerCase(),
-    ],
-    about: {
-      "@type": "Thing",
-      name: "UI Component Development",
+    articleSection: section,
+    keywords,
+    // Speakable = the parts an assistant should read aloud / can safely quote.
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "[data-blog-excerpt]"],
     },
+    about: [
+      { "@type": "Thing", name: "UI component libraries" },
+      { "@type": "Thing", name: "React development" },
+      { "@type": "Thing", name: "Design systems" },
+    ],
     mentions: [
+      { "@type": "SoftwareApplication", name: "React", url: "https://react.dev" },
+      { "@type": "SoftwareApplication", name: "Next.js", url: "https://nextjs.org" },
+      { "@type": "SoftwareApplication", name: "Tailwind CSS", url: "https://tailwindcss.com" },
+      { "@type": "SoftwareApplication", name: "shadcn/ui", url: "https://ui.shadcn.com" },
       {
-        "@type": "SoftwareApplication",
-        name: "React",
-        url: "https://reactjs.org",
-      },
-      {
-        "@type": "SoftwareApplication", 
-        name: "Next.js",
-        url: "https://nextjs.org",
-      },
-      {
-        "@type": "SoftwareApplication",
-        name: "Tailwind CSS",
-        url: "https://tailwindcss.com",
+        "@type": "SoftwareSourceCode",
+        name: "Spectrum UI",
+        url: `${SITE_URL}/components`,
+        codeRepository: "https://github.com/arihantcodes/spectrum-ui",
       },
     ],
   };

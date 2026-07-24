@@ -16,6 +16,103 @@
   --typeset-flow: 1.25em;
 }
 
+/* shadcn/typeset article preset — the blog reading surface. Same Geist
+   mapping as .typeset-docs, one step larger for long-form reading. */
+.typeset-article {
+  --typeset-font-body: var(--font-geist-sans);
+  --typeset-font-heading: var(--font-geist-sans);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 16px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
+
+/* Anchored blog headings need clearance under the sticky navbar. */
+.typeset-article :is(h2, h3)[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BLOG BODY TEXT COLOUR — single source of truth. Change these two values to
+   recolour every paragraph/list across all blog posts (light + dark).
+   Defaults: neutral-800 (#262626) light · neutral-200 (#e5e5e5) dark.
+   ───────────────────────────────────────────────────────────────────────── */
+.typeset-article {
+  --blog-body-text: #404040; /* light mode body */
+}
+.dark .typeset-article {
+  --blog-body-text: #d6d3d1; /* dark mode body */
+}
+
+/* Reading voice: section headings sit at medium weight (calmer than the
+   typeset default 600); body copy uses the single-source colour above. */
+.typeset-article :is(h2, h3, h4) {
+  font-weight: 500;
+  letter-spacing: -0.011em;
+}
+.typeset-article :is(h2) {
+  font-size: 1.3em;
+}
+.typeset-article {
+  color: var(--blog-body-text);
+}
+.typeset-article :is(p, li) {
+  color: var(--blog-body-text);
+}
+.typeset-article strong {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+/* Persistent reader highlights (Medium-style). Classic highlighter yellow —
+   most recognizable and stays legible in both themes. Change the two --hl
+   values (and their alphas) to retint every highlight. Click one to remove. */
+.blog-highlight {
+  --hl: 250 204 21; /* light: warm amber (yellow-400) */
+  --hl-alpha: 0.4;
+  background-color: rgb(var(--hl) / var(--hl-alpha));
+  border-radius: 2px;
+  padding: 0.06em 0.12em;
+  margin: 0 -0.02em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; /* even fill across line wraps */
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.blog-highlight:hover {
+  --hl-alpha: 0.58;
+}
+.dark .blog-highlight {
+  --hl: 253 224 71; /* dark: brighter yellow, low alpha so text stays crisp */
+  --hl-alpha: 0.24;
+}
+.dark .blog-highlight:hover {
+  --hl-alpha: 0.36;
+}
+
+/* Shiki dual-theme code blocks (components/blog/code.tsx). Both palettes are
+   baked into CSS variables at build time; dark mode just swaps which var is
+   read — no client re-highlight, no flash. Backgrounds come from the card. */
+.blog-code .shiki,
+.blog-code .shiki span {
+  color: var(--shiki-light);
+  background-color: transparent !important;
+}
+.dark .blog-code .shiki,
+.dark .blog-code .shiki span {
+  color: var(--shiki-dark);
+}
+/* Undo the docs-wide pre/code sizing inside blog code cards. */
+.blog-code pre {
+  padding: 14px 16px !important;
+}
+.blog-code pre > code {
+  display: block;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
