@@ -1,224 +1,93 @@
-import CodeBlock from '@/components/blog-code';
+import type { BlogPostInput } from '@/lib/blog';
+import { Callout } from '@/components/blog/prose';
 
-const blogPost = {
+const post: BlogPostInput = {
   title: 'UI Performance: How to Make Your React App Feel Instant',
   excerpt:
     "Users don't care about your Lighthouse score. They care about how fast your app feels. Here's how to make your UI feel instant.",
+  tagline: 'Fast is a feeling, not a score.',
   author: {
     name: 'Arihant Jain',
-    role: 'Engineering',
+    role: 'Design Engineer',
     avatar: '/arihant.jpeg',
   },
   date: 'Jan 31, 2026',
-  readTime: '8 min read',
-  icon: '⚡',
+  readTime: '3 min read',
   category: 'Design Engineering',
+  topic: 'React & Performance',
   content: (
-    <div className="space-y-6">
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Perceived Speed vs Actual Speed
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        A page that loads in 2 seconds with a nice skeleton feels faster than one that loads in 1.5
-        seconds with a blank screen. Performance isn&apos;t just about milliseconds. It&apos;s about how
-        fast things feel. Design engineers can make a huge impact here because we control what users see
-        while they wait.
+    <>
+      <p>
+        Your Lighthouse score is 98 and the app still feels sluggish. Score and feel aren’t the same
+        thing. The speed a user notices comes from three moments: the first paint, things not
+        jumping around, and clicks that respond right now.
       </p>
 
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Show Something Immediately
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        The number one rule: never show a blank screen. Show the layout with skeleton placeholders
-        while data loads.
+      <h2 id="first-paint">The first paint</h2>
+      <p>
+        The largest thing on screen — hero image, headline, banner — should land in under{' '}
+        <strong>2.5 seconds</strong>. That’s your LCP, and it’s the number people actually feel.
+      </p>
+      <p>
+        Render it from the server, preload the hero image, and don’t hide it behind a spinner or a
+        font swap. If it’s an image, give it a real width and height so the browser fetches it early
+        and holds its place.
+      </p>
+      <p>
+        Fonts are the sneaky one. Use <code>font-display: swap</code> and preload the file, or your
+        headline paints twice and the whole page feels late.
       </p>
 
-      <CodeBlock
-        filename="skeleton.tsx"
-        language="tsx"
-        code={`// Skeleton that matches the real layout
-function UserCardSkeleton() {
-  return (
-    <div className="flex items-center gap-3 p-4 rounded-lg border">
-      <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
-      <div className="space-y-2 flex-1">
-        <div className="h-4 w-1/3 rounded bg-muted animate-pulse" />
-        <div className="h-3 w-1/2 rounded bg-muted animate-pulse" />
-      </div>
-    </div>
-  );
-}
+      <h2 id="reserve-the-space">Reserve the space</h2>
+      <p>
+        Nothing feels cheaper than content that jumps. An image loads and shoves the paragraph down;
+        an ad slot pops in and you tap the wrong thing. That’s layout shift, and your target is zero.
+      </p>
+      <p>
+        The fix is boring and total: reserve the space before the content arrives. Set explicit{' '}
+        <code>width</code> and <code>height</code> on media, give async slots a fixed{' '}
+        <code>min-height</code>, and use skeletons sized like the real thing.
+      </p>
+      <Callout>
+        Open DevTools, throttle to Slow 4G, and reload while you watch. If anything jumps after the
+        first paint, you just found a layout shift the fast-connection demo was hiding.
+      </Callout>
 
-// Use it while data loads
-function UserList() {
-  const { data, isLoading } = useUsers();
-
-  if (isLoading) {
-    return (
-      <div className="space-y-2">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <UserCardSkeleton key={i} />
-        ))}
-      </div>
-    );
-  }
-
-  return data.map(user => <UserCard key={user.id} user={user} />);
-}`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Lazy Load What&apos;s Not Visible
-      </h2>
-
-      <CodeBlock
-        filename="lazy-load.tsx"
-        language="tsx"
-        code={`import dynamic from 'next/dynamic';
-
-// Heavy components load only when needed
-const Chart = dynamic(() => import('@/components/chart'), {
-  loading: () => <div className="h-64 rounded bg-muted animate-pulse" />,
-});
-
-const MarkdownEditor = dynamic(() => import('@/components/editor'), {
-  ssr: false, // Don't render on server
-});
-
-// Images load when they scroll into view
-<img
-  src={url}
-  alt={alt}
-  loading="lazy"
-  className="rounded-lg"
-/>
-
-// Next.js Image handles this automatically
-import Image from 'next/image';
-<Image src={url} alt={alt} width={400} height={300} />`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Optimize Re-Renders
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Unnecessary re-renders are the most common performance killer in React apps:
+      <h2 id="answer-the-click">Answer the click</h2>
+      <p>
+        When someone taps a like, a toggle, a delete — update the UI immediately, then let the
+        server catch up. If it fails, roll it back. A 200ms round trip you hide feels instant; a
+        200ms spinner feels slow.
+      </p>
+      <p>
+        <code>useOptimistic</code> makes this a few lines in React. The perceived win is bigger than
+        any query you could shave.
+      </p>
+      <p>
+        Don’t fake it for things that genuinely fail often, though, like a payment. There, an honest
+        pending state beats a success you have to walk back.
       </p>
 
-      <CodeBlock
-        filename="re-renders.tsx"
-        language="tsx"
-        code={`// Problem: SearchResults re-renders every time input changes
-function Page() {
-  const [query, setQuery] = useState('');
-  return (
-    <div>
-      <input value={query} onChange={e => setQuery(e.target.value)} />
-      <ExpensiveList /> {/* Re-renders on every keystroke! */}
-    </div>
-  );
-}
-
-// Fix 1: Memo the expensive component
-const ExpensiveList = React.memo(function ExpensiveList() {
-  // Only re-renders when its own props change
-  return <div>{/* heavy stuff */}</div>;
-});
-
-// Fix 2: Move state closer to where it's used
-function Page() {
-  return (
-    <div>
-      <SearchBar /> {/* State lives here now */}
-      <ExpensiveList /> {/* Doesn't re-render */}
-    </div>
-  );
-}
-
-function SearchBar() {
-  const [query, setQuery] = useState('');
-  return <input value={query} onChange={e => setQuery(e.target.value)} />;
-}`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Animations That Don&apos;t Stutter
-      </h2>
-      <div className="bg-muted p-6 rounded-lg my-6">
-        <ul className="space-y-2 list-disc list-inside">
-          <li>Only animate <code>transform</code> and <code>opacity</code>. These use the GPU.</li>
-          <li>Never animate <code>width</code>, <code>height</code>, <code>margin</code>, or <code>padding</code>. They trigger layout.</li>
-          <li>Use <code>will-change: transform</code> sparingly for elements that animate often.</li>
-          <li>Test on slow devices. Your MacBook Pro hides performance problems.</li>
-        </ul>
-      </div>
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Bundle Size Matters
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Big bundles mean slow first loads. A few things that help:
+      <h2 id="ship-less-javascript">Ship less JavaScript</h2>
+      <p>
+        Every kilobyte of JS gets parsed and run on the main thread — the same thread that answers
+        taps. The cheapest speed-up is sending less of it.
       </p>
-      <ul className="space-y-2 list-disc list-inside ml-4">
-        <li><strong>Import icons individually:</strong> <code>import &#123; Search &#125; from &apos;lucide-react&apos;</code> not the whole library</li>
-        <li><strong>Use dynamic imports</strong> for heavy components (charts, editors, maps)</li>
-        <li><strong>Check your bundle</strong> with <code>@next/bundle-analyzer</code> regularly</li>
-        <li><strong>Tree-shake CSS</strong> - Tailwind does this automatically in production</li>
+      <ul>
+        <li>Keep components on the server; only interactive leaves ship.</li>
+        <li>
+          Load heavy widgets like charts and editors with <code>next/dynamic</code>.
+        </li>
+        <li>
+          Trade a 40KB date library for a small helper or the <code>Intl</code> API.
+        </li>
       </ul>
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        Optimistic Updates
-      </h2>
-      <p className="text-base font-normal text-neutral-800 dark:text-neutral-200">
-        Don&apos;t wait for the server to respond. Show the result immediately and fix it if the request fails:
+      <p>
+        LCP under 2.5s, zero shift, instant feedback, a smaller bundle. Do those four and the app
+        feels fast — whatever the score says.
       </p>
-
-      <CodeBlock
-        filename="optimistic.tsx"
-        language="tsx"
-        code={`// Toggle a like button optimistically
-function LikeButton({ postId, liked, likeCount }) {
-  const [optimisticLiked, setOptimisticLiked] = useState(liked);
-  const [optimisticCount, setOptimisticCount] = useState(likeCount);
-
-  async function toggleLike() {
-    // Update UI immediately
-    setOptimisticLiked(!optimisticLiked);
-    setOptimisticCount(c => optimisticLiked ? c - 1 : c + 1);
-
-    try {
-      await api.toggleLike(postId);
-    } catch {
-      // Revert if it fails
-      setOptimisticLiked(liked);
-      setOptimisticCount(likeCount);
-    }
-  }
-
-  return (
-    <button onClick={toggleLike}>
-      <Heart filled={optimisticLiked} /> {optimisticCount}
-    </button>
-  );
-}`}
-      />
-
-      <h2 className="text-xl font-medium mt-8 mb-4 text-neutral-800 dark:text-neutral-200">
-        The Short Version
-      </h2>
-      <div className="bg-muted p-6 rounded-lg my-6">
-        <ul className="space-y-2 list-disc list-inside">
-          <li>Show skeletons immediately. Never show blank screens.</li>
-          <li>Lazy load heavy components and images</li>
-          <li>Memoize expensive components or move state closer to where it&apos;s used</li>
-          <li>Only animate transform and opacity for smooth 60fps</li>
-          <li>Watch your bundle size. Import things individually.</li>
-          <li>Use optimistic updates for instant-feeling interactions</li>
-          <li>Test on slow devices and throttled networks</li>
-        </ul>
-      </div>
-    </div>
+    </>
   ),
 };
 
-export default blogPost;
+export default post;

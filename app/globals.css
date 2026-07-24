@@ -16,6 +16,66 @@
   --typeset-flow: 1.25em;
 }
 
+/* shadcn/typeset article preset — the blog reading surface. Same Geist
+   mapping as .typeset-docs, one step larger for long-form reading. */
+.typeset-article {
+  --typeset-font-body: var(--font-geist-sans);
+  --typeset-font-heading: var(--font-geist-sans);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 16px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
+
+/* Anchored blog headings need clearance under the sticky navbar. */
+.typeset-article :is(h2, h3)[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Reading voice: section headings sit at medium weight (calmer than the
+   typeset default 600), and body copy runs at full foreground contrast so
+   it reads clearly rather than as light gray. */
+.typeset-article :is(h2, h3, h4) {
+  font-weight: 500;
+  letter-spacing: -0.011em;
+}
+.typeset-article :is(h2) {
+  font-size: 1.3em;
+}
+.typeset-article {
+  color: hsl(var(--foreground));
+}
+.typeset-article :is(p, li) {
+  color: color-mix(in oklab, hsl(var(--foreground)) 88%, transparent);
+}
+.typeset-article strong {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+/* Shiki dual-theme code blocks (components/blog/code.tsx). Both palettes are
+   baked into CSS variables at build time; dark mode just swaps which var is
+   read — no client re-highlight, no flash. Backgrounds come from the card. */
+.blog-code .shiki,
+.blog-code .shiki span {
+  color: var(--shiki-light);
+  background-color: transparent !important;
+}
+.dark .blog-code .shiki,
+.dark .blog-code .shiki span {
+  color: var(--shiki-dark);
+}
+/* Undo the docs-wide pre/code sizing inside blog code cards. */
+.blog-code pre {
+  padding: 14px 16px !important;
+}
+.blog-code pre > code {
+  display: block;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

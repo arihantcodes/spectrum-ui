@@ -2,48 +2,22 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="relative flex min-h-[70vh] items-center justify-center font-inter dark:bg-neutral-950">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-0 bg-noise opacity-[0.035] dark:opacity-[0.05]"
-      />
-      <div className="relative z-10 flex flex-col items-center gap-5 px-6 text-center">
-        <span className="flex items-center gap-2.5">
-          <span
-            aria-hidden
-            className="h-[9px] w-[9px] border-l-2 border-t-2 border-neutral-400 dark:border-neutral-500"
-          />
-          <span className="font-inter text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
-            404
-          </span>
+    <div className="container-frame border-b border-border bg-background">
+      <div className="flex min-h-[70vh] flex-col items-center justify-center gap-5 px-6 py-20 text-center">
+        <span className="inline-flex h-8 items-center rounded-full bg-black/[0.045] px-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] dark:bg-white/[0.07] dark:text-neutral-200 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.09)]">
+          404
         </span>
-        <h1 className="text-balance font-regular text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] text-neutral-900 sm:text-[42px] dark:text-neutral-50">
-          This post doesn&apos;t exist.
+        <h1 className="font-spectral text-[30px] font-light leading-[1] tracking-[-0.09em] text-black [text-wrap:balance] sm:text-[42px] dark:text-white">
+          This post doesn&rsquo;t exist.
         </h1>
-        <p className="max-w-sm font-inter text-[15px] leading-[1.75] text-neutral-600 dark:text-neutral-400">
-          The article you&apos;re looking for may have been moved or never
-          existed. Head back to the journal to keep reading.
+        <p className="max-w-sm text-[15px] leading-[1.75] text-muted-foreground">
+          The article you&rsquo;re looking for may have moved or never existed. Head back to the
+          journal to keep reading.
         </p>
         <Link
           href="/blog"
-          className="group mt-2 inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-6 font-inter text-[14px] font-medium text-white transition-transform active:scale-[0.97] dark:bg-white dark:text-neutral-900"
+          className="mt-2 inline-flex h-11 items-center rounded-full bg-primary px-6 text-[14px] font-medium text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3)] transition-[transform,background-color] duration-150 ease-out hover:bg-primary/90 active:scale-[0.98] dark:shadow-[0_0_20px_rgba(255,255,255,0.18)]"
         >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 16 16"
-            aria-hidden
-            className="transition-transform duration-300 ease-out group-hover:-translate-x-0.5"
-          >
-            <path
-              d="M10 3L5 8l5 5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
           Back to the journal
         </Link>
       </div>
