@@ -172,13 +172,34 @@ function ArtRamp({ ink }: { ink: boolean }) {
   );
 }
 
+function GridCell({ ink, accented }: { ink: boolean; accented?: boolean }) {
+  return (
+    <MiniCard ink={ink} className="flex h-12 items-center gap-1.5 px-2.5">
+      <span
+        className="size-2.5 shrink-0 rounded-[4px]"
+        style={{ backgroundColor: accented ? accent(ink) : undefined }}
+      >
+        {!accented && <span className={cn('block size-full rounded-[4px]', hair(ink))} />}
+      </span>
+      <span className="flex flex-1 flex-col gap-1">
+        <span className={cn('h-1 w-3/4 rounded-full', hair(ink))} />
+        <span className={cn('h-1 w-1/2 rounded-full', hair(ink))} />
+      </span>
+    </MiniCard>
+  );
+}
+
 function ArtGrid({ ink }: { ink: boolean }) {
   return (
-    <div className="grid w-[58%] grid-cols-3 grid-rows-2 gap-2">
-      <MiniCard ink={ink} className="col-span-2 h-12" />
-      <MiniCard ink={ink} className="h-12" />
-      <MiniCard ink={ink} className="h-12" />
-      <MiniCard ink={ink} className="col-span-2 h-12" />
+    <div className="grid w-[62%] grid-cols-3 grid-rows-2 gap-2">
+      <div className="col-span-2">
+        <GridCell ink={ink} accented />
+      </div>
+      <GridCell ink={ink} />
+      <GridCell ink={ink} />
+      <div className="col-span-2">
+        <GridCell ink={ink} />
+      </div>
     </div>
   );
 }
@@ -186,9 +207,21 @@ function ArtGrid({ ink }: { ink: boolean }) {
 function ArtViewports({ ink }: { ink: boolean }) {
   return (
     <div className="flex items-end gap-3">
-      <MiniCard ink={ink} className="h-16 w-10" />
-      <MiniCard ink={ink} className="h-20 w-16" />
-      <MiniCard ink={ink} className="h-24 w-28" />
+      <MiniCard ink={ink} className="flex h-16 w-10 flex-col gap-1 p-2">
+        <span className={cn('h-1 w-full rounded-full', hair(ink))} />
+        <span className={cn('h-1 w-2/3 rounded-full', hair(ink))} />
+      </MiniCard>
+      <MiniCard ink={ink} className="flex h-20 w-16 flex-col gap-1.5 p-2.5">
+        <span className="h-1.5 w-2/3 rounded-full" style={{ backgroundColor: accent(ink) }} />
+        <span className={cn('h-1 w-full rounded-full', hair(ink))} />
+        <span className={cn('h-1 w-3/4 rounded-full', hair(ink))} />
+      </MiniCard>
+      <MiniCard ink={ink} className="flex h-24 w-28 flex-col gap-1.5 p-3">
+        <span className="h-2 w-1/2 rounded-full" style={{ backgroundColor: accent(ink) }} />
+        <span className={cn('h-1.5 w-full rounded-full', hair(ink))} />
+        <span className={cn('h-1.5 w-full rounded-full', hair(ink))} />
+        <span className={cn('h-1.5 w-2/3 rounded-full', hair(ink))} />
+      </MiniCard>
     </div>
   );
 }
@@ -375,23 +408,34 @@ function ArtGauge({ ink }: { ink: boolean }) {
 
 function ArtFocus({ ink }: { ink: boolean }) {
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-3.5">
+      {/* A real, well-proportioned button (wide > tall) with a tasteful
+          focus-visible ring — reads as a CTA, not a stubby pill. */}
       <span className="relative inline-flex">
         <span
           className={cn(
-            'flex h-11 items-center rounded-full px-7 text-[12px] font-medium',
+            'flex h-11 w-[172px] items-center justify-center rounded-[13px] text-[13px] font-medium',
             ink
-              ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.15)]'
-              : 'bg-neutral-900 text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
+              ? 'bg-white text-black shadow-[0_1px_0_rgba(255,255,255,0.6)_inset,0_8px_20px_-8px_rgba(0,0,0,0.6)]'
+              : 'bg-neutral-900 text-white shadow-[0_1px_0_rgba(255,255,255,0.12)_inset,0_8px_20px_-10px_rgba(0,0,0,0.5)]',
           )}
         >
           Submit
         </span>
-        {/* focus-visible ring: tinted halo + crisp accent outline */}
-        <span aria-hidden="true" className="absolute -inset-[6px] rounded-full" style={{ boxShadow: `0 0 0 2.5px ${accent(ink)}` }} />
-        <span aria-hidden="true" className="absolute -inset-[10px] rounded-full" style={{ boxShadow: `0 0 0 4px ${accent(ink)}22` }} />
+        <span
+          aria-hidden="true"
+          className="absolute -inset-[5px] rounded-[18px]"
+          style={{ boxShadow: `0 0 0 2px ${accent(ink)}` }}
+        />
+        <span
+          aria-hidden="true"
+          className="absolute -inset-[9px] rounded-[22px]"
+          style={{ boxShadow: `0 0 0 4px ${accent(ink)}1f` }}
+        />
       </span>
-      <span className={cn('font-mono text-[9.5px] uppercase tracking-[0.1em]', soft(ink))}>:focus-visible</span>
+      <span className={cn('font-mono text-[9.5px] uppercase tracking-[0.12em]', soft(ink))}>
+        :focus-visible
+      </span>
     </div>
   );
 }

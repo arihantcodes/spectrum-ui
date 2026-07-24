@@ -38,10 +38,10 @@
    Defaults: neutral-800 (#262626) light · neutral-200 (#e5e5e5) dark.
    ───────────────────────────────────────────────────────────────────────── */
 .typeset-article {
-  --blog-body-text: #262626; /* light mode body */
+  --blog-body-text: #404040; /* light mode body */
 }
 .dark .typeset-article {
-  --blog-body-text: #e5e5e5; /* dark mode body */
+  --blog-body-text: #d6d3d1; /* dark mode body */
 }
 
 /* Reading voice: section headings sit at medium weight (calmer than the
