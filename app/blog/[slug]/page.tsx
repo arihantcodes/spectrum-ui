@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog"
 import { Metadata } from "next"
 import {
@@ -9,7 +8,8 @@ import {
   toIsoDate,
 } from "@/lib/seo-utils"
 import { JsonLd } from "@/components/seo/json-ld"
-import { TableOfContents } from "@/components/seo/table-of-contents"
+import OnThisPage from "@/app/(docs)/layout-parts/on-this-page"
+import { BlogHighlighter } from "@/components/blog/highlighter"
 import { PostCard } from "@/components/blog/post-card"
 import {
   createNoIndexMetadata,
@@ -178,11 +178,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               </Link>
 
               <article itemScope itemType="https://schema.org/BlogPosting" className="mt-9">
-                <header>
-                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
-                    {post.topic}
-                    <span className="mx-2 text-border">/</span>
-                    {post.readTime}
+                <header className="border-b border-border/70 pb-8">
+                  {/* datePublished stays machine-readable here (and in JSON-LD)
+                      for SEO even though the author byline is intentionally gone. */}
+                  <p className="flex flex-wrap items-center gap-x-2 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                    <span>{post.topic}</span>
+                    <span aria-hidden="true" className="text-border">/</span>
+                    <span>{post.readTime}</span>
+                    <span aria-hidden="true" className="text-border">/</span>
+                    <time dateTime={isoDate}>{post.date}</time>
                   </p>
 
                   <h1
@@ -195,49 +199,28 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   <p className="mt-4 text-[16px] leading-[1.7] text-muted-foreground">
                     {post.excerpt}
                   </p>
-
-                  <div className="mt-7 flex items-center gap-3 border-t border-border/70 pt-6">
-                    <Avatar className="size-7 ring-1 ring-black/[0.06] dark:ring-white/[0.1]">
-                      <AvatarImage src={post.author.avatar || "/placeholder.svg"} alt="" />
-                      <AvatarFallback className="text-[10px] font-medium">
-                        {post.author.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <p
-                      className="flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground"
-                      itemProp="author"
-                      itemScope
-                      itemType="https://schema.org/Person"
-                    >
-                      <span itemProp="name" className="font-medium text-foreground">
-                        {post.author.name}
-                      </span>
-                      <span aria-hidden="true">·</span>
-                      <time itemProp="datePublished" dateTime={isoDate}>
-                        {post.date}
-                      </time>
-                    </p>
-                  </div>
                 </header>
 
-                <div
-                  id="post-body"
-                  itemProp="articleBody"
-                  className="typeset typeset-article mt-10"
-                >
-                  {post.content}
-                </div>
+                {/* Client wrapper enables Medium-style persistent highlights. */}
+                <BlogHighlighter storageKey={post.slug}>
+                  <div
+                    id="post-body"
+                    itemProp="articleBody"
+                    className="typeset typeset-article mt-9"
+                  >
+                    {post.content}
+                  </div>
+                </BlogHighlighter>
               </article>
             </div>
           </div>
 
-          {/* TOC rides the right gutter track — its own sticky positioning
-              keeps it in view while scrolling. */}
+          {/* TOC rides the right gutter track — same tree-rail style as the
+              docs "On This Page". */}
           <aside className="hidden xl:block">
-            <TableOfContents containerSelector="#post-body" />
+            <div className="sticky top-24">
+              <OnThisPage containerSelector="#post-body" />
+            </div>
           </aside>
         </div>
       </section>

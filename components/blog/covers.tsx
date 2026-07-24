@@ -29,10 +29,10 @@ function MiniCard({
   return (
     <div
       className={cn(
-        'rounded-lg',
+        'rounded-xl',
         ink
-          ? 'bg-white/[0.07] shadow-[0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.06)]'
-          : 'bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.06)]',
+          ? 'bg-gradient-to-b from-white/[0.1] to-white/[0.04] shadow-[0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.09),0_10px_24px_-14px_rgba(0,0,0,0.8)]'
+          : 'bg-gradient-to-b from-white to-[#fbfaf8] shadow-[0_0_0_1px_rgba(0,0,0,0.07),0_1px_1px_rgba(0,0,0,0.04),0_10px_24px_-14px_rgba(0,0,0,0.22)]',
         className,
       )}
     >
@@ -306,61 +306,93 @@ function ArtCommand({ ink }: { ink: boolean }) {
   );
 }
 
+function FlowNode({ ink, label, dim }: { ink: boolean; label: string; dim?: boolean }) {
+  return (
+    <MiniCard ink={ink} className="flex h-[70px] w-[104px] flex-col justify-between p-3">
+      <span className="flex items-center gap-1.5">
+        <span
+          className="size-2 rounded-full"
+          style={{ backgroundColor: dim ? (ink ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.25)') : accent(ink) }}
+        />
+        <span className={cn('font-mono text-[9.5px] uppercase tracking-[0.08em]', dim ? soft(ink) : strong(ink))}>
+          {label}
+        </span>
+      </span>
+      <span className="flex flex-col gap-1.5">
+        <span className={cn('h-1 w-full rounded-full', hair(ink))} />
+        <span className={cn('h-1 w-2/3 rounded-full', hair(ink))} />
+      </span>
+    </MiniCard>
+  );
+}
+
 function ArtBoxesFlow({ ink, from, to }: { ink: boolean; from: string; to: string }) {
   return (
-    <div className="flex items-center gap-3">
-      <MiniCard ink={ink} className="flex h-16 w-24 items-center justify-center">
-        <span className={cn('font-mono text-[10px] uppercase tracking-[0.08em]', strong(ink))}>{from}</span>
-      </MiniCard>
-      <svg width="34" height="12" viewBox="0 0 34 12" aria-hidden="true">
-        <path d="M0 6 H30 M26 1.5 L31 6 L26 10.5" fill="none" stroke={accent(ink)} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+    <div className="flex items-center gap-2.5">
+      <FlowNode ink={ink} label={from} />
+      <svg width="40" height="14" viewBox="0 0 40 14" aria-hidden="true">
+        <circle cx="3" cy="7" r="2.5" fill={accent(ink)} />
+        <path d="M4 7 H34 M30 2.5 L36 7 L30 11.5" fill="none" stroke={accent(ink)} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-      <MiniCard ink={ink} className="flex h-16 w-24 items-center justify-center">
-        <span className={cn('font-mono text-[10px] uppercase tracking-[0.08em]', soft(ink))}>{to}</span>
-      </MiniCard>
+      <FlowNode ink={ink} label={to} dim />
     </div>
   );
 }
 
 function ArtGauge({ ink }: { ink: boolean }) {
+  const rows = [
+    { label: 'LCP', w: '34%', good: true, val: '1.2s' },
+    { label: 'CLS', w: '20%', good: true, val: '0.01' },
+    { label: 'JS', w: '82%', good: false, val: '180kb' },
+  ];
   return (
-    <div className="flex w-[60%] flex-col gap-3.5">
-      {[
-        { label: 'LCP', w: '38%', good: true },
-        { label: 'CLS', w: '22%', good: true },
-        { label: 'JS', w: '86%', good: false },
-      ].map((m) => (
-        <div key={m.label} className="flex items-center gap-3">
-          <span className={cn('w-8 font-mono text-[10px]', soft(ink))}>{m.label}</span>
-          <div className={cn('h-2 flex-1 overflow-hidden rounded-full', ink ? 'bg-white/[0.08]' : 'bg-black/[0.06]')}>
-            <span
-              className="block h-full rounded-full"
-              style={{ width: m.w, backgroundColor: m.good ? accent(ink) : ink ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.35)' }}
-            />
+    <MiniCard ink={ink} className="w-[70%] p-4">
+      <div className={cn('mb-3 flex items-center justify-between', soft(ink))}>
+        <span className="font-mono text-[10px] uppercase tracking-[0.08em]">Core Web Vitals</span>
+        <span className="size-2 rounded-full" style={{ backgroundColor: accent(ink) }} />
+      </div>
+      <div className="flex flex-col gap-2.5">
+        {rows.map((m) => (
+          <div key={m.label} className="flex items-center gap-2.5">
+            <span className={cn('w-7 font-mono text-[10px]', soft(ink))}>{m.label}</span>
+            <div className={cn('h-1.5 flex-1 overflow-hidden rounded-full', ink ? 'bg-white/[0.08]' : 'bg-black/[0.06]')}>
+              <span
+                className="block h-full rounded-full"
+                style={{
+                  width: m.w,
+                  backgroundColor: m.good ? accent(ink) : ink ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.28)',
+                  boxShadow: m.good ? `0 0 8px ${accent(ink)}66` : undefined,
+                }}
+              />
+            </div>
+            <span className={cn('w-9 text-right font-mono text-[9px]', soft(ink))}>{m.val}</span>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </MiniCard>
   );
 }
 
 function ArtFocus({ ink }: { ink: boolean }) {
   return (
-    <span className="relative inline-flex">
-      <span
-        className={cn(
-          'flex h-11 items-center rounded-full px-6 text-[12px] font-medium',
-          ink ? 'bg-white text-black' : 'bg-neutral-900 text-white',
-        )}
-      >
-        Submit
+    <div className="flex flex-col items-center gap-3">
+      <span className="relative inline-flex">
+        <span
+          className={cn(
+            'flex h-11 items-center rounded-full px-7 text-[12px] font-medium',
+            ink
+              ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.15)]'
+              : 'bg-neutral-900 text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)]',
+          )}
+        >
+          Submit
+        </span>
+        {/* focus-visible ring: tinted halo + crisp accent outline */}
+        <span aria-hidden="true" className="absolute -inset-[6px] rounded-full" style={{ boxShadow: `0 0 0 2.5px ${accent(ink)}` }} />
+        <span aria-hidden="true" className="absolute -inset-[10px] rounded-full" style={{ boxShadow: `0 0 0 4px ${accent(ink)}22` }} />
       </span>
-      <span
-        aria-hidden="true"
-        className="absolute -inset-[5px] rounded-full"
-        style={{ boxShadow: `0 0 0 2.5px ${accent(ink)}` }}
-      />
-    </span>
+      <span className={cn('font-mono text-[9.5px] uppercase tracking-[0.1em]', soft(ink))}>:focus-visible</span>
+    </div>
   );
 }
 
@@ -643,17 +675,48 @@ export function PostCover({ slug, title, className }: { slug: string; title?: st
       aria-hidden="true"
       className={cn(
         'relative flex h-full w-full items-center justify-center overflow-hidden',
-        ink ? 'bg-[#0e0e0e]' : 'bg-[#fafaf9]',
+        ink ? 'bg-[#0d0d0f]' : 'bg-[#f7f6f4]',
         className,
       )}
     >
-      {cover ? (
-        cover.art(ink)
-      ) : (
-        <span className={cn('font-spectral text-[64px] font-light', strong(ink))}>
-          {(title ?? slug).charAt(0).toUpperCase()}
-        </span>
-      )}
+      {/* Depth layer: a soft off-center glow + faint grid so tiles read as
+          lit surfaces instead of flat blocks. Pure CSS, sits behind the art. */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: ink
+            ? 'radial-gradient(120% 90% at 30% 0%, rgba(255,255,255,0.06), transparent 55%)'
+            : 'radial-gradient(120% 90% at 30% 0%, rgba(255,255,255,0.9), transparent 60%)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: ink
+            ? 'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)'
+            : 'linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px)',
+          backgroundSize: '22px 22px',
+          maskImage: 'radial-gradient(100% 100% at 50% 50%, black, transparent 78%)',
+          WebkitMaskImage: 'radial-gradient(100% 100% at 50% 50%, black, transparent 78%)',
+        }}
+      />
+      {/* Inner hairline ring for a crisp edge on both tones. */}
+      <div
+        className={cn(
+          'pointer-events-none absolute inset-0',
+          ink ? 'shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_0_1px_rgba(0,0,0,0.04)]',
+        )}
+      />
+
+      <div className="relative flex h-full w-full items-center justify-center">
+        {cover ? (
+          cover.art(ink)
+        ) : (
+          <span className={cn('font-spectral text-[64px] font-light', strong(ink))}>
+            {(title ?? slug).charAt(0).toUpperCase()}
+          </span>
+        )}
+      </div>
     </div>
   );
 }

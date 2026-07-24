@@ -13,16 +13,21 @@ interface TocHeading {
 
 /**
  * Right-hand "On This Page" table of contents.
- * Reads h2/h3 headings with ids from the rendered docs content and
- * tracks the active one while scrolling.
+ * Reads h2/h3 headings with ids from the rendered content and tracks the
+ * active one while scrolling. Defaults to the docs content container, but
+ * accepts any selector so other surfaces (e.g. the blog) can reuse it.
  */
-export default function OnThisPage() {
+export default function OnThisPage({
+  containerSelector = "[data-docs-content]",
+}: {
+  containerSelector?: string;
+}) {
   const pathname = usePathname();
   const [headings, setHeadings] = useState<TocHeading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    const content = document.querySelector("[data-docs-content]");
+    const content = document.querySelector(containerSelector);
     if (!content) {
       setHeadings([]);
       return;
@@ -54,7 +59,7 @@ export default function OnThisPage() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [pathname]);
+  }, [pathname, containerSelector]);
 
   if (headings.length === 0) return null;
 
