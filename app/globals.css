@@ -64,25 +64,30 @@
   color: hsl(var(--foreground));
 }
 
-/* Persistent reader highlights (Medium-style). One accent, works in both
-   themes; click a highlight to remove it. */
+/* Persistent reader highlights (Medium-style). Classic highlighter yellow —
+   most recognizable and stays legible in both themes. Change the two --hl
+   values (and their alphas) to retint every highlight. Click one to remove. */
 .blog-highlight {
-  border-radius: 3px;
-  padding: 0 0.5px;
-  background-color: rgba(249, 69, 45, 0.18);
-  box-shadow: inset 0 -0.5em 0 rgba(249, 69, 45, 0.18);
+  --hl: 250 204 21; /* light: warm amber (yellow-400) */
+  --hl-alpha: 0.4;
+  background-color: rgb(var(--hl) / var(--hl-alpha));
+  border-radius: 2px;
+  padding: 0.06em 0.12em;
+  margin: 0 -0.02em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone; /* even fill across line wraps */
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 .blog-highlight:hover {
-  background-color: rgba(249, 69, 45, 0.34);
+  --hl-alpha: 0.58;
 }
 .dark .blog-highlight {
-  background-color: rgba(225, 244, 53, 0.16);
-  box-shadow: inset 0 -0.5em 0 rgba(225, 244, 53, 0.16);
+  --hl: 253 224 71; /* dark: brighter yellow, low alpha so text stays crisp */
+  --hl-alpha: 0.24;
 }
 .dark .blog-highlight:hover {
-  background-color: rgba(225, 244, 53, 0.3);
+  --hl-alpha: 0.36;
 }
 
 /* Shiki dual-theme code blocks (components/blog/code.tsx). Both palettes are
