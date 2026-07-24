@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import {
   generateBlogStructuredData,
   generateBlogBreadcrumbs,
+  generateFAQStructuredData,
   toIsoDate,
 } from "@/lib/seo-utils"
 import { JsonLd } from "@/components/seo/json-ld"
@@ -132,6 +133,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     url: blogUrl,
     image: `${baseUrl}/og.png`,
     category: post.category || "Engineering",
+    topic: post.topic,
+    readTime: post.readTime,
   })
 
   const breadcrumbData = generateBlogBreadcrumbs([
@@ -140,10 +143,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     { name: post.title, url: blogUrl },
   ])
 
+  // FAQ feeds "People also ask" + AI answer extraction — the strongest AEO
+  // signal we can attach per post. Rendered visibly below the article too.
+  const faqData = post.faqs?.length ? generateFAQStructuredData(post.faqs) : null
+
   return (
     <>
       <JsonLd id="blog-post-structured-data" data={structuredData} />
       <JsonLd id="blog-post-breadcrumbs" data={breadcrumbData} />
+      {faqData && <JsonLd id="blog-post-faq" data={faqData} />}
 
       {/* Article band — framed by the site's side borders, like every
           landing section. A three-track grid (gutter · article · gutter)
@@ -196,7 +204,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     {post.title}
                   </h1>
 
-                  <p className="mt-4 text-[16px] leading-[1.7] text-muted-foreground">
+                  <p
+                    data-blog-excerpt
+                    className="mt-4 text-[16px] leading-[1.7] text-muted-foreground"
+                  >
                     {post.excerpt}
                   </p>
                 </header>
@@ -211,6 +222,29 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     {post.content}
                   </div>
                 </BlogHighlighter>
+
+                {/* FAQ — visible Q&A that mirrors the FAQPage JSON-LD, so the
+                    same answers an assistant quotes are on the page too. */}
+                {post.faqs?.length ? (
+                  <section aria-labelledby="faq-heading" className="mt-14 border-t border-border/70 pt-10">
+                    <h2
+                      id="faq-heading"
+                      className="font-spectral text-[24px] font-light leading-[1.1] tracking-[-0.04em] text-foreground sm:text-[28px]"
+                    >
+                      Frequently asked questions
+                    </h2>
+                    <dl className="mt-6 divide-y divide-border/60">
+                      {post.faqs.map((faq) => (
+                        <div key={faq.question} className="py-5 first:pt-0">
+                          <dt className="text-[15.5px] font-medium text-foreground">{faq.question}</dt>
+                          <dd className="mt-2 text-[15px] leading-[1.7] text-muted-foreground">
+                            {faq.answer}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </section>
+                ) : null}
               </article>
             </div>
           </div>

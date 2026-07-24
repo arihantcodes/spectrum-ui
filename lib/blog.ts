@@ -34,6 +34,7 @@ import aiPoweredUiDevelopment from "@/content/blog/ai-powered-ui-development"
 import react19ServerActionsGuide from "@/content/blog/react-19-server-actions-guide"
 import viewTransitionsApiGuide from "@/content/blog/view-transitions-api-guide"
 import buildingProductionComponentLibrary from "@/content/blog/building-production-component-library"
+import { BLOG_FAQS } from "@/content/blog-faqs"
 
 /**
  * Editorial shelves for the /blog listing, in display order. `category`
@@ -64,6 +65,8 @@ export interface BlogPost {
   readTime: string
   category?: string
   topic: BlogTopic
+  /** Optional Q&A that renders a visible FAQ + emits FAQPage JSON-LD (AEO). */
+  faqs?: { question: string; answer: string }[]
   content: React.ReactNode
 }
 
@@ -109,11 +112,11 @@ const blogPosts: Record<string, BlogPostInput> = {
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
   return Object.entries(blogPosts)
-    .map(([slug, post]) => ({ slug, ...post }))
+    .map(([slug, post]) => ({ slug, faqs: BLOG_FAQS[slug], ...post }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   const post = blogPosts[slug]
-  return post ? { slug, ...post } : null
+  return post ? { slug, faqs: BLOG_FAQS[slug], ...post } : null
 }
