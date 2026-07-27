@@ -3,15 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   Activity,
-  AlertTriangle,
   ArrowUpRight,
   Bell,
-  Bot,
   Check,
-  CheckCircle2,
   ChevronRight,
   Circle,
-  Cookie,
   Copy as CopyIcon,
   CreditCard,
   Eye,
@@ -20,11 +16,7 @@ import {
   GitBranch,
   GitCommit,
   HardDrive,
-  Inbox,
-  KeyRound,
   Laptop,
-  Link2,
-  Mail,
   MessageSquare,
   MoreHorizontal,
   Package,
@@ -40,11 +32,23 @@ import {
   Trash2,
   TrendingDown,
   TrendingUp,
-  Upload,
   UserPlus,
   Users,
   X,
 } from 'lucide-react';
+
+import {
+  RiCheckboxCircleFill,
+  RiDoubleQuotesR,
+  RiErrorWarningFill,
+  RiInboxFill,
+  RiKey2Fill,
+  RiMailFill,
+  RiSlackFill,
+  RiSparkling2Fill,
+  RiUploadCloud2Fill,
+} from '@remixicon/react';
+import { IconCookieFilled } from '@tabler/icons-react';
 
 import Copy from '../copy';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -139,8 +143,8 @@ export function ForgotPasswordCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardHeader className="p-6 pb-4">
-        <div className="mb-2 flex size-9 items-center justify-center rounded-lg border bg-muted/40">
-          <KeyRound className="size-4 text-muted-foreground" />
+        <div className="mb-2 flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <RiKey2Fill className="size-5" />
         </div>
         <CardTitle className="text-base">Reset your password</CardTitle>
         <CardDescription>We&apos;ll email you a link to choose a new one.</CardDescription>
@@ -196,7 +200,7 @@ export function TwoFactorCard() {
               }}
               inputMode="numeric"
               aria-label={`Digit ${index + 1}`}
-              className="h-11 w-full rounded-md border bg-background text-center text-base font-medium tabular-nums outline-none transition-colors focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
+              className="h-11 w-full rounded-md border bg-background text-center text-base font-medium tabular-nums outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
             />
           ))}
         </div>
@@ -218,8 +222,8 @@ export function MagicLinkCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex flex-col items-center p-6 text-center">
-        <div className="mb-3 flex size-10 items-center justify-center rounded-full border bg-muted/40">
-          <Mail className="size-4 text-muted-foreground" />
+        <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <RiMailFill className="size-5" />
         </div>
         <p className="text-base font-medium">Check your inbox</p>
         <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
@@ -284,11 +288,15 @@ export function PricingCard() {
   const features = ['Unlimited projects', 'Advanced analytics', 'Priority support'];
 
   return (
-    <Card className="w-full rounded-xl border-foreground/20">
+    <Card className="relative w-full overflow-hidden rounded-xl border-primary/30">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/10 to-transparent"
+      />
       <CardHeader className="p-6 pb-4">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base">Pro</CardTitle>
-          <Badge variant="secondary">Popular</Badge>
+          <Badge>Popular</Badge>
         </div>
         <div className="flex items-baseline gap-1 pt-1">
           <span className="text-3xl font-semibold tracking-tight tabular-nums">$29</span>
@@ -536,7 +544,18 @@ export function StatCard() {
         <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
           <span className="tabular-nums text-foreground">+12.5%</span> from last month
         </p>
-        <svg viewBox="0 0 100 28" preserveAspectRatio="none" className="mt-3 h-8 w-full">
+        <svg
+          viewBox="0 0 100 28"
+          preserveAspectRatio="none"
+          className="mt-3 h-8 w-full overflow-visible"
+        >
+          <defs>
+            <linearGradient id="spectrum-stat-area" x1="0" y1="0" x2="0" y2="1">
+              <stop stopColor="hsl(var(--primary))" stopOpacity="0.25" />
+              <stop offset="1" stopColor="hsl(var(--primary))" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <polygon points={`0,28 ${path} 100,28`} fill="url(#spectrum-stat-area)" />
           <polyline
             points={path}
             fill="none"
@@ -545,7 +564,13 @@ export function StatCard() {
             strokeLinecap="round"
             strokeLinejoin="round"
             vectorEffect="non-scaling-stroke"
-            className="text-primary/70"
+            className="text-primary"
+          />
+          <circle
+            cx="100"
+            cy={28 - (points[points.length - 1] / max) * 24}
+            r="2"
+            fill="hsl(var(--primary))"
           />
         </svg>
       </CardContent>
@@ -569,7 +594,7 @@ export function RevenueChartCard() {
             <div key={index} className="group/bar flex h-full flex-1 flex-col justify-end gap-1.5">
               <div
                 style={{ height: `${value}%` }}
-                className="w-full rounded-sm bg-primary/20 transition-colors duration-150 group-hover/bar:bg-primary/60"
+                className="w-full rounded-sm bg-gradient-to-t from-primary/25 to-primary/70 opacity-70 transition-opacity duration-150 group-hover/bar:opacity-100"
               />
               <span className="text-center text-xs text-muted-foreground">{days[index]}</span>
             </div>
@@ -593,17 +618,24 @@ export function GoalProgressCard() {
       <CardContent className="flex items-center justify-center p-6 pt-0">
         <div className="relative size-24">
           <svg viewBox="0 0 80 80" className="size-full -rotate-90">
+            <defs>
+              <linearGradient id="spectrum-goal-ring" x1="0" y1="0" x2="1" y2="1">
+                <stop stopColor="hsl(var(--primary))" />
+                <stop offset="1" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+              </linearGradient>
+            </defs>
             <circle cx="40" cy="40" r="34" fill="none" strokeWidth="6" className="stroke-muted" />
             <circle
               cx="40"
               cy="40"
               r="34"
               fill="none"
+              stroke="url(#spectrum-goal-ring)"
               strokeWidth="6"
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={circumference - (percent / 100) * circumference}
-              className="stroke-primary transition-[stroke-dashoffset] duration-500 ease-out"
+              className="transition-[stroke-dashoffset] duration-500 ease-out"
             />
           </svg>
           <span className="absolute inset-0 flex items-center justify-center text-lg font-semibold tabular-nums">
@@ -852,8 +884,8 @@ export function IntegrationCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex items-start gap-3 p-6">
-        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted/40">
-          <Link2 className="size-4 text-muted-foreground" />
+        <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+          <RiSlackFill className="size-5" />
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium">Slack</p>
@@ -1069,7 +1101,7 @@ export function OnboardingChecklistCard() {
             className="group/step -mx-2 flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/50"
           >
             {step.done ? (
-              <CheckCircle2 className="size-4 shrink-0 text-primary" />
+              <RiCheckboxCircleFill className="size-4 shrink-0 text-primary" />
             ) : (
               <Circle className="size-4 shrink-0 text-muted-foreground/40" />
             )}
@@ -1157,8 +1189,8 @@ export function CalendarEventCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex gap-4 p-6">
-        <div className="flex size-12 shrink-0 flex-col items-center justify-center rounded-lg border bg-muted/40">
-          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Jun</span>
+        <div className="flex size-12 shrink-0 flex-col items-center justify-center rounded-lg bg-primary/10">
+          <span className="text-[10px] font-medium uppercase tracking-wide text-primary">Jun</span>
           <span className="text-base font-semibold leading-none tabular-nums">18</span>
         </div>
         <div className="min-w-0 flex-1">
@@ -1259,8 +1291,8 @@ export function EmptyStateCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex flex-col items-center p-8 text-center">
-        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
-          <Inbox className="size-4 text-muted-foreground" />
+        <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <RiInboxFill className="size-5" />
         </div>
         <p className="mt-3 text-base font-medium">No projects yet</p>
         <p className="mt-1 max-w-[26ch] text-sm leading-relaxed text-muted-foreground">
@@ -1279,8 +1311,8 @@ export function ErrorStateCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex flex-col items-center p-8 text-center">
-        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
-          <AlertTriangle className="size-4 text-muted-foreground" />
+        <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <RiErrorWarningFill className="size-5" />
         </div>
         <p className="mt-3 text-base font-medium">Couldn&apos;t load your data</p>
         <p className="mt-1 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
@@ -1303,8 +1335,8 @@ export function SuccessCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardContent className="flex flex-col items-center p-8 text-center">
-        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
-          <Check className="size-4" />
+        <div className="flex size-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <RiCheckboxCircleFill className="size-5" />
         </div>
         <p className="mt-3 text-base font-medium">Payment successful</p>
         <p className="mt-1 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
@@ -1385,7 +1417,9 @@ export function CookieConsentCard() {
     <Card className="w-full rounded-xl">
       <CardContent className="p-6">
         <div className="flex items-start gap-3">
-          <Cookie className="size-4 shrink-0 text-muted-foreground" />
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <IconCookieFilled className="size-5" />
+          </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium">We use cookies</p>
             <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
@@ -1492,7 +1526,7 @@ export function FeedbackCard() {
         <textarea
           rows={3}
           placeholder="Tell us more (optional)"
-          className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
+          className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
         />
       </CardContent>
       <CardFooter className="p-6 pt-0">
@@ -1508,18 +1542,25 @@ export function FeedbackCard() {
 
 export function ProfileCard() {
   return (
-    <Card className="w-full rounded-xl">
-      <CardContent className="p-6">
-        <div className="flex items-center gap-3">
-          <Avatar className="size-11">
+    <Card className="w-full overflow-hidden rounded-xl">
+      <div
+        aria-hidden
+        className="h-16 bg-gradient-to-r from-primary/25 via-primary/10 to-transparent"
+      />
+      <CardContent className="p-6 pt-0">
+        <div className="flex items-end justify-between">
+          <Avatar className="-mt-6 size-12 ring-4 ring-card">
             <AvatarFallback className="text-xs">AL</AvatarFallback>
           </Avatar>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium">Ada Lovelace</p>
-            <p className="truncate text-xs text-muted-foreground">Product engineer · London</p>
-          </div>
+          <Badge variant="secondary">Pro</Badge>
         </div>
-        <div className="mt-4 flex items-center gap-4 border-t pt-3">
+        <div className="mt-3 min-w-0">
+          <p className="truncate text-base font-semibold leading-none tracking-tight">
+            Ada Lovelace
+          </p>
+          <p className="mt-1.5 truncate text-sm text-muted-foreground">Product engineer · London</p>
+        </div>
+        <div className="mt-4 flex items-center gap-6 border-t pt-4">
           {[
             { label: 'Projects', value: '24' },
             { label: 'Followers', value: '1.2k' },
@@ -1551,10 +1592,19 @@ export function ProfileCard() {
 export function ProductCard() {
   return (
     <Card className="group/product w-full overflow-hidden rounded-xl">
-      <div className="aspect-[4/3] overflow-hidden bg-muted">
-        <div className="flex size-full items-center justify-center bg-gradient-to-br from-muted to-muted-foreground/15 transition-transform duration-300 ease-out group-hover/product:scale-[1.03]">
-          <Package className="size-8 text-muted-foreground/50" strokeWidth={1.25} />
+      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(var(--primary)/0.18),transparent_65%)]"
+        />
+        <div className="flex size-full items-center justify-center transition-transform duration-300 ease-out group-hover/product:scale-[1.04]">
+          <div className="flex size-14 items-center justify-center rounded-2xl bg-background/80 shadow-sm ring-1 ring-black/10 backdrop-blur dark:ring-white/10">
+            <Package className="size-6 text-muted-foreground" strokeWidth={1.5} />
+          </div>
         </div>
+        <Badge variant="secondary" className="absolute left-3 top-3">
+          New
+        </Badge>
       </div>
       <CardContent className="p-6">
         <div className="flex items-start justify-between gap-3">
@@ -1601,7 +1651,8 @@ export function BlogPostCard() {
 
 export function TestimonialCard() {
   return (
-    <Card className="w-full rounded-xl">
+    <Card className="relative w-full rounded-xl">
+      <RiDoubleQuotesR aria-hidden className="absolute right-6 top-6 size-8 text-primary/10" />
       <CardContent className="p-6">
         <div className="flex gap-0.5">
           {[1, 2, 3, 4, 5].map((star) => (
@@ -1691,11 +1742,11 @@ export function FileUploadCard() {
           }}
           className={`flex flex-col items-center rounded-lg border border-dashed p-6 text-center transition-colors duration-150 ${
             dragging
-              ? 'border-foreground/40 bg-muted/50'
-              : 'hover:border-foreground/25 hover:bg-muted/30'
+              ? 'border-primary/60 bg-primary/10'
+              : 'hover:border-primary/40 hover:bg-primary/5'
           }`}
         >
-          <Upload className="size-4 text-muted-foreground" />
+          <RiUploadCloud2Fill className="size-5 text-primary" />
           <p className="mt-2 text-xs text-muted-foreground">
             Drag and drop, or{' '}
             <span className="text-foreground underline underline-offset-4">browse</span>
@@ -1762,7 +1813,9 @@ export function AIChatCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardHeader className="flex flex-row items-center gap-2 space-y-0 p-6 pb-3">
-        <Bot className="size-4 text-muted-foreground" />
+        <span className="flex size-6 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/60 text-primary-foreground">
+          <RiSparkling2Fill className="size-3.5" />
+        </span>
         <CardTitle className="text-sm font-medium">Assistant</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2 p-6 pt-0">
@@ -1778,6 +1831,11 @@ export function AIChatCard() {
             {message.text}
           </div>
         ))}
+        <div className="flex w-fit items-center gap-1 rounded-lg bg-muted px-3 py-2.5">
+          <span className="size-1 rounded-full bg-muted-foreground/60 motion-safe:animate-pulse" />
+          <span className="size-1 rounded-full bg-muted-foreground/60 motion-safe:animate-pulse [animation-delay:160ms]" />
+          <span className="size-1 rounded-full bg-muted-foreground/60 motion-safe:animate-pulse [animation-delay:320ms]" />
+        </div>
       </CardContent>
       <CardFooter className="gap-2 p-6 pt-0">
         <Input

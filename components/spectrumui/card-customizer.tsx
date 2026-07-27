@@ -38,67 +38,68 @@ const ROUNDNESS: Roundness[] = [
 type Accent = {
   id: string;
   label: string;
-  /** Swatch colour. */
+  /** Swatch colour (or gradient start when `gradient` is set). */
   swatch: string;
+  /**
+   * Gradient stops. When set, `.bg-primary` fills inside the preview get this
+   * as a background-image while `--primary` (the midpoint) keeps strokes,
+   * rings, and text accents in a matching solid.
+   */
+  gradient?: [string, string];
   /** Unset for `neutral` so it inherits the site's light/dark foreground. */
   vars?: Record<string, string>;
 };
 
-// Brand accents first (the landing's vermilion / lime pair), then a small set
-// of muted tones that hold up on both themes. No candy colours.
+const solid = (
+  id: string,
+  label: string,
+  swatch: string,
+  hsl: string,
+  fg = '0 0% 98%',
+): Accent => ({
+  id,
+  label,
+  swatch,
+  vars: { '--primary': hsl, '--primary-foreground': fg, '--ring': hsl },
+});
+
+const gradient = (
+  id: string,
+  label: string,
+  stops: [string, string],
+  midHsl: string,
+  fg = '0 0% 98%',
+): Accent => ({
+  id,
+  label,
+  swatch: stops[0],
+  gradient: stops,
+  vars: { '--primary': midHsl, '--primary-foreground': fg, '--ring': midHsl },
+});
+
+// Brand accents first (the landing's vermilion / lime pair), then muted tones
+// that hold up on both themes. No candy colours.
 const ACCENTS: Accent[] = [
   { id: 'neutral', label: 'Neutral', swatch: 'hsl(0 0% 45%)' },
-  {
-    id: 'vermilion',
-    label: 'Vermilion',
-    swatch: '#f9452d',
-    vars: {
-      '--primary': '7 95% 58%',
-      '--primary-foreground': '0 0% 98%',
-      '--ring': '7 95% 58%',
-    },
-  },
-  {
-    id: 'lime',
-    label: 'Lime',
-    swatch: '#E1F435',
-    vars: {
-      '--primary': '66 90% 58%',
-      '--primary-foreground': '0 0% 9%',
-      '--ring': '66 90% 58%',
-    },
-  },
-  {
-    id: 'indigo',
-    label: 'Indigo',
-    swatch: '#4f46e5',
-    vars: {
-      '--primary': '243 75% 59%',
-      '--primary-foreground': '0 0% 98%',
-      '--ring': '243 75% 59%',
-    },
-  },
-  {
-    id: 'teal',
-    label: 'Teal',
-    swatch: '#0d9488',
-    vars: {
-      '--primary': '175 84% 32%',
-      '--primary-foreground': '0 0% 98%',
-      '--ring': '175 84% 32%',
-    },
-  },
-  {
-    id: 'ink',
-    label: 'Ink',
-    swatch: '#475569',
-    vars: {
-      '--primary': '215 19% 35%',
-      '--primary-foreground': '0 0% 98%',
-      '--ring': '215 19% 35%',
-    },
-  },
+  solid('vermilion', 'Vermilion', '#f9452d', '7 95% 58%'),
+  solid('lime', 'Lime', '#E1F435', '66 90% 58%', '0 0% 9%'),
+  solid('indigo', 'Indigo', '#4f46e5', '243 75% 59%'),
+  solid('teal', 'Teal', '#0d9488', '175 84% 32%'),
+  solid('ocean', 'Ocean', '#1878b0', '203 76% 39%'),
+  solid('forest', 'Forest', '#34795a', '153 40% 34%'),
+  solid('copper', 'Copper', '#b8672e', '25 60% 45%'),
+  solid('ink', 'Ink', '#475569', '215 19% 35%'),
 ];
+
+// Low hue-distance pairs read as elegant rather than loud.
+const GRADIENTS: Accent[] = [
+  gradient('sunset', 'Sunset', ['#f9452d', '#fb923c'], '17 95% 58%'),
+  gradient('iris', 'Iris', ['#4f46e5', '#a855f7'], '257 82% 62%'),
+  gradient('lagoon', 'Lagoon', ['#0d9488', '#0ea5e9'], '190 87% 39%'),
+  gradient('dusk', 'Dusk', ['#334155', '#6366f1'], '235 37% 47%'),
+];
+
+const ALL_ACCENTS = [...ACCENTS, ...GRADIENTS];
 
 const DEFAULT_ROUNDNESS = '0.75';
 const DEFAULT_ACCENT = 'neutral';
@@ -116,14 +117,17 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
 
   const isDefault = roundness === DEFAULT_ROUNDNESS && accent === DEFAULT_ACCENT;
 
-  const style = useMemo(() => {
+  const { style, activeGradient } = useMemo(() => {
     const radius = ROUNDNESS.find((option) => option.id === roundness) ?? ROUNDNESS[3];
-    const colour = ACCENTS.find((option) => option.id === accent);
+    const colour = ALL_ACCENTS.find((option) => option.id === accent);
     return {
-      '--radius-xl': radius.card,
-      '--radius': radius.base,
-      ...(colour?.vars ?? {}),
-    } as CSSProperties;
+      style: {
+        '--radius-xl': radius.card,
+        '--radius': radius.base,
+        ...(colour?.vars ?? {}),
+      } as CSSProperties,
+      activeGradient: colour?.gradient ?? null,
+    };
   }, [roundness, accent]);
 
   return (
@@ -184,32 +188,76 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
           <div role="radiogroup" aria-label="Accent color">
             <p className="mb-2 text-xs font-medium text-muted-foreground">Color</p>
             <div className="flex flex-wrap gap-1.5">
-              {ACCENTS.map((option) => {
-                const active = option.id === accent;
-                return (
-                  <button
-                    key={option.id}
-                    type="button"
-                    role="radio"
-                    aria-checked={active}
-                    onClick={() => setAccent(option.id)}
-                    className={chipClass(active)}
-                  >
-                    <span
-                      aria-hidden
-                      className="size-3 shrink-0 rounded-full"
-                      style={{ backgroundColor: option.swatch }}
-                    />
-                    {option.label}
-                  </button>
-                );
-              })}
+              {ACCENTS.map((option) => (
+                <AccentChip
+                  key={option.id}
+                  option={option}
+                  active={option.id === accent}
+                  onSelect={() => setAccent(option.id)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div role="radiogroup" aria-label="Accent gradient">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Gradient</p>
+            <div className="flex flex-wrap gap-1.5">
+              {GRADIENTS.map((option) => (
+                <AccentChip
+                  key={option.id}
+                  option={option}
+                  active={option.id === accent}
+                  onSelect={() => setAccent(option.id)}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      <div style={style}>{children}</div>
+      <div style={style} className="spectrum-cards-preview">
+        {activeGradient && (
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `.spectrum-cards-preview .bg-primary{background-image:linear-gradient(135deg,${activeGradient[0]},${activeGradient[1]})}`,
+            }}
+          />
+        )}
+        {children}
+      </div>
     </div>
+  );
+}
+
+function AccentChip({
+  option,
+  active,
+  onSelect,
+}: {
+  option: Accent;
+  active: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={active}
+      onClick={onSelect}
+      className={chipClass(active)}
+    >
+      <span
+        aria-hidden
+        className="size-3 shrink-0 rounded-full"
+        style={
+          option.gradient
+            ? {
+                backgroundImage: `linear-gradient(135deg, ${option.gradient[0]}, ${option.gradient[1]})`,
+              }
+            : { backgroundColor: option.swatch }
+        }
+      />
+      {option.label}
+    </button>
   );
 }
