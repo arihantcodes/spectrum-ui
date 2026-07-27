@@ -146,7 +146,7 @@ export function DocsCatalog() {
           Components
         </h2>
         <p className="mt-1 font-inter text-[13px] leading-5 tracking-wide text-neutral-500 dark:text-neutral-400">
-          {allComponents.length} components that you can copy into your project.
+          250+ components that you can copy into your project.
         </p>
       </div>
 
