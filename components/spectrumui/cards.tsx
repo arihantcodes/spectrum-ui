@@ -1,7 +1,55 @@
 'use client';
 
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowUpRight,
+  Bell,
+  Bot,
+  Check,
+  CheckCircle2,
+  ChevronRight,
+  Circle,
+  Cookie,
+  Copy as CopyIcon,
+  CreditCard,
+  Eye,
+  EyeOff,
+  FileText,
+  GitBranch,
+  GitCommit,
+  HardDrive,
+  Inbox,
+  KeyRound,
+  Laptop,
+  Link2,
+  Mail,
+  MessageSquare,
+  MoreHorizontal,
+  Package,
+  Paperclip,
+  Plus,
+  Receipt,
+  RefreshCw,
+  Rocket,
+  Send,
+  Smartphone,
+  Sparkles,
+  Star,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+  Upload,
+  UserPlus,
+  Users,
+  X,
+} from 'lucide-react';
+
 import Copy from '../copy';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -10,11 +58,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
 import {
   Select,
   SelectContent,
@@ -22,1346 +68,977 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Slider } from '@/components/ui/slider';
-import {
-  Bell,
-  Calendar,
-  Check,
-  Cloud,
-  CreditCard,
-  Download,
-  LucideBarChart,
-  LucideLineChart,
-  LucidePieChart,
-  Map,
-  Mic,
-  Moon,
-  Music,
-  Phone,
-  Search,
-  Star,
-  Sun,
-  Zap,
-} from 'lucide-react';
-import { DollarSign, TrendingUp, Users } from 'lucide-react';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts';
-import { Bar, BarChart, CartesianGrid, Line, LineChart, XAxis } from 'recharts';
-import { GetDimensions, GridStyle, GridColumns, addGridStyle, addGridBorders } from '@/utils/GridStyle';
-import { useTheme } from 'next-themes';
+import { Switch } from '@/components/ui/switch';
+import { CARD_SOURCE } from './cards.source';
 
-export default function CardCollection() {
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isResizing, setIsResizing] = useState(false);
-  const { theme } = useTheme();
-  const cardComponents = [
-    {
-      name: 'LoginCard',
-      component: LoginCard,
-      code: `
-  function LoginCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Login</CardTitle>
-          <CardDescription>
-            Enter your credentials to access your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="Enter your email" type="email" />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
-              </div>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Cancel</Button>
-          <Button>Login</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'SignUpCard',
-      component: SignUpCard,
-      code: `
-  function SignUpCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Sign Up</CardTitle>
-          <CardDescription>Create a new account to get started.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" placeholder="Enter your name" />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" placeholder="Enter your email" type="email" />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  placeholder="Choose a password"
-                  type="password"
-                />
-              </div>
-              <div className="flex items-center space-x-2">
-                <Switch id="terms" />
-                <Label htmlFor="terms">I agree to the terms and conditions</Label>
-              </div>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Create Account</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'PaymentCard',
-      component: PaymentCard,
-      code: `
-  function PaymentCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Payment Details</CardTitle>
-          <CardDescription>
-            Enter your payment information to complete the purchase.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="cardName">Name on Card</Label>
-                <Input id="cardName" placeholder="Enter name on card" />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="cardNumber">Card Number</Label>
-                <Input id="cardNumber" placeholder="Enter card number" />
-              </div>
-              <div className="flex space-x-4">
-                <div className="flex flex-col space-y-1.5 flex-1">
-                  <Label htmlFor="expiry">Expiry Date</Label>
-                  <Input id="expiry" placeholder="MM/YY" />
-                </div>
-                <div className="flex flex-col space-y-1.5 flex-1">
-                  <Label htmlFor="cvc">CVC</Label>
-                  <Input id="cvc" placeholder="CVC" />
-                </div>
-              </div>
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Pay Now</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'AIAssistantCard',
-      component: AIAssistantCard,
-      code: `
-  function AIAssistantCard() {
-    const [message, setMessage] = useState("")
-    const [conversation, setConversation] = useState([])
-  
-    const handleSend = () => {
-      if (message.trim()) {
-        setConversation([
-          ...conversation,
-          { role: "user", content: message },
-          { role: "ai", content: "This is a simulated AI response." },
-        ])
-        setMessage("")
-        default:
-          return <div>No chart available</div>;
-      }
-    }
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">AI Assistant</CardTitle>
-          <CardDescription>Ask me anything about your data</CardDescription>
-        </CardHeader>
-        <CardContent className="h-[300px] overflow-y-auto">
-          {conversation.map((msg, index) => (
-            <div
-              key={index}
-              className={\`mb-2 text-sm \${
-              msg.role === "ai"
-                ? "text-muted-foreground text-left"
-                : "text-right"
-              }\`}
+/* -------------------------------------------------------------------------- */
+/*  Authentication                                                            */
+/* -------------------------------------------------------------------------- */
+
+export function LoginCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Sign in</CardTitle>
+        <CardDescription className="text-xs">
+          Enter your credentials to access your account.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="space-y-1.5">
+          <Label htmlFor="login-email" className="text-xs">
+            Email
+          </Label>
+          <Input id="login-email" type="email" placeholder="you@example.com" />
+        </div>
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between">
+            <Label htmlFor="login-password" className="text-xs">
+              Password
+            </Label>
+            <button
+              type="button"
+              className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             >
-              <strong>{msg.role === "ai" ? "AI: " : "You: "}</strong>
-              {msg.content}
-            </div>
-          ))}
-        </CardContent>
-        <CardFooter className="flex gap-2">
-          <Input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Type your message..."
-            onKeyPress={(e) => e.key === "Enter" && handleSend()}
-          />
-          <Button onClick={handleSend}>Send</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-
-    {
-      name: 'SettingsCard',
-      component: SettingsCard,
-      code: `
-  function SettingsCard() {
-    const [activeTab, setActiveTab] = useState("account")
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Settings</CardTitle>
-          <CardDescription>
-            Manage your account settings and preferences.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-4">
-              <TabsTrigger value="account">Account</TabsTrigger>
-              <TabsTrigger value="notifications">Notifications</TabsTrigger>
-            </TabsList>
-            <TabsContent value="account">
-              <div className="space-y-4 py-2 ">
-                <div className="space-y-2">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" placeholder="Enter username" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter email" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="language">Language</Label>
-                  <Select>
-                    <SelectTrigger id="language">
-                      <SelectValue placeholder="Select language" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="fr">French</SelectItem>
-                      <SelectItem value="de">German</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </TabsContent>
-            <TabsContent value="notifications">
-              <div className="space-y-4 py-2">
-                <div className="flex items-center space-x-2">
-                  <Switch id="emailNotifications" />
-                  <Label htmlFor="emailNotifications">Email Notifications</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch id="pushNotifications" />
-                  <Label htmlFor="pushNotifications">Push Notifications</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Switch id="weeklyDigest" />
-                  <Label htmlFor="weeklyDigest">Weekly Digest</Label>
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Save Changes</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-
-    {
-      name: 'DataVisualizationCard',
-      component: DataVisualizationCard,
-      code: `
-  function DataVisualizationCard() {
-    const [activeChart, setActiveChart] = useState("bar")
-  
-    const chartData = [
-      { month: "January", desktop: 186, mobile: 80 },
-      { month: "February", desktop: 305, mobile: 200 },
-      { month: "March", desktop: 237, mobile: 120 },
-      { month: "April", desktop: 73, mobile: 190 },
-      { month: "May", desktop: 209, mobile: 130 },
-      { month: "June", desktop: 214, mobile: 140 },
-    ]
-  
-    const chartConfig = {
-      desktop: {
-        label: "Desktop",
-        color: "hsl(var(--chart-1))",
-      },
-      mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-      },
-    }
-  
-    const renderChart = (type) => {
-      switch (type) {
-        case "bar":
-          return (
-            <BarChart data={chartData}>
-              <CartesianGrid vertical={false} />
-              <XAxis
-                dataKey="month"
-                tickLine={false}
-                tickMargin={10}
-                axisLine={false}
-                tickFormatter={(value) => value.slice(0, 3)}
-              />
-              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-            </BarChart>
-          )
-        case "line":
-          return (
-            <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
-              <CartesianGrid vertical={false} />
-              <XAxis
-                dataKey="month"
-                tickLine={false}
-                axisLine={false}
-                tickMargin={8}
-                tickFormatter={(value) => value.slice(0, 3)}
-              />
-              <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-              <Line dataKey="desktop" type="natural" stroke="var(--color-desktop)" strokeWidth={2} dot={false} />
-              <Line dataKey="mobile" type="natural" stroke="var(--color-mobile)" strokeWidth={2} dot={false} />
-            </LineChart>
-          )
-        case "radar":
-          return (
-            <RadarChart data={chartData}>
-              <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-              <PolarAngleAxis dataKey="month" />
-              <PolarGrid />
-              <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
-              <Radar dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.6} />
-            </RadarChart>
-          )
-      }
-    }
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Data Visualization</CardTitle>
-          <CardDescription>Interactive chart types</CardDescription>
-        </CardHeader>
-        <CardContent >
-          <Tabs value={activeChart} onValueChange={(value) => setActiveChart(value)}>
-            <TabsList className="grid w-full grid-cols-3 mb-4">
-              <TabsTrigger value="bar" aria-label="Bar Chart">
-                <BarChart className="h-4 w-4 mr-2" />
-                Bar
-              </TabsTrigger>
-              <TabsTrigger value="line" aria-label="Line Chart">
-                <LucideLineChart className="h-4 w-4 mr-2" />
-                Line
-              </TabsTrigger>
-              <TabsTrigger value="radar" aria-label="Radar Chart">
-                <LucidePieChart className="h-4 w-4 mr-2" />
-                Radar
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value={activeChart} className="mt-0">
-              <Card >
-                <CardHeader>
-                  <CardTitle className="text-base">{activeChart.charAt(0).toUpperCase() + activeChart.slice(1)} Chart</CardTitle>
-                  <CardDescription>January - June 2024</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ChartContainer config={chartConfig} className="">
-                    {renderChart(activeChart)}
-                  </ChartContainer>
-                </CardContent>
-                <CardFooter className="flex-col items-start gap-2 text-sm">
-                  <div className="flex gap-2 font-medium leading-none">
-                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-                  </div>
-                  <div className="leading-none text-muted-foreground">
-                    Showing total visitors for the last 6 months
-                  </div>
-                </CardFooter>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </CardContent>
-        <CardFooter>
-          <Button variant="outline" className="w-full">
-            Export Data
-          </Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'MetricsCard',
-      component: MetricsCard,
-      code: `
-  function MetricsCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Metrics Overview</CardTitle>
-          <CardDescription>Your key performance indicators</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-8">
-            <div className="flex items-center">
-              <Users className="mr-4 h-4 w-4 text-muted-foreground" />
-              <div className="space-y-1 flex-1">
-                <p className="text-sm font-medium leading-none">Total Users</p>
-                <p className="text-2xl font-semibold tabular-nums">2,543</p>
-              </div>
-              <Badge variant="secondary">+12%</Badge>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm">
-                <div>Revenue</div>
-                <div className="font-medium">$45,231.89</div>
-              </div>
-              <Progress value={75} className="h-2" />
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <BarChart className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  Conversion Rate
-                </span>
-              </div>
-              <div className="text-2xl font-semibold tabular-nums">3.8%</div>
-            </div>
+              Forgot?
+            </button>
           </div>
-        </CardContent>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'SubscriptionCard',
-      component: SubscriptionCard,
-      code: `
-  function SubscriptionCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Subscription Plan</CardTitle>
-          <CardDescription>You are currently on the Pro plan</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-8">
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-semibold tabular-nums">$29.99</span>
-              <Badge>Monthly</Badge>
-            </div>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-center">
-                <DollarSign className="mr-2 h-4 w-4 text-muted-foreground" />
-                Unlimited projects
-              </li>
-              <li className="flex items-center">
-                <Users className="mr-2 h-4 w-4 text-muted-foreground" />
-                Unlimited team members
-              </li>
-              <li className="flex items-center">
-                <Download className="mr-2 h-4 w-4 text-muted-foreground" />
-                5TB storage
-              </li>
-            </ul>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Upgrade Plan</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'TaskCard',
-      component: TaskCard,
-      code: 'function TaskCard() {\n  return (\n    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">\n      <CardHeader>\n        <CardTitle className="text-base">Current Tasks</CardTitle>\n        <CardDescription>Your team&apos;s ongoing tasks</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className="space-y-4">\n          {["Design system update", "API integration", "User testing"].map(\n            (task, index) => (\n              <div key={index} className="flex items-center">\n                <input type="checkbox" id={`task-${index}`} className="mr-2" />\n                <label htmlFor={`task-${index}`} className="flex-1">\n                  {task}\n                </label>\n                <Badge\n                  variant={\n                    index === 0\n                      ? "default"\n                      : index === 1\n                      ? "secondary"\n                      : "outline"\n                  }\n                >\n                  {index === 0\n                    ? "In Progress"\n                    : index === 1\n                    ? "Pending"\n                    : "Completed"}\n                </Badge>\n              </div>\n            )\n          )}\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button variant="outline" className="w-full">\n          View All Tasks\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}',
-    },
-    {
-      name: 'BillingCard',
-      component: BillingCard,
-      code: `
-  function BillingCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Billing Information</CardTitle>
-          <CardDescription>
-            Manage your billing details and payment method
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <CreditCard className="mr-2 h-4 w-4 text-muted-foreground" />
-              <div className="flex-1">
-                <p className="text-sm font-medium">Visa ending in 4242</p>
-                <p className="text-xs text-muted-foreground">Expires 12/2024</p>
-              </div>
-              <Button variant="ghost" size="sm">
-                Edit
-              </Button>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="billingEmail">Billing Email</Label>
-              <Input id="billingEmail" value="johndoe@example.com" readOnly />
-            </div>
-            <div className="space-y-2">
-              <Label>Next Payment</Label>
-              <div className="flex justify-between items-center">
-                <span>$29.99 due on June 1, 2023</span>
-                <Badge>Upcoming</Badge>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Update Payment Method</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'FeedbackCard',
-      component: FeedbackCard,
-      code: `
-  function FeedbackCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Feedback</CardTitle>
-          <CardDescription>Help us improve our product</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <Label>How satisfied are you with our product?</Label>
-              <Slider defaultValue={[50]} max={100} step={1} />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="feedback">Your feedback</Label>
-              <textarea
-                id="feedback"
-                className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Tell us what you think..."
-              />
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Submit Feedback</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-
-    {
-      name: 'TeamCollaborationCard',
-      component: TeamCollaborationCard,
-      code: `
-  function TeamCollaborationCard() {
-    const teamMembers = [
-      { name: "Alice", avatar: "A", status: "online" },
-      { name: "Bob", avatar: "B", status: "offline" },
-      { name: "Charlie", avatar: "C", status: "away" },
-    ]
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Team Collaboration</CardTitle>
-          <CardDescription>Current project: Website Redesign</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <div className="flex -space-x-2">
-                {teamMembers.map((member, index) => (
-                  <Avatar key={index} className="border-2 border-background">
-                    <AvatarFallback>{member.avatar}</AvatarFallback>
-                  </Avatar>
-                ))}
-              </div>
-              <Badge variant="outline">3 Active Members</Badge>
-            </div>
-            <Progress value={65} className="w-full" />
-            <div className="text-sm text-muted-foreground">
-              Project Progress: 65%
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Team Chat</Button>
-          <Button>Update Status</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'ProfileCard',
-      component: ProfileCard,
-      code: `
-  function ProfileCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <div className="flex items-center space-x-4">
-            <Avatar>
-              <AvatarImage
-                src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg"
-                alt="@arihantcodes"
-              />
-              <AvatarFallback>SU</AvatarFallback>
-            </Avatar>
-            <div>
-              <CardTitle className="text-base">Spectrum UI</CardTitle>
-              <CardDescription>@arihantcodes</CardDescription>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label>Email</Label>
-              <p className="text-sm">hello@arihant.us</p>
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label>Location</Label>
-              <p className="text-sm">San Francisco, CA</p>
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label>Bio</Label>
-              <p className="text-sm">
-                Software developer passionate about creating user-friendly
-                applications.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button variant="outline" className="w-full">
-            Edit Profile
-          </Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-
-    {
-      name: 'ProductivityTrackerCard',
-      component: ProductivityTrackerCard,
-      code: `
-  function ProductivityTrackerCard() {
-    const tasks = [
-      { name: "Complete project proposal", completed: true },
-      { name: "Review team submissions", completed: false },
-      { name: "Prepare for client meeting", completed: false },
-    ]
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Productivity Tracker</CardTitle>
-          <CardDescription>Your daily task overview</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {tasks.map((task, index) => (
-              <div key={index} className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={task.completed}
-                  onChange={() => {}}
-                  className="mr-2"
-                />
-                <span
-                  className={
-                    task.completed ? "line-through text-muted-foreground" : ""
-                  }
-                >
-                  {task.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <div className="text-sm text-muted-foreground">
-            1 of 3 tasks completed
-          </div>
-          <Button variant="outline" size="sm">
-            Add Task
-          </Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'QuickActionCard',
-      component: QuickActionCard,
-      code: `
-  function QuickActionCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Quick Actions</CardTitle>
-          <CardDescription>Frequently used actions</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { icon: Mail, label: "Send Email" },
-              { icon: Calendar, label: "Schedule Meeting" },
-              { icon: MessageSquare, label: "Start Chat" },
-              { icon: Settings, label: "Open Settings" },
-            ].map((action, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                className="h-20 flex-col space-y-2"
-              >
-                <action.icon className="h-6 w-6" />
-                <span>{action.label}</span>
-              </Button>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'NotificationCard',
-      component: NotificationCard,
-      code: `
-  function NotificationCard() {
-    const notifications = [
-      {
-        icon: Mail,
-        content: "You have 3 new emails",
-        time: "5 min ago",
-      },
-      {
-        icon: Bell,
-        content: "Meeting reminder: Team sync at 2 PM",
-        time: "1 hour ago",
-      },
-      {
-        icon: MessageSquare,
-        content: "New comment on your post",
-        time: "2 hours ago",
-      },
-    ]
-  
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Notifications</CardTitle>
-          <CardDescription>Stay updated with recent activities</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {notifications.map((notification, index) => (
-              <div key={index} className="flex items-start space-x-4">
-                <notification.icon className="h-5 w-5 mt-0.5 text-muted-foreground" />
-                <div className="space-y-1">
-                  <p className="text-sm">{notification.content}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {notification.time}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button variant="ghost" className="w-full">
-            View All Notifications
-          </Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'WeatherMiniCard',
-      component: WeatherMiniCard,
-      code: `
-  function WeatherMiniCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-          <CardTitle className="text-sm font-medium">Weather</CardTitle>
-          <Sun className="w-4 h-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent className="p-4 pt-0">
-          <div className="text-2xl font-semibold tabular-nums">72°F</div>
-          <p className="text-xs text-muted-foreground">Sunny, San Francisco</p>
-        </CardContent>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'QuickSettingsCard',
-      component: QuickSettingsCard,
-      code: `
-  function QuickSettingsCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Quick Settings</CardTitle>
-          <CardDescription>Adjust your preferences</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="airplane-mode">Airplane Mode</Label>
-              <Switch id="airplane-mode" />
-            </div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="wifi">Wi-Fi</Label>
-              <Switch id="wifi" />
-            </div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="bluetooth">Bluetooth</Label>
-              <Switch id="bluetooth" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="volume">Volume</Label>
-              <Slider id="volume" defaultValue={[50]} max={100} step={1} />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'MusicPlayerCard',
-      component: MusicPlayerCard,
-      code: `
-  function MusicPlayerCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Now Playing</CardTitle>
-          <CardDescription>Your current track</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 bg-muted rounded-md flex items-center justify-center">
-              <Music className="h-8 w-8 text-muted-foreground" />
-            </div>
-            <div>
-              <h3 className="font-medium">Song Title</h3>
-              <p className="text-sm text-muted-foreground">Artist Name</p>
-            </div>
-          </div>
-          <div className="mt-4 space-y-2">
-            <Slider defaultValue={[33]} max={100} step={1} />
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>1:23</span>
-              <span>3:45</span>
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline" size="icon">
-            <Zap className="h-4 w-4" />
-          </Button>
-          <Button size="icon">
-            <Play className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon">
-            <Forward className="h-4 w-4" />
-          </Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'TaskProgressCard',
-      component: TaskProgressCard,
-      code: `
-  function TaskProgressCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Task Progress</CardTitle>
-          <CardDescription>Your project status</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span>Design Phase</span>
-                <span>75%</span>
-              </div>
-              <Progress value={75} className="h-2" />
-            </div>
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span>Development</span>
-                <span>50%</span>
-              </div>
-              <Progress value={50} className="h-2" />
-            </div>
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span>Testing</span>
-                <span>25%</span>
-              </div>
-              <Progress value={25} className="h-2" />
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">View Detailed Report</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'QuickSearchCard',
-      component: QuickSearchCard,
-      code: `
-  function QuickSearchCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Quick Search</CardTitle>
-          <CardDescription>Find what you need quickly</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="relative">
-            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search..." className="pl-8" />
-          </div>
-          <div className="mt-4 space-y-2">
-            <p className="text-sm font-medium">Recent Searches</p>
-            {["Project status", "Team members", "Budget report"].map(
-              (item, index) => (
-                <Button key={index} variant="ghost" className="w-full justify-start">
-                  <Clock className="mr-2 h-4 w-4" />
-                  {item}
-                </Button>
-              )
-            )}
-          </div>
-        </CardContent>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'UpcomingEventCard',
-      component: UpcomingEventCard,
-      code: `
-  function UpcomingEventCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Upcoming Event</CardTitle>
-          <CardDescription>Your next scheduled event</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-                15
-              </div>
-              <div>
-                <h3 className="font-medium">Team Building Workshop</h3>
-                <p className="text-sm text-muted-foreground">June 15, 2023</p>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <Clock className="mr-2 h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">2:00 PM - 4:00 PM</span>
-              </div>
-              <div className="flex items-center">
-                <Map className="mr-2 h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">Conference Room A</span>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Decline</Button>
-          <Button>Accept</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'QuickExpenseCard',
-      component: QuickExpenseCard,
-      code: `
-  function QuickExpenseCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Quick Expense</CardTitle>
-          <CardDescription>Add a new expense quickly</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="amount">Amount</Label>
-              <Input
-                id="amount"
-                placeholder="Enter amount"
-                type="number"
-                step="0.01"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="category">Category</Label>
-              <Select>
-                <SelectTrigger id="category">
-                  <SelectValue placeholder="Select category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="food">Food</SelectItem>
-                  <SelectItem value="transport">Transport</SelectItem>
-                  <SelectItem value="utilities">Utilities</SelectItem>
-                  <SelectItem value="entertainment">Entertainment</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="date">Date</Label>
-              <Input id="date" type="date" />
-            </div>
-          </form>
-        </CardContent>
-        <CardFooter>
-          <Button className="w-full">Add Expense</Button>
-        </CardFooter>
-      </Card>
-    )
-  }`,
-    },
-    {
-      name: 'DeviceStatusCard',
-      component: DeviceStatusCard,
-      code: `
- function DeviceStatusCard() {
-    return (
-      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-        <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-          <CardTitle className="text-sm font-medium">Device Status</CardTitle>
-          <Zap className="w-4 h-4 text-muted-foreground" />
-        </CardHeader>
-        <CardContent className="p-4 pt-0">
-          <div className="text-2xl font-semibold tabular-nums">85%</div>
-          <p className="text-xs text-muted-foreground">Battery remaining</p>
-        </CardContent>
-      </Card>
-    );
-  }
-  `,
-    },
-    {
-      name: 'QuickPollCard',
-      component: QuickPollCard,
-      code: `
-  function QuickPollCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Poll</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 space-y-2">
-        <div className="text-sm font-medium">Favorite feature?</div>
-        {["Dashboard", "Reports", "Settings"].map((option, index) => (
-          <div key={index} className="flex items-center space-x-2">
-            <input type="radio" id={option} name="poll" className="radio" />
-            <Label htmlFor={option}>{option}</Label>
-          </div>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-  `,
-    },
-    {
-      name: 'DataUsageCard',
-      component: DataUsageCard,
-      code: `
-  function DataUsageCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
-        <Cloud className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <Progress value={75} className="w-full" />
-        <p className="text-xs text-muted-foreground mt-2">
-          7.5 GB of 10 GB used
-        </p>
-      </CardContent>
-    </Card>
-  );
-}
-  `,
-    },
-    {
-      name: 'QuickNoteCard',
-      component: QuickNoteCard,
-      code: `
-function QuickNoteCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Note</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <textarea
-          className="w-full h-20 text-sm resize-none border rounded-md p-2"
-          placeholder="Type your note here..."
-        ></textarea>
-      </CardContent>
-    </Card>
-  );
-}
-  `,
-    },
-    {
-      name: 'SocialShareCard',
-      component: SocialShareCard,
-      code: `
- function SocialShareCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Share</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between">
-        {["Twitter", "Facebook", "LinkedIn"].map((platform, index) => (
-          <Button key={index} variant="outline" size="sm" className="w-16">
-            {platform.charAt(0)}
-          </Button>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-  `,
-    },
-    {
-      name: 'QuickContactCard',
-      component: QuickContactCard,
-      code: `
- function QuickContactCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
-        <Phone className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex items-center space-x-4">
-        <Avatar>
-          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="Arihant jain"/>
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div>
-          <div className="font-semibold">Arihant</div>
-          <p className="text-xs text-muted-foreground">Call | Message</p>
+          <Input id="login-password" type="password" placeholder="••••••••" />
         </div>
       </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Sign in</Button>
+      </CardFooter>
     </Card>
   );
 }
-  `,
-    },
-    {
-      name: 'LocationCard',
-      component: LocationCard,
-      code: `
- function LocationCard() {
+
+export function SignUpCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Current Location</CardTitle>
-        <Map className="w-4 h-4 text-muted-foreground" />
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Create an account</CardTitle>
+        <CardDescription className="text-xs">Start your 14-day free trial.</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="font-semibold">San Francisco</div>
-        <p className="text-xs text-muted-foreground">California, USA</p>
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="space-y-1.5">
+          <Label htmlFor="signup-name" className="text-xs">
+            Full name
+          </Label>
+          <Input id="signup-name" placeholder="Ada Lovelace" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="signup-email" className="text-xs">
+            Work email
+          </Label>
+          <Input id="signup-email" type="email" placeholder="you@company.com" />
+        </div>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          By continuing you agree to our Terms and Privacy Policy.
+        </p>
       </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Create account</Button>
+      </CardFooter>
     </Card>
   );
 }
-  `,
-    },
-    {
-      name: 'VoiceCommandCard',
-      component: VoiceCommandCard,
-      code: `
- function VoiceCommandCard() {
+
+export function ForgotPasswordCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Voice Command</CardTitle>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <div className="mb-2 flex size-9 items-center justify-center rounded-lg border bg-muted/40">
+          <KeyRound className="size-4 text-muted-foreground" />
+        </div>
+        <CardTitle className="text-sm font-medium">Reset your password</CardTitle>
+        <CardDescription className="text-xs">
+          We&apos;ll email you a link to choose a new one.
+        </CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-center">
+      <CardContent className="p-5 pt-0">
+        <div className="space-y-1.5">
+          <Label htmlFor="reset-email" className="text-xs">
+            Email
+          </Label>
+          <Input id="reset-email" type="email" placeholder="you@example.com" />
+        </div>
+      </CardContent>
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.98]">
+          Back
+        </Button>
+        <Button className="flex-1 transition-transform active:scale-[0.98]">Send link</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function TwoFactorCard() {
+  const [code, setCode] = useState(['', '', '', '', '', '']);
+  const inputs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const setDigit = (index: number, value: string) => {
+    const digit = value.replace(/\D/g, '').slice(-1);
+    const next = [...code];
+    next[index] = digit;
+    setCode(next);
+    if (digit && index < 5) inputs.current[index + 1]?.focus();
+  };
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Two-factor authentication</CardTitle>
+        <CardDescription className="text-xs">
+          Enter the 6-digit code from your authenticator app.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="flex gap-1.5">
+          {code.map((digit, index) => (
+            <input
+              key={index}
+              ref={(el) => {
+                inputs.current[index] = el;
+              }}
+              value={digit}
+              onChange={(event) => setDigit(index, event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Backspace' && !digit && index > 0) {
+                  inputs.current[index - 1]?.focus();
+                }
+              }}
+              inputMode="numeric"
+              aria-label={`Digit ${index + 1}`}
+              className="h-11 w-full rounded-md border bg-background text-center text-sm font-medium tabular-nums outline-none transition-colors focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
+            />
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter className="flex-col gap-2 p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Verify</Button>
         <button
           type="button"
-          aria-label="Start voice command"
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full border bg-background text-muted-foreground transition duration-200 ease-out hover:border-foreground/30 hover:text-foreground active:scale-95"
+          className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
         >
-          <span className="absolute inset-0 rounded-full bg-foreground/5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-safe:group-hover:animate-ping" />
-          <Mic className="relative h-5 w-5" />
+          Resend code
         </button>
-      </CardContent>
+      </CardFooter>
     </Card>
   );
 }
-  `,
-    },
-    {
-      name: 'DownloadProgressCard',
-      component: DownloadProgressCard,
-      code: `
- function DownloadProgressCard() {
+
+export function MagicLinkCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
-        <Download className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <Progress value={40} className="w-full" />
-        <p className="text-xs text-muted-foreground mt-2">
-          2 of 5 files downloaded
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex flex-col items-center p-5 text-center">
+        <div className="mb-3 flex size-10 items-center justify-center rounded-full border bg-muted/40">
+          <Mail className="size-4 text-muted-foreground" />
+        </div>
+        <p className="text-sm font-medium">Check your inbox</p>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          We sent a sign-in link to <span className="text-foreground">ada@example.com</span>. It
+          expires in 10 minutes.
         </p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-4 w-full transition-transform active:scale-[0.98]"
+        >
+          <RefreshCw className="size-3.5" />
+          Resend email
+        </Button>
       </CardContent>
     </Card>
   );
 }
-  `,
-    },
-    {
-      name: 'ThemeToggleCard',
-      component: ThemeToggleCard,
-      code: `
- function ThemeToggleCard() {
-  const [isDark, setIsDark] = useState(false);
+
+export function SessionsCard() {
+  const sessions = [
+    { device: 'MacBook Pro', meta: 'San Francisco · Current', icon: Laptop, current: true },
+    { device: 'iPhone 15', meta: 'San Francisco · 2h ago', icon: Smartphone, current: false },
+  ];
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Theme</CardTitle>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Active sessions</CardTitle>
+        <CardDescription className="text-xs">Devices signed in to your account.</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Sun className="h-4 w-4" />
-          <Label>Light</Label>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {sessions.map((session) => (
+          <div
+            key={session.device}
+            className="-mx-2 flex items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
+          >
+            <session.icon className="size-4 shrink-0 text-muted-foreground" />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm">{session.device}</p>
+              <p className="truncate text-xs text-muted-foreground">{session.meta}</p>
+            </div>
+            {session.current ? (
+              <Badge variant="secondary" className="text-[10px]">
+                Active
+              </Badge>
+            ) : (
+              <Button variant="ghost" size="sm" className="h-7 text-xs">
+                Revoke
+              </Button>
+            )}
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Billing                                                                   */
+/* -------------------------------------------------------------------------- */
+
+export function PricingCard() {
+  const features = ['Unlimited projects', 'Advanced analytics', 'Priority support'];
+
+  return (
+    <Card className="w-full rounded-xl border-foreground/20">
+      <CardHeader className="p-5 pb-4">
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-sm font-medium">Pro</CardTitle>
+          <Badge variant="secondary" className="text-[10px]">
+            Popular
+          </Badge>
         </div>
-        <Switch checked={isDark} onCheckedChange={setIsDark} />
-        <div className="flex items-center space-x-2">
-          <Label>Dark</Label>
-          <Moon className="h-4 w-4" />
+        <div className="flex items-baseline gap-1 pt-1">
+          <span className="text-3xl font-semibold tracking-tight tabular-nums">$29</span>
+          <span className="text-xs text-muted-foreground">/month</span>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-2 p-5 pt-0">
+        {features.map((feature) => (
+          <div key={feature} className="flex items-center gap-2 text-sm">
+            <Check className="size-3.5 shrink-0 text-muted-foreground" />
+            <span>{feature}</span>
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Upgrade to Pro</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function CheckoutCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Payment details</CardTitle>
+        <CardDescription className="text-xs">Your card is encrypted end to end.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="space-y-1.5">
+          <Label htmlFor="checkout-number" className="text-xs">
+            Card number
+          </Label>
+          <div className="relative">
+            <Input id="checkout-number" placeholder="4242 4242 4242 4242" className="pr-9" />
+            <CreditCard className="absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="space-y-1.5">
+            <Label htmlFor="checkout-expiry" className="text-xs">
+              Expires
+            </Label>
+            <Input id="checkout-expiry" placeholder="MM / YY" />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="checkout-cvc" className="text-xs">
+              CVC
+            </Label>
+            <Input id="checkout-cvc" placeholder="123" />
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Pay $29.00</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function PaymentMethodCard() {
+  const [selected, setSelected] = useState('visa');
+  const methods = [
+    { id: 'visa', label: 'Visa', meta: '•••• 4242', expiry: '12/27' },
+    { id: 'mastercard', label: 'Mastercard', meta: '•••• 8080', expiry: '04/26' },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Payment method</CardTitle>
+        <CardDescription className="text-xs">Choose a default card.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-2 p-5 pt-0">
+        {methods.map((method) => (
+          <button
+            key={method.id}
+            type="button"
+            onClick={() => setSelected(method.id)}
+            aria-pressed={selected === method.id}
+            className={`flex w-full items-center gap-3 rounded-lg border p-3 text-left transition-colors ${
+              selected === method.id
+                ? 'border-foreground/30 bg-muted/50'
+                : 'hover:border-foreground/20 hover:bg-muted/30'
+            }`}
+          >
+            <CreditCard className="size-4 shrink-0 text-muted-foreground" />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm">{method.label}</p>
+              <p className="text-xs tabular-nums text-muted-foreground">
+                {method.meta} · {method.expiry}
+              </p>
+            </div>
+            <span
+              className={`flex size-4 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                selected === method.id
+                  ? 'border-foreground bg-foreground'
+                  : 'border-muted-foreground/40'
+              }`}
+            >
+              {selected === method.id && <Check className="size-2.5 text-background" />}
+            </span>
+          </button>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function InvoiceCard() {
+  const invoices = [
+    { id: 'INV-2043', date: 'Jun 1, 2024', amount: '$29.00' },
+    { id: 'INV-2042', date: 'May 1, 2024', amount: '$29.00' },
+    { id: 'INV-2041', date: 'Apr 1, 2024', amount: '$29.00' },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Invoices</CardTitle>
+        <CardDescription className="text-xs">Your recent billing history.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {invoices.map((invoice) => (
+          <div
+            key={invoice.id}
+            className="group/row -mx-2 flex items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
+          >
+            <Receipt className="size-4 shrink-0 text-muted-foreground" />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm tabular-nums">{invoice.id}</p>
+              <p className="text-xs text-muted-foreground">{invoice.date}</p>
+            </div>
+            <span className="text-sm tabular-nums">{invoice.amount}</span>
+            <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/row:opacity-100" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function OrderSummaryCard() {
+  const items = [
+    { name: 'Pro plan · annual', price: '$290.00' },
+    { name: 'Extra seats × 3', price: '$54.00' },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Order summary</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-2 p-5 pt-0">
+        {items.map((item) => (
+          <div key={item.name} className="flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">{item.name}</span>
+            <span className="tabular-nums">{item.price}</span>
+          </div>
+        ))}
+        <div className="flex items-center justify-between text-sm">
+          <span className="text-muted-foreground">Tax</span>
+          <span className="tabular-nums">$27.52</span>
+        </div>
+        <div className="mt-3 flex items-center justify-between border-t pt-3">
+          <span className="text-sm font-medium">Total</span>
+          <span className="text-lg font-semibold tracking-tight tabular-nums">$371.52</span>
+        </div>
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Place order</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function UsageQuotaCard() {
+  const quotas = [
+    { label: 'API requests', used: 74_120, limit: 100_000, percent: 74 },
+    { label: 'Team seats', used: 8, limit: 10, percent: 80 },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Usage this month</CardTitle>
+        <CardDescription className="text-xs">Resets on Jul 1.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4 p-5 pt-0">
+        {quotas.map((quota) => (
+          <div key={quota.label} className="space-y-2">
+            <div className="flex items-center justify-between text-sm">
+              <span>{quota.label}</span>
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {quota.used.toLocaleString()} / {quota.limit.toLocaleString()}
+              </span>
+            </div>
+            <Progress value={quota.percent} className="h-1.5" />
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function SubscriptionCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <div className="flex items-start justify-between">
+          <div>
+            <CardTitle className="text-sm font-medium">Current plan</CardTitle>
+            <CardDescription className="text-xs">Renews Jul 1, 2024</CardDescription>
+          </div>
+          <Badge variant="secondary" className="text-[10px]">
+            Pro
+          </Badge>
+        </div>
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-semibold tracking-tight tabular-nums">$29</span>
+          <span className="text-xs text-muted-foreground">billed monthly</span>
+        </div>
+      </CardContent>
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.98]">
+          Cancel
+        </Button>
+        <Button className="flex-1 transition-transform active:scale-[0.98]">Change plan</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Data & analytics                                                          */
+/* -------------------------------------------------------------------------- */
+
+export function StatCard() {
+  const points = [12, 18, 14, 24, 21, 32, 28, 38];
+  const max = Math.max(...points);
+  const path = points
+    .map((point, index) => `${(index / (points.length - 1)) * 100},${28 - (point / max) * 24}`)
+    .join(' ');
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-2">
+        <CardTitle className="text-sm font-medium">Monthly revenue</CardTitle>
+        <TrendingUp className="size-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="text-2xl font-semibold tracking-tight tabular-nums">$45,231</div>
+        <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
+          <span className="tabular-nums text-foreground">+12.5%</span> from last month
+        </p>
+        <svg viewBox="0 0 100 28" preserveAspectRatio="none" className="mt-3 h-8 w-full">
+          <polyline
+            points={path}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            className="text-foreground/60"
+          />
+        </svg>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function RevenueChartCard() {
+  const bars = [42, 68, 51, 84, 62, 95, 73];
+  const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Weekly activity</CardTitle>
+        <CardDescription className="text-xs">Sessions per day</CardDescription>
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="flex h-24 items-stretch gap-1.5">
+          {bars.map((value, index) => (
+            <div key={index} className="group/bar flex h-full flex-1 flex-col justify-end gap-1.5">
+              <div
+                style={{ height: `${value}%` }}
+                className="w-full rounded-sm bg-foreground/15 transition-colors duration-150 group-hover/bar:bg-foreground/40"
+              />
+              <span className="text-center text-[10px] text-muted-foreground">{days[index]}</span>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
   );
 }
-  `,
-    },
-    {
-      name: 'QuickRatingCard',
-      component: QuickRatingCard,
-      code: `
-function QuickRatingCard() {
-  const [starRating, setStarRating] = useState(0);
-  const [hovered, setHovered] = useState(0);
+
+export function GoalProgressCard() {
+  const percent = 68;
+  const circumference = 2 * Math.PI * 34;
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Rate Your Experience</CardTitle>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Quarterly goal</CardTitle>
+        <CardDescription className="text-xs">$68k of $100k closed</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between" onMouseLeave={() => setHovered(0)}>
-        {[1, 2, 3, 4, 5].map((star) => {
-          const active = (hovered || starRating) >= star;
+      <CardContent className="flex items-center justify-center p-5 pt-0">
+        <div className="relative size-24">
+          <svg viewBox="0 0 80 80" className="size-full -rotate-90">
+            <circle cx="40" cy="40" r="34" fill="none" strokeWidth="6" className="stroke-muted" />
+            <circle
+              cx="40"
+              cy="40"
+              r="34"
+              fill="none"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={circumference - (percent / 100) * circumference}
+              className="stroke-foreground/70 transition-[stroke-dashoffset] duration-500 ease-out"
+            />
+          </svg>
+          <span className="absolute inset-0 flex items-center justify-center text-lg font-semibold tabular-nums">
+            {percent}%
+          </span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function AnalyticsSummaryCard() {
+  const metrics = [
+    { label: 'Visitors', value: '12,408', change: '+8.2%', up: true },
+    { label: 'Conversion', value: '3.8%', change: '+0.4%', up: true },
+    { label: 'Bounce rate', value: '41.2%', change: '-2.1%', up: false },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Overview</CardTitle>
+        <CardDescription className="text-xs">Last 30 days</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3 p-5 pt-0">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">{metric.label}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium tabular-nums">{metric.value}</span>
+              <span className="flex items-center gap-0.5 text-xs tabular-nums text-muted-foreground">
+                {metric.up ? (
+                  <TrendingUp className="size-3" />
+                ) : (
+                  <TrendingDown className="size-3" />
+                )}
+                {metric.change}
+              </span>
+            </div>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function StorageUsageCard() {
+  const breakdown = [
+    { label: 'Documents', value: 42 },
+    { label: 'Media', value: 28 },
+    { label: 'Backups', value: 12 },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Storage</CardTitle>
+        <HardDrive className="size-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-semibold tracking-tight tabular-nums">82</span>
+          <span className="text-xs text-muted-foreground">of 100 GB used</span>
+        </div>
+        <div className="mt-3 flex h-1.5 w-full overflow-hidden rounded-full bg-muted">
+          {breakdown.map((segment, index) => (
+            <div
+              key={segment.label}
+              style={{ width: `${segment.value}%` }}
+              className={
+                index === 0
+                  ? 'bg-foreground/70'
+                  : index === 1
+                    ? 'bg-foreground/45'
+                    : 'bg-foreground/25'
+              }
+            />
+          ))}
+        </div>
+        <div className="mt-3 space-y-1.5">
+          {breakdown.map((segment) => (
+            <div key={segment.label} className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">{segment.label}</span>
+              <span className="tabular-nums">{segment.value} GB</span>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function LeaderboardCard() {
+  const people = [
+    { name: 'Ada Lovelace', initials: 'AL', score: '2,480' },
+    { name: 'Alan Turing', initials: 'AT', score: '2,145' },
+    { name: 'Grace Hopper', initials: 'GH', score: '1,932' },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Top performers</CardTitle>
+        <CardDescription className="text-xs">This quarter</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {people.map((person, index) => (
+          <div
+            key={person.name}
+            className="-mx-2 flex items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
+          >
+            <span className="w-4 text-xs tabular-nums text-muted-foreground">{index + 1}</span>
+            <Avatar className="size-7">
+              <AvatarFallback className="text-[10px]">{person.initials}</AvatarFallback>
+            </Avatar>
+            <span className="min-w-0 flex-1 truncate text-sm">{person.name}</span>
+            <span className="text-sm tabular-nums text-muted-foreground">{person.score}</span>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Developer tooling                                                         */
+/* -------------------------------------------------------------------------- */
+
+export function ApiKeyCard() {
+  const [copied, setCopied] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const key = 'sk_live_51H8xQ2LkD9vB3nR7';
+
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(false), 1500);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">API key</CardTitle>
+        <CardDescription className="text-xs">Keep this secret. Rotate if leaked.</CardDescription>
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div className="flex items-center gap-2 rounded-lg border bg-muted/30 p-2">
+          <code className="min-w-0 flex-1 truncate font-mono text-xs">
+            {revealed ? key : '•'.repeat(key.length)}
+          </code>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="size-7 shrink-0 p-0"
+            onClick={() => setRevealed((value) => !value)}
+            aria-label={revealed ? 'Hide API key' : 'Reveal API key'}
+          >
+            {revealed ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="size-7 shrink-0 p-0"
+            onClick={() => setCopied(true)}
+            aria-label="Copy API key"
+          >
+            {copied ? <Check className="size-3.5" /> : <CopyIcon className="size-3.5" />}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function DeploymentCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Production</CardTitle>
+        <Badge variant="secondary" className="gap-1.5 text-[10px]">
+          <span className="relative flex size-1.5">
+            <span className="absolute inline-flex size-full rounded-full bg-foreground/40 motion-safe:animate-ping" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
+          </span>
+          Live
+        </Badge>
+      </CardHeader>
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="flex items-center gap-2 text-sm">
+          <GitBranch className="size-3.5 shrink-0 text-muted-foreground" />
+          <span className="font-mono text-xs">main</span>
+          <span className="text-muted-foreground">·</span>
+          <span className="truncate text-xs text-muted-foreground">Deployed 4m ago</span>
+        </div>
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-muted-foreground">Build time</span>
+          <span className="tabular-nums">42s</span>
+        </div>
+      </CardContent>
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex-1 transition-transform active:scale-[0.98]"
+        >
+          <Rocket className="size-3.5" />
+          Redeploy
+        </Button>
+        <Button variant="ghost" size="sm" className="transition-transform active:scale-[0.98]">
+          Logs
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function ServiceHealthCard() {
+  const services = [
+    { name: 'API', uptime: '99.99%', healthy: true },
+    { name: 'Database', uptime: '99.95%', healthy: true },
+    { name: 'Webhooks', uptime: '98.20%', healthy: false },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+        <CardTitle className="text-sm font-medium">System status</CardTitle>
+        <Activity className="size-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent className="space-y-2.5 p-5 pt-0">
+        {services.map((service) => (
+          <div key={service.name} className="flex items-center gap-2.5">
+            <span
+              className={`size-1.5 shrink-0 rounded-full ${
+                service.healthy ? 'bg-foreground' : 'bg-muted-foreground/40'
+              }`}
+            />
+            <span className="flex-1 text-sm">{service.name}</span>
+            <span className="text-xs tabular-nums text-muted-foreground">{service.uptime}</span>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function IntegrationCard() {
+  const [connected, setConnected] = useState(false);
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex items-start gap-3 p-5">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted/40">
+          <Link2 className="size-4 text-muted-foreground" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-medium">Slack</p>
+          <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+            Send deploy and alert notifications to your channels.
+          </p>
+          <Button
+            variant={connected ? 'outline' : 'default'}
+            size="sm"
+            onClick={() => setConnected((value) => !value)}
+            className="mt-3 transition-transform active:scale-[0.98]"
+          >
+            {connected ? 'Disconnect' : 'Connect'}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function EnvVarsCard() {
+  const vars = [
+    { key: 'DATABASE_URL', scope: 'Production' },
+    { key: 'STRIPE_SECRET', scope: 'Production' },
+    { key: 'NEXT_PUBLIC_URL', scope: 'All' },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Environment variables</CardTitle>
+        <CardDescription className="text-xs">Encrypted at rest.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {vars.map((item) => (
+          <div
+            key={item.key}
+            className="group/env -mx-2 flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/50"
+          >
+            <code className="min-w-0 flex-1 truncate font-mono text-xs">{item.key}</code>
+            <span className="shrink-0 text-[10px] text-muted-foreground">{item.scope}</span>
+            <MoreHorizontal className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/env:opacity-100" />
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full transition-transform active:scale-[0.98]"
+        >
+          <Plus className="size-3.5" />
+          Add variable
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function WebhookCard() {
+  const [enabled, setEnabled] = useState(true);
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <CardTitle className="text-sm font-medium">Webhook endpoint</CardTitle>
+            <CardDescription className="truncate font-mono text-xs">
+              https://api.acme.dev/hooks
+            </CardDescription>
+          </div>
+          <Switch checked={enabled} onCheckedChange={setEnabled} aria-label="Enable webhook" />
+        </div>
+      </CardHeader>
+      <CardContent className="flex items-center justify-between p-5 pt-0 text-xs">
+        <span className="text-muted-foreground">Last delivery</span>
+        <span className="flex items-center gap-1.5">
+          <Check className="size-3" />
+          <span className="tabular-nums">200 · 2m ago</span>
+        </span>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function CommitCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-center gap-2">
+          <GitCommit className="size-4 shrink-0 text-muted-foreground" />
+          <code className="font-mono text-xs text-muted-foreground">a3f9c21</code>
+          <Badge variant="secondary" className="ml-auto text-[10px]">
+            main
+          </Badge>
+        </div>
+        <p className="mt-2.5 text-sm leading-snug">fix: prevent duplicate webhook retries</p>
+        <div className="mt-3 flex items-center gap-2">
+          <Avatar className="size-5">
+            <AvatarFallback className="text-[9px]">AL</AvatarFallback>
+          </Avatar>
+          <span className="text-xs text-muted-foreground">Ada Lovelace committed 3h ago</span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Work & team                                                               */
+/* -------------------------------------------------------------------------- */
+
+export function TaskListCard() {
+  const [done, setDone] = useState<string[]>(['Ship design tokens']);
+  const tasks = ['Ship design tokens', 'Review API contract', 'Write migration guide'];
+  const toggle = (task: string) =>
+    setDone((current) =>
+      current.includes(task) ? current.filter((item) => item !== task) : [...current, task],
+    );
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Today</CardTitle>
+        <CardDescription className="text-xs tabular-nums">
+          {done.length} of {tasks.length} complete
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {tasks.map((task) => {
+          const checked = done.includes(task);
           return (
             <button
-              key={star}
+              key={task}
               type="button"
-              aria-label={\`Rate \${star} stars\`}
-              onClick={() => setStarRating(star)}
-              onMouseEnter={() => setHovered(star)}
-              className="rounded-md p-1.5 transition duration-150 ease-out hover:bg-accent active:scale-90"
+              onClick={() => toggle(task)}
+              aria-pressed={checked}
+              className="-mx-2 flex w-full items-center gap-2.5 rounded-md px-2 py-2 text-left transition-colors hover:bg-muted/50"
             >
-              <Star
-                className={\`h-4 w-4 transition-colors duration-150 \${active ? "fill-foreground text-foreground" : "text-muted-foreground/40"}\`}
-              />
+              <span
+                className={`flex size-4 shrink-0 items-center justify-center rounded border transition-colors duration-150 ${
+                  checked ? 'border-foreground bg-foreground' : 'border-muted-foreground/40'
+                }`}
+              >
+                {checked && <Check className="size-3 text-background" />}
+              </span>
+              <span
+                className={`text-sm transition-colors ${checked ? 'text-muted-foreground line-through' : ''}`}
+              >
+                {task}
+              </span>
             </button>
           );
         })}
@@ -1369,1133 +1046,910 @@ function QuickRatingCard() {
     </Card>
   );
 }
-  `,
-    },
+
+export function KanbanTaskCard() {
+  return (
+    <Card className="w-full cursor-grab rounded-xl transition-shadow duration-200 hover:shadow-md active:cursor-grabbing">
+      <CardContent className="p-4">
+        <div className="flex items-start justify-between gap-2">
+          <Badge variant="secondary" className="text-[10px]">
+            Design
+          </Badge>
+          <MoreHorizontal className="size-3.5 text-muted-foreground" />
+        </div>
+        <p className="mt-2.5 text-sm leading-snug">Redesign the onboarding empty states</p>
+        <div className="mt-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <MessageSquare className="size-3" />
+              <span className="tabular-nums">4</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <Paperclip className="size-3" />
+              <span className="tabular-nums">2</span>
+            </span>
+          </div>
+          <Avatar className="size-5">
+            <AvatarFallback className="text-[9px]">GH</AvatarFallback>
+          </Avatar>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function OnboardingChecklistCard() {
+  const steps = [
+    { label: 'Create your account', done: true },
+    { label: 'Invite your team', done: true },
+    { label: 'Connect a repository', done: false },
+    { label: 'Ship your first deploy', done: false },
   ];
-
-  const updateGrid = useCallback(() => {
-    if (!gridRef.current || !containerRef.current) return;
-
-    gridRef.current.style.gridTemplateColumns = '';
-    gridRef.current.style.gridTemplateRows = '';
-    void gridRef.current.offsetHeight;
-
-    const [heights, widths] = GetDimensions({ current: itemsRef.current });
-    const columns = GridColumns(gridRef, containerRef);
-    const gridTemplateRows = GridStyle(heights ?? [], columns);
-    addGridStyle(gridTemplateRows, columns, widths ?? [], gridRef);
-
-    // Pass current theme for border color
-    addGridBorders(
-      containerRef,
-      columns,
-      widths ?? [],
-      gridTemplateRows,
-      theme === 'dark' ? 'dark' : 'light'
-    );
-  }, [theme]);
-
-
-  useLayoutEffect(() => {
-    let resizeTimeout: NodeJS.Timeout;
-    let observer: ResizeObserver;
-  
-    const handleResize = () => {
-      if (!isResizing) {
-        setIsResizing(true);
-      }
-  
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        updateGrid();
-        setIsResizing(false);
-      }, 100);
-    };
-  
-  
-    updateGrid();
-  
-    try {
-      observer = new ResizeObserver(handleResize);
-  
-      window.addEventListener('resize', handleResize);
-    } catch (error) {
-      console.error('ResizeObserver error:', error);
-    }
-  
-    // Cleanup
-    return () => {
-      clearTimeout(resizeTimeout);
-      if (observer) {
-        observer.disconnect();
-      }
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [updateGrid, isResizing, itemsRef.current.length]); 
+  const complete = steps.filter((step) => step.done).length;
 
   return (
-    <div ref={containerRef} className="relative max-w-screen-xl mx-auto">
-      <canvas width={100} height={90} className="absolute left-1/2 -translate-x-1/2 z-0"></canvas>
-      <div 
-        ref={gridRef} 
-        className={`grid gap-8 justify-center transition-all duration-200 relative z-10 ${isResizing ? 'overflow-hidden' : ''}`}
-      >
-        {cardComponents.map(({ name, component: CardComponent, code }, index: number) => (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Get started</CardTitle>
+        <Progress value={(complete / steps.length) * 100} className="mt-2 h-1.5" />
+      </CardHeader>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {steps.map((step) => (
           <div
-            key={name}
-            ref={(elem: HTMLDivElement | null) => { itemsRef.current[index] = elem; }}
-            className="relative grid-item mb-[2rem] self-start flex justify-center group"
-            style={{ minWidth: '310px' }}
+            key={step.label}
+            className="group/step -mx-2 flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/50"
           >
-            <CardComponent />
-            <div className="absolute top-1 right-5 hidden group-hover:flex">
-              <Copy content={code} />
-            </div>
+            {step.done ? (
+              <CheckCircle2 className="size-4 shrink-0" />
+            ) : (
+              <Circle className="size-4 shrink-0 text-muted-foreground/40" />
+            )}
+            <span className={`flex-1 text-sm ${step.done ? 'text-muted-foreground' : ''}`}>
+              {step.label}
+            </span>
+            {!step.done && (
+              <ChevronRight className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-150 group-hover/step:translate-x-0.5" />
+            )}
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
 
+export function ActivityFeedCard() {
+  const events = [
+    { who: 'AL', what: 'merged', target: '#412 Fix retries', when: '2m' },
+    { who: 'AT', what: 'opened', target: '#413 Add tracing', when: '1h' },
+    { who: 'GH', what: 'commented on', target: '#409', when: '3h' },
+  ];
 
-export function LoginCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Login</CardTitle>
-        <CardDescription>Enter your credentials to access your account.</CardDescription>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Activity</CardTitle>
       </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" placeholder="Enter your email" type="email" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="Enter your password" type="password" />
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
-        <Button>Login</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function SignUpCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Sign Up</CardTitle>
-        <CardDescription>Create a new account to get started.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" placeholder="Enter your name" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" placeholder="Enter your email" type="email" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="Choose a password" type="password" />
-            </div>
-            <div className="flex items-center space-x-2">
-              <Switch id="terms" />
-              <Label htmlFor="terms">I agree to the terms and conditions</Label>
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Create Account</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function PaymentCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Payment Details</CardTitle>
-        <CardDescription>Enter your payment information to complete the purchase.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="cardName">Name on Card</Label>
-              <Input id="cardName" placeholder="Enter name on card" />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="cardNumber">Card Number</Label>
-              <Input id="cardNumber" placeholder="Enter card number" />
-            </div>
-            <div className="flex space-x-4">
-              <div className="flex flex-col space-y-1.5 flex-1">
-                <Label htmlFor="expiry">Expiry Date</Label>
-                <Input id="expiry" placeholder="MM/YY" />
-              </div>
-              <div className="flex flex-col space-y-1.5 flex-1">
-                <Label htmlFor="cvc">CVC</Label>
-                <Input id="cvc" placeholder="CVC" />
-              </div>
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Pay Now</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function ProfileCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <div className="flex items-center space-x-4">
-          <Avatar>
-            <AvatarImage
-              src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg"
-              alt="@arihantcodes"
-            />
-            <AvatarFallback>SU</AvatarFallback>
-          </Avatar>
-          <div>
-            <CardTitle className="text-base">Spectrum UI</CardTitle>
-            <CardDescription>@arihantcodes</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label>Email</Label>
-            <p className="text-sm">hello@arihant.us</p>
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label>Location</Label>
-            <p className="text-sm">San Francisco, CA</p>
-          </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label>Bio</Label>
-            <p className="text-sm">
-              Software developer passionate about creating user-friendly applications.
-            </p>
-          </div>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full">
-          Edit Profile
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function SettingsCard() {
-  const [activeTab, setActiveTab] = useState('account');
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Settings</CardTitle>
-        <CardDescription>Manage your account settings and preferences.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-4">
-            <TabsTrigger value="account">Account</TabsTrigger>
-            <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          </TabsList>
-          <TabsContent value="account">
-            <div className="space-y-4 py-2 ">
-              <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
-                <Input id="username" placeholder="Enter username" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="Enter email" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="language">Language</Label>
-                <Select>
-                  <SelectTrigger id="language">
-                    <SelectValue placeholder="Select language" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="fr">French</SelectItem>
-                    <SelectItem value="de">German</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </TabsContent>
-          <TabsContent value="notifications">
-            <div className="space-y-4 py-2">
-              <div className="flex items-center space-x-2">
-                <Switch id="emailNotifications" />
-                <Label htmlFor="emailNotifications">Email Notifications</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Switch id="pushNotifications" />
-                <Label htmlFor="pushNotifications">Push Notifications</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Switch id="weeklyDigest" />
-                <Label htmlFor="weeklyDigest">Weekly Digest</Label>
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Save Changes</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function MetricsCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Metrics Overview</CardTitle>
-        <CardDescription>Your key performance indicators</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-8">
-          <div className="flex items-center">
-            <Users className="mr-4 h-4 w-4 text-muted-foreground" />
-            <div className="space-y-1 flex-1">
-              <p className="text-sm font-medium leading-none">Total Users</p>
-              <p className="text-2xl font-semibold tabular-nums">2,543</p>
-            </div>
-            <Badge variant="secondary">+12%</Badge>
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
-              <div>Revenue</div>
-              <div className="font-medium">$45,231.89</div>
-            </div>
-            <Progress value={75} className="h-2" />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <BarChart className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Conversion Rate</span>
-            </div>
-            <div className="text-2xl font-semibold tabular-nums">3.8%</div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-export function SubscriptionCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Subscription Plan</CardTitle>
-        <CardDescription>You are currently on the Pro plan</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-8">
-          <div className="flex items-center justify-between">
-            <span className="text-2xl font-semibold tabular-nums">$29.99</span>
-            <Badge>Monthly</Badge>
-          </div>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center">
-              <DollarSign className="mr-2 h-4 w-4 text-muted-foreground" />
-              Unlimited projects
-            </li>
-            <li className="flex items-center">
-              <Users className="mr-2 h-4 w-4 text-muted-foreground" />
-              Unlimited team members
-            </li>
-            <li className="flex items-center">
-              <Download className="mr-2 h-4 w-4 text-muted-foreground" />
-              5TB storage
-            </li>
-          </ul>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Upgrade Plan</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function TaskCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Current Tasks</CardTitle>
-        <CardDescription>Your team&apos;s ongoing tasks</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {['Design system update', 'API integration', 'User testing'].map((task, index) => (
-            <div key={index} className="flex items-center">
-              <input type="checkbox" id={`task-${index}`} className="mr-2" />
-              <label htmlFor={`task-${index}`} className="flex-1">
-                {task}
-              </label>
-              <Badge variant={index === 0 ? 'default' : index === 1 ? 'secondary' : 'outline'}>
-                {index === 0 ? 'In Progress' : index === 1 ? 'Pending' : 'Completed'}
-              </Badge>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full">
-          View All Tasks
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function CalendarCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Upcoming Events</CardTitle>
-        <CardDescription>Your schedule for the next 7 days</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {[
-            { date: 'Today', event: 'Team standup', time: '10:00 AM' },
-            { date: 'Tomorrow', event: 'Client meeting', time: '2:00 PM' },
-            {
-              date: 'Fri, Jun 12',
-              event: 'Project deadline',
-              time: '11:59 PM',
-            },
-          ].map((item, index) => (
-            <div key={index} className="flex items-center">
-              <Calendar className="mr-2 h-4 w-4 text-muted-foreground" />
-              <div className="flex-1">
-                <p className="text-sm font-medium">{item.event}</p>
-                <p className="text-xs text-muted-foreground">
-                  {item.date} at {item.time}
+      <CardContent className="p-5 pt-0">
+        <div className="space-y-3">
+          {events.map((event, index) => (
+            <div key={index} className="flex gap-3">
+              <Avatar className="size-6 shrink-0">
+                <AvatarFallback className="text-[9px]">{event.who}</AvatarFallback>
+              </Avatar>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm leading-snug">
+                  <span className="text-muted-foreground">{event.what} </span>
+                  <span className="truncate">{event.target}</span>
+                </p>
+                <p className="mt-0.5 text-xs tabular-nums text-muted-foreground">
+                  {event.when} ago
                 </p>
               </div>
             </div>
           ))}
         </div>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full">
-          View Full Calendar
+    </Card>
+  );
+}
+
+export function CommentCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-center gap-2.5">
+          <Avatar className="size-7">
+            <AvatarFallback className="text-[10px]">AT</AvatarFallback>
+          </Avatar>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-medium">Alan Turing</p>
+            <p className="text-xs text-muted-foreground">2 hours ago</p>
+          </div>
+        </div>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Looks good overall — can we align the empty state copy with the rest of the product?
+        </p>
+        <div className="mt-3 flex items-center gap-1">
+          <Button variant="ghost" size="sm" className="h-7 gap-1.5 px-2 text-xs">
+            <MessageSquare className="size-3" />
+            Reply
+          </Button>
+          <Button variant="ghost" size="sm" className="h-7 gap-1.5 px-2 text-xs">
+            <Star className="size-3" />
+            <span className="tabular-nums">3</span>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function CalendarEventCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex gap-4 p-5">
+        <div className="flex size-12 shrink-0 flex-col items-center justify-center rounded-lg border bg-muted/40">
+          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Jun</span>
+          <span className="text-base font-semibold leading-none tabular-nums">18</span>
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-medium">Design review</p>
+          <p className="mt-0.5 text-xs tabular-nums text-muted-foreground">2:00 – 3:00 PM · Zoom</p>
+          <div className="mt-2.5 flex -space-x-1.5">
+            {['AL', 'AT', 'GH'].map((initials) => (
+              <Avatar key={initials} className="size-5 border-2 border-background">
+                <AvatarFallback className="text-[9px]">{initials}</AvatarFallback>
+              </Avatar>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex-1 transition-transform active:scale-[0.98]"
+        >
+          Decline
         </Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function BillingCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Billing Information</CardTitle>
-        <CardDescription>Manage your billing details and payment method</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="flex items-center">
-            <CreditCard className="mr-2 h-4 w-4 text-muted-foreground" />
-            <div className="flex-1">
-              <p className="text-sm font-medium">Visa ending in 4242</p>
-              <p className="text-xs text-muted-foreground">Expires 12/2024</p>
-            </div>
-            <Button variant="ghost" size="sm">
-              Edit
-            </Button>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="billingEmail">Billing Email</Label>
-            <Input id="billingEmail" value="johndoe@example.com" readOnly />
-          </div>
-          <div className="space-y-2">
-            <Label>Next Payment</Label>
-            <div className="flex justify-between items-center">
-              <span>$29.99 due on June 1, 2023</span>
-              <Badge>Upcoming</Badge>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Update Payment Method</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function FeedbackCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Feedback</CardTitle>
-        <CardDescription>Help us improve our product</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Label>How satisfied are you with our product?</Label>
-            <Slider defaultValue={[50]} max={100} step={1} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="feedback">Your feedback</Label>
-            <textarea
-              id="feedback"
-              className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              placeholder="Tell us what you think..."
-            />
-          </div>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Submit Feedback</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function AIAssistantCard() {
-  const [message, setMessage] = useState('');
-  const [conversation, setConversation] = useState<{ role: 'user' | 'ai'; content: string }[]>([]);
-  const handleSend = () => {
-    if (message.trim()) {
-      setConversation([
-        ...conversation,
-        { role: 'user', content: message },
-        { role: 'ai', content: 'This is a simulated AI response.' },
-      ]);
-      setMessage('');
-    }
-  };
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">AI Assistant</CardTitle>
-        <CardDescription>Ask me anything about your data</CardDescription>
-      </CardHeader>
-      <CardContent className="h-[300px] overflow-y-auto">
-        {conversation.map((msg, index) => (
-          <div
-            key={index}
-            className={`mb-2 text-sm ${msg.role === 'ai' ? 'text-muted-foreground text-left' : 'text-right'}`}
-          >
-            <strong>{msg.role === 'ai' ? 'AI: ' : 'You: '}</strong>
-            {msg.content}
-          </div>
-        ))}
-      </CardContent>
-      <CardFooter className="flex gap-2">
-        <Input
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type your message..."
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-          aria-label="Message input for AI assistant"
-        />
-        <Button onClick={handleSend}>Send</Button>
+        <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+          Join
+        </Button>
       </CardFooter>
     </Card>
   );
 }
 
-export function TeamCollaborationCard() {
-  const teamMembers = [
-    { name: 'Alice', avatar: 'A', status: 'online' },
-    { name: 'Bob', avatar: 'B', status: 'offline' },
-    { name: 'Charlie', avatar: 'C', status: 'away' },
+export function TeamMembersCard() {
+  const members = [
+    { name: 'Ada Lovelace', initials: 'AL', role: 'Owner' },
+    { name: 'Alan Turing', initials: 'AT', role: 'Admin' },
+    { name: 'Grace Hopper', initials: 'GH', role: 'Member' },
   ];
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Team Collaboration</CardTitle>
-        <CardDescription>Current project: Website Redesign</CardDescription>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Members</CardTitle>
+        <Users className="size-4 text-muted-foreground" />
       </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <div className="flex -space-x-2">
-              {teamMembers.map((member, index) => (
-                <Avatar key={index} className="border-2 border-background">
-                  <AvatarFallback>{member.avatar}</AvatarFallback>
-                </Avatar>
-              ))}
-            </div>
-            <Badge variant="outline">3 Active Members</Badge>
+      <CardContent className="space-y-1 p-5 pt-0">
+        {members.map((member) => (
+          <div
+            key={member.name}
+            className="-mx-2 flex items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
+          >
+            <Avatar className="size-7">
+              <AvatarFallback className="text-[10px]">{member.initials}</AvatarFallback>
+            </Avatar>
+            <span className="min-w-0 flex-1 truncate text-sm">{member.name}</span>
+            <span className="text-xs text-muted-foreground">{member.role}</span>
           </div>
-          <Progress value={65} className="w-full" />
-          <div className="text-sm text-muted-foreground">Project Progress: 65%</div>
-        </div>
+        ))}
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">Team Chat</Button>
-        <Button>Update Status</Button>
-      </CardFooter>
     </Card>
   );
 }
-export function WeatherCard() {
+
+export function InviteMemberCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Weather Forecast</CardTitle>
-        <CardDescription>San Francisco, CA</CardDescription>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Invite teammates</CardTitle>
+        <CardDescription className="text-xs">They&apos;ll get an email invitation.</CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className="flex justify-between items-center">
-          <div className="text-3xl font-semibold tabular-nums tracking-tight">72°F</div>
-          <Sun className="h-9 w-9 text-muted-foreground" strokeWidth={1.5} />
-        </div>
-        <div className="mt-4 space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Humidity</span>
-            <span className="tabular-nums">60%</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">Wind</span>
-            <span className="tabular-nums">5 mph</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-muted-foreground">UV Index</span>
-            <span className="tabular-nums">3 of 10</span>
-          </div>
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="flex gap-2">
+          <Input placeholder="teammate@company.com" aria-label="Email address" />
+          <Select defaultValue="member">
+            <SelectTrigger className="w-28 shrink-0" aria-label="Role">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="member">Member</SelectItem>
+              <SelectItem value="admin">Admin</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full">
-          View 7-Day Forecast
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">
+          <UserPlus className="size-3.5" />
+          Send invite
         </Button>
       </CardFooter>
     </Card>
   );
 }
-export function ProductivityTrackerCard() {
-  const tasks = [
-    { name: 'Complete project proposal', completed: true },
-    { name: 'Review team submissions', completed: false },
-    { name: 'Prepare for client meeting', completed: false },
-  ];
+
+/* -------------------------------------------------------------------------- */
+/*  States & feedback                                                         */
+/* -------------------------------------------------------------------------- */
+
+export function EmptyStateCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Productivity Tracker</CardTitle>
-        <CardDescription>Your daily task overview</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {tasks.map((task, index) => (
-            <div key={index} className="flex items-center">
-              <input
-                type="checkbox"
-                id={`productivity-task-cards-${index}`}
-                checked={task.completed}
-                onChange={() => {}}
-                className="mr-2"
-                aria-label={`Mark ${task.name} as ${task.completed ? 'incomplete' : 'complete'}`}
-              />
-              <label
-                htmlFor={`productivity-task-cards-${index}`}
-                className={task.completed ? 'line-through text-muted-foreground cursor-pointer' : 'cursor-pointer'}
-              >
-                {task.name}
-              </label>
-            </div>
-          ))}
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex flex-col items-center p-8 text-center">
+        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
+          <Inbox className="size-4 text-muted-foreground" />
         </div>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <div className="text-sm text-muted-foreground">2 of 3 tasks completed</div>
-        <Button variant="outline">Add Task</Button>
-      </CardFooter>
-    </Card>
-  );
-}
-export function QuickActionCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Actions</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 grid grid-cols-3 gap-2">
-        {['New', 'Upload', 'Share'].map((action, index) => (
-          <Button key={index} variant="outline" size="sm" className="w-full">
-            {action}
-          </Button>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-export function NotificationCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Notifications</CardTitle>
-        <Bell className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-semibold tabular-nums">24</div>
-        <p className="text-xs text-muted-foreground">3 unread messages</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function WeatherMiniCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Weather</CardTitle>
-        <Sun className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-semibold tabular-nums">72°F</div>
-        <p className="text-xs text-muted-foreground">Sunny, San Francisco</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickSettingsCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Settings</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 space-y-2">
-        <div className="flex items-center justify-between">
-          <Label htmlFor="airplane-mode">Airplane Mode</Label>
-          <Switch id="airplane-mode" />
-        </div>
-        <div className="flex items-center justify-between">
-          <Label htmlFor="wifi">Wi-Fi</Label>
-          <Switch id="wifi" />
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-export function MusicPlayerCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Now Playing</CardTitle>
-        <Music className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="font-semibold">Song Title</div>
-        <p className="text-xs text-muted-foreground">Artist Name</p>
-        <div className="mt-2">
-          <Slider defaultValue={[33]} max={100} step={1} />
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-export function TaskProgressCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Task Progress</CardTitle>
-        <Check className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <Progress value={60} className="w-full" />
-        <p className="text-xs text-muted-foreground mt-2">12 of 20 tasks completed</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickSearchCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Search</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="flex space-x-2">
-          <Input placeholder="Search..." className="flex-1" aria-label="Search input" />
-          <Button size="sm" variant="ghost" aria-label="Search">
-            <Search className="h-4 w-4" />
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-export function UpcomingEventCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Upcoming Event</CardTitle>
-        <Calendar className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="font-semibold">Team Meeting</div>
-        <p className="text-xs text-muted-foreground">Today, 2:00 PM</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickExpenseCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Quick Expense</CardTitle>
-        <CreditCard className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0 space-y-2">
-        <Input placeholder="Amount" type="number" />
-        <Button className="w-full" size="sm">
-          Add Expense
+        <p className="mt-3 text-sm font-medium">No projects yet</p>
+        <p className="mt-1 max-w-[24ch] text-xs leading-relaxed text-muted-foreground">
+          Create your first project to start shipping.
+        </p>
+        <Button size="sm" className="mt-4 transition-transform active:scale-[0.98]">
+          <Plus className="size-3.5" />
+          New project
         </Button>
       </CardContent>
     </Card>
   );
 }
-export function DeviceStatusCard() {
+
+export function ErrorStateCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Device Status</CardTitle>
-        <Zap className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-semibold tabular-nums">85%</div>
-        <p className="text-xs text-muted-foreground">Battery remaining</p>
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex flex-col items-center p-8 text-center">
+        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
+          <AlertTriangle className="size-4 text-muted-foreground" />
+        </div>
+        <p className="mt-3 text-sm font-medium">Couldn&apos;t load your data</p>
+        <p className="mt-1 max-w-[26ch] text-xs leading-relaxed text-muted-foreground">
+          The request timed out after 30 seconds.
+        </p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="group/retry mt-4 transition-transform active:scale-[0.98]"
+        >
+          <RefreshCw className="size-3.5 transition-transform duration-300 group-hover/retry:rotate-90" />
+          Try again
+        </Button>
       </CardContent>
     </Card>
   );
 }
-export function QuickPollCard() {
+
+export function SuccessCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Poll</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 space-y-2">
-        <div className="text-sm font-medium">Favorite feature?</div>
-        {['Dashboard', 'Reports', 'Settings'].map((option, index) => (
-          <div key={index} className="flex items-center space-x-2">
-            <input type="radio" id={option} name="poll" className="radio" />
-            <Label htmlFor={option}>{option}</Label>
+    <Card className="w-full rounded-xl">
+      <CardContent className="flex flex-col items-center p-8 text-center">
+        <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
+          <Check className="size-4" />
+        </div>
+        <p className="mt-3 text-sm font-medium">Payment successful</p>
+        <p className="mt-1 max-w-[26ch] text-xs leading-relaxed text-muted-foreground">
+          We emailed a receipt to ada@example.com.
+        </p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-4 transition-transform active:scale-[0.98]"
+        >
+          View receipt
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function LoadingSkeletonCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="space-y-3 p-5">
+        <div className="flex items-center gap-3">
+          <div className="size-9 shrink-0 rounded-full bg-muted motion-safe:animate-pulse" />
+          <div className="flex-1 space-y-2">
+            <div className="h-3 w-2/3 rounded bg-muted motion-safe:animate-pulse" />
+            <div className="h-3 w-1/3 rounded bg-muted motion-safe:animate-pulse" />
           </div>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-export function DataUsageCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
-        <Cloud className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <Progress value={75} className="w-full" />
-        <p className="text-xs text-muted-foreground mt-2">7.5 GB of 10 GB used</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickNoteCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Quick Note</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <textarea
-          className="w-full h-20 text-sm resize-none border rounded-md p-2"
-          placeholder="Type your note here..."
-        ></textarea>
-      </CardContent>
-    </Card>
-  );
-}
-export function SocialShareCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Share</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between">
-        {['Twitter', 'Facebook', 'LinkedIn'].map((platform, index) => (
-          <Button key={index} variant="outline" size="sm" className="w-16">
-            {platform.charAt(0)}
-          </Button>
-        ))}
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickContactCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
-        <Phone className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex items-center space-x-4">
-        <Avatar>
-          <AvatarImage src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="Arihant jain"/>
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div>
-          <div className="font-semibold">Arihant</div>
-          <p className="text-xs text-muted-foreground">Call | Message</p>
+        </div>
+        <div className="space-y-2 pt-1">
+          <div className="h-3 w-full rounded bg-muted motion-safe:animate-pulse" />
+          <div className="h-3 w-5/6 rounded bg-muted motion-safe:animate-pulse" />
+          <div className="h-3 w-4/6 rounded bg-muted motion-safe:animate-pulse" />
         </div>
       </CardContent>
     </Card>
   );
 }
-export function LocationCard() {
+
+export function DangerZoneCard() {
+  const [confirm, setConfirm] = useState('');
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Current Location</CardTitle>
-        <Map className="w-4 h-4 text-muted-foreground" />
+    <Card className="w-full rounded-xl border-destructive/30">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Delete project</CardTitle>
+        <CardDescription className="text-xs leading-relaxed">
+          This permanently removes the project and all of its data.
+        </CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <div className="font-semibold">San Francisco</div>
-        <p className="text-xs text-muted-foreground">California, USA</p>
+      <CardContent className="p-5 pt-0">
+        <Label htmlFor="danger-confirm" className="text-xs">
+          Type <span className="font-mono text-foreground">acme-api</span> to confirm
+        </Label>
+        <Input
+          id="danger-confirm"
+          value={confirm}
+          onChange={(event) => setConfirm(event.target.value)}
+          className="mt-1.5"
+          placeholder="acme-api"
+        />
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button
+          variant="destructive"
+          disabled={confirm !== 'acme-api'}
+          className="w-full transition-transform active:scale-[0.98]"
+        >
+          <Trash2 className="size-3.5" />
+          Delete permanently
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function CookieConsentCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-start gap-3">
+          <Cookie className="size-4 shrink-0 text-muted-foreground" />
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium">We use cookies</p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Analytics cookies help us understand how the product is used.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4 flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex-1 transition-transform active:scale-[0.98]"
+          >
+            Reject
+          </Button>
+          <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+            Accept all
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
 }
-export function VoiceCommandCard() {
+
+export function ChangelogCard() {
+  const [dismissed, setDismissed] = useState(false);
+  if (dismissed) {
+    return (
+      <Card className="w-full rounded-xl">
+        <CardContent className="flex items-center justify-center p-8">
+          <Button variant="ghost" size="sm" onClick={() => setDismissed(false)}>
+            Show announcement
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Voice Command</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-center">
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <Badge variant="secondary" className="gap-1 text-[10px]">
+            <Sparkles className="size-2.5" />
+            New
+          </Badge>
+          <button
+            type="button"
+            onClick={() => setDismissed(true)}
+            aria-label="Dismiss announcement"
+            className="-m-1 rounded p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            <X className="size-3.5" />
+          </button>
+        </div>
+        <p className="mt-2.5 text-sm font-medium">Instant rollbacks</p>
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          Revert any deployment to a previous build in one click.
+        </p>
         <button
           type="button"
-          aria-label="Start voice command"
-          className="group relative flex h-14 w-14 items-center justify-center rounded-full border bg-background text-muted-foreground transition duration-200 ease-out hover:border-foreground/30 hover:text-foreground active:scale-95"
+          className="group/link mt-3 flex items-center gap-1 text-xs font-medium underline-offset-4 hover:underline"
         >
-          <span className="absolute inset-0 rounded-full bg-foreground/5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-safe:group-hover:animate-ping" />
-          <Mic className="relative h-5 w-5" />
+          Read the changelog
+          <ArrowUpRight className="size-3 transition-transform duration-150 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
         </button>
       </CardContent>
     </Card>
   );
 }
-export function DownloadProgressCard() {
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
-        <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
-        <Download className="w-4 h-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <Progress value={40} className="w-full" />
-        <p className="text-xs text-muted-foreground mt-2">2 of 5 files downloaded</p>
-      </CardContent>
-    </Card>
-  );
-}
-export function ThemeToggleCard() {
-  const [isDark, setIsDark] = useState(false);
-  return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Theme</CardTitle>
-      </CardHeader>
-      <CardContent className="p-4 pt-0 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Sun className="h-4 w-4" />
-          <Label>Light</Label>
-        </div>
-        <Switch checked={isDark} onCheckedChange={setIsDark} />
-        <div className="flex items-center space-x-2">
-          <Label>Dark</Label>
-          <Moon className="h-4 w-4" />
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-export function QuickRatingCard() {
-  const [starRating, setStarRating] = useState(0);
+
+export function FeedbackCard() {
+  const [rating, setRating] = useState(0);
   const [hovered, setHovered] = useState(0);
+
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader className="p-4">
-        <CardTitle className="text-sm font-medium">Rate Your Experience</CardTitle>
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">How did we do?</CardTitle>
+        <CardDescription className="text-xs">Your feedback shapes the roadmap.</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between" onMouseLeave={() => setHovered(0)}>
-        {[1, 2, 3, 4, 5].map((star) => {
-          const active = (hovered || starRating) >= star;
-          return (
-            <button
-              key={star}
-              type="button"
-              aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
-              onClick={() => setStarRating(star)}
-              onMouseEnter={() => setHovered(star)}
-              className="rounded-md p-1.5 transition duration-150 ease-out hover:bg-accent active:scale-90"
-            >
-              <Star
-                className={`h-4 w-4 transition-colors duration-150 ${active ? 'fill-foreground text-foreground' : 'text-muted-foreground/40'}`}
-              />
-            </button>
-          );
-        })}
+      <CardContent className="space-y-3 p-5 pt-0">
+        <div className="flex gap-1" onMouseLeave={() => setHovered(0)}>
+          {[1, 2, 3, 4, 5].map((star) => {
+            const active = (hovered || rating) >= star;
+            return (
+              <button
+                key={star}
+                type="button"
+                onClick={() => setRating(star)}
+                onMouseEnter={() => setHovered(star)}
+                aria-label={`Rate ${star} out of 5`}
+                className="rounded p-1 transition-transform duration-150 hover:scale-110 active:scale-95"
+              >
+                <Star
+                  className={`size-4 transition-colors duration-150 ${
+                    active ? 'fill-foreground text-foreground' : 'text-muted-foreground/40'
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
+        <textarea
+          rows={3}
+          placeholder="Tell us more (optional)"
+          className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
+        />
       </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.98]">Send feedback</Button>
+      </CardFooter>
     </Card>
   );
 }
 
-export function DataVisualizationCard() {
-  const [activeChart, setActiveChart] = useState<ChartType>('bar');
-  const chartData = [
-    { month: 'January', desktop: 186, mobile: 80 },
-    { month: 'February', desktop: 305, mobile: 200 },
-    { month: 'March', desktop: 237, mobile: 120 },
-    { month: 'April', desktop: 73, mobile: 190 },
-    { month: 'May', desktop: 209, mobile: 130 },
-    { month: 'June', desktop: 214, mobile: 140 },
-  ];
-  const chartConfig = {
-    desktop: {
-      label: 'Desktop',
-      color: 'hsl(var(--chart-1))',
-    },
-    mobile: {
-      label: 'Mobile',
-      color: 'hsl(var(--chart-2))',
-    },
-  };
-  type ChartType = 'bar' | 'line' | 'radar';
+/* -------------------------------------------------------------------------- */
+/*  Content & profile                                                         */
+/* -------------------------------------------------------------------------- */
 
-  const renderChart = (type: ChartType) => {
-    switch (type) {
-      case 'bar':
-        return (
-          <BarChart data={chartData}>
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dashed" />} />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-          </BarChart>
-        );
-      case 'line':
-        return (
-          <LineChart data={chartData} margin={{ left: 12, right: 12 }}>
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-            <Line
-              dataKey="desktop"
-              type="natural"
-              stroke="var(--color-desktop)"
-              strokeWidth={2}
-              dot={false}
-            />
-            <Line
-              dataKey="mobile"
-              type="natural"
-              stroke="var(--color-mobile)"
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        );
-      case 'radar':
-        return (
-          <RadarChart data={chartData}>
-            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-            <PolarAngleAxis dataKey="month" />
-            <PolarGrid />
-            <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
-            <Radar dataKey="mobile" fill="var(--color-mobile)" fillOpacity={0.6} />
-          </RadarChart>
-        );
-    }
-  };
+export function ProfileCard() {
   return (
-    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
-      <CardHeader>
-        <CardTitle className="text-base">Data Visualization</CardTitle>
-        <CardDescription>Interactive chart types</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Tabs value={activeChart} onValueChange={(value) => setActiveChart(value as ChartType)}>
-          <TabsList className="grid w-full grid-cols-3 mb-4">
-            <TabsTrigger value="bar" aria-label="Bar Chart">
-              <LucideBarChart className="h-4 w-4 mr-2" />
-              Bar
-            </TabsTrigger>
-            <TabsTrigger value="line" aria-label="Line Chart">
-              <LucideLineChart className="h-4 w-4 mr-2" />
-              Line
-            </TabsTrigger>
-            <TabsTrigger value="radar" aria-label="Radar Chart">
-              <LucidePieChart className="h-4 w-4 mr-2" />
-              Radar
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value={activeChart} className="mt-0">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-base">
-                  {activeChart.charAt(0).toUpperCase() + activeChart.slice(1)} Chart
-                </CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer config={chartConfig} className="">
-                  {renderChart(activeChart)}
-                </ChartContainer>
-              </CardContent>
-              <CardFooter className="flex-col items-start gap-2 text-sm">
-                <div className="flex gap-2 font-medium leading-none">
-                  Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-                </div>
-                <div className="leading-none text-muted-foreground">
-                  Showing total visitors for the last 6 months
-                </div>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-        </Tabs>
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-center gap-3">
+          <Avatar className="size-11">
+            <AvatarFallback className="text-xs">AL</AvatarFallback>
+          </Avatar>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-medium">Ada Lovelace</p>
+            <p className="truncate text-xs text-muted-foreground">Product engineer · London</p>
+          </div>
+        </div>
+        <div className="mt-4 flex items-center gap-4 border-t pt-3">
+          {[
+            { label: 'Projects', value: '24' },
+            { label: 'Followers', value: '1.2k' },
+            { label: 'Following', value: '318' },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="text-sm font-medium tabular-nums">{stat.value}</p>
+              <p className="text-[10px] text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" className="w-full">
-          Export Data
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+          Follow
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex-1 transition-transform active:scale-[0.98]"
+        >
+          Message
         </Button>
       </CardFooter>
     </Card>
+  );
+}
+
+export function ProductCard() {
+  return (
+    <Card className="group/product w-full overflow-hidden rounded-xl">
+      <div className="aspect-[4/3] overflow-hidden bg-muted">
+        <div className="flex size-full items-center justify-center bg-gradient-to-br from-muted to-muted-foreground/15 transition-transform duration-300 ease-out group-hover/product:scale-[1.03]">
+          <Package className="size-8 text-muted-foreground/50" strokeWidth={1.25} />
+        </div>
+      </div>
+      <CardContent className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium">Series 8 watch</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">Brushed titanium</p>
+          </div>
+          <span className="shrink-0 text-sm font-medium tabular-nums">$249</span>
+        </div>
+        <Button size="sm" className="mt-4 w-full transition-transform active:scale-[0.98]">
+          Add to cart
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function BlogPostCard() {
+  return (
+    <Card className="group/post w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span>Engineering</span>
+          <span>·</span>
+          <span className="tabular-nums">6 min read</span>
+        </div>
+        <p className="mt-2 text-sm font-medium leading-snug">
+          How we cut cold starts by 80% with edge caching
+        </p>
+        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+          A practical walkthrough of the caching layer we built and the trade-offs we accepted.
+        </p>
+        <div className="mt-3 flex items-center gap-2">
+          <Avatar className="size-5">
+            <AvatarFallback className="text-[9px]">AT</AvatarFallback>
+          </Avatar>
+          <span className="text-xs text-muted-foreground">Alan Turing · Jun 12</span>
+          <ArrowUpRight className="ml-auto size-3.5 text-muted-foreground transition-transform duration-150 group-hover/post:translate-x-0.5 group-hover/post:-translate-y-0.5" />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function TestimonialCard() {
+  return (
+    <Card className="w-full rounded-xl">
+      <CardContent className="p-5">
+        <div className="flex gap-0.5">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Star key={star} className="size-3.5 fill-foreground text-foreground" />
+          ))}
+        </div>
+        <p className="mt-3 text-sm leading-relaxed">
+          &ldquo;We replaced three internal tools with this in a single afternoon. The defaults are
+          genuinely good.&rdquo;
+        </p>
+        <div className="mt-4 flex items-center gap-2.5">
+          <Avatar className="size-8">
+            <AvatarFallback className="text-[10px]">GH</AvatarFallback>
+          </Avatar>
+          <div className="min-w-0">
+            <p className="truncate text-sm font-medium">Grace Hopper</p>
+            <p className="truncate text-xs text-muted-foreground">CTO, Compiler Inc.</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function NotificationsCard() {
+  const items = [
+    { title: 'Deploy finished', meta: 'production · 2m ago', unread: true },
+    { title: 'New comment on #412', meta: 'Alan Turing · 1h ago', unread: true },
+    { title: 'Weekly report ready', meta: 'analytics · 5h ago', unread: false },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-3">
+        <CardTitle className="text-sm font-medium">Notifications</CardTitle>
+        <Badge variant="secondary" className="text-[10px] tabular-nums">
+          2 new
+        </Badge>
+      </CardHeader>
+      <CardContent className="space-y-0.5 p-5 pt-0">
+        {items.map((item) => (
+          <div
+            key={item.title}
+            className="-mx-2 flex items-start gap-2.5 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
+          >
+            <span
+              className={`mt-1.5 size-1.5 shrink-0 rounded-full ${
+                item.unread ? 'bg-foreground' : 'bg-transparent'
+              }`}
+            />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm">{item.title}</p>
+              <p className="truncate text-xs text-muted-foreground">{item.meta}</p>
+            </div>
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter className="p-5 pt-0">
+        <Button variant="ghost" size="sm" className="w-full text-xs">
+          <Bell className="size-3.5" />
+          Mark all as read
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+export function FileUploadCard() {
+  const [dragging, setDragging] = useState(false);
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Upload files</CardTitle>
+        <CardDescription className="text-xs">PNG, JPG or PDF up to 10 MB.</CardDescription>
+      </CardHeader>
+      <CardContent className="p-5 pt-0">
+        <div
+          onDragOver={(event) => {
+            event.preventDefault();
+            setDragging(true);
+          }}
+          onDragLeave={() => setDragging(false)}
+          onDrop={(event) => {
+            event.preventDefault();
+            setDragging(false);
+          }}
+          className={`flex flex-col items-center rounded-lg border border-dashed p-6 text-center transition-colors duration-150 ${
+            dragging
+              ? 'border-foreground/40 bg-muted/50'
+              : 'hover:border-foreground/25 hover:bg-muted/30'
+          }`}
+        >
+          <Upload className="size-4 text-muted-foreground" />
+          <p className="mt-2 text-xs text-muted-foreground">
+            Drag and drop, or{' '}
+            <span className="text-foreground underline underline-offset-4">browse</span>
+          </p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function FileListCard() {
+  const files = [
+    { name: 'design-spec.pdf', size: '2.4 MB', progress: 100 },
+    { name: 'brand-assets.zip', size: '18 MB', progress: 62 },
+  ];
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="p-5 pb-4">
+        <CardTitle className="text-sm font-medium">Files</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 p-5 pt-0">
+        {files.map((file) => (
+          <div key={file.name} className="group/file space-y-1.5">
+            <div className="flex items-center gap-2.5">
+              <FileText className="size-4 shrink-0 text-muted-foreground" />
+              <span className="min-w-0 flex-1 truncate text-sm">{file.name}</span>
+              <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                {file.size}
+              </span>
+              <button
+                type="button"
+                aria-label={`Remove ${file.name}`}
+                className="-m-1 shrink-0 rounded p-1 text-muted-foreground opacity-0 transition-opacity hover:text-foreground group-hover/file:opacity-100 focus-visible:opacity-100"
+              >
+                <X className="size-3.5" />
+              </button>
+            </div>
+            {file.progress < 100 && <Progress value={file.progress} className="h-1" />}
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function AIChatCard() {
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([
+    { role: 'user', text: 'Summarise last week’s errors.' },
+    {
+      role: 'assistant',
+      text: 'Three services logged errors. Webhooks accounted for 82% of them.',
+    },
+  ]);
+
+  const send = () => {
+    const text = input.trim();
+    if (!text) return;
+    setMessages((current) => [...current, { role: 'user', text }]);
+    setInput('');
+  };
+
+  return (
+    <Card className="w-full rounded-xl">
+      <CardHeader className="flex flex-row items-center gap-2 space-y-0 p-5 pb-3">
+        <Bot className="size-4 text-muted-foreground" />
+        <CardTitle className="text-sm font-medium">Assistant</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-2 p-5 pt-0">
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed ${
+              message.role === 'user'
+                ? 'ml-auto bg-foreground text-background'
+                : 'bg-muted text-foreground'
+            }`}
+          >
+            {message.text}
+          </div>
+        ))}
+      </CardContent>
+      <CardFooter className="gap-2 p-5 pt-0">
+        <Input
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+              event.preventDefault();
+              send();
+            }
+          }}
+          placeholder="Ask anything…"
+          aria-label="Message"
+        />
+        <Button
+          size="sm"
+          onClick={send}
+          disabled={!input.trim()}
+          aria-label="Send message"
+          className="shrink-0 transition-transform active:scale-[0.98]"
+        >
+          <Send className="size-3.5" />
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Gallery                                                                   */
+/* -------------------------------------------------------------------------- */
+
+const CARD_SECTIONS: { title: string; cards: { name: string; component: () => JSX.Element }[] }[] =
+  [
+    {
+      title: 'Authentication',
+      cards: [
+        { name: 'LoginCard', component: LoginCard },
+        { name: 'SignUpCard', component: SignUpCard },
+        { name: 'ForgotPasswordCard', component: ForgotPasswordCard },
+        { name: 'TwoFactorCard', component: TwoFactorCard },
+        { name: 'MagicLinkCard', component: MagicLinkCard },
+        { name: 'SessionsCard', component: SessionsCard },
+      ],
+    },
+    {
+      title: 'Billing & commerce',
+      cards: [
+        { name: 'PricingCard', component: PricingCard },
+        { name: 'CheckoutCard', component: CheckoutCard },
+        { name: 'PaymentMethodCard', component: PaymentMethodCard },
+        { name: 'InvoiceCard', component: InvoiceCard },
+        { name: 'OrderSummaryCard', component: OrderSummaryCard },
+        { name: 'UsageQuotaCard', component: UsageQuotaCard },
+        { name: 'SubscriptionCard', component: SubscriptionCard },
+      ],
+    },
+    {
+      title: 'Data & analytics',
+      cards: [
+        { name: 'StatCard', component: StatCard },
+        { name: 'RevenueChartCard', component: RevenueChartCard },
+        { name: 'GoalProgressCard', component: GoalProgressCard },
+        { name: 'AnalyticsSummaryCard', component: AnalyticsSummaryCard },
+        { name: 'StorageUsageCard', component: StorageUsageCard },
+        { name: 'LeaderboardCard', component: LeaderboardCard },
+      ],
+    },
+    {
+      title: 'Developer tooling',
+      cards: [
+        { name: 'ApiKeyCard', component: ApiKeyCard },
+        { name: 'DeploymentCard', component: DeploymentCard },
+        { name: 'ServiceHealthCard', component: ServiceHealthCard },
+        { name: 'IntegrationCard', component: IntegrationCard },
+        { name: 'EnvVarsCard', component: EnvVarsCard },
+        { name: 'WebhookCard', component: WebhookCard },
+        { name: 'CommitCard', component: CommitCard },
+      ],
+    },
+    {
+      title: 'Work & team',
+      cards: [
+        { name: 'TaskListCard', component: TaskListCard },
+        { name: 'KanbanTaskCard', component: KanbanTaskCard },
+        { name: 'OnboardingChecklistCard', component: OnboardingChecklistCard },
+        { name: 'ActivityFeedCard', component: ActivityFeedCard },
+        { name: 'CommentCard', component: CommentCard },
+        { name: 'CalendarEventCard', component: CalendarEventCard },
+        { name: 'TeamMembersCard', component: TeamMembersCard },
+        { name: 'InviteMemberCard', component: InviteMemberCard },
+      ],
+    },
+    {
+      title: 'States & feedback',
+      cards: [
+        { name: 'EmptyStateCard', component: EmptyStateCard },
+        { name: 'ErrorStateCard', component: ErrorStateCard },
+        { name: 'SuccessCard', component: SuccessCard },
+        { name: 'LoadingSkeletonCard', component: LoadingSkeletonCard },
+        { name: 'DangerZoneCard', component: DangerZoneCard },
+        { name: 'CookieConsentCard', component: CookieConsentCard },
+        { name: 'ChangelogCard', component: ChangelogCard },
+        { name: 'FeedbackCard', component: FeedbackCard },
+      ],
+    },
+    {
+      title: 'Content & profile',
+      cards: [
+        { name: 'ProfileCard', component: ProfileCard },
+        { name: 'ProductCard', component: ProductCard },
+        { name: 'BlogPostCard', component: BlogPostCard },
+        { name: 'TestimonialCard', component: TestimonialCard },
+        { name: 'NotificationsCard', component: NotificationsCard },
+        { name: 'FileUploadCard', component: FileUploadCard },
+        { name: 'FileListCard', component: FileListCard },
+        { name: 'AIChatCard', component: AIChatCard },
+      ],
+    },
+  ];
+
+export default function CardCollection() {
+  return (
+    <div className="space-y-12">
+      {CARD_SECTIONS.map((section) => (
+        <section key={section.title}>
+          <h3 className="mb-4 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            {section.title}
+          </h3>
+          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2">
+            {section.cards.map(({ name, component: CardComponent }) => (
+              <div key={name} className="group relative">
+                <CardComponent />
+                <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-150 focus-within:opacity-100 group-hover:opacity-100">
+                  <Copy content={CARD_SOURCE[name] ?? ''} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
   );
 }

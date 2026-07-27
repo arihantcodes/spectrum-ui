@@ -1244,7 +1244,8 @@
       "Copy-paste source that remains in your repository",
       "TypeScript source included with the component",
       "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: local UI primitives"
+      "shadcn/ui dependencies: local UI primitives",
+      "Responsive Tailwind variants present in the source"
     ],
     "accessibility": [
       "The source includes ARIA attributes or roles; preserve them when customizing the component.",
