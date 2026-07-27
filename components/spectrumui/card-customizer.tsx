@@ -1,10 +1,12 @@
 'use client';
 
 import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
-import { Check, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 
 /**
- * Live theming for the card gallery.
+ * Live theming for the card gallery, styled after shadcn's theme customizer.
  *
  * Roundness drives `--radius-xl` (what `rounded-xl` resolves to) plus `--radius`
  * so the controls inside each card round in proportion. Colour overrides
@@ -24,12 +26,12 @@ type Roundness = {
 };
 
 const ROUNDNESS: Roundness[] = [
-  { id: 'none', label: 'none', card: '0px', base: '0px' },
-  { id: 'sm', label: 'sm', card: '4px', base: '2px' },
-  { id: 'md', label: 'md', card: '6px', base: '4px' },
-  { id: 'lg', label: 'lg', card: '8px', base: '6px' },
-  { id: 'xl', label: 'xl', card: '12px', base: '8px' },
-  { id: '2xl', label: '2xl', card: '16px', base: '10px' },
+  { id: 'none', label: '0', card: '0px', base: '0px' },
+  { id: 'sm', label: '0.25', card: '4px', base: '2px' },
+  { id: 'md', label: '0.375', card: '6px', base: '4px' },
+  { id: 'lg', label: '0.5', card: '8px', base: '6px' },
+  { id: 'xl', label: '0.75', card: '12px', base: '8px' },
+  { id: '2xl', label: '1.0', card: '16px', base: '10px' },
 ];
 
 type Accent = {
@@ -94,6 +96,13 @@ const ACCENTS: Accent[] = [
 const DEFAULT_ROUNDNESS = 'xl';
 const DEFAULT_ACCENT = 'neutral';
 
+const chipClass = (active: boolean) =>
+  `inline-flex h-8 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring active:scale-[0.96] ${
+    active
+      ? 'border-primary bg-accent text-accent-foreground'
+      : 'border-border text-muted-foreground hover:border-foreground/25 hover:text-foreground'
+  }`;
+
 export function CardCustomizer({ children }: { children: ReactNode }) {
   const [roundness, setRoundness] = useState(DEFAULT_ROUNDNESS);
   const [accent, setAccent] = useState(DEFAULT_ACCENT);
@@ -112,70 +121,77 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-wrap items-center gap-x-8 gap-y-4 rounded-xl border bg-muted/20 px-4 py-3">
-        <fieldset className="flex items-center gap-3">
-          <legend className="sr-only">Card roundness</legend>
-          <span className="text-xs font-medium text-muted-foreground">Radius</span>
-          <div className="flex items-center gap-1">
-            {ROUNDNESS.map((option) => {
-              const active = option.id === roundness;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => setRoundness(option.id)}
-                  aria-pressed={active}
-                  className={`h-7 min-w-9 rounded-md border px-2 font-mono text-xs transition-colors ${
-                    active
-                      ? 'border-foreground/30 bg-background text-foreground shadow-sm'
-                      : 'border-transparent text-muted-foreground hover:bg-background/70 hover:text-foreground'
-                  }`}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
+      <div className="mb-10 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div className="space-y-1.5">
+            <p className="text-base font-semibold leading-none tracking-tight">Customize</p>
+            <p className="text-sm text-muted-foreground">
+              Preview every card in your radius and accent. Copied code stays clean.
+            </p>
           </div>
-        </fieldset>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setRoundness(DEFAULT_ROUNDNESS);
+              setAccent(DEFAULT_ACCENT);
+            }}
+            disabled={isDefault}
+            className="group/reset h-8 shrink-0 gap-1.5 px-2.5 text-xs text-muted-foreground hover:text-foreground"
+          >
+            <RotateCcw className="!size-3 transition-transform duration-300 group-hover/reset:-rotate-90" />
+            Reset
+          </Button>
+        </div>
 
-        <fieldset className="flex items-center gap-3">
-          <legend className="sr-only">Accent colour</legend>
-          <span className="text-xs font-medium text-muted-foreground">Color</span>
-          <div className="flex items-center gap-1.5">
-            {ACCENTS.map((option) => {
-              const active = option.id === accent;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => setAccent(option.id)}
-                  aria-pressed={active}
-                  aria-label={option.label}
-                  title={option.label}
-                  className={`flex size-6 items-center justify-center rounded-full ring-offset-2 ring-offset-background transition-transform duration-150 hover:scale-110 active:scale-95 ${
-                    active ? 'ring-2 ring-foreground/40' : ''
-                  }`}
-                  style={{ backgroundColor: option.swatch }}
-                >
-                  {active && <Check className="size-3 text-white drop-shadow" />}
-                </button>
-              );
-            })}
+        <div className="mt-5 space-y-4">
+          <div role="radiogroup" aria-label="Card radius">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Radius</p>
+            <div className="flex flex-wrap gap-1.5">
+              {ROUNDNESS.map((option) => {
+                const active = option.id === roundness;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setRoundness(option.id)}
+                    className={`${chipClass(active)} min-w-12 justify-center font-mono`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </fieldset>
 
-        <button
-          type="button"
-          onClick={() => {
-            setRoundness(DEFAULT_ROUNDNESS);
-            setAccent(DEFAULT_ACCENT);
-          }}
-          disabled={isDefault}
-          className="group/reset ml-auto flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
-        >
-          <RotateCcw className="size-3 transition-transform duration-300 group-hover/reset:-rotate-90" />
-          Reset
-        </button>
+          <div role="radiogroup" aria-label="Accent color">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">Color</p>
+            <div className="flex flex-wrap gap-1.5">
+              {ACCENTS.map((option) => {
+                const active = option.id === accent;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setAccent(option.id)}
+                    className={chipClass(active)}
+                  >
+                    <span
+                      aria-hidden
+                      className="size-3 shrink-0 rounded-full"
+                      style={{ backgroundColor: option.swatch }}
+                    />
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div style={style}>{children}</div>

@@ -79,24 +79,18 @@ import { CardCustomizer } from './card-customizer';
 export function LoginCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Sign in</CardTitle>
-        <CardDescription className="text-xs">
-          Enter your credentials to access your account.
-        </CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Sign in</CardTitle>
+        <CardDescription>Enter your credentials to access your account.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="space-y-1.5">
-          <Label htmlFor="login-email" className="text-xs">
-            Email
-          </Label>
+          <Label htmlFor="login-email">Email</Label>
           <Input id="login-email" type="email" placeholder="you@example.com" />
         </div>
         <div className="space-y-1.5">
           <div className="flex items-center justify-between">
-            <Label htmlFor="login-password" className="text-xs">
-              Password
-            </Label>
+            <Label htmlFor="login-password">Password</Label>
             <button
               type="button"
               className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
@@ -107,8 +101,8 @@ export function LoginCard() {
           <Input id="login-password" type="password" placeholder="••••••••" />
         </div>
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Sign in</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Sign in</Button>
       </CardFooter>
     </Card>
   );
@@ -117,29 +111,25 @@ export function LoginCard() {
 export function SignUpCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Create an account</CardTitle>
-        <CardDescription className="text-xs">Start your 14-day free trial.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Create an account</CardTitle>
+        <CardDescription>Start your 14-day free trial.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="space-y-1.5">
-          <Label htmlFor="signup-name" className="text-xs">
-            Full name
-          </Label>
+          <Label htmlFor="signup-name">Full name</Label>
           <Input id="signup-name" placeholder="Ada Lovelace" />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="signup-email" className="text-xs">
-            Work email
-          </Label>
+          <Label htmlFor="signup-email">Work email</Label>
           <Input id="signup-email" type="email" placeholder="you@company.com" />
         </div>
         <p className="text-xs leading-relaxed text-muted-foreground">
           By continuing you agree to our Terms and Privacy Policy.
         </p>
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Create account</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Create account</Button>
       </CardFooter>
     </Card>
   );
@@ -148,28 +138,24 @@ export function SignUpCard() {
 export function ForgotPasswordCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
+      <CardHeader className="p-6 pb-4">
         <div className="mb-2 flex size-9 items-center justify-center rounded-lg border bg-muted/40">
           <KeyRound className="size-4 text-muted-foreground" />
         </div>
-        <CardTitle className="text-sm font-medium">Reset your password</CardTitle>
-        <CardDescription className="text-xs">
-          We&apos;ll email you a link to choose a new one.
-        </CardDescription>
+        <CardTitle className="text-base">Reset your password</CardTitle>
+        <CardDescription>We&apos;ll email you a link to choose a new one.</CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="space-y-1.5">
-          <Label htmlFor="reset-email" className="text-xs">
-            Email
-          </Label>
+          <Label htmlFor="reset-email">Email</Label>
           <Input id="reset-email" type="email" placeholder="you@example.com" />
         </div>
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
-        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.98]">
+      <CardFooter className="gap-2 p-6 pt-0">
+        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.96]">
           Back
         </Button>
-        <Button className="flex-1 transition-transform active:scale-[0.98]">Send link</Button>
+        <Button className="flex-1 transition-transform active:scale-[0.96]">Send link</Button>
       </CardFooter>
     </Card>
   );
@@ -189,13 +175,11 @@ export function TwoFactorCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Two-factor authentication</CardTitle>
-        <CardDescription className="text-xs">
-          Enter the 6-digit code from your authenticator app.
-        </CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Two-factor authentication</CardTitle>
+        <CardDescription>Enter the 6-digit code from your authenticator app.</CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="flex gap-1.5">
           {code.map((digit, index) => (
             <input
@@ -212,13 +196,13 @@ export function TwoFactorCard() {
               }}
               inputMode="numeric"
               aria-label={`Digit ${index + 1}`}
-              className="h-11 w-full rounded-md border bg-background text-center text-sm font-medium tabular-nums outline-none transition-colors focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
+              className="h-11 w-full rounded-md border bg-background text-center text-base font-medium tabular-nums outline-none transition-colors focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
             />
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex-col gap-2 p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Verify</Button>
+      <CardFooter className="flex-col gap-2 p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Verify</Button>
         <button
           type="button"
           className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
@@ -233,19 +217,19 @@ export function TwoFactorCard() {
 export function MagicLinkCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="flex flex-col items-center p-5 text-center">
+      <CardContent className="flex flex-col items-center p-6 text-center">
         <div className="mb-3 flex size-10 items-center justify-center rounded-full border bg-muted/40">
           <Mail className="size-4 text-muted-foreground" />
         </div>
-        <p className="text-sm font-medium">Check your inbox</p>
-        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+        <p className="text-base font-medium">Check your inbox</p>
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
           We sent a sign-in link to <span className="text-foreground">ada@example.com</span>. It
           expires in 10 minutes.
         </p>
         <Button
           variant="outline"
           size="sm"
-          className="mt-4 w-full transition-transform active:scale-[0.98]"
+          className="mt-4 w-full transition-transform active:scale-[0.96]"
         >
           <RefreshCw className="size-3.5" />
           Resend email
@@ -263,11 +247,11 @@ export function SessionsCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Active sessions</CardTitle>
-        <CardDescription className="text-xs">Devices signed in to your account.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Active sessions</CardTitle>
+        <CardDescription>Devices signed in to your account.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {sessions.map((session) => (
           <div
             key={session.device}
@@ -279,9 +263,7 @@ export function SessionsCard() {
               <p className="truncate text-xs text-muted-foreground">{session.meta}</p>
             </div>
             {session.current ? (
-              <Badge variant="secondary" className="text-[10px]">
-                Active
-              </Badge>
+              <Badge variant="secondary">Active</Badge>
             ) : (
               <Button variant="ghost" size="sm" className="h-7 text-xs">
                 Revoke
@@ -303,19 +285,17 @@ export function PricingCard() {
 
   return (
     <Card className="w-full rounded-xl border-foreground/20">
-      <CardHeader className="p-5 pb-4">
+      <CardHeader className="p-6 pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-sm font-medium">Pro</CardTitle>
-          <Badge variant="secondary" className="text-[10px]">
-            Popular
-          </Badge>
+          <CardTitle className="text-base">Pro</CardTitle>
+          <Badge variant="secondary">Popular</Badge>
         </div>
         <div className="flex items-baseline gap-1 pt-1">
           <span className="text-3xl font-semibold tracking-tight tabular-nums">$29</span>
           <span className="text-xs text-muted-foreground">/month</span>
         </div>
       </CardHeader>
-      <CardContent className="space-y-2 p-5 pt-0">
+      <CardContent className="space-y-2 p-6 pt-0">
         {features.map((feature) => (
           <div key={feature} className="flex items-center gap-2 text-sm">
             <Check className="size-3.5 shrink-0 text-primary" />
@@ -323,8 +303,8 @@ export function PricingCard() {
           </div>
         ))}
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Upgrade to Pro</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Upgrade to Pro</Button>
       </CardFooter>
     </Card>
   );
@@ -333,15 +313,13 @@ export function PricingCard() {
 export function CheckoutCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Payment details</CardTitle>
-        <CardDescription className="text-xs">Your card is encrypted end to end.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Payment details</CardTitle>
+        <CardDescription>Your card is encrypted end to end.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="space-y-1.5">
-          <Label htmlFor="checkout-number" className="text-xs">
-            Card number
-          </Label>
+          <Label htmlFor="checkout-number">Card number</Label>
           <div className="relative">
             <Input id="checkout-number" placeholder="4242 4242 4242 4242" className="pr-9" />
             <CreditCard className="absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -349,21 +327,17 @@ export function CheckoutCard() {
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Label htmlFor="checkout-expiry" className="text-xs">
-              Expires
-            </Label>
+            <Label htmlFor="checkout-expiry">Expires</Label>
             <Input id="checkout-expiry" placeholder="MM / YY" />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="checkout-cvc" className="text-xs">
-              CVC
-            </Label>
+            <Label htmlFor="checkout-cvc">CVC</Label>
             <Input id="checkout-cvc" placeholder="123" />
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Pay $29.00</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Pay $29.00</Button>
       </CardFooter>
     </Card>
   );
@@ -378,11 +352,11 @@ export function PaymentMethodCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Payment method</CardTitle>
-        <CardDescription className="text-xs">Choose a default card.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Payment method</CardTitle>
+        <CardDescription>Choose a default card.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-2 p-5 pt-0">
+      <CardContent className="space-y-2 p-6 pt-0">
         {methods.map((method) => (
           <button
             key={method.id}
@@ -425,11 +399,11 @@ export function InvoiceCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Invoices</CardTitle>
-        <CardDescription className="text-xs">Your recent billing history.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Invoices</CardTitle>
+        <CardDescription>Your recent billing history.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {invoices.map((invoice) => (
           <div
             key={invoice.id}
@@ -457,10 +431,10 @@ export function OrderSummaryCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Order summary</CardTitle>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Order summary</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2 p-5 pt-0">
+      <CardContent className="space-y-2 p-6 pt-0">
         {items.map((item) => (
           <div key={item.name} className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">{item.name}</span>
@@ -476,8 +450,8 @@ export function OrderSummaryCard() {
           <span className="text-lg font-semibold tracking-tight tabular-nums">$371.52</span>
         </div>
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Place order</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Place order</Button>
       </CardFooter>
     </Card>
   );
@@ -491,11 +465,11 @@ export function UsageQuotaCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Usage this month</CardTitle>
-        <CardDescription className="text-xs">Resets on Jul 1.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Usage this month</CardTitle>
+        <CardDescription>Resets on Jul 1.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4 p-5 pt-0">
+      <CardContent className="space-y-4 p-6 pt-0">
         {quotas.map((quota) => (
           <div key={quota.label} className="space-y-2">
             <div className="flex items-center justify-between text-sm">
@@ -515,28 +489,26 @@ export function UsageQuotaCard() {
 export function SubscriptionCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
+      <CardHeader className="p-6 pb-4">
         <div className="flex items-start justify-between">
           <div>
-            <CardTitle className="text-sm font-medium">Current plan</CardTitle>
-            <CardDescription className="text-xs">Renews Jul 1, 2024</CardDescription>
+            <CardTitle className="text-base">Current plan</CardTitle>
+            <CardDescription>Renews Jul 1, 2024</CardDescription>
           </div>
-          <Badge variant="secondary" className="text-[10px]">
-            Pro
-          </Badge>
+          <Badge variant="secondary">Pro</Badge>
         </div>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="flex items-baseline gap-1">
           <span className="text-2xl font-semibold tracking-tight tabular-nums">$29</span>
           <span className="text-xs text-muted-foreground">billed monthly</span>
         </div>
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
-        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.98]">
+      <CardFooter className="gap-2 p-6 pt-0">
+        <Button variant="outline" className="flex-1 transition-transform active:scale-[0.96]">
           Cancel
         </Button>
-        <Button className="flex-1 transition-transform active:scale-[0.98]">Change plan</Button>
+        <Button className="flex-1 transition-transform active:scale-[0.96]">Change plan</Button>
       </CardFooter>
     </Card>
   );
@@ -555,11 +527,11 @@ export function StatCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-2">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-2">
         <CardTitle className="text-sm font-medium">Monthly revenue</CardTitle>
         <TrendingUp className="size-4 text-muted-foreground" />
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="text-2xl font-semibold tracking-tight tabular-nums">$45,231</div>
         <p className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
           <span className="tabular-nums text-foreground">+12.5%</span> from last month
@@ -587,11 +559,11 @@ export function RevenueChartCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Weekly activity</CardTitle>
-        <CardDescription className="text-xs">Sessions per day</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Weekly activity</CardTitle>
+        <CardDescription>Sessions per day</CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="flex h-24 items-stretch gap-1.5">
           {bars.map((value, index) => (
             <div key={index} className="group/bar flex h-full flex-1 flex-col justify-end gap-1.5">
@@ -599,7 +571,7 @@ export function RevenueChartCard() {
                 style={{ height: `${value}%` }}
                 className="w-full rounded-sm bg-primary/20 transition-colors duration-150 group-hover/bar:bg-primary/60"
               />
-              <span className="text-center text-[10px] text-muted-foreground">{days[index]}</span>
+              <span className="text-center text-xs text-muted-foreground">{days[index]}</span>
             </div>
           ))}
         </div>
@@ -614,11 +586,11 @@ export function GoalProgressCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Quarterly goal</CardTitle>
-        <CardDescription className="text-xs">$68k of $100k closed</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Quarterly goal</CardTitle>
+        <CardDescription>$68k of $100k closed</CardDescription>
       </CardHeader>
-      <CardContent className="flex items-center justify-center p-5 pt-0">
+      <CardContent className="flex items-center justify-center p-6 pt-0">
         <div className="relative size-24">
           <svg viewBox="0 0 80 80" className="size-full -rotate-90">
             <circle cx="40" cy="40" r="34" fill="none" strokeWidth="6" className="stroke-muted" />
@@ -652,11 +624,11 @@ export function AnalyticsSummaryCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Overview</CardTitle>
-        <CardDescription className="text-xs">Last 30 days</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Overview</CardTitle>
+        <CardDescription>Last 30 days</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         {metrics.map((metric) => (
           <div key={metric.label} className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">{metric.label}</span>
@@ -687,11 +659,11 @@ export function StorageUsageCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-4">
         <CardTitle className="text-sm font-medium">Storage</CardTitle>
         <HardDrive className="size-4 text-muted-foreground" />
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="flex items-baseline gap-1">
           <span className="text-2xl font-semibold tracking-tight tabular-nums">82</span>
           <span className="text-xs text-muted-foreground">of 100 GB used</span>
@@ -729,11 +701,11 @@ export function LeaderboardCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Top performers</CardTitle>
-        <CardDescription className="text-xs">This quarter</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Top performers</CardTitle>
+        <CardDescription>This quarter</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {people.map((person, index) => (
           <div
             key={person.name}
@@ -769,11 +741,11 @@ export function ApiKeyCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">API key</CardTitle>
-        <CardDescription className="text-xs">Keep this secret. Rotate if leaked.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">API key</CardTitle>
+        <CardDescription>Keep this secret. Rotate if leaked.</CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="flex items-center gap-2 rounded-lg border bg-muted/30 p-2">
           <code className="min-w-0 flex-1 truncate font-mono text-xs">
             {revealed ? key : '•'.repeat(key.length)}
@@ -805,9 +777,9 @@ export function ApiKeyCard() {
 export function DeploymentCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-4">
         <CardTitle className="text-sm font-medium">Production</CardTitle>
-        <Badge variant="secondary" className="gap-1.5 text-[10px]">
+        <Badge variant="secondary" className="gap-1.5">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex size-full rounded-full bg-primary/50 motion-safe:animate-ping" />
             <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
@@ -815,7 +787,7 @@ export function DeploymentCard() {
           Live
         </Badge>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="flex items-center gap-2 text-sm">
           <GitBranch className="size-3.5 shrink-0 text-muted-foreground" />
           <span className="font-mono text-xs">main</span>
@@ -827,16 +799,16 @@ export function DeploymentCard() {
           <span className="tabular-nums">42s</span>
         </div>
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
+      <CardFooter className="gap-2 p-6 pt-0">
         <Button
           variant="outline"
           size="sm"
-          className="flex-1 transition-transform active:scale-[0.98]"
+          className="flex-1 transition-transform active:scale-[0.96]"
         >
           <Rocket className="size-3.5" />
           Redeploy
         </Button>
-        <Button variant="ghost" size="sm" className="transition-transform active:scale-[0.98]">
+        <Button variant="ghost" size="sm" className="transition-transform active:scale-[0.96]">
           Logs
         </Button>
       </CardFooter>
@@ -853,11 +825,11 @@ export function ServiceHealthCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-4">
         <CardTitle className="text-sm font-medium">System status</CardTitle>
         <Activity className="size-4 text-muted-foreground" />
       </CardHeader>
-      <CardContent className="space-y-2.5 p-5 pt-0">
+      <CardContent className="space-y-2.5 p-6 pt-0">
         {services.map((service) => (
           <div key={service.name} className="flex items-center gap-2.5">
             <span
@@ -879,20 +851,20 @@ export function IntegrationCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="flex items-start gap-3 p-5">
+      <CardContent className="flex items-start gap-3 p-6">
         <div className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted/40">
           <Link2 className="size-4 text-muted-foreground" />
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium">Slack</p>
-          <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
             Send deploy and alert notifications to your channels.
           </p>
           <Button
             variant={connected ? 'outline' : 'default'}
             size="sm"
             onClick={() => setConnected((value) => !value)}
-            className="mt-3 transition-transform active:scale-[0.98]"
+            className="mt-3 transition-transform active:scale-[0.96]"
           >
             {connected ? 'Disconnect' : 'Connect'}
           </Button>
@@ -911,27 +883,27 @@ export function EnvVarsCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Environment variables</CardTitle>
-        <CardDescription className="text-xs">Encrypted at rest.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Environment variables</CardTitle>
+        <CardDescription>Encrypted at rest.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {vars.map((item) => (
           <div
             key={item.key}
             className="group/env -mx-2 flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/50"
           >
             <code className="min-w-0 flex-1 truncate font-mono text-xs">{item.key}</code>
-            <span className="shrink-0 text-[10px] text-muted-foreground">{item.scope}</span>
+            <span className="shrink-0 text-xs text-muted-foreground">{item.scope}</span>
             <MoreHorizontal className="size-3.5 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/env:opacity-100" />
           </div>
         ))}
       </CardContent>
-      <CardFooter className="p-5 pt-0">
+      <CardFooter className="p-6 pt-0">
         <Button
           variant="outline"
           size="sm"
-          className="w-full transition-transform active:scale-[0.98]"
+          className="w-full transition-transform active:scale-[0.96]"
         >
           <Plus className="size-3.5" />
           Add variable
@@ -946,7 +918,7 @@ export function WebhookCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
+      <CardHeader className="p-6 pb-4">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <CardTitle className="text-sm font-medium">Webhook endpoint</CardTitle>
@@ -957,7 +929,7 @@ export function WebhookCard() {
           <Switch checked={enabled} onCheckedChange={setEnabled} aria-label="Enable webhook" />
         </div>
       </CardHeader>
-      <CardContent className="flex items-center justify-between p-5 pt-0 text-xs">
+      <CardContent className="flex items-center justify-between p-6 pt-0 text-xs">
         <span className="text-muted-foreground">Last delivery</span>
         <span className="flex items-center gap-1.5">
           <Check className="size-3" />
@@ -971,15 +943,17 @@ export function WebhookCard() {
 export function CommitCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-center gap-2">
           <GitCommit className="size-4 shrink-0 text-muted-foreground" />
           <code className="font-mono text-xs text-muted-foreground">a3f9c21</code>
-          <Badge variant="secondary" className="ml-auto text-[10px]">
+          <Badge variant="secondary" className="ml-auto">
             main
           </Badge>
         </div>
-        <p className="mt-2.5 text-sm leading-snug">fix: prevent duplicate webhook retries</p>
+        <p className="mt-2.5 text-sm font-medium leading-snug">
+          fix: prevent duplicate webhook retries
+        </p>
         <div className="mt-3 flex items-center gap-2">
           <Avatar className="size-5">
             <AvatarFallback className="text-[9px]">AL</AvatarFallback>
@@ -1005,13 +979,13 @@ export function TaskListCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Today</CardTitle>
-        <CardDescription className="text-xs tabular-nums">
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Today</CardTitle>
+        <CardDescription className="tabular-nums">
           {done.length} of {tasks.length} complete
         </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {tasks.map((task) => {
           const checked = done.includes(task);
           return (
@@ -1047,12 +1021,12 @@ export function KanbanTaskCard() {
     <Card className="w-full cursor-grab rounded-xl transition-shadow duration-200 hover:shadow-md active:cursor-grabbing">
       <CardContent className="p-4">
         <div className="flex items-start justify-between gap-2">
-          <Badge variant="secondary" className="text-[10px]">
-            Design
-          </Badge>
+          <Badge variant="secondary">Design</Badge>
           <MoreHorizontal className="size-3.5 text-muted-foreground" />
         </div>
-        <p className="mt-2.5 text-sm leading-snug">Redesign the onboarding empty states</p>
+        <p className="mt-2.5 text-sm font-medium leading-snug">
+          Redesign the onboarding empty states
+        </p>
         <div className="mt-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
@@ -1084,11 +1058,11 @@ export function OnboardingChecklistCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Get started</CardTitle>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Get started</CardTitle>
         <Progress value={(complete / steps.length) * 100} className="mt-2 h-1.5" />
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {steps.map((step) => (
           <div
             key={step.label}
@@ -1121,10 +1095,10 @@ export function ActivityFeedCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Activity</CardTitle>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Activity</CardTitle>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div className="space-y-3">
           {events.map((event, index) => (
             <div key={index} className="flex gap-3">
@@ -1151,7 +1125,7 @@ export function ActivityFeedCard() {
 export function CommentCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-center gap-2.5">
           <Avatar className="size-7">
             <AvatarFallback className="text-[10px]">AT</AvatarFallback>
@@ -1182,7 +1156,7 @@ export function CommentCard() {
 export function CalendarEventCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="flex gap-4 p-5">
+      <CardContent className="flex gap-4 p-6">
         <div className="flex size-12 shrink-0 flex-col items-center justify-center rounded-lg border bg-muted/40">
           <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Jun</span>
           <span className="text-base font-semibold leading-none tabular-nums">18</span>
@@ -1199,15 +1173,15 @@ export function CalendarEventCard() {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
+      <CardFooter className="gap-2 p-6 pt-0">
         <Button
           variant="outline"
           size="sm"
-          className="flex-1 transition-transform active:scale-[0.98]"
+          className="flex-1 transition-transform active:scale-[0.96]"
         >
           Decline
         </Button>
-        <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+        <Button size="sm" className="flex-1 transition-transform active:scale-[0.96]">
           Join
         </Button>
       </CardFooter>
@@ -1224,11 +1198,11 @@ export function TeamMembersCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-4">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-4">
         <CardTitle className="text-sm font-medium">Members</CardTitle>
         <Users className="size-4 text-muted-foreground" />
       </CardHeader>
-      <CardContent className="space-y-1 p-5 pt-0">
+      <CardContent className="space-y-1 p-6 pt-0">
         {members.map((member) => (
           <div
             key={member.name}
@@ -1249,13 +1223,13 @@ export function TeamMembersCard() {
 export function InviteMemberCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Invite teammates</CardTitle>
-        <CardDescription className="text-xs">They&apos;ll get an email invitation.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Invite teammates</CardTitle>
+        <CardDescription>They&apos;ll get an email invitation.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="flex gap-2">
-          <Input placeholder="teammate@company.com" aria-label="Email address" />
+          <Input placeholder="ada@acme.com" aria-label="Email address" />
           <Select defaultValue="member">
             <SelectTrigger className="w-28 shrink-0" aria-label="Role">
               <SelectValue />
@@ -1267,8 +1241,8 @@ export function InviteMemberCard() {
           </Select>
         </div>
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">
           <UserPlus className="size-3.5" />
           Send invite
         </Button>
@@ -1288,11 +1262,11 @@ export function EmptyStateCard() {
         <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
           <Inbox className="size-4 text-muted-foreground" />
         </div>
-        <p className="mt-3 text-sm font-medium">No projects yet</p>
-        <p className="mt-1 max-w-[24ch] text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-base font-medium">No projects yet</p>
+        <p className="mt-1 max-w-[26ch] text-sm leading-relaxed text-muted-foreground">
           Create your first project to start shipping.
         </p>
-        <Button size="sm" className="mt-4 transition-transform active:scale-[0.98]">
+        <Button size="sm" className="mt-4 transition-transform active:scale-[0.96]">
           <Plus className="size-3.5" />
           New project
         </Button>
@@ -1308,14 +1282,14 @@ export function ErrorStateCard() {
         <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
           <AlertTriangle className="size-4 text-muted-foreground" />
         </div>
-        <p className="mt-3 text-sm font-medium">Couldn&apos;t load your data</p>
-        <p className="mt-1 max-w-[26ch] text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-base font-medium">Couldn&apos;t load your data</p>
+        <p className="mt-1 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
           The request timed out after 30 seconds.
         </p>
         <Button
           variant="outline"
           size="sm"
-          className="group/retry mt-4 transition-transform active:scale-[0.98]"
+          className="group/retry mt-4 transition-transform active:scale-[0.96]"
         >
           <RefreshCw className="size-3.5 transition-transform duration-300 group-hover/retry:rotate-90" />
           Try again
@@ -1332,14 +1306,14 @@ export function SuccessCard() {
         <div className="flex size-10 items-center justify-center rounded-full border bg-muted/40">
           <Check className="size-4" />
         </div>
-        <p className="mt-3 text-sm font-medium">Payment successful</p>
-        <p className="mt-1 max-w-[26ch] text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-3 text-base font-medium">Payment successful</p>
+        <p className="mt-1 max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
           We emailed a receipt to ada@example.com.
         </p>
         <Button
           variant="outline"
           size="sm"
-          className="mt-4 transition-transform active:scale-[0.98]"
+          className="mt-4 transition-transform active:scale-[0.96]"
         >
           View receipt
         </Button>
@@ -1351,7 +1325,7 @@ export function SuccessCard() {
 export function LoadingSkeletonCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="space-y-3 p-5">
+      <CardContent className="space-y-3 p-6">
         <div className="flex items-center gap-3">
           <div className="size-9 shrink-0 rounded-full bg-muted motion-safe:animate-pulse" />
           <div className="flex-1 space-y-2">
@@ -1374,14 +1348,14 @@ export function DangerZoneCard() {
 
   return (
     <Card className="w-full rounded-xl border-destructive/30">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Delete project</CardTitle>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Delete project</CardTitle>
         <CardDescription className="text-xs leading-relaxed">
           This permanently removes the project and all of its data.
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
-        <Label htmlFor="danger-confirm" className="text-xs">
+      <CardContent className="p-6 pt-0">
+        <Label htmlFor="danger-confirm">
           Type <span className="font-mono text-foreground">acme-api</span> to confirm
         </Label>
         <Input
@@ -1392,11 +1366,11 @@ export function DangerZoneCard() {
           placeholder="acme-api"
         />
       </CardContent>
-      <CardFooter className="p-5 pt-0">
+      <CardFooter className="p-6 pt-0">
         <Button
           variant="destructive"
           disabled={confirm !== 'acme-api'}
-          className="w-full transition-transform active:scale-[0.98]"
+          className="w-full transition-transform active:scale-[0.96]"
         >
           <Trash2 className="size-3.5" />
           Delete permanently
@@ -1409,12 +1383,12 @@ export function DangerZoneCard() {
 export function CookieConsentCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-start gap-3">
           <Cookie className="size-4 shrink-0 text-muted-foreground" />
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium">We use cookies</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
               Analytics cookies help us understand how the product is used.
             </p>
           </div>
@@ -1423,11 +1397,11 @@ export function CookieConsentCard() {
           <Button
             variant="outline"
             size="sm"
-            className="flex-1 transition-transform active:scale-[0.98]"
+            className="flex-1 transition-transform active:scale-[0.96]"
           >
             Reject
           </Button>
-          <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+          <Button size="sm" className="flex-1 transition-transform active:scale-[0.96]">
             Accept all
           </Button>
         </div>
@@ -1452,9 +1426,9 @@ export function ChangelogCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-start justify-between gap-3">
-          <Badge variant="secondary" className="gap-1 text-[10px]">
+          <Badge variant="secondary" className="gap-1">
             <Sparkles className="size-2.5" />
             New
           </Badge>
@@ -1468,7 +1442,7 @@ export function ChangelogCard() {
           </button>
         </div>
         <p className="mt-2.5 text-sm font-medium">Instant rollbacks</p>
-        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
           Revert any deployment to a previous build in one click.
         </p>
         <button
@@ -1489,11 +1463,11 @@ export function FeedbackCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">How did we do?</CardTitle>
-        <CardDescription className="text-xs">Your feedback shapes the roadmap.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">How did we do?</CardTitle>
+        <CardDescription>Your feedback shapes the roadmap.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         <div className="flex gap-1" onMouseLeave={() => setHovered(0)}>
           {[1, 2, 3, 4, 5].map((star) => {
             const active = (hovered || rating) >= star;
@@ -1521,8 +1495,8 @@ export function FeedbackCard() {
           className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground/30 focus:ring-2 focus:ring-ring/20"
         />
       </CardContent>
-      <CardFooter className="p-5 pt-0">
-        <Button className="w-full transition-transform active:scale-[0.98]">Send feedback</Button>
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full transition-transform active:scale-[0.96]">Send feedback</Button>
       </CardFooter>
     </Card>
   );
@@ -1535,7 +1509,7 @@ export function FeedbackCard() {
 export function ProfileCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-center gap-3">
           <Avatar className="size-11">
             <AvatarFallback className="text-xs">AL</AvatarFallback>
@@ -1553,19 +1527,19 @@ export function ProfileCard() {
           ].map((stat) => (
             <div key={stat.label}>
               <p className="text-sm font-medium tabular-nums">{stat.value}</p>
-              <p className="text-[10px] text-muted-foreground">{stat.label}</p>
+              <p className="text-xs text-muted-foreground">{stat.label}</p>
             </div>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
-        <Button size="sm" className="flex-1 transition-transform active:scale-[0.98]">
+      <CardFooter className="gap-2 p-6 pt-0">
+        <Button size="sm" className="flex-1 transition-transform active:scale-[0.96]">
           Follow
         </Button>
         <Button
           variant="outline"
           size="sm"
-          className="flex-1 transition-transform active:scale-[0.98]"
+          className="flex-1 transition-transform active:scale-[0.96]"
         >
           Message
         </Button>
@@ -1582,7 +1556,7 @@ export function ProductCard() {
           <Package className="size-8 text-muted-foreground/50" strokeWidth={1.25} />
         </div>
       </div>
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <p className="truncate text-sm font-medium">Series 8 watch</p>
@@ -1590,7 +1564,7 @@ export function ProductCard() {
           </div>
           <span className="shrink-0 text-sm font-medium tabular-nums">$249</span>
         </div>
-        <Button size="sm" className="mt-4 w-full transition-transform active:scale-[0.98]">
+        <Button size="sm" className="mt-4 w-full transition-transform active:scale-[0.96]">
           Add to cart
         </Button>
       </CardContent>
@@ -1601,16 +1575,16 @@ export function ProductCard() {
 export function BlogPostCard() {
   return (
     <Card className="group/post w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span>Engineering</span>
           <span>·</span>
           <span className="tabular-nums">6 min read</span>
         </div>
-        <p className="mt-2 text-sm font-medium leading-snug">
+        <p className="mt-2 text-base font-semibold leading-snug tracking-tight">
           How we cut cold starts by 80% with edge caching
         </p>
-        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
           A practical walkthrough of the caching layer we built and the trade-offs we accepted.
         </p>
         <div className="mt-3 flex items-center gap-2">
@@ -1628,7 +1602,7 @@ export function BlogPostCard() {
 export function TestimonialCard() {
   return (
     <Card className="w-full rounded-xl">
-      <CardContent className="p-5">
+      <CardContent className="p-6">
         <div className="flex gap-0.5">
           {[1, 2, 3, 4, 5].map((star) => (
             <Star key={star} className="size-3.5 fill-primary text-primary" />
@@ -1661,13 +1635,13 @@ export function NotificationsCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5 pb-3">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 p-6 pb-3">
         <CardTitle className="text-sm font-medium">Notifications</CardTitle>
-        <Badge variant="secondary" className="text-[10px] tabular-nums">
+        <Badge variant="secondary" className="tabular-nums">
           2 new
         </Badge>
       </CardHeader>
-      <CardContent className="space-y-0.5 p-5 pt-0">
+      <CardContent className="space-y-0.5 p-6 pt-0">
         {items.map((item) => (
           <div
             key={item.title}
@@ -1685,7 +1659,7 @@ export function NotificationsCard() {
           </div>
         ))}
       </CardContent>
-      <CardFooter className="p-5 pt-0">
+      <CardFooter className="p-6 pt-0">
         <Button variant="ghost" size="sm" className="w-full text-xs">
           <Bell className="size-3.5" />
           Mark all as read
@@ -1700,11 +1674,11 @@ export function FileUploadCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Upload files</CardTitle>
-        <CardDescription className="text-xs">PNG, JPG or PDF up to 10 MB.</CardDescription>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Upload files</CardTitle>
+        <CardDescription>PNG, JPG or PDF up to 10 MB.</CardDescription>
       </CardHeader>
-      <CardContent className="p-5 pt-0">
+      <CardContent className="p-6 pt-0">
         <div
           onDragOver={(event) => {
             event.preventDefault();
@@ -1740,10 +1714,10 @@ export function FileListCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="p-5 pb-4">
-        <CardTitle className="text-sm font-medium">Files</CardTitle>
+      <CardHeader className="p-6 pb-4">
+        <CardTitle className="text-base">Files</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 p-5 pt-0">
+      <CardContent className="space-y-3 p-6 pt-0">
         {files.map((file) => (
           <div key={file.name} className="group/file space-y-1.5">
             <div className="flex items-center gap-2.5">
@@ -1787,15 +1761,15 @@ export function AIChatCard() {
 
   return (
     <Card className="w-full rounded-xl">
-      <CardHeader className="flex flex-row items-center gap-2 space-y-0 p-5 pb-3">
+      <CardHeader className="flex flex-row items-center gap-2 space-y-0 p-6 pb-3">
         <Bot className="size-4 text-muted-foreground" />
         <CardTitle className="text-sm font-medium">Assistant</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2 p-5 pt-0">
+      <CardContent className="space-y-2 p-6 pt-0">
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed ${
+            className={`max-w-[85%] rounded-lg px-3 py-2 text-sm leading-relaxed ${
               message.role === 'user'
                 ? 'ml-auto bg-primary text-primary-foreground'
                 : 'bg-muted text-foreground'
@@ -1805,7 +1779,7 @@ export function AIChatCard() {
           </div>
         ))}
       </CardContent>
-      <CardFooter className="gap-2 p-5 pt-0">
+      <CardFooter className="gap-2 p-6 pt-0">
         <Input
           value={input}
           onChange={(event) => setInput(event.target.value)}
@@ -1823,7 +1797,7 @@ export function AIChatCard() {
           onClick={send}
           disabled={!input.trim()}
           aria-label="Send message"
-          className="shrink-0 transition-transform active:scale-[0.98]"
+          className="shrink-0 transition-transform active:scale-[0.96]"
         >
           <Send className="size-3.5" />
         </Button>
@@ -1940,7 +1914,7 @@ export default function CardCollection() {
                 {section.cards.length}
               </span>
             </div>
-            <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-2">
               {section.cards.map(({ name, component: CardComponent }) => (
                 <div
                   key={name}
