@@ -66,9 +66,9 @@ export default function CardCollection() {
       code: `
   function LoginCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle className="text-base">Login</CardTitle>
           <CardDescription>
             Enter your credentials to access your account.
           </CardDescription>
@@ -105,9 +105,9 @@ export default function CardCollection() {
       code: `
   function SignUpCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Sign Up</CardTitle>
+          <CardTitle className="text-base">Sign Up</CardTitle>
           <CardDescription>Create a new account to get started.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -149,9 +149,9 @@ export default function CardCollection() {
       code: `
   function PaymentCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Payment Details</CardTitle>
+          <CardTitle className="text-base">Payment Details</CardTitle>
           <CardDescription>
             Enter your payment information to complete the purchase.
           </CardDescription>
@@ -209,18 +209,18 @@ export default function CardCollection() {
     }
   
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>AI Assistant</CardTitle>
+          <CardTitle className="text-base">AI Assistant</CardTitle>
           <CardDescription>Ask me anything about your data</CardDescription>
         </CardHeader>
         <CardContent className="h-[300px] overflow-y-auto">
           {conversation.map((msg, index) => (
             <div
               key={index}
-              className={\`mb-2 \${
+              className={\`mb-2 text-sm \${
               msg.role === "ai"
-                ? "text-blue-600 text-left"
+                ? "text-muted-foreground text-left"
                 : "text-right"
               }\`}
             >
@@ -251,9 +251,9 @@ export default function CardCollection() {
     const [activeTab, setActiveTab] = useState("account")
   
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Settings</CardTitle>
+          <CardTitle className="text-base">Settings</CardTitle>
           <CardDescription>
             Manage your account settings and preferences.
           </CardDescription>
@@ -266,7 +266,7 @@ export default function CardCollection() {
             </TabsList>
             <TabsContent value="account">
               <div className="space-y-4 py-2 ">
-                <div className="space-y-2 mt-5">
+                <div className="space-y-2">
                   <Label htmlFor="username">Username</Label>
                   <Input id="username" placeholder="Enter username" />
                 </div>
@@ -390,9 +390,9 @@ export default function CardCollection() {
     }
   
     return (
-      <Card className="w-full max-w-3xl mx-auto">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Data Visualization</CardTitle>
+          <CardTitle className="text-base">Data Visualization</CardTitle>
           <CardDescription>Interactive chart types</CardDescription>
         </CardHeader>
         <CardContent >
@@ -414,7 +414,7 @@ export default function CardCollection() {
             <TabsContent value={activeChart} className="mt-0">
               <Card >
                 <CardHeader>
-                  <CardTitle>{activeChart.charAt(0).toUpperCase() + activeChart.slice(1)} Chart</CardTitle>
+                  <CardTitle className="text-base">{activeChart.charAt(0).toUpperCase() + activeChart.slice(1)} Chart</CardTitle>
                   <CardDescription>January - June 2024</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -449,9 +449,9 @@ export default function CardCollection() {
       code: `
   function MetricsCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Metrics Overview</CardTitle>
+          <CardTitle className="text-base">Metrics Overview</CardTitle>
           <CardDescription>Your key performance indicators</CardDescription>
         </CardHeader>
         <CardContent>
@@ -460,7 +460,7 @@ export default function CardCollection() {
               <Users className="mr-4 h-4 w-4 text-muted-foreground" />
               <div className="space-y-1 flex-1">
                 <p className="text-sm font-medium leading-none">Total Users</p>
-                <p className="text-2xl font-bold">2,543</p>
+                <p className="text-2xl font-semibold tabular-nums">2,543</p>
               </div>
               <Badge variant="secondary">+12%</Badge>
             </div>
@@ -478,7 +478,7 @@ export default function CardCollection() {
                   Conversion Rate
                 </span>
               </div>
-              <div className="text-2xl font-bold">3.8%</div>
+              <div className="text-2xl font-semibold tabular-nums">3.8%</div>
             </div>
           </div>
         </CardContent>
@@ -492,15 +492,15 @@ export default function CardCollection() {
       code: `
   function SubscriptionCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Subscription Plan</CardTitle>
+          <CardTitle className="text-base">Subscription Plan</CardTitle>
           <CardDescription>You are currently on the Pro plan</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-8">
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold">$29.99</span>
+              <span className="text-2xl font-semibold tabular-nums">$29.99</span>
               <Badge>Monthly</Badge>
             </div>
             <ul className="space-y-2 text-sm">
@@ -529,7 +529,7 @@ export default function CardCollection() {
     {
       name: 'TaskCard',
       component: TaskCard,
-      code: 'function TaskCard() {\n  return (\n    <Card className="w-[310px]">\n      <CardHeader>\n        <CardTitle>Current Tasks</CardTitle>\n        <CardDescription>Your team&apos;s ongoing tasks</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className="space-y-4">\n          {["Design system update", "API integration", "User testing"].map(\n            (task, index) => (\n              <div key={index} className="flex items-center">\n                <input type="checkbox" id={`task-${index}`} className="mr-2" />\n                <label htmlFor={`task-${index}`} className="flex-1">\n                  {task}\n                </label>\n                <Badge\n                  variant={\n                    index === 0\n                      ? "default"\n                      : index === 1\n                      ? "secondary"\n                      : "outline"\n                  }\n                >\n                  {index === 0\n                    ? "In Progress"\n                    : index === 1\n                    ? "Pending"\n                    : "Completed"}\n                </Badge>\n              </div>\n            )\n          )}\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button variant="outline" className="w-full">\n          View All Tasks\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}',
+      code: 'function TaskCard() {\n  return (\n    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">\n      <CardHeader>\n        <CardTitle className="text-base">Current Tasks</CardTitle>\n        <CardDescription>Your team&apos;s ongoing tasks</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <div className="space-y-4">\n          {["Design system update", "API integration", "User testing"].map(\n            (task, index) => (\n              <div key={index} className="flex items-center">\n                <input type="checkbox" id={`task-${index}`} className="mr-2" />\n                <label htmlFor={`task-${index}`} className="flex-1">\n                  {task}\n                </label>\n                <Badge\n                  variant={\n                    index === 0\n                      ? "default"\n                      : index === 1\n                      ? "secondary"\n                      : "outline"\n                  }\n                >\n                  {index === 0\n                    ? "In Progress"\n                    : index === 1\n                    ? "Pending"\n                    : "Completed"}\n                </Badge>\n              </div>\n            )\n          )}\n        </div>\n      </CardContent>\n      <CardFooter>\n        <Button variant="outline" className="w-full">\n          View All Tasks\n        </Button>\n      </CardFooter>\n    </Card>\n  )\n}',
     },
     {
       name: 'BillingCard',
@@ -537,9 +537,9 @@ export default function CardCollection() {
       code: `
   function BillingCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Billing Information</CardTitle>
+          <CardTitle className="text-base">Billing Information</CardTitle>
           <CardDescription>
             Manage your billing details and payment method
           </CardDescription>
@@ -582,9 +582,9 @@ export default function CardCollection() {
       code: `
   function FeedbackCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Feedback</CardTitle>
+          <CardTitle className="text-base">Feedback</CardTitle>
           <CardDescription>Help us improve our product</CardDescription>
         </CardHeader>
         <CardContent>
@@ -623,9 +623,9 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Team Collaboration</CardTitle>
+          <CardTitle className="text-base">Team Collaboration</CardTitle>
           <CardDescription>Current project: Website Redesign</CardDescription>
         </CardHeader>
         <CardContent>
@@ -660,7 +660,7 @@ export default function CardCollection() {
       code: `
   function ProfileCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
           <div className="flex items-center space-x-4">
             <Avatar>
@@ -671,7 +671,7 @@ export default function CardCollection() {
               <AvatarFallback>SU</AvatarFallback>
             </Avatar>
             <div>
-              <CardTitle>Spectrum UI</CardTitle>
+              <CardTitle className="text-base">Spectrum UI</CardTitle>
               <CardDescription>@arihantcodes</CardDescription>
             </div>
           </div>
@@ -717,9 +717,9 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Productivity Tracker</CardTitle>
+          <CardTitle className="text-base">Productivity Tracker</CardTitle>
           <CardDescription>Your daily task overview</CardDescription>
         </CardHeader>
         <CardContent>
@@ -761,9 +761,9 @@ export default function CardCollection() {
       code: `
   function QuickActionCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
+          <CardTitle className="text-base">Quick Actions</CardTitle>
           <CardDescription>Frequently used actions</CardDescription>
         </CardHeader>
         <CardContent>
@@ -813,9 +813,9 @@ export default function CardCollection() {
     ]
   
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Notifications</CardTitle>
+          <CardTitle className="text-base">Notifications</CardTitle>
           <CardDescription>Stay updated with recent activities</CardDescription>
         </CardHeader>
         <CardContent>
@@ -848,16 +848,14 @@ export default function CardCollection() {
       code: `
   function WeatherMiniCard() {
     return (
-      <Card className="w-[200px]">
-        <CardContent className="p-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-sm font-medium">San Francisco</p>
-              <p className="text-2xl font-bold">72°F</p>
-            </div>
-            <div className="text-4xl">☀️</div>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">Sunny</p>
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
+        <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
+          <CardTitle className="text-sm font-medium">Weather</CardTitle>
+          <Sun className="w-4 h-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent className="p-4 pt-0">
+          <div className="text-2xl font-semibold tabular-nums">72°F</div>
+          <p className="text-xs text-muted-foreground">Sunny, San Francisco</p>
         </CardContent>
       </Card>
     )
@@ -869,9 +867,9 @@ export default function CardCollection() {
       code: `
   function QuickSettingsCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Quick Settings</CardTitle>
+          <CardTitle className="text-base">Quick Settings</CardTitle>
           <CardDescription>Adjust your preferences</CardDescription>
         </CardHeader>
         <CardContent>
@@ -904,9 +902,9 @@ export default function CardCollection() {
       code: `
   function MusicPlayerCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Now Playing</CardTitle>
+          <CardTitle className="text-base">Now Playing</CardTitle>
           <CardDescription>Your current track</CardDescription>
         </CardHeader>
         <CardContent>
@@ -948,9 +946,9 @@ export default function CardCollection() {
       code: `
   function TaskProgressCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Task Progress</CardTitle>
+          <CardTitle className="text-base">Task Progress</CardTitle>
           <CardDescription>Your project status</CardDescription>
         </CardHeader>
         <CardContent>
@@ -991,9 +989,9 @@ export default function CardCollection() {
       code: `
   function QuickSearchCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Quick Search</CardTitle>
+          <CardTitle className="text-base">Quick Search</CardTitle>
           <CardDescription>Find what you need quickly</CardDescription>
         </CardHeader>
         <CardContent>
@@ -1023,9 +1021,9 @@ export default function CardCollection() {
       code: `
   function UpcomingEventCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Upcoming Event</CardTitle>
+          <CardTitle className="text-base">Upcoming Event</CardTitle>
           <CardDescription>Your next scheduled event</CardDescription>
         </CardHeader>
         <CardContent>
@@ -1065,9 +1063,9 @@ export default function CardCollection() {
       code: `
   function QuickExpenseCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader>
-          <CardTitle>Quick Expense</CardTitle>
+          <CardTitle className="text-base">Quick Expense</CardTitle>
           <CardDescription>Add a new expense quickly</CardDescription>
         </CardHeader>
         <CardContent>
@@ -1114,13 +1112,13 @@ export default function CardCollection() {
       code: `
  function DeviceStatusCard() {
     return (
-      <Card className="w-[310px]">
+      <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
         <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
           <CardTitle className="text-sm font-medium">Device Status</CardTitle>
-          <Zap className="w-4 h-4 text-yellow-500" />
+          <Zap className="w-4 h-4 text-muted-foreground" />
         </CardHeader>
         <CardContent className="p-4 pt-0">
-          <div className="text-2xl font-bold">85%</div>
+          <div className="text-2xl font-semibold tabular-nums">85%</div>
           <p className="text-xs text-muted-foreground">Battery remaining</p>
         </CardContent>
       </Card>
@@ -1134,9 +1132,9 @@ export default function CardCollection() {
       code: `
   function QuickPollCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Poll</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Poll</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 space-y-2">
         <div className="text-sm font-medium">Favorite feature?</div>
@@ -1158,7 +1156,7 @@ export default function CardCollection() {
       code: `
   function DataUsageCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
         <Cloud className="w-4 h-4 text-muted-foreground" />
@@ -1180,9 +1178,9 @@ export default function CardCollection() {
       code: `
 function QuickNoteCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Note</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Note</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <textarea
@@ -1201,9 +1199,9 @@ function QuickNoteCard() {
       code: `
  function SocialShareCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Share</CardTitle>
+        <CardTitle className="text-sm font-medium">Share</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex justify-between">
         {["Twitter", "Facebook", "LinkedIn"].map((platform, index) => (
@@ -1223,7 +1221,7 @@ function QuickNoteCard() {
       code: `
  function QuickContactCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
         <Phone className="w-4 h-4 text-muted-foreground" />
@@ -1249,7 +1247,7 @@ function QuickNoteCard() {
       code: `
  function LocationCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Current Location</CardTitle>
         <Map className="w-4 h-4 text-muted-foreground" />
@@ -1269,14 +1267,19 @@ function QuickNoteCard() {
       code: `
  function VoiceCommandCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Voice Command</CardTitle>
+        <CardTitle className="text-sm font-medium">Voice Command</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex justify-center">
-        <Button variant="outline" size="lg" className="rounded-full">
-          <Mic className="h-6 w-6" />
-        </Button>
+        <button
+          type="button"
+          aria-label="Start voice command"
+          className="group relative flex h-14 w-14 items-center justify-center rounded-full border bg-background text-muted-foreground transition duration-200 ease-out hover:border-foreground/30 hover:text-foreground active:scale-95"
+        >
+          <span className="absolute inset-0 rounded-full bg-foreground/5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-safe:group-hover:animate-ping" />
+          <Mic className="relative h-5 w-5" />
+        </button>
       </CardContent>
     </Card>
   );
@@ -1289,7 +1292,7 @@ function QuickNoteCard() {
       code: `
  function DownloadProgressCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
         <Download className="w-4 h-4 text-muted-foreground" />
@@ -1312,9 +1315,9 @@ function QuickNoteCard() {
  function ThemeToggleCard() {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Theme</CardTitle>
+        <CardTitle className="text-sm font-medium">Theme</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex items-center justify-between">
         <div className="flex items-center space-x-2">
@@ -1336,35 +1339,36 @@ function QuickNoteCard() {
       name: 'QuickRatingCard',
       component: QuickRatingCard,
       code: `
-      function QuickRatingCard() {
+function QuickRatingCard() {
   const [starRating, setStarRating] = useState(0);
+  const [hovered, setHovered] = useState(0);
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Rate Your Experience</CardTitle>
+        <CardTitle className="text-sm font-medium">Rate Your Experience</CardTitle>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Button
-            key={star}
-            variant="ghost"
-            size="sm"
-            onClick={() => setStarRating(star)}
-          >
-            <Star
-              className="h-4 w-4 
-                starRating >= star ? "text-yellow-500" : "text-gray-400"
-              "
-            />
-          </Button>
-        ))}
+      <CardContent className="p-4 pt-0 flex justify-between" onMouseLeave={() => setHovered(0)}>
+        {[1, 2, 3, 4, 5].map((star) => {
+          const active = (hovered || starRating) >= star;
+          return (
+            <button
+              key={star}
+              type="button"
+              aria-label={\`Rate \${star} stars\`}
+              onClick={() => setStarRating(star)}
+              onMouseEnter={() => setHovered(star)}
+              className="rounded-md p-1.5 transition duration-150 ease-out hover:bg-accent active:scale-90"
+            >
+              <Star
+                className={\`h-4 w-4 transition-colors duration-150 \${active ? "fill-foreground text-foreground" : "text-muted-foreground/40"}\`}
+              />
+            </button>
+          );
+        })}
       </CardContent>
     </Card>
   );
 }
-
-      
-       
   `,
     },
   ];
@@ -1457,9 +1461,9 @@ function QuickNoteCard() {
 
 export function LoginCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
+        <CardTitle className="text-base">Login</CardTitle>
         <CardDescription>Enter your credentials to access your account.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1485,9 +1489,9 @@ export function LoginCard() {
 }
 export function SignUpCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Sign Up</CardTitle>
+        <CardTitle className="text-base">Sign Up</CardTitle>
         <CardDescription>Create a new account to get started.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1520,9 +1524,9 @@ export function SignUpCard() {
 }
 export function PaymentCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Payment Details</CardTitle>
+        <CardTitle className="text-base">Payment Details</CardTitle>
         <CardDescription>Enter your payment information to complete the purchase.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1557,7 +1561,7 @@ export function PaymentCard() {
 }
 export function ProfileCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
         <div className="flex items-center space-x-4">
           <Avatar>
@@ -1568,7 +1572,7 @@ export function ProfileCard() {
             <AvatarFallback>SU</AvatarFallback>
           </Avatar>
           <div>
-            <CardTitle>Spectrum UI</CardTitle>
+            <CardTitle className="text-base">Spectrum UI</CardTitle>
             <CardDescription>@arihantcodes</CardDescription>
           </div>
         </div>
@@ -1602,9 +1606,9 @@ export function ProfileCard() {
 export function SettingsCard() {
   const [activeTab, setActiveTab] = useState('account');
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Settings</CardTitle>
+        <CardTitle className="text-base">Settings</CardTitle>
         <CardDescription>Manage your account settings and preferences.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1615,7 +1619,7 @@ export function SettingsCard() {
           </TabsList>
           <TabsContent value="account">
             <div className="space-y-4 py-2 ">
-              <div className="space-y-2 mt-5">
+              <div className="space-y-2">
                 <Label htmlFor="username">Username</Label>
                 <Input id="username" placeholder="Enter username" />
               </div>
@@ -1664,9 +1668,9 @@ export function SettingsCard() {
 }
 export function MetricsCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Metrics Overview</CardTitle>
+        <CardTitle className="text-base">Metrics Overview</CardTitle>
         <CardDescription>Your key performance indicators</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1675,7 +1679,7 @@ export function MetricsCard() {
             <Users className="mr-4 h-4 w-4 text-muted-foreground" />
             <div className="space-y-1 flex-1">
               <p className="text-sm font-medium leading-none">Total Users</p>
-              <p className="text-2xl font-bold">2,543</p>
+              <p className="text-2xl font-semibold tabular-nums">2,543</p>
             </div>
             <Badge variant="secondary">+12%</Badge>
           </div>
@@ -1691,7 +1695,7 @@ export function MetricsCard() {
               <BarChart className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">Conversion Rate</span>
             </div>
-            <div className="text-2xl font-bold">3.8%</div>
+            <div className="text-2xl font-semibold tabular-nums">3.8%</div>
           </div>
         </div>
       </CardContent>
@@ -1700,15 +1704,15 @@ export function MetricsCard() {
 }
 export function SubscriptionCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Subscription Plan</CardTitle>
+        <CardTitle className="text-base">Subscription Plan</CardTitle>
         <CardDescription>You are currently on the Pro plan</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-8">
           <div className="flex items-center justify-between">
-            <span className="text-2xl font-bold">$29.99</span>
+            <span className="text-2xl font-semibold tabular-nums">$29.99</span>
             <Badge>Monthly</Badge>
           </div>
           <ul className="space-y-2 text-sm">
@@ -1735,9 +1739,9 @@ export function SubscriptionCard() {
 }
 export function TaskCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Current Tasks</CardTitle>
+        <CardTitle className="text-base">Current Tasks</CardTitle>
         <CardDescription>Your team&apos;s ongoing tasks</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1765,9 +1769,9 @@ export function TaskCard() {
 }
 export function CalendarCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Upcoming Events</CardTitle>
+        <CardTitle className="text-base">Upcoming Events</CardTitle>
         <CardDescription>Your schedule for the next 7 days</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1803,9 +1807,9 @@ export function CalendarCard() {
 }
 export function BillingCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Billing Information</CardTitle>
+        <CardTitle className="text-base">Billing Information</CardTitle>
         <CardDescription>Manage your billing details and payment method</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1841,9 +1845,9 @@ export function BillingCard() {
 }
 export function FeedbackCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Feedback</CardTitle>
+        <CardTitle className="text-base">Feedback</CardTitle>
         <CardDescription>Help us improve our product</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1882,16 +1886,16 @@ export function AIAssistantCard() {
     }
   };
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>AI Assistant</CardTitle>
+        <CardTitle className="text-base">AI Assistant</CardTitle>
         <CardDescription>Ask me anything about your data</CardDescription>
       </CardHeader>
       <CardContent className="h-[300px] overflow-y-auto">
         {conversation.map((msg, index) => (
           <div
             key={index}
-            className={`mb-2 ${msg.role === 'ai' ? 'text-blue-600 text-left' : 'text-right'}`}
+            className={`mb-2 text-sm ${msg.role === 'ai' ? 'text-muted-foreground text-left' : 'text-right'}`}
           >
             <strong>{msg.role === 'ai' ? 'AI: ' : 'You: '}</strong>
             {msg.content}
@@ -1919,9 +1923,9 @@ export function TeamCollaborationCard() {
     { name: 'Charlie', avatar: 'C', status: 'away' },
   ];
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Team Collaboration</CardTitle>
+        <CardTitle className="text-base">Team Collaboration</CardTitle>
         <CardDescription>Current project: Website Redesign</CardDescription>
       </CardHeader>
       <CardContent>
@@ -1949,28 +1953,28 @@ export function TeamCollaborationCard() {
 }
 export function WeatherCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Weather Forecast</CardTitle>
+        <CardTitle className="text-base">Weather Forecast</CardTitle>
         <CardDescription>San Francisco, CA</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center">
-          <div className="text-4xl font-bold">72°F</div>
-          <div className="text-6xl">☀️</div>
+          <div className="text-3xl font-semibold tabular-nums tracking-tight">72°F</div>
+          <Sun className="h-9 w-9 text-muted-foreground" strokeWidth={1.5} />
         </div>
-        <div className="mt-4 space-y-2">
+        <div className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">
-            <span>Humidity</span>
-            <span>60%</span>
+            <span className="text-muted-foreground">Humidity</span>
+            <span className="tabular-nums">60%</span>
           </div>
           <div className="flex justify-between">
-            <span>Wind</span>
-            <span>5 mph</span>
+            <span className="text-muted-foreground">Wind</span>
+            <span className="tabular-nums">5 mph</span>
           </div>
           <div className="flex justify-between">
-            <span>UV Index</span>
-            <span>3 of 10</span>
+            <span className="text-muted-foreground">UV Index</span>
+            <span className="tabular-nums">3 of 10</span>
           </div>
         </div>
       </CardContent>
@@ -1989,9 +1993,9 @@ export function ProductivityTrackerCard() {
     { name: 'Prepare for client meeting', completed: false },
   ];
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Productivity Tracker</CardTitle>
+        <CardTitle className="text-base">Productivity Tracker</CardTitle>
         <CardDescription>Your daily task overview</CardDescription>
       </CardHeader>
       <CardContent>
@@ -2025,9 +2029,9 @@ export function ProductivityTrackerCard() {
 }
 export function QuickActionCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Actions</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Actions</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 grid grid-cols-3 gap-2">
         {['New', 'Upload', 'Share'].map((action, index) => (
@@ -2041,13 +2045,13 @@ export function QuickActionCard() {
 }
 export function NotificationCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Notifications</CardTitle>
         <Bell className="w-4 h-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-bold">24</div>
+        <div className="text-2xl font-semibold tabular-nums">24</div>
         <p className="text-xs text-muted-foreground">3 unread messages</p>
       </CardContent>
     </Card>
@@ -2055,13 +2059,13 @@ export function NotificationCard() {
 }
 export function WeatherMiniCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Weather</CardTitle>
-        <Sun className="w-4 h-4 text-yellow-500" />
+        <Sun className="w-4 h-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-bold">72°F</div>
+        <div className="text-2xl font-semibold tabular-nums">72°F</div>
         <p className="text-xs text-muted-foreground">Sunny, San Francisco</p>
       </CardContent>
     </Card>
@@ -2069,9 +2073,9 @@ export function WeatherMiniCard() {
 }
 export function QuickSettingsCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Settings</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Settings</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 space-y-2">
         <div className="flex items-center justify-between">
@@ -2088,7 +2092,7 @@ export function QuickSettingsCard() {
 }
 export function MusicPlayerCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Now Playing</CardTitle>
         <Music className="w-4 h-4 text-muted-foreground" />
@@ -2105,7 +2109,7 @@ export function MusicPlayerCard() {
 }
 export function TaskProgressCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Task Progress</CardTitle>
         <Check className="w-4 h-4 text-muted-foreground" />
@@ -2119,9 +2123,9 @@ export function TaskProgressCard() {
 }
 export function QuickSearchCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Search</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Search</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <div className="flex space-x-2">
@@ -2136,7 +2140,7 @@ export function QuickSearchCard() {
 }
 export function UpcomingEventCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Upcoming Event</CardTitle>
         <Calendar className="w-4 h-4 text-muted-foreground" />
@@ -2150,7 +2154,7 @@ export function UpcomingEventCard() {
 }
 export function QuickExpenseCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Expense</CardTitle>
         <CreditCard className="w-4 h-4 text-muted-foreground" />
@@ -2166,13 +2170,13 @@ export function QuickExpenseCard() {
 }
 export function DeviceStatusCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Device Status</CardTitle>
-        <Zap className="w-4 h-4 text-yellow-500" />
+        <Zap className="w-4 h-4 text-muted-foreground" />
       </CardHeader>
       <CardContent className="p-4 pt-0">
-        <div className="text-2xl font-bold">85%</div>
+        <div className="text-2xl font-semibold tabular-nums">85%</div>
         <p className="text-xs text-muted-foreground">Battery remaining</p>
       </CardContent>
     </Card>
@@ -2180,9 +2184,9 @@ export function DeviceStatusCard() {
 }
 export function QuickPollCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Poll</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Poll</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 space-y-2">
         <div className="text-sm font-medium">Favorite feature?</div>
@@ -2198,7 +2202,7 @@ export function QuickPollCard() {
 }
 export function DataUsageCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Data Usage</CardTitle>
         <Cloud className="w-4 h-4 text-muted-foreground" />
@@ -2212,9 +2216,9 @@ export function DataUsageCard() {
 }
 export function QuickNoteCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Quick Note</CardTitle>
+        <CardTitle className="text-sm font-medium">Quick Note</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <textarea
@@ -2227,9 +2231,9 @@ export function QuickNoteCard() {
 }
 export function SocialShareCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Share</CardTitle>
+        <CardTitle className="text-sm font-medium">Share</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex justify-between">
         {['Twitter', 'Facebook', 'LinkedIn'].map((platform, index) => (
@@ -2243,7 +2247,7 @@ export function SocialShareCard() {
 }
 export function QuickContactCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Quick Contact</CardTitle>
         <Phone className="w-4 h-4 text-muted-foreground" />
@@ -2263,7 +2267,7 @@ export function QuickContactCard() {
 }
 export function LocationCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Current Location</CardTitle>
         <Map className="w-4 h-4 text-muted-foreground" />
@@ -2277,21 +2281,26 @@ export function LocationCard() {
 }
 export function VoiceCommandCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Voice Command</CardTitle>
+        <CardTitle className="text-sm font-medium">Voice Command</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex justify-center">
-        <Button variant="outline" size="lg" className="rounded-full">
-          <Mic className="h-6 w-6" />
-        </Button>
+        <button
+          type="button"
+          aria-label="Start voice command"
+          className="group relative flex h-14 w-14 items-center justify-center rounded-full border bg-background text-muted-foreground transition duration-200 ease-out hover:border-foreground/30 hover:text-foreground active:scale-95"
+        >
+          <span className="absolute inset-0 rounded-full bg-foreground/5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-safe:group-hover:animate-ping" />
+          <Mic className="relative h-5 w-5" />
+        </button>
       </CardContent>
     </Card>
   );
 }
 export function DownloadProgressCard() {
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4 flex flex-row items-center justify-between space-y-0">
         <CardTitle className="text-sm font-medium">Download Progress</CardTitle>
         <Download className="w-4 h-4 text-muted-foreground" />
@@ -2306,9 +2315,9 @@ export function DownloadProgressCard() {
 export function ThemeToggleCard() {
   const [isDark, setIsDark] = useState(false);
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Theme</CardTitle>
+        <CardTitle className="text-sm font-medium">Theme</CardTitle>
       </CardHeader>
       <CardContent className="p-4 pt-0 flex items-center justify-between">
         <div className="flex items-center space-x-2">
@@ -2326,19 +2335,30 @@ export function ThemeToggleCard() {
 }
 export function QuickRatingCard() {
   const [starRating, setStarRating] = useState(0);
+  const [hovered, setHovered] = useState(0);
   return (
-    <Card className="w-[310px]">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader className="p-4">
-        <CardTitle className="text-sm">Rate Your Experience</CardTitle>
+        <CardTitle className="text-sm font-medium">Rate Your Experience</CardTitle>
       </CardHeader>
-      <CardContent className="p-4 pt-0 flex justify-between">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Button key={star} variant="ghost" size="sm" onClick={() => setStarRating(star)}>
-            <Star
-              className={`h-4 w-4 ${starRating >= star ? 'text-yellow-500' : 'text-gray-400'}`}
-            />
-          </Button>
-        ))}
+      <CardContent className="p-4 pt-0 flex justify-between" onMouseLeave={() => setHovered(0)}>
+        {[1, 2, 3, 4, 5].map((star) => {
+          const active = (hovered || starRating) >= star;
+          return (
+            <button
+              key={star}
+              type="button"
+              aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
+              onClick={() => setStarRating(star)}
+              onMouseEnter={() => setHovered(star)}
+              className="rounded-md p-1.5 transition duration-150 ease-out hover:bg-accent active:scale-90"
+            >
+              <Star
+                className={`h-4 w-4 transition-colors duration-150 ${active ? 'fill-foreground text-foreground' : 'text-muted-foreground/40'}`}
+              />
+            </button>
+          );
+        })}
       </CardContent>
     </Card>
   );
@@ -2425,9 +2445,9 @@ export function DataVisualizationCard() {
     }
   };
   return (
-    <Card className="w-[310px] max-w-3xl mx-auto">
+    <Card className="w-[310px] transition duration-200 ease-out hover:-translate-y-0.5 hover:border-foreground/20 hover:shadow-md">
       <CardHeader>
-        <CardTitle>Data Visualization</CardTitle>
+        <CardTitle className="text-base">Data Visualization</CardTitle>
         <CardDescription>Interactive chart types</CardDescription>
       </CardHeader>
       <CardContent>
@@ -2449,7 +2469,7 @@ export function DataVisualizationCard() {
           <TabsContent value={activeChart} className="mt-0">
             <Card>
               <CardHeader>
-                <CardTitle>
+                <CardTitle className="text-base">
                   {activeChart.charAt(0).toUpperCase() + activeChart.slice(1)} Chart
                 </CardTitle>
                 <CardDescription>January - June 2024</CardDescription>
