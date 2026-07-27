@@ -75,6 +75,9 @@ const config = {
         },
       },
       borderRadius: {
+        // Themeable so the /docs/card customizer can drive card roundness.
+        // Unset elsewhere, this resolves to Tailwind's default 0.75rem.
+        xl: "var(--radius-xl, 0.75rem)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

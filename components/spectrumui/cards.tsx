@@ -70,6 +70,7 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { CARD_SOURCE } from './cards.source';
+import { CardCustomizer } from './card-customizer';
 
 /* -------------------------------------------------------------------------- */
 /*  Authentication                                                            */
@@ -317,7 +318,7 @@ export function PricingCard() {
       <CardContent className="space-y-2 p-5 pt-0">
         {features.map((feature) => (
           <div key={feature} className="flex items-center gap-2 text-sm">
-            <Check className="size-3.5 shrink-0 text-muted-foreground" />
+            <Check className="size-3.5 shrink-0 text-primary" />
             <span>{feature}</span>
           </div>
         ))}
@@ -403,12 +404,10 @@ export function PaymentMethodCard() {
             </div>
             <span
               className={`flex size-4 shrink-0 items-center justify-center rounded-full border transition-colors ${
-                selected === method.id
-                  ? 'border-foreground bg-foreground'
-                  : 'border-muted-foreground/40'
+                selected === method.id ? 'border-primary bg-primary' : 'border-muted-foreground/40'
               }`}
             >
-              {selected === method.id && <Check className="size-2.5 text-background" />}
+              {selected === method.id && <Check className="size-2.5 text-primary-foreground" />}
             </span>
           </button>
         ))}
@@ -574,7 +573,7 @@ export function StatCard() {
             strokeLinecap="round"
             strokeLinejoin="round"
             vectorEffect="non-scaling-stroke"
-            className="text-foreground/60"
+            className="text-primary/70"
           />
         </svg>
       </CardContent>
@@ -598,7 +597,7 @@ export function RevenueChartCard() {
             <div key={index} className="group/bar flex h-full flex-1 flex-col justify-end gap-1.5">
               <div
                 style={{ height: `${value}%` }}
-                className="w-full rounded-sm bg-foreground/15 transition-colors duration-150 group-hover/bar:bg-foreground/40"
+                className="w-full rounded-sm bg-primary/20 transition-colors duration-150 group-hover/bar:bg-primary/60"
               />
               <span className="text-center text-[10px] text-muted-foreground">{days[index]}</span>
             </div>
@@ -632,7 +631,7 @@ export function GoalProgressCard() {
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={circumference - (percent / 100) * circumference}
-              className="stroke-foreground/70 transition-[stroke-dashoffset] duration-500 ease-out"
+              className="stroke-primary transition-[stroke-dashoffset] duration-500 ease-out"
             />
           </svg>
           <span className="absolute inset-0 flex items-center justify-center text-lg font-semibold tabular-nums">
@@ -703,11 +702,7 @@ export function StorageUsageCard() {
               key={segment.label}
               style={{ width: `${segment.value}%` }}
               className={
-                index === 0
-                  ? 'bg-foreground/70'
-                  : index === 1
-                    ? 'bg-foreground/45'
-                    : 'bg-foreground/25'
+                index === 0 ? 'bg-primary/80' : index === 1 ? 'bg-primary/50' : 'bg-primary/25'
               }
             />
           ))}
@@ -814,8 +809,8 @@ export function DeploymentCard() {
         <CardTitle className="text-sm font-medium">Production</CardTitle>
         <Badge variant="secondary" className="gap-1.5 text-[10px]">
           <span className="relative flex size-1.5">
-            <span className="absolute inline-flex size-full rounded-full bg-foreground/40 motion-safe:animate-ping" />
-            <span className="relative inline-flex size-1.5 rounded-full bg-foreground" />
+            <span className="absolute inline-flex size-full rounded-full bg-primary/50 motion-safe:animate-ping" />
+            <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
           </span>
           Live
         </Badge>
@@ -867,7 +862,7 @@ export function ServiceHealthCard() {
           <div key={service.name} className="flex items-center gap-2.5">
             <span
               className={`size-1.5 shrink-0 rounded-full ${
-                service.healthy ? 'bg-foreground' : 'bg-muted-foreground/40'
+                service.healthy ? 'bg-primary' : 'bg-muted-foreground/40'
               }`}
             />
             <span className="flex-1 text-sm">{service.name}</span>
@@ -1029,10 +1024,10 @@ export function TaskListCard() {
             >
               <span
                 className={`flex size-4 shrink-0 items-center justify-center rounded border transition-colors duration-150 ${
-                  checked ? 'border-foreground bg-foreground' : 'border-muted-foreground/40'
+                  checked ? 'border-primary bg-primary' : 'border-muted-foreground/40'
                 }`}
               >
-                {checked && <Check className="size-3 text-background" />}
+                {checked && <Check className="size-3 text-primary-foreground" />}
               </span>
               <span
                 className={`text-sm transition-colors ${checked ? 'text-muted-foreground line-through' : ''}`}
@@ -1100,7 +1095,7 @@ export function OnboardingChecklistCard() {
             className="group/step -mx-2 flex items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors hover:bg-muted/50"
           >
             {step.done ? (
-              <CheckCircle2 className="size-4 shrink-0" />
+              <CheckCircle2 className="size-4 shrink-0 text-primary" />
             ) : (
               <Circle className="size-4 shrink-0 text-muted-foreground/40" />
             )}
@@ -1513,7 +1508,7 @@ export function FeedbackCard() {
               >
                 <Star
                   className={`size-4 transition-colors duration-150 ${
-                    active ? 'fill-foreground text-foreground' : 'text-muted-foreground/40'
+                    active ? 'fill-primary text-primary' : 'text-muted-foreground/40'
                   }`}
                 />
               </button>
@@ -1636,7 +1631,7 @@ export function TestimonialCard() {
       <CardContent className="p-5">
         <div className="flex gap-0.5">
           {[1, 2, 3, 4, 5].map((star) => (
-            <Star key={star} className="size-3.5 fill-foreground text-foreground" />
+            <Star key={star} className="size-3.5 fill-primary text-primary" />
           ))}
         </div>
         <p className="mt-3 text-sm leading-relaxed">
@@ -1680,7 +1675,7 @@ export function NotificationsCard() {
           >
             <span
               className={`mt-1.5 size-1.5 shrink-0 rounded-full ${
-                item.unread ? 'bg-foreground' : 'bg-transparent'
+                item.unread ? 'bg-primary' : 'bg-transparent'
               }`}
             />
             <div className="min-w-0 flex-1">
@@ -1802,7 +1797,7 @@ export function AIChatCard() {
             key={index}
             className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed ${
               message.role === 'user'
-                ? 'ml-auto bg-foreground text-background'
+                ? 'ml-auto bg-primary text-primary-foreground'
                 : 'bg-muted text-foreground'
             }`}
           >
@@ -1932,24 +1927,35 @@ const CARD_SECTIONS: { title: string; cards: { name: string; component: () => JS
 
 export default function CardCollection() {
   return (
-    <div className="space-y-12">
-      {CARD_SECTIONS.map((section) => (
-        <section key={section.title}>
-          <h3 className="mb-4 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {section.title}
-          </h3>
-          <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2">
-            {section.cards.map(({ name, component: CardComponent }) => (
-              <div key={name} className="group relative">
-                <CardComponent />
-                <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-150 focus-within:opacity-100 group-hover:opacity-100">
-                  <Copy content={CARD_SOURCE[name] ?? ''} />
+    <CardCustomizer>
+      <div className="space-y-14">
+        {CARD_SECTIONS.map((section) => (
+          <section key={section.title}>
+            <div className="mb-4 flex items-center gap-3">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                {section.title}
+              </h3>
+              <span className="h-px flex-1 bg-border" />
+              <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
+                {section.cards.length}
+              </span>
+            </div>
+            <div className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2">
+              {section.cards.map(({ name, component: CardComponent }) => (
+                <div
+                  key={name}
+                  className="group relative transition-transform duration-200 ease-out hover:-translate-y-0.5"
+                >
+                  <CardComponent />
+                  <div className="absolute right-2 top-2 opacity-0 transition-opacity duration-150 focus-within:opacity-100 group-hover:opacity-100">
+                    <Copy content={CARD_SOURCE[name] ?? ''} />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </CardCustomizer>
   );
 }
