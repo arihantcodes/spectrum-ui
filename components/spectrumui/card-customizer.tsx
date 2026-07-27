@@ -26,12 +26,13 @@ type Roundness = {
 };
 
 const ROUNDNESS: Roundness[] = [
-  { id: 'none', label: '0', card: '0px', base: '0px' },
-  { id: 'sm', label: '0.25', card: '4px', base: '2px' },
-  { id: 'md', label: '0.375', card: '6px', base: '4px' },
-  { id: 'lg', label: '0.5', card: '8px', base: '6px' },
-  { id: 'xl', label: '0.75', card: '12px', base: '8px' },
-  { id: '2xl', label: '1.0', card: '16px', base: '10px' },
+  { id: '0', label: '0', card: '0px', base: '0px' },
+  { id: '0.25', label: '0.25', card: '4px', base: '2px' },
+  { id: '0.5', label: '0.5', card: '8px', base: '6px' },
+  { id: '0.75', label: '0.75', card: '12px', base: '8px' },
+  { id: '1', label: '1.0', card: '16px', base: '10px' },
+  { id: '1.25', label: '1.25', card: '20px', base: '12px' },
+  { id: '1.5', label: '1.5', card: '24px', base: '14px' },
 ];
 
 type Accent = {
@@ -43,57 +44,63 @@ type Accent = {
   vars?: Record<string, string>;
 };
 
+// Brand accents first (the landing's vermilion / lime pair), then a small set
+// of muted tones that hold up on both themes. No candy colours.
 const ACCENTS: Accent[] = [
   { id: 'neutral', label: 'Neutral', swatch: 'hsl(0 0% 45%)' },
   {
-    id: 'blue',
-    label: 'Blue',
-    swatch: 'hsl(221 83% 53%)',
+    id: 'vermilion',
+    label: 'Vermilion',
+    swatch: '#f9452d',
     vars: {
-      '--primary': '221 83% 53%',
+      '--primary': '7 95% 58%',
       '--primary-foreground': '0 0% 98%',
-      '--ring': '221 83% 53%',
+      '--ring': '7 95% 58%',
     },
   },
   {
-    id: 'violet',
-    label: 'Violet',
-    swatch: 'hsl(262 83% 58%)',
+    id: 'lime',
+    label: 'Lime',
+    swatch: '#E1F435',
     vars: {
-      '--primary': '262 83% 58%',
-      '--primary-foreground': '0 0% 98%',
-      '--ring': '262 83% 58%',
+      '--primary': '66 90% 58%',
+      '--primary-foreground': '0 0% 9%',
+      '--ring': '66 90% 58%',
     },
   },
   {
-    id: 'green',
-    label: 'Green',
-    swatch: 'hsl(142 71% 40%)',
+    id: 'indigo',
+    label: 'Indigo',
+    swatch: '#4f46e5',
     vars: {
-      '--primary': '142 71% 40%',
+      '--primary': '243 75% 59%',
       '--primary-foreground': '0 0% 98%',
-      '--ring': '142 71% 40%',
+      '--ring': '243 75% 59%',
     },
   },
   {
-    id: 'amber',
-    label: 'Amber',
-    swatch: 'hsl(38 92% 50%)',
-    vars: { '--primary': '38 92% 50%', '--primary-foreground': '0 0% 9%', '--ring': '38 92% 50%' },
+    id: 'teal',
+    label: 'Teal',
+    swatch: '#0d9488',
+    vars: {
+      '--primary': '175 84% 32%',
+      '--primary-foreground': '0 0% 98%',
+      '--ring': '175 84% 32%',
+    },
   },
   {
-    id: 'rose',
-    label: 'Rose',
-    swatch: 'hsl(347 77% 50%)',
+    id: 'ink',
+    label: 'Ink',
+    swatch: '#475569',
     vars: {
-      '--primary': '347 77% 50%',
+      '--primary': '215 19% 35%',
       '--primary-foreground': '0 0% 98%',
-      '--ring': '347 77% 50%',
+      '--ring': '215 19% 35%',
     },
   },
 ];
 
-const DEFAULT_ROUNDNESS = 'xl';
+const DEFAULT_ROUNDNESS = '0.75';
 const DEFAULT_ACCENT = 'neutral';
 
 const chipClass = (active: boolean) =>
@@ -110,7 +117,7 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
   const isDefault = roundness === DEFAULT_ROUNDNESS && accent === DEFAULT_ACCENT;
 
   const style = useMemo(() => {
-    const radius = ROUNDNESS.find((option) => option.id === roundness) ?? ROUNDNESS[4];
+    const radius = ROUNDNESS.find((option) => option.id === roundness) ?? ROUNDNESS[3];
     const colour = ACCENTS.find((option) => option.id === accent);
     return {
       '--radius-xl': radius.card,
@@ -123,8 +130,16 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
     <div>
       <div className="mb-10 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
         <div className="flex items-start justify-between gap-4">
-          <div className="space-y-1.5">
-            <p className="text-base font-semibold leading-none tracking-tight">Customize</p>
+          <div className="space-y-2">
+            <span className="flex items-center gap-2.5">
+              <span
+                aria-hidden
+                className="h-[9px] w-[9px] shrink-0 border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+              />
+              <span className="font-mono text-xs font-medium uppercase leading-[16.8px] text-neutral-900 dark:text-neutral-100">
+                Customize
+              </span>
+            </span>
             <p className="text-sm text-muted-foreground">
               Preview every card in your radius and accent. Copied code stays clean.
             </p>

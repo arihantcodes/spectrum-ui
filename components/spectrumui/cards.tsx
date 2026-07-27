@@ -1905,13 +1905,17 @@ export default function CardCollection() {
       <div className="space-y-14">
         {CARD_SECTIONS.map((section) => (
           <section key={section.title}>
-            <div className="mb-4 flex items-center gap-3">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            <div className="mb-5 flex items-center gap-2.5">
+              <span
+                aria-hidden
+                className="h-[9px] w-[9px] shrink-0 border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+              />
+              <h3 className="font-mono text-xs font-medium uppercase leading-[16.8px] text-neutral-900 dark:text-neutral-100">
                 {section.title}
               </h3>
               <span className="h-px flex-1 bg-border" />
-              <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
-                {section.cards.length}
+              <span className="font-mono text-xs tabular-nums text-muted-foreground/70">
+                {String(section.cards.length).padStart(2, '0')}
               </span>
             </div>
             <div className="grid grid-cols-1 items-start gap-5 sm:grid-cols-2">
