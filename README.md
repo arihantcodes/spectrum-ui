@@ -1,21 +1,20 @@
 <div align="center">
 
 <a href="https://ui.spectrumhq.in">
-  <img width="1728" height="993" alt="image" src="https://github.com/user-attachments/assets/edc68ca4-3fae-4b95-8e82-b674d961981f" />
-
+  <img src=".github/assets/hero.png" alt="Spectrum UI" width="960">
 </a>
 
 <h1>Spectrum UI</h1>
 
 <p>
-  Animation-ready React components and blocks with copy-paste source.<br/>
-  Built with Next.js, Tailwind CSS, Motion, TypeScript, and shadcn/ui.
+  Animated React components you can copy, install with the shadcn CLI,<br/>
+  or just ask your AI editor for.
 </p>
 
 <p>
   <a href="https://ui.spectrumhq.in">Website</a> ·
   <a href="https://ui.spectrumhq.in/docs">Docs</a> ·
-  <a href="https://ui.spectrumhq.in/templates">Templates</a> ·
+  <a href="https://ui.spectrumhq.in/docs/mcp">MCP Server</a> ·
   <a href="https://github.com/arihantcodes/spectrum-ui/issues">Issues</a>
 </p>
 
@@ -29,154 +28,88 @@
   <a href="https://github.com/arihantcodes/spectrum-ui/commits/main">
     <img alt="Last Commit" src="https://img.shields.io/github/last-commit/arihantcodes/spectrum-ui?style=flat&label=Last%20Commit&color=000000">
   </a>
-  <a href="https://vercel.com/oss">
-    <img alt="Vercel OSS" src="https://vercel.com/oss/program-badge.svg">
-  </a>
 </p>
 
 </div>
 
----
+## What it is
 
-## What is Spectrum UI?
+Spectrum UI is a free collection of React components built on shadcn/ui, Tailwind CSS, and Motion. Nothing is hidden behind a package. The source lands in your project, and from there it's yours to change.
 
-Spectrum UI is an open-source React component and block library featuring animation-ready, copy-paste components built with React, Next.js, Tailwind CSS, Motion, TypeScript, and [shadcn/ui](https://ui.shadcn.com) — for SaaS dashboards, landing pages, AI applications, and admin panels.
+There are 44 components in the docs today, plus page blocks and a few full templates. Every one has a live preview and its code sitting right underneath.
 
----
+## Getting a component
 
-## Features
+Pick whichever way suits you.
 
-- **Components** — Forms, cards, navigation, overlays, feedback controls, and other copy-paste UI source.
-- **Blocks & Sections** — Pre-composed page sections (hero, pricing, FAQ, footer, CTA) ready to drop into any layout.
-- **Pro Templates** — Full-page templates for SaaS, landing pages, and dashboards.
-- **shadcn-compatible** — Registry items integrate through the shadcn CLI, with source kept in your project.
-- **Animated Components** — Motion-ready components powered by Framer Motion, Three.js, and Spline.
-- **TypeScript source** — Components are authored in TypeScript and TSX.
-- **Copy-paste DX** — Browse the source, copy it manually, or install a registry item with the shadcn CLI.
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 14 (App Router) |
-| Styling | Tailwind CSS + custom design tokens |
-| Language | TypeScript |
-| UI Primitives | shadcn/ui + Radix UI |
-| Animation | Framer Motion, Three.js, Spline, React Three Fiber |
-| Database | Supabase (PostgreSQL) |
-| Auth | NextAuth (Google + GitHub OAuth) |
-| Email | Resend |
-| Payments | Stripe, Polar, Dodo Payments |
-| Analytics | PostHog |
-| Cache | Upstash Redis |
-| Deployment | Vercel |
-
----
-
-## Component Categories
-
-| Category | Examples |
-|---|---|
-| **Forms & Inputs** | Date picker, OTP input, dual range slider, file upload |
-| **Cards** | Stats card, pricing card, chat card, user profile card |
-| **Navigation** | Navbar, sidebar, breadcrumbs, command menu, dock |
-| **Overlays** | Dialog, drawer, sheet, auth gate modal |
-| **Data Display** | Data table, charts (area, bar, line), code block |
-| **Marketing** | Hero sections, CTA, pricing table, newsletter, FAQ |
-| **Magic UI** | Animated shiny text, number ticker, rainbow button, border beam |
-| **Dashboard** | Full dashboard layouts with charts, tables, and sidebars |
-
----
-
-## Quick Start
-
-> **Prerequisites**: Node.js 18+, an existing Next.js project with [shadcn/ui](https://ui.shadcn.com/docs/installation) configured.
+**Ask your editor.** Connect the MCP server once and Claude Code, Cursor, or Windsurf can browse and install components for you:
 
 ```bash
-# Clone the repo (to run docs locally or contribute)
+claude mcp add spectrum-ui -- npx -y @spectrumui/mcp
+```
+
+Then just say what you want: _"add the kanban board and animated drawer to my project."_ Setup for the other editors is in the [MCP docs](https://ui.spectrumhq.in/docs/mcp).
+
+**Use the shadcn CLI.** If your project already has shadcn/ui set up:
+
+```bash
+npx shadcn@latest add @spectrumui/animated-drawer
+```
+
+**Copy it.** Open a component page, hit copy, paste it in. That works too.
+
+## What's in here
+
+- **Components** — forms, cards, buttons, ratings, overlays, media, auth, feedback
+- **Blocks** — hero, pricing, FAQ, CTA and footer sections
+- **Templates** — dashboards and landing pages you can lift wholesale
+- **Colors** — a palette browser at [/colors](https://ui.spectrumhq.in/colors)
+
+## Running it locally
+
+Only needed if you want to work on the site itself.
+
+```bash
 git clone https://github.com/arihantcodes/spectrum-ui.git
 cd spectrum-ui
-
-# Install dependencies
 yarn install
-
-# Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your keys
-
-# Start the dev server
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+That's [localhost:3000](http://localhost:3000). Docs, components, and the registry all work out of the box. Auth, payments, and bookmarks need keys in a `.env` file, so those pages will be quiet until you add them.
 
-**Just want a component?** Head to [ui.spectrumhq.in/docs](https://ui.spectrumhq.in/docs), pick a component, and copy the code directly into your project.
-
----
-
-
-## Scripts
-
-| Script | Description |
+| Command | Does |
 |---|---|
-| `yarn dev` | Start the Next.js development server |
-| `yarn build` | Build the production bundle |
-| `yarn start` | Run the production build locally |
-| `yarn lint` | Run ESLint |
-| `yarn test` | Run Jest test suite |
+| `yarn dev` | Dev server |
+| `yarn build` | Production build |
+| `yarn lint` | ESLint |
+| `yarn test` | Checks the registry, catalog, metadata, and structured data line up |
 
----
+Built with Next.js 14 (App Router), TypeScript, Tailwind, Radix, and Motion. Supabase and NextAuth handle accounts, Resend sends email, and it all ships on Vercel.
 
 ## Contributing
 
-Contributions are welcome — new components, bug fixes, docs, and templates.
+New components, fixes, docs — all welcome.
 
-Please read the [Contributing Guide](CONTRIBUTING.md) before submitting a pull request.
+A component is a few files: the source in `components/spectrumui/`, a docs page under `app/(docs)/docs/`, registry entries in `registry.json` and `public/r/`, and a line in `content/component-catalog.json`. The fastest route is to copy an existing component and follow its shape.
 
-**Quick contribution steps:**
-1. Fork the repo
-2. Create a branch: `git checkout -b feat/your-component`
-3. Commit your changes
-4. Open a pull request
+Run `yarn test` before opening a PR. It'll tell you if anything is out of sync.
 
-If you find a bug or want to request a component, [open an issue](https://github.com/arihantcodes/spectrum-ui/issues).
-
----
+Missing a component you need? [Open an issue](https://github.com/arihantcodes/spectrum-ui/issues) and say so.
 
 ## Contributors
 
-Thanks to everyone who has helped build Spectrum UI.
-
-<div align="center">
-
-[![Contributors](https://contributors-img.web.app/image?repo=arihantcodes/spectrum-ui)](https://github.com/arihantcodes/spectrum-ui/graphs/contributors)
-
-</div>
-
----
-
-## Star History
-
-<div align="center">
-
-[![Star History Chart](https://api.star-history.com/svg?repos=arihantcodes/spectrum-ui&type=Date)](https://www.star-history.com/#arihantcodes/spectrum-ui&Date)
-
-</div>
-
----
+<a href="https://github.com/arihantcodes/spectrum-ui/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=arihantcodes/spectrum-ui" alt="Contributors">
+</a>
 
 ## License
 
-Licensed under the [Apache License 2.0](LICENSE).
-
----
+Apache 2.0. See [LICENSE](LICENSE).
 
 <div align="center">
+<br/>
 
-Built with care by [Arihant](https://github.com/arihantcodes) and the open-source community.
-
-**[Website](https://ui.spectrumhq.in) · [Docs](https://ui.spectrumhq.in/docs) · [Templates](https://ui.spectrumhq.in/templates) · [Twitter / X](https://x.com/arihantcodes)**
+Made by [Arihant](https://github.com/arihantcodes) and everyone above.
 
 </div>
