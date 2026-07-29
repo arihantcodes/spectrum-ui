@@ -108,6 +108,7 @@ const primaryLinks = [
   { label: 'Blog', href: '/blog' },
   { label: 'Colors', href: '/colors' },
   { label: 'FAQs', href: '/faqs' },
+  { label: 'LLM Info', href: '/llm-info' },
 ];
 
 export default function Footer() {

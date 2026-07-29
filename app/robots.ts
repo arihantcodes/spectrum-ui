@@ -8,7 +8,6 @@ const privateRoutes = [
   "/dashboard",
   "/demo",
   "/payment-success",
-  "/pro/waitlist/success",
   "/profile",
   "/sign-in",
   "/success",

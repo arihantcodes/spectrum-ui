@@ -104,7 +104,7 @@ export default async function DashboardPage() {
           <p className="text-neutral-400 dark:text-[#444] text-xs mb-5">
             Your purchases will appear here
           </p>
-          <Link href="/pro"
+          <Link href="/templates"
              className="inline-flex items-center gap-1.5
               bg-[#6366F1] hover:bg-[#4F46E5] text-white
               text-sm font-medium px-5 py-2.5 rounded-lg transition-colors">

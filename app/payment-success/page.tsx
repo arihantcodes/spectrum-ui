@@ -1,7 +1,7 @@
 import { IconCheck, IconBrandGithub, IconX, IconClock } from '@tabler/icons-react'
 import Link from 'next/link'
 import { fulfillPaymentById, retrievePayment } from '@/lib/fulfill-payment'
-import { ProWaitlistSuccessTracker } from '@/app/pro/waitlist/success/tracker'
+import { ProWaitlistSuccessTracker } from '@/components/payment/pro-waitlist-success-tracker'
 import type { Metadata } from 'next'
 import { createNoIndexMetadata } from '@/lib/metadata'
 
@@ -46,17 +46,11 @@ function FailedPaymentView({ paymentId }: { paymentId?: string }) {
 
         <div className="flex flex-col gap-2">
           <Link
-            href="/pro"
+            href="/docs"
             className="flex items-center justify-center gap-2
               bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100
               text-white dark:text-neutral-900
               font-semibold text-sm px-6 py-3 rounded-xl transition-colors"
-          >
-            Try again
-          </Link>
-          <Link
-            href="/docs"
-            className="text-muted-foreground hover:text-foreground text-sm py-2 transition-colors"
           >
             Browse free components
           </Link>
@@ -92,10 +86,10 @@ function ProcessingPaymentView({ paymentId }: { paymentId?: string }) {
         )}
 
         <Link
-          href="/pro"
+          href="/docs"
           className="text-muted-foreground hover:text-foreground text-sm py-2 transition-colors"
         >
-          Back to Pro
+          Browse free components
         </Link>
       </div>
     </div>
@@ -223,12 +217,12 @@ export default async function PaymentSuccessPage({
         <div className="flex flex-col gap-2">
           {isProWaitlist ? (
             <Link
-              href="/pro"
+              href="/docs"
               className="flex items-center justify-center gap-2
               bg-[#6366F1] hover:bg-[#4F46E5] text-white
               font-semibold text-sm px-6 py-3 rounded-xl transition-colors"
             >
-              Back to Pro
+              Browse free components
             </Link>
           ) : (
             <Link
@@ -242,10 +236,10 @@ export default async function PaymentSuccessPage({
             </Link>
           )}
           <Link
-            href={isProWaitlist ? '/docs' : '/pro'}
+            href="/templates"
             className="text-muted-foreground hover:text-foreground text-sm py-2 transition-colors"
           >
-            {isProWaitlist ? 'Browse free components' : 'Browse more templates'}
+            Browse templates
           </Link>
         </div>
       </div>

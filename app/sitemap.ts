@@ -3,7 +3,6 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { siteConfig } from "@/config/site";
 import { getAllBlogPosts } from "@/lib/blog";
-import { supabaseAdmin } from "@/lib/supabase-admin";
 import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
 import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 import { comparisons } from "@/lib/comparisons";
@@ -26,7 +25,6 @@ const nonIndexableRoutes = new Set([
   "/dashboard",
   "/demo",
   "/payment-success",
-  "/pro/waitlist/success",
   "/profile",
   "/registry/responsive-modal",
   "/sign-in",
@@ -75,7 +73,6 @@ const routeConfig: Record<string, RouteConfig> = {
   "/faqs": { changeFrequency: "monthly", priority: 0.5 },
   "/founder-story": { changeFrequency: "yearly", priority: 0.3 },
   "/privacy-policy": { changeFrequency: "yearly", priority: 0.2 },
-  "/pro": { changeFrequency: "weekly", priority: 0.7 },
   "/sponsor": { changeFrequency: "monthly", priority: 0.3 },
   "/templates": { changeFrequency: "monthly", priority: 0.7 },
   "/tos": { changeFrequency: "yearly", priority: 0.2 },
@@ -187,26 +184,6 @@ async function getBlogPages(): Promise<MetadataRoute.Sitemap> {
   }
 }
 
-async function getTemplatePages(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const { data: templates } = await supabaseAdmin
-      .from("templates")
-      .select("slug, created_at")
-      .eq("is_published", true);
-
-    return (templates ?? []).map((template) =>
-      createEntry({
-        route: "/pro/" + template.slug,
-        sourceFiles: [],
-        fallbackDate: validDate(template.created_at),
-        config: { changeFrequency: "monthly", priority: 0.7 },
-      }),
-    );
-  } catch {
-    return [];
-  }
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = discoverPageFiles(appDirectory).flatMap((filePath) => {
     const route = routeFromPageFile(filePath);
@@ -277,16 +254,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  const [blogPages, templatePages] = await Promise.all([
-    getBlogPages(),
-    getTemplatePages(),
-  ]);
+  const blogPages = await getBlogPages();
   const entries = [
     ...staticPages,
     ...machineReadablePages,
     ...comparisonPages,
     ...blogPages,
-    ...templatePages,
   ];
   const uniqueEntries = new Map(entries.map((entry) => [entry.url, entry]));
 

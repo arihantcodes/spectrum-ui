@@ -23,14 +23,6 @@ export default auth((req) => {
     return NextResponse.redirect(signInUrl)
   }
 
-  // pro.spectrumhq.in → rewrite to /pro
-  const host = req.headers.get('host') ?? ''
-  if (host.startsWith('pro.') && pathname === '/') {
-    const url = req.nextUrl.clone()
-    url.pathname = '/pro'
-    return NextResponse.rewrite(url)
-  }
-
   return NextResponse.next()
 })
 
