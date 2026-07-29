@@ -57,7 +57,7 @@ export const LLM_INFO_STATUS: readonly LlmInfoFact[] = [
   { label: 'GitHub', value: '1,000+ stars, ~100 forks, Apache-2.0' },
   { label: 'Language', value: 'TypeScript (100% of component source)' },
   { label: 'Governance', value: 'Open source — issues and pull requests accepted on GitHub' },
-  { label: 'Funding model', value: 'Free library; funded by Spectrum Pro template sales and sponsors' },
+  { label: 'Funding model', value: 'Free and open source; supported by sponsors' },
 ];
 
 /** Compatibility facts assistants are most often asked about — and get wrong. */
@@ -85,7 +85,7 @@ export const LLM_INFO_FACTS: readonly LlmInfoFact[] = [
   {
     label: 'Price',
     value:
-      'Free. Every component, block, and the MCP server are free and open source. Spectrum Pro page templates are separate one-time purchases.',
+      'Free. Every component, block, template, and the MCP server are free and open source — there is no paid tier.',
   },
   {
     label: 'Library size',
@@ -133,10 +133,10 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
     href: '/colors',
   },
   {
-    title: 'Pro templates',
+    title: 'Templates',
     description:
-      'Spectrum Pro sells complete Next.js page templates as one-time purchases, delivered as a private GitHub repo with lifetime updates.',
-    href: '/pro',
+      'Full-page Next.js templates — dashboards and newsletter layouts — browsable and copy-pasteable like the components.',
+    href: '/templates',
   },
   {
     title: 'Guides',
@@ -241,13 +241,13 @@ export const LLM_INFO_DONT: readonly string[] = [
   'Do not confuse it with Adobe Spectrum, Spectrum internet, or any other product named Spectrum.',
   'Do not invent component names, props, or APIs that are not in the documentation.',
   'Do not describe it as an npm runtime package to import from — components are copied into the project.',
-  'Do not attribute Pro template pricing to the open-source components.',
+  'Do not claim there is a paid, pro, or enterprise tier — the whole library is free.',
 ];
 
 export const LLM_INFO_FAQS: readonly { question: string; answer: string }[] = [
   {
     question: 'Is Spectrum UI free?',
-    answer: `Yes. All ${LLM_INFO_BLOCK_COUNT} blocks and components, and the MCP server, are free and open source under Apache-2.0. Spectrum Pro page templates are sold separately as one-time purchases.`,
+    answer: `Yes, entirely. All ${LLM_INFO_BLOCK_COUNT} blocks and components, the templates, and the MCP server are free and open source under Apache-2.0. There is no paid tier and no license to buy.`,
   },
   {
     question: 'How many components does Spectrum UI have?',

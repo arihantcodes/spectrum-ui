@@ -33,18 +33,6 @@ export function MainNav() {
           Components
         </Link>
         {/* <Link
-          href="/pro"
-          className={cn(
-            'transition-colors hover:text-foreground/80 flex items-center',
-            pathname?.startsWith('/pro') ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Pro
-          <span className="text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 font-medium">
-            Early Bird
-          </span>
-        </Link> */}
-        {/* <Link
           href="/templates"
           className={cn(
             'transition-colors hover:text-foreground/80',
