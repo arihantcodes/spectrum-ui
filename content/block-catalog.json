@@ -10,6 +10,59 @@
   ],
   "blocks": [
     {
+      "slug": "loading-state",
+      "name": "Loading State",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A pixel-grid loader with a shimmering label and live elapsed timer.",
+      "summary": "What fills the gap before the first token. A nine-cell pixel grid animates a chevron wavefront or an orbiting comet, next to a shimmering label and an elapsed timer in mono tabular figures.",
+      "hardParts": [
+        "A timer that ticks every 100ms needs tabular figures or the layout wobbles on every frame",
+        "Perceived performance — the 650ms cycle is shorter than the sweep so two wavefronts are always in flight",
+        "Reduced motion freezes the grid to its dim state while the timer keeps ticking"
+      ],
+      "variants": [
+        "Drive",
+        "Dots",
+        "Orbit"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Render while a long-running AI task has produced no output yet. Purely visual; label and variant are props. Self-contained — its keyframes ship inside the component.",
+      "index": 1,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "reasoning-trace",
+      "name": "Reasoning Trace",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A collapsible chain-of-thought panel with a live elapsed timer and streaming steps.",
+      "summary": "Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.",
+      "hardParts": [
+        "Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong",
+        "Collapsing without jumping the scroll position of the thread above",
+        "An elapsed timer that needs tabular numbers or the layout wobbles every tick"
+      ],
+      "variants": [
+        "Steps",
+        "Reasoning"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render above an assistant message to expose reasoning tokens. Accepts steps plus a status of thinking or complete. Does not call a model.",
+      "index": 2,
+      "new": true,
+      "status": "live"
+    },
+    {
       "slug": "chat-thread",
       "name": "Chat Thread",
       "category": "ai-assistants",
@@ -32,13 +85,9 @@
         "button",
         "scroll-area"
       ],
-      "dependencies": [
-        "motion",
-        "react-markdown",
-        "remark-gfm"
-      ],
+      "dependencies": [],
       "aiHints": "Use as the message list of a chat UI. Accepts a Message[] and a streaming flag; does not fetch or call a model. Pair with prompt-composer for input and message-actions for per-message controls.",
-      "index": 1,
+      "index": 3,
       "new": true,
       "status": "live"
     },
@@ -70,7 +119,7 @@
         "motion"
       ],
       "aiHints": "Use as the input of a chat UI. Controlled or uncontrolled; emits onSubmit with text and attachments. Set isGenerating to show the stop button. Does not call a model.",
-      "index": 2,
+      "index": 4,
       "new": true,
       "status": "planned"
     },
@@ -99,35 +148,7 @@
         "motion"
       ],
       "aiHints": "Attach to an assistant message. Emits onCopy, onRegenerate, onFeedback, onBranch. Render inside chat-thread rather than standalone.",
-      "index": 3,
-      "new": true,
-      "status": "planned"
-    },
-    {
-      "slug": "reasoning-trace",
-      "name": "Reasoning Trace",
-      "category": "ai-assistants",
-      "subcategory": "Reasoning & Agents",
-      "description": "A collapsible chain-of-thought panel with a live elapsed timer and streaming steps.",
-      "summary": "Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.",
-      "hardParts": [
-        "Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong",
-        "Collapsing without jumping the scroll position of the thread above",
-        "An elapsed timer that needs tabular numbers or the layout wobbles every tick"
-      ],
-      "variants": [
-        "default",
-        "inline"
-      ],
-      "complexity": "advanced",
-      "composedOf": [
-        "button"
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "aiHints": "Render above an assistant message to expose reasoning tokens. Accepts steps plus a status of thinking or complete. Does not call a model.",
-      "index": 4,
+      "index": 5,
       "new": true,
       "status": "planned"
     },
@@ -157,7 +178,7 @@
         "motion"
       ],
       "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children. Presentational only.",
-      "index": 5,
+      "index": 6,
       "new": true,
       "status": "planned"
     },
@@ -186,35 +207,6 @@
         "motion"
       ],
       "aiHints": "Wrap assistant text to render inline citations. Accepts Citation[] indexed from 1. Presentational only.",
-      "index": 6,
-      "new": true,
-      "status": "planned"
-    },
-    {
-      "slug": "generating-state",
-      "name": "Generating State",
-      "category": "ai-assistants",
-      "subcategory": "Conversation",
-      "description": "AI loading states — shimmer, elapsed counter, and shape-matched skeletons.",
-      "summary": "What fills the gap before the first token. A skeleton shaped like the answer that is coming, an elapsed counter, and a stop control.",
-      "hardParts": [
-        "The skeleton must match the eventual shape or the swap-in is jarring",
-        "Perceived performance — a faster shimmer genuinely makes it feel faster",
-        "Must not loop hypnotically for thirty seconds, and needs a non-dead reduced-motion state"
-      ],
-      "variants": [
-        "default",
-        "shimmer",
-        "dots"
-      ],
-      "complexity": "simple",
-      "composedOf": [
-        "skeleton"
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "aiHints": "Render in place of an assistant message before the first token arrives. Purely visual.",
       "index": 7,
       "new": true,
       "status": "planned"

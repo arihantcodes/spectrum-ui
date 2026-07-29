@@ -120,8 +120,9 @@ function buildCompactFile() {
     '- [Guides](' + siteUrl + '/docs/guides)',
     '- [MCP server](' + siteUrl + '/docs/mcp)',
     '- [Blog](' + siteUrl + '/blog)',
-    // The Blocks entry is re-added when the real /blocks/[category]/[blockName]
-    // section ships; the placeholder page it described has been removed.
+    '- [AI Assistant Blocks](' +
+      siteUrl +
+      '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '',
     '## Installation',

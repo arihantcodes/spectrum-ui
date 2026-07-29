@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { BlockCard } from '@/components/blocks/block-card';
-import { blockPoster } from '@/components/blocks/previews';
+import { promises as fs } from 'node:fs';
+import path from 'node:path';
+import { BlocksSidebar } from '@/components/blocks/blocks-sidebar';
+import { Specimen } from '@/components/blocks/specimen';
 import { JsonLd } from '@/components/seo/json-ld';
 import {
   BLOCK_CATEGORIES,
   blockCategoryPath,
-  blockPath,
+  blockCliCommand,
   blocksInCategory,
   findBlockCategory,
-  subcategoriesInCategory,
-  subcategoryAnchor,
 } from '@/lib/block-catalog';
 import { generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 import { siteConfig } from '@/config/site';
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
   return {
-    title: { absolute: `${category.name} Blocks for React — Copy & Paste` },
+    title: { absolute: `${category.name} Blocks for React — Live Previews & Source` },
     description: category.description,
     alternates: { canonical: url },
     openGraph: {
@@ -43,13 +43,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+/** The code shown and copied is the file the CLI installs, read off disk. */
+async function readSource(category: string, slug: string) {
+  const relative = path.join('components', 'spectrumui', 'blocks', category, `${slug}.tsx`);
+  try {
+    return await fs.readFile(path.join(process.cwd(), relative), 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * One scrolling specimen page per category. Every block renders live at actual
+ * size — numbered sections, variant pills that switch the block's state in
+ * place, and a code toggle on the stage. No detail pages, no thumbnails.
+ */
 export default async function BlockCategoryPage({ params }: PageProps) {
   const { category: slug } = await params;
   const category = findBlockCategory(slug);
   if (!category) notFound();
 
   const blocks = blocksInCategory(slug);
-  const subcategories = subcategoriesInCategory(slug);
+  const sources = await Promise.all(blocks.map((block) => readSource(slug, block.slug)));
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
 
   const breadcrumb = generateBreadcrumbStructuredData([
@@ -67,7 +82,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
       position: position + 1,
       name: block.name,
       description: block.description,
-      url: `${siteConfig.url}${blockPath(block.category, block.slug)}`,
+      url: `${url}#${block.slug}`,
     })),
   };
 
@@ -76,52 +91,45 @@ export default async function BlockCategoryPage({ params }: PageProps) {
       <JsonLd id={`blocks-${slug}-breadcrumb`} data={breadcrumb} />
       <JsonLd id={`blocks-${slug}-itemlist`} data={itemList} />
 
-      <header className="py-14 lg:py-20">
-        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-600">
-          Blocks / {category.name}
-        </p>
-        <h1 className="mt-4 max-w-[24ch] font-spectral text-[36px] leading-[1.08] tracking-[-1px] text-neutral-900 dark:text-neutral-50 md:text-[42px]">
-          {category.name}
-        </h1>
-        <p className="mt-5 max-w-[64ch] text-[15px] leading-[1.7] text-neutral-600 dark:text-neutral-400">
-          {category.description}
-        </p>
-      </header>
+      <div className="flex gap-14 py-12 lg:py-16">
+        <BlocksSidebar
+          title={category.name}
+          tagline={category.tagline}
+          items={blocks.map((block) => ({ slug: block.slug, name: block.name }))}
+        />
 
-      {subcategories.map((subcategory) => {
-        const group = blocks.filter((block) => block.subcategory === subcategory);
-        if (group.length === 0) return null;
+        <main className="min-w-0 max-w-[760px] flex-1">
+          {/* The visual title lives in the sidebar on desktop; the document's
+              h1 is visible on mobile and screen-reader-only above lg. */}
+          <header className="lg:sr-only">
+            <h1 className="font-spectral text-[28px] leading-[1.1] tracking-[-0.6px] text-neutral-900 dark:text-neutral-50">
+              {category.name}
+            </h1>
+            <p className="mt-2 text-[13.5px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
+              {category.tagline}
+            </p>
+          </header>
 
-        return (
-          <section
-            key={subcategory}
-            id={subcategoryAnchor(subcategory)}
-            aria-labelledby={`sub-${subcategoryAnchor(subcategory)}`}
-            className="scroll-mt-24 border-t border-black/[0.07] pt-6 dark:border-white/[0.07] [&:not(:first-of-type)]:mt-16"
-          >
-            <h2
-              id={`sub-${subcategoryAnchor(subcategory)}`}
-              className="font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400"
-            >
-              {subcategory}
-            </h2>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
-              {group.map((block, position) => (
-                <BlockCard
-                  key={block.slug}
-                  block={block}
-                  total={blocks.length}
-                  preview={blockPoster(block.slug)}
-                  // The lead specimen of each group gets the wide frame, so the
-                  // grid has rhythm instead of reading as a uniform tile wall.
-                  featured={position === 0 && group.length > 1}
+          <div className="mt-10 space-y-20 lg:mt-0 lg:space-y-24">
+            {blocks.map((block, position) => (
+              <div
+                key={block.slug}
+                className={position > 0 ? 'border-t border-dashed border-black/[0.09] pt-16 dark:border-white/[0.09] lg:pt-20' : undefined}
+              >
+                <Specimen
+                  slug={block.slug}
+                  number={String(position + 1).padStart(2, '0')}
+                  name={block.name}
+                  description={block.description}
+                  variants={block.variants}
+                  source={sources[position] ?? '// Source unavailable'}
+                  cli={blockCliCommand(block.slug)}
                 />
-              ))}
-            </div>
-          </section>
-        );
-      })}
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
     </>
   );
 }

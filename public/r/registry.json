@@ -753,6 +753,56 @@
       ]
     },
     {
+      "name": "loading-state",
+      "type": "registry:block",
+      "title": "Loading State",
+      "description": "A pixel-grid loader with a shimmering label and live elapsed timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/loading-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/loading-state.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "loading",
+        "spinner",
+        "elapsed",
+        "shimmer"
+      ]
+    },
+    {
+      "name": "reasoning-trace",
+      "type": "registry:block",
+      "title": "Reasoning Trace",
+      "description": "An expandable chain-of-thought trace with a live thinking timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "thinking",
+        "chain-of-thought",
+        "reasoning",
+        "trace"
+      ]
+    },
+    {
       "name": "stackedcircular-footer",
       "type": "registry:component",
       "title": "Stacked Circular Footer",

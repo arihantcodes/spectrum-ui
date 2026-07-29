@@ -74,8 +74,12 @@ export function blockCategoryPath(categorySlug: string) {
   return `/blocks/${categorySlug}`;
 }
 
+/**
+ * Blocks live as anchored sections on their category's specimen page — one
+ * scrolling page of live, full-size previews — not as separate routes.
+ */
 export function blockPath(categorySlug: string, blockSlug: string) {
-  return `/blocks/${categorySlug}/${blockSlug}`;
+  return `/blocks/${categorySlug}#${blockSlug}`;
 }
 
 /** The install command shown on cards and detail pages. */
