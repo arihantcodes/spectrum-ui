@@ -4,6 +4,32 @@
   "homepage": "https://ui.spectrumhq.in",
   "items": [
     {
+      "name": "chat-thread",
+      "type": "registry:block",
+      "title": "Chat Thread",
+      "description": "A conversation thread with streaming assistant messages, markdown, and code blocks.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/chat-thread.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/chat-thread.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "chat",
+        "streaming",
+        "markdown",
+        "conversation"
+      ]
+    },
+    {
       "name": "disclose-image",
       "type": "registry:component",
       "title": "Disclose Image",

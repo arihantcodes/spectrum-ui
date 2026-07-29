@@ -1,0 +1,252 @@
+{
+  "categories": [
+    {
+      "slug": "ai-assistants",
+      "name": "AI Assistants",
+      "tagline": "Interface surfaces for products built on LLMs.",
+      "description": "Composed sections for AI products — conversation threads with streaming and markdown, prompt composers with attachments and model selection, reasoning traces, agent tool timelines, and citation displays. Each block renders standalone with realistic data and shares one message contract, so they compose into a working chat surface.",
+      "order": 1
+    }
+  ],
+  "blocks": [
+    {
+      "slug": "chat-thread",
+      "name": "Chat Thread",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A conversation thread with streaming assistant messages, markdown, and code blocks.",
+      "summary": "Renders a full conversation between a user and an assistant. Handles streaming text, markdown with fenced code blocks, message grouping, and scroll anchoring that sticks to the bottom while generating but yields the moment the reader scrolls up.",
+      "hardParts": [
+        "Scroll anchoring that yields to user intent instead of yanking the viewport back on every token",
+        "Streaming markdown that does not re-parse the whole string per token or flash unclosed code fences",
+        "Announcing the finished message once to screen readers instead of every token"
+      ],
+      "variants": [
+        "default",
+        "compact",
+        "bubbles"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "avatar",
+        "button",
+        "scroll-area"
+      ],
+      "dependencies": [
+        "motion",
+        "react-markdown",
+        "remark-gfm"
+      ],
+      "aiHints": "Use as the message list of a chat UI. Accepts a Message[] and a streaming flag; does not fetch or call a model. Pair with prompt-composer for input and message-actions for per-message controls.",
+      "index": 1,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "prompt-composer",
+      "name": "Prompt Composer",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A prompt input bar with autosize, attachments, model selection, and a stop-generating state.",
+      "summary": "The input surface of an AI product. Grows with its content up to a max height, accepts files by drag, paste, or picker, exposes a model selector, and swaps send for stop while a response streams.",
+      "hardParts": [
+        "Enter must not submit mid-IME-composition, which silently breaks Japanese, Chinese, and Korean input",
+        "Autosize with a max height that then scrolls, without a per-keystroke jitter",
+        "Pasting an image from the clipboard, and the grow animation not reflowing the thread above"
+      ],
+      "variants": [
+        "default",
+        "minimal",
+        "with-toolbar"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "autosize-textarea",
+        "button",
+        "dropdown-menu",
+        "tooltip"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use as the input of a chat UI. Controlled or uncontrolled; emits onSubmit with text and attachments. Set isGenerating to show the stop button. Does not call a model.",
+      "index": 2,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "message-actions",
+      "name": "Message Actions",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "Per-message controls — copy, regenerate, thumbs up and down, and branch.",
+      "summary": "The action row that appears on an assistant message. Reveals on hover on pointer devices, is reachable by keyboard, and stays visible on touch.",
+      "hardParts": [
+        "Hover-reveal that is simultaneously keyboard-reachable and always visible on touch — three access models, one component",
+        "Copy must yield the source markdown, not the rendered DOM text",
+        "Optimistic feedback state that survives a failed request"
+      ],
+      "variants": [
+        "default",
+        "inline"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "tooltip"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Attach to an assistant message. Emits onCopy, onRegenerate, onFeedback, onBranch. Render inside chat-thread rather than standalone.",
+      "index": 3,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "reasoning-trace",
+      "name": "Reasoning Trace",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A collapsible chain-of-thought panel with a live elapsed timer and streaming steps.",
+      "summary": "Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.",
+      "hardParts": [
+        "Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong",
+        "Collapsing without jumping the scroll position of the thread above",
+        "An elapsed timer that needs tabular numbers or the layout wobbles every tick"
+      ],
+      "variants": [
+        "default",
+        "inline"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Render above an assistant message to expose reasoning tokens. Accepts steps plus a status of thinking or complete. Does not call a model.",
+      "index": 4,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "agent-steps",
+      "name": "Agent Steps",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A timeline of tool calls with arguments, status, results, and nested sub-steps.",
+      "summary": "Visualises what an agent actually did. Each step carries a tool name, its arguments, a status, and a result, with nested and parallel calls rendered distinctly.",
+      "hardParts": [
+        "A real state machine — pending, running, success, error, cancelled — not a spinner",
+        "JSON arguments that stay readable without blowing the layout: collapse and scroll, never wrap",
+        "Parallel calls need a visually different treatment from sequential ones"
+      ],
+      "variants": [
+        "default",
+        "compact"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "badge",
+        "button",
+        "collapsible"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children. Presentational only.",
+      "index": 5,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "citation-sources",
+      "name": "Citation Sources",
+      "category": "ai-assistants",
+      "subcategory": "Sources",
+      "description": "Inline numbered citation pills with a source list and hover previews.",
+      "summary": "Grounds an answer in its sources. Numbered pills sit inline in the text and map to a source list with favicon, domain, and snippet, with a hovercard preview.",
+      "hardParts": [
+        "Mapping citation indices into streaming text, where the marker arrives before the source metadata resolves",
+        "Hovercard collision handling near viewport edges",
+        "Deduplicating by domain while keeping per-citation numbering stable"
+      ],
+      "variants": [
+        "default",
+        "footnotes"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "hover-card",
+        "badge"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Wrap assistant text to render inline citations. Accepts Citation[] indexed from 1. Presentational only.",
+      "index": 6,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "generating-state",
+      "name": "Generating State",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "AI loading states — shimmer, elapsed counter, and shape-matched skeletons.",
+      "summary": "What fills the gap before the first token. A skeleton shaped like the answer that is coming, an elapsed counter, and a stop control.",
+      "hardParts": [
+        "The skeleton must match the eventual shape or the swap-in is jarring",
+        "Perceived performance — a faster shimmer genuinely makes it feel faster",
+        "Must not loop hypnotically for thirty seconds, and needs a non-dead reduced-motion state"
+      ],
+      "variants": [
+        "default",
+        "shimmer",
+        "dots"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "skeleton"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Render in place of an assistant message before the first token arrives. Purely visual.",
+      "index": 7,
+      "new": true,
+      "status": "planned"
+    },
+    {
+      "slug": "chat-empty-state",
+      "name": "Chat Empty State",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A first-run state with a greeting, suggested prompts, and capability hints.",
+      "summary": "The first thing every user of an AI product sees. A greeting, suggestion chips that feed the composer, and an honest statement of what the assistant can do.",
+      "hardParts": [
+        "Least technically hard, highest product leverage — this is the first impression",
+        "Suggestion chips must feed the composer without a full page of wiring",
+        "A designed rest state, not a blank panel"
+      ],
+      "variants": [
+        "default",
+        "centered",
+        "minimal"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Render instead of chat-thread when there are no messages. Emits onSelectPrompt so a suggestion can populate prompt-composer.",
+      "index": 8,
+      "new": true,
+      "status": "planned"
+    }
+  ]
+}

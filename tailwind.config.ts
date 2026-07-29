@@ -91,6 +91,12 @@ const config = {
         calsans: ["var(--font-calsans)", "var(--font-geist-sans)", "sans-serif"],
       },
       keyframes: {
+        // Streaming-text caret for the AI Assistant blocks. steps(1) gives a
+        // hard blink; a smooth fade reads as a pulse rather than a cursor.
+        caret: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
         slideOutToTopFull: {
           "0%": {
             transform: "translateY(0)",
