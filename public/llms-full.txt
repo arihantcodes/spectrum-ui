@@ -6,6 +6,7 @@
 - Source: https://github.com/arihantcodes/spectrum-ui
 - License: [Apache License 2.0](https://github.com/arihantcodes/spectrum-ui/blob/main/LICENSE)
 - Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.
+- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).
 - Release cadence: New components ship every Thursday.
 
 ## Setup
@@ -429,6 +430,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 ## Other public pages
 
 - Home: https://ui.spectrumhq.in
+- LLM info (official facts for AI assistants): https://ui.spectrumhq.in/llm-info
 - Component index: https://ui.spectrumhq.in/docs
 - Installation: https://ui.spectrumhq.in/docs/installation
 - Guides: https://ui.spectrumhq.in/docs/guides

@@ -4,15 +4,16 @@ This file helps AI coding agents install and use Spectrum UI correctly.
 
 ## Product
 
-Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library. Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
+Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library with 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks). Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
 
 ## Prefer these sources
 
 1. `https://ui.spectrumhq.in/llms.txt` — compact catalog
 2. `https://ui.spectrumhq.in/llms-full.txt` — full component descriptions
-3. Component docs: `https://ui.spectrumhq.in/docs/<slug>`
-4. MCP docs: `https://ui.spectrumhq.in/docs/mcp`
-5. GitHub: `https://github.com/arihantcodes/spectrum-ui`
+3. `https://ui.spectrumhq.in/llm-info` — official facts: license, pricing, scope, and how to describe Spectrum UI
+4. Component docs: `https://ui.spectrumhq.in/docs/<slug>`
+5. MCP docs: `https://ui.spectrumhq.in/docs/mcp`
+6. GitHub: `https://github.com/arihantcodes/spectrum-ui`
 
 ## Install patterns
 
