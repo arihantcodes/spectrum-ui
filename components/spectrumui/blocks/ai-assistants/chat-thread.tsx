@@ -5,42 +5,23 @@ import { ArrowUp, Clock, Plus, Square } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Conversation, Message } from './types';
 
-/* ─────────────────────────────────────────────────────────
- * CHAT THREAD — a tabbed chat panel with a composer
- *
- * A complete conversation surface: conversation tabs in the
- * header, a streaming message thread with markdown, code
- * fences and citation markers, and a composer that swaps
- * its send arrow for a stop square while generating.
- *
- * The hard part is the scrolling. Autoscroll here is a
- * mode: it switches off the moment the reader scrolls away
- * from the bottom and back on when they return — instead of
- * yanking the viewport down on every token.
- *
- * Streaming text is aria-hidden while it arrives; the
- * finished message is announced once via a polite live
- * region. aria-live on the streaming node itself would make
- * a screen reader read every token.
- * ───────────────────────────────────────────────────────── */
+const KEYFRAMES = `
+@keyframes su-caret { 0%, 49% { opacity: 1 } 50%, 100% { opacity: 0 } }
+@keyframes su-msg-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+`;
 
 export interface ChatThreadProps {
   messages: Message[];
-  /** True while the last assistant message is still arriving. */
   isGenerating?: boolean;
   assistantName?: string;
-  /** Conversation tabs in the header. Omit to hide the header. */
   conversations?: Conversation[];
   activeConversationId?: string;
   onConversationChange?: (id: string) => void;
   placeholder?: string;
-  /** Called with the composer text. Omit to hide the composer. */
   onSend?: (text: string) => void;
   onStop?: () => void;
   variant?: 'default' | 'compact' | 'bubbles';
-  /** Rendered above an assistant message — a reasoning trace, tool steps. */
   renderBefore?: (message: Message) => React.ReactNode;
-  /** Rendered below an assistant message — actions like copy or regenerate. */
   renderActions?: (message: Message) => React.ReactNode;
   className?: string;
 }
@@ -63,10 +44,12 @@ export function ChatThread({
   return (
     <div
       className={cn(
-        'flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.07] bg-white dark:border-white/[0.08] dark:bg-[#0B0B0D]',
+        'flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-sm dark:border-white/[0.08] dark:bg-[#0B0B0D]',
         className,
       )}
     >
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
+
       {conversations && conversations.length > 0 && (
         <PanelHeader
           conversations={conversations}
@@ -96,8 +79,6 @@ export function ChatThread({
   );
 }
 
-/* ── Header: conversation tabs ──────────────────────────── */
-
 function PanelHeader({
   conversations,
   activeId,
@@ -107,13 +88,26 @@ function PanelHeader({
   activeId: string;
   onChange?: (id: string) => void;
 }) {
+  const activeIndex = Math.max(
+    0,
+    conversations.findIndex((conversation) => conversation.id === activeId),
+  );
+
   return (
     <div className="flex items-center justify-between gap-3 border-b border-black/[0.06] px-3 py-2 dark:border-white/[0.07]">
       <div
         role="tablist"
         aria-label="Conversations"
-        className="flex gap-0.5 rounded-lg bg-black/[0.04] p-0.5 dark:bg-white/[0.05]"
+        className="relative isolate grid grid-flow-col auto-cols-fr rounded-lg bg-black/[0.04] p-0.5 dark:bg-white/[0.05]"
       >
+        <span
+          aria-hidden
+          className="absolute inset-y-0.5 left-0.5 -z-10 rounded-[7px] bg-white shadow-sm transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] dark:bg-neutral-800"
+          style={{
+            width: `calc((100% - 4px) / ${conversations.length})`,
+            transform: `translateX(${activeIndex * 100}%)`,
+          }}
+        />
         {conversations.map((conversation) => {
           const active = conversation.id === activeId;
           return (
@@ -123,10 +117,10 @@ function PanelHeader({
               aria-selected={active}
               onClick={() => onChange?.(conversation.id)}
               className={cn(
-                'rounded-[7px] px-2.5 py-1 text-[12.5px] font-medium transition-colors duration-150',
+                'rounded-[7px] px-2.5 py-1 text-[12.5px] font-medium transition-[color,transform] duration-150 active:scale-[0.96]',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
                 active
-                  ? 'bg-white text-neutral-900 shadow-sm dark:bg-neutral-800 dark:text-neutral-50'
+                  ? 'text-neutral-900 dark:text-neutral-50'
                   : 'text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200',
               )}
             >
@@ -137,26 +131,28 @@ function PanelHeader({
       </div>
 
       <div className="flex gap-0.5 text-neutral-400 dark:text-neutral-500">
-        <button
-          type="button"
-          aria-label="New conversation"
-          className="grid size-7 place-items-center rounded-md transition-colors duration-150 hover:bg-black/[0.04] hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
-        >
+        <HeaderButton label="New conversation">
           <Plus className="size-3.5" />
-        </button>
-        <button
-          type="button"
-          aria-label="History"
-          className="grid size-7 place-items-center rounded-md transition-colors duration-150 hover:bg-black/[0.04] hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
-        >
+        </HeaderButton>
+        <HeaderButton label="History">
           <Clock className="size-3.5" />
-        </button>
+        </HeaderButton>
       </div>
     </div>
   );
 }
 
-/* ── Thread: the message list ───────────────────────────── */
+function HeaderButton({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      className="grid size-7 place-items-center rounded-md transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+    >
+      {children}
+    </button>
+  );
+}
 
 function Thread({
   messages,
@@ -177,8 +173,6 @@ function Thread({
   const [stickToBottom, setStickToBottom] = useState(true);
   const [announcement, setAnnouncement] = useState('');
 
-  // Reader intent: a 32px tolerance keeps momentum overscroll from reading as
-  // "the user scrolled away".
   function handleScroll() {
     const element = viewport.current;
     if (!element) return;
@@ -186,15 +180,12 @@ function Thread({
     setStickToBottom(fromBottom < 32);
   }
 
-  // Layout effect, not effect: scrolling after paint flashes one frame at the
-  // old position, which reads as a jump.
   useLayoutEffect(() => {
     if (!stickToBottom) return;
     const element = viewport.current;
     if (element) element.scrollTop = element.scrollHeight;
   }, [messages, stickToBottom]);
 
-  // Announce each completed assistant message exactly once.
   const announced = useRef(new Set<string>());
   useEffect(() => {
     for (const message of messages) {
@@ -234,12 +225,11 @@ function Thread({
         ))}
       </div>
 
-      {/* Offering a way back down is what makes breaking autoscroll safe. */}
       {!stickToBottom && (
         <button
           type="button"
           onClick={() => setStickToBottom(true)}
-          className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11.5px] font-medium text-neutral-700 shadow-md transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-200"
+          className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-black/[0.08] bg-white px-2.5 py-1 text-[11.5px] font-medium text-neutral-700 shadow-md transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] motion-safe:animate-[su-msg-in_200ms_cubic-bezier(0.23,1,0.32,1)_both] dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-200"
         >
           Jump to latest
         </button>
@@ -272,10 +262,13 @@ function MessageRow({
 
   if (isUser) {
     return (
-      <article aria-label="You said" className="flex justify-end">
+      <article
+        aria-label="You said"
+        className="flex justify-end motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both]"
+      >
         <div
           className={cn(
-            'max-w-[82%] rounded-2xl rounded-br-md bg-black/[0.05] px-3.5 py-2 leading-[1.6] text-neutral-900 dark:bg-white/[0.08] dark:text-neutral-100',
+            'max-w-[82%] rounded-[16px] rounded-br-[6px] bg-black/[0.05] px-3.5 py-2 leading-[1.6] text-neutral-900 dark:bg-white/[0.08] dark:text-neutral-100',
             compact ? 'text-[12.5px]' : 'text-[13.5px]',
           )}
         >
@@ -286,7 +279,10 @@ function MessageRow({
   }
 
   return (
-    <article aria-label={`${assistantName} said`} className="group/message">
+    <article
+      aria-label={`${assistantName} said`}
+      className="group/message motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both]"
+    >
       <div className={cn('mb-1.5 flex items-center gap-1.5', compact && 'mb-1')}>
         <span className="grid size-4 place-items-center rounded-full bg-neutral-900 text-[8.5px] font-bold text-white dark:bg-neutral-100 dark:text-neutral-900">
           {assistantName.charAt(0)}
@@ -303,7 +299,7 @@ function MessageRow({
           'leading-[1.65] text-neutral-700 dark:text-neutral-300',
           compact ? 'text-[12.5px]' : 'text-[13.5px]',
           bubbles &&
-            'w-fit max-w-[92%] rounded-2xl rounded-tl-md bg-black/[0.03] px-3.5 py-2.5 dark:bg-white/[0.04]',
+            'w-fit max-w-[92%] rounded-[16px] rounded-tl-[6px] bg-black/[0.03] px-3.5 py-2.5 dark:bg-white/[0.04]',
         )}
       >
         <MessageContent content={message.content} streaming={isStreaming} />
@@ -313,8 +309,6 @@ function MessageRow({
     </article>
   );
 }
-
-/* ── Composer ───────────────────────────────────────────── */
 
 function Composer({
   placeholder,
@@ -338,6 +332,8 @@ function Composer({
     if (textarea.current) textarea.current.style.height = 'auto';
   }
 
+  const canSend = value.trim().length > 0;
+
   return (
     <form
       onSubmit={(event) => {
@@ -346,7 +342,7 @@ function Composer({
       }}
       className="border-t border-black/[0.06] p-2.5 dark:border-white/[0.07]"
     >
-      <div className="flex items-end gap-2 rounded-xl border border-black/[0.07] bg-black/[0.02] px-3 py-2 transition-colors duration-150 focus-within:border-black/[0.16] dark:border-white/[0.08] dark:bg-white/[0.03] dark:focus-within:border-white/[0.22]">
+      <div className="flex items-end gap-2 rounded-xl border border-black/[0.07] bg-black/[0.02] px-3 py-2 transition-[border-color,box-shadow] duration-150 focus-within:border-black/[0.16] focus-within:shadow-[0_0_0_3px_rgba(0,0,0,0.03)] dark:border-white/[0.08] dark:bg-white/[0.03] dark:focus-within:border-white/[0.22] dark:focus-within:shadow-[0_0_0_3px_rgba(255,255,255,0.04)]">
         <textarea
           ref={textarea}
           value={value}
@@ -355,13 +351,10 @@ function Composer({
           aria-label="Message"
           onChange={(event) => {
             setValue(event.target.value);
-            // Autosize with a max height that then scrolls.
             event.target.style.height = 'auto';
             event.target.style.height = `${Math.min(event.target.scrollHeight, 96)}px`;
           }}
           onKeyDown={(event) => {
-            // isComposing: Enter must not submit mid-IME-composition, or this
-            // silently breaks Japanese, Chinese and Korean input.
             if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) {
               event.preventDefault();
               submit();
@@ -370,39 +363,33 @@ function Composer({
           className="max-h-24 min-h-[22px] flex-1 resize-none bg-transparent text-[13.5px] leading-[1.6] text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-neutral-100 dark:placeholder:text-neutral-500"
         />
 
-        {isGenerating ? (
-          <button
-            type="button"
-            onClick={onStop}
-            aria-label="Stop generating"
-            className="grid size-7 shrink-0 place-items-center rounded-full bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.94] dark:bg-neutral-100 dark:text-neutral-900"
-          >
-            <Square className="size-2.5 fill-current" />
-          </button>
-        ) : (
-          <button
-            type="submit"
-            aria-label="Send message"
-            disabled={!value.trim()}
-            className="grid size-7 shrink-0 place-items-center rounded-full bg-neutral-900 text-white transition-[transform,opacity] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.94] disabled:opacity-30 dark:bg-neutral-100 dark:text-neutral-900"
-          >
-            <ArrowUp className="size-3.5" />
-          </button>
-        )}
+        <button
+          type={isGenerating ? 'button' : 'submit'}
+          onClick={isGenerating ? onStop : undefined}
+          aria-label={isGenerating ? 'Stop generating' : 'Send message'}
+          disabled={!isGenerating && !canSend}
+          className="grid size-7 shrink-0 place-items-center rounded-full bg-neutral-900 text-white transition-[transform,opacity] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] disabled:opacity-30 dark:bg-neutral-100 dark:text-neutral-900"
+        >
+          <span className="relative grid size-3.5 place-items-center">
+            <ArrowUp
+              className={cn(
+                'absolute size-3.5 transition-[opacity,filter] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
+                isGenerating ? 'opacity-0 blur-[2px]' : 'opacity-100 blur-0',
+              )}
+            />
+            <Square
+              className={cn(
+                'absolute size-2.5 fill-current transition-[opacity,filter] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
+                isGenerating ? 'opacity-100 blur-0' : 'opacity-0 blur-[2px]',
+              )}
+            />
+          </span>
+        </button>
       </div>
     </form>
   );
 }
 
-/* ── Markdown ───────────────────────────────────────────── */
-
-/**
- * Minimal markdown: bold, inline code, fenced code blocks, [n] citations.
- *
- * Deliberately not react-markdown: a streaming message re-renders per token and
- * re-parsing the whole string each time is O(n²). This handles the subset
- * assistants actually emit and tolerates an unclosed fence mid-stream.
- */
 function MessageContent({ content, streaming }: { content: string; streaming?: boolean }) {
   const segments = splitFences(content);
 
@@ -424,7 +411,7 @@ function MessageContent({ content, streaming }: { content: string; streaming?: b
             {streaming && index === segments.length - 1 && (
               <span
                 aria-hidden
-                className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.15em] animate-[caret_1s_steps(1,end)_infinite] bg-current motion-reduce:animate-none"
+                className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.15em] animate-[su-caret_1s_steps(1,end)_infinite] bg-current motion-reduce:animate-none"
               />
             )}
           </p>
@@ -474,7 +461,6 @@ function InlineMarkdown({ value }: { value: string }) {
 
 type Segment = { type: 'text' | 'code'; value: string; lang?: string };
 
-/** Splits fenced code blocks out of markdown, tolerating an unclosed fence. */
 function splitFences(content: string): Segment[] {
   const segments: Segment[] = [];
   const pattern = /```(\w*)\n([\s\S]*?)(?:```|$)/g;
@@ -494,7 +480,6 @@ function splitFences(content: string): Segment[] {
   return segments.filter((segment) => segment.value.length > 0);
 }
 
-/** Flattens markdown for the screen-reader announcement. */
 function stripMarkdown(content: string) {
   return content
     .replace(/```[\s\S]*?```/g, ' code block ')

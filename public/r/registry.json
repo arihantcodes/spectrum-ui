@@ -4,6 +4,83 @@
   "homepage": "https://ui.spectrumhq.in",
   "items": [
     {
+      "name": "agent-steps",
+      "type": "registry:block",
+      "title": "Agent Steps",
+      "description": "A timeline of tool calls with status, arguments, results, and parallel sub-steps.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "agent",
+        "steps"
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:block",
+      "title": "Approval Card",
+      "description": "A human-in-the-loop approval for an action an agent wants to take.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/approval-card.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/approval-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "approval",
+        "card"
+      ]
+    },
+    {
+      "name": "chat-empty-state",
+      "type": "registry:block",
+      "title": "Chat Empty State",
+      "description": "A first-run greeting with staggered suggestion chips.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "chat",
+        "empty",
+        "state"
+      ]
+    },
+    {
       "name": "chat-thread",
       "type": "registry:block",
       "title": "Chat Thread",
@@ -27,6 +104,30 @@
         "streaming",
         "markdown",
         "conversation"
+      ]
+    },
+    {
+      "name": "citation-sources",
+      "type": "registry:block",
+      "title": "Citation Sources",
+      "description": "Inline citation markers with hover previews or a footnote list.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "citation",
+        "sources"
       ]
     },
     {
@@ -753,6 +854,28 @@
       ]
     },
     {
+      "name": "inline-edit",
+      "type": "registry:block",
+      "title": "Inline Edit",
+      "description": "A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "inline",
+        "edit"
+      ]
+    },
+    {
       "name": "loading-state",
       "type": "registry:block",
       "title": "Loading State",
@@ -771,6 +894,84 @@
         "spinner",
         "elapsed",
         "shimmer"
+      ]
+    },
+    {
+      "name": "message-actions",
+      "type": "registry:block",
+      "title": "Message Actions",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/message-actions.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/message-actions.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "message",
+        "actions"
+      ]
+    },
+    {
+      "name": "model-selector",
+      "type": "registry:block",
+      "title": "Model Selector",
+      "description": "A model picker as a radio list or segmented control, with badges and disabled states.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/model-selector.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/model-selector.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "model",
+        "selector"
+      ]
+    },
+    {
+      "name": "prompt-composer",
+      "type": "registry:block",
+      "title": "Prompt Composer",
+      "description": "A prompt input with attachments, a model picker, and a stop state.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "prompt",
+        "composer"
       ]
     },
     {
@@ -1347,6 +1548,81 @@
       ],
       "registryDependencies": [
         "@spectrumui/multiple-selector-dependencies"
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:block",
+      "title": "Streaming Text",
+      "description": "A streamed answer with inline citations, sources, and follow-ups.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "streaming",
+        "text"
+      ]
+    },
+    {
+      "name": "tool-chips",
+      "type": "registry:block",
+      "title": "Tool Chips",
+      "description": "Compact tool-call chips that expand into their arguments and result.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "tool",
+        "chips"
+      ]
+    },
+    {
+      "name": "usage-meter",
+      "type": "registry:block",
+      "title": "Usage Meter",
+      "description": "A context-window meter with token counts and estimated cost.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "usage",
+        "meter"
       ]
     },
     {
@@ -2922,6 +3198,28 @@
       ],
       "category": "Action",
       "docsUrl": "https://ui.spectrumhq.in/docs/share-button"
+    },
+    {
+      "name": "voice-input",
+      "type": "registry:block",
+      "title": "Voice Input",
+      "description": "A voice recorder pill with animated level bars and a live timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/voice-input.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/voice-input.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "voice",
+        "input"
+      ]
     }
   ]
 }

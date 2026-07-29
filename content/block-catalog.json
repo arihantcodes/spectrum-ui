@@ -18,7 +18,7 @@
       "summary": "What fills the gap before the first token. A nine-cell pixel grid animates a chevron wavefront or an orbiting comet, next to a shimmering label and an elapsed timer in mono tabular figures.",
       "hardParts": [
         "A timer that ticks every 100ms needs tabular figures or the layout wobbles on every frame",
-        "Perceived performance — the 650ms cycle is shorter than the sweep so two wavefronts are always in flight",
+        "The 650ms cycle is shorter than the sweep so two wavefronts are always in flight",
         "Reduced motion freezes the grid to its dim state while the timer keeps ticking"
       ],
       "variants": [
@@ -39,25 +39,23 @@
       "name": "Reasoning Trace",
       "category": "ai-assistants",
       "subcategory": "Reasoning & Agents",
-      "description": "A collapsible chain-of-thought panel with a live elapsed timer and streaming steps.",
+      "description": "An expandable chain-of-thought trace with a live thinking timer.",
       "summary": "Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.",
       "hardParts": [
         "Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong",
-        "Collapsing without jumping the scroll position of the thread above",
-        "An elapsed timer that needs tabular numbers or the layout wobbles every tick"
+        "Collapsing must not jump the scroll position of the thread above",
+        "An elapsed timer needs tabular numbers or the label wobbles every tick"
       ],
       "variants": [
         "Steps",
         "Reasoning"
       ],
-      "complexity": "advanced",
-      "composedOf": [
-        "button"
-      ],
+      "complexity": "composed",
+      "composedOf": [],
       "dependencies": [
         "lucide-react"
       ],
-      "aiHints": "Render above an assistant message to expose reasoning tokens. Accepts steps plus a status of thinking or complete. Does not call a model.",
+      "aiHints": "Render above an assistant message to expose reasoning. Accepts steps plus a status of thinking or complete. Presentational only.",
       "index": 2,
       "new": true,
       "status": "live"
@@ -67,27 +65,51 @@
       "name": "Chat Thread",
       "category": "ai-assistants",
       "subcategory": "Conversation",
-      "description": "A conversation thread with streaming assistant messages, markdown, and code blocks.",
-      "summary": "Renders a full conversation between a user and an assistant. Handles streaming text, markdown with fenced code blocks, message grouping, and scroll anchoring that sticks to the bottom while generating but yields the moment the reader scrolls up.",
+      "description": "A tabbed chat panel with streaming messages, markdown, and a composer.",
+      "summary": "A complete conversation surface: conversation tabs in the header, a streaming thread with markdown, code fences and citation markers, and a composer that swaps send for stop while generating.",
       "hardParts": [
-        "Scroll anchoring that yields to user intent instead of yanking the viewport back on every token",
-        "Streaming markdown that does not re-parse the whole string per token or flash unclosed code fences",
-        "Announcing the finished message once to screen readers instead of every token"
+        "Scroll anchoring that yields to reader intent instead of yanking the viewport on every token",
+        "Streaming markdown that tolerates an unclosed code fence mid-stream",
+        "Enter must not submit mid-IME-composition, which silently breaks CJK input"
       ],
       "variants": [
-        "default",
-        "compact",
-        "bubbles"
+        "Default",
+        "Compact",
+        "Bubbles"
       ],
       "complexity": "advanced",
-      "composedOf": [
-        "avatar",
-        "button",
-        "scroll-area"
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
       ],
-      "dependencies": [],
-      "aiHints": "Use as the message list of a chat UI. Accepts a Message[] and a streaming flag; does not fetch or call a model. Pair with prompt-composer for input and message-actions for per-message controls.",
+      "aiHints": "Use as a complete chat surface: conversation tabs, streaming thread, composer with stop state. Accepts Message[]; does not call a model.",
       "index": 3,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "streaming-text",
+      "name": "Streaming Text",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A streamed answer with inline citations, sources, and follow-ups.",
+      "summary": "A single streamed answer outside a full thread — token-by-token text with inline citation markers, a compact source row or expanded source list, and follow-up prompts that stagger in when the answer settles.",
+      "hardParts": [
+        "Word-chunked streaming reads as inference; per-character reads as a typewriter",
+        "Citation markers arrive in the stream before their sources render",
+        "Follow-ups must not shift layout while text is still arriving"
+      ],
+      "variants": [
+        "Answer",
+        "Sources"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render a single streamed answer outside a full thread. Accepts text, citations and follow-up prompts; streaming drives the caret.",
+      "index": 4,
       "new": true,
       "status": "live"
     },
@@ -96,149 +118,275 @@
       "name": "Prompt Composer",
       "category": "ai-assistants",
       "subcategory": "Input",
-      "description": "A prompt input bar with autosize, attachments, model selection, and a stop-generating state.",
-      "summary": "The input surface of an AI product. Grows with its content up to a max height, accepts files by drag, paste, or picker, exposes a model selector, and swaps send for stop while a response streams.",
+      "description": "A prompt input with attachments, a model picker, and a stop state.",
+      "summary": "The input surface of an AI product: an autosizing textarea with attachment chips, a model picker that opens upward, a character budget, and a send control that becomes stop while a response streams.",
       "hardParts": [
-        "Enter must not submit mid-IME-composition, which silently breaks Japanese, Chinese, and Korean input",
-        "Autosize with a max height that then scrolls, without a per-keystroke jitter",
-        "Pasting an image from the clipboard, and the grow animation not reflowing the thread above"
+        "Autosize with a max height that then scrolls, without per-keystroke jitter",
+        "The model menu opens upward so it never collides with a thread above",
+        "Swapping send for stop without the button changing size"
       ],
       "variants": [
-        "default",
-        "minimal",
-        "with-toolbar"
+        "Default",
+        "Minimal"
       ],
       "complexity": "advanced",
-      "composedOf": [
-        "autosize-textarea",
-        "button",
-        "dropdown-menu",
-        "tooltip"
-      ],
+      "composedOf": [],
       "dependencies": [
-        "motion"
+        "lucide-react"
       ],
-      "aiHints": "Use as the input of a chat UI. Controlled or uncontrolled; emits onSubmit with text and attachments. Set isGenerating to show the stop button. Does not call a model.",
-      "index": 4,
-      "new": true,
-      "status": "planned"
-    },
-    {
-      "slug": "message-actions",
-      "name": "Message Actions",
-      "category": "ai-assistants",
-      "subcategory": "Feedback",
-      "description": "Per-message controls — copy, regenerate, thumbs up and down, and branch.",
-      "summary": "The action row that appears on an assistant message. Reveals on hover on pointer devices, is reachable by keyboard, and stays visible on touch.",
-      "hardParts": [
-        "Hover-reveal that is simultaneously keyboard-reachable and always visible on touch — three access models, one component",
-        "Copy must yield the source markdown, not the rendered DOM text",
-        "Optimistic feedback state that survives a failed request"
-      ],
-      "variants": [
-        "default",
-        "inline"
-      ],
-      "complexity": "composed",
-      "composedOf": [
-        "button",
-        "tooltip"
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "aiHints": "Attach to an assistant message. Emits onCopy, onRegenerate, onFeedback, onBranch. Render inside chat-thread rather than standalone.",
+      "aiHints": "Use as the input of an AI product. Emits onSend with text and model id; set isGenerating to swap send for stop. Enter is IME-safe.",
       "index": 5,
       "new": true,
-      "status": "planned"
-    },
-    {
-      "slug": "agent-steps",
-      "name": "Agent Steps",
-      "category": "ai-assistants",
-      "subcategory": "Reasoning & Agents",
-      "description": "A timeline of tool calls with arguments, status, results, and nested sub-steps.",
-      "summary": "Visualises what an agent actually did. Each step carries a tool name, its arguments, a status, and a result, with nested and parallel calls rendered distinctly.",
-      "hardParts": [
-        "A real state machine — pending, running, success, error, cancelled — not a spinner",
-        "JSON arguments that stay readable without blowing the layout: collapse and scroll, never wrap",
-        "Parallel calls need a visually different treatment from sequential ones"
-      ],
-      "variants": [
-        "default",
-        "compact"
-      ],
-      "complexity": "advanced",
-      "composedOf": [
-        "badge",
-        "button",
-        "collapsible"
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children. Presentational only.",
-      "index": 6,
-      "new": true,
-      "status": "planned"
-    },
-    {
-      "slug": "citation-sources",
-      "name": "Citation Sources",
-      "category": "ai-assistants",
-      "subcategory": "Sources",
-      "description": "Inline numbered citation pills with a source list and hover previews.",
-      "summary": "Grounds an answer in its sources. Numbered pills sit inline in the text and map to a source list with favicon, domain, and snippet, with a hovercard preview.",
-      "hardParts": [
-        "Mapping citation indices into streaming text, where the marker arrives before the source metadata resolves",
-        "Hovercard collision handling near viewport edges",
-        "Deduplicating by domain while keeping per-citation numbering stable"
-      ],
-      "variants": [
-        "default",
-        "footnotes"
-      ],
-      "complexity": "composed",
-      "composedOf": [
-        "hover-card",
-        "badge"
-      ],
-      "dependencies": [
-        "motion"
-      ],
-      "aiHints": "Wrap assistant text to render inline citations. Accepts Citation[] indexed from 1. Presentational only.",
-      "index": 7,
-      "new": true,
-      "status": "planned"
+      "status": "live"
     },
     {
       "slug": "chat-empty-state",
       "name": "Chat Empty State",
       "category": "ai-assistants",
       "subcategory": "Conversation",
-      "description": "A first-run state with a greeting, suggested prompts, and capability hints.",
-      "summary": "The first thing every user of an AI product sees. A greeting, suggestion chips that feed the composer, and an honest statement of what the assistant can do.",
+      "description": "A first-run greeting with staggered suggestion chips.",
+      "summary": "The first thing every user sees. A greeting, an honest subtitle, and suggestion chips that stagger in and feed the composer.",
       "hardParts": [
-        "Least technically hard, highest product leverage — this is the first impression",
-        "Suggestion chips must feed the composer without a full page of wiring",
-        "A designed rest state, not a blank panel"
+        "Least technically hard, highest product leverage — it is the first impression",
+        "Stagger must be capped or a long chip list turns into a wait",
+        "Chips must feed the composer without a page of wiring"
       ],
       "variants": [
-        "default",
-        "centered",
-        "minimal"
+        "Default",
+        "Centered"
       ],
       "complexity": "simple",
-      "composedOf": [
-        "button"
-      ],
+      "composedOf": [],
       "dependencies": [
-        "motion"
+        "lucide-react"
       ],
-      "aiHints": "Render instead of chat-thread when there are no messages. Emits onSelectPrompt so a suggestion can populate prompt-composer.",
+      "aiHints": "Render instead of the thread when there are no messages. Emits onSelectPrompt so a chip can populate the composer.",
+      "index": 6,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "message-actions",
+      "name": "Message Actions",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
+      "summary": "The action row on an assistant message: copy with a blur-crossfade check, regenerate with a half-turn, and thumb feedback that fills and pops. Hover-revealed on pointer devices, keyboard-reachable, always visible on touch.",
+      "hardParts": [
+        "Hover-reveal that is also keyboard-reachable and always visible on touch — three access models, one component",
+        "Copy must yield source markdown, not rendered DOM text",
+        "Feedback state must survive being toggled off"
+      ],
+      "variants": [
+        "Ghost",
+        "Pill"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Attach below an assistant message inside a group/message container. Hover-revealed on pointer devices, always visible on touch.",
+      "index": 7,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "citation-sources",
+      "name": "Citation Sources",
+      "category": "ai-assistants",
+      "subcategory": "Sources",
+      "description": "Inline citation markers with hover previews or a footnote list.",
+      "summary": "Grounds an answer in its sources. Numbered markers sit inline in the text and reveal a hovercard on hover or focus; the footnote variant lists every source with domain and snippet.",
+      "hardParts": [
+        "Numbering must stay stable when sources deduplicate by domain",
+        "A hovercard that works on focus as well as hover",
+        "Markers must not break line height or text rhythm"
+      ],
+      "variants": [
+        "Inline",
+        "Footnotes"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Wrap answer text containing [n] markers. Accepts Citation[] indexed from 1; hovercards need no JS positioning.",
       "index": 8,
       "new": true,
-      "status": "planned"
+      "status": "live"
+    },
+    {
+      "slug": "agent-steps",
+      "name": "Agent Steps",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A timeline of tool calls with status, arguments, results, and parallel sub-steps.",
+      "summary": "Visualises what an agent actually did: each tool call with its status, arguments, duration and result, including parallel sub-steps rendered side by side.",
+      "hardParts": [
+        "A real state machine — pending, running, success, error — not a spinner",
+        "Arguments stay readable without blowing the layout: truncate, never wrap",
+        "Parallel calls need a visibly different treatment from sequential ones"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children; expandable results use no height hacks.",
+      "index": 9,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "tool-chips",
+      "name": "Tool Chips",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "Compact tool-call chips that expand into their arguments and result.",
+      "summary": "Tool calls as a row or stack of compact chips — status dot, mono name, duration — with one shared panel that expands to show the selected call's arguments and result.",
+      "hardParts": [
+        "One expanded panel shared across chips keeps the layout calm",
+        "Status must be legible from a 6px dot alone",
+        "Chips wrap without orphaning their durations"
+      ],
+      "variants": [
+        "Row",
+        "Stack"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "A denser alternative to agent-steps for inline tool use. Accepts ToolCall[]; one chip expands at a time.",
+      "index": 10,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "approval-card",
+      "name": "Approval Card",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A human-in-the-loop approval for an action an agent wants to take.",
+      "summary": "An agent proposes; a human decides. The card states the action and its consequence, and the decision crossfades in place with an audit line preserved.",
+      "hardParts": [
+        "Show the consequence clearly enough to decide on",
+        "The decided state must preserve an audit trail",
+        "Approve and dismiss must not be visual equals"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render when an agent proposes an irreversible action. Emits onDecide; the decided state crossfades in place.",
+      "index": 11,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "model-selector",
+      "name": "Model Selector",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A model picker as a radio list or segmented control, with badges and disabled states.",
+      "summary": "Model choice as a radio list with descriptions, badges and disabled states, or as a segmented control whose active pill slides between options.",
+      "hardParts": [
+        "Disabled options must stay visible — capability differences are information",
+        "The sliding pill needs transform, not layout animation",
+        "Radio semantics without a form library"
+      ],
+      "variants": [
+        "List",
+        "Segmented"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Accepts ModelOption[]; controlled or uncontrolled. Disabled options stay visible so capability differences are legible.",
+      "index": 12,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "usage-meter",
+      "name": "Usage Meter",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A context-window meter with token counts and estimated cost.",
+      "summary": "Context-window state at a glance: a meter that turns amber past 75 percent and red past 90, token counts in tabular figures, and an estimated cost.",
+      "hardParts": [
+        "Tabular numerals or every tick shifts the layout",
+        "Threshold colors must be meaningful, not decorative",
+        "The bar animates width smoothly without repaint jank"
+      ],
+      "variants": [
+        "Bar",
+        "Inline"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Accepts a UsageState. Threshold colors at 75 and 90 percent; numerals are tabular so the layout never wobbles.",
+      "index": 13,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "voice-input",
+      "name": "Voice Input",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A voice recorder pill with animated level bars and a live timer.",
+      "summary": "A recorder pill that moves through idle, recording and processing. Level bars animate on staggered offsets, the timer ticks in mono, and cancel or confirm sit a thumb-width apart.",
+      "hardParts": [
+        "Level bars from staggered CSS offsets, no audio API needed for the preview",
+        "Three permission-adjacent states with distinct affordances",
+        "Reduced motion needs a static-but-alive treatment"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Controlled or uncontrolled recording states: idle, recording, processing. Reduced motion freezes the bars; the timer still ticks.",
+      "index": 14,
+      "new": true,
+      "status": "live"
+    },
+    {
+      "slug": "inline-edit",
+      "name": "Inline Edit",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.",
+      "summary": "AI editing anchored to a selection: the highlighted span grows a floating action, the suggestion arrives as a word-level diff, and accepting swaps the text in place.",
+      "hardParts": [
+        "A floating action anchored to an inline selection across line wraps",
+        "Word-level diff that reads at a glance — del and ins, not walls of red and green",
+        "Accepting must swap text without the paragraph jumping"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render over editable prose. Shows the selection, a floating action, then a del/ins diff; accepting swaps the text in place.",
+      "index": 15,
+      "new": true,
+      "status": "live"
     }
   ]
 }

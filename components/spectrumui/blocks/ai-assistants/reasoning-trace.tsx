@@ -5,22 +5,6 @@ import { ChevronDown, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ReasoningStep } from "./types";
 
-/* ─────────────────────────────────────────────────────────
- * REASONING TRACE — expandable chain-of-thought
- *
- * Collapsed it is one quiet line: "Thought for 4.2s".
- * While thinking, the label shimmers and a live timer ticks
- * in mono tabular figures so the layout never wobbles.
- *
- * Variants:
- *   Steps     — numbered rows, one per reasoning step
- *   Reasoning — the same steps as flowing prose
- *
- * The body animates open with the grid-rows 0fr→1fr trick:
- * height:auto is unanimatable and max-height guesses wrong,
- * this is the only clean way to animate unknown height.
- * ───────────────────────────────────────────────────────── */
-
 const KEYFRAMES = `
 @keyframes su-shimmer-text { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
 @keyframes su-step-in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
@@ -31,19 +15,17 @@ export type ReasoningTraceVariant = "Steps" | "Reasoning";
 export interface ReasoningTraceProps {
   steps: ReasoningStep[];
   status: "thinking" | "complete";
-  /** Total time spent reasoning; shown once complete. */
   durationMs?: number;
   variant?: ReasoningTraceVariant;
   defaultOpen?: boolean;
   className?: string;
 }
 
-/** Ticks only while thinking; freezes at the final elapsed on completion. */
 function useThinkingClock(active: boolean) {
   const [ds, setDs] = useState(0);
   const wasActive = useRef(active);
   useEffect(() => {
-    if (active && !wasActive.current) setDs(0); // a new thought starts the clock over
+    if (active && !wasActive.current) setDs(0);
     wasActive.current = active;
     if (!active) return;
     const t = setInterval(() => setDs((d) => d + 1), 100);
@@ -76,14 +58,11 @@ export function ReasoningTrace({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="group flex items-center gap-2 rounded-lg py-1 text-neutral-600 transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-100"
+        className="group flex items-center gap-2 rounded-lg py-1 text-neutral-600 transition-[color,transform] duration-150 hover:text-neutral-900 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-100"
       >
         <Sparkles
           aria-hidden
-          className={cn(
-            "size-3.5",
-            thinking && "motion-safe:animate-pulse",
-          )}
+          className={cn("size-3.5", thinking && "motion-safe:animate-pulse")}
         />
         {thinking ? (
           <span
@@ -114,7 +93,6 @@ export function ReasoningTrace({
         />
       </button>
 
-      {/* 0fr → 1fr animates the unknown height of a streaming trace. */}
       <div
         className="grid transition-[grid-template-rows] duration-[240ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}

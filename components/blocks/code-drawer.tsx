@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet';
-import CommandFigure from '@/app/(docs)/docs/components/code-card/parts/command-figure';
+import { InstallFigure } from '@/components/blocks/install-figure';
 import CodeHighlight from '@/app/(docs)/docs/components/code-card/parts/code-highlight';
 import { Copy1Icon } from '@/app/(docs)/layout-parts/docs-icons';
 import { useAuthGate } from '@/hooks/use-auth-gate';
@@ -53,11 +53,7 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
           >
             Installation
           </h3>
-          <CommandFigure
-            cli={`@spectrumui/${slug}`}
-            componentName={slug}
-            requireAuth
-          />
+          <InstallFigure cli={`@spectrumui/${slug}`} componentName={slug} />
         </section>
 
         {/* 2 — MCP: the prompt an agent turns into an install. */}

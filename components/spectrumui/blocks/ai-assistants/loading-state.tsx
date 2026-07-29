@@ -3,24 +3,6 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-/* ─────────────────────────────────────────────────────────
- * LOADING STATE — pixel-grid loader for long-running work
- *
- * Variants:
- *   Drive  — square cells, chevron wavefront driving right;
- *            the 650ms cycle is shorter than the sweep, so
- *            two fronts are always in flight
- *   Dots   — same wavefront, circular cells
- *   Orbit  — a comet lapping the grid perimeter
- *
- * Paired with a shimmering label and a live elapsed timer
- * in mono tabular figures. Reduced motion freezes the grid
- * to its dim state; the timer still ticks.
- *
- * Self-contained: keyframes ship inside the component so a
- * registry install works without touching globals.css.
- * ───────────────────────────────────────────────────────── */
-
 const KEYFRAMES = `
 @keyframes su-pixel-on { 0%, 100% { opacity: 0.15 } 40% { opacity: 1 } }
 @keyframes su-shimmer-text { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }

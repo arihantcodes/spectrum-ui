@@ -45,7 +45,7 @@ const InstallCommand = ({
     const loadHighlighter = async () => {
       const { createHighlighter } = await import("shiki");
       const h = await createHighlighter({
-        themes: ["vesper", "min-light"],
+        themes: ["vesper", "github-light"],
         langs: ["typescript", "tsx", "javascript", "jsx", "shell", "bash"],
       });
       setHighlighter(h);
@@ -56,7 +56,7 @@ const InstallCommand = ({
   useEffect(() => {
     const getShikiTheme = () => {
       const currentTheme = resolvedTheme || theme;
-      return currentTheme === "dark" ? "vesper" : "min-light";
+      return currentTheme === "dark" ? "vesper" : "github-light";
     };
     if (highlighter && code) {
       try {
