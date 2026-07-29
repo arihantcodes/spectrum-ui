@@ -89,18 +89,36 @@ function ReasoningTraceDemo({ variant }: { variant: 'Steps' | 'Reasoning' }) {
   );
 }
 
-/** The full target text of the message the demo streams in. */
-const STREAM_TARGET =
+/** The reply the demo streams in on its own. */
+const AUTO_REPLY =
   'Checking the last four quarters for the same lane. Two comparable dips so far — Q3 last year during the Felixstowe crane refit, and February this year in storm week. Both recovered within a fortnight, so this one should too once Berth 3 is back.';
+
+/** The reply streamed when the viewer sends their own message. */
+const MANUAL_REPLY =
+  "Good question — I'll fold that into the lane report and flag anything that moves more than two points week over week.";
 
 const SETTLED: Message[] = PORTSIDE_CONVERSATION.slice(0, 3);
 
-/** Streams the fourth message word by word, completes, holds, and restarts. */
+const DEMO_CONVERSATIONS = [
+  { id: 'lanes', label: 'Lanes' },
+  { id: 'carriers', label: 'Carriers' },
+];
+
+/**
+ * A working chat: streams a reply word by word, settles, and repeats — until
+ * the viewer types their own message, at which point the loop yields and the
+ * panel answers them instead.
+ */
 function ChatThreadDemo({ variant }: { variant: 'default' | 'compact' | 'bubbles' }) {
   const reduced = usePrefersReducedMotion();
-  const words = STREAM_TARGET.split(' ');
+  const [conversation, setConversation] = useState('lanes');
+  const [sent, setSent] = useState<Message[]>([]);
+  const [target, setTarget] = useState(AUTO_REPLY);
   const [wordCount, setWordCount] = useState(0);
   const [done, setDone] = useState(false);
+
+  const interactive = sent.length > 0;
+  const words = target.split(' ');
 
   useEffect(() => {
     if (reduced) return;
@@ -108,33 +126,51 @@ function ChatThreadDemo({ variant }: { variant: 'default' | 'compact' | 'bubbles
       const t = setTimeout(() => setDone(true), 400);
       return () => clearTimeout(t);
     }
-    if (done) {
+    // The auto loop restarts; a reply to the viewer stays put.
+    if (done && !interactive) {
       const t = setTimeout(() => {
         setWordCount(0);
         setDone(false);
       }, 4200);
       return () => clearTimeout(t);
     }
+    if (done) return;
     // ~28ms/word with jitter reads as inference, not a typewriter.
     const t = setTimeout(() => setWordCount((n) => n + 1), 26 + Math.random() * 22);
     return () => clearTimeout(t);
-  }, [reduced, done, wordCount, words.length]);
+  }, [reduced, done, wordCount, words.length, interactive]);
+
+  function handleSend(text: string) {
+    setSent((previous) => [
+      ...previous,
+      { id: `sent-${previous.length}`, role: 'user', content: text, state: 'complete' },
+    ]);
+    setTarget(MANUAL_REPLY);
+    setWordCount(0);
+    setDone(false);
+  }
 
   const finished = reduced || done;
   const streamed: Message = {
-    id: 'demo-stream',
+    id: `demo-stream-${sent.length}`,
     role: 'assistant',
-    content: finished ? STREAM_TARGET : words.slice(0, wordCount).join(' '),
+    content: finished ? target : words.slice(0, wordCount).join(' '),
     state: finished ? 'complete' : 'streaming',
   };
 
   return (
-    <div className="h-[420px] w-full max-w-[560px] overflow-hidden rounded-xl border border-neutral-200/80 bg-white dark:border-neutral-800 dark:bg-[#0B0B0D]">
+    <div className="h-[480px] w-full max-w-[600px]">
       <ChatThread
-        messages={[...SETTLED, streamed]}
+        messages={[...SETTLED, ...sent, streamed]}
         isGenerating={!finished}
         assistantName="Portside"
         variant={variant}
+        conversations={DEMO_CONVERSATIONS}
+        activeConversationId={conversation}
+        onConversationChange={setConversation}
+        placeholder="Ask about your freight…"
+        onSend={handleSend}
+        onStop={() => setDone(true)}
       />
     </div>
   );

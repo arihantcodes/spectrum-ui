@@ -77,6 +77,12 @@ export interface Message {
   reasoning?: Reasoning;
 }
 
+/** A conversation tab in the chat panel header. */
+export interface Conversation {
+  id: string;
+  label: string;
+}
+
 export interface ModelOption {
   id: string;
   name: string;
