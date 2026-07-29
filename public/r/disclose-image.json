@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "disclose-image",
+  "title": "Disclose Image",
+  "description": "An image reveal component with animated sliding door panels.",
+  "files": [
+    {
+      "path": "components/spectrumui/discloseimage.tsx",
+      "content": "/* eslint-disable @next/next/no-img-element */\n\"use client\";\nimport { ImgHTMLAttributes, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport default function DiscloseImage({\n  className,\n  doorClassName,\n  vertical = false,\n  ...props\n}: ImgHTMLAttributes<HTMLImageElement> & {\n  doorClassName?: string;\n  vertical?: boolean;\n}) {\n  const [imageLoaded, setImageLoaded] = useState(false);\n  const baseClassName =\n    \"ease-slow duration-mid absolute bg-sky-500 transition-all animate-out fill-mode-forwards\";\n\n  const { alt, ...imgProps } = props;\n  return (\n    <div className=\"relative h-64 w-52 overflow-hidden rounded-md bg-yellow-100\">\n      <img\n        alt={alt || \"Disclose image\"}\n        onLoad={() => setImageLoaded(true)}\n        {...imgProps}\n        className={cn(\"h-full w-full object-cover\", className)}\n      />\n\n      {imageLoaded && (\n        <>\n          <div\n            className={cn(baseClassName, doorClassName, {\n              \"top-0 h-1/2 w-full slide-out-to-top-full\": vertical,\n              \"bottom-0 left-0 top-0 w-1/2 slide-out-to-left-full\": !vertical,\n            })}\n          />\n          <div\n            className={cn(baseClassName, doorClassName, {\n              \"bottom-0 h-1/2 w-full slide-out-to-bottom-full\": vertical,\n              \"bottom-0 right-0 top-0 w-1/2 slide-out-to-right-full\": !vertical,\n            })}\n          />\n        </>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/discloseimage.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

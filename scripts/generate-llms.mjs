@@ -120,9 +120,8 @@ function buildCompactFile() {
     '- [Guides](' + siteUrl + '/docs/guides)',
     '- [MCP server](' + siteUrl + '/docs/mcp)',
     '- [Blog](' + siteUrl + '/blog)',
-    '- [Blocks](' +
-      siteUrl +
-      '/blocks): Pre-built, copy-paste UI blocks — navbars, hero/feature sections, pricing & login cards, testimonials, and dashboards',
+    // The Blocks entry is re-added when the real /blocks/[category]/[blockName]
+    // section ships; the placeholder page it described has been removed.
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '',
     '## Installation',

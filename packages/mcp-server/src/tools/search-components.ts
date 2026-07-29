@@ -18,9 +18,11 @@ function score(item: RegistryItem, query: string): number {
   const desc = item.description.toLowerCase();
   const category = inferCategory(item).toLowerCase();
 
-  // Exact name match = highest
-  if (name === q) return 100;
-  if (title === q) return 90;
+  // Exact matches must be decisive. At 100/90 they were not: "avatar stack"
+  // exactly matched the title of avatar-stack (90), but avatar-stack-demo
+  // accumulated 111 from starts-with + contains + word hits and outranked it.
+  if (name === q) return 1000;
+  if (title === q) return 900;
 
   let s = 0;
   // Starts-with match
@@ -42,6 +44,13 @@ function score(item: RegistryItem, query: string): number {
     if (desc.includes(word)) s += 4;
   }
 
+  // Demos, usage examples and dependency-only items are supporting material.
+  // Without this, searching "avatar stack" surfaced avatar-stack-demo above
+  // avatar-stack, so an agent would install the demo instead of the component.
+  if (/-(demo|usage|example|dependencies|dependecies|as-child)$/.test(name)) {
+    s -= 20;
+  }
+
   return s;
 }
 
@@ -60,7 +69,7 @@ export async function searchComponents(
       category: inferCategory(item),
       score: score(item, query),
       cliCommand: `bunx --bun shadcn@latest add @spectrumui/${item.name}`,
-      docsUrl: `https://spectrumhq.in/docs/${item.name}`,
+      docsUrl: item.docsUrl ?? "https://ui.spectrumhq.in/docs",
     }))
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)

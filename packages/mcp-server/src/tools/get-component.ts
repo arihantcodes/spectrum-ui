@@ -41,6 +41,10 @@ export async function getComponent(
     return null;
   }
 
+  // Hits were never tracked, only misses — the data could show what people
+  // failed to find, but not what they actually used.
+  track({ event: "get_component", component: item.name, query: nameOrQuery, found: true });
+
   const cliCommand = `bunx --bun shadcn@latest add @spectrumui/${item.name}`;
   const cliCommandNpx = `npx shadcn@latest add @spectrumui/${item.name}`;
 
@@ -54,8 +58,8 @@ export async function getComponent(
     files: item.files.map((f) => ({ path: f.path, target: f.target })),
     cliCommand,
     cliCommandNpx,
-    docsUrl: `https://spectrumhq.in/docs/${item.name}`,
-    previewUrl: `https://spectrumhq.in/docs/${item.name}`,
+    docsUrl: item.docsUrl ?? "https://ui.spectrumhq.in/docs",
+    previewUrl: item.docsUrl ?? "https://ui.spectrumhq.in/docs",
     installInstructions: [
       `## Installing ${item.title}`,
       ``,
@@ -77,7 +81,7 @@ export async function getComponent(
       ...item.files.map((f) => `- \`${f.target}\``),
       ``,
       `### Documentation`,
-      `https://spectrumhq.in/docs/${item.name}`,
+      `${item.docsUrl ?? "https://ui.spectrumhq.in/docs"}`,
     ].join("\n"),
   };
 }

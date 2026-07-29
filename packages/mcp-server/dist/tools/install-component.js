@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import { loadRegistry } from "../data/registry-loader.js";
+import { track } from "../utils/telemetry.js";
 /**
  * Installs a Spectrum UI component into the user's project.
  * Tries `bunx --bun shadcn@latest add @spectrumui/<name>` first (faster),
@@ -15,6 +16,7 @@ export async function installComponent(name, projectDir) {
         registry.items.find((i) => i.name.toLowerCase().includes(q) ||
             i.title.toLowerCase().includes(q));
     if (!item) {
+        track({ event: "component_not_found", component: name, found: false });
         return {
             success: false,
             component: name,
@@ -49,6 +51,9 @@ export async function installComponent(name, projectDir) {
         }
         catch (err) {
             const msg = err instanceof Error ? err.message : String(err);
+            // Install success/failure is the only signal that proves the MCP server is
+            // useful. It was declared in telemetry.ts but never emitted.
+            track({ event: "install_failed", component: item.name, found: true });
             return {
                 success: false,
                 component: item.name,
@@ -64,6 +69,7 @@ export async function installComponent(name, projectDir) {
             };
         }
     }
+    track({ event: "install", component: item.name, found: true });
     return {
         success: true,
         component: item.name,
@@ -82,7 +88,7 @@ export async function installComponent(name, projectDir) {
             `Import it with:`,
             `  import { ... } from "@/components/spectrumui/${item.files[0]?.target.split("/").pop()?.replace(".tsx", "") ?? item.name}"`,
             ``,
-            `Full docs: https://spectrumhq.in/docs/${item.name}`,
+            `Full docs: ${item.docsUrl ?? "https://ui.spectrumhq.in/docs"}`,
         ]
             .filter(Boolean)
             .join("\n"),

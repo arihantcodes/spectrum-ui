@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-preview-dependencies",
+  "title": "Image Preview Dependencies",
+  "description": "component for the Image Preview Dependencies",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-dialog"
+  ],
+  "files": [
+    {
+      "path": "app/registry/imagepreview/image-preview-dependecies.tsx",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport Image from \"next/image\";\nimport { X } from \"lucide-react\";\n\nimport * as DialogPrimitive from \"@radix-ui/react-dialog\";\n\ninterface ImagePreviewProps {\n  src: string;\n  alt?: string;\n  width: number;\n  height: number;\n  className?: string;\n}\n\nexport default function ImagePreview({\n  src = \"https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1\",\n  alt = \"Preview image\",\n  width = 400,\n  height = 400,\n  className = \"cursor-pointer rounded-lg hover:opacity-90 transition-opacity\",\n}: ImagePreviewProps) {\n  const [isOpen, setIsOpen] = useState(false);\n\n  return (\n    <>\n      <Image\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        className={className}\n        onClick={() => setIsOpen(true)}\n      />\n\n      <DialogPrimitive.Root open={isOpen} onOpenChange={setIsOpen}>\n        <DialogPrimitive.Portal>\n          <DialogPrimitive.Overlay className=\"fixed inset-0 bg-black/50 backdrop-blur-sm\" />\n          <DialogPrimitive.Content className=\"fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] max-w-[90vw] max-h-[90vh] w-auto h-auto p-0 bg-transparent border-0\">\n            <button\n              onClick={() => setIsOpen(false)}\n              className=\"absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/75 focus:outline-none\"\n            >\n              <X className=\"h-6 w-6\" />\n              <span className=\"sr-only\">Close</span>\n            </button>\n            <div className=\"relative w-full h-full\">\n              <Image\n                src={src}\n                alt={alt}\n                width={width * 2}\n                height={height * 2}\n                className=\"object-contain\"\n              />\n            </div>\n          </DialogPrimitive.Content>\n        </DialogPrimitive.Portal>\n      </DialogPrimitive.Root>\n    </>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/image-preview-dependecies.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

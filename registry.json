@@ -769,6 +769,19 @@
       ]
     },
     {
+      "name": "icon-dependencies",
+      "type": "registry:component",
+      "title": "Icon Dependencies",
+      "description": "Shared icon set used by the footer and profile components.",
+      "files": [
+        {
+          "path": "components/icon.tsx",
+          "type": "registry:component",
+          "target": "components/icon.tsx"
+        }
+      ]
+    },
+    {
       "name": "http-status-code",
       "type": "registry:component",
       "title": "HTTP Status Code",
@@ -790,9 +803,9 @@
       ]
     },
     {
-      "name": "image-preview",
+      "name": "image-preview-dependencies",
       "type": "registry:component",
-      "title": "Image Preview",
+      "title": "Image Preview Dependencies",
       "description": "component for the Image Preview Dependencies",
       "files": [
         {
@@ -1348,7 +1361,7 @@
       "registryDependencies": [
         "form",
         "@spectrumui/use-toast",
-        "@spectrumui/loading-button",
+        "@spectrumui/loading-button-dependencies",
         "@spectrumui/multiple-selector-dependencies"
       ],
       "dependencies": [

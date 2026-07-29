@@ -11,7 +11,7 @@
   "registryDependencies": [
     "form",
     "@spectrumui/use-toast",
-    "@spectrumui/loading-button",
+    "@spectrumui/loading-button-dependencies",
     "@spectrumui/multiple-selector-dependencies"
   ],
   "files": [

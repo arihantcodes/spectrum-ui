@@ -33,7 +33,6 @@
 - [Guides](https://ui.spectrumhq.in/docs/guides)
 - [MCP server](https://ui.spectrumhq.in/docs/mcp)
 - [Blog](https://ui.spectrumhq.in/blog)
-- [Blocks](https://ui.spectrumhq.in/blocks): Pre-built, copy-paste UI blocks — navbars, hero/feature sections, pricing & login cards, testimonials, and dashboards
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 
 ## Installation

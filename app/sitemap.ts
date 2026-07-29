@@ -64,7 +64,9 @@ const routeConfig: Record<string, RouteConfig> = {
     changeFrequency: "monthly",
     priority: 0.7,
   },
-  "/blocks": { changeFrequency: "weekly", priority: 0.7 },
+  // "/blocks" is intentionally absent: the placeholder page was removed, and the
+  // real Blocks section (/blocks/[category]/[blockName]) re-adds it along with an
+  // entry per category and per block.
   "/blog": { changeFrequency: "weekly", priority: 0.8 },
   "/colors": { changeFrequency: "monthly", priority: 0.5 },
   "/compare": { changeFrequency: "monthly", priority: 0.7 },

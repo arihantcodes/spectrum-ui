@@ -11,8 +11,29 @@
  *  - whether the request was satisfied (found: true/false)
  */
 
-const ENDPOINT = "https://spectrumhq.in/api/mcp-events";
-const SERVER_VERSION = "0.1.0";
+const ENDPOINT = "https://ui.spectrumhq.in/api/mcp-events";
+
+/**
+ * Kept in step with package.json by hand — package.json is not importable from
+ * an ESM build without a JSON import assertion, and the drift (0.1.0 here vs
+ * 0.1.1 published) was misattributing every event to the wrong version.
+ */
+const SERVER_VERSION = "0.2.0";
+
+/**
+ * Which editor is driving the server. The API records this, but nothing ever
+ * populated it, so every event landed as "unknown". MCP clients do not expose
+ * their identity to the server, so infer it from the environment the editor sets.
+ */
+function detectEditor(): string {
+  const env = process.env;
+  if (env.CURSOR_TRACE_ID || env.CURSOR_SESSION_ID) return "cursor";
+  if (env.CLAUDECODE || env.CLAUDE_CODE_SESSION) return "claude-code";
+  if (env.TERM_PROGRAM === "vscode" || env.VSCODE_PID) return "vscode";
+  if (env.WINDSURF_SESSION_ID) return "windsurf";
+  if (env.TERM_PROGRAM) return env.TERM_PROGRAM.toLowerCase();
+  return "unknown";
+}
 
 export type TelemetryEvent =
   | "search"
@@ -51,7 +72,7 @@ export function track(payload: TelemetryPayload): void {
       "Content-Type": "application/json",
       "User-Agent": `spectrumui-mcp/${SERVER_VERSION}`,
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ editor: detectEditor(), ...payload }),
     signal: AbortSignal.timeout(3000), // 3s max — never block the user
   }).catch(() => {
     // Silently ignore network errors
