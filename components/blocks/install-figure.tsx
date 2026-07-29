@@ -97,7 +97,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
 
   return (
     <figure className={cn('overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800', className)}>
-      <div className="flex items-center justify-between gap-3 border-b border-neutral-200 px-2.5 py-2 dark:border-neutral-800">
+      <div className="flex items-center justify-between gap-3 border-b border-neutral-200 px-2.5 py-1.5 dark:border-neutral-800">
         <div className="flex items-center gap-2.5">
           <ShadcnIcon className="size-4 shrink-0 text-neutral-500 dark:text-neutral-400" />
 
@@ -125,7 +125,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
                   aria-selected={active}
                   onClick={() => setPm(manager.id)}
                   className={cn(
-                    'rounded-md px-2.5 py-1 font-mono text-[11.5px] leading-4 transition-[color,transform] duration-150 active:scale-[0.96]',
+                    'rounded-md px-2 py-[3px] font-mono text-[11px] leading-4 transition-[color,transform] duration-150 active:scale-[0.96]',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
                     active
                       ? 'font-medium text-neutral-900 dark:text-neutral-50'
@@ -162,8 +162,10 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
         </button>
       </div>
 
-      <pre className="overflow-x-auto px-4 py-3.5 font-mono text-[12.5px] leading-relaxed">
-        <code>
+      {/* Not a <pre>: an unlayered global `pre { padding:12px !important; width:inherit !important }`
+          overrides utilities and, in this flex context, forces the one-line command to wrap. */}
+      <div className="overflow-x-auto">
+        <code className="block whitespace-nowrap px-3.5 py-3 font-mono text-[12px] leading-none">
           {tokens.map((token, index) => (
             <span key={index} className={tokenClass(tokens, index)}>
               {token}
@@ -171,7 +173,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
             </span>
           ))}
         </code>
-      </pre>
+      </div>
     </figure>
   );
 }

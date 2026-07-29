@@ -16,6 +16,21 @@ import { ModelSelector } from '@/components/spectrumui/blocks/ai-assistants/mode
 import { UsageMeter } from '@/components/spectrumui/blocks/ai-assistants/usage-meter';
 import { VoiceInput } from '@/components/spectrumui/blocks/ai-assistants/voice-input';
 import { InlineEdit } from '@/components/spectrumui/blocks/ai-assistants/inline-edit';
+import { ThinkingDots } from '@/components/spectrumui/blocks/ai-assistants/thinking-dots';
+import { TaskRows, type TaskRow } from '@/components/spectrumui/blocks/ai-assistants/task-rows';
+import { AgentPlan } from '@/components/spectrumui/blocks/ai-assistants/agent-plan';
+import { WebSearch, type SearchResult } from '@/components/spectrumui/blocks/ai-assistants/web-search';
+import { ContextChunks } from '@/components/spectrumui/blocks/ai-assistants/context-chunks';
+import { DiffView } from '@/components/spectrumui/blocks/ai-assistants/diff-view';
+import { CodeBlock } from '@/components/spectrumui/blocks/ai-assistants/code-block';
+import { InsightCards } from '@/components/spectrumui/blocks/ai-assistants/insight-cards';
+import { ErrorState } from '@/components/spectrumui/blocks/ai-assistants/error-state';
+import { QuotaBanner } from '@/components/spectrumui/blocks/ai-assistants/quota-banner';
+import { MemoryChips, type MemoryItem } from '@/components/spectrumui/blocks/ai-assistants/memory-chips';
+import { CompareOutputs } from '@/components/spectrumui/blocks/ai-assistants/compare-outputs';
+import { SuggestionBanner, type SuggestionState } from '@/components/spectrumui/blocks/ai-assistants/suggestion-banner';
+import { StatusTracker } from '@/components/spectrumui/blocks/ai-assistants/status-tracker';
+import { ConversationList } from '@/components/spectrumui/blocks/ai-assistants/conversation-list';
 import {
   PORTSIDE_CITATIONS,
   PORTSIDE_CONVERSATION,
@@ -90,6 +105,50 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
   ),
   'voice-input': () => <VoiceInputDemo />,
   'inline-edit': () => <InlineEditDemo />,
+  'thinking-dots': (variant) => (
+    <ThinkingDots label="Portside is thinking" variant={variant as 'Dots' | 'Bar'} />
+  ),
+  'task-rows': (variant) => <TaskRowsDemo variant={variant as 'Default' | 'Compact'} />,
+  'agent-plan': (variant) => (
+    <AgentPlan steps={PLAN_STEPS} variant={variant as 'Default' | 'Compact'} onRun={() => {}} />
+  ),
+  'web-search': (variant) => <WebSearchDemo variant={variant as 'Default' | 'Compact'} />,
+  'context-chunks': (variant) => (
+    <ContextChunks chunks={CHUNKS} totalCount={32} variant={variant as 'Cards' | 'List'} />
+  ),
+  'diff-view': (variant) => <DiffViewDemo variant={variant as 'Default' | 'Summary'} />,
+  'code-block': (variant) => (
+    <CodeBlock
+      code={SAMPLE_CODE}
+      filename="lane-report.ts"
+      collapsedLines={7}
+      variant={variant as 'Default' | 'Numbered'}
+    />
+  ),
+  'insight-cards': (variant) => (
+    <InsightCards insights={INSIGHTS} variant={variant as 'Grid' | 'Row'} />
+  ),
+  'error-state': (variant) => <ErrorState variant={variant as 'Card' | 'Inline'} />,
+  'quota-banner': (variant) => (
+    <QuotaBanner used={18} limit={20} resetsInSeconds={252} variant={variant as 'Banner' | 'Compact'} />
+  ),
+  'memory-chips': (variant) => <MemoryChipsDemo variant={variant as 'Panel' | 'Row'} />,
+  'compare-outputs': (variant) => (
+    <CompareOutputs
+      prompt="Summarise last week on the Rotterdam lane"
+      outputs={COMPARED_OUTPUTS}
+      variant={variant as 'Side' | 'Stacked'}
+    />
+  ),
+  'suggestion-banner': (variant) => (
+    <SuggestionBannerDemo variant={variant as 'Inline' | 'Floating'} />
+  ),
+  'status-tracker': (variant) => (
+    <StatusTrackerDemo variant={variant as 'Default' | 'Minimal'} />
+  ),
+  'conversation-list': (variant) => (
+    <ConversationList conversations={CONVERSATION_ENTRIES} variant={variant as 'Default' | 'Compact'} />
+  ),
 };
 
 function usePrefersReducedMotion() {
@@ -461,6 +520,234 @@ function InlineEditDemo() {
       phase={manual ? undefined : reduced ? 'reviewing' : phase}
       onAccept={() => setManual(true)}
       onReject={() => setManual(true)}
+    />
+  );
+}
+
+
+/* ── Fixture data for the second wave ───────────────────── */
+
+const PLAN_STEPS = [
+  { id: 'p1', title: 'Pull week-28 lane performance', detail: 'query_lane_performance on RTM→FXT' },
+  { id: 'p2', title: 'Cross-check incidents at Rotterdam', detail: 'search_incidents, 13–20 July' },
+  { id: 'p3', title: 'Compare observed transit to the SLA', detail: 'compare_to_sla for Meridian Lines' },
+  { id: 'p4', title: 'Draft the carrier notice', detail: 'Held for your approval before sending' },
+];
+
+const TASKS: TaskRow[] = [
+  { id: 't1', title: 'Verified vendor records', detail: '12 suppliers', status: 'completed', note: 'All cold-chain certifications present; two renewals due next month.' },
+  { id: 't2', title: 'Rebuilt lane performance index', detail: '4 lanes', status: 'completed', note: 'Week 28 figures now include the Rotterdam congestion window.' },
+  { id: 't3', title: 'Drafting carrier notice', status: 'running' },
+  { id: 't4', title: 'Schedule follow-up review', status: 'queued' },
+];
+
+const SEARCH_RESULTS: SearchResult[] = [
+  { id: 's1', title: 'Port of Rotterdam berth status', domain: 'portofrotterdam.com', snippet: 'Berth 3 crane maintenance completed; full availability restored as of 21 July.' },
+  { id: 's2', title: 'North Sea congestion tracker', domain: 'seaintel.com', snippet: 'Rotterdam dwell times normalising after last week\'s equipment fault.' },
+  { id: 's3', title: 'Meridian Lines service updates', domain: 'meridianlines.com', snippet: 'Schedule recovery expected across North Europe strings within one week.' },
+];
+
+const CHUNKS = [
+  { id: 'c1', title: 'Vendor onboarding rule', content: 'Cold-chain certification must be verified before a new carrier can be added to the reorder workflow.', source: 'Carrier Onboarding SOP.pdf', characters: 290, relevance: 0.92 },
+  { id: 'c2', title: 'SLA grace windows', content: 'Contracted transit windows carry a 48-hour grace period; breaches beyond it accrue per-day penalties.', source: 'Meridian Lines MSA §4.2', characters: 214, relevance: 0.87 },
+  { id: 'c3', title: 'Escalation matrix', content: 'Lane-level breaches route to the carrier manager; repeated breaches within a quarter escalate to procurement.', source: 'Ops Handbook — Escalations', characters: 246, relevance: 0.74 },
+];
+
+const DIFFS = [
+  {
+    id: 'd1',
+    path: 'reports/weekly-lanes.ts',
+    additions: 4,
+    deletions: 1,
+    lines: [
+      { type: 'context' as const, text: 'const lanes = await fetchLanes(week);' },
+      { type: 'remove' as const, text: 'const flagged = [];' },
+      { type: 'add' as const, text: 'const flagged = lanes.filter(' },
+      { type: 'add' as const, text: '  (lane) => lane.transitDays > lane.slaDays + GRACE,' },
+      { type: 'add' as const, text: ');' },
+      { type: 'add' as const, text: 'report.append(breachSection(flagged));' },
+    ],
+  },
+];
+
+const SAMPLE_CODE = `export function breachSection(lanes: Lane[]) {
+  if (lanes.length === 0) return null;
+  const rows = lanes.map((lane) => ({
+    lane: lane.code,
+    overBy: lane.transitDays - lane.slaDays,
+    carrier: lane.carrier,
+  }));
+  return {
+    title: "SLA breaches",
+    severity: rows.length > 2 ? "high" : "medium",
+    rows,
+  };
+}`;
+
+const INSIGHTS = [
+  { id: 'i1', label: 'On-time delivery', value: '71.4%', change: -18.2, spark: [82, 88, 85, 90, 87, 71], note: 'Dip traces to the Rotterdam crane fault, not carrier performance.' },
+  { id: 'i2', label: 'Avg transit — RTM→FXT', value: '6.3d', change: 57.5, spark: [40, 42, 38, 41, 44, 96], note: '2.3 days over the contracted SLA window.' },
+];
+
+const MEMORIES: MemoryItem[] = [
+  { id: 'm1', fact: 'Prefers weekly digests on Monday' },
+  { id: 'm2', fact: 'Meridian Lines is the primary carrier' },
+  { id: 'm3', fact: 'Escalate breaches over 48h' },
+  { id: 'm4', fact: 'Reports in metric units' },
+];
+
+const COMPARED_OUTPUTS: [
+  { id: string; model: string; content: string; latency?: string },
+  { id: string; model: string; content: string; latency?: string },
+] = [
+  { id: 'o1', model: 'portside-reasoning', latency: '4.2s', content: 'On-time delivery fell to 71.4% — an 18-point drop caused by the Berth 3 crane fault at Rotterdam, not carrier performance. Transit breached the Meridian SLA by 2.3 days; a notice is drafted and awaiting approval.' },
+  { id: 'o2', model: 'portside-fast', latency: '1.1s', content: 'Rotterdam lane slipped last week due to port congestion. Deliveries were late and the SLA was exceeded. Recommend contacting the carrier.' },
+];
+
+const TRACKER_STAGES = [
+  { id: 'g1', label: 'Queued' },
+  { id: 'g2', label: 'Embedding' },
+  { id: 'g3', label: 'Indexing' },
+  { id: 'g4', label: 'Ready' },
+];
+
+const CONVERSATION_ENTRIES = [
+  { id: 'v1', title: 'Rotterdam lane slip', group: 'Today', pinned: true },
+  { id: 'v2', title: 'Carrier SLA comparison', group: 'Today' },
+  { id: 'v3', title: 'Q3 air freight budget', group: 'Yesterday' },
+  { id: 'v4', title: 'Customs delay playbook', group: 'Yesterday' },
+  { id: 'v5', title: 'APAC reroute options', group: 'Previous 7 days' },
+];
+
+/* ── Second-wave demo loops ─────────────────────────────── */
+
+function TaskRowsDemo({ variant }: { variant: 'Default' | 'Compact' }) {
+  const reduced = usePrefersReducedMotion();
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (reduced) return;
+    const t = setTimeout(() => setStep((n) => (n >= 4 ? 0 : n + 1)), 1700);
+    return () => clearTimeout(t);
+  }, [reduced, step]);
+
+  const tasks = reduced
+    ? TASKS
+    : TASKS.map((task, index) => ({
+        ...task,
+        status:
+          index < step ? ('completed' as const) : index === step ? ('running' as const) : ('queued' as const),
+      }));
+
+  return <TaskRows tasks={tasks} variant={variant} />;
+}
+
+function WebSearchDemo({ variant }: { variant: 'Default' | 'Compact' }) {
+  const reduced = usePrefersReducedMotion();
+  const [reading, setReading] = useState(0);
+
+  useEffect(() => {
+    if (reduced) return;
+    const t = setTimeout(() => setReading((n) => (n + 1) % (SEARCH_RESULTS.length + 1)), 1800);
+    return () => clearTimeout(t);
+  }, [reduced, reading]);
+
+  const results = SEARCH_RESULTS.map((result, index) => ({
+    ...result,
+    state: reduced
+      ? ('read' as const)
+      : index < reading
+        ? ('read' as const)
+        : index === reading
+          ? ('reading' as const)
+          : ('idle' as const),
+  }));
+
+  return <WebSearch query="rotterdam berth 3 crane status" results={results} moreCount={7} variant={variant} />;
+}
+
+function DiffViewDemo({ variant }: { variant: 'Default' | 'Summary' }) {
+  const [epoch, setEpoch] = useState(0);
+  const [decidedAt, setDecidedAt] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (decidedAt === null) return;
+    const t = setTimeout(() => {
+      setEpoch((n) => n + 1);
+      setDecidedAt(null);
+    }, 3000);
+    return () => clearTimeout(t);
+  }, [decidedAt]);
+
+  return (
+    <DiffView
+      key={epoch}
+      diffs={DIFFS}
+      variant={variant}
+      onAccept={() => setDecidedAt(Date.now())}
+      onReject={() => setDecidedAt(Date.now())}
+    />
+  );
+}
+
+function MemoryChipsDemo({ variant }: { variant: 'Panel' | 'Row' }) {
+  const [memories, setMemories] = useState(MEMORIES);
+
+  return (
+    <MemoryChips
+      key={memories.length}
+      memories={memories}
+      variant={variant}
+      onAdd={() =>
+        setMemories((previous) =>
+          previous.some((memory) => memory.id === 'm5')
+            ? previous
+            : [...previous, { id: 'm5', fact: 'Flag Rotterdam lanes first' }],
+        )
+      }
+    />
+  );
+}
+
+function SuggestionBannerDemo({ variant }: { variant: 'Inline' | 'Floating' }) {
+  const [state, setState] = useState<SuggestionState>('open');
+
+  useEffect(() => {
+    if (state === 'open') return;
+    const t = setTimeout(() => setState('open'), 2800);
+    return () => clearTimeout(t);
+  }, [state]);
+
+  return (
+    <SuggestionBanner
+      state={state}
+      variant={variant}
+      onApply={() => setState('applied')}
+      onDismiss={() => setState('dismissed')}
+    />
+  );
+}
+
+function StatusTrackerDemo({ variant }: { variant: 'Default' | 'Minimal' }) {
+  const reduced = usePrefersReducedMotion();
+  const [tick, setTick] = useState(0);
+
+  useEffect(() => {
+    if (reduced) return;
+    const t = setTimeout(() => setTick((n) => (n >= 13 ? 0 : n + 1)), 700);
+    return () => clearTimeout(t);
+  }, [reduced, tick]);
+
+  const activeIndex = reduced ? 2 : Math.min(4, Math.floor(tick / 3));
+  const progress = reduced ? 0.6 : (tick % 3) / 3;
+
+  return (
+    <StatusTracker
+      stages={TRACKER_STAGES}
+      activeIndex={activeIndex}
+      progress={progress}
+      detail={activeIndex >= 4 ? 'Knowledge base ready' : 'Indexing 1,204 documents'}
+      variant={variant}
     />
   );
 }
