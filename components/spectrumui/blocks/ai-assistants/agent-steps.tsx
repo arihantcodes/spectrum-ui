@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { Check, ChevronDown, CircleDashed, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
+`;
 import type { ToolCall, ToolCallStatus } from './types';
 
 const STATUS_STYLES: Record<ToolCallStatus, string> = {
@@ -29,6 +33,7 @@ function duration(step: ToolCall) {
 export function AgentSteps({ steps, variant = 'Default', className }: AgentStepsProps) {
   return (
     <ol className={cn('w-full max-w-[480px] text-[13px]', className)}>
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
       {steps.map((step, index) => (
         <StepRow
           key={step.id}
@@ -51,11 +56,11 @@ function StepRow({ step, last, compact }: { step: ToolCall; last: boolean; compa
       <div className="flex flex-col items-center">
         <span className="grid size-5 shrink-0 place-items-center">
           {step.status === 'success' ? (
-            <span className="grid size-4 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+            <span className="grid size-4 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both] dark:text-emerald-400">
               <Check className="size-2.5" strokeWidth={3} />
             </span>
           ) : step.status === 'error' ? (
-            <span className="grid size-4 place-items-center rounded-full bg-red-500/15 text-red-600 dark:text-red-400">
+            <span className="grid size-4 place-items-center rounded-full bg-red-500/15 text-red-600 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both] dark:text-red-400">
               <X className="size-2.5" strokeWidth={3} />
             </span>
           ) : step.status === 'pending' ? (

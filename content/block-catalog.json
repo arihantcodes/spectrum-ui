@@ -61,33 +61,6 @@
       "status": "live"
     },
     {
-      "slug": "chat-thread",
-      "name": "Chat Thread",
-      "category": "ai-assistants",
-      "subcategory": "Conversation",
-      "description": "A tabbed chat panel with streaming messages, markdown, and a composer.",
-      "summary": "A complete conversation surface: conversation tabs in the header, a streaming thread with markdown, code fences and citation markers, and a composer that swaps send for stop while generating.",
-      "hardParts": [
-        "Scroll anchoring that yields to reader intent instead of yanking the viewport on every token",
-        "Streaming markdown that tolerates an unclosed code fence mid-stream",
-        "Enter must not submit mid-IME-composition, which silently breaks CJK input"
-      ],
-      "variants": [
-        "Default",
-        "Compact",
-        "Bubbles"
-      ],
-      "complexity": "advanced",
-      "composedOf": [],
-      "dependencies": [
-        "lucide-react"
-      ],
-      "aiHints": "Use as a complete chat surface: conversation tabs, streaming thread, composer with stop state. Accepts Message[]; does not call a model.",
-      "index": 3,
-      "new": true,
-      "status": "live"
-    },
-    {
       "slug": "streaming-text",
       "name": "Streaming Text",
       "category": "ai-assistants",
@@ -109,7 +82,7 @@
         "lucide-react"
       ],
       "aiHints": "Render a single streamed answer outside a full thread. Accepts text, citations and follow-up prompts; streaming drives the caret.",
-      "index": 4,
+      "index": 3,
       "new": true,
       "status": "live"
     },
@@ -135,7 +108,7 @@
         "lucide-react"
       ],
       "aiHints": "Use as the input of an AI product. Emits onSend with text and model id; set isGenerating to swap send for stop. Enter is IME-safe.",
-      "index": 5,
+      "index": 4,
       "new": true,
       "status": "live"
     },
@@ -161,7 +134,7 @@
         "lucide-react"
       ],
       "aiHints": "Render instead of the thread when there are no messages. Emits onSelectPrompt so a chip can populate the composer.",
-      "index": 6,
+      "index": 5,
       "new": true,
       "status": "live"
     },
@@ -187,7 +160,7 @@
         "lucide-react"
       ],
       "aiHints": "Attach below an assistant message inside a group/message container. Hover-revealed on pointer devices, always visible on touch.",
-      "index": 7,
+      "index": 6,
       "new": true,
       "status": "live"
     },
@@ -211,7 +184,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Wrap answer text containing [n] markers. Accepts Citation[] indexed from 1; hovercards need no JS positioning.",
-      "index": 8,
+      "index": 7,
       "new": true,
       "status": "live"
     },
@@ -237,7 +210,7 @@
         "lucide-react"
       ],
       "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children; expandable results use no height hacks.",
-      "index": 9,
+      "index": 8,
       "new": true,
       "status": "live"
     },
@@ -261,7 +234,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "A denser alternative to agent-steps for inline tool use. Accepts ToolCall[]; one chip expands at a time.",
-      "index": 10,
+      "index": 9,
       "new": true,
       "status": "live"
     },
@@ -286,7 +259,7 @@
         "lucide-react"
       ],
       "aiHints": "Render when an agent proposes an irreversible action. Emits onDecide; the decided state crossfades in place.",
-      "index": 11,
+      "index": 10,
       "new": true,
       "status": "live"
     },
@@ -310,7 +283,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Accepts ModelOption[]; controlled or uncontrolled. Disabled options stay visible so capability differences are legible.",
-      "index": 12,
+      "index": 11,
       "new": true,
       "status": "live"
     },
@@ -334,7 +307,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Accepts a UsageState. Threshold colors at 75 and 90 percent; numerals are tabular so the layout never wobbles.",
-      "index": 13,
+      "index": 12,
       "new": true,
       "status": "live"
     },
@@ -359,7 +332,7 @@
         "lucide-react"
       ],
       "aiHints": "Controlled or uncontrolled recording states: idle, recording, processing. Reduced motion freezes the bars; the timer still ticks.",
-      "index": 14,
+      "index": 13,
       "new": true,
       "status": "live"
     },
@@ -384,7 +357,7 @@
         "lucide-react"
       ],
       "aiHints": "Render over editable prose. Shows the selection, a floating action, then a del/ins diff; accepting swaps the text in place.",
-      "index": 15,
+      "index": 14,
       "new": true,
       "status": "live"
     },
@@ -408,7 +381,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Render while the assistant is preparing a reply and no richer state applies. Purely visual; label is a prop.",
-      "index": 16,
+      "index": 15,
       "new": true,
       "status": "live"
     },
@@ -434,7 +407,7 @@
         "lucide-react"
       ],
       "aiHints": "Render a background agent's work queue. Accepts TaskRow[] with queued, running, completed and failed statuses; rows with notes expand.",
-      "index": 17,
+      "index": 16,
       "new": true,
       "status": "live"
     },
@@ -460,7 +433,7 @@
         "lucide-react"
       ],
       "aiHints": "Render before executing a multi-step plan. Steps toggle on and off; onRun receives the enabled step ids.",
-      "index": 18,
+      "index": 17,
       "new": true,
       "status": "live"
     },
@@ -486,33 +459,7 @@
         "lucide-react"
       ],
       "aiHints": "Render while an agent searches the web. Accepts results with reading, read and idle states; the query renders in mono.",
-      "index": 19,
-      "new": true,
-      "status": "live"
-    },
-    {
-      "slug": "context-chunks",
-      "name": "Context Chunks",
-      "category": "ai-assistants",
-      "subcategory": "Sources",
-      "description": "Retrieved knowledge chunks with source, size, and relevance.",
-      "summary": "The evidence behind an answer: each retrieved chunk shows its title, a two-line excerpt, its source document, and a relevance meter in mono.",
-      "hardParts": [
-        "Relevance is a meter, not a decimal dump",
-        "Excerpts clamp at two lines or the list becomes a document",
-        "Card and list variants share one anatomy"
-      ],
-      "variants": [
-        "Cards",
-        "List"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [
-        "lucide-react"
-      ],
-      "aiHints": "Render RAG retrievals. Accepts chunks with source, character count and a 0–1 relevance score shown as a mini meter.",
-      "index": 20,
+      "index": 18,
       "new": true,
       "status": "live"
     },
@@ -538,7 +485,7 @@
         "lucide-react"
       ],
       "aiHints": "Render changes an agent proposes to files. Accepts FileDiff[]; accept and reject decide per file and the decision is recorded in place.",
-      "index": 21,
+      "index": 19,
       "new": true,
       "status": "live"
     },
@@ -564,7 +511,7 @@
         "lucide-react"
       ],
       "aiHints": "Render code inside an assistant reply. Collapses past collapsedLines with an expander; copy takes the full source either way.",
-      "index": 22,
+      "index": 20,
       "new": true,
       "status": "live"
     },
@@ -590,7 +537,7 @@
         "lucide-react"
       ],
       "aiHints": "Render AI-computed metrics. Accepts insights with a value, a signed change, spark points and an optional annotation line.",
-      "index": 23,
+      "index": 21,
       "new": true,
       "status": "live"
     },
@@ -616,7 +563,7 @@
         "lucide-react"
       ],
       "aiHints": "Render when generation fails. The retry control shows a spinner while retrying; the inline variant fits inside a thread.",
-      "index": 24,
+      "index": 22,
       "new": true,
       "status": "live"
     },
@@ -642,7 +589,7 @@
         "lucide-react"
       ],
       "aiHints": "Render when a usage cap approaches or hits. Accepts used, limit and resetsInSeconds; the countdown ticks live.",
-      "index": 25,
+      "index": 23,
       "new": true,
       "status": "live"
     },
@@ -668,33 +615,7 @@
         "lucide-react"
       ],
       "aiHints": "Render saved assistant memory. Chips remove with an X and stagger in; onAdd renders a dashed add chip.",
-      "index": 26,
-      "new": true,
-      "status": "live"
-    },
-    {
-      "slug": "compare-outputs",
-      "name": "Compare Outputs",
-      "category": "ai-assistants",
-      "subcategory": "Feedback",
-      "description": "Two model responses side by side with preference voting.",
-      "summary": "An arena for two answers: labelled A and B with model names and latency in mono, and a vote that promotes one card and quiets the other.",
-      "hardParts": [
-        "The loser dims — a verdict, not a deletion",
-        "Latency belongs next to the model name, in mono",
-        "Votes must be reversible"
-      ],
-      "variants": [
-        "Side",
-        "Stacked"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [
-        "lucide-react"
-      ],
-      "aiHints": "Render an A/B of two model outputs. Accepts exactly two outputs with model names and latency; onVote reports the preferred id.",
-      "index": 27,
+      "index": 24,
       "new": true,
       "status": "live"
     },
@@ -720,7 +641,7 @@
         "lucide-react"
       ],
       "aiHints": "Render a proactive suggestion. Apply collapses it to a confirmation pill; dismiss removes it. Controlled or uncontrolled.",
-      "index": 28,
+      "index": 25,
       "new": true,
       "status": "live"
     },
@@ -746,7 +667,7 @@
         "lucide-react"
       ],
       "aiHints": "Render multi-stage jobs like ingestion or fine-tuning. Accepts stages, an activeIndex and 0–1 progress within the active stage.",
-      "index": 29,
+      "index": 26,
       "new": true,
       "status": "live"
     },
@@ -772,7 +693,7 @@
         "lucide-react"
       ],
       "aiHints": "Render chat history. Conversations group by date labels; rows select, and a hover-revealed pin keeps favourites.",
-      "index": 30,
+      "index": 27,
       "new": true,
       "status": "live"
     }

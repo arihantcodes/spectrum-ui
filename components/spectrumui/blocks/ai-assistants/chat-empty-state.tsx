@@ -66,10 +66,10 @@ export function ChatEmptyState({
               className={cn(
                 'rounded-full border border-black/[0.08] bg-white px-3 py-1.5 text-[12.5px] text-neutral-600',
                 'transition-[color,border-color,transform] duration-150 active:scale-[0.96]',
-                'hover:border-black/[0.16] hover:text-neutral-900',
+                'hover:border-black/[0.16] hover:bg-black/[0.02] hover:text-neutral-900',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
                 'motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both]',
-                'dark:border-white/[0.1] dark:bg-white/[0.03] dark:text-neutral-300 dark:hover:border-white/[0.2] dark:hover:text-neutral-50',
+                'dark:border-white/[0.1] dark:bg-white/[0.03] dark:text-neutral-300 dark:hover:border-white/[0.2] dark:hover:bg-white/[0.06] dark:hover:text-neutral-50',
               )}
             >
               {prompt.label}

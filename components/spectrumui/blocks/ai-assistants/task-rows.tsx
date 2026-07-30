@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { Check, ChevronDown, CircleDashed, Loader2, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
+`;
+
 export type TaskStatus = 'queued' | 'running' | 'completed' | 'failed';
 
 export interface TaskRow {
@@ -32,13 +36,13 @@ const BADGE: Record<TaskStatus, string> = {
 function StatusIcon({ status }: { status: TaskStatus }) {
   if (status === 'completed')
     return (
-      <span className="grid size-5 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+      <span className="grid size-5 place-items-center rounded-full bg-emerald-500/15 text-emerald-600 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both] dark:text-emerald-400">
         <Check className="size-3" strokeWidth={3} />
       </span>
     );
   if (status === 'failed')
     return (
-      <span className="grid size-5 place-items-center rounded-full bg-red-500/15 text-red-600 dark:text-red-400">
+      <span className="grid size-5 place-items-center rounded-full bg-red-500/15 text-red-600 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both] dark:text-red-400">
         <X className="size-3" strokeWidth={3} />
       </span>
     );
@@ -56,10 +60,11 @@ export function TaskRows({ tasks, variant = 'Default', className }: TaskRowsProp
   return (
     <ul
       className={cn(
-        'w-full max-w-[480px] divide-y divide-black/[0.05] overflow-hidden rounded-xl border border-black/[0.07] bg-white dark:divide-white/[0.06] dark:border-white/[0.08] dark:bg-[#0B0B0D]',
+        'w-full max-w-[480px] divide-y divide-black/[0.05] overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-sm dark:divide-white/[0.06] dark:border-white/[0.08] dark:bg-[#0B0B0D]',
         className,
       )}
     >
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
       {tasks.map((task) => {
         const open = task.id === openId;
         const expandable = !compact && Boolean(task.note);

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChatThread } from '@/components/spectrumui/blocks/ai-assistants/chat-thread';
 import { LoadingState } from '@/components/spectrumui/blocks/ai-assistants/loading-state';
 import { ReasoningTrace } from '@/components/spectrumui/blocks/ai-assistants/reasoning-trace';
 import { StreamingText } from '@/components/spectrumui/blocks/ai-assistants/streaming-text';
@@ -20,20 +19,17 @@ import { ThinkingDots } from '@/components/spectrumui/blocks/ai-assistants/think
 import { TaskRows, type TaskRow } from '@/components/spectrumui/blocks/ai-assistants/task-rows';
 import { AgentPlan } from '@/components/spectrumui/blocks/ai-assistants/agent-plan';
 import { WebSearch, type SearchResult } from '@/components/spectrumui/blocks/ai-assistants/web-search';
-import { ContextChunks } from '@/components/spectrumui/blocks/ai-assistants/context-chunks';
 import { DiffView } from '@/components/spectrumui/blocks/ai-assistants/diff-view';
 import { CodeBlock } from '@/components/spectrumui/blocks/ai-assistants/code-block';
 import { InsightCards } from '@/components/spectrumui/blocks/ai-assistants/insight-cards';
 import { ErrorState } from '@/components/spectrumui/blocks/ai-assistants/error-state';
 import { QuotaBanner } from '@/components/spectrumui/blocks/ai-assistants/quota-banner';
 import { MemoryChips, type MemoryItem } from '@/components/spectrumui/blocks/ai-assistants/memory-chips';
-import { CompareOutputs } from '@/components/spectrumui/blocks/ai-assistants/compare-outputs';
 import { SuggestionBanner, type SuggestionState } from '@/components/spectrumui/blocks/ai-assistants/suggestion-banner';
 import { StatusTracker } from '@/components/spectrumui/blocks/ai-assistants/status-tracker';
 import { ConversationList } from '@/components/spectrumui/blocks/ai-assistants/conversation-list';
 import {
   PORTSIDE_CITATIONS,
-  PORTSIDE_CONVERSATION,
   PORTSIDE_GREETING,
   PORTSIDE_MODELS,
   PORTSIDE_REASONING_STEPS,
@@ -43,7 +39,6 @@ import {
 } from '@/components/spectrumui/blocks/ai-assistants/_fixtures/conversation';
 import type {
   Attachment,
-  Message,
   ToolCall,
   ToolCallStatus,
 } from '@/components/spectrumui/blocks/ai-assistants/types';
@@ -62,9 +57,6 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
   ),
   'reasoning-trace': (variant) => (
     <ReasoningTraceDemo variant={variant as 'Steps' | 'Reasoning'} />
-  ),
-  'chat-thread': (variant) => (
-    <ChatThreadDemo variant={variant.toLowerCase() as 'default' | 'compact' | 'bubbles'} />
   ),
   'streaming-text': (variant) => (
     <StreamingTextDemo variant={variant as 'Answer' | 'Sources'} />
@@ -113,9 +105,6 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
     <AgentPlan steps={PLAN_STEPS} variant={variant as 'Default' | 'Compact'} onRun={() => {}} />
   ),
   'web-search': (variant) => <WebSearchDemo variant={variant as 'Default' | 'Compact'} />,
-  'context-chunks': (variant) => (
-    <ContextChunks chunks={CHUNKS} totalCount={32} variant={variant as 'Cards' | 'List'} />
-  ),
   'diff-view': (variant) => <DiffViewDemo variant={variant as 'Default' | 'Summary'} />,
   'code-block': (variant) => (
     <CodeBlock
@@ -133,13 +122,6 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
     <QuotaBanner used={18} limit={20} resetsInSeconds={252} variant={variant as 'Banner' | 'Compact'} />
   ),
   'memory-chips': (variant) => <MemoryChipsDemo variant={variant as 'Panel' | 'Row'} />,
-  'compare-outputs': (variant) => (
-    <CompareOutputs
-      prompt="Summarise last week on the Rotterdam lane"
-      outputs={COMPARED_OUTPUTS}
-      variant={variant as 'Side' | 'Stacked'}
-    />
-  ),
   'suggestion-banner': (variant) => (
     <SuggestionBannerDemo variant={variant as 'Inline' | 'Floating'} />
   ),
@@ -244,61 +226,6 @@ function ReasoningTraceDemo({ variant }: { variant: 'Steps' | 'Reasoning' }) {
       variant={variant}
       defaultOpen
     />
-  );
-}
-
-/* ── Chat Thread ────────────────────────────────────────── */
-
-const AUTO_REPLY =
-  'Checking the last four quarters for the same lane. Two comparable dips so far — Q3 last year during the Felixstowe crane refit, and February this year in storm week. Both recovered within a fortnight, so this one should too once Berth 3 is back.';
-
-const MANUAL_REPLY =
-  "Good question — I'll fold that into the lane report and flag anything that moves more than two points week over week.";
-
-const SETTLED: Message[] = PORTSIDE_CONVERSATION.slice(0, 3);
-
-const DEMO_CONVERSATIONS = [
-  { id: 'lanes', label: 'Lanes' },
-  { id: 'carriers', label: 'Carriers' },
-];
-
-function ChatThreadDemo({ variant }: { variant: 'default' | 'compact' | 'bubbles' }) {
-  const reduced = usePrefersReducedMotion();
-  const [conversation, setConversation] = useState('lanes');
-  const [sent, setSent] = useState<Message[]>([]);
-  const [target, setTarget] = useState(AUTO_REPLY);
-  const stream = useWordStream(target, reduced, 4200, sent.length === 0);
-
-  function handleSend(text: string) {
-    setSent((previous) => [
-      ...previous,
-      { id: `sent-${previous.length}`, role: 'user', content: text, state: 'complete' },
-    ]);
-    setTarget(text === target ? `${MANUAL_REPLY} ` : MANUAL_REPLY);
-  }
-
-  const streamed: Message = {
-    id: `demo-stream-${sent.length}`,
-    role: 'assistant',
-    content: stream.text,
-    state: stream.finished ? 'complete' : 'streaming',
-  };
-
-  return (
-    <div className="h-[480px] w-full max-w-[600px]">
-      <ChatThread
-        messages={[...SETTLED, ...sent, streamed]}
-        isGenerating={!stream.finished}
-        assistantName="Portside"
-        variant={variant}
-        conversations={DEMO_CONVERSATIONS}
-        activeConversationId={conversation}
-        onConversationChange={setConversation}
-        placeholder="Ask about your freight…"
-        onSend={handleSend}
-        onStop={stream.settle}
-      />
-    </div>
   );
 }
 
@@ -547,12 +474,6 @@ const SEARCH_RESULTS: SearchResult[] = [
   { id: 's3', title: 'Meridian Lines service updates', domain: 'meridianlines.com', snippet: 'Schedule recovery expected across North Europe strings within one week.' },
 ];
 
-const CHUNKS = [
-  { id: 'c1', title: 'Vendor onboarding rule', content: 'Cold-chain certification must be verified before a new carrier can be added to the reorder workflow.', source: 'Carrier Onboarding SOP.pdf', characters: 290, relevance: 0.92 },
-  { id: 'c2', title: 'SLA grace windows', content: 'Contracted transit windows carry a 48-hour grace period; breaches beyond it accrue per-day penalties.', source: 'Meridian Lines MSA §4.2', characters: 214, relevance: 0.87 },
-  { id: 'c3', title: 'Escalation matrix', content: 'Lane-level breaches route to the carrier manager; repeated breaches within a quarter escalate to procurement.', source: 'Ops Handbook — Escalations', characters: 246, relevance: 0.74 },
-];
-
 const DIFFS = [
   {
     id: 'd1',
@@ -594,14 +515,6 @@ const MEMORIES: MemoryItem[] = [
   { id: 'm2', fact: 'Meridian Lines is the primary carrier' },
   { id: 'm3', fact: 'Escalate breaches over 48h' },
   { id: 'm4', fact: 'Reports in metric units' },
-];
-
-const COMPARED_OUTPUTS: [
-  { id: string; model: string; content: string; latency?: string },
-  { id: string; model: string; content: string; latency?: string },
-] = [
-  { id: 'o1', model: 'portside-reasoning', latency: '4.2s', content: 'On-time delivery fell to 71.4% — an 18-point drop caused by the Berth 3 crane fault at Rotterdam, not carrier performance. Transit breached the Meridian SLA by 2.3 days; a notice is drafted and awaiting approval.' },
-  { id: 'o2', model: 'portside-fast', latency: '1.1s', content: 'Rotterdam lane slipped last week due to port congestion. Deliveries were late and the SLA was exceeded. Recommend contacting the carrier.' },
 ];
 
 const TRACKER_STAGES = [

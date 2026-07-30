@@ -5,6 +5,7 @@ import { Check, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
 @keyframes su-msg-in { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
 `;
 
@@ -52,7 +53,7 @@ export function ApprovalCard({
         <div className="flex flex-col items-center py-4 text-center motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both]">
           <span
             className={cn(
-              'grid size-8 place-items-center rounded-full',
+              'grid size-8 place-items-center rounded-full motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both]',
               decision === 'approved'
                 ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
                 : 'bg-neutral-500/10 text-neutral-500 dark:text-neutral-400',

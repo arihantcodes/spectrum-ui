@@ -5,6 +5,7 @@ import { Check, Sparkles, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
 @keyframes su-msg-in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
 `;
 
@@ -57,7 +58,7 @@ export function SuggestionBanner({
         )}
       >
         <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
-        <Check className="size-3.5" strokeWidth={2.5} />
+        <Check className="size-3.5 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both]" strokeWidth={2.5} />
         Applied — {suggestion.charAt(0).toLowerCase() + suggestion.slice(1)}
       </div>
     );

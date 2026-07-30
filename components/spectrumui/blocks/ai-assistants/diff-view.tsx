@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { Check, FileCode2, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
+`;
+
 export interface DiffLine {
   type: 'context' | 'add' | 'remove';
   text: string;
@@ -45,6 +49,7 @@ export function DiffView({ diffs, onAccept, onReject, variant = 'Default', class
 
   return (
     <div className={cn('w-full max-w-[500px] space-y-2.5', className)}>
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
       {diffs.map((diff) => {
         const decision = decided[diff.id];
         return (
@@ -70,7 +75,7 @@ export function DiffView({ diffs, onAccept, onReject, variant = 'Default', class
                 {decision ? (
                   <span
                     className={cn(
-                      'rounded-full px-2 py-0.5 font-mono text-[9px] font-medium uppercase tracking-wide',
+                      'rounded-full px-2 py-0.5 font-mono text-[9px] font-medium uppercase tracking-wide motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both]',
                       decision === 'accepted'
                         ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400'
                         : 'bg-black/[0.05] text-neutral-500 dark:bg-white/[0.07] dark:text-neutral-400',

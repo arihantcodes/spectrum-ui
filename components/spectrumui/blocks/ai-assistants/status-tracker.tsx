@@ -3,6 +3,10 @@
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const KEYFRAMES = `
+@keyframes su-pop { 0% { opacity: 0; transform: scale(0.85) } 100% { opacity: 1; transform: none } }
+`;
+
 export interface TrackerStage {
   id: string;
   label: string;
@@ -50,6 +54,7 @@ export function StatusTracker({
 
   return (
     <div className={cn('w-full max-w-[440px]', className)}>
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
       <ol className="flex items-center">
         {stages.map((stage, index) => {
           const completed = index < activeIndex || done;
@@ -76,7 +81,7 @@ export function StatusTracker({
                   )}
                 >
                   {completed ? (
-                    <Check className="size-3" strokeWidth={3} />
+                    <Check className="size-3 motion-safe:animate-[su-pop_200ms_cubic-bezier(0.23,1,0.32,1)_both]" strokeWidth={3} />
                   ) : (
                     <span
                       className={cn(

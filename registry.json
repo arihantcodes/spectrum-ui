@@ -103,32 +103,6 @@
       ]
     },
     {
-      "name": "chat-thread",
-      "type": "registry:block",
-      "title": "Chat Thread",
-      "description": "A conversation thread with streaming assistant messages, markdown, and code blocks.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/ai-assistants/chat-thread.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/ai-assistants/chat-thread.tsx"
-        },
-        {
-          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
-          "type": "registry:file",
-          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
-        }
-      ],
-      "category": "AI Assistants",
-      "tags": [
-        "ai",
-        "chat",
-        "streaming",
-        "markdown",
-        "conversation"
-      ]
-    },
-    {
       "name": "citation-sources",
       "type": "registry:block",
       "title": "Citation Sources",
@@ -169,50 +143,6 @@
         "ai",
         "code",
         "block"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "compare-outputs",
-      "type": "registry:block",
-      "title": "Compare Outputs",
-      "description": "Two model responses side by side with preference voting.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/ai-assistants/compare-outputs.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/ai-assistants/compare-outputs.tsx"
-        }
-      ],
-      "category": "AI Assistants",
-      "tags": [
-        "ai",
-        "compare",
-        "outputs"
-      ],
-      "dependencies": [
-        "lucide-react"
-      ]
-    },
-    {
-      "name": "context-chunks",
-      "type": "registry:block",
-      "title": "Context Chunks",
-      "description": "Retrieved knowledge chunks with source, size, and relevance.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/ai-assistants/context-chunks.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/ai-assistants/context-chunks.tsx"
-        }
-      ],
-      "category": "AI Assistants",
-      "tags": [
-        "ai",
-        "context",
-        "chunks"
       ],
       "dependencies": [
         "lucide-react"

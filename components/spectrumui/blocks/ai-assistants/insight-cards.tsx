@@ -3,6 +3,10 @@
 import { Sparkles, TrendingDown, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const KEYFRAMES = `
+@keyframes su-grow { from { opacity: 0.4; transform: scaleY(0.2) } to { opacity: 1; transform: none } }
+`;
+
 export interface Insight {
   id: string;
   label: string;
@@ -29,6 +33,7 @@ export function InsightCards({ insights, variant = 'Grid', className }: InsightC
         className,
       )}
     >
+      <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
       {insights.map((insight) => {
         const positive = (insight.change ?? 0) >= 0;
         return (
@@ -51,12 +56,15 @@ export function InsightCards({ insights, variant = 'Grid', className }: InsightC
                     <span
                       key={index}
                       className={cn(
-                        'w-[3px] rounded-sm transition-[height] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]',
+                        'w-[3px] origin-bottom rounded-sm transition-[height] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] motion-safe:animate-[su-grow_400ms_cubic-bezier(0.23,1,0.32,1)_both]',
                         index === insight.spark!.length - 1
                           ? 'bg-neutral-900 dark:bg-neutral-100'
                           : 'bg-black/[0.12] dark:bg-white/[0.16]',
                       )}
-                      style={{ height: `${Math.max(12, Math.min(100, point))}%` }}
+                      style={{
+                        height: `${Math.max(12, Math.min(100, point))}%`,
+                        animationDelay: `${index * 30}ms`,
+                      }}
                     />
                   ))}
                 </span>

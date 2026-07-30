@@ -83,7 +83,7 @@ export function ConversationList({
                       aria-current={isActive ? 'true' : undefined}
                       onClick={() => select(conversation.id)}
                       className={cn(
-                        'flex w-full items-center gap-2 rounded-lg px-2 text-left transition-colors duration-150',
+                        'flex w-full items-center gap-2 rounded-lg px-2 text-left transition-[background-color,transform] duration-150 active:scale-[0.99]',
                         compact ? 'py-1.5' : 'py-2',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
                         isActive

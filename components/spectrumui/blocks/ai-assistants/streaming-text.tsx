@@ -125,7 +125,7 @@ export function StreamingText({
                   onClick={() => onFollowUp?.(prompt)}
                   className="group flex w-full items-center gap-2 border-b border-black/[0.05] py-2 text-left text-[12.5px] text-neutral-600 transition-[color,transform] duration-150 last:border-b-0 hover:text-neutral-900 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.06] dark:text-neutral-400 dark:hover:text-neutral-100"
                 >
-                  <CornerDownLeft className="size-3 text-neutral-300 transition-colors duration-150 group-hover:text-neutral-500 dark:text-neutral-600 dark:group-hover:text-neutral-400" />
+                  <CornerDownLeft className="size-3 text-neutral-300 transition-[color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 group-hover:text-neutral-500 dark:text-neutral-600 dark:group-hover:text-neutral-400" />
                   {prompt.label}
                 </button>
               </li>
