@@ -27,8 +27,11 @@ export interface ChangelogEntry {
   /** Prose paragraphs. */
   body: string[];
   sections?: ChangelogSection[];
-  /** Slug of a live block demo embedded in the entry. */
-  demo?: 'thinking-dots' | 'loading-state';
+  /** Large media panel rendered between body and sections. */
+  media?:
+    | { kind: 'blocks' }
+    | { kind: 'codeblock' }
+    | { kind: 'terminal'; command: string };
   links?: ChangelogLink[];
 }
 
@@ -54,7 +57,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
-    demo: 'thinking-dots',
+    media: { kind: 'blocks' },
     links: [{ label: 'Browse the blocks', href: '/blocks/ai-assistants' }],
   },
   {
@@ -77,6 +80,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
+    media: { kind: 'terminal', command: 'npx shadcn@latest add @spectrumui/agent-steps' },
     links: [{ label: 'Set up the MCP server', href: '/docs/mcp' }],
   },
   {
@@ -88,6 +92,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       'The card page was rebuilt as fifty curated, production-ready cards — login, pricing, dashboards, AI chat — each with a live preview and copyable source generated straight from the component files, so the code you copy is always the code that renders.',
       'A day later the site gained /llm-info: a plain monospace document written for AI assistants, so tools that read pages instead of browsing them get the library’s facts without the chrome.',
     ],
+    media: { kind: 'codeblock' },
     links: [{ label: 'See the cards', href: '/docs/card' }],
   },
   {
@@ -117,6 +122,7 @@ export const CHANGELOG: ChangelogEntry[] = [
     body: [
       'One config line — npx -y @spectrumui/mcp — and Cursor, Claude Code, Windsurf, or VS Code can browse, search, and install any Spectrum UI component by name. Five tools over stdio: list, search, get, categories, and install.',
     ],
+    media: { kind: 'terminal', command: 'claude mcp add spectrum-ui -- npx -y @spectrumui/mcp' },
     links: [{ label: 'Install the MCP server', href: '/docs/mcp' }],
   },
 ];

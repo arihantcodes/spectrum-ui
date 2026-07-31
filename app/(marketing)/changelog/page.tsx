@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowUpRight, Rss } from 'lucide-react';
 import { JsonLd } from '@/components/seo/json-ld';
-import { ChangelogDemo } from './changelog-demo';
+import { ChangelogMedia } from './changelog-demo';
 import {
   AREA_LABELS,
   CHANGELOG,
@@ -56,7 +56,7 @@ export default function ChangelogPage() {
       <JsonLd id="changelog-breadcrumb" data={breadcrumb} />
       <JsonLd id="changelog-itemlist" data={itemList} />
 
-      <div className="container-frame mx-auto max-w-[900px] px-4 lg:px-8">
+      <div className="container-frame mx-auto max-w-[1080px] px-4 lg:px-8">
         <header className="py-14 lg:py-20">
           <div className="flex items-center gap-2.5">
             <span aria-hidden className="-rotate-90">
@@ -112,7 +112,10 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
     <article
       id={entry.slug}
       aria-labelledby={`${entry.slug}-title`}
-      className="grid scroll-mt-28 gap-x-10 gap-y-4 border-t border-dashed border-black/[0.09] py-12 first:border-t-0 first:pt-0 md:grid-cols-[170px_minmax(0,1fr)] lg:py-16 dark:border-white/[0.09]"
+      className={
+        'grid scroll-mt-28 gap-x-12 gap-y-4 border-t border-dashed border-black/[0.09] py-14 first:border-t-0 first:pt-0 md:grid-cols-[190px_minmax(0,1fr)] lg:py-20 dark:border-white/[0.09]' +
+        (entry.media ? ' md:min-h-[85vh]' : '')
+      }
     >
       {/* Meta rail — sticks while the entry scrolls, like a margin note. */}
       <div className="md:sticky md:top-24 md:self-start">
@@ -142,38 +145,38 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
         {/* The heading is its own anchor; the hash appears on hover. */}
         <h2
           id={`${entry.slug}-title`}
-          className="group text-[19px] font-semibold leading-snug tracking-[-0.3px] text-neutral-900 dark:text-neutral-50"
+          className="group text-[22px] font-semibold leading-snug tracking-[-0.4px] text-neutral-900 md:text-[24px] dark:text-neutral-50"
         >
           <a href={`#${entry.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400">
             {entry.title}
             <span
               aria-hidden
-              className="ml-2 font-mono text-[15px] font-normal text-neutral-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:text-neutral-600"
+              className="ml-2 font-mono text-[17px] font-normal text-neutral-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:text-neutral-600"
             >
               #
             </span>
           </a>
         </h2>
 
-        <div className="mt-3.5 space-y-3.5">
+        <div className="mt-4 space-y-4">
           {entry.body.map((paragraph) => (
             <p
               key={paragraph.slice(0, 32)}
-              className="text-[14.5px] leading-[1.75] text-neutral-600 dark:text-neutral-400"
+              className="max-w-[68ch] text-[15.5px] leading-[1.8] text-neutral-600 dark:text-neutral-400"
             >
               {paragraph}
             </p>
           ))}
         </div>
 
-        {entry.demo && (
-          <div className="mt-6 flex min-h-[150px] items-center justify-center rounded-2xl border border-black/[0.06] bg-[#F2F2F3] px-6 py-12 dark:border-white/[0.07] dark:bg-white/[0.035]">
-            <ChangelogDemo demo={entry.demo} />
+        {entry.media && (
+          <div className="mt-8">
+            <ChangelogMedia media={entry.media} />
           </div>
         )}
 
         {entry.sections?.map((section) => (
-          <section key={section.label} className="mt-6">
+          <section key={section.label} className="mt-8">
             <h3 className="font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-neutral-400 dark:text-neutral-600">
               {section.label}
             </h3>
@@ -181,7 +184,7 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
               {section.items.map((item) => (
                 <li
                   key={item.slice(0, 32)}
-                  className="flex gap-2.5 text-[13.5px] leading-[1.65] text-neutral-600 dark:text-neutral-400"
+                  className="flex max-w-[68ch] gap-2.5 text-[14px] leading-[1.7] text-neutral-600 dark:text-neutral-400"
                 >
                   <span
                     aria-hidden
@@ -195,7 +198,7 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
         ))}
 
         {entry.links && entry.links.length > 0 && (
-          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
             {entry.links.map((link) => (
               <Link
                 key={link.href}
