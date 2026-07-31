@@ -33,6 +33,7 @@
 - [Guides](https://ui.spectrumhq.in/docs/guides)
 - [MCP server](https://ui.spectrumhq.in/docs/mcp)
 - [Blog](https://ui.spectrumhq.in/blog)
+- [Changelog](https://ui.spectrumhq.in/changelog): What is new — releases across blocks, components, docs, and the MCP server
 - [AI Assistant Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 

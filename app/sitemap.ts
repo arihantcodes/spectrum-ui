@@ -68,6 +68,7 @@ const routeConfig: Record<string, RouteConfig> = {
     priority: 0.7,
   },
   "/blog": { changeFrequency: "weekly", priority: 0.8 },
+  "/changelog": { changeFrequency: "weekly", priority: 0.7 },
   "/colors": { changeFrequency: "monthly", priority: 0.5 },
   "/compare": { changeFrequency: "monthly", priority: 0.7 },
   "/docs": { changeFrequency: "weekly", priority: 0.9 },

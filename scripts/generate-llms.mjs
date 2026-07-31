@@ -120,6 +120,7 @@ function buildCompactFile() {
     '- [Guides](' + siteUrl + '/docs/guides)',
     '- [MCP server](' + siteUrl + '/docs/mcp)',
     '- [Blog](' + siteUrl + '/blog)',
+    '- [Changelog](' + siteUrl + '/changelog): What is new — releases across blocks, components, docs, and the MCP server',
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',

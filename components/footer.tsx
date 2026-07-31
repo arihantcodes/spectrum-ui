@@ -103,8 +103,10 @@ const socialLinks = [
 /** Primary pages — a compact quick-nav row so the footer stays useful. */
 const primaryLinks = [
   { label: 'Components', href: '/docs' },
+  { label: 'Blocks', href: '/blocks/ai-assistants' },
   { label: 'Guides', href: '/docs/guides' },
   { label: 'MCP', href: '/docs/mcp' },
+  { label: 'Changelog', href: '/changelog' },
   { label: 'Blog', href: '/blog' },
   { label: 'Colors', href: '/colors' },
   { label: 'FAQs', href: '/faqs' },
