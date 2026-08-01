@@ -43,7 +43,7 @@ export function ApprovalCard({
   return (
     <div
       className={cn(
-        'w-full max-w-[420px] rounded-2xl border border-black/[0.08] bg-white p-4 shadow-sm dark:border-white/[0.09] dark:bg-[#0B0B0D]',
+        'w-full max-w-[420px] rounded-2xl border border-black/[0.08] bg-white p-4 shadow-xs dark:border-white/[0.09] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -88,14 +88,14 @@ export function ApprovalCard({
             <button
               type="button"
               onClick={() => decide('rejected')}
-              className="rounded-lg px-3 py-1.5 text-[12.5px] font-medium text-neutral-500 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+              className="rounded-lg px-3 py-1.5 text-[12.5px] font-medium text-neutral-500 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-800 active:scale-[0.97] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
             >
               {rejectLabel}
             </button>
             <button
               type="button"
               onClick={() => decide('approved')}
-              className="rounded-lg bg-neutral-900 px-3 py-1.5 text-[12.5px] font-medium text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-100 dark:text-neutral-900"
+              className="rounded-lg bg-neutral-900 px-3 py-1.5 text-[12.5px] font-medium text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-100 dark:text-neutral-900"
             >
               {approveLabel}
             </button>

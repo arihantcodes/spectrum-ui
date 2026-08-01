@@ -65,7 +65,7 @@ export function PromptComposer({
         submit();
       }}
       className={cn(
-        'w-full max-w-[560px] rounded-2xl border border-black/[0.08] bg-white shadow-sm transition-[border-color,box-shadow] duration-150 focus-within:border-black/[0.18] focus-within:shadow-[0_0_0_3px_rgba(0,0,0,0.03)] dark:border-white/[0.09] dark:bg-[#0B0B0D] dark:focus-within:border-white/[0.24] dark:focus-within:shadow-[0_0_0_3px_rgba(255,255,255,0.04)]',
+        'w-full max-w-[560px] rounded-2xl border border-black/[0.08] bg-white shadow-xs transition-[border-color,box-shadow] duration-150 focus-within:border-black/[0.18] focus-within:shadow-[0_0_0_3px_rgba(0,0,0,0.03)] dark:border-white/[0.09] dark:bg-[#0B0B0D] dark:focus-within:border-white/[0.24] dark:focus-within:shadow-[0_0_0_3px_rgba(255,255,255,0.04)]',
         className,
       )}
     >
@@ -115,7 +115,7 @@ export function PromptComposer({
               submit();
             }
           }}
-          className="max-h-[132px] w-full resize-none bg-transparent text-[13.5px] leading-[1.6] text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-neutral-100 dark:placeholder:text-neutral-500"
+          className="max-h-[132px] w-full resize-none bg-transparent text-[13.5px] leading-[1.6] text-neutral-900 outline-hidden placeholder:text-neutral-400 dark:text-neutral-100 dark:placeholder:text-neutral-500"
         />
       </div>
 
@@ -126,7 +126,7 @@ export function PromptComposer({
               type="button"
               aria-label="Attach a file"
               onClick={onAttach}
-              className="grid size-7 shrink-0 place-items-center rounded-lg text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+              className="grid size-7 shrink-0 place-items-center rounded-lg text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
             >
               <Paperclip className="size-3.5" />
             </button>
@@ -139,7 +139,7 @@ export function PromptComposer({
                 aria-haspopup="listbox"
                 aria-expanded={pickerOpen}
                 onClick={() => setPickerOpen((open) => !open)}
-                className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 font-mono text-[11px] text-neutral-500 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+                className="flex min-w-0 items-center gap-1 rounded-lg px-2 py-1 font-mono text-[11px] text-neutral-500 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-800 active:scale-[0.97] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
               >
                 <span className="truncate">{activeModel?.name ?? 'Model'}</span>
                 <ChevronDown
@@ -171,7 +171,7 @@ export function PromptComposer({
                           }}
                           className={cn(
                             'flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left transition-colors duration-150',
-                            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                            'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                             model.disabled
                               ? 'cursor-not-allowed opacity-40'
                               : 'hover:bg-black/[0.04] dark:hover:bg-white/[0.06]',

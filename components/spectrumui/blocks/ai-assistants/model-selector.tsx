@@ -43,7 +43,7 @@ export function ModelSelector({
       >
         <span
           aria-hidden
-          className="absolute inset-y-0.5 left-0.5 -z-10 rounded-[7px] bg-white shadow-sm transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] dark:bg-neutral-800"
+          className="absolute inset-y-0.5 left-0.5 -z-10 rounded-[7px] bg-white shadow-xs transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] dark:bg-neutral-800"
           style={{
             width: `calc((100% - 4px) / ${enabled.length})`,
             transform: `translateX(${activeIndex * 100}%)`,
@@ -60,7 +60,7 @@ export function ModelSelector({
               onClick={() => select(model.id)}
               className={cn(
                 'whitespace-nowrap rounded-[7px] px-3 py-1.5 font-mono text-[11.5px] transition-[color,transform] duration-150 active:scale-[0.96]',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                 active
                   ? 'font-medium text-neutral-900 dark:text-neutral-50'
                   : 'text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200',
@@ -89,7 +89,7 @@ export function ModelSelector({
             className={cn(
               'flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left',
               'transition-[border-color,background-color,transform] duration-150',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+              'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
               model.disabled
                 ? 'cursor-not-allowed border-black/[0.05] opacity-45 dark:border-white/[0.06]'
                 : active

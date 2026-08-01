@@ -126,7 +126,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
                   onClick={() => setPm(manager.id)}
                   className={cn(
                     'rounded-md px-2 py-[3px] font-mono text-[11px] leading-4 transition-[color,transform] duration-150 active:scale-[0.96]',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                    'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                     active
                       ? 'font-medium text-neutral-900 dark:text-neutral-50'
                       : 'text-neutral-400 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300',
@@ -143,7 +143,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
           type="button"
           onClick={handleCopy}
           aria-label={copied ? 'Command copied' : `Copy ${pm} install command`}
-          className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
+          className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
         >
           <span className="relative grid size-3.5 place-items-center">
             <Copy1Icon

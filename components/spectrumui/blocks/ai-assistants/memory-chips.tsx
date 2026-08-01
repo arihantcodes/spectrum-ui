@@ -54,7 +54,7 @@ export function MemoryChips({
               type="button"
               aria-label={`Forget: ${memory.fact}`}
               onClick={() => remove(memory.id)}
-              className="grid size-4 place-items-center rounded-full text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.06] hover:text-neutral-700 active:scale-[0.85] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.1] dark:hover:text-neutral-200"
+              className="grid size-4 place-items-center rounded-full text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.06] hover:text-neutral-700 active:scale-[0.85] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.1] dark:hover:text-neutral-200"
             >
               <X className="size-2.5" />
             </button>
@@ -66,7 +66,7 @@ export function MemoryChips({
           <button
             type="button"
             onClick={onAdd}
-            className="flex items-center gap-1 rounded-full border border-dashed border-black/[0.14] px-2.5 py-1 text-[12px] text-neutral-400 transition-[color,border-color,transform] duration-150 hover:border-black/[0.24] hover:text-neutral-700 active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.16] dark:text-neutral-500 dark:hover:border-white/[0.28] dark:hover:text-neutral-300"
+            className="flex items-center gap-1 rounded-full border border-dashed border-black/[0.14] px-2.5 py-1 text-[12px] text-neutral-400 transition-[color,border-color,transform] duration-150 hover:border-black/[0.24] hover:text-neutral-700 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.16] dark:text-neutral-500 dark:hover:border-white/[0.28] dark:hover:text-neutral-300"
           >
             <Plus className="size-3" />
             Add
@@ -88,7 +88,7 @@ export function MemoryChips({
   return (
     <div
       className={cn(
-        'w-full max-w-[440px] rounded-2xl border border-black/[0.08] bg-white p-4 shadow-sm dark:border-white/[0.09] dark:bg-[#0B0B0D]',
+        'w-full max-w-[440px] rounded-2xl border border-black/[0.08] bg-white p-4 shadow-xs dark:border-white/[0.09] dark:bg-[#0B0B0D]',
         className,
       )}
     >

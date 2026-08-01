@@ -57,7 +57,7 @@ export default function ChangelogPage() {
             </p>
             <a
               href="/changelog/feed.xml"
-              className="inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-400 transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-100"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-400 transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-100"
             >
               <Rss className="size-3" />
               RSS
@@ -85,7 +85,7 @@ function Entry({ entry, index }: { entry: ChangelogEntry; index: number }) {
       {/* The date is the entry's anchor — handwritten, like the reference. */}
       <a
         href={`#${entry.slug}`}
-        className={`${handwritten.className} text-[16px] leading-[1.6] text-neutral-400 no-underline transition-colors duration-150 hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-300`}
+        className={`${handwritten.className} text-[16px] leading-[1.6] text-neutral-400 no-underline transition-colors duration-150 hover:text-neutral-600 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-300`}
       >
         <time dateTime={entry.date}>{changelogDate(entry.date)}</time>
       </a>

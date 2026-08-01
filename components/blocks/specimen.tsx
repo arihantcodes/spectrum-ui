@@ -80,9 +80,9 @@ export function Specimen({ slug, number, name, description, variants, source, cl
                   onClick={() => setVariant(v)}
                   className={cn(
                     'rounded-full px-3 py-1 text-[12px] font-medium capitalize',
-                    'transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                    'transition-colors duration-150 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                     active
-                      ? 'border border-black/[0.08] bg-white text-neutral-900 shadow-sm dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-50'
+                      ? 'border border-black/[0.08] bg-white text-neutral-900 shadow-xs dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-50'
                       : 'text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300',
                   )}
                 >
@@ -141,7 +141,7 @@ function IconButton({
       onClick={onClick}
       className={cn(
         'grid size-7 place-items-center rounded-lg border transition-colors duration-150',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+        'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
         'border-black/[0.06] bg-white/70 text-neutral-400 hover:text-neutral-700 dark:border-white/[0.08] dark:bg-white/[0.04] dark:text-neutral-500 dark:hover:text-neutral-200',
       )}
     >
@@ -214,7 +214,7 @@ function CliRow({ command }: { command: string }) {
       type="button"
       onClick={copy}
       aria-label={copied ? 'Command copied' : `Copy install command: ${command}`}
-      className="group mt-3 inline-flex items-center gap-2 font-mono text-[11.5px] text-neutral-400 transition-colors duration-150 hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-600 dark:hover:text-neutral-300"
+      className="group mt-3 inline-flex items-center gap-2 font-mono text-[11.5px] text-neutral-400 transition-colors duration-150 hover:text-neutral-700 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-600 dark:hover:text-neutral-300"
     >
       {copied ? (
         <Check className="size-3 text-emerald-600 dark:text-emerald-400" />
