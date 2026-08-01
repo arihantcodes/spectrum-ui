@@ -2356,10 +2356,11 @@
       "Next.js"
     ],
     "dependencies": [
-      "lucide-react",
-      "@radix-ui/react-dialog"
+      "lucide-react"
     ],
-    "registryDependencies": [],
+    "registryDependencies": [
+      "@spectrumui/image-preview-dependencies"
+    ],
     "installation": {
       "cliCommands": [
         "npx shadcn@latest add @spectrumui/image-preview"
@@ -2369,7 +2370,7 @@
       ],
       "manualPaths": [
         "app/(docs)/docs/imagepreview/ImagePreview.tsx",
-        "components/spectrumui/image-preview-dependecies.tsx"
+        "components/spectrumui/image-preview.tsx"
       ]
     },
     "coverage": {
@@ -2417,7 +2418,8 @@
     "features": [
       "Copy-paste source that remains in your repository",
       "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source"
+      "Tailwind CSS classes editable in the component source",
+      "Spectrum UI registry dependencies: @spectrumui/image-preview-dependencies"
     ],
     "accessibility": [
       "The source uses Radix UI primitives for the interactions detected on this component.",
@@ -3595,8 +3597,7 @@
       "@spectrumui/heading-with-anchor",
       "@spectrumui/loading-button-dependencies",
       "@spectrumui/use-toast",
-      "form",
-      "@spectrumui/loading-button"
+      "form"
     ],
     "installation": {
       "cliCommands": [
@@ -3786,7 +3787,7 @@
       "TypeScript source included with the component",
       "Tailwind CSS classes editable in the component source",
       "shadcn/ui dependencies: form",
-      "Spectrum UI registry dependencies: @spectrumui/multiple-selector-dependencies, @spectrumui/inline-code, @spectrumui/heading-with-anchor, @spectrumui/loading-button-dependencies, @spectrumui/use-toast, @spectrumui/loading-button"
+      "Spectrum UI registry dependencies: @spectrumui/multiple-selector-dependencies, @spectrumui/inline-code, @spectrumui/heading-with-anchor, @spectrumui/loading-button-dependencies, @spectrumui/use-toast"
     ],
     "accessibility": [
       "The source includes ARIA attributes or roles; preserve them when customizing the component.",

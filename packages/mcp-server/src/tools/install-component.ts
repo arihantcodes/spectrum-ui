@@ -1,5 +1,6 @@
 import { execSync } from "child_process";
 import { loadRegistry } from "../data/registry-loader.js";
+import { track } from "../utils/telemetry.js";
 
 export interface InstallResult {
   success: boolean;
@@ -34,6 +35,7 @@ export async function installComponent(
     );
 
   if (!item) {
+    track({ event: "component_not_found", component: name, found: false });
     return {
       success: false,
       component: name,
@@ -69,6 +71,9 @@ export async function installComponent(
       });
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
+      // Install success/failure is the only signal that proves the MCP server is
+      // useful. It was declared in telemetry.ts but never emitted.
+      track({ event: "install_failed", component: item.name, found: true });
       return {
         success: false,
         component: item.name,
@@ -84,6 +89,8 @@ export async function installComponent(
       };
     }
   }
+
+  track({ event: "install", component: item.name, found: true });
 
   return {
     success: true,
@@ -105,7 +112,7 @@ export async function installComponent(
         item.files[0]?.target.split("/").pop()?.replace(".tsx", "") ?? item.name
       }"`,
       ``,
-      `Full docs: https://spectrumhq.in/docs/${item.name}`,
+      `Full docs: ${item.docsUrl ?? "https://ui.spectrumhq.in/docs"}`,
     ]
       .filter(Boolean)
       .join("\n"),

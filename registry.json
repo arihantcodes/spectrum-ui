@@ -4,6 +4,195 @@
   "homepage": "https://ui.spectrumhq.in",
   "items": [
     {
+      "name": "agent-plan",
+      "type": "registry:block",
+      "title": "Agent Plan",
+      "description": "An editable plan checklist the agent proposes before running.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/agent-plan.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/agent-plan.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "agent",
+        "plan"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "agent-steps",
+      "type": "registry:block",
+      "title": "Agent Steps",
+      "description": "A timeline of tool calls with status, arguments, results, and parallel sub-steps.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "agent",
+        "steps"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:block",
+      "title": "Approval Card",
+      "description": "A human-in-the-loop approval for an action an agent wants to take.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/approval-card.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/approval-card.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "approval",
+        "card"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "chat-empty-state",
+      "type": "registry:block",
+      "title": "Chat Empty State",
+      "description": "A first-run greeting with staggered suggestion chips.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "chat",
+        "empty",
+        "state"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "citation-sources",
+      "type": "registry:block",
+      "title": "Citation Sources",
+      "description": "Inline citation markers with hover previews or a footnote list.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "citation",
+        "sources"
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:block",
+      "title": "Code Block",
+      "description": "An AI code block with a file header, copy, and line collapse.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/code-block.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/code-block.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "code",
+        "block"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "conversation-list",
+      "type": "registry:block",
+      "title": "Conversation List",
+      "description": "A date-grouped conversation sidebar with pinning.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/conversation-list.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/conversation-list.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "conversation",
+        "list"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "diff-view",
+      "type": "registry:block",
+      "title": "Diff View",
+      "description": "Proposed file changes with per-file accept and reject.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/diff-view.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/diff-view.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "diff",
+        "view"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
       "name": "disclose-image",
       "type": "registry:component",
       "title": "Disclose Image",
@@ -14,6 +203,28 @@
           "type": "registry:component",
           "target": "components/spectrumui/discloseimage.tsx"
         }
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "registry:block",
+      "title": "Error State",
+      "description": "A failed-generation state with a preserved prompt and retry.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/error-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/error-state.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "error",
+        "state"
+      ],
+      "dependencies": [
+        "lucide-react"
       ]
     },
     {
@@ -708,6 +919,222 @@
       ]
     },
     {
+      "name": "inline-edit",
+      "type": "registry:block",
+      "title": "Inline Edit",
+      "description": "A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "inline",
+        "edit"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "insight-cards",
+      "type": "registry:block",
+      "title": "Insight Cards",
+      "description": "Metric cards with spark bars, trend deltas, and an AI note.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/insight-cards.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/insight-cards.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "insight",
+        "cards"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "loading-state",
+      "type": "registry:block",
+      "title": "Loading State",
+      "description": "A pixel-grid loader with a shimmering label and live elapsed timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/loading-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/loading-state.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "loading",
+        "spinner",
+        "elapsed",
+        "shimmer"
+      ]
+    },
+    {
+      "name": "memory-chips",
+      "type": "registry:block",
+      "title": "Memory Chips",
+      "description": "What the assistant remembers, as removable chips.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/memory-chips.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/memory-chips.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "memory",
+        "chips"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "message-actions",
+      "type": "registry:block",
+      "title": "Message Actions",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/message-actions.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/message-actions.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "message",
+        "actions"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "model-selector",
+      "type": "registry:block",
+      "title": "Model Selector",
+      "description": "A model picker as a radio list or segmented control, with badges and disabled states.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/model-selector.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/model-selector.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "model",
+        "selector"
+      ]
+    },
+    {
+      "name": "prompt-composer",
+      "type": "registry:block",
+      "title": "Prompt Composer",
+      "description": "A prompt input with attachments, a model picker, and a stop state.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "prompt",
+        "composer"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "quota-banner",
+      "type": "registry:block",
+      "title": "Quota Banner",
+      "description": "A message-quota banner with a live reset countdown.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/quota-banner.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/quota-banner.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "quota",
+        "banner"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "reasoning-trace",
+      "type": "registry:block",
+      "title": "Reasoning Trace",
+      "description": "An expandable chain-of-thought trace with a live thinking timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "thinking",
+        "chain-of-thought",
+        "reasoning",
+        "trace"
+      ]
+    },
+    {
       "name": "stackedcircular-footer",
       "type": "registry:component",
       "title": "Stacked Circular Footer",
@@ -768,6 +1195,19 @@
       ]
     },
     {
+      "name": "icon-dependencies",
+      "type": "registry:component",
+      "title": "Icon Dependencies",
+      "description": "Shared icon set used by the footer and profile components.",
+      "files": [
+        {
+          "path": "components/icon.tsx",
+          "type": "registry:component",
+          "target": "components/icon.tsx"
+        }
+      ]
+    },
+    {
       "name": "http-status-code",
       "type": "registry:component",
       "title": "HTTP Status Code",
@@ -789,9 +1229,9 @@
       ]
     },
     {
-      "name": "image-preview",
+      "name": "image-preview-dependencies",
       "type": "registry:component",
-      "title": "Image Preview",
+      "title": "Image Preview Dependencies",
       "description": "component for the Image Preview Dependencies",
       "files": [
         {
@@ -1220,6 +1660,166 @@
       ]
     },
     {
+      "name": "status-tracker",
+      "type": "registry:block",
+      "title": "Status Tracker",
+      "description": "A staged progress tracker for long-running AI jobs.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/status-tracker.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/status-tracker.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "status",
+        "tracker"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:block",
+      "title": "Streaming Text",
+      "description": "A streamed answer with inline citations, sources, and follow-ups.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "streaming",
+        "text"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "suggestion-banner",
+      "type": "registry:block",
+      "title": "Suggestion Banner",
+      "description": "An inline AI suggestion with apply and dismiss.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/suggestion-banner.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/suggestion-banner.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "suggestion",
+        "banner"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "task-rows",
+      "type": "registry:block",
+      "title": "Task Rows",
+      "description": "Live agent task rows with status badges and expandable notes.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/task-rows.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/task-rows.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "task",
+        "rows"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "thinking-dots",
+      "type": "registry:block",
+      "title": "Thinking Dots",
+      "description": "A minimal typing indicator — bouncing dots or a sliding bar.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/thinking-dots.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/thinking-dots.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "thinking",
+        "dots"
+      ]
+    },
+    {
+      "name": "tool-chips",
+      "type": "registry:block",
+      "title": "Tool Chips",
+      "description": "Compact tool-call chips that expand into their arguments and result.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "tool",
+        "chips"
+      ]
+    },
+    {
+      "name": "usage-meter",
+      "type": "registry:block",
+      "title": "Usage Meter",
+      "description": "A context-window meter with token counts and estimated cost.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "usage",
+        "meter"
+      ]
+    },
+    {
       "name": "use-toast",
       "type": "registry:component",
       "title": "Use Toast",
@@ -1347,7 +1947,7 @@
       "registryDependencies": [
         "form",
         "@spectrumui/use-toast",
-        "@spectrumui/loading-button",
+        "@spectrumui/loading-button-dependencies",
         "@spectrumui/multiple-selector-dependencies"
       ],
       "dependencies": [
@@ -2672,6 +3272,50 @@
       ],
       "registryDependencies": [
         "@spectrumui/share-button"
+      ]
+    },
+    {
+      "name": "voice-input",
+      "type": "registry:block",
+      "title": "Voice Input",
+      "description": "A voice recorder pill with animated level bars and a live timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/voice-input.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/voice-input.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "voice",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "web-search",
+      "type": "registry:block",
+      "title": "Web Search",
+      "description": "Agent search results with a live reading indicator.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/web-search.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/web-search.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "web",
+        "search"
+      ],
+      "dependencies": [
+        "lucide-react"
       ]
     }
   ]

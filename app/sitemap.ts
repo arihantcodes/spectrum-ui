@@ -6,6 +6,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
 import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 import { comparisons } from "@/lib/comparisons";
+import { BLOCK_CATEGORIES, blockCategoryPath } from "@/lib/block-catalog";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type RouteConfig = Pick<SitemapEntry, "changeFrequency" | "priority">;
@@ -20,6 +21,8 @@ const topicHubRoutes = new Set(
   TOPIC_HUB_LINKS.map((hub) => topicHubPath(hub.slug)),
 );
 const nonIndexableRoutes = new Set([
+  // Redirects to the first block category; the category pages are indexed below.
+  "/blocks",
   "/bookmarks",
   "/create-user",
   "/dashboard",
@@ -62,8 +65,8 @@ const routeConfig: Record<string, RouteConfig> = {
     changeFrequency: "monthly",
     priority: 0.7,
   },
-  "/blocks": { changeFrequency: "weekly", priority: 0.7 },
   "/blog": { changeFrequency: "weekly", priority: 0.8 },
+  "/changelog": { changeFrequency: "weekly", priority: 0.7 },
   "/colors": { changeFrequency: "monthly", priority: 0.5 },
   "/compare": { changeFrequency: "monthly", priority: 0.7 },
   "/docs": { changeFrequency: "weekly", priority: 0.9 },
@@ -235,6 +238,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   ];
 
+  // Dynamic /blocks/[category] specimen pages are not covered by filesystem
+  // discovery either.
+  const blockCategorySource = path.join(
+    appDirectory,
+    "(blocks)",
+    "blocks",
+    "[category]",
+    "page.tsx",
+  );
+  const blockCategoryPages = BLOCK_CATEGORIES.map((category) =>
+    createEntry({
+      route: blockCategoryPath(category.slug),
+      sourceFiles: [
+        blockCategorySource,
+        path.join(projectRoot, "content", "block-catalog.json"),
+      ],
+      config: { changeFrequency: "weekly", priority: 0.7 },
+    }),
+  );
+
   // Dynamic /compare/[slug] pages are not covered by filesystem discovery.
   const comparisonSource = path.join(
     appDirectory,
@@ -258,6 +281,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries = [
     ...staticPages,
     ...machineReadablePages,
+    ...blockCategoryPages,
     ...comparisonPages,
     ...blogPages,
   ];

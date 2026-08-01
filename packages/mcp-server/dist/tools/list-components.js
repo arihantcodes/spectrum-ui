@@ -8,7 +8,7 @@ function toSummary(item) {
         // Primary: bunx (bun users) — Secondary: npx (everyone else)
         cliCommand: `bunx --bun shadcn@latest add @spectrumui/${item.name}`,
         cliCommandNpx: `npx shadcn@latest add @spectrumui/${item.name}`,
-        docsUrl: `https://spectrumhq.in/docs/${item.name}`,
+        docsUrl: item.docsUrl ?? "https://ui.spectrumhq.in/docs",
         dependencies: item.dependencies ?? [],
     };
 }

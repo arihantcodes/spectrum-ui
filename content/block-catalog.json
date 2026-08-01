@@ -1,0 +1,701 @@
+{
+  "categories": [
+    {
+      "slug": "ai-assistants",
+      "name": "AI Assistants",
+      "tagline": "Interface surfaces for products built on LLMs.",
+      "description": "Composed sections for AI products — conversation threads with streaming and markdown, prompt composers with attachments and model selection, reasoning traces, agent tool timelines, and citation displays. Each block renders standalone with realistic data and shares one message contract, so they compose into a working chat surface.",
+      "order": 1
+    }
+  ],
+  "blocks": [
+    {
+      "slug": "loading-state",
+      "name": "Loading State",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A pixel-grid loader with a shimmering label and live elapsed timer.",
+      "summary": "What fills the gap before the first token. A nine-cell pixel grid animates a chevron wavefront or an orbiting comet, next to a shimmering label and an elapsed timer in mono tabular figures.",
+      "hardParts": [
+        "A timer that ticks every 100ms needs tabular figures or the layout wobbles on every frame",
+        "The 650ms cycle is shorter than the sweep so two wavefronts are always in flight",
+        "Reduced motion freezes the grid to its dim state while the timer keeps ticking"
+      ],
+      "variants": [
+        "Drive",
+        "Dots",
+        "Orbit"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Render while a long-running AI task has produced no output yet. Purely visual; label and variant are props. Self-contained — its keyframes ship inside the component.",
+      "index": 1,
+      "status": "live",
+      "addedAt": "2026-07-29"
+    },
+    {
+      "slug": "reasoning-trace",
+      "name": "Reasoning Trace",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "An expandable chain-of-thought trace with a live thinking timer.",
+      "summary": "Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.",
+      "hardParts": [
+        "Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong",
+        "Collapsing must not jump the scroll position of the thread above",
+        "An elapsed timer needs tabular numbers or the label wobbles every tick"
+      ],
+      "variants": [
+        "Steps",
+        "Reasoning"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render above an assistant message to expose reasoning. Accepts steps plus a status of thinking or complete. Presentational only.",
+      "index": 2,
+      "status": "live",
+      "addedAt": "2026-07-29"
+    },
+    {
+      "slug": "streaming-text",
+      "name": "Streaming Text",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A streamed answer with inline citations, sources, and follow-ups.",
+      "summary": "A single streamed answer outside a full thread — token-by-token text with inline citation markers, a compact source row or expanded source list, and follow-up prompts that stagger in when the answer settles.",
+      "hardParts": [
+        "Word-chunked streaming reads as inference; per-character reads as a typewriter",
+        "Citation markers arrive in the stream before their sources render",
+        "Follow-ups must not shift layout while text is still arriving"
+      ],
+      "variants": [
+        "Answer",
+        "Sources"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render a single streamed answer outside a full thread. Accepts text, citations and follow-up prompts; streaming drives the caret.",
+      "index": 3,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "prompt-composer",
+      "name": "Prompt Composer",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A prompt input with attachments, a model picker, and a stop state.",
+      "summary": "The input surface of an AI product: an autosizing textarea with attachment chips, a model picker that opens upward, a character budget, and a send control that becomes stop while a response streams.",
+      "hardParts": [
+        "Autosize with a max height that then scrolls, without per-keystroke jitter",
+        "The model menu opens upward so it never collides with a thread above",
+        "Swapping send for stop without the button changing size"
+      ],
+      "variants": [
+        "Default",
+        "Minimal"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Use as the input of an AI product. Emits onSend with text and model id; set isGenerating to swap send for stop. Enter is IME-safe.",
+      "index": 4,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "chat-empty-state",
+      "name": "Chat Empty State",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A first-run greeting with staggered suggestion chips.",
+      "summary": "The first thing every user sees. A greeting, an honest subtitle, and suggestion chips that stagger in and feed the composer.",
+      "hardParts": [
+        "Least technically hard, highest product leverage — it is the first impression",
+        "Stagger must be capped or a long chip list turns into a wait",
+        "Chips must feed the composer without a page of wiring"
+      ],
+      "variants": [
+        "Default",
+        "Centered"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render instead of the thread when there are no messages. Emits onSelectPrompt so a chip can populate the composer.",
+      "index": 5,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "message-actions",
+      "name": "Message Actions",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
+      "summary": "The action row on an assistant message: copy with a blur-crossfade check, regenerate with a half-turn, and thumb feedback that fills and pops. Hover-revealed on pointer devices, keyboard-reachable, always visible on touch.",
+      "hardParts": [
+        "Hover-reveal that is also keyboard-reachable and always visible on touch — three access models, one component",
+        "Copy must yield source markdown, not rendered DOM text",
+        "Feedback state must survive being toggled off"
+      ],
+      "variants": [
+        "Ghost",
+        "Pill"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Attach below an assistant message inside a group/message container. Hover-revealed on pointer devices, always visible on touch.",
+      "index": 6,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "citation-sources",
+      "name": "Citation Sources",
+      "category": "ai-assistants",
+      "subcategory": "Sources",
+      "description": "Inline citation markers with hover previews or a footnote list.",
+      "summary": "Grounds an answer in its sources. Numbered markers sit inline in the text and reveal a hovercard on hover or focus; the footnote variant lists every source with domain and snippet.",
+      "hardParts": [
+        "Numbering must stay stable when sources deduplicate by domain",
+        "A hovercard that works on focus as well as hover",
+        "Markers must not break line height or text rhythm"
+      ],
+      "variants": [
+        "Inline",
+        "Footnotes"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Wrap answer text containing [n] markers. Accepts Citation[] indexed from 1; hovercards need no JS positioning.",
+      "index": 7,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "agent-steps",
+      "name": "Agent Steps",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A timeline of tool calls with status, arguments, results, and parallel sub-steps.",
+      "summary": "Visualises what an agent actually did: each tool call with its status, arguments, duration and result, including parallel sub-steps rendered side by side.",
+      "hardParts": [
+        "A real state machine — pending, running, success, error — not a spinner",
+        "Arguments stay readable without blowing the layout: truncate, never wrap",
+        "Parallel calls need a visibly different treatment from sequential ones"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children; expandable results use no height hacks.",
+      "index": 8,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "tool-chips",
+      "name": "Tool Chips",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "Compact tool-call chips that expand into their arguments and result.",
+      "summary": "Tool calls as a row or stack of compact chips — status dot, mono name, duration — with one shared panel that expands to show the selected call's arguments and result.",
+      "hardParts": [
+        "One expanded panel shared across chips keeps the layout calm",
+        "Status must be legible from a 6px dot alone",
+        "Chips wrap without orphaning their durations"
+      ],
+      "variants": [
+        "Row",
+        "Stack"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "A denser alternative to agent-steps for inline tool use. Accepts ToolCall[]; one chip expands at a time.",
+      "index": 9,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "approval-card",
+      "name": "Approval Card",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A human-in-the-loop approval for an action an agent wants to take.",
+      "summary": "An agent proposes; a human decides. The card states the action and its consequence, and the decision crossfades in place with an audit line preserved.",
+      "hardParts": [
+        "Show the consequence clearly enough to decide on",
+        "The decided state must preserve an audit trail",
+        "Approve and dismiss must not be visual equals"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render when an agent proposes an irreversible action. Emits onDecide; the decided state crossfades in place.",
+      "index": 10,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "model-selector",
+      "name": "Model Selector",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A model picker as a radio list or segmented control, with badges and disabled states.",
+      "summary": "Model choice as a radio list with descriptions, badges and disabled states, or as a segmented control whose active pill slides between options.",
+      "hardParts": [
+        "Disabled options must stay visible — capability differences are information",
+        "The sliding pill needs transform, not layout animation",
+        "Radio semantics without a form library"
+      ],
+      "variants": [
+        "List",
+        "Segmented"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Accepts ModelOption[]; controlled or uncontrolled. Disabled options stay visible so capability differences are legible.",
+      "index": 11,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "usage-meter",
+      "name": "Usage Meter",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A context-window meter with token counts and estimated cost.",
+      "summary": "Context-window state at a glance: a meter that turns amber past 75 percent and red past 90, token counts in tabular figures, and an estimated cost.",
+      "hardParts": [
+        "Tabular numerals or every tick shifts the layout",
+        "Threshold colors must be meaningful, not decorative",
+        "The bar animates width smoothly without repaint jank"
+      ],
+      "variants": [
+        "Bar",
+        "Inline"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Accepts a UsageState. Threshold colors at 75 and 90 percent; numerals are tabular so the layout never wobbles.",
+      "index": 12,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "voice-input",
+      "name": "Voice Input",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A voice recorder pill with animated level bars and a live timer.",
+      "summary": "A recorder pill that moves through idle, recording and processing. Level bars animate on staggered offsets, the timer ticks in mono, and cancel or confirm sit a thumb-width apart.",
+      "hardParts": [
+        "Level bars from staggered CSS offsets, no audio API needed for the preview",
+        "Three permission-adjacent states with distinct affordances",
+        "Reduced motion needs a static-but-alive treatment"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Controlled or uncontrolled recording states: idle, recording, processing. Reduced motion freezes the bars; the timer still ticks.",
+      "index": 13,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "inline-edit",
+      "name": "Inline Edit",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.",
+      "summary": "AI editing anchored to a selection: the highlighted span grows a floating action, the suggestion arrives as a word-level diff, and accepting swaps the text in place.",
+      "hardParts": [
+        "A floating action anchored to an inline selection across line wraps",
+        "Word-level diff that reads at a glance — del and ins, not walls of red and green",
+        "Accepting must swap text without the paragraph jumping"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render over editable prose. Shows the selection, a floating action, then a del/ins diff; accepting swaps the text in place.",
+      "index": 14,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "thinking-dots",
+      "name": "Thinking Dots",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A minimal typing indicator — bouncing dots or a sliding bar.",
+      "summary": "The lightest possible signal that the assistant is alive. Three dots bounce on staggered offsets, or a bar slides its track, next to a quiet label.",
+      "hardParts": [
+        "Stagger offsets must be irregular enough not to read as a metronome",
+        "role=status announces once, not per bounce",
+        "Reduced motion freezes to the dim state"
+      ],
+      "variants": [
+        "Dots",
+        "Bar"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "Render while the assistant is preparing a reply and no richer state applies. Purely visual; label is a prop.",
+      "index": 15,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "task-rows",
+      "name": "Task Rows",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "Live agent task rows with status badges and expandable notes.",
+      "summary": "What a background agent is doing right now: each row carries a status icon, a mono detail, a status badge, and an expandable note for the rows that finished.",
+      "hardParts": [
+        "Four statuses with distinct affordances, legible without color",
+        "A spinning icon that does not blur at small sizes",
+        "Expanding one row must not shift its neighbours"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render a background agent's work queue. Accepts TaskRow[] with queued, running, completed and failed statuses; rows with notes expand.",
+      "index": 16,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "agent-plan",
+      "name": "Agent Plan",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "An editable plan checklist the agent proposes before running.",
+      "summary": "The agent proposes, the human prunes. Numbered steps with checkboxes, struck through when excluded, and a run button that counts what survives.",
+      "hardParts": [
+        "Excluded steps stay visible — an edited plan is still a plan",
+        "Checkbox semantics without a form library",
+        "The run button must reflect the live enabled count"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render before executing a multi-step plan. Steps toggle on and off; onRun receives the enabled step ids.",
+      "index": 17,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "web-search",
+      "name": "Web Search",
+      "category": "ai-assistants",
+      "subcategory": "Sources",
+      "description": "Agent search results with a live reading indicator.",
+      "summary": "What the agent is reading and in what order: the query in mono, results with favicon dots and snippets, and a reading badge that walks down the list.",
+      "hardParts": [
+        "The reading state must draw the eye without flashing",
+        "Idle results dim rather than disappear",
+        "Snippets clamp to one line so the list stays scannable"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render while an agent searches the web. Accepts results with reading, read and idle states; the query renders in mono.",
+      "index": 18,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "diff-view",
+      "name": "Diff View",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "Proposed file changes with per-file accept and reject.",
+      "summary": "Changes an agent wants to make, shown as unified diffs with add and remove lines, per-file +/− counts, and accept or reject controls that record the decision in place.",
+      "hardParts": [
+        "Rejected files dim but stay — an audit trail, not a deletion",
+        "Diff lines never wrap; horizontal scroll preserves alignment",
+        "Accept and reject must not be visual equals"
+      ],
+      "variants": [
+        "Default",
+        "Summary"
+      ],
+      "complexity": "advanced",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render changes an agent proposes to files. Accepts FileDiff[]; accept and reject decide per file and the decision is recorded in place.",
+      "index": 19,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "code-block",
+      "name": "Code Block",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "An AI code block with a file header, copy, and line collapse.",
+      "summary": "Code as an assistant emits it: a file header, optional line numbers, a copy control with the blur-crossfade check, and a collapse that keeps long output honest.",
+      "hardParts": [
+        "Copy must take the full source even while collapsed",
+        "Line numbers are tabular and unselectable",
+        "The expander states exactly how many lines it hides"
+      ],
+      "variants": [
+        "Default",
+        "Numbered"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render code inside an assistant reply. Collapses past collapsedLines with an expander; copy takes the full source either way.",
+      "index": 20,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "insight-cards",
+      "name": "Insight Cards",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "Metric cards with spark bars, trend deltas, and an AI note.",
+      "summary": "Metrics with a voice: the number in mono, a trend delta with its arrow, spark bars with the latest period emphasised, and one line of AI annotation under a hairline.",
+      "hardParts": [
+        "Spark bars emphasise the latest period, not the tallest",
+        "Deltas are signed, colored and tabular",
+        "The AI note must read as annotation, not as another metric"
+      ],
+      "variants": [
+        "Grid",
+        "Row"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render AI-computed metrics. Accepts insights with a value, a signed change, spark points and an optional annotation line.",
+      "index": 21,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "error-state",
+      "name": "Error State",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A failed-generation state with a preserved prompt and retry.",
+      "summary": "Failure without drama: what went wrong, the reassurance that the prompt survived, and a retry that spins while it works.",
+      "hardParts": [
+        "The message must say the prompt is preserved — that is the actual fear",
+        "Retry disables while retrying or users double-fire",
+        "The inline variant must fit a thread row"
+      ],
+      "variants": [
+        "Card",
+        "Inline"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render when generation fails. The retry control shows a spinner while retrying; the inline variant fits inside a thread.",
+      "index": 22,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "quota-banner",
+      "name": "Quota Banner",
+      "category": "ai-assistants",
+      "subcategory": "Feedback",
+      "description": "A message-quota banner with a live reset countdown.",
+      "summary": "The cap, stated plainly: messages left, a meter that turns amber at the limit, a live mm:ss reset countdown in tabular mono, and the upgrade path.",
+      "hardParts": [
+        "A live countdown needs tabular figures or it jitters every second",
+        "Amber at exhaustion; red is for errors, not billing",
+        "The compact pill must fit a composer footer"
+      ],
+      "variants": [
+        "Banner",
+        "Compact"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render when a usage cap approaches or hits. Accepts used, limit and resetsInSeconds; the countdown ticks live.",
+      "index": 23,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "memory-chips",
+      "name": "Memory Chips",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "What the assistant remembers, as removable chips.",
+      "summary": "Assistant memory made legible: each remembered fact is a chip with a remove control, plus a dashed chip to add more. Forgetting something is one click.",
+      "hardParts": [
+        "Forgetting must be one click, never a menu",
+        "Chips stagger in but removal is instant",
+        "The empty state explains where memories come from"
+      ],
+      "variants": [
+        "Panel",
+        "Row"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render saved assistant memory. Chips remove with an X and stagger in; onAdd renders a dashed add chip.",
+      "index": 24,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "suggestion-banner",
+      "name": "Suggestion Banner",
+      "category": "ai-assistants",
+      "subcategory": "Input",
+      "description": "An inline AI suggestion with apply and dismiss.",
+      "summary": "A proactive nudge with manners: the suggestion and its reasoning, a quiet dismiss, and an apply that collapses the banner into a confirmation pill.",
+      "hardParts": [
+        "Applied state collapses to a pill instead of lingering",
+        "Dismiss must be quieter than apply",
+        "The reasoning line earns the interruption"
+      ],
+      "variants": [
+        "Inline",
+        "Floating"
+      ],
+      "complexity": "simple",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render a proactive suggestion. Apply collapses it to a confirmation pill; dismiss removes it. Controlled or uncontrolled.",
+      "index": 25,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "status-tracker",
+      "name": "Status Tracker",
+      "category": "ai-assistants",
+      "subcategory": "Reasoning & Agents",
+      "description": "A staged progress tracker for long-running AI jobs.",
+      "summary": "Long jobs in stages: completed stages check off, the active stage pulses while its connector fills, and the minimal variant compresses it all into one bar.",
+      "hardParts": [
+        "Progress lives in the connectors, not just the dots",
+        "Stage labels stay legible at 9.5px mono or they are noise",
+        "The minimal variant must collapse to a single honest percentage"
+      ],
+      "variants": [
+        "Default",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render multi-stage jobs like ingestion or fine-tuning. Accepts stages, an activeIndex and 0–1 progress within the active stage.",
+      "index": 26,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "conversation-list",
+      "name": "Conversation List",
+      "category": "ai-assistants",
+      "subcategory": "Conversation",
+      "description": "A date-grouped conversation sidebar with pinning.",
+      "summary": "Chat history that stays organised: date-grouped rows, an active state, and a pin that reveals on hover, stays put on touch, and holds favourites at hand.",
+      "hardParts": [
+        "The pin is hover-revealed on pointer devices but always present on touch",
+        "Date grouping happens in data, not in the component's opinion of time",
+        "Active and pinned are independent states"
+      ],
+      "variants": [
+        "Default",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "Render chat history. Conversations group by date labels; rows select, and a hover-revealed pin keeps favourites.",
+      "index": 27,
+      "status": "live",
+      "addedAt": "2026-07-31"
+    }
+  ]
+}

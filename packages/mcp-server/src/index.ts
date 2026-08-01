@@ -31,7 +31,7 @@ import { installComponent } from "./tools/install-component.js";
 
 const server = new McpServer({
   name: "spectrum-ui",
-  version: "0.1.0",
+  version: "0.2.0",
 });
 
 // ─── Tool: list_components ──────────────────────────────────────────────────

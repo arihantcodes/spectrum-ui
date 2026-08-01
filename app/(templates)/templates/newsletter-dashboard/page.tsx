@@ -2923,7 +2923,7 @@ function VehicleCard({ vehicle, isSelected }: VehicleCardProps): React.JSX.Eleme
 export default function BlocksPageDemo() {
   const { resolvedTheme } = useTheme();
 
-  const currentShikiTheme = resolvedTheme === "dark" ? "vesper" : "min-light";
+  const currentShikiTheme = resolvedTheme === "dark" ? "vesper" : "github-light";
 
   return (
     <div className="container-wrapper h-full p-12">
