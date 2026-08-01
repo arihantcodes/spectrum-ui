@@ -1,4 +1,4 @@
-import { CHANGELOG } from '@/content/changelog';
+import { CHANGELOG, changelogDate } from '@/content/changelog';
 import { siteConfig } from '@/config/site';
 
 function escapeXml(value: string) {
@@ -10,25 +10,28 @@ function escapeXml(value: string) {
     .replace(/'/g, '&apos;');
 }
 
+function plainText(item: string) {
+  return item.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+}
+
 export async function GET() {
   const url = `${siteConfig.url}/changelog`;
 
   const items = CHANGELOG.map((entry) => {
     const link = `${url}#${entry.slug}`;
-    const description = [
-      ...entry.body,
-      ...(entry.sections?.flatMap((section) =>
-        section.items.map((item) => `• ${item}`),
-      ) ?? []),
-    ].join('\n\n');
+    const title = `${changelogDate(entry.date)} — ${entry.groups
+      .map((group) => group.label)
+      .join(', ')}`;
+    const description = entry.groups
+      .flatMap((group) => group.items.map((item) => `• ${plainText(item)}`))
+      .join('\n');
 
     return [
       '    <item>',
-      `      <title>${escapeXml(entry.title)}</title>`,
+      `      <title>${escapeXml(title)}</title>`,
       `      <link>${link}</link>`,
       `      <guid isPermaLink="true">${link}</guid>`,
       `      <pubDate>${new Date(`${entry.date}T09:00:00Z`).toUTCString()}</pubDate>`,
-      `      <category>${escapeXml(entry.area)}</category>`,
       `      <description>${escapeXml(description)}</description>`,
       '    </item>',
     ].join('\n');
@@ -41,7 +44,7 @@ export async function GET() {
     '    <title>Spectrum UI Changelog</title>',
     `    <link>${url}</link>`,
     `    <atom:link href="${url}/feed.xml" rel="self" type="application/rss+xml"/>`,
-    '    <description>New AI blocks, component updates, and MCP server improvements from Spectrum UI.</description>',
+    '    <description>Short, dated notes on every Spectrum UI release.</description>',
     '    <language>en</language>',
     `    <lastBuildDate>${new Date(`${CHANGELOG[0].date}T09:00:00Z`).toUTCString()}</lastBuildDate>`,
     items,

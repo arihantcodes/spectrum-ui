@@ -1,144 +1,108 @@
 /**
- * The changelog's single source of truth. Newest entry first.
+ * The changelog's single source of truth. Newest first.
  *
- * Every entry maps to real shipped work — dates come from git history, not
- * marketing. `demo` names a block slug the page renders LIVE inside the entry,
- * which is the one thing a static changelog screenshot can never do.
+ * Deliberately terse: a date, a few labelled groups, one or two short bullets
+ * each. Dates come from git history. Items support one inline markup form —
+ * [text](/href) — rendered as an underlined link.
  */
 
-export type ChangelogArea = 'blocks' | 'mcp' | 'docs' | 'site';
-
-export interface ChangelogSection {
+export interface ChangelogGroup {
   label: string;
   items: string[];
-}
-
-export interface ChangelogLink {
-  label: string;
-  href: string;
 }
 
 export interface ChangelogEntry {
   slug: string;
   /** ISO date, e.g. "2026-07-31". */
   date: string;
-  area: ChangelogArea;
-  title: string;
-  /** Prose paragraphs. */
-  body: string[];
-  sections?: ChangelogSection[];
-  /** Large media panel rendered between body and sections. */
-  media?:
-    | { kind: 'blocks' }
-    | { kind: 'codeblock' }
-    | { kind: 'terminal'; command: string };
-  links?: ChangelogLink[];
+  groups: ChangelogGroup[];
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
-    slug: 'ai-assistant-blocks',
+    slug: 'jul-31-2026',
     date: '2026-07-31',
-    area: 'blocks',
-    title: '27 AI Assistant blocks',
-    body: [
-      'Blocks are a new tier above components: composed interface sections for products built on LLMs, presented on a single specimen page where every block runs live at actual size. Variant pills switch each block’s state in place, and the demo below is not a screenshot — it is the real component, running here the same way it runs on the blocks page.',
-      'The set covers the surfaces AI products keep rebuilding: streaming answers with citations, reasoning traces with live timers, agent tool timelines, prompt composers with IME-safe submit, approval cards, usage meters, voice input, and inline AI editing. Every block is presentational — data in, callbacks out — and shares one message contract, so they compose into a working chat surface.',
-      'Each block installs three ways from its code drawer: the shadcn CLI with package-manager tabs, an agent prompt for editors connected to the Spectrum UI MCP server, or the raw source — all Shiki-highlighted in vesper and github-light.',
-    ],
-    sections: [
+    groups: [
       {
-        label: 'Details',
+        label: 'New',
         items: [
-          'Every success moment — a task completing, a diff being accepted, an approval landing — uses the same 200ms confirm pop, and settles instantly under reduced motion.',
-          'Demos loop their real behavior and yield permanently the moment you interact with them.',
-          'Blocks are self-contained: keyframes ship inside each component, so installs never touch globals.css.',
-          'Streaming text is hidden from screen readers while it arrives and announced once when complete.',
+          '27 AI Assistant blocks — streaming text, reasoning traces, agent steps, voice input and more, each [running live on one page](/blocks/ai-assistants).',
+          'Every block installs three ways from its code drawer: the shadcn CLI, an [MCP prompt](/docs/mcp), or the raw source.',
         ],
       },
     ],
-    media: { kind: 'blocks' },
-    links: [{ label: 'Browse the blocks', href: '/blocks/ai-assistants' }],
   },
   {
-    slug: 'mcp-0-2-0',
+    slug: 'jul-29-2026',
     date: '2026-07-29',
-    area: 'mcp',
-    title: 'MCP server 0.2.0 and registry repairs',
-    body: [
-      'The registry index the MCP server reads had drifted 38 items behind the registry the CLI installs from — they fail independently, which is how asking an editor for an avatar stack could recommend a footer while the install command worked fine. Both are now generated from one source and a parity test fails the build if they ever diverge.',
-      'Five installs that were broken in production — a duplicated registry name, two dependencies that never existed, and two components with no payload at all — were found by sweeping the registry and verified fixed by installing each one end to end.',
-    ],
-    sections: [
+    groups: [
       {
-        label: 'Improved',
+        label: 'Improvements',
         items: [
-          'Exact-name matches now rank first in search, so agents install the component instead of its demo.',
-          'Docs links returned by the server resolve to real pages instead of guessed slugs.',
-          'The registry cache expires after five minutes, so long editor sessions see new components.',
-          'Telemetry now records installs and detects which editor is driving the server.',
+          'The MCP server can see every component again — its index had drifted 38 items behind the CLI. A parity test now fails the build if they ever diverge.',
+          'Fixed five installs that were broken in production, each verified end to end.',
         ],
       },
     ],
-    media: { kind: 'terminal', command: 'npx shadcn@latest add @spectrumui/agent-steps' },
-    links: [{ label: 'Set up the MCP server', href: '/docs/mcp' }],
   },
   {
-    slug: 'docs-card-redesign',
+    slug: 'jul-28-2026',
     date: '2026-07-28',
-    area: 'docs',
-    title: '50 production-ready cards',
-    body: [
-      'The card page was rebuilt as fifty curated, production-ready cards — login, pricing, dashboards, AI chat — each with a live preview and copyable source generated straight from the component files, so the code you copy is always the code that renders.',
-      'A day later the site gained /llm-info: a plain monospace document written for AI assistants, so tools that read pages instead of browsing them get the library’s facts without the chrome.',
+    groups: [
+      {
+        label: 'New',
+        items: [
+          'The card page was rebuilt as [50 production-ready cards](/docs/card) — the code you copy is always the code that renders.',
+          '[/llm-info](/llm-info): the library’s facts in plain text, for AI assistants that read pages instead of browsing them.',
+        ],
+      },
     ],
-    media: { kind: 'codeblock' },
-    links: [{ label: 'See the cards', href: '/docs/card' }],
   },
   {
-    slug: 'blog-and-auth-redesign',
+    slug: 'jul-24-2026',
     date: '2026-07-24',
-    area: 'site',
-    title: 'A calmer blog and a matching auth gate',
-    body: [
-      'The blog moved to a centered reading view with three-minute posts, richer covers, and reader highlights. The auth gate that protects component source was redesigned to match the sign-in experience, so hitting it mid-flow no longer feels like leaving the site.',
+    groups: [
+      {
+        label: 'Improvements',
+        items: [
+          'The [blog](/blog) moved to a centered reading view with richer covers and reader highlights.',
+          'The auth gate now matches the sign-in design, so hitting it mid-flow no longer feels like leaving the site.',
+        ],
+      },
     ],
   },
   {
-    slug: 'honest-catalog',
+    slug: 'jul-23-2026',
     date: '2026-07-23',
-    area: 'docs',
-    title: 'An honest catalog: 44 components',
-    body: [
-      'The docs catalog was corrected to the 44 components the library actually ships, with New badges restored in the sidebar. Around it landed the AI-search groundwork: twelve topic hubs connecting related components, comparison pages against other libraries, and structured data on every component page.',
+    groups: [
+      {
+        label: 'Improvements',
+        items: [
+          'The catalog was corrected to the [44 components](/docs) the library actually ships, with New badges restored.',
+          'Twelve topic hubs now connect related components, with comparison pages against other libraries.',
+        ],
+      },
     ],
-    links: [{ label: 'Browse components', href: '/docs' }],
   },
   {
-    slug: 'mcp-server-launch',
+    slug: 'jun-10-2026',
     date: '2026-06-10',
-    area: 'mcp',
-    title: 'The Spectrum UI MCP server',
-    body: [
-      'One config line — npx -y @spectrumui/mcp — and Cursor, Claude Code, Windsurf, or VS Code can browse, search, and install any Spectrum UI component by name. Five tools over stdio: list, search, get, categories, and install.',
+    groups: [
+      {
+        label: 'New',
+        items: [
+          'The [Spectrum UI MCP server](/docs/mcp): one config line, and Cursor, Claude Code, or Windsurf can install any component by name.',
+        ],
+      },
     ],
-    media: { kind: 'terminal', command: 'claude mcp add spectrum-ui -- npx -y @spectrumui/mcp' },
-    links: [{ label: 'Install the MCP server', href: '/docs/mcp' }],
   },
 ];
 
-export const AREA_LABELS: Record<ChangelogArea, string> = {
-  blocks: 'blocks',
-  mcp: 'mcp',
-  docs: 'docs',
-  site: 'site',
-};
-
 export function changelogDate(iso: string) {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
+    year: 'numeric',
     timeZone: 'UTC',
   });
 }
