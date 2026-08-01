@@ -125,13 +125,13 @@ export default function GuidesPage() {
               <Link
                 key={guide.href}
                 href={guide.href}
-                className="group flex flex-col rounded-[14px] border border-black/[0.08] bg-white p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-black/[0.16] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 active:translate-y-0 active:shadow-none dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+                className="group flex flex-col rounded-[14px] border border-black/8 bg-white p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-black/16 hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.1)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black/20 active:translate-y-0 active:shadow-none dark:border-white/10 dark:bg-white/2 dark:hover:border-white/20 dark:hover:bg-white/5 dark:focus-visible:ring-white/30"
               >
                 <span className="flex items-start justify-between">
-                  <span className="flex size-9 items-center justify-center rounded-[10px] bg-black/[0.04] transition-colors duration-200 group-hover:bg-black/[0.06] dark:bg-white/[0.06] dark:group-hover:bg-white/[0.09]">
+                  <span className="flex size-9 items-center justify-center rounded-[10px] bg-black/4 transition-colors duration-200 group-hover:bg-black/6 dark:bg-white/6 dark:group-hover:bg-white/9">
                     <Icon className="size-4 text-neutral-600 dark:text-neutral-300" />
                   </span>
-                  <span className="rounded-[6px] bg-black/[0.04] px-1.5 py-0.5 font-mono text-[11px] leading-4 text-neutral-500 dark:bg-white/[0.06] dark:text-neutral-400">
+                  <span className="rounded-[6px] bg-black/4 px-1.5 py-0.5 font-mono text-[11px] leading-4 text-neutral-500 dark:bg-white/6 dark:text-neutral-400">
                     {guide.tag}
                   </span>
                 </span>
@@ -160,7 +160,7 @@ export default function GuidesPage() {
               <Link
                 key={hub.slug}
                 href={topicHubPath(hub.slug)}
-                className="group flex items-center justify-between gap-4 rounded-[12px] border border-black/[0.08] bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-200 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+                className="group flex items-center justify-between gap-4 rounded-[12px] border border-black/8 bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/2 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/2 dark:text-neutral-200 dark:hover:bg-white/5 dark:focus-visible:ring-white/30"
               >
                 {hub.label}
                 <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -177,7 +177,7 @@ export default function GuidesPage() {
           <ul className="mt-5 flex flex-col gap-3">
             {LEARNING_POINTS.map((point) => (
               <li key={point} className="flex items-start gap-2.5">
-                <span className="mt-1 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.06]">
+                <span className="mt-1 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-black/4 dark:bg-white/6">
                   <Check className="size-3 text-neutral-600 dark:text-neutral-300" />
                 </span>
                 <span className="text-sm leading-6 tracking-wide text-neutral-500 dark:text-neutral-400">
@@ -206,13 +206,13 @@ export default function GuidesPage() {
           <h2 id="popular-pages" className={`mt-14 ${sectionTitle}`}>
             Popular pages
           </h2>
-          <div className="mt-5 overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-white/[0.02]">
-            <div className="flex flex-col divide-y divide-black/[0.06] dark:divide-white/[0.08]">
+          <div className="mt-5 overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-white/2">
+            <div className="flex flex-col divide-y divide-black/6 dark:divide-white/8">
               {POPULAR_PAGES.map((page) => (
                 <Link
                   key={page.href}
                   href={page.href}
-                  className="group flex h-12 items-center gap-3 px-4 transition-colors duration-150 hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/20 dark:hover:bg-white/[0.04] dark:focus-visible:ring-white/30"
+                  className="group flex h-12 items-center gap-3 px-4 transition-colors duration-150 hover:bg-black/2 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/20 dark:hover:bg-white/4 dark:focus-visible:ring-white/30"
                 >
                   <span className="shrink-0 text-sm font-medium leading-5 text-neutral-800 dark:text-neutral-200">
                     {page.title}

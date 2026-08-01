@@ -54,7 +54,7 @@ function ClarityWindow() {
   return (
     <div className="relative w-full max-w-[420px] mx-auto rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0A0A0A] p-6 shadow-2xl flex flex-col space-y-6 overflow-hidden group/clarity">
       {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-neutral-100/50 to-transparent dark:from-neutral-850/20 dark:to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-tr from-neutral-100/50 to-transparent dark:from-neutral-850/20 dark:to-transparent pointer-events-none" />
       
       {/* Title bar */}
       <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-4 relative z-10">

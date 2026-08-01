@@ -171,7 +171,7 @@ export function CardsChat() {
         </CardFooter>
       </Card>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="gap-0 p-0 outline-none">
+        <DialogContent className="gap-0 p-0 outline-hidden">
           <DialogHeader className="px-4 pb-4 pt-5">
             <DialogTitle>New message</DialogTitle>
             <DialogDescription>

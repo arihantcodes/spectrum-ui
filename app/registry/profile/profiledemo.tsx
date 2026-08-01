@@ -189,7 +189,7 @@ export default function WalletProfile() {
                   <motion.button
                     className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md ${
                       theme === "light"
-                        ? "bg-white dark:bg-neutral-600 shadow-sm"
+                        ? "bg-white dark:bg-neutral-600 shadow-xs"
                         : ""
                     }`}
                     onClick={() => setTheme("light")}
@@ -216,7 +216,7 @@ export default function WalletProfile() {
                   </motion.button>
                   <motion.button
                     className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md ${
-                      theme === "dark" ? "bg-neutral-600 shadow-sm" : ""
+                      theme === "dark" ? "bg-neutral-600 shadow-xs" : ""
                     }`}
                     onClick={() => setTheme("dark")}
                     whileHover={{ scale: theme !== "dark" ? 1.03 : 1 }}
@@ -262,7 +262,7 @@ export default function WalletProfile() {
                     </div>
                     {item.action && (
                       <motion.button
-                        className="px-4 py-1 rounded-md bg-gradient-to-r from-blue-200 via-pink-200 to-yellow-200 dark:bg-[linear-gradient(to_right,_#B2D0F9,_#F08878,_#FDC3B6,_#FFDB9A)] text-black  font-medium text-sm"
+                        className="px-4 py-1 rounded-md bg-linear-to-r from-blue-200 via-pink-200 to-yellow-200 dark:bg-[linear-gradient(to_right,#B2D0F9,#F08878,#FDC3B6,#FFDB9A)] text-black  font-medium text-sm"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -277,7 +277,7 @@ export default function WalletProfile() {
               <div className="p-4 flex items-center justify-between hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors duration-200">
                 <div className="flex items-center">
                   <motion.div
-                    className="w-6 h-6 mr-2 bg-white dark:bg-neutral-700 rounded-full flex items-center justify-center shadow-sm"
+                    className="w-6 h-6 mr-2 bg-white dark:bg-neutral-700 rounded-full flex items-center justify-center shadow-xs"
                     whileHover={{ scale: 1.1, rotate: 10 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >

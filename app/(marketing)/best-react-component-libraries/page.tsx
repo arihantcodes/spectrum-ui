@@ -267,7 +267,7 @@ export default function BestReactLibrariesPage() {
                         {e.name}
                       </h2>
                       {ours && (
-                        <span className="rounded-full bg-[#f9452d]/12 px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.1em] text-[#f9452d] dark:bg-[#E1F435]/12 dark:text-[#E1F435]">
+                        <span className="rounded-full bg-[#f9452d]/12 px-2.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-widest text-[#f9452d] dark:bg-[#E1F435]/12 dark:text-[#E1F435]">
                           Our pick
                         </span>
                       )}

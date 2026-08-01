@@ -19,7 +19,7 @@ export function HeroContent() {
   const press = reduceMotion ? undefined : { scale: 0.96 };
 
   return (
-    <div className="z-[3] flex w-full flex-col ">
+    <div className="z-3 flex w-full flex-col ">
       {/* Hero */}
       <div className="flex min-h-[68vh] flex-col items-center justify-center gap-3 px-4 py-16 text-center sm:py-24">
         <AnimateEnter delay={0.1} isWhileInView={false}>

@@ -31,8 +31,8 @@ function MiniCard({
       className={cn(
         'rounded-xl',
         ink
-          ? 'bg-gradient-to-b from-white/[0.1] to-white/[0.04] shadow-[0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.09),0_10px_24px_-14px_rgba(0,0,0,0.8)]'
-          : 'bg-gradient-to-b from-white to-[#fbfaf8] shadow-[0_0_0_1px_rgba(0,0,0,0.07),0_1px_1px_rgba(0,0,0,0.04),0_10px_24px_-14px_rgba(0,0,0,0.22)]',
+          ? 'bg-linear-to-b from-white/10 to-white/4 shadow-[0_0_0_1px_rgba(255,255,255,0.1),inset_0_1px_0_rgba(255,255,255,0.09),0_10px_24px_-14px_rgba(0,0,0,0.8)]'
+          : 'bg-linear-to-b from-white to-[#fbfaf8] shadow-[0_0_0_1px_rgba(0,0,0,0.07),0_1px_1px_rgba(0,0,0,0.04),0_10px_24px_-14px_rgba(0,0,0,0.22)]',
         className,
       )}
     >
@@ -75,7 +75,7 @@ function Row({ children, className }: { children: React.ReactNode; className?: s
   return <div className={cn('flex items-center', className)}>{children}</div>;
 }
 
-const hair = (ink: boolean) => (ink ? 'bg-white/[0.14]' : 'bg-black/[0.12]');
+const hair = (ink: boolean) => (ink ? 'bg-white/[0.14]' : 'bg-black/12');
 const soft = (ink: boolean) => (ink ? 'text-neutral-400' : 'text-neutral-500');
 const strong = (ink: boolean) => (ink ? 'text-neutral-100' : 'text-neutral-900');
 const accent = (ink: boolean) => (ink ? '#E1F435' : '#f9452d');
@@ -111,7 +111,7 @@ function ArtToggle() {
         <span className="size-9 rounded-full bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.12)]" />
       </div>
       <div className="flex flex-1 items-center justify-start bg-[#0c0c0c] pl-[9%]">
-        <span className="flex h-9 w-16 items-center rounded-full bg-white/[0.12] p-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)]">
+        <span className="flex h-9 w-16 items-center rounded-full bg-white/12 p-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.14)]">
           <span className="ml-auto size-7 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.35)]" />
         </span>
       </div>
@@ -141,7 +141,7 @@ function ArtRuler({ ink }: { ink: boolean }) {
       {steps.map((h, i) => (
         <div key={h} className="flex flex-col items-center gap-2">
           <span
-            className={cn('w-7 rounded-md', ink ? 'bg-white/[0.16]' : 'bg-neutral-900/[0.82]')}
+            className={cn('w-7 rounded-md', ink ? 'bg-white/16' : 'bg-neutral-900/82')}
             style={{ height: h, backgroundColor: i === 3 ? accent(ink) : undefined }}
           />
           <span className={cn('font-mono text-[9px]', soft(ink))}>{h - 4}</span>
@@ -234,7 +234,7 @@ function ArtField({ ink }: { ink: boolean }) {
         className={cn(
           'flex h-10 items-center rounded-lg px-3',
           ink
-            ? 'bg-white/[0.06] shadow-[0_0_0_1.5px_rgba(255,255,255,0.35)]'
+            ? 'bg-white/6 shadow-[0_0_0_1.5px_rgba(255,255,255,0.35)]'
             : 'bg-white shadow-[0_0_0_1.5px_rgba(0,0,0,0.55)]',
         )}
       >
@@ -306,7 +306,7 @@ function ArtLayers({ ink }: { ink: boolean }) {
 function ArtTerminal({ ink, line }: { ink: boolean; line: string }) {
   return (
     <MiniCard ink={ink} className="w-[70%] rounded-xl">
-      <div className={cn('flex h-7 items-center gap-1.5 border-b px-3', ink ? 'border-white/[0.08]' : 'border-black/[0.06]')}>
+      <div className={cn('flex h-7 items-center gap-1.5 border-b px-3', ink ? 'border-white/8' : 'border-black/6')}>
         <span className={cn('size-2 rounded-full', hair(ink))} />
         <span className={cn('size-2 rounded-full', hair(ink))} />
         <span className={cn('size-2 rounded-full', hair(ink))} />
@@ -325,12 +325,12 @@ function ArtTerminal({ ink, line }: { ink: boolean; line: string }) {
 function ArtCommand({ ink }: { ink: boolean }) {
   return (
     <MiniCard ink={ink} className="w-[64%] rounded-xl p-2">
-      <div className={cn('mb-2 flex h-8 items-center justify-between rounded-lg px-3', ink ? 'bg-white/[0.06]' : 'bg-black/[0.04]')}>
+      <div className={cn('mb-2 flex h-8 items-center justify-between rounded-lg px-3', ink ? 'bg-white/6' : 'bg-black/4')}>
         <span className={cn('font-mono text-[10px]', soft(ink))}>search tools…</span>
         <span className={cn('font-mono text-[9px]', soft(ink))}>⌘K</span>
       </div>
       {['Figma', 'Cursor', 'Linear'].map((t, i) => (
-        <div key={t} className={cn('flex h-7 items-center gap-2 rounded-md px-3', i === 0 && (ink ? 'bg-white/[0.08]' : 'bg-black/[0.05]'))}>
+        <div key={t} className={cn('flex h-7 items-center gap-2 rounded-md px-3', i === 0 && (ink ? 'bg-white/8' : 'bg-black/5'))}>
           <span className={cn('size-2.5 rounded-[4px]', i === 0 ? '' : hair(ink))} style={i === 0 ? { backgroundColor: accent(ink) } : undefined} />
           <span className={cn('font-mono text-[10px]', i === 0 ? strong(ink) : soft(ink))}>{t}</span>
         </div>
@@ -388,7 +388,7 @@ function ArtGauge({ ink }: { ink: boolean }) {
         {rows.map((m) => (
           <div key={m.label} className="flex items-center gap-2.5">
             <span className={cn('w-7 font-mono text-[10px]', soft(ink))}>{m.label}</span>
-            <div className={cn('h-1.5 flex-1 overflow-hidden rounded-full', ink ? 'bg-white/[0.08]' : 'bg-black/[0.06]')}>
+            <div className={cn('h-1.5 flex-1 overflow-hidden rounded-full', ink ? 'bg-white/8' : 'bg-black/6')}>
               <span
                 className="block h-full rounded-full"
                 style={{
@@ -424,12 +424,12 @@ function ArtFocus({ ink }: { ink: boolean }) {
         </span>
         <span
           aria-hidden="true"
-          className="absolute -inset-[5px] rounded-[18px]"
+          className="absolute inset-[-5px] rounded-[18px]"
           style={{ boxShadow: `0 0 0 2px ${accent(ink)}` }}
         />
         <span
           aria-hidden="true"
-          className="absolute -inset-[9px] rounded-[22px]"
+          className="absolute inset-[-9px] rounded-[22px]"
           style={{ boxShadow: `0 0 0 4px ${accent(ink)}1f` }}
         />
       </span>
@@ -478,7 +478,7 @@ function ArtFrameToCode({ ink, dashed }: { ink: boolean; dashed?: boolean }) {
         className={cn(
           'relative flex h-20 w-24 items-center justify-center rounded-lg',
           dashed
-            ? cn('border-[1.5px] border-dashed', ink ? 'border-white/[0.35]' : 'border-black/[0.3]')
+            ? cn('border-[1.5px] border-dashed', ink ? 'border-white/35' : 'border-black/30')
             : ink
               ? 'bg-white/[0.07] shadow-[0_0_0_1px_rgba(255,255,255,0.1)]'
               : 'bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.06)]',
@@ -531,7 +531,7 @@ function ArtSizes({ ink }: { ink: boolean }) {
 function ArtSidebarCanvas({ ink }: { ink: boolean }) {
   return (
     <MiniCard ink={ink} className="flex h-[104px] w-[64%] overflow-hidden rounded-xl">
-      <div className={cn('flex w-1/3 flex-col gap-2 border-r p-3', ink ? 'border-white/[0.08]' : 'border-black/[0.06]')}>
+      <div className={cn('flex w-1/3 flex-col gap-2 border-r p-3', ink ? 'border-white/8' : 'border-black/6')}>
         <span className={cn('h-1.5 w-10 rounded-full', hair(ink))} />
         <span className="h-1.5 w-12 rounded-full" style={{ backgroundColor: accent(ink) }} />
         <span className={cn('h-1.5 w-8 rounded-full', hair(ink))} />
@@ -582,7 +582,7 @@ function ArtChips({ ink }: { ink: boolean }) {
             i === 4
               ? ''
               : ink
-                ? 'bg-white/[0.08] text-neutral-300 shadow-[0_0_0_1px_rgba(255,255,255,0.1)]'
+                ? 'bg-white/8 text-neutral-300 shadow-[0_0_0_1px_rgba(255,255,255,0.1)]'
                 : 'bg-white text-neutral-600 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
           )}
           style={i === 4 ? { backgroundColor: accent(ink), color: ink ? '#000' : '#fff' } : undefined}
@@ -619,7 +619,7 @@ function ArtSteps({ ink }: { ink: boolean }) {
               i === 0
                 ? ''
                 : ink
-                  ? 'bg-white/[0.08] text-neutral-300'
+                  ? 'bg-white/8 text-neutral-300'
                   : 'bg-white text-neutral-600 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]',
             )}
             style={i === 0 ? { backgroundColor: accent(ink), color: ink ? '#000' : '#fff' } : undefined}
@@ -637,7 +637,7 @@ function ArtAvatars({ ink }: { ink: boolean }) {
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="flex -space-x-2.5">
-        <span className={cn('size-10 rounded-full', ink ? 'bg-white/[0.25] ring-2 ring-[#0e0e0e]' : 'bg-neutral-300 ring-2 ring-[#fafaf9]')} />
+        <span className={cn('size-10 rounded-full', ink ? 'bg-white/25 ring-2 ring-[#0e0e0e]' : 'bg-neutral-300 ring-2 ring-[#fafaf9]')} />
         <span className="size-10 rounded-full ring-2" style={{ backgroundColor: accent(ink), ['--tw-ring-color' as never]: ink ? '#0e0e0e' : '#fafaf9' }} />
       </div>
       <MiniCard ink={ink} className="flex items-center gap-2 rounded-full px-3.5 py-2">

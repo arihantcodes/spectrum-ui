@@ -18,13 +18,13 @@ import HoldToConfirmSizesDemo from "./hold-to-confirm-sizes-demo"
 export const metadata: Metadata = baseMetadata({
   title: "Hold to Confirm",
   description:
-    "A press-and-hold button that fills a progress ring before confirming destructive actions. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
+    "A press-and-hold button that fills a progress ring-3 before confirming destructive actions. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "hold to confirm button",
     "press and hold button",
     "destructive action confirmation",
     "hold to delete component",
-    "progress ring button",
+    "progress ring-3 button",
     "confirmation micro interaction",
     "framer motion button",
     "Next.js confirm button",
@@ -34,7 +34,7 @@ export const metadata: Metadata = baseMetadata({
 
 const page = () => {
   const description =
-    "A press-and-hold button that fills a progress ring before confirming destructive actions."
+    "A press-and-hold button that fills a progress ring-3 before confirming destructive actions."
 
   return (
     <SEOWrapper
@@ -45,7 +45,7 @@ const page = () => {
         "hold to confirm button",
         "press and hold button",
         "destructive action confirmation",
-        "progress ring button",
+        "progress ring-3 button",
       ]}
     >
       <PageTemplate title="Hold to Confirm" description={description}>

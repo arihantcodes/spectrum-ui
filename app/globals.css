@@ -1,116 +1,458 @@
-@import "./typeset.css";
+@import './typeset.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* shadcn/typeset docs preset. Reuses the project's already-loaded Geist fonts
+/* Tailwind v4 replacement for the v3 `tailwindcss-animate` plugin. Supplies the
+   animate-in / animate-out / fade-* / zoom-* / slide-in-from-* utilities that
+   every Radix overlay (dialog, dropdown, tooltip, accordion) depends on. */
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Replaces the v3 `bg-grid` matchUtilities plugin, which was built on the
+   internal `tailwindcss/lib/util/flattenColorPalette` API that v4 removed.
+   Gradients instead of an SVG data URI, so the colour no longer has to be
+   URL-encoded into the image. */
+@utility bg-grid-* {
+  --bg-grid-color: --value(--color- *);
+  background-image:
+    linear-gradient(to right, var(--bg-grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bg-grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-mid-lg)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-color-1: hsl(var(--color-1));
+  --color-color-2: hsl(var(--color-2));
+  --color-color-3: hsl(var(--color-3));
+  --color-color-4: hsl(var(--color-4));
+  --color-color-5: hsl(var(--color-5));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --radius-xl: var(--radius-xl, 0.75rem);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-code: var(--font-geist-mono);
+  --font-regular: var(--font-geist-sans);
+  --font-inter: var(--font-inter), Inter, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-spectral: var(--font-spectral), Georgia, serif;
+  --font-calsans: var(--font-calsans), var(--font-geist-sans), sans-serif;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-faq-open: accordion-down 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-faq-close: accordion-up 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-fade-up: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-slide-out-to-top-full: slideOutToTopFull 3s
+    cubic-bezier(0.405, 0, 0.025, 1) forwards;
+  --animate-slide-out-to-left-full: slideOutToLeftFull 3s
+    cubic-bezier(0.405, 0, 0.025, 1) forwards;
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --animate-border-beam: border-beam calc(var(--duration) * 1s) infinite linear;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee2: marquee2 30s linear infinite;
+
+  --ease-slow: cubic-bezier(0.405, 0, 0.025, 1);
+
+  --transition-duration-mid: 4s;
+
+  --breakpoint-mid-lg: 1200px;
+
+  @keyframes slideOutToTopFull {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  @keyframes slideOutToLeftFull {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes spotlight {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  @keyframes border-beam {
+    100% {
+      offset-distance: 100%;
+    }
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@theme inline {
+  @keyframes gradient-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rainbow {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  @keyframes shiny-text {
+    0%,
+    90%,
+    100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
+    }
+    30%,
+    60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility step {
+  counter-increment: step;
+
+  &:before {
+    @apply md:absolute w-8 h-8 md:w-9 md:h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 mr-2 border-background;
+    @apply md:ml-[-50px] md:mt-[-4px];
+    content: counter(step);
+  }
+}
+
+@utility chunk-container {
+  @apply shadow-none;
+
+  &::after {
+    content: '';
+    @apply absolute -inset-4 shadow-xl rounded-xl border;
+  }
+}
+
+@utility no-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@utility border-grid {
+  @apply border-border/50 dark:border-border border-dashed;
+}
+
+@utility container-wrapper {
+  @apply max-w-[1400px] min-[1800px]:max-w-(--breakpoint-2xl) min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
+}
+
+@utility container-frame {
+  @apply max-w-[1400px] min-[1800px]:max-w-(--breakpoint-2xl) min-[1400px]:border-x border-border mx-auto w-full;
+}
+
+@utility container {
+  @apply px-4 xl:px-6 mx-auto max-w-(--breakpoint-2xl);
+}
+
+@utility bg-noise {
+  /* Grain / noise texture overlay (used on the blog page + card covers) */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+@utility auth-enter {
+  /* Staggered entrance for the auth flow. Runs on the compositor (unlike a
+     JS/rAF animation it can't stall and leave content invisible), and the
+     resting state is fully visible — the keyframe only hides during its own
+     run, so if animations never fire the content still shows. */
+  animation: auth-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: auth-fade;
+    animation-duration: 0.2s;
+  }
+}
+
+@utility auth-pill {
+  /* Sliding pill of the auth segmented control. Strong ease-out so it lands
+     fast; transform-only keeps it on the compositor. */
+  transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0ms;
+  }
+}
+
+@utility enter-fx {
+  /* Load-time entrance (AnimateEnter): rise + de-blur that settles hard at
+     the tail. CSS so a busy main thread can't strand content invisible. */
+  animation: enter-fx 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation-name: auth-fade;
+    animation-duration: 0.2s;
+  }
+}
+
+@utility reveal-fx {
+  /* Scroll reveal (AnimateEnter isWhileInView): resting state is visible;
+     JS may add data-reveal="pending" pre-paint for below-fold elements, then
+     flips to "shown" on intersection. */
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  &[data-reveal='pending'] {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+    transition: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    &[data-reveal='pending'] {
+      transform: none;
+      filter: none;
+    }
+  }
+}
+
+@layer utilities {
+  /* shadcn/typeset docs preset. Reuses the project's already-loaded Geist fonts
    (--font-geist-sans / --font-geist-mono) rather than loading Geist a second
    time, so var(--font-geist) in the shadcn snippet maps to what we already have. */
-.typeset-docs {
-  --typeset-font-body: var(--font-geist-sans);
-  --typeset-font-heading: var(--font-geist-sans);
-  --typeset-font-mono: var(--font-geist-mono);
-  --typeset-size: 15px;
-  --typeset-leading: 1.75;
-  --typeset-flow: 1.25em;
-}
+  .typeset-docs {
+    --typeset-font-body: var(--font-geist-sans);
+    --typeset-font-heading: var(--font-geist-sans);
+    --typeset-font-mono: var(--font-geist-mono);
+    --typeset-size: 15px;
+    --typeset-leading: 1.75;
+    --typeset-flow: 1.25em;
+  }
 
-/* shadcn/typeset article preset — the blog reading surface. Same Geist
+  /* shadcn/typeset article preset — the blog reading surface. Same Geist
    mapping as .typeset-docs, one step larger for long-form reading. */
-.typeset-article {
-  --typeset-font-body: var(--font-geist-sans);
-  --typeset-font-heading: var(--font-geist-sans);
-  --typeset-font-mono: var(--font-geist-mono);
-  --typeset-size: 16px;
-  --typeset-leading: 1.75;
-  --typeset-flow: 1.25em;
-}
+  .typeset-article {
+    --typeset-font-body: var(--font-geist-sans);
+    --typeset-font-heading: var(--font-geist-sans);
+    --typeset-font-mono: var(--font-geist-mono);
+    --typeset-size: 16px;
+    --typeset-leading: 1.75;
+    --typeset-flow: 1.25em;
+  }
 
-/* Anchored blog headings need clearance under the sticky navbar. */
-.typeset-article :is(h2, h3)[id] {
-  scroll-margin-top: 6rem;
-}
+  /* Anchored blog headings need clearance under the sticky navbar. */
+  .typeset-article :is(h2, h3)[id] {
+    scroll-margin-top: 6rem;
+  }
 
-/* ─────────────────────────────────────────────────────────────────────────
+  /* ─────────────────────────────────────────────────────────────────────────
    BLOG BODY TEXT COLOUR — single source of truth. Change these two values to
    recolour every paragraph/list across all blog posts (light + dark).
    Defaults: neutral-800 (#262626) light · neutral-200 (#e5e5e5) dark.
    ───────────────────────────────────────────────────────────────────────── */
-.typeset-article {
-  --blog-body-text: #404040; /* light mode body */
-}
-.dark .typeset-article {
-  --blog-body-text: #d6d3d1; /* dark mode body */
-}
+  .typeset-article {
+    --blog-body-text: #404040; /* light mode body */
+  }
+  .dark .typeset-article {
+    --blog-body-text: #d6d3d1; /* dark mode body */
+  }
 
-/* Reading voice: section headings sit at medium weight (calmer than the
+  /* Reading voice: section headings sit at medium weight (calmer than the
    typeset default 600); body copy uses the single-source colour above. */
-.typeset-article :is(h2, h3, h4) {
-  font-weight: 500;
-  letter-spacing: -0.011em;
-}
-.typeset-article :is(h2) {
-  font-size: 1.3em;
-}
-.typeset-article {
-  color: var(--blog-body-text);
-}
-.typeset-article :is(p, li) {
-  color: var(--blog-body-text);
-}
-.typeset-article strong {
-  font-weight: 600;
-  color: hsl(var(--foreground));
-}
+  .typeset-article :is(h2, h3, h4) {
+    font-weight: 500;
+    letter-spacing: -0.011em;
+  }
+  .typeset-article :is(h2) {
+    font-size: 1.3em;
+  }
+  .typeset-article {
+    color: var(--blog-body-text);
+  }
+  .typeset-article :is(p, li) {
+    color: var(--blog-body-text);
+  }
+  .typeset-article strong {
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
 
-/* Persistent reader highlights (Medium-style). Classic highlighter yellow —
+  /* Persistent reader highlights (Medium-style). Classic highlighter yellow —
    most recognizable and stays legible in both themes. Change the two --hl
    values (and their alphas) to retint every highlight. Click one to remove. */
-.blog-highlight {
-  --hl: 250 204 21; /* light: warm amber (yellow-400) */
-  --hl-alpha: 0.4;
-  background-color: rgb(var(--hl) / var(--hl-alpha));
-  border-radius: 2px;
-  padding: 0.06em 0.12em;
-  margin: 0 -0.02em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone; /* even fill across line wraps */
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-.blog-highlight:hover {
-  --hl-alpha: 0.58;
-}
-.dark .blog-highlight {
-  --hl: 253 224 71; /* dark: brighter yellow, low alpha so text stays crisp */
-  --hl-alpha: 0.24;
-}
-.dark .blog-highlight:hover {
-  --hl-alpha: 0.36;
-}
+  .blog-highlight {
+    --hl: 250 204 21; /* light: warm amber (yellow-400) */
+    --hl-alpha: 0.4;
+    background-color: rgb(var(--hl) / var(--hl-alpha));
+    border-radius: 2px;
+    padding: 0.06em 0.12em;
+    margin: 0 -0.02em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone; /* even fill across line wraps */
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .blog-highlight:hover {
+    --hl-alpha: 0.58;
+  }
+  .dark .blog-highlight {
+    --hl: 253 224 71; /* dark: brighter yellow, low alpha so text stays crisp */
+    --hl-alpha: 0.24;
+  }
+  .dark .blog-highlight:hover {
+    --hl-alpha: 0.36;
+  }
 
-/* Shiki dual-theme code blocks (components/blog/code.tsx). Both palettes are
+  /* Shiki dual-theme code blocks (components/blog/code.tsx). Both palettes are
    baked into CSS variables at build time; dark mode just swaps which var is
    read — no client re-highlight, no flash. Backgrounds come from the card. */
-.blog-code .shiki,
-.blog-code .shiki span {
-  color: var(--shiki-light);
-  background-color: transparent !important;
-}
-.dark .blog-code .shiki,
-.dark .blog-code .shiki span {
-  color: var(--shiki-dark);
-}
-/* Undo the docs-wide pre/code sizing inside blog code cards. */
-.blog-code pre {
-  padding: 14px 16px !important;
-}
-.blog-code pre > code {
-  display: block;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
+  .blog-code .shiki,
+  .blog-code .shiki span {
+    color: var(--shiki-light);
+    background-color: transparent !important;
+  }
+  .dark .blog-code .shiki,
+  .dark .blog-code .shiki span {
+    color: var(--shiki-dark);
+  }
+  /* Undo the docs-wide pre/code sizing inside blog code cards. */
+  .blog-code pre {
+    padding: 14px 16px !important;
+  }
+  .blog-code pre > code {
+    display: block;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
 }
 
 @layer base {
@@ -241,148 +583,37 @@
 }
 
 @layer utilities {
-  .step {
-    counter-increment: step;
-  }
-
-  .step:before {
-    @apply md:absolute w-8 h-8 md:w-9 md:h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 mr-2 border-background;
-    @apply md:ml-[-50px] md:mt-[-4px];
-    content: counter(step);
-  }
-
-  .chunk-container {
-    @apply shadow-none;
-  }
-
-  .chunk-container::after {
-    content: '';
-    @apply absolute -inset-4 shadow-xl rounded-xl border;
-  }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .border-grid {
-    @apply border-border/50 dark:border-border border-dashed;
-  }
-
-  .container-wrapper {
-    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
-  }
-
-  .container-frame {
-    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border mx-auto w-full;
-  }
-
-  .container {
-    @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
-  }
-
-  /* Grain / noise texture overlay (used on the blog page + card covers) */
-  .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 180px 180px;
-  }
-
-  /* Staggered entrance for the auth flow. Runs on the compositor (unlike a
-     JS/rAF animation it can't stall and leave content invisible), and the
-     resting state is fully visible — the keyframe only hides during its own
-     run, so if animations never fire the content still shows. */
-  .auth-enter {
-    animation: auth-enter 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .auth-enter {
-      animation-name: auth-fade;
-      animation-duration: 0.2s;
+  @keyframes auth-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* Sliding pill of the auth segmented control. Strong ease-out so it lands
-     fast; transform-only keeps it on the compositor. */
-  .auth-pill {
-    transition: transform 250ms cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .auth-pill {
-      transition-duration: 0ms;
+  @keyframes auth-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
-  /* Load-time entrance (AnimateEnter): rise + de-blur that settles hard at
-     the tail. CSS so a busy main thread can't strand content invisible. */
-  .enter-fx {
-    animation: enter-fx 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .enter-fx {
-      animation-name: auth-fade;
-      animation-duration: 0.2s;
+  @keyframes enter-fx {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(6px);
     }
-  }
-
-  /* Scroll reveal (AnimateEnter isWhileInView): resting state is visible;
-     JS may add data-reveal="pending" pre-paint for below-fold elements, then
-     flips to "shown" on intersection. */
-  .reveal-fx {
-    transition:
-      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-      filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal-fx[data-reveal='pending'] {
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(6px);
-    transition: none;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal-fx[data-reveal='pending'] {
-      transform: none;
-      filter: none;
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
     }
-  }
-}
-
-@keyframes auth-enter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes auth-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes enter-fx {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-    filter: blur(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -395,409 +626,381 @@
   }
 }
 
-/* Chroma text sweep (hero h1): a rainbow band sweeps across the text once on
+@layer utilities {
+  /* Chroma text sweep (hero h1): a rainbow band sweeps across the text once on
    load. The gradient is 3x the element width and both its head AND tail are the
    solid heading color, so the text is painted (visible) from the very first
    frame — good for LCP — while only the colorful band moves across (100% -> 0). */
-.chroma-text {
-  background-image: linear-gradient(
-    90deg,
-    #000000 0,
-    #000000 33.33%,
-    #c679c4 40%,
-    #fa3d1d 45%,
-    #ffb005 50%,
-    #e1e1fe 55%,
-    #0358f7 60%,
-    #000000 66.67%,
-    #000000
-  );
-  background-size: 300% 100%;
-  background-position: 100% 0;
-  will-change: background-position;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-.dark .chroma-text {
-  background-image: linear-gradient(
-    90deg,
-    #ffffff 0,
-    #ffffff 33.33%,
-    #c679c4 40%,
-    #fa3d1d 45%,
-    #ffb005 50%,
-    #e1e1fe 55%,
-    #0358f7 60%,
-    #ffffff 66.67%,
-    #ffffff
-  );
-}
-
-.chroma-text-animate {
-  /* Only the color band sweeps — no blur, so the sharp heading paints on the
-     first frame (keeps LCP at first paint instead of the animation's end). */
-  animation: chroma-sweep 0.9s ease-in-out 0.1s forwards;
-}
-
-@keyframes chroma-sweep {
-  to {
-    background-position: 0 0;
+  .chroma-text {
+    background-image: linear-gradient(
+      90deg,
+      #000000 0,
+      #000000 33.33%,
+      #c679c4 40%,
+      #fa3d1d 45%,
+      #ffb005 50%,
+      #e1e1fe 55%,
+      #0358f7 60%,
+      #000000 66.67%,
+      #000000
+    );
+    background-size: 300% 100%;
+    background-position: 100% 0;
+    will-change: background-position;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
-}
 
-/* Without the animation the gradient rests on its transparent tail — force the
-   settled state so the heading is never invisible. */
-@media (prefers-reduced-motion: reduce) {
+  .dark .chroma-text {
+    background-image: linear-gradient(
+      90deg,
+      #ffffff 0,
+      #ffffff 33.33%,
+      #c679c4 40%,
+      #fa3d1d 45%,
+      #ffb005 50%,
+      #e1e1fe 55%,
+      #0358f7 60%,
+      #ffffff 66.67%,
+      #ffffff
+    );
+  }
+
   .chroma-text-animate {
-    animation: none;
-    filter: none;
-    background-position: 0 0;
+    /* Only the color band sweeps — no blur, so the sharp heading paints on the
+     first frame (keeps LCP at first paint instead of the animation's end). */
+    animation: chroma-sweep 0.9s ease-in-out 0.1s forwards;
   }
-}
 
-.prose {
-  margin: 0 !important;
-}
+  @keyframes chroma-sweep {
+    to {
+      background-position: 0 0;
+    }
+  }
 
-pre {
-  padding: 12px !important;
-  width: inherit !important;
-  overflow-x: auto;
-}
+  /* Without the animation the gradient rests on its transparent tail — force the
+   settled state so the heading is never invisible. */
+  @media (prefers-reduced-motion: reduce) {
+    .chroma-text-animate {
+      animation: none;
+      filter: none;
+      background-position: 0 0;
+    }
+  }
 
-pre > code {
-  display: grid;
-  max-width: inherit !important;
-  padding: 18px 0;
-  font-size: 14px;
-  font-family: 'Geist Mono', monospace;
-}
+  .prose {
+    margin: 0 !important;
+  }
 
-.code-line {
-  padding: 0.75px 12.5px;
-}
+  pre {
+    padding: 12px !important;
+    width: inherit !important;
+    overflow-x: auto;
+  }
 
-.line-number::before {
-  display: inline-block;
-  width: 1rem;
-  margin-right: 22px;
-  margin-left: -2px;
-  color: rgb(110, 110, 110);
-  content: attr(line);
-  font-size: 13.5px;
-  text-align: right;
-}
+  pre > code {
+    display: grid;
+    max-width: inherit !important;
+    padding: 18px 0;
+    font-size: 14px;
+    font-family: 'Geist Mono', monospace;
+  }
 
-.highlight-line {
-  @apply dark:bg-neutral-800/90;
-  @apply bg-neutral-200/90;
-}
+  .code-line {
+    padding: 0.75px 12.5px;
+  }
 
-.punctuation {
-  color: gray;
-}
+  .line-number::before {
+    display: inline-block;
+    width: 1rem;
+    margin-right: 22px;
+    margin-left: -2px;
+    color: rgb(110, 110, 110);
+    content: attr(line);
+    font-size: 13.5px;
+    text-align: right;
+  }
 
-.comment {
-  color: gray;
-}
+  .highlight-line {
+    @apply dark:bg-neutral-800/90;
+    @apply bg-neutral-200/90;
+  }
 
-.keyword {
-  color: rgb(255, 50, 115);
-}
+  .punctuation {
+    color: gray;
+  }
 
-.function {
-  color: hsla(210, 100%, 66%, 1);
-}
+  .comment {
+    color: gray;
+  }
 
-.string,
-.constant,
-.annotation,
-.boolean,
-.number {
-  color: hsl(0, 0%, 29%);
-}
+  .keyword {
+    color: rgb(255, 50, 115);
+  }
 
-.dark .string,
-.dark .constant,
-.dark .annotation,
-.dark .boolean,
-.dark.number {
-  color: hsl(0, 0%, 71%);
-}
+  .function {
+    color: hsla(210, 100%, 66%, 1);
+  }
 
-.dark .keyword {
-  color: hsla(341, 90%, 67%, 1);
-}
+  .string,
+  .constant,
+  .annotation,
+  .boolean,
+  .number {
+    color: hsl(0, 0%, 29%);
+  }
 
-.attr-value {
-  color: hsla(131, 43%, 57%, 1);
-}
+  .dark .string,
+  .dark .constant,
+  .dark .annotation,
+  .dark .boolean,
+  .dark.number {
+    color: hsl(0, 0%, 71%);
+  }
 
-.tag {
-  color: hsla(341, 90%, 67%, 1);
-}
+  .dark .keyword {
+    color: hsla(341, 90%, 67%, 1);
+  }
 
-.attr-name {
-  color: #414141;
-}
+  .attr-value {
+    color: hsla(131, 43%, 57%, 1);
+  }
 
-.dark .attr-name {
-  color: #cacaca;
-}
+  .tag {
+    color: hsla(341, 90%, 67%, 1);
+  }
 
-.rehype-code-title {
-  @apply px-2;
-  @apply -mb-8;
-  @apply w-full;
-  @apply text-sm;
-  @apply pt-1;
-  @apply pb-5;
-  @apply font-normal;
-  @apply tracking-wider;
-  @apply font-medium;
-  font-family: var(--font-code) !important;
-}
+  .attr-name {
+    color: #414141;
+  }
 
-.highlight-comp > code {
-  background-color: transparent !important;
-}
+  .dark .attr-name {
+    color: #cacaca;
+  }
 
-.shiki-container {
-  margin: 0;
-  /* padding: 1rem; */
-  /* padding-left: 1.5rem; Add more left padding */
-}
+  .rehype-code-title {
+    @apply px-2;
+    @apply -mb-8;
+    @apply w-full;
+    @apply text-sm;
+    @apply pt-1;
+    @apply pb-5;
+    @apply font-normal;
+    @apply tracking-wider;
+    @apply font-medium;
+    font-family: var(--font-code) !important;
+  }
 
-.shiki-container pre {
-  margin: 0;
-  padding: 0;
-}
+  .highlight-comp > code {
+    background-color: transparent !important;
+  }
 
-.shiki {
-  border-radius: 0.375rem;
-  overflow: auto;
-  font-family: 'Geist Mono', monospace;
+  .shiki-container {
+    margin: 0;
+    /* padding: 1rem; */
+    /* padding-left: 1.5rem; Add more left padding */
+  }
 
-  line-height: 1.6; /* Improved line height for readability */
-}
+  .shiki-container pre {
+    margin: 0;
+    padding: 0;
+  }
 
-/* Add a subtle line number effect */
-.shiki-container code {
-  counter-reset: line;
-  display: grid;
-}
+  .shiki {
+    border-radius: 0.375rem;
+    overflow: auto;
+    font-family: 'Geist Mono', monospace;
 
-.shiki-container code > .line {
-  padding-left: 0.75rem;
-  position: relative;
-}
+    line-height: 1.6; /* Improved line height for readability */
+  }
 
-.shiki-container code > .line:before {
-  counter-increment: line;
-  content: counter(line);
-  position: absolute;
-  left: -2.5rem;
-  color: #64748b;
-  opacity: 0.5;
-  text-align: right;
-  width: 1.5rem;
-}
+  /* Add a subtle line number effect */
+  .shiki-container code {
+    counter-reset: line;
+    display: grid;
+  }
 
-/* Blog typography — Method A.
+  .shiki-container code > .line {
+    padding-left: 0.75rem;
+    position: relative;
+  }
+
+  .shiki-container code > .line:before {
+    counter-increment: line;
+    content: counter(line);
+    position: absolute;
+    left: -2.5rem;
+    color: #64748b;
+    opacity: 0.5;
+    text-align: right;
+    width: 1.5rem;
+  }
+
+  /* Blog typography — Method A.
    The posts are hand-authored TSX rather than markdown, so this shared wrapper
    gives every article the same Typeset-inspired rhythm without pulling in the
    Tailwind v4-only shadcn stylesheet. Embedded code keeps its own presentation. */
-.blog-content {
-  --blog-body: #404040;
-  --blog-heading: #171717;
-  --blog-muted: #737373;
-  --blog-border: #e5e5e5;
-  --blog-surface: #f5f5f5;
-  color: var(--blog-body);
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-}
+  .blog-content {
+    --blog-body: #404040;
+    --blog-heading: #171717;
+    --blog-muted: #737373;
+    --blog-border: #e5e5e5;
+    --blog-surface: #f5f5f5;
+    color: var(--blog-body);
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.dark .blog-content {
-  --blog-body: #d4d4d4;
-  --blog-heading: #fafafa;
-  --blog-muted: #a3a3a3;
-  --blog-border: #262626;
-  --blog-surface: #171717;
-}
+  .dark .blog-content {
+    --blog-body: #d4d4d4;
+    --blog-heading: #fafafa;
+    --blog-muted: #a3a3a3;
+    --blog-border: #262626;
+    --blog-surface: #171717;
+  }
 
-.blog-content h2,
-.blog-content h3,
-.blog-content h4,
-.blog-content h5,
-.blog-content h6 {
-  color: var(--blog-heading);
-  font-family: var(--font-geist-sans), sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  text-wrap: balance;
-}
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    color: var(--blog-heading);
+    font-family: var(--font-geist-sans), sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
 
-.blog-content h2 {
-  font-size: 1.5rem;
-  line-height: 1.3;
-}
+  .blog-content h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
 
-.blog-content h3 {
-  font-size: 1.25rem;
-  line-height: 1.35;
-}
+  .blog-content h3 {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
 
-.blog-content h4 {
-  font-size: 1.0625rem;
-  line-height: 1.45;
-}
+  .blog-content h4 {
+    font-size: 1.0625rem;
+    line-height: 1.45;
+  }
 
-.blog-content h5,
-.blog-content h6 {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-}
+  .blog-content h5,
+  .blog-content h6 {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
 
-.blog-content p,
-.blog-content li,
-.blog-content dd,
-.blog-content dt,
-.blog-content figcaption,
-.blog-content table {
-  color: var(--blog-body);
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-}
+  .blog-content p,
+  .blog-content li,
+  .blog-content dd,
+  .blog-content dt,
+  .blog-content figcaption,
+  .blog-content table {
+    color: var(--blog-body);
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
 
-.blog-content > div > * {
-  margin-bottom: 0 !important;
-}
+  .blog-content > div > * {
+    margin-bottom: 0 !important;
+  }
 
-.blog-content > div > * + * {
-  margin-top: 1.25em !important;
-}
+  .blog-content > div > * + * {
+    margin-top: 1.25em !important;
+  }
 
-.blog-content > div > h2 {
-  margin-top: 2.5em !important;
-}
+  .blog-content > div > h2 {
+    margin-top: 2.5em !important;
+  }
 
-.blog-content > div > h3 {
-  margin-top: 2em !important;
-}
+  .blog-content > div > h3 {
+    margin-top: 2em !important;
+  }
 
-.blog-content > div > h4,
-.blog-content > div > h5,
-.blog-content > div > h6 {
-  margin-top: 1.75em !important;
-}
+  .blog-content > div > h4,
+  .blog-content > div > h5,
+  .blog-content > div > h6 {
+    margin-top: 1.75em !important;
+  }
 
-.blog-content a {
-  color: var(--blog-heading);
-  text-decoration-line: underline;
-  text-decoration-thickness: from-font;
-  text-underline-offset: 3px;
-}
+  .blog-content a {
+    color: var(--blog-heading);
+    text-decoration-line: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 3px;
+  }
 
-.blog-content strong {
-  color: var(--blog-heading);
-  font-weight: 600;
-}
+  .blog-content strong {
+    color: var(--blog-heading);
+    font-weight: 600;
+  }
 
-.blog-content blockquote {
-  border-color: var(--blog-border);
-  color: var(--blog-muted);
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-}
+  .blog-content blockquote {
+    border-color: var(--blog-border);
+    color: var(--blog-muted);
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
 
-.blog-content :not(pre) > code,
-.blog-content kbd {
-  border-radius: 0.25rem;
-  background: var(--blog-surface);
-  color: var(--blog-heading);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.875em;
-  font-weight: 500;
-  padding: 0.125em 0.35em;
-}
+  .blog-content :not(pre) > code,
+  .blog-content kbd {
+    border-radius: 0.25rem;
+    background: var(--blog-surface);
+    color: var(--blog-heading);
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.875em;
+    font-weight: 500;
+    padding: 0.125em 0.35em;
+  }
 
-.blog-content pre,
-.blog-content pre code {
-  font-family: var(--font-geist-mono), monospace;
-}
+  .blog-content pre,
+  .blog-content pre code {
+    font-family: var(--font-geist-mono), monospace;
+  }
 
-.blog-content hr,
-.blog-content th,
-.blog-content td {
-  border-color: var(--blog-border);
-}
+  .blog-content hr,
+  .blog-content th,
+  .blog-content td {
+    border-color: var(--blog-border);
+  }
 
-/* Dark utilities in the legacy post markup include the `.dark` selector, so
+  /* Dark utilities in the legacy post markup include the `.dark` selector, so
    match that specificity here to keep the shared palette authoritative. */
-.dark .blog-content h2,
-.dark .blog-content h3,
-.dark .blog-content h4,
-.dark .blog-content h5,
-.dark .blog-content h6,
-.dark .blog-content a,
-.dark .blog-content strong {
-  color: var(--blog-heading);
-}
-
-.dark .blog-content p,
-.dark .blog-content li,
-.dark .blog-content dd,
-.dark .blog-content dt,
-.dark .blog-content figcaption,
-.dark .blog-content table {
-  color: var(--blog-body);
-}
-
-.dark .blog-content blockquote {
-  border-color: var(--blog-border);
-  color: var(--blog-muted);
-}
-
-.dark .blog-content :not(pre) > code,
-.dark .blog-content kbd {
-  background: var(--blog-surface);
-  color: var(--blog-heading);
-}
-
-@theme inline {
-  @keyframes gradient-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  .dark .blog-content h2,
+  .dark .blog-content h3,
+  .dark .blog-content h4,
+  .dark .blog-content h5,
+  .dark .blog-content h6,
+  .dark .blog-content a,
+  .dark .blog-content strong {
+    color: var(--blog-heading);
   }
-  @keyframes rainbow {
-    0% {
-      background-position: 0%;
-    }
-    100% {
-      background-position: 200%;
-    }
+
+  .dark .blog-content p,
+  .dark .blog-content li,
+  .dark .blog-content dd,
+  .dark .blog-content dt,
+  .dark .blog-content figcaption,
+  .dark .blog-content table {
+    color: var(--blog-body);
   }
-  @keyframes shiny-text {
-    0%,
-    90%,
-    100% {
-      background-position: calc(-100% - var(--shiny-width)) 0;
-    }
-    30%,
-    60% {
-      background-position: calc(100% + var(--shiny-width)) 0;
-    }
+
+  .dark .blog-content blockquote {
+    border-color: var(--blog-border);
+    color: var(--blog-muted);
+  }
+
+  .dark .blog-content :not(pre) > code,
+  .dark .blog-content kbd {
+    background: var(--blog-surface);
+    color: var(--blog-heading);
   }
 }

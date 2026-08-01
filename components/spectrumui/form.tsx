@@ -230,7 +230,7 @@ export default function Inputcollection() {
                 aria-describedby="password-strength"
               />
               <button
-                className="absolute inset-y-px right-px flex h-full w-9 items-center justify-center rounded-r-lg text-muted-foreground/80 transition-shadow hover:text-foreground focus-visible:border focus-visible:border-ring focus-visible:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+                className="absolute inset-y-px right-px flex h-full w-9 items-center justify-center rounded-r-lg text-muted-foreground/80 transition-shadow hover:text-foreground focus-visible:border focus-visible:border-ring focus-visible:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
                 type="button"
                 onClick={toggleVisibility}
                 aria-label={isVisible ? "Hide password" : "Show password"}
@@ -529,7 +529,7 @@ export default function Inputcollection() {
             <Input
               id="tag"
               placeholder="Add a tag"
-              className="flex-grow border-0 focus:ring-0"
+              className="grow border-0 focus:ring-0"
             />
           </div>
         </div>
@@ -648,7 +648,7 @@ export default function Inputcollection() {
         {/* 49. Toggle Group */}
         <div className="space-y-2">
           <Label>Toggle Group</Label>
-          <div className="flex rounded-lg shadow-sm">
+          <div className="flex rounded-lg shadow-xs">
             <Button variant="outline" className="rounded-r-none">
               Left
             </Button>

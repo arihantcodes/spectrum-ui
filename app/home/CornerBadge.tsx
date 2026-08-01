@@ -13,7 +13,7 @@ export function CornerBadge() {
       href="https://vercel.com/oss"
       target="_blank"
       rel="noreferrer"
-      className="group relative inline-flex outline-none transition-transform duration-200 ease-out will-change-transform hover:scale-[1.03] active:scale-[0.97]"
+      className="group relative inline-flex outline-hidden transition-transform duration-200 ease-out will-change-transform hover:scale-[1.03] active:scale-[0.97]"
       aria-label="Backed by Vercel OSS"
     >
       {/* Crop-mark style corner brackets */}

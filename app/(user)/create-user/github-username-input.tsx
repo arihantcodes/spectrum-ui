@@ -110,12 +110,12 @@ export function GitHubUsernameInput({
           aria-describedby={
             githubError ? 'github_username_hint github_username_error' : 'github_username_hint'
           }
-          className={`h-12 w-full rounded-full border bg-background pl-11 pr-11 text-sm text-foreground outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-muted-foreground/70 ${
+          className={`h-12 w-full rounded-full border bg-background pl-11 pr-11 text-sm text-foreground outline-hidden transition-[border-color,box-shadow] duration-200 placeholder:text-muted-foreground/70 ${
             isValid === true
               ? 'border-emerald-500/60 focus:ring-4 focus:ring-emerald-500/10'
               : isValid === false
                 ? 'border-red-500/60 focus:ring-4 focus:ring-red-500/10'
-                : 'border-input focus:border-muted-foreground/40 focus:ring-4 focus:ring-foreground/[0.05]'
+                : 'border-input focus:border-muted-foreground/40 focus:ring-4 focus:ring-foreground/5'
           }`}
         />
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">

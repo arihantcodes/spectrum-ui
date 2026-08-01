@@ -107,7 +107,7 @@ export default async function BlogPage() {
                 The Journal
               </span>
             </span>
-            <h1 className="font-spectral text-[30px] font-light leading-[0.95] tracking-[-0.09em] text-black [text-wrap:balance] sm:text-[42px] lg:text-[54px] lg:leading-[51px] lg:tracking-[-5px] dark:text-white">
+            <h1 className="font-spectral text-[30px] font-light leading-[0.95] tracking-[-0.09em] text-black text-balance sm:text-[42px] lg:text-[54px] lg:leading-[51px] lg:tracking-[-5px] dark:text-white">
               Notes on design &amp; engineering.
             </h1>
             <p className="max-w-[46ch] text-[15px] leading-[1.7] text-muted-foreground">
@@ -124,7 +124,7 @@ export default async function BlogPage() {
                 <section key={topic} aria-labelledby={`shelf-${id}`}>
                   <h2
                     id={`shelf-${id}`}
-                    className="inline-flex h-8 items-center rounded-full bg-black/[0.045] px-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] dark:bg-white/[0.07] dark:text-neutral-200 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.09),inset_0_1px_0_rgba(255,255,255,0.05)]"
+                    className="inline-flex h-8 items-center rounded-full bg-black/4.5 px-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] dark:bg-white/[0.07] dark:text-neutral-200 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.09),inset_0_1px_0_rgba(255,255,255,0.05)]"
                   >
                     {topic}
                   </h2>

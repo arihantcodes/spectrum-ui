@@ -8,7 +8,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export default function AnimatedWaveFooter() {
   return (
-    <footer className="relative bg-gradient-to-b from-background to-primary/10 pt-20">
+    <footer className="relative bg-linear-to-b from-background to-primary/10 pt-20">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 h-[500px] w-[1800px] animate-wave">
           <svg
@@ -40,7 +40,7 @@ export default function AnimatedWaveFooter() {
                   id="email"
                   placeholder="Enter your email"
                   type="email"
-                  className="backdrop-blur-sm"
+                  className="backdrop-blur-xs"
                 />
               </div>
               <Button type="submit" className="w-full">

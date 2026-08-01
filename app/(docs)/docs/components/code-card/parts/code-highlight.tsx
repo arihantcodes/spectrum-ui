@@ -94,7 +94,7 @@ const CodeHighlight = ({
     return (
       <div
         className={cn(
-          'flex w-full flex-col items-center overflow-hidden rounded-[14px] border border-black/[0.08] bg-white px-6 dark:border-white/10 dark:bg-[#101010]',
+          'flex w-full flex-col items-center overflow-hidden rounded-[14px] border border-black/8 bg-white px-6 dark:border-white/10 dark:bg-[#101010]',
           // Match the preview panel height so switching tabs doesn't jump the page
           inTab ? 'min-h-[452px] pt-[109px]' : 'justify-center py-12',
         )}
@@ -127,14 +127,14 @@ const CodeHighlight = ({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-[14px] border border-black/[0.08] bg-white transition-all dark:border-white/10 dark:bg-[#101010]',
+        'relative overflow-hidden rounded-[14px] border border-black/8 bg-white transition-all dark:border-white/10 dark:bg-[#101010]',
         // Match the preview panel height so switching tabs doesn't jump the page
         inTab && 'min-h-[452px]',
       )}
     >
       {/* Filename header (when a title is provided) */}
       {title && (
-        <div className="flex h-[41px] items-center gap-2 border-b border-black/[0.05] px-4 dark:border-white/[0.06]">
+        <div className="flex h-[41px] items-center gap-2 border-b border-black/5 px-4 dark:border-white/6">
           <FileCode2 className="size-4 shrink-0 text-[#686868] dark:text-neutral-400" />
           <span className="truncate font-mono text-[13px] text-[#686868] dark:text-neutral-400">
             {title}
@@ -143,7 +143,7 @@ const CodeHighlight = ({
             type="button"
             onClick={handleCopy}
             aria-label="Copy code"
-            className="ml-auto flex size-8 items-center justify-center rounded-[10px] opacity-70 transition hover:bg-black/[0.04] hover:opacity-100 dark:hover:bg-white/[0.06]"
+            className="ml-auto flex size-8 items-center justify-center rounded-[10px] opacity-70 transition hover:bg-black/4 hover:opacity-100 dark:hover:bg-white/6"
           >
             {copied ? (
               <Check className="size-4 text-emerald-600 dark:text-emerald-400" />
@@ -160,7 +160,7 @@ const CodeHighlight = ({
           type="button"
           onClick={handleCopy}
           aria-label="Copy code"
-          className="absolute right-1.5 top-1.5 z-10 flex size-8 items-center justify-center rounded-[10px] bg-white/80 opacity-70 backdrop-blur transition hover:bg-black/[0.04] hover:opacity-100 dark:bg-neutral-900/80 dark:hover:bg-white/[0.06]"
+          className="absolute right-1.5 top-1.5 z-10 flex size-8 items-center justify-center rounded-[10px] bg-white/80 opacity-70 backdrop-blur-sm transition hover:bg-black/4 hover:opacity-100 dark:bg-neutral-900/80 dark:hover:bg-white/6"
         >
           {copied ? (
             <Check className="size-4 text-emerald-600 dark:text-emerald-400" />
@@ -181,7 +181,7 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_pre]:!bg-white dark:[&_pre]:!bg-[#101010] [&_code]:font-normal [&_code]:font-mono [&_code]:text-[13px] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.5]',
+              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[13px] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-normal',
               lang,
             )}
           />

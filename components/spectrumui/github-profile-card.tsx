@@ -204,7 +204,7 @@ export default function GitHubProfileCard() {
       {userData && (
         <>
           <Card className="w-full max-w-md bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-600/60 via-neutral-400/30 to-transparent dark:from-blue-600/30 dark:via-blue-600/10 dark:to-transparent  rounded-b-3xl" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-neutral-600/60 via-neutral-400/30 to-transparent dark:from-blue-600/30 dark:via-blue-600/10 dark:to-transparent  rounded-b-3xl" />
 
             <div className="relative z-10 flex flex-col items-center space-y-6">
               <Avatar className="w-20 h-20 border-2 border-neutral-200 dark:border-neutral-800">

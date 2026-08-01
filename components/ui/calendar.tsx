@@ -38,7 +38,7 @@ function Calendar({
         weekday:
           "w-5 xl:w-7 text-muted-foreground rounded-md font-normal text-sm",
         week: "flex w-full mt-2 justify-evenly items-center",
-        day: "w-5 xl:w-7 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20 rounded-1",
+        day: "w-5 xl:w-7 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 has-aria-[selected]:bg-accent first:has-aria-[selected]:rounded-l-md last:has-aria-[selected]:rounded-r-md focus-within:relative focus-within:z-20 rounded-1",
         day_button: cn(
           buttonVariants({ variant: "ghost" }),
           "w-5 xl:w-7 p-0 font-normal aria-selected:opacity-100 rounded-l-md rounded-r-md",

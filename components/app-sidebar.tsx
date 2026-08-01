@@ -162,7 +162,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5 dark:bg-black"
+              className="data-[slot=sidebar-menu-button]:p-1.5! dark:bg-black"
             >
               <a href="#">
                 <Icons.logo />
@@ -175,8 +175,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className="bg-[#f4f4f4] dark:bg-black flex justify-between flex-col">
         <NavMain items={data.navMain} />
         <div>
-          <div className="w-[238px] rounded-lg overflow-hidden shadow">
-            <div className="h-[60px] p-4 bg-gradient-to-b from-[#0AA6FA]/30 to-[#0AA6FA]/0 dark:from-[#141414] dark:to-[#141414] dark:bg-gradient-to-b">
+          <div className="w-[238px] rounded-lg overflow-hidden shadow-sm">
+            <div className="h-[60px] p-4 bg-linear-to-b from-[#0AA6FA]/30 to-[#0AA6FA]/0 dark:from-[#141414] dark:to-[#141414] dark:bg-linear-to-b">
               <h1 className="font-semibold  text-base flex gap-2 items-center">
                 <svg
                   data-testid="geist-icon"
@@ -208,7 +208,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <div className="bg-white dark:bg-[#141414] px-4 pb-4 pt-2">
               {/* Progress bar */}
               <div className="relative h-4 w-full bg-sky-100 rounded-full overflow-hidden my-2">
-                <div className="absolute h-full w-[70%] bg-gradient-to-r from-sky-400 via-sky-300 to-sky-400 rounded-full"></div>
+                <div className="absolute h-full w-[70%] bg-linear-to-r from-sky-400 via-sky-300 to-sky-400 rounded-full"></div>
               </div>
 
               <p className="text-zink-950 text-sm font-medium">4 days left</p>

@@ -9,7 +9,7 @@ const RATE_LIMIT_TIME_FRAME = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 3; // Max 3 requests per IP per time frame
 
 function rateLimit(request: NextRequest) {
-  const ip = request.headers.get("x-forwarded-for") || request.ip;
+  const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip");
 
   const now = Date.now();
 
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Store in Supabase
-    const ip = request.headers.get("x-forwarded-for") || request.ip || "";
+    const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "";
     const { error: dbError } = await supabaseAdmin
       .from("component_requests")
       .insert({

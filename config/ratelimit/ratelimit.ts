@@ -6,7 +6,7 @@ const RATE_LIMIT_TIME_FRAME = 15 * 60 * 1000; // 15 minutes
 const RATE_LIMIT_MAX_REQUESTS = 5; // 5 requests per 15 minutes
 
 function rateLimit(request: NextRequest): boolean {
-  const ip = request.headers.get("x-forwarded-for") || request.ip;
+  const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip");
 
   const now = Date.now();
 

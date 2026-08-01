@@ -44,7 +44,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-8 border-t border-black/[0.06] pt-8 dark:border-white/[0.07]">
+    <section className="mt-8 border-t border-black/6 pt-8 dark:border-white/[0.07]">
       <h2
         id={slugify(title)}
         className="mb-3 scroll-m-24 text-xl font-semibold leading-7 tracking-[-0.02em] text-neutral-900 dark:text-neutral-50"
@@ -97,7 +97,7 @@ function DocsTable({
     <div className="my-5 overflow-x-auto">
       <table className="w-full min-w-[560px] border-collapse text-left">
         <thead>
-          <tr className="border-b border-black/[0.08] dark:border-white/10">
+          <tr className="border-b border-black/8 dark:border-white/10">
             <th className="w-[220px] px-4 pb-2.5 pt-1 text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-500">
               {head[0]}
             </th>
@@ -110,7 +110,7 @@ function DocsTable({
           {rows.map(([left, right], i) => (
             <tr
               key={i}
-              className="border-b border-black/[0.06] dark:border-white/[0.07]"
+              className="border-b border-black/6 dark:border-white/[0.07]"
             >
               <td className="px-4 py-2.5 align-middle text-sm leading-[22px]">
                 {left}

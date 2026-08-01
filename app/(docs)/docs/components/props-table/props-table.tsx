@@ -27,7 +27,7 @@ export const PropsTable = ({ title, props, withTitle = true }: PropsTableProps) 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
-            <tr className="border-b border-black/[0.08] dark:border-white/10">
+            <tr className="border-b border-black/8 dark:border-white/10">
               <th className="w-[110px] px-4 py-2 text-sm font-medium leading-5 text-[#262626] dark:text-neutral-200">
                 Prop
               </th>
@@ -46,7 +46,7 @@ export const PropsTable = ({ title, props, withTitle = true }: PropsTableProps) 
             {props.map((prop) => (
               <tr
                 key={prop.prop}
-                className="border-b border-black/[0.08] dark:border-white/10"
+                className="border-b border-black/8 dark:border-white/10"
               >
                 <td className="px-4 py-2 align-middle">
                   <span className="flex items-center gap-[2px]">

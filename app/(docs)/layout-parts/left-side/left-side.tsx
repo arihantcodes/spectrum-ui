@@ -66,9 +66,9 @@ function DocsNavGroup({
     >
       <CollapsibleTrigger
         className={cn(
-          "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left outline-none transition-colors",
+          "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-left outline-hidden transition-colors",
           open && "mb-1.5",
-          "hover:bg-black/[0.03] dark:hover:bg-white/[0.04]",
+          "hover:bg-black/3 dark:hover:bg-white/4",
           "focus-visible:ring-2 focus-visible:ring-black/10 dark:focus-visible:ring-white/20",
         )}
       >
@@ -102,13 +102,13 @@ function DocsNavGroup({
                   className={cn(
                     "flex items-center gap-2 rounded-lg px-3 py-2 text-sm leading-5 antialiased transition-colors duration-150",
                     isActive
-                      ? "bg-black/[0.04] font-medium text-[#171717] dark:bg-white/[0.06] dark:text-neutral-100"
-                      : "font-normal text-[#727272] hover:bg-black/[0.03] hover:text-[#262626] dark:text-neutral-400 dark:hover:bg-white/[0.04] dark:hover:text-neutral-100",
+                      ? "bg-black/4 font-medium text-[#171717] dark:bg-white/6 dark:text-neutral-100"
+                      : "font-normal text-[#727272] hover:bg-black/3 hover:text-[#262626] dark:text-neutral-400 dark:hover:bg-white/4 dark:hover:text-neutral-100",
                   )}
                 >
                   <span className="truncate">{child.label}</span>
                   {child.new && (
-                    <span className="inline-flex h-[18px] shrink-0 items-center rounded-[6px] bg-[#2b7fff]/[0.08] px-[5px] text-xs font-medium leading-none text-[#1447e6] dark:bg-[#2b7fff]/[0.14] dark:text-blue-400">
+                    <span className="inline-flex h-[18px] shrink-0 items-center rounded-[6px] bg-[#2b7fff]/8 px-[5px] text-xs font-medium leading-none text-[#1447e6] dark:bg-[#2b7fff]/[0.14] dark:text-blue-400">
                       New
                     </span>
                   )}

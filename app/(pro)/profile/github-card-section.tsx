@@ -137,7 +137,7 @@ export async function GitHubCardSection({ username }: GitHubCardSectionProps) {
                 href={websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 items-center gap-2 rounded-full bg-black/[0.045] px-4 text-[13px] font-medium text-foreground shadow-[0_0_0_1px_hsl(var(--border))] outline-none transition-[transform,background-color] duration-150 ease-out hover:bg-black/[0.08] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/[0.1]"
+                className="inline-flex h-9 items-center gap-2 rounded-full bg-black/4.5 px-4 text-[13px] font-medium text-foreground shadow-[0_0_0_1px_hsl(var(--border))] outline-hidden transition-[transform,background-color] duration-150 ease-out hover:bg-black/8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/10"
               >
                 <IconWorld size={15} aria-hidden />
                 Website
@@ -147,7 +147,7 @@ export async function GitHubCardSection({ username }: GitHubCardSectionProps) {
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 items-center gap-2 rounded-full bg-primary px-4 text-[13px] font-medium text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.25)] outline-none transition-[transform,background-color] duration-150 ease-out hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98]"
+              className="inline-flex h-9 items-center gap-2 rounded-full bg-primary px-4 text-[13px] font-medium text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.25)] outline-hidden transition-[transform,background-color] duration-150 ease-out hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98]"
             >
               GitHub
               <IconExternalLink size={14} aria-hidden />

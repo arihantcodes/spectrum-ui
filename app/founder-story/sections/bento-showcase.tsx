@@ -123,7 +123,7 @@ function PaletteDemo() {
       <div className="grid grid-cols-4 gap-2 w-full max-w-[200px]">
         {colors.map((color, i) => (
           <div key={i} className="flex flex-col items-center space-y-1">
-            <div className={`h-12 w-full rounded-lg border border-neutral-200 dark:border-neutral-800/80 ${color.bg} shadow-sm`} />
+            <div className={`h-12 w-full rounded-lg border border-neutral-200 dark:border-neutral-800/80 ${color.bg} shadow-xs`} />
             <span className="text-[9px] font-mono text-neutral-400 dark:text-neutral-500">{color.label}</span>
           </div>
         ))}
@@ -141,7 +141,7 @@ function AiFirstDemo() {
           {"\"Create a clean monochrome card layout\""}
         </div>
         
-        <div className="self-start rounded-xl bg-white dark:bg-neutral-900 px-3 py-1.5 text-[9px] text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col space-y-1 w-[90%]">
+        <div className="self-start rounded-xl bg-white dark:bg-neutral-900 px-3 py-1.5 text-[9px] text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 shadow-xs flex flex-col space-y-1 w-[90%]">
           <div className="flex items-center space-x-1.5 text-neutral-400 text-[8px] border-b border-neutral-100 dark:border-neutral-800 pb-1">
             <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
             <span>AI Assistant</span>
@@ -159,7 +159,7 @@ function AiFirstDemo() {
 function CustomizationDemo() {
   return (
     <div className="flex h-full w-full items-center justify-center p-4 font-mono text-[10px]">
-      <div className="flex items-center space-x-2 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-3 rounded-xl shadow-sm">
+      <div className="flex items-center space-x-2 border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-3 rounded-xl shadow-xs">
         <span className="line-through text-neutral-350 dark:text-neutral-600">bg-blue-500</span>
         <span className="text-neutral-400">→</span>
         <span className="text-neutral-900 dark:text-white font-semibold">bg-neutral-900</span>

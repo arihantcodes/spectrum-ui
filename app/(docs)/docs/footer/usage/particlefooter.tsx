@@ -13,7 +13,7 @@ export default function GradientFooter() {
         aria-hidden
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2
           w-[600px] h-[300px] rounded-full blur-3xl
-          bg-gradient-to-b from-primary/[0.06] to-transparent"
+          bg-linear-to-b from-primary/6 to-transparent"
       />
       <div className="container relative z-10 mx-auto px-4 md:px-6">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

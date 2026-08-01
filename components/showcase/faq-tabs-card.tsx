@@ -133,7 +133,7 @@ export function FAQTabsCard({
                 setActiveTab(index);
                 setOpenIndex(defaultOpenIndex);
               }}
-              className="relative h-[27px] flex-1 rounded-full outline-none"
+              className="relative h-[27px] flex-1 rounded-full outline-hidden"
             >
               {active ? (
                 <motion.span

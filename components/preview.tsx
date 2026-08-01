@@ -8,7 +8,7 @@ export function Tabspreview() {
         <TabsTrigger value="preview">Preview</TabsTrigger>
         <TabsTrigger value="code">Code</TabsTrigger>
       </TabsList>
-      <TabsContent value="preview" className="p-4 bg-card rounded-lg shadow">
+      <TabsContent value="preview" className="p-4 bg-card rounded-lg shadow-sm">
         <ResponsiveInputShowcase />
       </TabsContent>
       <TabsContent

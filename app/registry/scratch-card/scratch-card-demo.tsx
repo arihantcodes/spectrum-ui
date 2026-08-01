@@ -47,7 +47,7 @@ export function ScratchCardDemo() {
           <button
             type="button"
             onClick={handleCopy}
-            className="mt-1 flex items-center gap-2 rounded-xl border border-dashed border-neutral-300 px-4 py-2 font-mono text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-300"
+            className="mt-1 flex items-center gap-2 rounded-xl border border-dashed border-neutral-300 px-4 py-2 font-mono text-sm text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-300"
           >
             SPECTRUM20
             {isCopied ? (
@@ -70,7 +70,7 @@ export function ScratchCardDemo() {
         <button
           type="button"
           onClick={handleReset}
-          className="flex items-center gap-2 rounded-xl border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:focus-visible:ring-neutral-300"
+          className="flex items-center gap-2 rounded-xl border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:focus-visible:ring-neutral-300"
         >
           <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
           Scratch again

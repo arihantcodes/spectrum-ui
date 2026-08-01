@@ -248,7 +248,7 @@ export function CardsDataTable() {
                     return (
                       <TableHead
                         key={header.id}
-                        className="[&:has([role=checkbox])]:pl-3"
+                        className="has-[[role=checkbox]]:pl-3"
                       >
                         {header.isPlaceholder
                           ? null
@@ -272,7 +272,7 @@ export function CardsDataTable() {
                     {row.getVisibleCells().map((cell) => (
                       <TableCell
                         key={cell.id}
-                        className="[&:has([role=checkbox])]:pl-3"
+                        className="has-[[role=checkbox]]:pl-3"
                       >
                         {flexRender(
                           cell.column.columnDef.cell,

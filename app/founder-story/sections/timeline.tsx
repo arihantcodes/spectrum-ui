@@ -92,7 +92,7 @@ export function TimelineSection() {
           })}
           
           <div className="pt-24 space-y-6 flex flex-col items-center justify-center text-center">
-             <div className="w-px h-24 bg-gradient-to-b from-neutral-200 to-transparent dark:from-neutral-800 absolute -mt-32" />
+             <div className="w-px h-24 bg-linear-to-b from-neutral-200 to-transparent dark:from-neutral-800 absolute -mt-32" />
              {problems.map((prob, i) => (
                 <ScrollRevealLine key={i} text={prob} />
              ))}
@@ -122,7 +122,7 @@ function TimelineItem({ item, index }: { item: any, index: number }) {
       </div>
       
       <div className="hidden md:flex md:col-span-1 justify-center relative h-full">
-         <div className="w-px h-full bg-neutral-200 dark:bg-neutral-800 absolute top-4 group-last:bg-gradient-to-b group-last:from-neutral-200 group-last:to-transparent dark:group-last:from-neutral-800" />
+         <div className="w-px h-full bg-neutral-200 dark:bg-neutral-800 absolute top-4 group-last:bg-linear-to-b group-last:from-neutral-200 group-last:to-transparent dark:group-last:from-neutral-800" />
          <div className="w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700 mt-2 z-10 ring-4 ring-neutral-50 dark:ring-[#0C0C0C] transition-colors duration-500 group-hover:bg-neutral-900 dark:group-hover:bg-neutral-100" />
       </div>
 

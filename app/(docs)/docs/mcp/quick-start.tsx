@@ -168,7 +168,7 @@ export default function QuickStart() {
       <div
         role="tablist"
         aria-label="MCP client"
-        className="mb-5 flex gap-6 overflow-x-auto border-b border-black/[0.08] dark:border-white/10"
+        className="mb-5 flex gap-6 overflow-x-auto border-b border-black/8 dark:border-white/10"
       >
         {CLIENTS.map((client) => (
           <button

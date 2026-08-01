@@ -21,7 +21,7 @@ export function AiAssistantDemo() {
     <div className="relative flex h-full min-h-[160px] w-full flex-col justify-end overflow-hidden p-4">
       <div className="flex flex-col space-y-3 relative z-10">
         <motion.div 
-          className="self-end rounded-2xl rounded-tr-sm bg-neutral-100 px-4 py-2 text-xs text-neutral-900 shadow-sm dark:bg-neutral-800 dark:text-neutral-100"
+          className="self-end rounded-2xl rounded-tr-sm bg-neutral-100 px-4 py-2 text-xs text-neutral-900 shadow-xs dark:bg-neutral-800 dark:text-neutral-100"
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
@@ -31,7 +31,7 @@ export function AiAssistantDemo() {
         </motion.div>
         
         <motion.div 
-          className="self-start rounded-2xl rounded-tl-sm bg-white px-4 py-2 text-xs text-neutral-900 shadow-sm ring-1 ring-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-800"
+          className="self-start rounded-2xl rounded-tl-sm bg-white px-4 py-2 text-xs text-neutral-900 shadow-xs ring-1 ring-neutral-200 dark:bg-neutral-900 dark:text-neutral-100 dark:ring-neutral-800"
           initial={{ opacity: 0, y: 10, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
@@ -56,7 +56,7 @@ export function AiAssistantDemo() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent dark:from-[#0C0C0C]/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-white/20 to-transparent dark:from-[#0C0C0C]/20 pointer-events-none" />
     </div>
   )
 }
@@ -132,7 +132,7 @@ export function MusicPlayerDemo() {
           }}
           className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900 dark:bg-neutral-100 shadow-inner ring-4 ring-neutral-100 dark:ring-neutral-800"
         >
-          <div className="h-3 w-3 rounded-full bg-white dark:bg-neutral-900 shadow-sm" />
+          <div className="h-3 w-3 rounded-full bg-white dark:bg-neutral-900 shadow-xs" />
         </motion.div>
         
         <div className="flex-1 overflow-hidden">
@@ -265,7 +265,7 @@ export function TeamMembersDemo() {
   return (
     <div className="relative flex h-full min-h-[160px] items-center justify-center overflow-hidden">
        {/* Central Canvas Element */}
-       <div className="w-32 h-20 rounded-lg border-2 border-dashed border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-center shadow-sm">
+       <div className="w-32 h-20 rounded-lg border-2 border-dashed border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900/50 flex items-center justify-center shadow-xs">
          <div className="h-2 w-12 rounded bg-neutral-200 dark:bg-neutral-800" />
        </div>
        
@@ -276,7 +276,7 @@ export function TeamMembersDemo() {
          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
        >
          <MousePointer2 className="h-4 w-4 text-neutral-900 dark:text-neutral-100 fill-neutral-900 dark:fill-neutral-100 -rotate-12 drop-shadow-md" />
-         <div className="ml-3 mt-1 rounded bg-neutral-900 dark:bg-neutral-100 px-2 py-0.5 text-[9px] font-medium text-white dark:text-neutral-900 shadow-sm">Alice</div>
+         <div className="ml-3 mt-1 rounded bg-neutral-900 dark:bg-neutral-100 px-2 py-0.5 text-[9px] font-medium text-white dark:text-neutral-900 shadow-xs">Alice</div>
        </motion.div>
 
        {/* Cursor 2 */}
@@ -286,7 +286,7 @@ export function TeamMembersDemo() {
          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
        >
          <MousePointer2 className="h-4 w-4 text-neutral-500 dark:text-neutral-400 fill-neutral-500 dark:fill-neutral-400 -rotate-12 drop-shadow-md" />
-         <div className="ml-3 mt-1 rounded bg-neutral-500 dark:bg-neutral-400 px-2 py-0.5 text-[9px] font-medium text-white shadow-sm">Bob</div>
+         <div className="ml-3 mt-1 rounded bg-neutral-500 dark:bg-neutral-400 px-2 py-0.5 text-[9px] font-medium text-white shadow-xs">Bob</div>
        </motion.div>
     </div>
   )
@@ -296,7 +296,7 @@ export function TeamMembersDemo() {
 export function StorageDemo() {
   return (
     <div className="relative flex h-full min-h-[160px] items-center justify-center overflow-hidden">
-       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:16px_16px]" />
+       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[16px_16px]" />
        
        <div className="z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-900 text-white shadow-xl ring-4 ring-white dark:bg-neutral-100 dark:text-neutral-900 dark:ring-[#0C0C0C]">
          <Cloud className="h-7 w-7" />
@@ -307,7 +307,7 @@ export function StorageDemo() {
          animate={{ x: [0, 60], y: [0, -10], opacity: [0, 1, 0], scale: [0.6, 1, 0.4] }} 
          transition={{ duration: 2, repeat: Infinity, ease: "easeIn" }}
        >
-         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-sm ring-1 ring-neutral-200 dark:ring-neutral-700">
+         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-xs ring-1 ring-neutral-200 dark:ring-neutral-700">
            <FileText className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
          </div>
        </motion.div>
@@ -317,7 +317,7 @@ export function StorageDemo() {
          animate={{ x: [0, -60], y: [0, 20], opacity: [0, 1, 0], scale: [0.6, 1, 0.4] }} 
          transition={{ duration: 2.5, repeat: Infinity, ease: "easeIn", delay: 0.8 }}
        >
-         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-sm ring-1 ring-neutral-200 dark:ring-neutral-700">
+         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-xs ring-1 ring-neutral-200 dark:ring-neutral-700">
            <ImageIcon className="h-4 w-4 text-neutral-700 dark:text-neutral-300" />
          </div>
        </motion.div>
@@ -327,7 +327,7 @@ export function StorageDemo() {
          animate={{ x: [0, -40], y: [0, -30], opacity: [0, 1, 0], scale: [0.6, 1, 0.4] }} 
          transition={{ duration: 2.2, repeat: Infinity, ease: "easeIn", delay: 1.5 }}
        >
-         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-sm ring-1 ring-neutral-200 dark:ring-neutral-700">
+         <div className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-xs ring-1 ring-neutral-200 dark:ring-neutral-700">
            <Folder className="h-4 w-4 text-neutral-800 dark:text-neutral-200 fill-neutral-800/20 dark:fill-neutral-200/20" />
          </div>
        </motion.div>
@@ -367,7 +367,7 @@ export function ProgressDemo() {
 export function CalendarDemo() {
   return (
     <div className="flex h-full min-h-[160px] w-full items-center justify-center p-4">
-      <div className="relative w-full max-w-[180px] xl:max-w-[200px] overflow-hidden rounded-xl bg-white p-3 shadow-sm ring-1 ring-neutral-200 dark:bg-neutral-900 dark:ring-neutral-800">
+      <div className="relative w-full max-w-[180px] xl:max-w-[200px] overflow-hidden rounded-xl bg-white p-3 shadow-xs ring-1 ring-neutral-200 dark:bg-neutral-900 dark:ring-neutral-800">
         
         {/* Header */}
         <div className="mb-2 flex items-center justify-between text-xs font-semibold text-neutral-900 dark:text-neutral-100">
@@ -390,7 +390,7 @@ export function CalendarDemo() {
               hidden: { scale: 0.95, opacity: 0.8 },
               hover: { scale: 1, opacity: 1, x: 2 }
             }}
-            className="absolute left-[36px] right-2 top-[22px] z-10 flex h-[30px] flex-col justify-center overflow-hidden rounded-md bg-neutral-100 px-2 ring-1 ring-neutral-200 shadow-sm dark:bg-neutral-800 dark:ring-neutral-700"
+            className="absolute left-[36px] right-2 top-[22px] z-10 flex h-[30px] flex-col justify-center overflow-hidden rounded-md bg-neutral-100 px-2 ring-1 ring-neutral-200 shadow-xs dark:bg-neutral-800 dark:ring-neutral-700"
           >
              <div className="text-[8px] font-bold text-neutral-900 dark:text-neutral-100">Design Sync</div>
              <div className="text-[7px] text-neutral-500">09:30 - 10:30</div>

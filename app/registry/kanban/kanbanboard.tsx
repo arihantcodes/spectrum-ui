@@ -182,7 +182,7 @@ export default function KanbanBoard() {
               {column.tasks.map((task) => (
                 <Card
                   key={task.id}
-                  className="cursor-move transition-all duration-300 border bg-white/60 dark:bg-neutral-800/60 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-neutral-700/70"
+                  className="cursor-move transition-all duration-300 border bg-white/60 dark:bg-neutral-800/60 backdrop-blur-xs hover:bg-white/70 dark:hover:bg-neutral-700/70"
                   draggable
                   onDragStart={(e) => handleDragStart(e, task, column.id)}
                 >
@@ -206,7 +206,7 @@ export default function KanbanBoard() {
                           {task.tags.map((tag) => (
                             <Badge
                               key={tag}
-                              className="text-xs bg-neutral-100/60 dark:bg-neutral-700/60 text-neutral-800 dark:text-neutral-200 border-neutral-200/50 dark:border-neutral-600/50 backdrop-blur-sm"
+                              className="text-xs bg-neutral-100/60 dark:bg-neutral-700/60 text-neutral-800 dark:text-neutral-200 border-neutral-200/50 dark:border-neutral-600/50 backdrop-blur-xs"
                             >
                               {tag}
                             </Badge>

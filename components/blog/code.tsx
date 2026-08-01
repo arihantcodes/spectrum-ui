@@ -23,8 +23,8 @@ export async function Code({
   });
 
   return (
-    <figure className="not-typeset blog-code group mt-7 overflow-hidden rounded-xl bg-black/[0.02] shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:bg-white/[0.03] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
-      <figcaption className="flex h-10 items-center justify-between gap-3 border-b border-black/[0.05] pl-4 pr-2 dark:border-white/[0.06]">
+    <figure className="not-typeset blog-code group mt-7 overflow-hidden rounded-xl bg-black/2 shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:bg-white/3 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+      <figcaption className="flex h-10 items-center justify-between gap-3 border-b border-black/5 pl-4 pr-2 dark:border-white/6">
         <span className="truncate font-mono text-[12px] text-neutral-500 dark:text-neutral-400">
           {filename ?? lang}
         </span>

@@ -592,7 +592,7 @@ export default function HomeCardCollection() {
               <Label htmlFor="feedback">Your feedback</Label>
               <textarea
                 id="feedback"
-                className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 placeholder="Tell us what you think..."
               />
             </div>
@@ -1365,11 +1365,11 @@ function QuickNoteCard() {
   ];
 
   return (
-    <div className="max-w-screen-xl mx-auto columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
+    <div className="max-w-(--breakpoint-xl) mx-auto columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4">
       {cardComponents.map(({ name, component: CardComponent, code }, index) => (
         <div
           key={name}
-          className={`relative break-inside-avoid mb-4 justify-center group [&_.w-\\[310px\\]]:w-full [&_.w-\\[310px\\]]:sm:w-full sm:w-[310px] ${index >= 10 ? 'hidden sm:flex' : 'flex'}`}
+          className={`relative break-inside-avoid mb-4 justify-center group *:w-full sm:*:w-full sm:w-[310px] ${index >= 10 ? 'hidden sm:flex' : 'flex'}`}
         >
           <CardComponent />
           <div className="absolute top-1 right-5 hidden group-hover:flex">
@@ -1784,7 +1784,7 @@ export function FeedbackCard() {
             <Label htmlFor="feedback">Your feedback</Label>
             <textarea
               id="feedback"
-              className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               placeholder="Tell us what you think..."
             />
           </div>

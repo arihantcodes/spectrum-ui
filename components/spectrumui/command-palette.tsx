@@ -257,7 +257,7 @@ export function CommandPalette({ isOpen, onClose, className }: CommandPalettePro
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-neutral-950/20 dark:bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-neutral-950/20 dark:bg-black/40 backdrop-blur-xs"
           />
 
           {/* Palette Dialog Box */}
@@ -281,7 +281,7 @@ export function CommandPalette({ isOpen, onClose, className }: CommandPalettePro
                 placeholder="Type a command or search..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="flex-1 bg-transparent border-0 outline-none text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:ring-0 focus:outline-none"
+                className="flex-1 bg-transparent border-0 outline-hidden text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 focus:ring-0 focus:outline-hidden"
               />
               <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border px-1.5 font-mono text-[9px] font-medium opacity-60 text-neutral-500 bg-neutral-100/50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 ESC

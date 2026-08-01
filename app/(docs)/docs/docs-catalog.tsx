@@ -27,10 +27,10 @@ const sortedComponents = [...allComponents].sort((a, b) =>
 /** One table cell — component name only, used in both browse and search views */
 function ComponentRow({ item }: { item: ComponentItem }) {
   return (
-    <div className="group relative border-b border-r border-black/[0.06] dark:border-white/[0.08]">
+    <div className="group relative border-b border-r border-black/6 dark:border-white/8">
       <Link
         href={item.href}
-        className="flex h-11 items-center justify-center gap-1.5 px-4 text-sm font-medium leading-5 text-[#404040] antialiased transition-colors duration-150 hover:bg-black/[0.02] hover:text-[#171717] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/20 dark:text-neutral-300 dark:hover:bg-white/[0.04] dark:hover:text-neutral-50 dark:focus-visible:ring-white/30"
+        className="flex h-11 items-center justify-center gap-1.5 px-4 text-sm font-medium leading-5 text-[#404040] antialiased transition-colors duration-150 hover:bg-black/2 hover:text-[#171717] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black/20 dark:text-neutral-300 dark:hover:bg-white/4 dark:hover:text-neutral-50 dark:focus-visible:ring-white/30"
       >
         <span className="truncate">{item.name}</span>
         {/* Negative margin cancels the arrow's footprint so the name stays truly centered */}
@@ -97,14 +97,14 @@ export function DocsCatalog() {
               if (e.key === 'Escape') setSearchQuery('');
             }}
             placeholder="Search components..."
-            className="h-10 w-full rounded-[10px] border border-black/[0.08] bg-white pl-9 pr-9 text-sm text-[#262626] outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-[#a3a3a3] hover:border-black/[0.14] focus:border-black/[0.18] focus:shadow-[0_0_0_3px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:hover:border-white/20 dark:focus:border-white/25 dark:focus:shadow-[0_0_0_3px_rgba(255,255,255,0.06)]"
+            className="h-10 w-full rounded-[10px] border border-black/8 bg-white pl-9 pr-9 text-sm text-[#262626] outline-hidden transition-[border-color,box-shadow] duration-150 placeholder:text-[#a3a3a3] hover:border-black/[0.14] focus:border-black/18 focus:shadow-[0_0_0_3px_rgba(0,0,0,0.04)] dark:border-white/10 dark:bg-white/2 dark:text-neutral-100 dark:placeholder:text-neutral-500 dark:hover:border-white/20 dark:focus:border-white/25 dark:focus:shadow-[0_0_0_3px_rgba(255,255,255,0.06)]"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
               aria-label="Clear search"
-              className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-[#a3a3a3] transition-colors duration-150 hover:bg-black/[0.04] hover:text-[#262626] dark:text-neutral-500 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+              className="absolute right-2 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-md text-[#a3a3a3] transition-colors duration-150 hover:bg-black/4 hover:text-[#262626] dark:text-neutral-500 dark:hover:bg-white/6 dark:hover:text-neutral-200"
             >
               <X className="h-3.5 w-3.5" />
             </button>
@@ -128,7 +128,7 @@ export function DocsCatalog() {
             <Link
               key={hub.slug}
               href={topicHubPath(hub.slug)}
-              className="group flex min-h-12 items-center justify-between gap-3 rounded-[10px] border border-black/[0.08] bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-200 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+              className="group flex min-h-12 items-center justify-between gap-3 rounded-[10px] border border-black/8 bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/2 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/2 dark:text-neutral-200 dark:hover:bg-white/5 dark:focus-visible:ring-white/30"
             >
               {hub.label}
               <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -153,8 +153,8 @@ export function DocsCatalog() {
       {query ? (
         /* ---------- Search results ---------- */
         results.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-[14px] border border-dashed border-black/[0.12] py-24 text-center dark:border-white/15">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/[0.04] dark:bg-white/[0.06]">
+          <div className="flex flex-col items-center justify-center rounded-[14px] border border-dashed border-black/12 py-24 text-center dark:border-white/15">
+            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/4 dark:bg-white/6">
               <ComponentIcon className="h-5 w-5 text-[#a3a3a3] dark:text-neutral-500" />
             </div>
             <p className="text-sm font-medium text-[#262626] dark:text-neutral-100">
@@ -166,7 +166,7 @@ export function DocsCatalog() {
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="mt-5 h-8 rounded-[10px] border border-black/[0.08] bg-white px-3 text-[13px] font-medium text-[#262626] transition-all duration-150 hover:border-black/[0.16] hover:bg-black/[0.02] active:scale-[0.98] dark:border-white/10 dark:bg-white/[0.02] dark:text-neutral-100 dark:hover:border-white/20 dark:hover:bg-white/[0.05]"
+              className="mt-5 h-8 rounded-[10px] border border-black/8 bg-white px-3 text-[13px] font-medium text-[#262626] transition-all duration-150 hover:border-black/16 hover:bg-black/2 active:scale-[0.98] dark:border-white/10 dark:bg-white/2 dark:text-neutral-100 dark:hover:border-white/20 dark:hover:bg-white/5"
             >
               Clear search
             </button>
@@ -177,7 +177,7 @@ export function DocsCatalog() {
               {results.length} result{results.length !== 1 ? 's' : ''} for &ldquo;{searchQuery}
               &rdquo;
             </p>
-            <div className="overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-white/[0.02]">
+            <div className="overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-white/2">
               <div className="overflow-hidden">
                 <div className="-mb-px -mr-px grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                   {results.map((c) => (
@@ -191,7 +191,7 @@ export function DocsCatalog() {
       ) : (
         /* ---------- Browse: one flat table, three centered names per row ---------- */
         <div
-          className="animate-fade-up overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-white/[0.02]"
+          className="animate-fade-up overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-white/2"
           style={{ animationDelay: '120ms' }}
         >
           {/* -mr/-mb tuck the outermost cell borders under the container edge */}

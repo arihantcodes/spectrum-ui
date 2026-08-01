@@ -207,7 +207,7 @@ export function KbdKey({
     return () => {
       window.removeEventListener("keydown", handleKeyDown)
       window.removeEventListener("keyup", handleKeyUp)
-      window.removeEventListener("blur", handleBlur)
+      window.removeEventListener("blur-sm", handleBlur)
     }
   }, [listen, resolvedKeyName, press, release])
 
@@ -262,7 +262,7 @@ export function KbdKey({
       onKeyUp={(event) => {
         if (event.key === "Enter" || event.key === " ") release()
       }}
-      className="inline-flex rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300"
+      className="inline-flex rounded-md focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300"
     >
       {cap}
     </button>
@@ -349,7 +349,7 @@ export function KbdCombo({
     return () => {
       window.removeEventListener("keydown", handleKeyDown)
       window.removeEventListener("keyup", handleKeyUp)
-      window.removeEventListener("blur", handleBlur)
+      window.removeEventListener("blur-sm", handleBlur)
     }
   }, [keys, listen, shouldReduceMotion, controls])
 

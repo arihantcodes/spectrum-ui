@@ -131,7 +131,7 @@ export default function InputModel() {
         <CardContent className="p-4 sm:p-6 lg:p-8 h-full overflow-y-auto">
           <div className="flex items-start justify-between mb-6">
             <div className="flex gap-3 sm:gap-4 flex-1">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-neutral-800 dark:bg-neutral-700 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-neutral-800 dark:bg-neutral-700 rounded-2xl flex items-center justify-center shrink-0">
                 <Headphones className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -148,7 +148,7 @@ export default function InputModel() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 -mt-2 -mr-2 flex-shrink-0"
+              className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-500 dark:hover:text-neutral-300 -mt-2 -mr-2 shrink-0"
             >
               <X className="w-5 h-5" />
             </Button>

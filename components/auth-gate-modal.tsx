@@ -89,7 +89,7 @@ export function AuthGateModal() {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
       <DialogContent
-        className="w-[calc(100vw-2rem)] gap-0 overflow-hidden border-border/60 bg-background p-0 shadow-[0_1px_2px_rgba(0,0,0,0.08),0_24px_64px_-24px_rgba(0,0,0,0.35)] sm:max-w-[420px] sm:rounded-[22px] dark:border-white/[0.08] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_40px_120px_-40px_rgba(0,0,0,0.9)]"
+        className="w-[calc(100vw-2rem)] gap-0 overflow-hidden border-border/60 bg-background p-0 shadow-[0_1px_2px_rgba(0,0,0,0.08),0_24px_64px_-24px_rgba(0,0,0,0.35)] sm:max-w-[420px] sm:rounded-[22px] dark:border-white/8 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_40px_120px_-40px_rgba(0,0,0,0.9)]"
         aria-describedby="auth-gate-description"
       >
         {/* Ambient glow — same neutral, materials-first language as the auth
@@ -106,12 +106,12 @@ export function AuthGateModal() {
               <Icons.logo className="size-full text-background" />
             </span>
 
-            <DialogTitle className="mt-5 font-spectral text-[24px] font-normal leading-[1.1] tracking-tighter text-foreground [text-wrap:balance]">
+            <DialogTitle className="mt-5 font-spectral text-[24px] font-normal leading-[1.1] tracking-tighter text-foreground text-balance">
               Create your free account
             </DialogTitle>
             <DialogDescription
               id="auth-gate-description"
-              className="mx-auto mt-2 max-w-[19rem] text-[15px] leading-relaxed text-muted-foreground"
+              className="mx-auto mt-2 max-w-76 text-[15px] leading-relaxed text-muted-foreground"
             >
               Instant access to component code, CLI commands, and more.
             </DialogDescription>
@@ -130,7 +130,7 @@ export function AuthGateModal() {
                 key={text}
                 className="flex items-center gap-3 rounded-xl px-1 py-1.5 text-[14px] text-foreground/80"
               >
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black/[0.045] text-foreground shadow-[0_0_0_1px_hsl(var(--border))] dark:bg-white/[0.07] dark:text-foreground dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-black/4.5 text-foreground shadow-[0_0_0_1px_hsl(var(--border))] dark:bg-white/[0.07] dark:text-foreground dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]">
                   <Icon className="size-4" strokeWidth={1.75} />
                 </span>
                 <span>{text}</span>
@@ -197,14 +197,14 @@ function ProviderButton({
       type="button"
       aria-busy={busy}
       className={cn(
-        'flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-6 text-[15px] font-medium outline-none',
+        'flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-6 text-[15px] font-medium outline-hidden',
         'transition-[transform,background-color,box-shadow,opacity] duration-150 ease-out',
         'active:scale-[0.98]',
         'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         'disabled:cursor-wait disabled:opacity-60 disabled:active:scale-100',
         variant === 'primary'
           ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3),0_8px_24px_-8px_rgba(0,0,0,0.4)] dark:shadow-[0_0_28px_rgba(255,255,255,0.22),0_1px_3px_rgba(0,0,0,0.5)]'
-          : 'bg-black/[0.045] text-foreground shadow-[0_0_0_1px_hsl(var(--border))] hover:bg-black/[0.08] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/[0.1]',
+          : 'bg-black/4.5 text-foreground shadow-[0_0_0_1px_hsl(var(--border))] hover:bg-black/8 dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/10',
         className,
       )}
       {...props}

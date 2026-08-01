@@ -83,12 +83,12 @@ const PackageChip = ({ cli, componentName, className }: PackageChipProps) => {
   return (
     <div
       className={cn(
-        "flex h-8 min-w-0 items-center gap-1 rounded-lg bg-[#f3f3f3] p-0.5 dark:bg-white/[0.06]",
+        "flex h-8 min-w-0 items-center gap-1 rounded-lg bg-[#f3f3f3] p-0.5 dark:bg-white/6",
         className,
       )}
     >
       {/* npm slug + copy + package-manager chevron */}
-      <div className="flex h-7 min-w-0 items-center rounded-[7px] border border-black/[0.05] bg-white pl-1.5 pr-1 dark:border-white/[0.06] dark:bg-neutral-900">
+      <div className="flex h-7 min-w-0 items-center rounded-[7px] border border-black/5 bg-white pl-1.5 pr-1 dark:border-white/6 dark:bg-neutral-900">
         <NpmIcon className="size-5 shrink-0" />
         <span className="ml-1.5 truncate font-mono text-xs leading-5 text-black/60 dark:text-white/60">
           {cli}
@@ -119,7 +119,7 @@ const PackageChip = ({ cli, componentName, className }: PackageChipProps) => {
               <ChevronDown className="size-3.5" />
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="min-w-[8rem]">
+          <DropdownMenuContent align="end" className="min-w-32">
             {PACKAGE_MANAGERS.map((p) => (
               <DropdownMenuItem
                 key={p.id}

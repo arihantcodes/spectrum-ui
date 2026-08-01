@@ -8,7 +8,7 @@ export function InlineCode({
   return (
     <code
       className={cn(
-        "relative inline-flex items-center rounded-md bg-black/[0.05] px-[6px] py-[2px] font-mono text-[12.5px] font-normal leading-[18px] text-neutral-700 dark:bg-white/[0.09] dark:text-neutral-300",
+        "relative inline-flex items-center rounded-md bg-black/5 px-[6px] py-[2px] font-mono text-[12.5px] font-normal leading-[18px] text-neutral-700 dark:bg-white/9 dark:text-neutral-300",
         className,
       )}
       {...props}

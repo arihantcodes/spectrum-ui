@@ -48,7 +48,7 @@ export default function DocsPager() {
       {previous ? (
         <Link
           href={previous.url}
-          className="group flex flex-col rounded-lg border border-[#e5e5e5] px-3 py-3 transition-colors hover:bg-black/[0.02] dark:border-neutral-800 dark:hover:bg-white/[0.03]"
+          className="group flex flex-col rounded-lg border border-[#e5e5e5] px-3 py-3 transition-colors hover:bg-black/2 dark:border-neutral-800 dark:hover:bg-white/3"
         >
           <span className="flex items-center text-sm leading-5 text-[#737373] dark:text-neutral-400">
             <ChevronLeftIcon className="-ml-1 size-4 transition-transform group-hover:-translate-x-0.5" />
@@ -64,7 +64,7 @@ export default function DocsPager() {
       {next ? (
         <Link
           href={next.url}
-          className="group flex flex-col items-end rounded-lg border border-[#e5e5e5] px-3 py-3 text-right transition-colors hover:bg-black/[0.02] dark:border-neutral-800 dark:hover:bg-white/[0.03] sm:col-start-2"
+          className="group flex flex-col items-end rounded-lg border border-[#e5e5e5] px-3 py-3 text-right transition-colors hover:bg-black/2 dark:border-neutral-800 dark:hover:bg-white/3 sm:col-start-2"
         >
           <span className="flex items-center text-sm leading-5 text-[#737373] dark:text-neutral-400">
             Next

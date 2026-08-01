@@ -24,7 +24,7 @@ export function SiteHeader() {
         <div className="relative flex-1 max-w-sm cursor-pointer">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" aria-hidden="true" />
           <Input
-            className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm dark:bg-neutral-900"
+            className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-xs dark:bg-neutral-900"
             placeholder="Search anything here..."
             type="search"
             aria-label="Search dashboard"

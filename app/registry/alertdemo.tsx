@@ -19,7 +19,7 @@ export default function Alertdemo({ className }: Alert04Props) {
       <Alert
         className={cn(
           "relative overflow-hidden",
-          "bg-gradient-to-b from-violet-50 to-white",
+          "bg-linear-to-b from-violet-50 to-white",
           "dark:from-violet-950/20 dark:to-zinc-950",
           "border border-violet-100 dark:border-violet-900/50",
           "shadow-[0_1px_6px_0_rgba(139,92,246,0.06)]",
@@ -40,7 +40,7 @@ export default function Alertdemo({ className }: Alert04Props) {
             <div
               className={cn(
                 "p-2.5 rounded-xl",
-                "bg-gradient-to-br from-fuchsia-500 via-violet-500 to-indigo-500",
+                "bg-linear-to-br from-fuchsia-500 via-violet-500 to-indigo-500",
                 "dark:from-fuchsia-600 dark:via-violet-600 dark:to-indigo-600",
               )}
             >
@@ -92,7 +92,7 @@ export default function Alertdemo({ className }: Alert04Props) {
             className={cn(
               "text-[11px] font-medium",
               "px-2.5 py-0.5 rounded-full",
-              "bg-gradient-to-r from-fuchsia-500/10 via-violet-500/10 to-indigo-500/10",
+              "bg-linear-to-r from-fuchsia-500/10 via-violet-500/10 to-indigo-500/10",
               "dark:from-fuchsia-500/20 dark:via-violet-500/20 dark:to-indigo-500/20",
               "text-violet-700 dark:text-violet-200",
               "ring-1 ring-violet-500/20 dark:ring-violet-400/20",

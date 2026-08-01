@@ -287,7 +287,7 @@ export function FaceRating({
               transition={shouldReduceMotion ? { duration: 0 } : SPRING_SNAPPY}
               className={cn(
                 "relative inline-flex touch-manipulation select-none items-center justify-center rounded-full border font-medium tabular-nums transition-colors",
-                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+                "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
                 sizes.segment,
                 isActive
                   ? "border-transparent"

@@ -199,7 +199,7 @@ export function BlogHighlighter({
             onMouseDown={(e) => e.preventDefault()}
             onClick={addHighlight}
             style={{ left: toolbar.x, top: toolbar.y }}
-            className="fixed z-[60] flex -translate-x-1/2 -translate-y-[calc(100%+10px)] items-center gap-1.5 rounded-full bg-neutral-900 px-3 py-1.5 text-[12px] font-medium text-white shadow-[0_6px_20px_-6px_rgba(0,0,0,0.5)] transition-transform duration-100 ease-out active:scale-95 dark:bg-white dark:text-neutral-900"
+            className="fixed z-60 flex -translate-x-1/2 -translate-y-[calc(100%+10px)] items-center gap-1.5 rounded-full bg-neutral-900 px-3 py-1.5 text-[12px] font-medium text-white shadow-[0_6px_20px_-6px_rgba(0,0,0,0.5)] transition-transform duration-100 ease-out active:scale-95 dark:bg-white dark:text-neutral-900"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path

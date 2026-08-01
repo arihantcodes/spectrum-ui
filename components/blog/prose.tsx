@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 /** Soft aside for a tip or rule of thumb — one per post, at most. */
 export function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <aside className="not-typeset mt-7 rounded-xl bg-black/[0.03] px-5 py-4 text-[15px] leading-[1.7] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.04)] dark:bg-white/[0.05] dark:text-neutral-300 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
+    <aside className="not-typeset mt-7 rounded-xl bg-black/3 px-5 py-4 text-[15px] leading-[1.7] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.04)] dark:bg-white/5 dark:text-neutral-300 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
       {children}
     </aside>
   );
@@ -38,7 +38,7 @@ export function Figure({
     <figure className="not-typeset mt-7">
       <div
         className={cn(
-          'flex min-h-[180px] items-center justify-center overflow-hidden rounded-2xl bg-black/[0.02] px-6 py-10 shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:bg-white/[0.03] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]',
+          'flex min-h-[180px] items-center justify-center overflow-hidden rounded-2xl bg-black/2 px-6 py-10 shadow-[0_0_0_1px_rgba(0,0,0,0.06)] dark:bg-white/3 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]',
           className,
         )}
       >

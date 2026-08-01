@@ -11,7 +11,7 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 function showCopyToast(color: Color, value: string) {
   toast.custom(
     () => (
-      <div className="flex w-full items-center gap-3 rounded-xl border border-border bg-background/95 py-3 pl-3 pr-4 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.04),0px_4px_12px_0px_rgba(0,0,0,0.08)] backdrop-blur">
+      <div className="flex w-full items-center gap-3 rounded-xl border border-border bg-background/95 py-3 pl-3 pr-4 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.04),0px_4px_12px_0px_rgba(0,0,0,0.08)] backdrop-blur-sm">
         <span
           aria-hidden
           className="h-9 w-9 shrink-0 rounded-lg ring-1 ring-inset ring-black/10 dark:ring-white/15"
@@ -39,7 +39,7 @@ export function Color({ color }: { color: Color }) {
 
   return (
     <button
-      className="group relative h-full min-w-0 flex-1 outline-none transition-all duration-300 ease-out hover:flex-[2.2] focus-visible:z-10 focus-visible:flex-[2.2] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current"
+      className="group relative h-full min-w-0 flex-1 outline-hidden transition-all duration-300 ease-out hover:flex-[2.2] focus-visible:z-10 focus-visible:flex-[2.2] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current"
       style={{
         backgroundColor: `hsl(${color.hsl})`,
         color: color.foreground,

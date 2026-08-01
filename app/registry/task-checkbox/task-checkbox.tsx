@@ -160,7 +160,7 @@ export function TaskCheckbox({
         transition={MICRO_SPRING}
         className={cn(
           "relative flex shrink-0 items-center justify-center rounded-md",
-          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+          "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
           sizes.hit,
         )}
       >

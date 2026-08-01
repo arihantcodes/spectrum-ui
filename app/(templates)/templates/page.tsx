@@ -44,7 +44,7 @@ export default function TemplatesIndexPage() {
             <Search className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
             <Input
               placeholder="Search templates..."
-              className="pl-10 h-11 text-base bg-background shadow-sm"
+              className="pl-10 h-11 text-base bg-background shadow-xs"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -74,7 +74,7 @@ export default function TemplatesIndexPage() {
                         </>
                       ) : (
                         <>
-                          <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#334155_1px,transparent_1px)] bg-size-[16px_16px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                           <LayoutIcon className="relative z-10 h-8 w-8 text-neutral-400 dark:text-neutral-600 transition-all duration-300 group-hover:scale-125 group-hover:text-foreground" />
                         </>
                       )}
@@ -92,7 +92,7 @@ export default function TemplatesIndexPage() {
                     slug={slug}
                     type="template"
                     title={template.name}
-                    className="bg-background/80 backdrop-blur-sm border border-border/50 shadow-sm"
+                    className="bg-background/80 backdrop-blur-xs border border-border/50 shadow-xs"
                   />
                 </div>
               </div>

@@ -6,7 +6,7 @@ import Component from "@/models/components.model";
 // reqBody: { id: string, status: string }
 // status: pending, approved, rejected
 
-export async function PATCH(req: NextRequest, res: NextResponse) {
+export async function PATCH(req: NextRequest) {
   const email = req.nextUrl.searchParams.get("email");
   const password = req.nextUrl.searchParams.get("password");
 

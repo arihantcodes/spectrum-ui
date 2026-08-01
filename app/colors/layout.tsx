@@ -11,7 +11,7 @@ export default function ColorsLayout({
   return (
     <>
       <div className="container-frame border-b border-border">
-        <section className="relative z-[3] flex flex-col items-center justify-center gap-3 px-4 py-16 text-center sm:py-24">
+        <section className="relative z-3 flex flex-col items-center justify-center gap-3 px-4 py-16 text-center sm:py-24">
           <AnimateEnter delay={0.1} duration={1} isWhileInView={false}>
             <span className="flex items-center gap-2.5">
               <span

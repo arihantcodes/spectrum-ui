@@ -209,7 +209,7 @@ function MobileNavSection({
   return (
     <Collapsible open={open} onOpenChange={setOpen} className="space-y-2">
       {section.title && (
-        <CollapsibleTrigger className="flex w-full items-center justify-between rounded-md px-2 py-1 text-left outline-none hover:bg-secondary/50">
+        <CollapsibleTrigger className="flex w-full items-center justify-between rounded-md px-2 py-1 text-left outline-hidden hover:bg-secondary/50">
           <h4 className="font-medium text-sm text-muted-foreground">{section.title}</h4>
           {open ? (
             <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />

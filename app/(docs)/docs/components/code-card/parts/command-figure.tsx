@@ -95,7 +95,7 @@ const CommandFigure = ({
     return (
       <div
         className={cn(
-          'flex w-full flex-col items-center rounded-[14px] border border-black/[0.08] bg-white px-6 py-6 dark:border-white/10 dark:bg-neutral-950',
+          'flex w-full flex-col items-center rounded-[14px] border border-black/8 bg-white px-6 py-6 dark:border-white/10 dark:bg-neutral-950',
           className,
         )}
       >
@@ -124,11 +124,11 @@ const CommandFigure = ({
   return (
     <figure
       className={cn(
-        'relative overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-neutral-950',
+        'relative overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-neutral-950',
         className,
       )}
     >
-      <div className="flex h-[41px] items-center gap-2 border-b border-black/[0.05] px-4 dark:border-white/[0.06]">
+      <div className="flex h-[41px] items-center gap-2 border-b border-black/5 px-4 dark:border-white/6">
         <ShadcnIcon className="size-4 shrink-0 text-[#262626] dark:text-neutral-200" />
         {withPmTabs && (
           <div className="flex items-center">
@@ -140,7 +140,7 @@ const CommandFigure = ({
                 className={cn(
                   'h-8 rounded-[10px] px-2.5 text-sm leading-5 transition-colors',
                   pm === p.id
-                    ? 'bg-black/[0.04] text-[#262626] dark:bg-white/[0.08] dark:text-neutral-100'
+                    ? 'bg-black/4 text-[#262626] dark:bg-white/8 dark:text-neutral-100'
                     : 'text-[#686868]/70 hover:text-[#262626] dark:text-neutral-500 dark:hover:text-neutral-200',
                 )}
               >
@@ -153,7 +153,7 @@ const CommandFigure = ({
           type="button"
           onClick={handleCopy}
           aria-label="Copy command"
-          className="ml-auto flex size-8 items-center justify-center rounded-[10px] opacity-70 transition hover:bg-black/[0.04] hover:opacity-100 dark:hover:bg-white/[0.06]"
+          className="ml-auto flex size-8 items-center justify-center rounded-[10px] opacity-70 transition hover:bg-black/4 hover:opacity-100 dark:hover:bg-white/6"
         >
           {copied ? (
             <Check className="size-4 text-emerald-600 dark:text-emerald-400" />

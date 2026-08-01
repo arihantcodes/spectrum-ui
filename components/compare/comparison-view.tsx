@@ -116,7 +116,7 @@ export function ComparisonView({
               {...reveal(reduce, 0.06)}
               className="border-l-2 border-[#f9452d] pl-5 dark:border-[#E1F435]"
             >
-              <div className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[#f9452d] dark:text-[#E1F435]">
+              <div className="font-mono text-[11px] font-medium uppercase tracking-widest text-[#f9452d] dark:text-[#E1F435]">
                 Spectrum UI
               </div>
               <p className="mt-2.5 font-inter text-[14.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/78 dark:text-neutral-300">
@@ -127,7 +127,7 @@ export function ComparisonView({
               {...reveal(reduce, 0.12)}
               className="border-l-2 border-border pl-5"
             >
-              <div className="font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-[#080808]/55 dark:text-neutral-400">
+              <div className="font-mono text-[11px] font-medium uppercase tracking-widest text-[#080808]/55 dark:text-neutral-400">
                 {data.competitor}
               </div>
               <p className="mt-2.5 font-inter text-[14.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/62 dark:text-neutral-400">
@@ -155,7 +155,7 @@ export function ComparisonView({
                   <th className="w-1/2 pb-4 pr-4 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#080808]/45 dark:text-neutral-500">
                     Feature
                   </th>
-                  <th className="w-[26%] rounded-t-xl border-t-2 border-[#f9452d] bg-[#f9452d]/[0.05] px-5 pb-4 pt-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f9452d] dark:border-[#E1F435] dark:bg-[#E1F435]/[0.06] dark:text-[#E1F435]">
+                  <th className="w-[26%] rounded-t-xl border-t-2 border-[#f9452d] bg-[#f9452d]/5 px-5 pb-4 pt-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.08em] text-[#f9452d] dark:border-[#E1F435] dark:bg-[#E1F435]/6 dark:text-[#E1F435]">
                     Spectrum UI
                   </th>
                   <th className="w-[26%] px-5 pb-4 pt-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-[#080808]/45 dark:text-neutral-500">
@@ -176,7 +176,7 @@ export function ComparisonView({
                       </th>
                       <td
                         className={cn(
-                          "border-t border-[#f9452d]/12 bg-[#f9452d]/[0.05] px-5 py-4 align-middle dark:border-[#E1F435]/12 dark:bg-[#E1F435]/[0.06]",
+                          "border-t border-[#f9452d]/12 bg-[#f9452d]/5 px-5 py-4 align-middle dark:border-[#E1F435]/12 dark:bg-[#E1F435]/6",
                           last && "rounded-b-xl"
                         )}
                       >
@@ -221,7 +221,7 @@ export function ComparisonView({
             <ul className="mt-6 space-y-4">
               {data.chooseCompetitor.map((item) => (
                 <li key={item} className="flex gap-3.5">
-                  <span className="mt-[3px] inline-flex size-[18px] shrink-0 items-center justify-center rounded-full bg-black/[0.05] text-[#080808]/45 dark:bg-white/[0.06] dark:text-neutral-500">
+                  <span className="mt-[3px] inline-flex size-[18px] shrink-0 items-center justify-center rounded-full bg-black/5 text-[#080808]/45 dark:bg-white/6 dark:text-neutral-500">
                     <Check className="size-[11px]" strokeWidth={3} />
                   </span>
                   <span className="font-inter text-[14.5px] leading-[1.55] tracking-[-0.2px] text-[#080808]/72 dark:text-neutral-300">
@@ -283,7 +283,7 @@ export function ComparisonView({
               </a>
             </div>
           </motion.div>
-          <p className="mt-14 max-w-[60ch] font-inter text-[12px] leading-[1.5] text-[#080808]/40 dark:text-neutral-600">
+          <p className="mt-14 max-w-[60ch] font-inter text-[12px] leading-normal text-[#080808]/40 dark:text-neutral-600">
             Comparison based on publicly available information, last reviewed{" "}
             {reviewedLabel}. Details for {data.competitor} may change — verify
             current features on their site.

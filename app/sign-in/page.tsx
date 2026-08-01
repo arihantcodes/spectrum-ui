@@ -11,11 +11,12 @@ export const metadata: Metadata = createNoIndexMetadata({
   path: '/sign-in',
 });
 
-export default async function SignInPage({
-  searchParams,
-}: {
-  searchParams: { callbackUrl?: string; mode?: string };
-}) {
+export default async function SignInPage(
+  props: {
+    searchParams: Promise<{ callbackUrl?: string; mode?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const callbackUrl = searchParams.callbackUrl ?? '/';
 
   // Keep old bookmarked links working while giving account creation its own

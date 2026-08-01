@@ -10,7 +10,7 @@ export default function Alert03() {
       animate={{ opacity: 1, y: 0 }}
       className="w-full max-w-sm mx-auto"
     >
-      <div className="relative overflow-hidden rounded-lg border border-emerald-200/30 bg-emerald-50/50 dark:bg-emerald-950/20 dark:border-emerald-800/30 p-4 shadow-sm">
+      <div className="relative overflow-hidden rounded-lg border border-emerald-200/30 bg-emerald-50/50 dark:bg-emerald-950/20 dark:border-emerald-800/30 p-4 shadow-xs">
         <div className="flex items-center gap-3">
           <motion.div
             initial={{ scale: 0.5 }}
@@ -39,7 +39,7 @@ export default function Alert03() {
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          className="absolute inset-0 z-10 pointer-events-none bg-linear-to-r from-transparent via-white/20 to-transparent"
         />
       </div>
     </motion.div>

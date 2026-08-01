@@ -217,7 +217,7 @@ export const AnimatedDrawer = () => {
           <Drawer.Overlay className="fixed inset-0 bg-black/40" onClick={() => setIsOpen(false)} />
           <Drawer.Content
             asChild
-            className="fixed inset-x-4 bottom-4 z-10 mx-auto h-64 max-w-[361px] overflow-hidden rounded-[36px] bg-white dark:bg-neutral-900 outline-none md:mx-auto md:w-full"
+            className="fixed inset-x-4 bottom-4 z-10 mx-auto h-64 max-w-[361px] overflow-hidden rounded-[36px] bg-white dark:bg-neutral-900 outline-hidden md:mx-auto md:w-full"
           >
             <motion.div animate={{ height: bounds.height }}>
               <div className="p-6" ref={elementRef}>

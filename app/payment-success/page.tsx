@@ -12,11 +12,11 @@ export const metadata: Metadata = createNoIndexMetadata({
 })
 
 interface PaymentSuccessPageProps {
-  searchParams: {
+  searchParams: Promise<{
     payment_id?: string
     status?: string
     email?: string
-  }
+  }>
 }
 
 function FailedPaymentView({ paymentId }: { paymentId?: string }) {
@@ -96,9 +96,8 @@ function ProcessingPaymentView({ paymentId }: { paymentId?: string }) {
   )
 }
 
-export default async function PaymentSuccessPage({
-  searchParams,
-}: PaymentSuccessPageProps) {
+export default async function PaymentSuccessPage(props: PaymentSuccessPageProps) {
+  const searchParams = await props.searchParams;
   const paymentId = searchParams.payment_id
   const email = searchParams.email
     ? decodeURIComponent(searchParams.email)
@@ -182,7 +181,7 @@ export default async function PaymentSuccessPage({
         <div
           className="bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222]
           rounded-xl p-5 mb-6 text-left
-          shadow-sm dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)]"
+          shadow-xs dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)]"
         >
           <p className="text-xs text-muted-foreground mb-3 font-semibold uppercase tracking-widest">
             Next steps

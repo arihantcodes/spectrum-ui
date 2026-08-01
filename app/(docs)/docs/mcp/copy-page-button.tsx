@@ -77,7 +77,7 @@ export default function CopyPageButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-[#e5e5e5] bg-white px-2.5 text-[13px] font-medium leading-4 text-[#262626] transition hover:bg-black/[0.02] dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-white/[0.04]"
+      className="flex h-8 shrink-0 items-center gap-1.5 rounded-lg border border-[#e5e5e5] bg-white px-2.5 text-[13px] font-medium leading-4 text-[#262626] transition hover:bg-black/2 dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-white/4"
     >
       {copied ? (
         <Check className="size-3.5 text-emerald-600 dark:text-emerald-400" />

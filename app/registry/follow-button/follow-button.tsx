@@ -196,7 +196,7 @@ export function FollowButton({
       }}
       className={cn(
         "relative inline-flex touch-manipulation select-none items-center justify-center rounded-full border font-medium transition-colors",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
         "disabled:pointer-events-none disabled:opacity-50",
         following
           ? unfollowIntent

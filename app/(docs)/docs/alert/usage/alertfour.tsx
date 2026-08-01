@@ -17,7 +17,7 @@ export default function Alert04() {
           "relative overflow-hidden",
           "bg-white dark:bg-zinc-900",
           "border border-emerald-100 dark:border-emerald-900/50",
-          "shadow-sm",
+          "shadow-xs",
           "p-4 rounded-xl",
         )}
       >
@@ -25,7 +25,7 @@ export default function Alert04() {
           <motion.div
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
-            className="flex-shrink-0"
+            className="shrink-0"
           >
             <div
               className={cn(

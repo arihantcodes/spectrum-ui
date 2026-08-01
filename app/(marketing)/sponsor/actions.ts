@@ -22,7 +22,7 @@ const SponsorSchema = z.object({
 
 export async function submitSponsorApplication(formData: FormData): Promise<SubmitResult> {
   try {
-    const ipAddress = headers().get("x-forwarded-for") || "unknown"
+    const ipAddress = (await headers()).get("x-forwarded-for") || "unknown"
 
     // --- RATE LIMITING ---
     if (ipAddress !== "unknown") {
