@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
+
+import type { DesignSort } from "@/lib/design/types";
 
 import { FeedGrid } from "@/components/design/feed-grid";
 import { SectionHeader } from "@/components/design/section-header";
@@ -49,7 +52,10 @@ export default async function DesignCategoryPage({ params }: PageProps) {
   const category = findDesignCategory("feed", slug);
   if (!category) notFound();
 
-  const { items } = await getFeed({ section: "feed", category: slug });
+  const rawSort = (await cookies()).get("design_sort")?.value;
+  const sort: DesignSort =
+    rawSort === "popular" || rawSort === "staff" ? rawSort : "recent";
+  const { items } = await getFeed({ section: "feed", category: slug, sort });
 
   return (
     <>
@@ -91,28 +97,31 @@ export default async function DesignCategoryPage({ params }: PageProps) {
         count={items.length}
         heading={`${category.name} Design Inspiration`}
         subheading={`Curated ${category.name.toLowerCase()} work, attributed to its creators.`}
+        sort={sort}
       />
 
-      {/* The indexable body of the page. Renders whether or not items exist,
-          which is what lets these routes rank before the gallery fills up. */}
-      <div className="mb-8 max-w-[68ch]">
-        <h2 className="sr-only">About {category.name} design inspiration</h2>
-        <p className="text-[13px] leading-[1.75] text-muted-foreground">
-          {category.intro}
-        </p>
-      </div>
-
-      {items.length > 0 ? (
-        <FeedGrid
-          items={items}
-          layout={section.layout}
-          aspectRatio={section.aspectRatio}
-        />
-      ) : (
-        <div className="rounded-lg border border-dashed px-6 py-12 text-center text-[13px] text-muted-foreground">
-          No {category.name.toLowerCase()} items published yet.
+      <div className="px-4 py-5 sm:px-6">
+        {/* The indexable body of the page. Renders whether or not items exist,
+            which is what lets these routes rank before the gallery fills up. */}
+        <div className="mb-6 max-w-[68ch]">
+          <h2 className="sr-only">About {category.name} design inspiration</h2>
+          <p className="text-[13px] leading-[1.75] text-muted-foreground">
+            {category.intro}
+          </p>
         </div>
-      )}
+
+        {items.length > 0 ? (
+          <FeedGrid
+            items={items}
+            layout={section.layout}
+            aspectRatio={section.aspectRatio}
+          />
+        ) : (
+          <div className="rounded-lg border border-dashed px-6 py-12 text-center text-[13px] text-muted-foreground">
+            No {category.name.toLowerCase()} items published yet.
+          </div>
+        )}
+      </div>
     </>
   );
 }

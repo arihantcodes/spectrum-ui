@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 
 import { FeedGrid } from "@/components/design/feed-grid";
 import { SectionHeader } from "@/components/design/section-header";
 import { DESIGN_SECTION_MAP } from "@/content/design-taxonomy";
 import { getFeed } from "@/lib/design/queries";
+import type { DesignSort } from "@/lib/design/types";
 import { siteConfig } from "@/config/site";
 import { JsonLd } from "@/components/seo/json-ld";
 
@@ -26,8 +28,25 @@ export const metadata: Metadata = {
 // The gallery is curated throughout the day; revalidate rather than rebuild.
 export const revalidate = 300;
 
+/** Sort lives in a cookie so it survives navigation without minting URLs. */
+async function readSort(): Promise<DesignSort> {
+  const raw = (await cookies()).get("design_sort")?.value;
+  return raw === "popular" || raw === "staff" ? raw : "recent";
+}
+
 export default async function DesignFeedPage() {
-  const { items, unavailable } = await getFeed({ section: "feed" });
+  const sort = await readSort();
+  const { items, unavailable } = await getFeed({ section: "feed", sort });
+  const updatedAt =
+    items.length > 0
+      ? items.reduce<string | null>(
+          (latest, it) =>
+            it.publishedAt && (!latest || it.publishedAt > latest)
+              ? it.publishedAt
+              : latest,
+          null,
+        )
+      : null;
 
   return (
     <>
@@ -49,17 +68,24 @@ export default async function DesignFeedPage() {
         }}
       />
 
-      <SectionHeader section={section} count={items.length} />
+      <SectionHeader
+        section={section}
+        count={items.length}
+        updatedAt={updatedAt}
+        sort={sort}
+      />
 
-      {items.length > 0 ? (
-        <FeedGrid
-          items={items}
-          layout={section.layout}
-          aspectRatio={section.aspectRatio}
-        />
-      ) : (
-        <EmptyState unavailable={unavailable} />
-      )}
+      <div className="px-4 py-5 sm:px-6">
+        {items.length > 0 ? (
+          <FeedGrid
+            items={items}
+            layout={section.layout}
+            aspectRatio={section.aspectRatio}
+          />
+        ) : (
+          <EmptyState unavailable={unavailable} />
+        )}
+      </div>
     </>
   );
 }

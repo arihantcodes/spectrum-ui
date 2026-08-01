@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { DESIGN_SECTIONS } from "@/content/design-taxonomy";
 
+/**
+ * Section nav, recent.design mechanics: plain text rows, the active section
+ * carries a small filled dot on the right, counts sit quietly beside it.
+ */
 export function DesignSidebar({
   counts = {},
 }: {
@@ -14,8 +18,8 @@ export function DesignSidebar({
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Design sections" className="flex h-full flex-col">
-      <ul className="space-y-0.5">
+    <nav aria-label="Design sections">
+      <ul className="space-y-1">
         {DESIGN_SECTIONS.map((section) => {
           // /design must only match exactly, or it lights up on every subroute.
           const active =
@@ -29,32 +33,31 @@ export function DesignSidebar({
               <Link
                 href={section.path}
                 className={cn(
-                  "flex items-center justify-between rounded-md px-2 py-1.5 text-[13px] transition-colors",
+                  "flex items-center justify-between py-1 text-[13px] transition-colors",
                   active
-                    ? "bg-accent font-medium text-foreground"
-                    : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                    ? "font-medium text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                <span>{section.name}</span>
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-baseline gap-2">
+                  {section.name}
                   {typeof count === "number" && count > 0 && (
-                    <span className="text-[11px] tabular-nums text-muted-foreground/70">
+                    <span className="text-[11px] tabular-nums text-muted-foreground/60">
                       {count}
                     </span>
                   )}
-                  {active && (
-                    <span
-                      aria-hidden
-                      className="size-1.5 rounded-full bg-foreground"
-                    />
-                  )}
                 </span>
+                {active && (
+                  <span
+                    aria-hidden
+                    className="size-1.5 rounded-full bg-foreground"
+                  />
+                )}
               </Link>
             </li>
           );
         })}
       </ul>
-
     </nav>
   );
 }

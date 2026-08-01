@@ -27,6 +27,10 @@ const nextConfig = {
       // pub-<id>.r2.dev subdomain or a custom domain). next/image rejects any
       // host that is not listed here, so gallery images 400 without it.
       process.env.NEXT_PUBLIC_R2_PUBLIC_HOST,
+      // Supabase Storage serves the seeded /design media (public bucket
+      // `design-media`) until the R2 ingest pipeline exists.
+      process.env.NEXT_PUBLIC_SUPABASE_URL &&
+        new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname,
     ]
       .filter(Boolean)
       .map((hostname) => ({ protocol: 'https', hostname, pathname: '/**' })),

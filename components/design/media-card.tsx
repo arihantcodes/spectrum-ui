@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import type { DesignItem } from "@/lib/design/types";
+import { CardVideo } from "./card-video";
 
 /** Column widths the feed actually renders at, so `sizes` matches reality. */
 const CARD_SIZES =
@@ -56,7 +57,14 @@ export function MediaCard({
           className="relative w-full overflow-hidden rounded-lg bg-[var(--design-media-placeholder)]"
           style={{ aspectRatio: String(ratio) }}
         >
-          {src ? (
+          {cover.kind === "video" && cover.videoUrl ? (
+            <CardVideo
+              src={cover.videoUrl}
+              webm={cover.videoWebm}
+              poster={cover.posterUrl ?? src}
+              className="absolute inset-0 size-full object-cover"
+            />
+          ) : src ? (
             <Image
               src={src}
               alt={item.title}
@@ -93,8 +101,10 @@ export function MediaCard({
         </div>
       </Link>
 
-      {/* Overlays fade in together on hover or keyboard focus. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-2 opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100">
+      {/* Attribution stays visible at rest (recent.design mechanics — credit is
+          part of the card, not a reward for hovering); the outbound arrow still
+          fades in on hover/focus via its own opacity transition below. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-2">
         {item.authorUrl ? (
           <a
             href={item.authorUrl}
@@ -127,7 +137,7 @@ export function MediaCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open the original post for ${item.title}`}
-          className="pointer-events-auto grid size-7 place-items-center rounded-full bg-black/60 text-white backdrop-blur-xs transition-colors hover:bg-black/80 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white"
+          className="pointer-events-auto grid size-7 place-items-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-xs transition-opacity duration-150 hover:bg-black/80 focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white group-hover:opacity-100"
         >
           <ArrowUpRight className="size-3.5" />
         </a>
