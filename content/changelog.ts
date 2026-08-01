@@ -11,11 +11,18 @@ export interface ChangelogGroup {
   items: string[];
 }
 
+export type ChangelogMediaKind =
+  | { kind: 'blocks' }
+  | { kind: 'codeblock' }
+  | { kind: 'terminal'; command: string };
+
 export interface ChangelogEntry {
   slug: string;
   /** ISO date, e.g. "2026-07-31". */
   date: string;
   groups: ChangelogGroup[];
+  /** Optional live preview panel, rendered at the column's width. */
+  media?: ChangelogMediaKind;
 }
 
 export const CHANGELOG: ChangelogEntry[] = [
@@ -31,6 +38,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
+    media: { kind: 'blocks' },
   },
   {
     slug: 'jul-29-2026',
@@ -44,6 +52,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
+    media: { kind: 'terminal', command: 'npx shadcn@latest add @spectrumui/agent-steps' },
   },
   {
     slug: 'jul-28-2026',
@@ -57,6 +66,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
+    media: { kind: 'codeblock' },
   },
   {
     slug: 'jul-24-2026',
@@ -95,6 +105,7 @@ export const CHANGELOG: ChangelogEntry[] = [
         ],
       },
     ],
+    media: { kind: 'terminal', command: 'claude mcp add spectrum-ui -- npx -y @spectrumui/mcp' },
   },
 ];
 

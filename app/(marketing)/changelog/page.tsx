@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Mynerve } from 'next/font/google';
 import { Rss } from 'lucide-react';
 import { JsonLd } from '@/components/seo/json-ld';
+import { ChangelogMedia } from './changelog-demo';
 import { CHANGELOG, changelogDate, type ChangelogEntry } from '@/content/changelog';
 import { generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 import { siteConfig } from '@/config/site';
@@ -44,8 +45,9 @@ export default function ChangelogPage() {
       <JsonLd id="changelog-breadcrumb" data={breadcrumb} />
       <style dangerouslySetInnerHTML={{ __html: ENTER }} />
 
-      <div className="mx-auto max-w-[37em] px-4 pb-24 lg:px-6">
-        <header className="pb-4 pt-14 lg:pt-20">
+      <div className="container-frame mx-auto">
+        <div className="mx-auto max-w-[37em] px-4 pb-24 lg:px-6">
+          <header className="pb-4 pt-14 lg:pt-20">
           <h1 className="font-spectral text-[38px] leading-[1.05] tracking-[-0.8px] text-neutral-900 dark:text-neutral-50 md:text-[44px]">
             Changelog
           </h1>
@@ -63,9 +65,10 @@ export default function ChangelogPage() {
           </div>
         </header>
 
-        {CHANGELOG.map((entry, index) => (
-          <Entry key={entry.slug} entry={entry} index={index} />
-        ))}
+          {CHANGELOG.map((entry, index) => (
+            <Entry key={entry.slug} entry={entry} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -76,7 +79,7 @@ function Entry({ entry, index }: { entry: ChangelogEntry; index: number }) {
     <section
       id={entry.slug}
       aria-label={changelogDate(entry.date)}
-      className="scroll-mt-28 pt-12 motion-safe:animate-[cl-in_300ms_cubic-bezier(0.23,1,0.32,1)_both] lg:pt-14"
+      className="scroll-mt-28 border-t border-dashed border-black/[0.09] py-12 first-of-type:border-t-0 first-of-type:pt-10 motion-safe:animate-[cl-in_300ms_cubic-bezier(0.23,1,0.32,1)_both] lg:py-14 dark:border-white/[0.09]"
       style={{ animationDelay: `${Math.min(index, 4) * 50}ms` }}
     >
       {/* The date is the entry's anchor — handwritten, like the reference. */}
@@ -102,6 +105,12 @@ function Entry({ entry, index }: { entry: ChangelogEntry; index: number }) {
           </section>
         ))}
       </div>
+
+      {entry.media && (
+        <div className="not-typeset mt-6 w-full">
+          <ChangelogMedia media={entry.media} />
+        </div>
+      )}
     </section>
   );
 }
