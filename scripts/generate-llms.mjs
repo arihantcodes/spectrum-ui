@@ -14,6 +14,50 @@ const fence = tick.repeat(3);
 const catalog = JSON.parse(
   readFileSync(path.join(projectRoot, 'content', 'component-catalog.json'), 'utf8'),
 );
+const blockCatalog = JSON.parse(
+  readFileSync(path.join(projectRoot, 'content', 'block-catalog.json'), 'utf8'),
+);
+const liveBlocks = blockCatalog.blocks.filter((block) => block.status === 'live');
+
+function blockUrl(block) {
+  return siteUrl + '/blocks/' + block.category + '#' + block.slug;
+}
+
+/** Compact one-liners for llms.txt. */
+function blockList() {
+  return liveBlocks
+    .map((block) => '- [' + block.name + '](' + blockUrl(block) + '): ' + block.description)
+    .join('\n');
+}
+
+/**
+ * The expanded block reference. This is where summary, hardParts and aiHints —
+ * the catalog's richest prose — become citable; the specimen page deliberately
+ * shows only a one-line description to stay readable.
+ */
+function blockReference() {
+  return liveBlocks
+    .map((block) =>
+      [
+        '### ' + block.name,
+        '',
+        '- URL: ' + blockUrl(block),
+        '- Category: ' + block.category + ' / ' + block.subcategory,
+        '- Install: npx shadcn@latest add @spectrumui/' + block.slug,
+        '- Variants: ' + block.variants.join(', '),
+        '- Dependencies: ' + (block.dependencies.length ? block.dependencies.join(', ') : 'none'),
+        '- Added: ' + block.addedAt,
+        '',
+        block.summary,
+        '',
+        'When to use it: ' + block.aiHints,
+        '',
+        'What makes it hard to build well:',
+        ...block.hardParts.map((part) => '- ' + part),
+      ].join('\n'),
+    )
+    .join('\n\n');
+}
 
 function docsUrl(slug) {
   return siteUrl + '/docs/' + slug;
@@ -124,9 +168,10 @@ function buildCompactFile() {
     '- [Guides](' + siteUrl + '/docs/guides)',
     '- [MCP server](' + siteUrl + '/docs/mcp)',
     '- [Blog](' + siteUrl + '/blog)',
-    '- [Blocks](' +
+    '- [Changelog](' + siteUrl + '/changelog): What is new — releases across blocks, components, docs, and the MCP server',
+    '- [AI Assistant Blocks](' +
       siteUrl +
-      '/blocks): Pre-built, copy-paste UI blocks — navbars, hero/feature sections, pricing & login cards, testimonials, and dashboards',
+      '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '',
     '## Installation',
@@ -143,6 +188,14 @@ function buildCompactFile() {
     '## Component documentation (' + catalog.length + ' pages, 250+ blocks and variants)',
     '',
     componentList(),
+    '',
+    '## AI Assistant blocks (' + liveBlocks.length + ')',
+    '',
+    'Blocks are composed interface sections for products built on LLMs — a tier above components. Each renders live at actual size on ' +
+      siteUrl +
+      '/blocks/ai-assistants and installs with the shadcn CLI or through the MCP server.',
+    '',
+    blockList(),
     '',
     '## Machine-readable resources',
     '',
@@ -273,6 +326,14 @@ function buildFullFile() {
     '',
     componentReference,
     '',
+    '## AI Assistant block reference (' + liveBlocks.length + ')',
+    '',
+    'Composed interface sections for AI products. All are presentational — data in, callbacks out — and share one message contract, so they compose into a working chat surface. Every block renders live at ' +
+      siteUrl +
+      '/blocks/ai-assistants.',
+    '',
+    blockReference(),
+    '',
     '## Other public pages',
     '',
     '- Home: ' + siteUrl,
@@ -281,6 +342,8 @@ function buildFullFile() {
     '- Installation: ' + siteUrl + '/docs/installation',
     '- Guides: ' + siteUrl + '/docs/guides',
     '- MCP server: ' + siteUrl + '/docs/mcp',
+    '- AI Assistant blocks: ' + siteUrl + '/blocks/ai-assistants',
+    '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Colors: ' + siteUrl + '/colors',
     '- FAQs: ' + siteUrl + '/faqs',

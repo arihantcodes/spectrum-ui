@@ -6,11 +6,13 @@ function score(item, query) {
     const title = item.title.toLowerCase();
     const desc = item.description.toLowerCase();
     const category = inferCategory(item).toLowerCase();
-    // Exact name match = highest
+    // Exact matches must be decisive. At 100/90 they were not: "avatar stack"
+    // exactly matched the title of avatar-stack (90), but avatar-stack-demo
+    // accumulated 111 from starts-with + contains + word hits and outranked it.
     if (name === q)
-        return 100;
+        return 1000;
     if (title === q)
-        return 90;
+        return 900;
     let s = 0;
     // Starts-with match
     if (name.startsWith(q))
@@ -38,6 +40,12 @@ function score(item, query) {
         if (desc.includes(word))
             s += 4;
     }
+    // Demos, usage examples and dependency-only items are supporting material.
+    // Without this, searching "avatar stack" surfaced avatar-stack-demo above
+    // avatar-stack, so an agent would install the demo instead of the component.
+    if (/-(demo|usage|example|dependencies|dependecies|as-child)$/.test(name)) {
+        s -= 20;
+    }
     return s;
 }
 /** Fuzzy-search components by keyword. Returns top matches sorted by relevance. */
@@ -51,7 +59,7 @@ export async function searchComponents(query, limit = 10) {
         category: inferCategory(item),
         score: score(item, query),
         cliCommand: `bunx --bun shadcn@latest add @spectrumui/${item.name}`,
-        docsUrl: `https://spectrumhq.in/docs/${item.name}`,
+        docsUrl: item.docsUrl ?? "https://ui.spectrumhq.in/docs",
     }))
         .filter((r) => r.score > 0)
         .sort((a, b) => b.score - a.score)

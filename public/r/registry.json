@@ -4,6 +4,257 @@
   "homepage": "https://ui.spectrumhq.in",
   "items": [
     {
+      "name": "agent-plan",
+      "type": "registry:block",
+      "title": "Agent Plan",
+      "description": "An editable plan checklist the agent proposes before running.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/agent-plan.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/agent-plan.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "agent",
+        "plan"
+      ]
+    },
+    {
+      "name": "agent-steps",
+      "type": "registry:block",
+      "title": "Agent Steps",
+      "description": "A timeline of tool calls with status, arguments, results, and parallel sub-steps.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/agent-steps.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "agent",
+        "steps"
+      ]
+    },
+    {
+      "name": "approval-card",
+      "type": "registry:block",
+      "title": "Approval Card",
+      "description": "A human-in-the-loop approval for an action an agent wants to take.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/approval-card.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/approval-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "approval",
+        "card"
+      ]
+    },
+    {
+      "name": "chat-empty-state",
+      "type": "registry:block",
+      "title": "Chat Empty State",
+      "description": "A first-run greeting with staggered suggestion chips.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/chat-empty-state.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "chat",
+        "empty",
+        "state"
+      ]
+    },
+    {
+      "name": "citation-sources",
+      "type": "registry:block",
+      "title": "Citation Sources",
+      "description": "Inline citation markers with hover previews or a footnote list.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/citation-sources.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "citation",
+        "sources"
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:block",
+      "title": "Code Block",
+      "description": "An AI code block with a file header, copy, and line collapse.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/code-block.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/code-block.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "code",
+        "block"
+      ]
+    },
+    {
+      "name": "conversation-list",
+      "type": "registry:block",
+      "title": "Conversation List",
+      "description": "A date-grouped conversation sidebar with pinning.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/conversation-list.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/conversation-list.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "conversation",
+        "list"
+      ]
+    },
+    {
+      "name": "diff-view",
+      "type": "registry:block",
+      "title": "Diff View",
+      "description": "Proposed file changes with per-file accept and reject.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/diff-view.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/diff-view.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "diff",
+        "view"
+      ]
+    },
+    {
+      "name": "disclose-image",
+      "type": "registry:component",
+      "title": "Disclose Image",
+      "description": "An image reveal component with animated sliding door panels.",
+      "files": [
+        {
+          "path": "components/spectrumui/discloseimage.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/discloseimage.tsx"
+        }
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "registry:block",
+      "title": "Error State",
+      "description": "A failed-generation state with a preserved prompt and retry.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/error-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/error-state.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "error",
+        "state"
+      ]
+    },
+    {
+      "name": "github-profile-card",
+      "type": "registry:component",
+      "title": "GitHub Profile Card",
+      "description": "A GitHub profile card with account stats, a contribution graph, and social links.",
+      "files": [
+        {
+          "path": "components/spectrumui/github-profile-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/github-profile-card.tsx"
+        },
+        {
+          "path": "components/icon.tsx",
+          "type": "registry:component",
+          "target": "components/icon.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "card",
+        "input"
+      ]
+    },
+    {
       "name": "alert-1",
       "type": "registry:component",
       "title": "Alert demo",
@@ -93,7 +344,9 @@
       ],
       "dependencies": [
         "framer-motion"
-      ]
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/animatedcard"
     },
     {
       "name": "animated-SVG-chart",
@@ -141,7 +394,9 @@
           "type": "registry:component",
           "target": "components/spectrumui/autosize-textarea.tsx"
         }
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/autosize-textarea"
     },
     {
       "name": "autosize-textarea-demo",
@@ -157,7 +412,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/autosize-textarea-dependecies"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/autosize-textarea"
     },
     {
       "name": "autosize-textarea-max-height",
@@ -237,7 +494,9 @@
       ],
       "registryDependencies": [
         "datetime-picker"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/datetime-picker"
     },
     {
       "name": "datetime-picker-hour-cycle",
@@ -429,7 +688,9 @@
       ],
       "dependencies": [
         "@radix-ui/react-slider"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/dual-range-slider"
     },
     {
       "name": "dual-range-slider-demo",
@@ -445,7 +706,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/dual-range-slider-dependecies"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/dual-range-slider"
     },
     {
       "name": "dual-range-slider-custom-label",
@@ -556,7 +819,9 @@
         "framer-motion",
         "lucide-react",
         "tailwind-merge"
-      ]
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/feedback"
     },
     {
       "name": "floating-label-input",
@@ -573,7 +838,9 @@
       "registryDependencies": [
         "input",
         "label"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/floating-label-input"
     },
     {
       "name": "floating-label-input-demo",
@@ -589,7 +856,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/floating-label-input"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/floating-label-input"
     },
     {
       "name": "floating-label-customize",
@@ -635,6 +904,9 @@
           "target": "components/spectrumui/footer-demo.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "input",
@@ -642,9 +914,6 @@
         "switch",
         "textarea",
         "tooltip"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -659,13 +928,229 @@
           "target": "components/spectrumui/animate-footer.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "input",
         "label"
+      ]
+    },
+    {
+      "name": "inline-edit",
+      "type": "registry:block",
+      "title": "Inline Edit",
+      "description": "A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/inline-edit.tsx"
+        }
       ],
       "dependencies": [
         "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "inline",
+        "edit"
+      ]
+    },
+    {
+      "name": "insight-cards",
+      "type": "registry:block",
+      "title": "Insight Cards",
+      "description": "Metric cards with spark bars, trend deltas, and an AI note.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/insight-cards.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/insight-cards.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "insight",
+        "cards"
+      ]
+    },
+    {
+      "name": "loading-state",
+      "type": "registry:block",
+      "title": "Loading State",
+      "description": "A pixel-grid loader with a shimmering label and live elapsed timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/loading-state.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/loading-state.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "loading",
+        "spinner",
+        "elapsed",
+        "shimmer"
+      ]
+    },
+    {
+      "name": "memory-chips",
+      "type": "registry:block",
+      "title": "Memory Chips",
+      "description": "What the assistant remembers, as removable chips.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/memory-chips.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/memory-chips.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "memory",
+        "chips"
+      ]
+    },
+    {
+      "name": "message-actions",
+      "type": "registry:block",
+      "title": "Message Actions",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/message-actions.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/message-actions.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "message",
+        "actions"
+      ]
+    },
+    {
+      "name": "model-selector",
+      "type": "registry:block",
+      "title": "Model Selector",
+      "description": "A model picker as a radio list or segmented control, with badges and disabled states.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/model-selector.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/model-selector.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "model",
+        "selector"
+      ]
+    },
+    {
+      "name": "prompt-composer",
+      "type": "registry:block",
+      "title": "Prompt Composer",
+      "description": "A prompt input with attachments, a model picker, and a stop state.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/prompt-composer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "prompt",
+        "composer"
+      ]
+    },
+    {
+      "name": "quota-banner",
+      "type": "registry:block",
+      "title": "Quota Banner",
+      "description": "A message-quota banner with a live reset countdown.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/quota-banner.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/quota-banner.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "quota",
+        "banner"
+      ]
+    },
+    {
+      "name": "reasoning-trace",
+      "type": "registry:block",
+      "title": "Reasoning Trace",
+      "description": "An expandable chain-of-thought trace with a live thinking timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/reasoning-trace.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "thinking",
+        "chain-of-thought",
+        "reasoning",
+        "trace"
       ]
     },
     {
@@ -680,14 +1165,14 @@
           "target": "components/spectrumui/stacked-footer.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "icon",
         "button",
         "input",
         "label"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -702,13 +1187,13 @@
           "target": "components/spectrumui/floatingparticle-footer.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "input",
         "label"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -729,6 +1214,19 @@
       ]
     },
     {
+      "name": "icon-dependencies",
+      "type": "registry:component",
+      "title": "Icon Dependencies",
+      "description": "Shared icon set used by the footer and profile components.",
+      "files": [
+        {
+          "path": "components/icon.tsx",
+          "type": "registry:component",
+          "target": "components/icon.tsx"
+        }
+      ]
+    },
+    {
       "name": "http-status-code",
       "type": "registry:component",
       "title": "HTTP Status Code",
@@ -740,19 +1238,19 @@
           "target": "components/spectrumui/http-status-code.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "card",
         "input",
         "button"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
-      "name": "image-preview",
+      "name": "image-preview-dependencies",
       "type": "registry:component",
-      "title": "Image Preview",
+      "title": "Image Preview Dependencies",
       "description": "component for the Image Preview Dependencies",
       "files": [
         {
@@ -764,7 +1262,9 @@
       "dependencies": [
         "lucide-react",
         "@radix-ui/react-dialog"
-      ]
+      ],
+      "category": "Media",
+      "docsUrl": "https://ui.spectrumhq.in/docs/imagepreview"
     },
     {
       "name": "image-preview",
@@ -780,7 +1280,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/image-preview-dependencies"
-      ]
+      ],
+      "category": "Media",
+      "docsUrl": "https://ui.spectrumhq.in/docs/imagepreview"
     },
     {
       "name": "infinite-scroll-dependecies",
@@ -793,7 +1295,9 @@
           "type": "registry:component",
           "target": "components/spectrumui/infinite-scroll-dependecies.tsx"
         }
-      ]
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/infinite-scroll"
     },
     {
       "name": "infinite-scroll-demo",
@@ -809,7 +1313,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/infinite-scroll-dependecies"
-      ]
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/infinite-scroll"
     },
     {
       "name": "loading-button-dependencies",
@@ -827,7 +1333,9 @@
         "@radix-ui/react-slot",
         "class-variance-authority",
         "lucide-react"
-      ]
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/loading-button"
     },
     {
       "name": "loading-button-demo",
@@ -843,7 +1351,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/loading-button-dependencies"
-      ]
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/loading-button"
     },
     {
       "name": "loading-button-usage",
@@ -859,7 +1369,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/loading-button-dependencies"
-      ]
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/loading-button"
     },
     {
       "name": "loading-button-as-child",
@@ -875,7 +1387,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/loading-button-dependencies"
-      ]
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/loading-button"
     },
     {
       "name": "multiple-selector-dependencies",
@@ -889,14 +1403,16 @@
           "target": "components/spectrumui/multiple-selector-dependencies.tsx"
         }
       ],
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
       "registryDependencies": [
         "badge",
         "command"
       ],
-      "dependencies": [
-        "cmdk",
-        "lucide-react"
-      ]
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/multiple-selector"
     },
     {
       "name": "inline-code",
@@ -931,7 +1447,9 @@
         "tab",
         "avatar",
         "badge"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/input-model"
     },
     {
       "name": "multiple-selector-demo",
@@ -947,7 +1465,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/multiple-selector-dependencies"
-      ]
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/multiple-selector"
     },
     {
       "name": "multiple-selector-with-disable-options",
@@ -1181,6 +1701,166 @@
       ]
     },
     {
+      "name": "status-tracker",
+      "type": "registry:block",
+      "title": "Status Tracker",
+      "description": "A staged progress tracker for long-running AI jobs.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/status-tracker.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/status-tracker.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "status",
+        "tracker"
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:block",
+      "title": "Streaming Text",
+      "description": "A streamed answer with inline citations, sources, and follow-ups.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/streaming-text.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "streaming",
+        "text"
+      ]
+    },
+    {
+      "name": "suggestion-banner",
+      "type": "registry:block",
+      "title": "Suggestion Banner",
+      "description": "An inline AI suggestion with apply and dismiss.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/suggestion-banner.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/suggestion-banner.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "suggestion",
+        "banner"
+      ]
+    },
+    {
+      "name": "task-rows",
+      "type": "registry:block",
+      "title": "Task Rows",
+      "description": "Live agent task rows with status badges and expandable notes.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/task-rows.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/task-rows.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "task",
+        "rows"
+      ]
+    },
+    {
+      "name": "thinking-dots",
+      "type": "registry:block",
+      "title": "Thinking Dots",
+      "description": "A minimal typing indicator — bouncing dots or a sliding bar.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/thinking-dots.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/thinking-dots.tsx"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "thinking",
+        "dots"
+      ]
+    },
+    {
+      "name": "tool-chips",
+      "type": "registry:block",
+      "title": "Tool Chips",
+      "description": "Compact tool-call chips that expand into their arguments and result.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/tool-chips.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "tool",
+        "chips"
+      ]
+    },
+    {
+      "name": "usage-meter",
+      "type": "registry:block",
+      "title": "Usage Meter",
+      "description": "A context-window meter with token counts and estimated cost.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/usage-meter.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/ai-assistants/types.ts"
+        }
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "usage",
+        "meter"
+      ]
+    },
+    {
       "name": "use-toast",
       "type": "registry:component",
       "title": "Use Toast",
@@ -1305,16 +1985,16 @@
           "target": "components/spectrumui/multiple-selector-with-form.tsx"
         }
       ],
-      "registryDependencies": [
-        "form",
-        "@spectrumui/use-toast",
-        "@spectrumui/loading-button",
-        "@spectrumui/multiple-selector-dependencies"
-      ],
       "dependencies": [
         "react-hook-form",
         "zod",
         "@hookform/resolvers"
+      ],
+      "registryDependencies": [
+        "form",
+        "@spectrumui/use-toast",
+        "@spectrumui/loading-button-dependencies",
+        "@spectrumui/multiple-selector-dependencies"
       ]
     },
     {
@@ -1329,6 +2009,11 @@
           "target": "components/spectrumui/multistepformdemo.tsx"
         }
       ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "sonner"
+      ],
       "registryDependencies": [
         "button",
         "card",
@@ -1337,11 +2022,6 @@
         "radio-group",
         "textarea",
         "select"
-      ],
-      "dependencies": [
-        "framer-motion",
-        "lucide-react",
-        "sonner"
       ]
     },
     {
@@ -1356,13 +2036,13 @@
           "target": "components/spectrumui/navbar.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "scroll-area",
         "sheet"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -1377,12 +2057,12 @@
           "target": "components/spectrumui/circularnavbar.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "avatar",
         "button"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -1397,14 +2077,14 @@
           "target": "components/spectrumui/tabnavbar.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "avatar",
         "input",
         "label",
         "navigation-menu"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -1419,12 +2099,12 @@
           "target": "components/spectrumui/floatingnavbar.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "dropdown-menu"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -1439,13 +2119,13 @@
           "target": "components/spectrumui/sidebarnavbar.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "button",
         "collapsible",
         "scroll-area"
-      ],
-      "dependencies": [
-        "lucide-react"
       ]
     },
     {
@@ -1478,6 +2158,11 @@
           "target": "components/spectrumui/kanbanboard.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react",
+        "next-themes",
+        "framer-motion"
+      ],
       "registryDependencies": [
         "card",
         "button",
@@ -1485,11 +2170,6 @@
         "input",
         "label",
         "textarea"
-      ],
-      "dependencies": [
-        "lucide-react",
-        "next-themes",
-        "framer-motion"
       ]
     },
     {
@@ -1522,14 +2202,14 @@
           "target": "components/spectrumui/product-card.tsx"
         }
       ],
+      "dependencies": [
+        "lucide-react",
+        "next-themes"
+      ],
       "registryDependencies": [
         "button",
         "select",
         "card"
-      ],
-      "dependencies": [
-        "lucide-react",
-        "next-themes"
       ]
     },
     {
@@ -1546,7 +2226,9 @@
       ],
       "dependencies": [
         "@radix-ui/react-progress"
-      ]
+      ],
+      "category": "Progress",
+      "docsUrl": "https://ui.spectrumhq.in/docs/progress-with-value"
     },
     {
       "name": "progress-with-value",
@@ -1562,7 +2244,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/progress-with-value-dependencies"
-      ]
+      ],
+      "category": "Progress",
+      "docsUrl": "https://ui.spectrumhq.in/docs/progress-with-value"
     },
     {
       "name": "value-position",
@@ -1662,7 +2346,9 @@
       ],
       "registryDependencies": [
         "accordion"
-      ]
+      ],
+      "category": "Disclosure",
+      "docsUrl": "https://ui.spectrumhq.in/docs/accordion"
     },
     {
       "name": "skeleton",
@@ -1711,7 +2397,9 @@
       "dependencies": [
         "class-variance-authority",
         "lucide-react"
-      ]
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/spinner"
     },
     {
       "name": "spinner-demo",
@@ -1727,7 +2415,9 @@
       ],
       "registryDependencies": [
         "@spectrumui/spinner-dependencies"
-      ]
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/spinner"
     },
     {
       "name": "spinner-size",
@@ -1791,7 +2481,9 @@
       ],
       "dependencies": [
         "lucide-react"
-      ]
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/status-badge"
     },
     {
       "name": "testimonials",
@@ -1805,12 +2497,12 @@
           "target": "components/spectrumui/testimonials.tsx"
         }
       ],
-      "registryDependencies": [
-        "card"
-      ],
       "dependencies": [
         "lucide-react",
         "framer-motion"
+      ],
+      "registryDependencies": [
+        "card"
       ]
     },
     {
@@ -1884,7 +2576,10 @@
         "motion",
         "vaul",
         "react-use-measure"
-      ]
+      ],
+      "category": "Overlay",
+      "docsUrl": "https://ui.spectrumhq.in/docs/animateddrawer",
+      "new": true
     },
     {
       "name": "command-palette",
@@ -1935,7 +2630,10 @@
       ],
       "dependencies": [
         "framer-motion"
-      ]
+      ],
+      "category": "Media",
+      "docsUrl": "https://ui.spectrumhq.in/docs/scratch-card",
+      "new": true
     },
     {
       "name": "scratch-card-demo",
@@ -1954,7 +2652,10 @@
       ],
       "registryDependencies": [
         "@spectrumui/scratch-card"
-      ]
+      ],
+      "category": "Media",
+      "docsUrl": "https://ui.spectrumhq.in/docs/scratch-card",
+      "new": true
     },
     {
       "name": "dock",
@@ -2041,6 +2742,740 @@
       "dependencies": [
         "framer-motion",
         "lucide-react"
+      ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:component",
+      "title": "Like Button",
+      "description": "A heart like button micro-interaction with a spring pop, ring pulse, radial particle burst, and a rolling odometer count",
+      "files": [
+        {
+          "path": "app/registry/like-button/like-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/like-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/like-button",
+      "new": true
+    },
+    {
+      "name": "like-button-demo",
+      "type": "registry:component",
+      "title": "Like Button Demo",
+      "description": "Demo usage for the Like Button component",
+      "files": [
+        {
+          "path": "app/registry/like-button/like-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/like-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/like-button"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/like-button",
+      "new": true
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:component",
+      "title": "3D Tilt Card",
+      "description": "A 3D perspective tilt card that rotates toward the pointer with spring smoothing, parallax translateZ depth layers, and a pointer-following glare highlight",
+      "files": [
+        {
+          "path": "app/registry/tilt-card/tilt-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tilt-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/tilt-card",
+      "new": true
+    },
+    {
+      "name": "tilt-card-demo",
+      "type": "registry:component",
+      "title": "3D Tilt Card Demo",
+      "description": "Demo usage for the 3D Tilt Card component",
+      "files": [
+        {
+          "path": "app/registry/tilt-card/tilt-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tilt-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/tilt-card"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/tilt-card",
+      "new": true
+    },
+    {
+      "name": "hold-to-confirm",
+      "type": "registry:component",
+      "title": "Hold to Confirm",
+      "description": "A press-and-hold confirmation button for destructive actions with a filling progress ring, spring-back on early release, and a success check morph on completion",
+      "files": [
+        {
+          "path": "app/registry/hold-to-confirm/hold-to-confirm.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/hold-to-confirm.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/hold-to-confirm",
+      "new": true
+    },
+    {
+      "name": "hold-to-confirm-demo",
+      "type": "registry:component",
+      "title": "Hold to Confirm Demo",
+      "description": "Demo usage for the Hold to Confirm component",
+      "files": [
+        {
+          "path": "app/registry/hold-to-confirm/hold-to-confirm-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/hold-to-confirm-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/hold-to-confirm"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/hold-to-confirm",
+      "new": true
+    },
+    {
+      "name": "reaction-bar",
+      "type": "registry:component",
+      "title": "Reaction Bar",
+      "description": "A Slack-style emoji reaction row with popping chips, direction-aware rolling counts, and a staggered emoji-picker popover",
+      "files": [
+        {
+          "path": "app/registry/reaction-bar/reaction-bar.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/reaction-bar.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/reaction-bar",
+      "new": true
+    },
+    {
+      "name": "reaction-bar-demo",
+      "type": "registry:component",
+      "title": "Reaction Bar Demo",
+      "description": "Demo usage for the Reaction Bar component",
+      "files": [
+        {
+          "path": "app/registry/reaction-bar/reaction-bar-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/reaction-bar-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/reaction-bar"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/reaction-bar",
+      "new": true
+    },
+    {
+      "name": "star-rating",
+      "type": "registry:component",
+      "title": "Star Rating",
+      "description": "An animated star rating input with hover-preview wave, pop and sparkle burst on commit, rolling value label, and fractional read-only display",
+      "files": [
+        {
+          "path": "app/registry/star-rating/star-rating.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/star-rating.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Rating",
+      "docsUrl": "https://ui.spectrumhq.in/docs/star-rating",
+      "new": true
+    },
+    {
+      "name": "star-rating-demo",
+      "type": "registry:component",
+      "title": "Star Rating Demo",
+      "description": "Demo usage for the Star Rating component",
+      "files": [
+        {
+          "path": "app/registry/star-rating/star-rating-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/star-rating-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/star-rating"
+      ],
+      "category": "Rating",
+      "docsUrl": "https://ui.spectrumhq.in/docs/star-rating",
+      "new": true
+    },
+    {
+      "name": "quantity-stepper",
+      "type": "registry:component",
+      "title": "Quantity Stepper",
+      "description": "An animated quantity input for carts and forms with rolling digits, hold-to-repeat acceleration, and a boundary shake",
+      "files": [
+        {
+          "path": "app/registry/quantity-stepper/quantity-stepper.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/quantity-stepper.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/quantity-stepper"
+    },
+    {
+      "name": "quantity-stepper-demo",
+      "type": "registry:component",
+      "title": "Quantity Stepper Demo",
+      "description": "Demo usage for the Quantity Stepper component",
+      "files": [
+        {
+          "path": "app/registry/quantity-stepper/quantity-stepper-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/quantity-stepper-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/quantity-stepper"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/quantity-stepper"
+    },
+    {
+      "name": "follow-button",
+      "type": "registry:component",
+      "title": "Follow Button",
+      "description": "A morphing follow/unfollow button with a spring width morph, animated check draw, and a hover-revealed unfollow state",
+      "files": [
+        {
+          "path": "app/registry/follow-button/follow-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/follow-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/follow-button",
+      "new": true
+    },
+    {
+      "name": "follow-button-demo",
+      "type": "registry:component",
+      "title": "Follow Button Demo",
+      "description": "Demo usage for the Follow Button component",
+      "files": [
+        {
+          "path": "app/registry/follow-button/follow-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/follow-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/follow-button"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/follow-button",
+      "new": true
+    },
+    {
+      "name": "notification-bell",
+      "type": "registry:component",
+      "title": "Notification Bell",
+      "description": "A bell icon button with a ring-shake swing, springy unread badge with rolling odometer count, and a pinging dot mode",
+      "files": [
+        {
+          "path": "app/registry/notification-bell/notification-bell.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/notification-bell.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/notification-bell",
+      "new": true
+    },
+    {
+      "name": "notification-bell-demo",
+      "type": "registry:component",
+      "title": "Notification Bell Demo",
+      "description": "Demo usage for the Notification Bell component",
+      "files": [
+        {
+          "path": "app/registry/notification-bell/notification-bell-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/notification-bell-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/notification-bell"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/notification-bell",
+      "new": true
+    },
+    {
+      "name": "face-rating",
+      "type": "registry:component",
+      "title": "Face Rating",
+      "description": "A five-level feedback rating where one large SVG face morphs its mouth, eyes and color between moods as you hover and click, with a joy bounce on commit",
+      "files": [
+        {
+          "path": "app/registry/face-rating/face-rating.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/face-rating.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Rating",
+      "docsUrl": "https://ui.spectrumhq.in/docs/face-rating",
+      "new": true
+    },
+    {
+      "name": "face-rating-demo",
+      "type": "registry:component",
+      "title": "Face Rating Demo",
+      "description": "Demo usage for the Face Rating component",
+      "files": [
+        {
+          "path": "app/registry/face-rating/face-rating-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/face-rating-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/face-rating"
+      ],
+      "category": "Rating",
+      "docsUrl": "https://ui.spectrumhq.in/docs/face-rating",
+      "new": true
+    },
+    {
+      "name": "undo-pill",
+      "type": "registry:component",
+      "title": "Undo Pill",
+      "description": "An inline undo pill with a draining countdown ring that pauses on hover and fires undo or expire callbacks",
+      "files": [
+        {
+          "path": "app/registry/undo-pill/undo-pill.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/undo-pill.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/undo-pill",
+      "new": true
+    },
+    {
+      "name": "undo-pill-demo",
+      "type": "registry:component",
+      "title": "Undo Pill Demo",
+      "description": "Demo usage for the Undo Pill component",
+      "files": [
+        {
+          "path": "app/registry/undo-pill/undo-pill-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/undo-pill-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/undo-pill"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/undo-pill",
+      "new": true
+    },
+    {
+      "name": "password-strength",
+      "type": "registry:component",
+      "title": "Password Strength",
+      "description": "A password input with an animated four-segment strength meter, crossfading strength label, requirements checklist with drawing check marks, and a visibility toggle",
+      "files": [
+        {
+          "path": "app/registry/password-strength/password-strength.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/password-strength.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/password-strength",
+      "new": true
+    },
+    {
+      "name": "password-strength-demo",
+      "type": "registry:component",
+      "title": "Password Strength Demo",
+      "description": "Demo usage for the Password Strength component",
+      "files": [
+        {
+          "path": "app/registry/password-strength/password-strength-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/password-strength-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/password-strength"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/password-strength",
+      "new": true
+    },
+    {
+      "name": "swipe-to-delete",
+      "type": "registry:component",
+      "title": "Swipe to Delete",
+      "description": "An iOS-style swipeable list-item wrapper that reveals a delete action on drag, pops the icon at the commit threshold, and collapses the row before firing onDelete",
+      "files": [
+        {
+          "path": "app/registry/swipe-to-delete/swipe-to-delete.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/swipe-to-delete.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/swipe-to-delete",
+      "new": true
+    },
+    {
+      "name": "swipe-to-delete-demo",
+      "type": "registry:component",
+      "title": "Swipe to Delete Demo",
+      "description": "Demo usage for the Swipe to Delete component",
+      "files": [
+        {
+          "path": "app/registry/swipe-to-delete/swipe-to-delete-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/swipe-to-delete-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/swipe-to-delete"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/swipe-to-delete",
+      "new": true
+    },
+    {
+      "name": "task-checkbox",
+      "type": "registry:component",
+      "title": "Task Checkbox",
+      "description": "A satisfying todo checkbox row with spring fill, drawn-in check, confetti burst and animated strikethrough",
+      "files": [
+        {
+          "path": "app/registry/task-checkbox/task-checkbox.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/task-checkbox.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/task-checkbox",
+      "new": true
+    },
+    {
+      "name": "task-checkbox-demo",
+      "type": "registry:component",
+      "title": "Task Checkbox Demo",
+      "description": "Demo usage for the Task Checkbox component",
+      "files": [
+        {
+          "path": "app/registry/task-checkbox/task-checkbox-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/task-checkbox-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/task-checkbox"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/task-checkbox",
+      "new": true
+    },
+    {
+      "name": "morph-button",
+      "type": "registry:component",
+      "title": "Morph Button",
+      "description": "A multi-state async action button that morphs between idle, loading, success and error with an arc spinner, drawn-in check, tight error shake and auto-reset",
+      "files": [
+        {
+          "path": "app/registry/morph-button/morph-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/morph-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/morph-button"
+    },
+    {
+      "name": "morph-button-demo",
+      "type": "registry:component",
+      "title": "Morph Button Demo",
+      "description": "Demo usage for the Morph Button component",
+      "files": [
+        {
+          "path": "app/registry/morph-button/morph-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/morph-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/morph-button"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/morph-button"
+    },
+    {
+      "name": "animated-switch",
+      "type": "registry:component",
+      "title": "Animated Switch",
+      "description": "An iOS-quality animated toggle switch with a press-to-stretch knob, drag-to-toggle with flick support, and optional crossfading knob icons",
+      "files": [
+        {
+          "path": "app/registry/animated-switch/animated-switch.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/animated-switch.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Control",
+      "docsUrl": "https://ui.spectrumhq.in/docs/animated-switch"
+    },
+    {
+      "name": "animated-switch-demo",
+      "type": "registry:component",
+      "title": "Animated Switch Demo",
+      "description": "Demo usage for the Animated Switch component",
+      "files": [
+        {
+          "path": "app/registry/animated-switch/animated-switch-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/animated-switch-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/animated-switch"
+      ],
+      "category": "Control",
+      "docsUrl": "https://ui.spectrumhq.in/docs/animated-switch"
+    },
+    {
+      "name": "avatar-stack",
+      "type": "registry:component",
+      "title": "Avatar Stack",
+      "description": "An overlapping avatar stack that fans apart on hover, springs name tooltips over each face and expands hidden members from a +N pill with a stagger",
+      "files": [
+        {
+          "path": "app/registry/avatar-stack/avatar-stack.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/avatar-stack.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Profile",
+      "docsUrl": "https://ui.spectrumhq.in/docs/avatar-stack",
+      "new": true
+    },
+    {
+      "name": "avatar-stack-demo",
+      "type": "registry:component",
+      "title": "Avatar Stack Demo",
+      "description": "Demo usage for the Avatar Stack component",
+      "files": [
+        {
+          "path": "app/registry/avatar-stack/avatar-stack-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/avatar-stack-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/avatar-stack"
+      ],
+      "category": "Profile",
+      "docsUrl": "https://ui.spectrumhq.in/docs/avatar-stack",
+      "new": true
+    },
+    {
+      "name": "kbd-key",
+      "type": "registry:component",
+      "title": "Kbd Key",
+      "description": "A 3D keycap that physically depresses when the real key is pressed, with combo shortcuts that pulse and fire when every key is held at once",
+      "files": [
+        {
+          "path": "app/registry/kbd-key/kbd-key.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/kbd-key.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/kbd-key"
+    },
+    {
+      "name": "kbd-key-demo",
+      "type": "registry:component",
+      "title": "Kbd Key Demo",
+      "description": "Demo usage for the Kbd Key component",
+      "files": [
+        {
+          "path": "app/registry/kbd-key/kbd-key-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/kbd-key-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/kbd-key"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/kbd-key"
+    },
+    {
+      "name": "share-button",
+      "type": "registry:component",
+      "title": "Share Button",
+      "description": "A share trigger that fans out into copy-link and custom share actions with staggered springs, tooltips and full keyboard support",
+      "files": [
+        {
+          "path": "app/registry/share-button/share-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/share-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion",
+        "lucide-react"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/share-button"
+    },
+    {
+      "name": "share-button-demo",
+      "type": "registry:component",
+      "title": "Share Button Demo",
+      "description": "Demo usage for the Share Button component",
+      "files": [
+        {
+          "path": "app/registry/share-button/share-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/share-button-demo.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/share-button"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/share-button"
+    },
+    {
+      "name": "voice-input",
+      "type": "registry:block",
+      "title": "Voice Input",
+      "description": "A voice recorder pill with animated level bars and a live timer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/voice-input.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/voice-input.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "voice",
+        "input"
+      ]
+    },
+    {
+      "name": "web-search",
+      "type": "registry:block",
+      "title": "Web Search",
+      "description": "Agent search results with a live reading indicator.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/ai-assistants/web-search.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/ai-assistants/web-search.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "AI Assistants",
+      "tags": [
+        "ai",
+        "web",
+        "search"
       ]
     }
   ]

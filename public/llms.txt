@@ -35,7 +35,8 @@
 - [Guides](https://ui.spectrumhq.in/docs/guides)
 - [MCP server](https://ui.spectrumhq.in/docs/mcp)
 - [Blog](https://ui.spectrumhq.in/blog)
-- [Blocks](https://ui.spectrumhq.in/blocks): Pre-built, copy-paste UI blocks — navbars, hero/feature sections, pricing & login cards, testimonials, and dashboards
+- [Changelog](https://ui.spectrumhq.in/changelog): What is new — releases across blocks, components, docs, and the MCP server
+- [AI Assistant Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 
 ## Installation
@@ -95,6 +96,38 @@ Components can also be copied manually from their documentation source. Install 
 - [Task Checkbox](https://ui.spectrumhq.in/docs/task-checkbox): A todo checkbox that celebrates completion with a confetti burst and strikethrough.
 - [3D Tilt Card](https://ui.spectrumhq.in/docs/tilt-card): A 3D card that tilts toward the pointer with parallax depth and glare.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
+
+## AI Assistant blocks (27)
+
+Blocks are composed interface sections for products built on LLMs — a tier above components. Each renders live at actual size on https://ui.spectrumhq.in/blocks/ai-assistants and installs with the shadcn CLI or through the MCP server.
+
+- [Loading State](https://ui.spectrumhq.in/blocks/ai-assistants#loading-state): A pixel-grid loader with a shimmering label and live elapsed timer.
+- [Reasoning Trace](https://ui.spectrumhq.in/blocks/ai-assistants#reasoning-trace): An expandable chain-of-thought trace with a live thinking timer.
+- [Streaming Text](https://ui.spectrumhq.in/blocks/ai-assistants#streaming-text): A streamed answer with inline citations, sources, and follow-ups.
+- [Prompt Composer](https://ui.spectrumhq.in/blocks/ai-assistants#prompt-composer): A prompt input with attachments, a model picker, and a stop state.
+- [Chat Empty State](https://ui.spectrumhq.in/blocks/ai-assistants#chat-empty-state): A first-run greeting with staggered suggestion chips.
+- [Message Actions](https://ui.spectrumhq.in/blocks/ai-assistants#message-actions): Per-message controls — copy, regenerate, and thumb feedback.
+- [Citation Sources](https://ui.spectrumhq.in/blocks/ai-assistants#citation-sources): Inline citation markers with hover previews or a footnote list.
+- [Agent Steps](https://ui.spectrumhq.in/blocks/ai-assistants#agent-steps): A timeline of tool calls with status, arguments, results, and parallel sub-steps.
+- [Tool Chips](https://ui.spectrumhq.in/blocks/ai-assistants#tool-chips): Compact tool-call chips that expand into their arguments and result.
+- [Approval Card](https://ui.spectrumhq.in/blocks/ai-assistants#approval-card): A human-in-the-loop approval for an action an agent wants to take.
+- [Model Selector](https://ui.spectrumhq.in/blocks/ai-assistants#model-selector): A model picker as a radio list or segmented control, with badges and disabled states.
+- [Usage Meter](https://ui.spectrumhq.in/blocks/ai-assistants#usage-meter): A context-window meter with token counts and estimated cost.
+- [Voice Input](https://ui.spectrumhq.in/blocks/ai-assistants#voice-input): A voice recorder pill with animated level bars and a live timer.
+- [Inline Edit](https://ui.spectrumhq.in/blocks/ai-assistants#inline-edit): A selection-anchored AI edit: suggestion toolbar, word diff, accept or reject.
+- [Thinking Dots](https://ui.spectrumhq.in/blocks/ai-assistants#thinking-dots): A minimal typing indicator — bouncing dots or a sliding bar.
+- [Task Rows](https://ui.spectrumhq.in/blocks/ai-assistants#task-rows): Live agent task rows with status badges and expandable notes.
+- [Agent Plan](https://ui.spectrumhq.in/blocks/ai-assistants#agent-plan): An editable plan checklist the agent proposes before running.
+- [Web Search](https://ui.spectrumhq.in/blocks/ai-assistants#web-search): Agent search results with a live reading indicator.
+- [Diff View](https://ui.spectrumhq.in/blocks/ai-assistants#diff-view): Proposed file changes with per-file accept and reject.
+- [Code Block](https://ui.spectrumhq.in/blocks/ai-assistants#code-block): An AI code block with a file header, copy, and line collapse.
+- [Insight Cards](https://ui.spectrumhq.in/blocks/ai-assistants#insight-cards): Metric cards with spark bars, trend deltas, and an AI note.
+- [Error State](https://ui.spectrumhq.in/blocks/ai-assistants#error-state): A failed-generation state with a preserved prompt and retry.
+- [Quota Banner](https://ui.spectrumhq.in/blocks/ai-assistants#quota-banner): A message-quota banner with a live reset countdown.
+- [Memory Chips](https://ui.spectrumhq.in/blocks/ai-assistants#memory-chips): What the assistant remembers, as removable chips.
+- [Suggestion Banner](https://ui.spectrumhq.in/blocks/ai-assistants#suggestion-banner): An inline AI suggestion with apply and dismiss.
+- [Status Tracker](https://ui.spectrumhq.in/blocks/ai-assistants#status-tracker): A staged progress tracker for long-running AI jobs.
+- [Conversation List](https://ui.spectrumhq.in/blocks/ai-assistants#conversation-list): A date-grouped conversation sidebar with pinning.
 
 ## Machine-readable resources
 
