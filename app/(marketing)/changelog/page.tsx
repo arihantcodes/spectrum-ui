@@ -52,11 +52,11 @@ export default function ChangelogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#0A0A0A] ">
       <JsonLd id="changelog-breadcrumb" data={breadcrumb} />
       <JsonLd id="changelog-itemlist" data={itemList} />
 
-      <div className="container-frame mx-auto max-w-[1080px] px-4 lg:px-8">
+      <div className="mx-auto max-w-[37em] px-4 lg:px-6">
         <header className="py-14 lg:py-20">
           <div className="flex items-center gap-2.5">
             <span aria-hidden className="-rotate-90">
@@ -113,13 +113,12 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
       id={entry.slug}
       aria-labelledby={`${entry.slug}-title`}
       className={
-        'grid scroll-mt-28 gap-x-12 gap-y-4 border-t border-dashed border-black/[0.09] py-14 first:border-t-0 first:pt-0 md:grid-cols-[190px_minmax(0,1fr)] lg:py-20 dark:border-white/[0.09]' +
+        'scroll-mt-28 border-t border-dashed border-black/[0.09] py-14 first:border-t-0 first:pt-0 lg:py-20 dark:border-white/[0.09]' +
         (entry.media ? ' md:min-h-[85vh]' : '')
       }
     >
-      {/* Meta rail — sticks while the entry scrolls, like a margin note. */}
-      <div className="md:sticky md:top-24 md:self-start">
-        <div className="flex items-center gap-2 md:flex-col md:items-start md:gap-2.5">
+      <div className="mb-4">
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-2">
           <span className="w-fit rounded-md border border-black/[0.1] px-1.5 py-0.5 font-mono text-[10.5px] font-medium text-neutral-600 dark:border-white/[0.14] dark:text-neutral-300">
             {AREA_LABELS[entry.area]}
           </span>
@@ -146,7 +145,7 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
             — the blog's .typeset-article preset, no classes on the content.
             Media panels and the link row opt out with `not-typeset`, the same
             pattern as the blog's Figure and Callout. */}
-        <div className="typeset typeset-article group max-w-[42em]">
+        <div className="typeset typeset-article group">
           <h2 id={`${entry.slug}-title`}>
             {entry.title}
             <a
@@ -169,7 +168,7 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
         )}
 
         {entry.sections && entry.sections.length > 0 && (
-          <div className="typeset typeset-article mt-2 max-w-[42em]">
+          <div className="typeset typeset-article mt-2">
             {entry.sections.map((section) => (
               <section key={section.label}>
                 <h3>{section.label}</h3>

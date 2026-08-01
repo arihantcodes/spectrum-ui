@@ -67,10 +67,19 @@ export function MainNav() {
           href="/colors"
           className={cn(
             'transition-colors hover:text-foreground whitespace-nowrap',
-            pathname === '/Colors' ? 'text-foreground' : 'text-foreground/80',
+            pathname === '/colors' ? 'text-foreground' : 'text-foreground/80',
           )}
         >
          Colors
+        </Link>
+            <Link
+          href="/blocks"
+          className={cn(
+            'transition-colors hover:text-foreground whitespace-nowrap',
+            pathname === '/blocks' ? 'text-foreground' : 'text-foreground/80',
+          )}
+        >
+         Blocks
         </Link>
       </nav>
     </div>
