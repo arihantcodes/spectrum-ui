@@ -142,63 +142,49 @@ function Entry({ entry, latest }: { entry: ChangelogEntry; latest: boolean }) {
       </div>
 
       <div className="min-w-0">
-        {/* The heading is its own anchor; the hash appears on hover. */}
-        <h2
-          id={`${entry.slug}-title`}
-          className="group text-[22px] font-semibold leading-snug tracking-[-0.4px] text-neutral-900 md:text-[24px] dark:text-neutral-50"
-        >
-          <a href={`#${entry.slug}`} className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400">
+        {/* Entry prose is plain semantic HTML styled entirely by shadcn/typeset
+            — the blog's .typeset-article preset, no classes on the content.
+            Media panels and the link row opt out with `not-typeset`, the same
+            pattern as the blog's Figure and Callout. */}
+        <div className="typeset typeset-article group max-w-[42em]">
+          <h2 id={`${entry.slug}-title`}>
             {entry.title}
-            <span
-              aria-hidden
-              className="ml-2 font-mono text-[17px] font-normal text-neutral-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100 dark:text-neutral-600"
+            <a
+              href={`#${entry.slug}`}
+              aria-label={`Link to ${entry.title}`}
+              className="ml-2 !no-underline opacity-0 transition-opacity duration-150 group-hover:opacity-60 focus-visible:opacity-60 focus-visible:outline-none"
             >
               #
-            </span>
-          </a>
-        </h2>
-
-        <div className="mt-4 space-y-4">
+            </a>
+          </h2>
           {entry.body.map((paragraph) => (
-            <p
-              key={paragraph.slice(0, 32)}
-              className="max-w-[68ch] text-[15.5px] leading-[1.8] text-neutral-600 dark:text-neutral-400"
-            >
-              {paragraph}
-            </p>
+            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
         </div>
 
         {entry.media && (
-          <div className="mt-8">
+          <div className="not-typeset mt-8">
             <ChangelogMedia media={entry.media} />
           </div>
         )}
 
-        {entry.sections?.map((section) => (
-          <section key={section.label} className="mt-8">
-            <h3 className="font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-neutral-400 dark:text-neutral-600">
-              {section.label}
-            </h3>
-            <ul className="mt-2.5 space-y-2">
-              {section.items.map((item) => (
-                <li
-                  key={item.slice(0, 32)}
-                  className="flex max-w-[68ch] gap-2.5 text-[14px] leading-[1.7] text-neutral-600 dark:text-neutral-400"
-                >
-                  <span
-                    aria-hidden
-                    className="mt-[0.55em] size-1 shrink-0 rounded-full bg-neutral-300 dark:bg-neutral-600"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+        {entry.sections && entry.sections.length > 0 && (
+          <div className="typeset typeset-article mt-2 max-w-[42em]">
+            {entry.sections.map((section) => (
+              <section key={section.label}>
+                <h3>{section.label}</h3>
+                <ul>
+                  {section.items.map((item) => (
+                    <li key={item.slice(0, 32)}>{item}</li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        )}
 
         {entry.links && entry.links.length > 0 && (
-          <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
+          <div className="not-typeset mt-8 flex flex-wrap gap-x-5 gap-y-2">
             {entry.links.map((link) => (
               <Link
                 key={link.href}
