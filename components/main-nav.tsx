@@ -79,7 +79,7 @@ export function MainNav() {
             pathname === '/blocks' ? 'text-foreground' : 'text-foreground/80',
           )}
         >
-         Blocks
+         Blocks 
         </Link>
       </nav>
     </div>

@@ -7,6 +7,7 @@ import { CodeDrawer } from '@/components/blocks/code-drawer';
 import { Copy1Icon, TerminalIcon } from '@/app/(docs)/layout-parts/docs-icons';
 import { useAuthGate } from '@/hooks/use-auth-gate';
 import { trackEvent } from '@/lib/events';
+import { NewBadge } from '@/components/blocks/new-badge';
 import { cn } from '@/lib/utils';
 
 interface SpecimenProps {
@@ -19,6 +20,7 @@ interface SpecimenProps {
   /** Full source of the block, read off disk by the server page. */
   source: string;
   cli: string;
+  isNew?: boolean;
 }
 
 /**
@@ -27,7 +29,7 @@ interface SpecimenProps {
  * the block's state in place; the code button opens a right-hand drawer with
  * the three install paths (CLI, MCP, source), each login-gated like /docs.
  */
-export function Specimen({ slug, number, name, description, variants, source, cli }: SpecimenProps) {
+export function Specimen({ slug, number, name, description, variants, source, cli, isNew }: SpecimenProps) {
   const [variant, setVariant] = useState(variants[0] ?? 'default');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const demo = BLOCK_DEMOS[slug];
@@ -45,6 +47,7 @@ export function Specimen({ slug, number, name, description, variants, source, cl
         >
           {name}
         </h2>
+        {isNew && <NewBadge />}
         <p className="text-[13.5px] text-neutral-500 dark:text-neutral-400">{description}</p>
       </div>
 

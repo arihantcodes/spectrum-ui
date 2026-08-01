@@ -14,6 +14,15 @@ Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js 
 4. MCP docs: `https://ui.spectrumhq.in/docs/mcp`
 5. GitHub: `https://github.com/arihantcodes/spectrum-ui`
 
+## Blocks vs components
+
+Components are primitives (a button, an accordion). Blocks are the tier above:
+composed interface sections for AI products — streaming answers, reasoning
+traces, agent tool timelines, prompt composers, approval cards. There are 27,
+all in the AI Assistants category, all installable the same way as components:
+`npx shadcn@latest add @spectrumui/<block>`. Full reference with per-block
+guidance is in /llms-full.txt.
+
 ## Install patterns
 
 - CLI (preferred when available on the docs page):
@@ -38,6 +47,8 @@ Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js 
 ## Site map shortcuts
 
 - Docs index: /docs
+- AI Assistant blocks: /blocks/ai-assistants
+- Changelog: /changelog
 - Installation: /docs/installation
 - Blog: /blog
 - Colors: /colors

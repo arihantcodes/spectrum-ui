@@ -43,7 +43,8 @@ export interface BlockCatalogItem {
   aiHints: string;
   /** Stable catalog number — drives the "01 / 08" label on cards. */
   index: number;
-  new?: boolean;
+  /** ISO date the block shipped. Drives the self-expiring New badge. */
+  addedAt: string;
   /**
    * `planned` entries are the roadmap: they exist in the catalog so ordering and
    * numbering stay stable, but no page or card renders for them. Flip to `live`
@@ -105,6 +106,27 @@ export const LIVE_BLOCKS: readonly BlockCatalogItem[] = BLOCK_CATALOG.filter(
 
 export function blocksInCategory(categorySlug: string) {
   return LIVE_BLOCKS.filter((block) => block.category === categorySlug);
+}
+
+/** How long a block wears its New badge. */
+const NEW_FOR_DAYS = 30;
+
+/**
+ * Blocks that shipped recently enough to badge.
+ *
+ * Returns nothing when *every* block is new — during a launch the badge marks
+ * all 27 and therefore distinguishes none, so it is only noise. It starts
+ * earning its place the moment some blocks are older than others, and expires
+ * on its own so the catalog never accumulates stale badges the way the
+ * component sidebar did.
+ */
+export function newBlockSlugs(now: Date = new Date()): ReadonlySet<string> {
+  const cutoff = now.getTime() - NEW_FOR_DAYS * 24 * 60 * 60 * 1000;
+  const recent = LIVE_BLOCKS.filter(
+    (block) => new Date(`${block.addedAt}T00:00:00Z`).getTime() >= cutoff,
+  );
+  if (recent.length === LIVE_BLOCKS.length) return new Set();
+  return new Set(recent.map((block) => block.slug));
 }
 
 /** Includes planned entries — for roadmap copy, not for cards. */

@@ -11,6 +11,7 @@ import {
   blockCliCommand,
   blocksInCategory,
   findBlockCategory,
+  newBlockSlugs,
 } from '@/lib/block-catalog';
 import { generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 import { siteConfig } from '@/config/site';
@@ -64,6 +65,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
   if (!category) notFound();
 
   const blocks = blocksInCategory(slug);
+  const isNew = newBlockSlugs();
   const sources = await Promise.all(blocks.map((block) => readSource(slug, block.slug)));
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
 
@@ -86,16 +88,40 @@ export default async function BlockCategoryPage({ params }: PageProps) {
     })),
   };
 
+  /* One SoftwareSourceCode node per block: the schema.org type search engines
+     and AI crawlers actually associate with installable code. */
+  const softwareSource = blocks.map((block) => ({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: block.name,
+    description: block.summary,
+    abstract: block.description,
+    url: `${url}#${block.slug}`,
+    programmingLanguage: 'TypeScript',
+    runtimePlatform: 'React',
+    codeRepository: siteConfig.links.github,
+    license: 'https://opensource.org/licenses/Apache-2.0',
+    isAccessibleForFree: true,
+    dateCreated: block.addedAt,
+    keywords: [block.category, block.subcategory, ...block.variants].join(', '),
+    installUrl: `https://ui.spectrumhq.in/r/${block.slug}.json`,
+  }));
+
   return (
     <>
       <JsonLd id={`blocks-${slug}-breadcrumb`} data={breadcrumb} />
       <JsonLd id={`blocks-${slug}-itemlist`} data={itemList} />
+      <JsonLd id={`blocks-${slug}-source`} data={softwareSource} />
 
       <div className="flex gap-14 py-12 lg:py-16">
         <BlocksSidebar
           title={category.name}
           tagline={category.tagline}
-          items={blocks.map((block) => ({ slug: block.slug, name: block.name }))}
+          items={blocks.map((block) => ({
+            slug: block.slug,
+            name: block.name,
+            isNew: isNew.has(block.slug),
+          }))}
         />
 
         <main className="min-w-0 max-w-[760px] flex-1">
@@ -124,6 +150,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
                   variants={block.variants}
                   source={sources[position] ?? '// Source unavailable'}
                   cli={blockCliCommand(block.slug)}
+                  isNew={isNew.has(block.slug)}
                 />
               </div>
             ))}

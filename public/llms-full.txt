@@ -426,6 +426,496 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
+## AI Assistant block reference (27)
+
+Composed interface sections for AI products. All are presentational — data in, callbacks out — and share one message contract, so they compose into a working chat surface. Every block renders live at https://ui.spectrumhq.in/blocks/ai-assistants.
+
+### Loading State
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#loading-state
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/loading-state
+- Variants: Drive, Dots, Orbit
+- Dependencies: none
+- Added: 2026-07-29
+
+What fills the gap before the first token. A nine-cell pixel grid animates a chevron wavefront or an orbiting comet, next to a shimmering label and an elapsed timer in mono tabular figures.
+
+When to use it: Render while a long-running AI task has produced no output yet. Purely visual; label and variant are props. Self-contained — its keyframes ship inside the component.
+
+What makes it hard to build well:
+- A timer that ticks every 100ms needs tabular figures or the layout wobbles on every frame
+- The 650ms cycle is shorter than the sweep so two wavefronts are always in flight
+- Reduced motion freezes the grid to its dim state while the timer keeps ticking
+
+### Reasoning Trace
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#reasoning-trace
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/reasoning-trace
+- Variants: Steps, Reasoning
+- Dependencies: lucide-react
+- Added: 2026-07-29
+
+Shows the model's reasoning before its answer. Streams step by step while thinking, tracks elapsed time, and collapses to a one-line summary when done.
+
+When to use it: Render above an assistant message to expose reasoning. Accepts steps plus a status of thinking or complete. Presentational only.
+
+What makes it hard to build well:
+- Animating the height of streaming content — height:auto is unanimatable and max-height guesses wrong
+- Collapsing must not jump the scroll position of the thread above
+- An elapsed timer needs tabular numbers or the label wobbles every tick
+
+### Streaming Text
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#streaming-text
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/streaming-text
+- Variants: Answer, Sources
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+A single streamed answer outside a full thread — token-by-token text with inline citation markers, a compact source row or expanded source list, and follow-up prompts that stagger in when the answer settles.
+
+When to use it: Render a single streamed answer outside a full thread. Accepts text, citations and follow-up prompts; streaming drives the caret.
+
+What makes it hard to build well:
+- Word-chunked streaming reads as inference; per-character reads as a typewriter
+- Citation markers arrive in the stream before their sources render
+- Follow-ups must not shift layout while text is still arriving
+
+### Prompt Composer
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#prompt-composer
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/prompt-composer
+- Variants: Default, Minimal
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+The input surface of an AI product: an autosizing textarea with attachment chips, a model picker that opens upward, a character budget, and a send control that becomes stop while a response streams.
+
+When to use it: Use as the input of an AI product. Emits onSend with text and model id; set isGenerating to swap send for stop. Enter is IME-safe.
+
+What makes it hard to build well:
+- Autosize with a max height that then scrolls, without per-keystroke jitter
+- The model menu opens upward so it never collides with a thread above
+- Swapping send for stop without the button changing size
+
+### Chat Empty State
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#chat-empty-state
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/chat-empty-state
+- Variants: Default, Centered
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+The first thing every user sees. A greeting, an honest subtitle, and suggestion chips that stagger in and feed the composer.
+
+When to use it: Render instead of the thread when there are no messages. Emits onSelectPrompt so a chip can populate the composer.
+
+What makes it hard to build well:
+- Least technically hard, highest product leverage — it is the first impression
+- Stagger must be capped or a long chip list turns into a wait
+- Chips must feed the composer without a page of wiring
+
+### Message Actions
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#message-actions
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/message-actions
+- Variants: Ghost, Pill
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+The action row on an assistant message: copy with a blur-crossfade check, regenerate with a half-turn, and thumb feedback that fills and pops. Hover-revealed on pointer devices, keyboard-reachable, always visible on touch.
+
+When to use it: Attach below an assistant message inside a group/message container. Hover-revealed on pointer devices, always visible on touch.
+
+What makes it hard to build well:
+- Hover-reveal that is also keyboard-reachable and always visible on touch — three access models, one component
+- Copy must yield source markdown, not rendered DOM text
+- Feedback state must survive being toggled off
+
+### Citation Sources
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#citation-sources
+- Category: ai-assistants / Sources
+- Install: npx shadcn@latest add @spectrumui/citation-sources
+- Variants: Inline, Footnotes
+- Dependencies: none
+- Added: 2026-07-31
+
+Grounds an answer in its sources. Numbered markers sit inline in the text and reveal a hovercard on hover or focus; the footnote variant lists every source with domain and snippet.
+
+When to use it: Wrap answer text containing [n] markers. Accepts Citation[] indexed from 1; hovercards need no JS positioning.
+
+What makes it hard to build well:
+- Numbering must stay stable when sources deduplicate by domain
+- A hovercard that works on focus as well as hover
+- Markers must not break line height or text rhythm
+
+### Agent Steps
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#agent-steps
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/agent-steps
+- Variants: Default, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Visualises what an agent actually did: each tool call with its status, arguments, duration and result, including parallel sub-steps rendered side by side.
+
+When to use it: Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children; expandable results use no height hacks.
+
+What makes it hard to build well:
+- A real state machine — pending, running, success, error — not a spinner
+- Arguments stay readable without blowing the layout: truncate, never wrap
+- Parallel calls need a visibly different treatment from sequential ones
+
+### Tool Chips
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#tool-chips
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/tool-chips
+- Variants: Row, Stack
+- Dependencies: none
+- Added: 2026-07-31
+
+Tool calls as a row or stack of compact chips — status dot, mono name, duration — with one shared panel that expands to show the selected call's arguments and result.
+
+When to use it: A denser alternative to agent-steps for inline tool use. Accepts ToolCall[]; one chip expands at a time.
+
+What makes it hard to build well:
+- One expanded panel shared across chips keeps the layout calm
+- Status must be legible from a 6px dot alone
+- Chips wrap without orphaning their durations
+
+### Approval Card
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#approval-card
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/approval-card
+- Variants: Default
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+An agent proposes; a human decides. The card states the action and its consequence, and the decision crossfades in place with an audit line preserved.
+
+When to use it: Render when an agent proposes an irreversible action. Emits onDecide; the decided state crossfades in place.
+
+What makes it hard to build well:
+- Show the consequence clearly enough to decide on
+- The decided state must preserve an audit trail
+- Approve and dismiss must not be visual equals
+
+### Model Selector
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#model-selector
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/model-selector
+- Variants: List, Segmented
+- Dependencies: none
+- Added: 2026-07-31
+
+Model choice as a radio list with descriptions, badges and disabled states, or as a segmented control whose active pill slides between options.
+
+When to use it: Accepts ModelOption[]; controlled or uncontrolled. Disabled options stay visible so capability differences are legible.
+
+What makes it hard to build well:
+- Disabled options must stay visible — capability differences are information
+- The sliding pill needs transform, not layout animation
+- Radio semantics without a form library
+
+### Usage Meter
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#usage-meter
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/usage-meter
+- Variants: Bar, Inline
+- Dependencies: none
+- Added: 2026-07-31
+
+Context-window state at a glance: a meter that turns amber past 75 percent and red past 90, token counts in tabular figures, and an estimated cost.
+
+When to use it: Accepts a UsageState. Threshold colors at 75 and 90 percent; numerals are tabular so the layout never wobbles.
+
+What makes it hard to build well:
+- Tabular numerals or every tick shifts the layout
+- Threshold colors must be meaningful, not decorative
+- The bar animates width smoothly without repaint jank
+
+### Voice Input
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#voice-input
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/voice-input
+- Variants: Default
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+A recorder pill that moves through idle, recording and processing. Level bars animate on staggered offsets, the timer ticks in mono, and cancel or confirm sit a thumb-width apart.
+
+When to use it: Controlled or uncontrolled recording states: idle, recording, processing. Reduced motion freezes the bars; the timer still ticks.
+
+What makes it hard to build well:
+- Level bars from staggered CSS offsets, no audio API needed for the preview
+- Three permission-adjacent states with distinct affordances
+- Reduced motion needs a static-but-alive treatment
+
+### Inline Edit
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#inline-edit
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/inline-edit
+- Variants: Default
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+AI editing anchored to a selection: the highlighted span grows a floating action, the suggestion arrives as a word-level diff, and accepting swaps the text in place.
+
+When to use it: Render over editable prose. Shows the selection, a floating action, then a del/ins diff; accepting swaps the text in place.
+
+What makes it hard to build well:
+- A floating action anchored to an inline selection across line wraps
+- Word-level diff that reads at a glance — del and ins, not walls of red and green
+- Accepting must swap text without the paragraph jumping
+
+### Thinking Dots
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#thinking-dots
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/thinking-dots
+- Variants: Dots, Bar
+- Dependencies: none
+- Added: 2026-07-31
+
+The lightest possible signal that the assistant is alive. Three dots bounce on staggered offsets, or a bar slides its track, next to a quiet label.
+
+When to use it: Render while the assistant is preparing a reply and no richer state applies. Purely visual; label is a prop.
+
+What makes it hard to build well:
+- Stagger offsets must be irregular enough not to read as a metronome
+- role=status announces once, not per bounce
+- Reduced motion freezes to the dim state
+
+### Task Rows
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#task-rows
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/task-rows
+- Variants: Default, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+What a background agent is doing right now: each row carries a status icon, a mono detail, a status badge, and an expandable note for the rows that finished.
+
+When to use it: Render a background agent's work queue. Accepts TaskRow[] with queued, running, completed and failed statuses; rows with notes expand.
+
+What makes it hard to build well:
+- Four statuses with distinct affordances, legible without color
+- A spinning icon that does not blur at small sizes
+- Expanding one row must not shift its neighbours
+
+### Agent Plan
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#agent-plan
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/agent-plan
+- Variants: Default, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+The agent proposes, the human prunes. Numbered steps with checkboxes, struck through when excluded, and a run button that counts what survives.
+
+When to use it: Render before executing a multi-step plan. Steps toggle on and off; onRun receives the enabled step ids.
+
+What makes it hard to build well:
+- Excluded steps stay visible — an edited plan is still a plan
+- Checkbox semantics without a form library
+- The run button must reflect the live enabled count
+
+### Web Search
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#web-search
+- Category: ai-assistants / Sources
+- Install: npx shadcn@latest add @spectrumui/web-search
+- Variants: Default, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+What the agent is reading and in what order: the query in mono, results with favicon dots and snippets, and a reading badge that walks down the list.
+
+When to use it: Render while an agent searches the web. Accepts results with reading, read and idle states; the query renders in mono.
+
+What makes it hard to build well:
+- The reading state must draw the eye without flashing
+- Idle results dim rather than disappear
+- Snippets clamp to one line so the list stays scannable
+
+### Diff View
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#diff-view
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/diff-view
+- Variants: Default, Summary
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Changes an agent wants to make, shown as unified diffs with add and remove lines, per-file +/− counts, and accept or reject controls that record the decision in place.
+
+When to use it: Render changes an agent proposes to files. Accepts FileDiff[]; accept and reject decide per file and the decision is recorded in place.
+
+What makes it hard to build well:
+- Rejected files dim but stay — an audit trail, not a deletion
+- Diff lines never wrap; horizontal scroll preserves alignment
+- Accept and reject must not be visual equals
+
+### Code Block
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#code-block
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/code-block
+- Variants: Default, Numbered
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Code as an assistant emits it: a file header, optional line numbers, a copy control with the blur-crossfade check, and a collapse that keeps long output honest.
+
+When to use it: Render code inside an assistant reply. Collapses past collapsedLines with an expander; copy takes the full source either way.
+
+What makes it hard to build well:
+- Copy must take the full source even while collapsed
+- Line numbers are tabular and unselectable
+- The expander states exactly how many lines it hides
+
+### Insight Cards
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#insight-cards
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/insight-cards
+- Variants: Grid, Row
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Metrics with a voice: the number in mono, a trend delta with its arrow, spark bars with the latest period emphasised, and one line of AI annotation under a hairline.
+
+When to use it: Render AI-computed metrics. Accepts insights with a value, a signed change, spark points and an optional annotation line.
+
+What makes it hard to build well:
+- Spark bars emphasise the latest period, not the tallest
+- Deltas are signed, colored and tabular
+- The AI note must read as annotation, not as another metric
+
+### Error State
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#error-state
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/error-state
+- Variants: Card, Inline
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Failure without drama: what went wrong, the reassurance that the prompt survived, and a retry that spins while it works.
+
+When to use it: Render when generation fails. The retry control shows a spinner while retrying; the inline variant fits inside a thread.
+
+What makes it hard to build well:
+- The message must say the prompt is preserved — that is the actual fear
+- Retry disables while retrying or users double-fire
+- The inline variant must fit a thread row
+
+### Quota Banner
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#quota-banner
+- Category: ai-assistants / Feedback
+- Install: npx shadcn@latest add @spectrumui/quota-banner
+- Variants: Banner, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+The cap, stated plainly: messages left, a meter that turns amber at the limit, a live mm:ss reset countdown in tabular mono, and the upgrade path.
+
+When to use it: Render when a usage cap approaches or hits. Accepts used, limit and resetsInSeconds; the countdown ticks live.
+
+What makes it hard to build well:
+- A live countdown needs tabular figures or it jitters every second
+- Amber at exhaustion; red is for errors, not billing
+- The compact pill must fit a composer footer
+
+### Memory Chips
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#memory-chips
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/memory-chips
+- Variants: Panel, Row
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Assistant memory made legible: each remembered fact is a chip with a remove control, plus a dashed chip to add more. Forgetting something is one click.
+
+When to use it: Render saved assistant memory. Chips remove with an X and stagger in; onAdd renders a dashed add chip.
+
+What makes it hard to build well:
+- Forgetting must be one click, never a menu
+- Chips stagger in but removal is instant
+- The empty state explains where memories come from
+
+### Suggestion Banner
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#suggestion-banner
+- Category: ai-assistants / Input
+- Install: npx shadcn@latest add @spectrumui/suggestion-banner
+- Variants: Inline, Floating
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+A proactive nudge with manners: the suggestion and its reasoning, a quiet dismiss, and an apply that collapses the banner into a confirmation pill.
+
+When to use it: Render a proactive suggestion. Apply collapses it to a confirmation pill; dismiss removes it. Controlled or uncontrolled.
+
+What makes it hard to build well:
+- Applied state collapses to a pill instead of lingering
+- Dismiss must be quieter than apply
+- The reasoning line earns the interruption
+
+### Status Tracker
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#status-tracker
+- Category: ai-assistants / Reasoning & Agents
+- Install: npx shadcn@latest add @spectrumui/status-tracker
+- Variants: Default, Minimal
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Long jobs in stages: completed stages check off, the active stage pulses while its connector fills, and the minimal variant compresses it all into one bar.
+
+When to use it: Render multi-stage jobs like ingestion or fine-tuning. Accepts stages, an activeIndex and 0–1 progress within the active stage.
+
+What makes it hard to build well:
+- Progress lives in the connectors, not just the dots
+- Stage labels stay legible at 9.5px mono or they are noise
+- The minimal variant must collapse to a single honest percentage
+
+### Conversation List
+
+- URL: https://ui.spectrumhq.in/blocks/ai-assistants#conversation-list
+- Category: ai-assistants / Conversation
+- Install: npx shadcn@latest add @spectrumui/conversation-list
+- Variants: Default, Compact
+- Dependencies: lucide-react
+- Added: 2026-07-31
+
+Chat history that stays organised: date-grouped rows, an active state, and a pin that reveals on hover, stays put on touch, and holds favourites at hand.
+
+When to use it: Render chat history. Conversations group by date labels; rows select, and a hover-revealed pin keeps favourites.
+
+What makes it hard to build well:
+- The pin is hover-revealed on pointer devices but always present on touch
+- Date grouping happens in data, not in the component's opinion of time
+- Active and pinned are independent states
+
 ## Other public pages
 
 - Home: https://ui.spectrumhq.in
@@ -433,6 +923,8 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Installation: https://ui.spectrumhq.in/docs/installation
 - Guides: https://ui.spectrumhq.in/docs/guides
 - MCP server: https://ui.spectrumhq.in/docs/mcp
+- AI Assistant blocks: https://ui.spectrumhq.in/blocks/ai-assistants
+- Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
 - Colors: https://ui.spectrumhq.in/colors
 - FAQs: https://ui.spectrumhq.in/faqs

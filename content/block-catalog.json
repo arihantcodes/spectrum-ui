@@ -31,8 +31,8 @@
       "dependencies": [],
       "aiHints": "Render while a long-running AI task has produced no output yet. Purely visual; label and variant are props. Self-contained — its keyframes ship inside the component.",
       "index": 1,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-29"
     },
     {
       "slug": "reasoning-trace",
@@ -57,8 +57,8 @@
       ],
       "aiHints": "Render above an assistant message to expose reasoning. Accepts steps plus a status of thinking or complete. Presentational only.",
       "index": 2,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-29"
     },
     {
       "slug": "streaming-text",
@@ -83,8 +83,8 @@
       ],
       "aiHints": "Render a single streamed answer outside a full thread. Accepts text, citations and follow-up prompts; streaming drives the caret.",
       "index": 3,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "prompt-composer",
@@ -109,8 +109,8 @@
       ],
       "aiHints": "Use as the input of an AI product. Emits onSend with text and model id; set isGenerating to swap send for stop. Enter is IME-safe.",
       "index": 4,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "chat-empty-state",
@@ -135,8 +135,8 @@
       ],
       "aiHints": "Render instead of the thread when there are no messages. Emits onSelectPrompt so a chip can populate the composer.",
       "index": 5,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "message-actions",
@@ -161,8 +161,8 @@
       ],
       "aiHints": "Attach below an assistant message inside a group/message container. Hover-revealed on pointer devices, always visible on touch.",
       "index": 6,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "citation-sources",
@@ -185,8 +185,8 @@
       "dependencies": [],
       "aiHints": "Wrap answer text containing [n] markers. Accepts Citation[] indexed from 1; hovercards need no JS positioning.",
       "index": 7,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "agent-steps",
@@ -211,8 +211,8 @@
       ],
       "aiHints": "Render inside an assistant message to show tool use. Accepts ToolCall[] with nested children; expandable results use no height hacks.",
       "index": 8,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "tool-chips",
@@ -235,8 +235,8 @@
       "dependencies": [],
       "aiHints": "A denser alternative to agent-steps for inline tool use. Accepts ToolCall[]; one chip expands at a time.",
       "index": 9,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "approval-card",
@@ -260,8 +260,8 @@
       ],
       "aiHints": "Render when an agent proposes an irreversible action. Emits onDecide; the decided state crossfades in place.",
       "index": 10,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "model-selector",
@@ -284,8 +284,8 @@
       "dependencies": [],
       "aiHints": "Accepts ModelOption[]; controlled or uncontrolled. Disabled options stay visible so capability differences are legible.",
       "index": 11,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "usage-meter",
@@ -308,8 +308,8 @@
       "dependencies": [],
       "aiHints": "Accepts a UsageState. Threshold colors at 75 and 90 percent; numerals are tabular so the layout never wobbles.",
       "index": 12,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "voice-input",
@@ -333,8 +333,8 @@
       ],
       "aiHints": "Controlled or uncontrolled recording states: idle, recording, processing. Reduced motion freezes the bars; the timer still ticks.",
       "index": 13,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "inline-edit",
@@ -358,8 +358,8 @@
       ],
       "aiHints": "Render over editable prose. Shows the selection, a floating action, then a del/ins diff; accepting swaps the text in place.",
       "index": 14,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "thinking-dots",
@@ -382,8 +382,8 @@
       "dependencies": [],
       "aiHints": "Render while the assistant is preparing a reply and no richer state applies. Purely visual; label is a prop.",
       "index": 15,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "task-rows",
@@ -408,8 +408,8 @@
       ],
       "aiHints": "Render a background agent's work queue. Accepts TaskRow[] with queued, running, completed and failed statuses; rows with notes expand.",
       "index": 16,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "agent-plan",
@@ -434,8 +434,8 @@
       ],
       "aiHints": "Render before executing a multi-step plan. Steps toggle on and off; onRun receives the enabled step ids.",
       "index": 17,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "web-search",
@@ -460,8 +460,8 @@
       ],
       "aiHints": "Render while an agent searches the web. Accepts results with reading, read and idle states; the query renders in mono.",
       "index": 18,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "diff-view",
@@ -486,8 +486,8 @@
       ],
       "aiHints": "Render changes an agent proposes to files. Accepts FileDiff[]; accept and reject decide per file and the decision is recorded in place.",
       "index": 19,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "code-block",
@@ -512,8 +512,8 @@
       ],
       "aiHints": "Render code inside an assistant reply. Collapses past collapsedLines with an expander; copy takes the full source either way.",
       "index": 20,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "insight-cards",
@@ -538,8 +538,8 @@
       ],
       "aiHints": "Render AI-computed metrics. Accepts insights with a value, a signed change, spark points and an optional annotation line.",
       "index": 21,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "error-state",
@@ -564,8 +564,8 @@
       ],
       "aiHints": "Render when generation fails. The retry control shows a spinner while retrying; the inline variant fits inside a thread.",
       "index": 22,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "quota-banner",
@@ -590,8 +590,8 @@
       ],
       "aiHints": "Render when a usage cap approaches or hits. Accepts used, limit and resetsInSeconds; the countdown ticks live.",
       "index": 23,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "memory-chips",
@@ -616,8 +616,8 @@
       ],
       "aiHints": "Render saved assistant memory. Chips remove with an X and stagger in; onAdd renders a dashed add chip.",
       "index": 24,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "suggestion-banner",
@@ -642,8 +642,8 @@
       ],
       "aiHints": "Render a proactive suggestion. Apply collapses it to a confirmation pill; dismiss removes it. Controlled or uncontrolled.",
       "index": 25,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "status-tracker",
@@ -668,8 +668,8 @@
       ],
       "aiHints": "Render multi-stage jobs like ingestion or fine-tuning. Accepts stages, an activeIndex and 0–1 progress within the active stage.",
       "index": 26,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     },
     {
       "slug": "conversation-list",
@@ -694,8 +694,8 @@
       ],
       "aiHints": "Render chat history. Conversations group by date labels; rows select, and a hover-revealed pin keeps favourites.",
       "index": 27,
-      "new": true,
-      "status": "live"
+      "status": "live",
+      "addedAt": "2026-07-31"
     }
   ]
 }
