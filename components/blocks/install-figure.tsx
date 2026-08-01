@@ -42,7 +42,7 @@ function tokenClass(tokens: string[], index: number) {
 export function InstallFigure({ cli, componentName, className }: InstallFigureProps) {
   const [pm, setPm] = useState<PackageManagerId>('npm');
   const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const { isAuthenticated, openAuthModal } = useAuthGate();
 
   const activeIndex = PACKAGE_MANAGERS.findIndex((manager) => manager.id === pm);

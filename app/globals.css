@@ -75,7 +75,13 @@
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --radius-xl: var(--radius-xl, 0.75rem);
+  /* Base value only — must NOT self-reference. In v3 the theme key `xl` and the
+     CSS variable `--radius-xl` were separate namespaces, so `var(--radius-xl,
+     0.75rem)` was a valid runtime hook. In v4 the theme key IS the variable
+     name, so that form is cyclic and resolves to 0. The /docs/card customizer
+     still overrides roundness by setting `--radius-xl` inline on a wrapper,
+     which cascades to descendants and beats this :root value. */
+  --radius-xl: 0.75rem;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);

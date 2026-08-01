@@ -25,7 +25,7 @@ export function CodeBlock({
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const lines = code.replace(/\n$/, '').split('\n');

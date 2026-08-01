@@ -31,7 +31,7 @@ export function MessageActions({
   const [copied, setCopied] = useState(false);
   const [spinning, setSpinning] = useState(false);
   const [feedbackState, setFeedbackState] = useState<MessageFeedback | null>(null);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const feedback = feedbackProp !== undefined ? feedbackProp : feedbackState;

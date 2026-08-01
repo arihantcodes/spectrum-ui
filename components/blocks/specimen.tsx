@@ -153,7 +153,7 @@ function IconButton({
 /** Copies the block source — login required, same gate as the docs pages. */
 function CopySourceButton({ source, slug }: { source: string; slug: string }) {
   const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const { isAuthenticated, openAuthModal } = useAuthGate();
   useEffect(() => () => clearTimeout(timer.current), []);
 
@@ -188,7 +188,7 @@ function CopySourceButton({ source, slug }: { source: string; slug: string }) {
 /** The quiet install row under the stage. Copying requires login, like /docs. */
 function CliRow({ command }: { command: string }) {
   const [copied, setCopied] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const { isAuthenticated, openAuthModal } = useAuthGate();
   useEffect(() => () => clearTimeout(timer.current), []);
 
