@@ -43,7 +43,7 @@ export default function Footerdemo() {
               <Input
                 type="email"
                 placeholder="Enter your email"
-                className="pr-12 backdrop-blur-sm"
+                className="pr-12 backdrop-blur-xs"
               />
               <Button
                 type="submit"
@@ -220,7 +220,7 @@ export default function Footerdemo() {
           <form className="flex gap-2">
             <Textarea
               placeholder="Type your message..."
-              className="flex-grow"
+              className="grow"
             />
             <Button type="submit" size="icon">
               <Send className="h-4 w-4" />

@@ -60,7 +60,7 @@ export function TaskRows({ tasks, variant = 'Default', className }: TaskRowsProp
   return (
     <ul
       className={cn(
-        'w-full max-w-[480px] divide-y divide-black/[0.05] overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-sm dark:divide-white/[0.06] dark:border-white/[0.08] dark:bg-[#0B0B0D]',
+        'w-full max-w-[480px] divide-y divide-black/[0.05] overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-xs dark:divide-white/[0.06] dark:border-white/[0.08] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -79,7 +79,7 @@ export function TaskRows({ tasks, variant = 'Default', className }: TaskRowsProp
                 'flex w-full items-center gap-2.5 px-3 text-left',
                 compact ? 'py-2' : 'py-2.5',
                 expandable &&
-                  'transition-colors duration-150 hover:bg-black/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-400 dark:hover:bg-white/[0.03]',
+                  'transition-colors duration-150 hover:bg-black/[0.02] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-400 dark:hover:bg-white/[0.03]',
               )}
             >
               <StatusIcon status={task.status} />

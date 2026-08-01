@@ -13,11 +13,12 @@ export const metadata: Metadata = createNoIndexMetadata({
   path: '/create-user',
 });
 
-export default async function CreateUserPage({
-  searchParams,
-}: {
-  searchParams: { next?: string };
-}) {
+export default async function CreateUserPage(
+  props: {
+    searchParams: Promise<{ next?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const session = await auth();
   if (!session?.user?.email) redirect('/sign-in');
 
@@ -43,7 +44,7 @@ export default async function CreateUserPage({
         </div>
 
         <div className="auth-enter mt-2 text-center" style={{ animationDelay: '60ms' }}>
-          <h1 className="mt-2 font-spectral text-[30px] font-normal leading-[1.05] tracking-[-0.055em] text-foreground [text-wrap:balance] sm:text-[34px]">
+          <h1 className="mt-2 font-spectral text-[30px] font-normal leading-[1.05] tracking-[-0.055em] text-foreground text-balance sm:text-[34px]">
             One Last Detail.
           </h1>
           <p className="text-sm text-neutral-500 max-w-[20rem] mx-auto">

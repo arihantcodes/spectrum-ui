@@ -45,7 +45,7 @@ export function AgentPlan({
   return (
     <div
       className={cn(
-        'w-full max-w-[440px] rounded-2xl border border-black/[0.08] bg-white shadow-sm dark:border-white/[0.09] dark:bg-[#0B0B0D]',
+        'w-full max-w-[440px] rounded-2xl border border-black/[0.08] bg-white shadow-xs dark:border-white/[0.09] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -71,7 +71,7 @@ export function AgentPlan({
                 className={cn(
                   'group flex w-full items-start gap-2.5 rounded-lg px-2 text-left transition-[background-color,opacity] duration-150',
                   compact ? 'py-1.5' : 'py-2',
-                  'hover:bg-black/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.04]',
+                  'hover:bg-black/[0.03] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.04]',
                   off && 'opacity-45',
                 )}
               >

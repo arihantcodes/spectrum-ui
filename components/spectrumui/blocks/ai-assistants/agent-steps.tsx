@@ -80,7 +80,7 @@ function StepRow({ step, last, compact }: { step: ToolCall; last: boolean; compa
           className={cn(
             'flex w-full items-center gap-2 text-left',
             expandable &&
-              'rounded transition-transform duration-150 active:scale-[0.995] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+              'rounded transition-transform duration-150 active:scale-[0.995] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
           )}
         >
           <span className="font-mono text-[12px] font-medium text-neutral-800 dark:text-neutral-200">

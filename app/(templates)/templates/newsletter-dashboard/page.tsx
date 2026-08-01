@@ -481,7 +481,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5 dark:bg-black"
+              className="data-[slot=sidebar-menu-button]:p-1.5! dark:bg-black"
             >
               <a href="#">
                 <Icons.logo />
@@ -494,8 +494,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className="bg-[#f4f4f4] dark:bg-black flex justify-between flex-col" >
         <NavMain items={data.navMain} />
         <div>
-          <div className="w-[238px] rounded-lg overflow-hidden shadow">
-          <div className="h-[60px] p-4 bg-gradient-to-b from-[#0AA6FA]/30 to-[#0AA6FA]/0 dark:from-[#141414] dark:to-[#141414] dark:bg-gradient-to-b">
+          <div className="w-[238px] rounded-lg overflow-hidden shadow-sm">
+          <div className="h-[60px] p-4 bg-linear-to-b from-[#0AA6FA]/30 to-[#0AA6FA]/0 dark:from-[#141414] dark:to-[#141414] dark:bg-linear-to-b">
 
               <h1 className="font-semibold  text-base flex gap-2 items-center">
                 <svg
@@ -528,7 +528,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <div className="bg-white dark:bg-[#141414] px-4 pb-4 pt-2">
               {/* Progress bar */}
               <div className="relative h-4 w-full bg-sky-100 rounded-full overflow-hidden my-2">
-                <div className="absolute h-full w-[70%] bg-gradient-to-r from-sky-400 via-sky-300 to-sky-400 rounded-full"></div>
+                <div className="absolute h-full w-[70%] bg-linear-to-r from-sky-400 via-sky-300 to-sky-400 rounded-full"></div>
               </div>
 
               <p className="text-zink-950 text-sm font-medium">4 days left</p>
@@ -1279,7 +1279,7 @@ export function SubscriberDataTable({
             <div className="relative flex-1 max-w-[260px] cursor-pointer">
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
               <Input
-                className="rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm dark:bg-neutral-900"
+                className="rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-xs dark:bg-neutral-900"
                 placeholder="Search subscribers..."
                 type="search"
                 value={globalFilter}
@@ -1288,32 +1288,32 @@ export function SubscriberDataTable({
             </div>
 
             {/* Date Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900 outline-none">
-              <CalendarDays className="h-4 w-4 mr-2 outline-none" />
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900 outline-hidden">
+              <CalendarDays className="h-4 w-4 mr-2 outline-hidden" />
               <Select value={dateFilter} onValueChange={setDateFilter}>
-                <SelectTrigger className="border-none bg-transparent p-0 h-auto shadow-none outline-none">
+                <SelectTrigger className="border-none bg-transparent p-0 h-auto shadow-none outline-hidden">
                   <SelectValue
                     placeholder="Signup Date"
-                    className="border-none outline-none"
+                    className="border-none outline-hidden"
                   />
                 </SelectTrigger>
-                <SelectContent className="outline-none">
-                  <SelectItem value="allTime" className="outline-none">
+                <SelectContent className="outline-hidden">
+                  <SelectItem value="allTime" className="outline-hidden">
                     All Time
                   </SelectItem>
-                  <SelectItem value="today" className="outline-none">
+                  <SelectItem value="today" className="outline-hidden">
                     Today
                   </SelectItem>
-                  <SelectItem value="week" className="outline-none">
+                  <SelectItem value="week" className="outline-hidden">
                     This Week
                   </SelectItem>
-                  <SelectItem value="month" className="outline-none">
+                  <SelectItem value="month" className="outline-hidden">
                     This Month
                   </SelectItem>
-                  <SelectItem value="quarter" className="outline-none">
+                  <SelectItem value="quarter" className="outline-hidden">
                     This Quarter
                   </SelectItem>
-                  <SelectItem value="year" className="outline-none">
+                  <SelectItem value="year" className="outline-hidden">
                     This Year
                   </SelectItem>
                 </SelectContent>
@@ -1321,7 +1321,7 @@ export function SubscriberDataTable({
             </div>
 
             {/* Status Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900">
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900">
               <IoNavigate className="h-4 w-4 mr-2" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -1355,7 +1355,7 @@ export function SubscriberDataTable({
             </div>
 
             {/* Source Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900">
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900">
               <ArrowUpRight className="h-4 w-4 mr-2" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -1711,7 +1711,7 @@ export function SiteHeader() {
         <div className="relative flex-1 max-w-sm cursor-pointer">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
           <Input
-            className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm dark:bg-neutral-900"
+            className="w-full rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-xs dark:bg-neutral-900"
             placeholder="Search anything here..."
             type="search"
           />
@@ -2518,7 +2518,7 @@ function OrderColumn({
   onOrderClick,
   selectedOrder,
   isActive = false,
-}: OrderColumnProps): JSX.Element {
+}: OrderColumnProps): React.JSX.Element {
   return (
     <div className="flex-1 min-w-[350px] flex flex-col border-r border-border bg-[#F8F8F8] dark:bg-card">
       <div className="p-4 flex items-center justify-between">
@@ -2572,7 +2572,7 @@ function OrderColumn({
   );
 }
 
-function OrderCard({ order, isSelected }: OrderCardProps): JSX.Element {
+function OrderCard({ order, isSelected }: OrderCardProps): React.JSX.Element {
   const getTypeColor = (type: string): string => {
     switch (type) {
       case "EXPRESS":
@@ -2593,7 +2593,7 @@ function OrderCard({ order, isSelected }: OrderCardProps): JSX.Element {
       <Card
         className={cn(
           "mb-2 cursor-pointer",
-          isSelected ? "border-primary shadow-sm" : "border-border"
+          isSelected ? "border-primary shadow-xs" : "border-border"
         )}
       >
         <CardHeader className="p-3 pb-0">
@@ -2686,7 +2686,7 @@ function AssignmentPanel({
   onAssign,
   onAutoAssign,
   isMobile = false,
-}: AssignmentPanelProps): JSX.Element {
+}: AssignmentPanelProps): React.JSX.Element {
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
 
   return (
@@ -2810,13 +2810,13 @@ function AssignmentPanel({
   );
 }
 
-function VehicleCard({ vehicle, isSelected }: VehicleCardProps): JSX.Element {
+function VehicleCard({ vehicle, isSelected }: VehicleCardProps): React.JSX.Element {
   return (
     <motion.div whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }}>
       <Card
         className={cn(
           "mb-4 cursor-pointer",
-          isSelected ? "border-primary shadow-sm" : "border-border"
+          isSelected ? "border-primary shadow-xs" : "border-border"
         )}
       >
         <CardHeader className="p-3 pb-0">

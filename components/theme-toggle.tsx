@@ -106,7 +106,7 @@ function ThemeButton({ active, onClick, icon, label }: ThemeButtonProps) {
     >
       {active && (
         <motion.div
-          className="absolute inset-0 bg-white border border-neutral-200 shadow-sm  dark:bg-neutral-800 dark:border-neutral-700 rounded-full"
+          className="absolute inset-0 bg-white border border-neutral-200 shadow-xs  dark:bg-neutral-800 dark:border-neutral-700 rounded-full"
           layoutId="theme-active-indicator"
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         />

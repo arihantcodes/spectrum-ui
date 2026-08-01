@@ -15,11 +15,12 @@ export function generateStaticParams() {
   return comparisons.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const data = getComparison(params.slug);
   if (!data) return {};
 
@@ -44,11 +45,12 @@ export function generateMetadata({
   };
 }
 
-export default function ComparePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function ComparePage(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+) {
+  const params = await props.params;
   const data = getComparison(params.slug);
   if (!data) notFound();
 

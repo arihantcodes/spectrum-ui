@@ -44,7 +44,7 @@ export function ToolChips({ calls, variant = 'Row', className }: ToolChipsProps)
               className={cn(
                 'flex items-center gap-2 rounded-lg border py-1.5 pl-2.5 pr-3 text-left',
                 'transition-[border-color,background-color,transform] duration-150 active:scale-[0.98]',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                 active
                   ? 'border-black/[0.16] bg-black/[0.03] dark:border-white/[0.22] dark:bg-white/[0.05]'
                   : 'border-black/[0.07] hover:border-black/[0.14] dark:border-white/[0.08] dark:hover:border-white/[0.16]',

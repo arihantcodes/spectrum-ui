@@ -152,7 +152,7 @@ export function AIChatCard({
               onChange={(event) => setUserMessage(event.target.value)}
               placeholder={placeholder}
               rows={2}
-              className="w-full resize-none bg-transparent text-sm leading-5 text-foreground outline-none placeholder:text-muted-foreground"
+              className="w-full resize-none bg-transparent text-sm leading-5 text-foreground outline-hidden placeholder:text-muted-foreground"
             />
           ) : (
             <div

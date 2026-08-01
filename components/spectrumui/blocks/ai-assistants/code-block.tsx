@@ -25,7 +25,7 @@ export function CodeBlock({
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const lines = code.replace(/\n$/, '').split('\n');
@@ -46,7 +46,7 @@ export function CodeBlock({
   return (
     <figure
       className={cn(
-        'w-full max-w-[500px] overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-sm dark:border-white/[0.08] dark:bg-[#0B0B0D]',
+        'w-full max-w-[500px] overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-xs dark:border-white/[0.08] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -61,7 +61,7 @@ export function CodeBlock({
           type="button"
           onClick={copy}
           aria-label={copied ? 'Code copied' : 'Copy code'}
-          className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
+          className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
         >
           <span className="relative grid size-3.5 place-items-center">
             <Copy
@@ -101,7 +101,7 @@ export function CodeBlock({
           type="button"
           aria-expanded={expanded}
           onClick={() => setExpanded((value) => !value)}
-          className="flex w-full items-center justify-center gap-1 border-t border-black/[0.06] py-1.5 font-mono text-[10.5px] text-neutral-400 transition-colors duration-150 hover:bg-black/[0.02] hover:text-neutral-700 dark:hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-400 dark:border-white/[0.07] dark:text-neutral-500 dark:hover:text-neutral-300"
+          className="flex w-full items-center justify-center gap-1 border-t border-black/[0.06] py-1.5 font-mono text-[10.5px] text-neutral-400 transition-colors duration-150 hover:bg-black/[0.02] hover:text-neutral-700 dark:hover:bg-white/[0.03] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-400 dark:border-white/[0.07] dark:text-neutral-500 dark:hover:text-neutral-300"
         >
           {expanded ? 'collapse' : `${lines.length - collapsedLines} more lines`}
           <ChevronDown

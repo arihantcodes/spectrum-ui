@@ -22,7 +22,7 @@ export function PhilosophySection() {
         {/* Left Column (Stretches to the height of the grid, parent of sticky container) */}
         <div>
           <div className="lg:sticky lg:top-32 w-full">
-            <div className="relative w-full aspect-[16/9] sm:aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden group">
+            <div className="relative w-full aspect-video sm:aspect-square lg:aspect-4/5 rounded-2xl overflow-hidden group">
               <motion.img 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
@@ -60,7 +60,7 @@ export function PhilosophySection() {
                 className="group relative p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0A0A0A] overflow-hidden transition-all duration-500 hover:border-neutral-300 dark:hover:border-neutral-700 hover:shadow-lg"
               >
                 {/* Subtle Hover Glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-tr from-neutral-100/50 to-transparent dark:from-neutral-800/20 dark:to-transparent pointer-events-none" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-tr from-neutral-100/50 to-transparent dark:from-neutral-800/20 dark:to-transparent pointer-events-none" />
                 
                 <div className="relative z-10 flex flex-col space-y-4">
                   <span className="text-sm font-mono text-neutral-400 dark:text-neutral-500">

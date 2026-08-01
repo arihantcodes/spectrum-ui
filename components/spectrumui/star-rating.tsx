@@ -286,7 +286,7 @@ export function StarRating({
                 if (event.pointerType === "mouse") setHovered(starValue)
               }}
               className={cn(
-                "relative touch-manipulation rounded-md outline-none",
+                "relative touch-manipulation rounded-md outline-hidden",
                 "transition-transform duration-150 ease-out active:scale-90 motion-reduce:transition-none motion-reduce:active:scale-100",
                 "focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
                 padClass,

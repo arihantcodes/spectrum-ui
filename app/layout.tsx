@@ -120,7 +120,16 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang={siteConfig.locale.split("-")[0]} suppressHydrationWarning>
+    // The next/font variables must live on <html>, not <body>. Tailwind v4
+    // resolves @theme entries like `--font-mono: var(--font-geist-mono), …` at
+    // :root; if the font variables are only declared on <body> they are empty
+    // at :root, every font-* utility becomes invalid, and text silently falls
+    // back to the system stack.
+    <html
+      lang={siteConfig.locale.split("-")[0]}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} ${calSans.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <meta name="google-adsense-account" content="ca-pub-8119622964025792" />
         {/* Preconnect to external domains for faster loading */}
@@ -154,10 +163,7 @@ gtag('config', 'G-K7ZP6JB4MG');
           crossOrigin="anonymous"
         />
       </head>
-      <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${inter.variable} ${spectral.variable} ${calSans.variable} font-regular`}
-        suppressHydrationWarning
-      >
+      <body className="font-regular" suppressHydrationWarning>
         <Providers>
           <Analytics />
           <LinkPrefetch />

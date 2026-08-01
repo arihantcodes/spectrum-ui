@@ -105,7 +105,7 @@ const DEFAULT_ROUNDNESS = '0.75';
 const DEFAULT_ACCENT = 'neutral';
 
 const chipClass = (active: boolean) =>
-  `inline-flex h-8 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring active:scale-[0.96] ${
+  `inline-flex h-8 items-center gap-1.5 rounded-lg border px-3 text-xs font-medium transition-colors duration-150 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring active:scale-[0.96] ${
     active
       ? 'border-primary bg-accent text-accent-foreground'
       : 'border-border text-muted-foreground hover:border-foreground/25 hover:text-foreground'
@@ -132,7 +132,7 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
 
   return (
     <div>
-      <div className="mb-10 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
+      <div className="mb-10 rounded-xl border bg-card p-5 shadow-xs sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
             <span className="flex items-center gap-2.5">
@@ -158,7 +158,7 @@ export function CardCustomizer({ children }: { children: ReactNode }) {
             disabled={isDefault}
             className="group/reset h-8 shrink-0 gap-1.5 px-2.5 text-xs text-muted-foreground hover:text-foreground"
           >
-            <RotateCcw className="!size-3 transition-transform duration-300 group-hover/reset:-rotate-90" />
+            <RotateCcw className="size-3! transition-transform duration-300 group-hover/reset:-rotate-90" />
             Reset
           </Button>
         </div>

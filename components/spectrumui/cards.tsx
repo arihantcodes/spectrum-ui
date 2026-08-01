@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type JSX } from 'react';
 import {
   Activity,
   ArrowUpRight,
@@ -200,7 +200,7 @@ export function TwoFactorCard() {
               }}
               inputMode="numeric"
               aria-label={`Digit ${index + 1}`}
-              className="h-11 w-full rounded-md border bg-background text-center text-base font-medium tabular-nums outline-none transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+              className="h-11 w-full rounded-md border bg-background text-center text-base font-medium tabular-nums outline-hidden transition-colors focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
             />
           ))}
         </div>
@@ -291,7 +291,7 @@ export function PricingCard() {
     <Card className="relative w-full overflow-hidden rounded-xl border-primary/30">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/10 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-primary/10 to-transparent"
       />
       <CardHeader className="p-6 pb-4">
         <div className="flex items-center justify-between">
@@ -594,7 +594,7 @@ export function RevenueChartCard() {
             <div key={index} className="group/bar flex h-full flex-1 flex-col justify-end gap-1.5">
               <div
                 style={{ height: `${value}%` }}
-                className="w-full rounded-sm bg-gradient-to-t from-primary/25 to-primary/70 opacity-70 transition-opacity duration-150 group-hover/bar:opacity-100"
+                className="w-full rounded-sm bg-linear-to-t from-primary/25 to-primary/70 opacity-70 transition-opacity duration-150 group-hover/bar:opacity-100"
               />
               <span className="text-center text-xs text-muted-foreground">{days[index]}</span>
             </div>
@@ -1526,7 +1526,7 @@ export function FeedbackCard() {
         <textarea
           rows={3}
           placeholder="Tell us more (optional)"
-          className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
+          className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-hidden transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-2 focus:ring-primary/20"
         />
       </CardContent>
       <CardFooter className="p-6 pt-0">
@@ -1545,7 +1545,7 @@ export function ProfileCard() {
     <Card className="w-full overflow-hidden rounded-xl">
       <div
         aria-hidden
-        className="h-16 bg-gradient-to-r from-primary/25 via-primary/10 to-transparent"
+        className="h-16 bg-linear-to-r from-primary/25 via-primary/10 to-transparent"
       />
       <CardContent className="p-6 pt-0">
         <div className="flex items-end justify-between">
@@ -1592,13 +1592,13 @@ export function ProfileCard() {
 export function ProductCard() {
   return (
     <Card className="group/product w-full overflow-hidden rounded-xl">
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <div className="relative aspect-4/3 overflow-hidden bg-muted">
         <div
           aria-hidden
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,hsl(var(--primary)/0.18),transparent_65%)]"
         />
         <div className="flex size-full items-center justify-center transition-transform duration-300 ease-out group-hover/product:scale-[1.04]">
-          <div className="flex size-14 items-center justify-center rounded-2xl bg-background/80 shadow-sm ring-1 ring-black/10 backdrop-blur dark:ring-white/10">
+          <div className="flex size-14 items-center justify-center rounded-2xl bg-background/80 shadow-xs ring-1 ring-black/10 backdrop-blur-sm dark:ring-white/10">
             <Package className="size-6 text-muted-foreground" strokeWidth={1.5} />
           </div>
         </div>
@@ -1813,7 +1813,7 @@ export function AIChatCard() {
   return (
     <Card className="w-full rounded-xl">
       <CardHeader className="flex flex-row items-center gap-2 space-y-0 p-6 pb-3">
-        <span className="flex size-6 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/60 text-primary-foreground">
+        <span className="flex size-6 items-center justify-center rounded-full bg-linear-to-br from-primary to-primary/60 text-primary-foreground">
           <RiSparkling2Fill className="size-3.5" />
         </span>
         <CardTitle className="text-sm font-medium">Assistant</CardTitle>

@@ -17,7 +17,7 @@ export function SubmitButton({ disabled = false }: SubmitButtonProps) {
       disabled={isDisabled}
       aria-busy={pending}
       className={cn(
-        'group flex h-12 w-full items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium outline-none',
+        'group flex h-12 w-full items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium outline-hidden',
         'cursor-pointer transition-[transform,background-color,box-shadow,opacity] duration-150 ease-out active:scale-[0.98]',
         'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         'bg-primary text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3),0_8px_24px_-8px_rgba(0,0,0,0.4)] hover:bg-primary/90 dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)]',

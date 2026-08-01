@@ -76,19 +76,19 @@ const SIZES = {
     container: "h-8 gap-0.5 px-1",
     button: "h-6 w-6",
     icon: 13,
-    value: "h-6 min-w-[1.75rem] text-xs",
+    value: "h-6 min-w-7 text-xs",
   },
   md: {
     container: "h-10 gap-1 px-1",
     button: "h-8 w-8",
     icon: 15,
-    value: "h-8 min-w-[2rem] text-sm",
+    value: "h-8 min-w-8 text-sm",
   },
   lg: {
     container: "h-12 gap-1 px-1.5",
     button: "h-10 w-10",
     icon: 17,
-    value: "h-10 min-w-[2.5rem] text-base",
+    value: "h-10 min-w-10 text-base",
   },
 } as const
 
@@ -277,7 +277,7 @@ export function QuantityStepper({
   const buttonClasses = cn(
     "flex shrink-0 touch-manipulation items-center justify-center rounded-full text-neutral-600 transition-colors",
     "hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+    "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
     button,
   )
 
@@ -335,7 +335,7 @@ export function QuantityStepper({
         animate={shakeControls}
         className={cn(
           "flex items-center justify-center overflow-hidden px-1 font-medium tabular-nums transition-colors",
-          "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+          "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
           flash > 0
             ? "text-rose-500 dark:text-rose-400"
             : "text-neutral-900 dark:text-neutral-100",

@@ -56,7 +56,7 @@ const InstallationTabs = ({
               className={cn(
                 "h-8 rounded-[10px] px-2.5 text-sm font-medium leading-5 transition-colors",
                 tab === t.id
-                  ? "bg-black/[0.04] text-[#262626] dark:bg-white/[0.08] dark:text-neutral-100"
+                  ? "bg-black/4 text-[#262626] dark:bg-white/8 dark:text-neutral-100"
                   : "text-[#686868]/70 hover:text-[#262626] dark:text-neutral-500 dark:hover:text-neutral-200",
               )}
             >

@@ -58,7 +58,7 @@ export function ReasoningTrace({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="group flex items-center gap-2 rounded-lg py-1 text-neutral-600 transition-[color,transform] duration-150 hover:text-neutral-900 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-100"
+        className="group flex items-center gap-2 rounded-lg py-1 text-neutral-600 transition-[color,transform] duration-150 hover:text-neutral-900 active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-100"
       >
         <Sparkles
           aria-hidden

@@ -272,7 +272,7 @@ export default function ImportantButtons() {
     {
       name: "callToActionButton",
       component: CallToActionButton,
-      code: `<Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">Get Started <ArrowRight className="ml-2 h-4 w-4" /></Button>`,
+      code: `<Button className="bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">Get Started <ArrowRight className="ml-2 h-4 w-4" /></Button>`,
     },
     {
       name: "expandButton",
@@ -699,7 +699,7 @@ export function SubscribeButton() {
 
 export function CallToActionButton() {
   return (
-    <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
+    <Button className="bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600">
       Get Started <ArrowRight className="ml-2 h-4 w-4" />
     </Button>
   );

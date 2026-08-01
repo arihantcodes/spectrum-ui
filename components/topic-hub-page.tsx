@@ -18,7 +18,7 @@ const sectionClassName =
 const cardClassName =
   'rounded-[16px] bg-white shadow-[0_0_0_1px_rgba(10,10,10,0.05),0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] dark:bg-neutral-950 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_1px_3px_0_rgba(0,0,0,0.5)]';
 const cardHoverClassName =
-  'transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-safe:hover:-translate-y-1 hover:shadow-[0_0_0_1px_rgba(10,10,10,0.08),0_12px_32px_-14px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_12px_32px_-14px_rgba(0,0,0,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-600';
+  'transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-safe:hover:-translate-y-1 hover:shadow-[0_0_0_1px_rgba(10,10,10,0.08),0_12px_32px_-14px_rgba(0,0,0,0.25)] dark:hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16),0_12px_32px_-14px_rgba(0,0,0,0.6)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-600';
 
 /** Landing signature: accent corner chevron + mono uppercase label. */
 function ChevronTag({ label }: { label: string }) {
@@ -128,14 +128,14 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 href="#components"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:focus-visible:ring-neutral-600"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:bg-neutral-50 dark:text-neutral-900 dark:focus-visible:ring-neutral-600"
               >
                 Browse {components.length} components
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
                 href="#example"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-200 bg-white px-5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-200 bg-white px-5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900"
               >
                 View code example
                 <Code2 className="size-4" aria-hidden="true" />

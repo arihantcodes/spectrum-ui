@@ -35,7 +35,7 @@ export function ChangelogMedia({ media }: { media: ChangelogMediaKind }) {
   if (media.kind === 'terminal') {
     const tokens = media.command.split(' ');
     return (
-      <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-neutral-950 shadow-sm dark:border-white/[0.09] dark:bg-black">
+      <div className="overflow-hidden rounded-2xl border border-black/[0.08] bg-neutral-950 shadow-xs dark:border-white/[0.09] dark:bg-black">
         <style dangerouslySetInnerHTML={{ __html: CARET }} />
         <div className="flex items-center gap-1.5 border-b border-white/[0.07] px-4 py-3">
           {['#f9452d', '#febc2e', '#28c840'].map((color) => (

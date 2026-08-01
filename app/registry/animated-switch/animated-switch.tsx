@@ -238,7 +238,7 @@ export function AnimatedSwitch({
       className={cn(
         "relative inline-flex shrink-0 cursor-pointer touch-manipulation select-none items-center rounded-full",
         "transition-colors duration-200 ease-out",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-neutral-300 dark:focus-visible:ring-offset-neutral-950",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-neutral-300 dark:focus-visible:ring-offset-neutral-950",
         "disabled:pointer-events-none disabled:opacity-50",
         checked
           ? "bg-neutral-900 dark:bg-white"
@@ -255,7 +255,7 @@ export function AnimatedSwitch({
 
       <motion.span
         aria-hidden="true"
-        className="absolute rounded-full bg-white shadow-sm dark:bg-neutral-900"
+        className="absolute rounded-full bg-white shadow-xs dark:bg-neutral-900"
         style={{ top: TRACK_PADDING, left: TRACK_PADDING, height: knobSize }}
         initial={false}
         animate={{ x: knobX, width: knobWidth }}

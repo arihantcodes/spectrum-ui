@@ -62,7 +62,7 @@ const CodeCard = ({
         <div
           role="tablist"
           aria-label="Preview or code"
-          className="flex h-8 items-center gap-[11px] rounded-[10px] bg-black/[0.04] pl-1 pr-1.5 dark:bg-white/[0.06]"
+          className="flex h-8 items-center gap-[11px] rounded-[10px] bg-black/4 pl-1 pr-1.5 dark:bg-white/6"
         >
           {TABS.map(({ id, label, icon: Icon }) => {
             const isActive = tab === id;
@@ -95,7 +95,7 @@ const CodeCard = ({
       <div className="mt-4">
         <div
           className={cn(
-            'overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-neutral-950',
+            'overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-neutral-950',
             tab !== 'preview' && 'hidden',
           )}
         >

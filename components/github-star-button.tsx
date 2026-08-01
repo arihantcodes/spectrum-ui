@@ -61,7 +61,7 @@ export function GithubStarButton() {
           ? `Star Spectrum UI on GitHub — ${stars.toLocaleString()} stars`
           : "Star Spectrum UI on GitHub"
       }
-      className="group hidden h-8 items-center gap-1.5 rounded-full border border-neutral-200 px-2.5 font-mono text-xs font-medium text-foreground/80 shadow-sm transition-all duration-200 ease-out hover:border-neutral-300 hover:text-foreground   dark:border-neutral-800 dark:hover:border-neutral-700 sm:flex"
+      className="group hidden h-8 items-center gap-1.5 rounded-full border border-neutral-200 px-2.5 font-mono text-xs font-medium text-foreground/80 shadow-xs transition-all duration-200 ease-out hover:border-neutral-300 hover:text-foreground   dark:border-neutral-800 dark:hover:border-neutral-700 sm:flex"
     >
       <Icons.gitHub className="size-4 shrink-0" />
       <svg

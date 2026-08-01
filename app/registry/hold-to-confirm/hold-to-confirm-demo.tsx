@@ -54,7 +54,7 @@ export default function HoldToConfirmDemo() {
               <button
                 type="button"
                 onClick={() => setDeleted(false)}
-                className="text-sm font-medium text-neutral-900 underline underline-offset-4 hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:text-white dark:hover:text-neutral-300 dark:focus-visible:ring-neutral-300"
+                className="text-sm font-medium text-neutral-900 underline underline-offset-4 hover:text-neutral-600 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:text-white dark:hover:text-neutral-300 dark:focus-visible:ring-neutral-300"
               >
                 Restore
               </button>

@@ -67,7 +67,7 @@ export function HeroSection() {
         {/* Right Content (Founder Image) */}
         <motion.div 
           style={{ y: yImage }}
-          className="lg:col-span-5 relative w-full aspect-[16/9] sm:aspect-square lg:aspect-[3/4] rounded-2xl overflow-hidden group cursor-pointer"
+          className="lg:col-span-5 relative w-full aspect-video sm:aspect-square lg:aspect-3/4 rounded-2xl overflow-hidden group cursor-pointer"
         >
           {/* Base Image */}
           <motion.img 

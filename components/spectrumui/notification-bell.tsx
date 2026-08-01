@@ -125,7 +125,7 @@ export function NotificationBell({
         "relative inline-flex touch-manipulation select-none items-center justify-center rounded-full border transition-colors",
         "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-100",
         "dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
         sizeClasses,
         className,
       )}

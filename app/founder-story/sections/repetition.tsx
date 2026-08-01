@@ -28,7 +28,7 @@ export function RepetitionSection() {
     return () => clearInterval(interval)
   }, [isInView])
 
-  const tagClasses = "px-3 py-1.5 rounded-lg border border-neutral-250 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[11px] font-mono text-neutral-800 dark:text-neutral-200 font-semibold shadow-sm flex items-center justify-center cursor-default hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors select-none"
+  const tagClasses = "px-3 py-1.5 rounded-lg border border-neutral-250 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[11px] font-mono text-neutral-800 dark:text-neutral-200 font-semibold shadow-xs flex items-center justify-center cursor-default hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors select-none"
 
   return (
     <section ref={containerRef} className="relative w-full py-24 md:py-32 flex flex-col items-center justify-center min-h-[70vh]">
@@ -82,13 +82,13 @@ export function RepetitionSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-sm flex gap-4 shadow-sm"
+              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-xs flex gap-4 shadow-xs"
             >
               {/* Sidebar */}
               <div className="w-[30%] border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl p-3 flex flex-col justify-between bg-neutral-50/50 dark:bg-neutral-900/10">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2 border-b border-neutral-100 dark:border-neutral-800 pb-2">
-                    <div className="h-5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-800 flex-shrink-0" />
+                    <div className="h-5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-800 shrink-0" />
                     <div className="h-2 w-16 rounded bg-neutral-300 dark:bg-neutral-800" />
                   </div>
                   <div className="space-y-2">
@@ -110,7 +110,7 @@ export function RepetitionSection() {
                 </div>
                 
                 {/* Active Card */}
-                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 shadow-sm flex flex-col justify-between">
+                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 shadow-xs flex flex-col justify-between">
                   <div className="flex justify-between items-start">
                     <div>
                       <h4 className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">Subscription</h4>
@@ -144,7 +144,7 @@ export function RepetitionSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-sm grid grid-cols-3 gap-4 shadow-sm"
+              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-xs grid grid-cols-3 gap-4 shadow-xs"
             >
               <div className="col-span-2 flex flex-col gap-4">
                 <div className="flex gap-4">
@@ -153,7 +153,7 @@ export function RepetitionSection() {
                 </div>
                 
                 {/* Large graph card */}
-                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-sm">
+                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-xs">
                   <div className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800/80 pb-2">
                     <span className="text-[10px] font-mono text-neutral-400">Visitor Velocity</span>
                     <span className="text-[10px] font-mono font-bold text-neutral-900 dark:text-neutral-100">+12.4%</span>
@@ -170,7 +170,7 @@ export function RepetitionSection() {
               
               <div className="flex flex-col gap-4">
                 {/* Right side stats widget */}
-                <div className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-sm">
+                <div className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-4 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-xs">
                   <div className="space-y-1">
                     <div className="text-[9px] font-mono text-neutral-450 uppercase">Active Users</div>
                     <div className="text-xl font-bold font-mono tracking-tight text-neutral-900 dark:text-white">1,482</div>
@@ -190,7 +190,7 @@ export function RepetitionSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-sm flex flex-col justify-between shadow-sm"
+              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-xs flex flex-col justify-between shadow-xs"
             >
               <div className="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-900 pb-2">
                 <span className="text-xs font-mono font-bold tracking-tight text-neutral-900 dark:text-white">Arihant J.</span>
@@ -199,10 +199,10 @@ export function RepetitionSection() {
               <div className="flex-1 flex gap-4 my-3">
                 
                 {/* Visual Project Card */}
-                <motion.div layoutId="card" className="w-2/3 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-sm">
-                  <div className="relative aspect-[16/9] w-full rounded-lg bg-neutral-100 dark:bg-neutral-850 overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 flex items-center justify-center">
+                <motion.div layoutId="card" className="w-2/3 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-xs">
+                  <div className="relative aspect-video w-full rounded-lg bg-neutral-100 dark:bg-neutral-850 overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 flex items-center justify-center">
                     {/* Visual Placeholder Pattern */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-neutral-200/50 to-transparent dark:from-neutral-900/50" />
+                    <div className="absolute inset-0 bg-linear-to-tr from-neutral-200/50 to-transparent dark:from-neutral-900/50" />
                     <span className="text-[9px] font-mono text-neutral-400">spectrum-ui.jpg</span>
                   </div>
                   <div className="space-y-1 mt-2">
@@ -231,9 +231,9 @@ export function RepetitionSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-sm grid grid-cols-2 gap-6 items-center shadow-sm"
+              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-xs grid grid-cols-2 gap-6 items-center shadow-xs"
             >
-              <div className="h-full border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl bg-white dark:bg-neutral-900/40 p-4 flex flex-col justify-between shadow-sm relative">
+              <div className="h-full border border-neutral-200/50 dark:border-neutral-800/50 rounded-xl bg-white dark:bg-neutral-900/40 p-4 flex flex-col justify-between shadow-xs relative">
                 <div className="space-y-2">
                   <h4 className="text-[18px] font-bold leading-tight tracking-tight text-neutral-900 dark:text-white">WE BUILD WEBSITES THAT DISAPPEAR.</h4>
                   <p className="text-[9px] text-neutral-450 dark:text-neutral-500 leading-normal">Premium engineering with carefully designed micro-interactions and transitions.</p>
@@ -243,7 +243,7 @@ export function RepetitionSection() {
               <div className="flex flex-col gap-3 h-full justify-between py-2">
                 
                 {/* Agency Testimonial Card */}
-                <motion.div layoutId="card" className="border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 shadow-sm flex flex-col justify-between">
+                <motion.div layoutId="card" className="border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 shadow-xs flex flex-col justify-between">
                   <p className="text-[9px] font-serif text-neutral-500 italic leading-relaxed">&ldquo;Their defaults are better than our custom designs.&rdquo;</p>
                   <span className="text-[8px] font-mono text-neutral-400 mt-2">— VP Design, SaaS Startup</span>
                 </motion.div>
@@ -265,7 +265,7 @@ export function RepetitionSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-sm flex flex-col justify-between shadow-sm"
+              className="w-full h-[340px] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 bg-white/50 dark:bg-neutral-950/20 backdrop-blur-xs flex flex-col justify-between shadow-xs"
             >
               <div className="flex gap-4 items-center">
                 <motion.div layoutId="input" className={`${tagClasses} flex-1`}>Input</motion.div>
@@ -274,8 +274,8 @@ export function RepetitionSection() {
               <div className="flex-1 flex gap-4 my-3">
                 
                 {/* E-comm Product Card */}
-                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-sm">
-                  <div className="relative aspect-[16/10] w-full rounded-lg bg-neutral-50 dark:bg-neutral-850/50 border border-neutral-200/50 dark:border-neutral-800/50 flex items-center justify-center">
+                <motion.div layoutId="card" className="flex-1 border border-neutral-200/60 dark:border-neutral-800/60 rounded-xl p-3 bg-white dark:bg-neutral-900/40 flex flex-col justify-between shadow-xs">
+                  <div className="relative aspect-16/10 w-full rounded-lg bg-neutral-50 dark:bg-neutral-850/50 border border-neutral-200/50 dark:border-neutral-800/50 flex items-center justify-center">
                     {/* SVG Minimalist product outline */}
                     <svg className="w-10 h-10 text-neutral-300 dark:text-neutral-650" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
                       <circle cx="12" cy="12" r="7" />
@@ -339,7 +339,7 @@ export function RepetitionSection() {
                 className="px-8 py-6 rounded-2xl border border-neutral-200 dark:border-neutral-800/80 bg-white dark:bg-[#0A0A0A] text-neutral-900 dark:text-white shadow-2xl flex flex-col items-center space-y-2 w-64 text-center relative overflow-hidden"
               >
                 {/* Subtle background glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-neutral-100/50 to-transparent dark:from-neutral-850/20 dark:to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-tr from-neutral-100/50 to-transparent dark:from-neutral-850/20 dark:to-transparent pointer-events-none" />
                 
                 <span className="text-[9px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest relative z-10">Rebuilt Once</span>
                 <h3 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white relative z-10">Spectrum UI</h3>

@@ -24,8 +24,8 @@ export function ScrambleText({
 }: ScrambleTextProps) {
   // Render the real text on the server / first paint to avoid hydration mismatch.
   const [display, setDisplay] = useState(text);
-  const rafRef = useRef<number>();
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const rafRef = useRef<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const runningRef = useRef(false);
 
   const randomChar = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];

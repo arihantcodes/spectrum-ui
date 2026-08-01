@@ -67,7 +67,7 @@ export default function UndoPillDemo() {
                   type="button"
                   onClick={() => handleDelete(message.id)}
                   aria-label={`Delete message from ${message.sender}`}
-                  className="rounded-full p-2 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 dark:focus-visible:ring-neutral-300"
+                  className="rounded-full p-2 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-200 dark:focus-visible:ring-neutral-300"
                 >
                   <Trash2 size={16} aria-hidden="true" />
                 </button>

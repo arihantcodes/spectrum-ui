@@ -26,7 +26,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const post = await getBlogPost(params.slug)
 
   if (!post) {
@@ -108,7 +109,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const post = await getBlogPost(params.slug)
 
   if (!post) {
@@ -160,7 +162,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <section className="container-frame border-b border-border bg-background">
         <div className="mx-auto grid w-full max-w-[1240px] grid-cols-1 gap-y-0 px-5 py-12 sm:px-8 sm:py-16 xl:grid-cols-[1fr_minmax(0,40rem)_1fr] xl:gap-x-10">
           <div className="hidden xl:block" aria-hidden="true" />
-          <div className="mx-auto w-full max-w-[40rem] xl:mx-0 xl:max-w-none">
+          <div className="mx-auto w-full max-w-160 xl:mx-0 xl:max-w-none">
             <div className="enter-fx w-full">
               <Link
                 href="/blog"
@@ -199,7 +201,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
                   <h1
                     itemProp="headline"
-                    className="mt-5 font-spectral text-[30px] font-light leading-[1.02] tracking-[-0.09em] text-black [text-wrap:balance] sm:text-[42px] sm:leading-[1] lg:tracking-[-3px] dark:text-white"
+                    className="mt-5 font-spectral text-[30px] font-light leading-[1.02] tracking-[-0.09em] text-black text-balance sm:text-[42px] sm:leading-none lg:tracking-[-3px] dark:text-white"
                   >
                     {post.title}
                   </h1>
@@ -263,7 +265,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       {related.length > 0 && (
         <section className="container-frame border-b border-border bg-background">
           <div className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-8">
-            <h2 className="inline-flex h-8 items-center rounded-full bg-black/[0.045] px-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] dark:bg-white/[0.07] dark:text-neutral-200 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.09),inset_0_1px_0_rgba(255,255,255,0.05)]">
+            <h2 className="inline-flex h-8 items-center rounded-full bg-black/4.5 px-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-neutral-700 shadow-[0_0_0_1px_rgba(0,0,0,0.05)] dark:bg-white/[0.07] dark:text-neutral-200 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.09),inset_0_1px_0_rgba(255,255,255,0.05)]">
               Keep reading
             </h2>
             <div className="mt-7 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-3">

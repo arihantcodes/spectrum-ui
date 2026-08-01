@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type JSX } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -736,7 +736,7 @@ function OrderCard({ order, isSelected }: OrderCardProps): JSX.Element {
       <Card
         className={cn(
           "mb-2 cursor-pointer",
-          isSelected ? "border-primary shadow-sm" : "border-border",
+          isSelected ? "border-primary shadow-xs" : "border-border",
         )}
       >
         <CardHeader className="p-3 pb-0">
@@ -959,7 +959,7 @@ function VehicleCard({ vehicle, isSelected }: VehicleCardProps): JSX.Element {
       <Card
         className={cn(
           "mb-4 cursor-pointer",
-          isSelected ? "border-primary shadow-sm" : "border-border",
+          isSelected ? "border-primary shadow-xs" : "border-border",
         )}
       >
         <CardHeader className="p-3 pb-0">

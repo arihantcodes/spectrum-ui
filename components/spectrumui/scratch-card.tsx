@@ -369,7 +369,7 @@ export function ScratchCard({
               onKeyDown={handleKeyDown}
               className={cn(
                 "block h-full w-full cursor-crosshair touch-none",
-                "focus-visible:outline-none focus-visible:ring-1",
+                "focus-visible:outline-hidden focus-visible:ring-1",
                 "focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
               )}
             />

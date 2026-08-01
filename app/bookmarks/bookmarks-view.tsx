@@ -74,7 +74,7 @@ export function BookmarksView({ bookmarks }: { bookmarks: BookmarkRow[] }) {
             </p>
             <Link
               href="/docs"
-              className="mt-6 inline-flex h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.25)] outline-none transition-[transform,background-color] duration-150 ease-out hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
+              className="mt-6 inline-flex h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.25)] outline-hidden transition-[transform,background-color] duration-150 ease-out hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
             >
               Browse components
             </Link>
@@ -124,16 +124,16 @@ function BookmarkCard({ bookmark }: { bookmark: BookmarkRow }) {
   return (
     <Link
       href={href}
-      className="group block rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="group block rounded-2xl outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <div className="h-full overflow-hidden rounded-2xl bg-card shadow-[0_0_0_1px_hsl(var(--border)),0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,box-shadow] duration-150 ease-out group-hover:-translate-y-0.5 group-hover:shadow-[0_0_0_1px_hsl(var(--border)),0_8px_24px_-8px_rgba(0,0,0,0.12)] group-active:translate-y-0 group-active:scale-[0.99] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
         {/* Preview area */}
         <div className="relative flex h-28 w-full items-center justify-center overflow-hidden border-b border-border bg-muted/50">
           <div
             aria-hidden
-            className="absolute inset-0 opacity-60 [background-image:radial-gradient(hsl(var(--border))_1px,transparent_1px)] [background-size:16px_16px]"
+            className="absolute inset-0 opacity-60 bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)] bg-size-[16px_16px]"
           />
-          <TypeIcon className="relative z-[1] size-7 text-muted-foreground transition-[transform,color] duration-200 ease-out group-hover:scale-110 group-hover:text-foreground" />
+          <TypeIcon className="relative z-1 size-7 text-muted-foreground transition-[transform,color] duration-200 ease-out group-hover:scale-110 group-hover:text-foreground" />
           <span className="absolute left-2.5 top-2.5 rounded-full border border-border bg-background px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground">
             {bookmark.type}
           </span>

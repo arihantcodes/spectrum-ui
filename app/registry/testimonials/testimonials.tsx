@@ -58,7 +58,7 @@ export default function Testimonial() {
 
   return (
     <div className="max-w-full px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10">
-      <div className=" bg-neutral-100 dark:bg-neutral-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-10 lg:p-16 shadow-sm">
+      <div className=" bg-neutral-100 dark:bg-neutral-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-10 lg:p-16 shadow-xs">
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-start mb-8 sm:mb-10 lg:mb-12">
           <div>
             <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight">
@@ -85,7 +85,7 @@ export default function Testimonial() {
               />
 
               <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4">
-                <div className="bg-black/80 backdrop-blur-sm rounded-full px-2 sm:px-4 py-1.5 sm:py-2 flex items-center space-x-1.5 sm:space-x-2 text-white">
+                <div className="bg-black/80 backdrop-blur-xs rounded-full px-2 sm:px-4 py-1.5 sm:py-2 flex items-center space-x-1.5 sm:space-x-2 text-white">
                   <Play className="w-3 h-3 sm:w-4 sm:h-4 fill-white" />
                   <span className="font-medium text-xs sm:text-sm">Watch Video</span>
                 </div>
@@ -136,7 +136,7 @@ export default function Testimonial() {
                 transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
                 whileHover={{ scale: 1.02, y: -5, transition: { duration: 0.2 } }}
               >
-                <Card className="flex-shrink-0 w-64 sm:w-72 md:w-80 bg-white dark:bg-neutral-800 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4 border-0 shadow-sm min-h-[180px] sm:min-h-[200px]">
+                <Card className="shrink-0 w-64 sm:w-72 md:w-80 bg-white dark:bg-neutral-800 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4 border-0 shadow-xs min-h-[180px] sm:min-h-[200px]">
                   <div className="flex space-x-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star

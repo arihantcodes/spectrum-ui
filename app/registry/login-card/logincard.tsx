@@ -62,18 +62,18 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Please enter your Email"
-                  className="w-full bg-gray-100 dark:bg-[#1B1B1B] border border-gray-300 dark:border-white/20 rounded-full px-6 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-gray-500 dark:focus:border-white/40 transition-colors"
+                  className="w-full bg-gray-100 dark:bg-[#1B1B1B] border border-gray-300 dark:border-white/20 rounded-full px-6 py-4 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-hidden focus:border-gray-500 dark:focus:border-white/40 transition-colors"
                 />
-                <motion.button className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-neutral-200 to-neutral-300 rounded-full p-3 transition-colors">
+                <motion.button className="absolute right-2 top-1/2 -translate-y-1/2 bg-linear-to-r from-neutral-200 to-neutral-300 rounded-full p-3 transition-colors">
                   <MoveRight className="w-4 h-4 text-black" />
                 </motion.button>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex items-center mb-6">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent" />
+              <div className="flex-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent" />
               <span className="px-4 text-gray-500 dark:text-gray-400 text-sm">OR</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent" />
+              <div className="flex-1 h-px bg-linear-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent" />
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-4 mb-6">

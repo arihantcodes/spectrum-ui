@@ -189,7 +189,7 @@ export function SwipeToDelete({
       animate={outerControls}
       className={cn(
         "group/swipe relative w-full rounded-xl",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
         isDeleting && "overflow-hidden",
         className,
       )}
@@ -252,7 +252,7 @@ export function SwipeToDelete({
                 isDragging || !isResting || isDeleting
                   ? "pointer-events-none"
                   : "group-hover/swipe:opacity-100 group-focus-within/swipe:opacity-100 focus-visible:opacity-100",
-                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+                "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
               )}
             >
               <Trash2 size={14} aria-hidden="true" />

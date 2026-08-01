@@ -255,7 +255,7 @@ export function AvatarStack({
                 transition={shouldReduceMotion ? INSTANT : SPRING_SNAPPY}
                 className={cn(
                   "flex select-none items-center justify-center overflow-hidden rounded-full bg-neutral-100 font-medium text-neutral-600 ring-2 ring-white dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-900",
-                  "focus-visible:outline-none focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+                  "focus-visible:outline-hidden focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
                   text,
                 )}
                 style={{ width: px, height: px }}
@@ -338,7 +338,7 @@ export function AvatarStack({
             transition={{ layout: layoutTransition }}
             className={cn(
               "relative flex select-none items-center justify-center rounded-full bg-neutral-100 font-medium text-neutral-600 ring-2 ring-white dark:bg-neutral-800 dark:text-neutral-300 dark:ring-neutral-900",
-              "focus-visible:outline-none focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+              "focus-visible:outline-hidden focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
               text,
             )}
             style={{

@@ -122,7 +122,7 @@ function McpSection({ slug }: { slug: string }) {
             type="button"
             onClick={handleCopy}
             aria-label={copied ? 'Prompt copied' : 'Copy agent prompt'}
-            className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
+            className="grid size-7 shrink-0 place-items-center rounded-md text-neutral-400 transition-[color,transform] duration-150 hover:text-neutral-700 active:scale-[0.94] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-500 dark:hover:text-neutral-200"
           >
             <span className="relative grid size-3.5 place-items-center">
               <Copy1Icon

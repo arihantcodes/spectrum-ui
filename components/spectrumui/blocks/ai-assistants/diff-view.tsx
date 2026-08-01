@@ -89,7 +89,7 @@ export function DiffView({ diffs, onAccept, onReject, variant = 'Default', class
                       type="button"
                       aria-label={`Reject changes to ${diff.path}`}
                       onClick={() => decide(diff.id, 'rejected')}
-                      className="grid size-6 place-items-center rounded-md text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+                      className="grid size-6 place-items-center rounded-md text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.9] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
                     >
                       <X className="size-3" />
                     </button>
@@ -97,7 +97,7 @@ export function DiffView({ diffs, onAccept, onReject, variant = 'Default', class
                       type="button"
                       aria-label={`Accept changes to ${diff.path}`}
                       onClick={() => decide(diff.id, 'accepted')}
-                      className="grid size-6 place-items-center rounded-md bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+                      className="grid size-6 place-items-center rounded-md bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.9] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
                     >
                       <Check className="size-3" />
                     </button>

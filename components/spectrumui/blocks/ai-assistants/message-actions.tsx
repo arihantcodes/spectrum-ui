@@ -31,7 +31,7 @@ export function MessageActions({
   const [copied, setCopied] = useState(false);
   const [spinning, setSpinning] = useState(false);
   const [feedbackState, setFeedbackState] = useState<MessageFeedback | null>(null);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const feedback = feedbackProp !== undefined ? feedbackProp : feedbackState;
@@ -66,7 +66,7 @@ export function MessageActions({
         'flex w-fit items-center gap-0.5 text-neutral-400 dark:text-neutral-500',
         'opacity-100 transition-opacity duration-150 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/message:opacity-100 [@media(hover:hover)]:focus-within:opacity-100',
         variant === 'Pill' &&
-          'rounded-full border border-black/[0.07] bg-white p-0.5 shadow-sm dark:border-white/[0.08] dark:bg-neutral-900',
+          'rounded-full border border-black/[0.07] bg-white p-0.5 shadow-xs dark:border-white/[0.08] dark:bg-neutral-900',
         className,
       )}
     >
@@ -149,7 +149,7 @@ function ActionButton({
       aria-label={label}
       aria-pressed={pressed}
       onClick={onClick}
-      className="grid size-7 place-items-center rounded-md transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+      className="grid size-7 place-items-center rounded-md transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
     >
       {children}
     </button>

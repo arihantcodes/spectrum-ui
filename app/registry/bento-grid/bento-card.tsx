@@ -138,7 +138,7 @@ export function BentoCard({
         "group relative flex flex-col justify-between overflow-hidden rounded-2xl",
         "bg-neutral-50 dark:bg-[#0C0C0C]",
         "border border-neutral-200 dark:border-neutral-800",
-        "shadow-sm transition-shadow duration-300 hover:shadow-lg hover:shadow-neutral-200/50 dark:hover:shadow-black/50",
+        "shadow-xs transition-shadow duration-300 hover:shadow-lg hover:shadow-neutral-200/50 dark:hover:shadow-black/50",
         "col-span-1",
         colSpanClass,
         rowSpanClass,
@@ -173,7 +173,7 @@ export function BentoCard({
         {(title || description || icon) && (
           <div className={cn("flex items-start space-x-4", children ? "mt-4 sm:mt-6" : "")}>
             {icon && (
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-900 dark:text-neutral-100">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-200/50 dark:bg-neutral-800/50 text-neutral-900 dark:text-neutral-100">
                 {icon}
               </div>
             )}

@@ -43,10 +43,10 @@ function Step({
   return (
     <li className="relative flex gap-4 sm:gap-5">
       <div className="flex flex-col items-center">
-        <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-black/[0.08] bg-white font-mono text-[13px] leading-none text-neutral-500 dark:border-white/10 dark:bg-neutral-950 dark:text-neutral-400">
+        <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-black/8 bg-white font-mono text-[13px] leading-none text-neutral-500 dark:border-white/10 dark:bg-neutral-950 dark:text-neutral-400">
           {number}
         </span>
-        {!isLast && <span className="mt-2 w-px flex-1 bg-black/[0.06] dark:bg-white/[0.08]" />}
+        {!isLast && <span className="mt-2 w-px flex-1 bg-black/6 dark:bg-white/8" />}
       </div>
       <div className={isLast ? 'min-w-0 flex-1' : 'min-w-0 flex-1 pb-12'}>
         <h2
@@ -74,7 +74,7 @@ function NextStepCard({
   return (
     <Link
       href={href}
-      className="group rounded-[14px] border border-black/[0.08] bg-white p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-black/[0.16] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 active:translate-y-0 active:shadow-none dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-white/20 dark:hover:bg-white/[0.05] dark:focus-visible:ring-white/30"
+      className="group rounded-[14px] border border-black/8 bg-white p-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-black/16 hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.1)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black/20 active:translate-y-0 active:shadow-none dark:border-white/10 dark:bg-white/2 dark:hover:border-white/20 dark:hover:bg-white/5 dark:focus-visible:ring-white/30"
     >
       <span className="flex items-center gap-1 text-sm font-medium leading-5 text-neutral-900 dark:text-neutral-100">
         {title}
@@ -105,7 +105,7 @@ export default function InstallationPage() {
 
       {/* Note */}
       <div
-        className="mt-8 flex animate-fade-up items-start gap-2.5 rounded-[14px] border border-black/[0.08] bg-black/[0.02] px-4 py-3.5 dark:border-white/10 dark:bg-white/[0.03]"
+        className="mt-8 flex animate-fade-up items-start gap-2.5 rounded-[14px] border border-black/8 bg-black/2 px-4 py-3.5 dark:border-white/10 dark:bg-white/3"
         style={{ animationDelay: '60ms' }}
       >
         <Info className="mt-0.5 size-4 shrink-0 text-neutral-400 dark:text-neutral-500" />
@@ -165,8 +165,8 @@ export default function InstallationPage() {
             The <InlineCode>init</InlineCode> command asks you a few questions. Your answers are
             saved in <InlineCode>components.json</InlineCode>.
           </p>
-          <figure className="mt-4 overflow-hidden rounded-[14px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-neutral-950">
-            <div className="flex h-[41px] items-center gap-2 border-b border-black/[0.05] px-4 dark:border-white/[0.06]">
+          <figure className="mt-4 overflow-hidden rounded-[14px] border border-black/8 bg-white dark:border-white/10 dark:bg-neutral-950">
+            <div className="flex h-[41px] items-center gap-2 border-b border-black/5 px-4 dark:border-white/6">
               <TerminalIcon className="size-4 shrink-0 text-[#686868] dark:text-neutral-400" />
               <span className="font-mono text-[13px] text-[#686868] dark:text-neutral-400">
                 components.json

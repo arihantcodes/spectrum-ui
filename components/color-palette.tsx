@@ -39,7 +39,7 @@ export function ColorPalette({
           {firstColor.hex} — {lastColor.hex}
         </span>
       </div>
-      <div className="flex h-24 w-full overflow-hidden rounded-xl ring-1 ring-black/[0.06] dark:ring-white/10 sm:h-32">
+      <div className="flex h-24 w-full overflow-hidden rounded-xl ring-1 ring-black/6 dark:ring-white/10 sm:h-32">
         {colorPalette.colors.map((color) => (
           <Color key={color.hex} color={color} />
         ))}

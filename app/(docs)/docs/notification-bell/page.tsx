@@ -92,7 +92,7 @@ const page = () => {
                 type: "number",
                 default: "0",
                 description:
-                  "Number of unread notifications. Increases trigger the ring swing and badge animations",
+                  "Number of unread notifications. Increases trigger the ring-3 swing and badge animations",
               },
               {
                 prop: "max",
@@ -114,7 +114,7 @@ const page = () => {
                 required: false,
                 type: "boolean",
                 default: "false",
-                description: "Play the ring swing once when the component mounts",
+                description: "Play the ring-3 swing once when the component mounts",
               },
               {
                 prop: "onClick",

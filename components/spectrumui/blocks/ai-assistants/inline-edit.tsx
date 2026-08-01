@@ -63,7 +63,7 @@ export function InlineEdit({
                 <button
                   type="button"
                   onClick={() => setPhaseState('reviewing')}
-                  className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-black/[0.08] bg-white py-1 pl-2 pr-2.5 text-[11.5px] font-medium text-neutral-700 shadow-md transition-transform duration-150 active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-200"
+                  className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-black/[0.08] bg-white py-1 pl-2 pr-2.5 text-[11.5px] font-medium text-neutral-700 shadow-md transition-transform duration-150 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:bg-neutral-900 dark:text-neutral-200"
                 >
                   <Sparkles className="size-3 text-neutral-400 dark:text-neutral-500" />
                   {actionLabel}
@@ -76,7 +76,7 @@ export function InlineEdit({
       </p>
 
       {phase === 'reviewing' && (
-        <div className="mt-8 rounded-xl border border-black/[0.08] bg-white p-3 shadow-sm motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both] dark:border-white/[0.09] dark:bg-[#0B0B0D]">
+        <div className="mt-8 rounded-xl border border-black/[0.08] bg-white p-3 shadow-xs motion-safe:animate-[su-msg-in_240ms_cubic-bezier(0.23,1,0.32,1)_both] dark:border-white/[0.09] dark:bg-[#0B0B0D]">
           <p className="font-mono text-[10px] font-medium uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-600">
             Suggestion
           </p>
@@ -93,7 +93,7 @@ export function InlineEdit({
               type="button"
               aria-label="Reject suggestion"
               onClick={reject}
-              className="grid size-7 place-items-center rounded-lg text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+              className="grid size-7 place-items-center rounded-lg text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
             >
               <X className="size-3.5" />
             </button>
@@ -101,7 +101,7 @@ export function InlineEdit({
               type="button"
               aria-label="Accept suggestion"
               onClick={accept}
-              className="grid size-7 place-items-center rounded-lg bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+              className="grid size-7 place-items-center rounded-lg bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
             >
               <Check className="size-3.5" />
             </button>

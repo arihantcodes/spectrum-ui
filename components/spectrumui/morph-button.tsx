@@ -306,7 +306,7 @@ export function MorphButton({
       className={cn(
         "relative inline-flex select-none items-center justify-center overflow-hidden rounded-full font-medium",
         "transition-colors duration-300",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-300",
         "disabled:pointer-events-none disabled:opacity-50",
         !interactive && "pointer-events-none",
         STATE_CLASSES[state],

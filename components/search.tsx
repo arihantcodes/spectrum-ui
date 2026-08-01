@@ -82,7 +82,7 @@ export default function Search() {
             </label>
             <Input
               id="search-trigger"
-              className="w-full rounded-md bg-muted border h-9 pl-10 pr-2 text-sm shadow-sm dark:bg-neutral-900"
+              className="w-full rounded-md bg-muted border h-9 pl-10 pr-2 text-sm shadow-xs dark:bg-neutral-900"
               placeholder="Search Components..."
               type="search"
               aria-label="Search Components"
@@ -90,7 +90,7 @@ export default function Search() {
             />
           </div>
         </DialogTrigger>
-        <DialogContent className="p-2 max-w-[650px] sm:top-[38%] top-[45%] z-[5000]">
+        <DialogContent className="p-2 max-w-[650px] sm:top-[38%] top-[45%] z-5000">
           <DialogHeader>
             <label htmlFor="search-input" className="sr-only">
               Search components
@@ -101,7 +101,7 @@ export default function Search() {
               onChange={(e) => setSearchedInput(e.target.value)}
               placeholder="Type something to search..."
               autoFocus
-              className="h-14 px-4 bg-transparent border-b text-[15px] outline-none"
+              className="h-14 px-4 bg-transparent border-b text-[15px] outline-hidden"
               aria-label="Search components"
             />
           </DialogHeader>

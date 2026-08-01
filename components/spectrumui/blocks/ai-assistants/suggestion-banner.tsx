@@ -91,14 +91,14 @@ export function SuggestionBanner({
           type="button"
           aria-label="Dismiss suggestion"
           onClick={dismiss}
-          className="grid size-7 place-items-center rounded-md text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+          className="grid size-7 place-items-center rounded-md text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.9] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
         >
           <X className="size-3.5" />
         </button>
         <button
           type="button"
           onClick={apply}
-          className="rounded-lg bg-neutral-900 px-2.5 py-1.5 text-[12px] font-medium text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+          className="rounded-lg bg-neutral-900 px-2.5 py-1.5 text-[12px] font-medium text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
         >
           {applyLabel}
         </button>

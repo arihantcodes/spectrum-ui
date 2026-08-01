@@ -67,7 +67,7 @@ function CitationMarker({ citation }: { citation: Citation }) {
       <button
         type="button"
         aria-label={`Source ${citation.index}: ${citation.title}`}
-        className="mx-0.5 inline-grid size-[15px] -translate-y-1 place-items-center rounded bg-black/[0.07] font-mono text-[9px] font-semibold text-neutral-600 transition-[background-color,color,transform] duration-150 hover:bg-neutral-900 hover:text-white active:scale-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-white/[0.1] dark:text-neutral-300 dark:hover:bg-neutral-100 dark:hover:text-neutral-900"
+        className="mx-0.5 inline-grid size-[15px] -translate-y-1 place-items-center rounded bg-black/[0.07] font-mono text-[9px] font-semibold text-neutral-600 transition-[background-color,color,transform] duration-150 hover:bg-neutral-900 hover:text-white active:scale-[0.9] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-white/[0.1] dark:text-neutral-300 dark:hover:bg-neutral-100 dark:hover:text-neutral-900"
       >
         {citation.index}
       </button>

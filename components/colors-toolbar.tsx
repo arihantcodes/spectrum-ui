@@ -16,7 +16,7 @@ export function ColorsToolbar({
   color: Color;
 }) {
   return (
-    <div className="sticky top-14 z-30 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <div className="sticky top-14 z-30 border-b border-border bg-background/85 backdrop-blur-sm supports-backdrop-filter:bg-background/70">
       <div className="container flex items-center justify-between gap-4 py-2.5">
         <div className="flex min-w-0 items-center gap-3">
           <span className="hidden shrink-0 items-center gap-2.5 sm:flex">

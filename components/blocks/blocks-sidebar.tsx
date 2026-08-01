@@ -63,7 +63,7 @@ export function BlocksSidebar({ title, tagline, items }: BlocksSidebarProps) {
                     aria-current={isActive ? 'true' : undefined}
                     className={cn(
                       'flex h-[30px] items-center gap-2 rounded-md px-2.5 text-[13px] transition-colors duration-150',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                      'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                       isActive
                         ? 'bg-black/[0.05] font-medium text-neutral-900 dark:bg-white/[0.07] dark:text-neutral-50'
                         : 'text-neutral-500 hover:text-neutral-800 dark:text-neutral-500 dark:hover:text-neutral-200',

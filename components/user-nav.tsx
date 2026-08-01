@@ -31,7 +31,7 @@ export function UserNav({ session }: { session: Session }) {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative ml-2 h-9 w-9 rounded-full outline-none hover:shadow-[0_0_0_2px_hsl(var(--border))] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=open]:shadow-[0_0_0_2px_hsl(var(--border))]"
+          className="relative ml-2 h-9 w-9 rounded-full outline-hidden hover:shadow-[0_0_0_2px_hsl(var(--border))] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-[state=open]:shadow-[0_0_0_2px_hsl(var(--border))]"
         >
           <Avatar className="h-9 w-9">
             {user.image && <AvatarImage src={user.image} alt={user.name ?? ''} />}

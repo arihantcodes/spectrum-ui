@@ -43,7 +43,7 @@ export default function TiltCardDemo() {
           <TiltCardItem depth={60}>
             <button
               type="button"
-              className="rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 dark:focus-visible:ring-neutral-300"
+              className="rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 dark:focus-visible:ring-neutral-300"
             >
               Buy now →
             </button>

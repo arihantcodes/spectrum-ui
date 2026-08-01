@@ -66,7 +66,7 @@ export function VoiceInput({
   return (
     <div
       className={cn(
-        'flex h-11 w-fit items-center gap-2 rounded-full border border-black/[0.08] bg-white py-1.5 pl-1.5 pr-2 shadow-sm dark:border-white/[0.09] dark:bg-[#0B0B0D]',
+        'flex h-11 w-fit items-center gap-2 rounded-full border border-black/[0.08] bg-white py-1.5 pl-1.5 pr-2 shadow-xs dark:border-white/[0.09] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -78,7 +78,7 @@ export function VoiceInput({
             type="button"
             aria-label="Start recording"
             onClick={start}
-            className="grid size-8 place-items-center rounded-full bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+            className="grid size-8 place-items-center rounded-full bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
           >
             <Mic className="size-3.5" />
           </button>
@@ -94,7 +94,7 @@ export function VoiceInput({
             type="button"
             aria-label="Cancel recording"
             onClick={cancel}
-            className="grid size-8 shrink-0 place-items-center rounded-full text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
+            className="grid size-8 shrink-0 place-items-center rounded-full text-neutral-400 transition-[color,background-color,transform] duration-150 hover:bg-black/[0.04] hover:text-neutral-700 active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-200"
           >
             <X className="size-3.5" />
           </button>
@@ -125,7 +125,7 @@ export function VoiceInput({
             type="button"
             aria-label="Finish recording"
             onClick={confirm}
-            className="grid size-8 shrink-0 place-items-center rounded-full bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+            className="grid size-8 shrink-0 place-items-center rounded-full bg-neutral-900 text-white transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
           >
             <Check className="size-3.5" />
           </button>

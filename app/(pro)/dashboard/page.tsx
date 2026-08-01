@@ -78,7 +78,7 @@ export default async function DashboardPage() {
         <Link 
           href="/profile"
           className="flex items-center gap-3 p-2 pr-4 rounded-xl border border-neutral-200 dark:border-[#222] 
-            bg-white dark:bg-[#0D0D0D] hover:border-neutral-300 dark:hover:border-[#333] transition-all group shadow-sm dark:shadow-none"
+            bg-white dark:bg-[#0D0D0D] hover:border-neutral-300 dark:hover:border-[#333] transition-all group shadow-xs dark:shadow-none"
         >
           <div className="w-10 h-10 rounded-lg bg-neutral-100 dark:bg-[#161616] flex items-center justify-center text-neutral-500 dark:text-[#444] group-hover:text-neutral-900 dark:group-hover:text-[#F5F5F5] transition-colors">
             <IconBrandGithub size={20} />
@@ -95,9 +95,9 @@ export default async function DashboardPage() {
       {/* Empty state */}
       {!orders?.length ? (
         <div className="bg-neutral-50 dark:bg-[#111] border border-neutral-200 dark:border-[#222] rounded-xl p-12
-          text-center dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-sm">
+          text-center dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-xs">
           <div className="w-12 h-12 bg-white dark:bg-[#161616] border border-neutral-200 dark:border-[#222]
-            rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm dark:shadow-none">
+            rounded-xl flex items-center justify-center mx-auto mb-4 shadow-xs dark:shadow-none">
             <IconPackage size={20} className="text-neutral-400 dark:text-[#444]" />
           </div>
           <p className="text-neutral-500 dark:text-[#666] text-sm mb-1">No templates yet</p>
@@ -117,7 +117,7 @@ export default async function DashboardPage() {
             <div key={order.id}
               className="group bg-neutral-50 dark:bg-[#0A0A0A] border border-neutral-200 dark:border-[#222] rounded-2xl p-6
                 hover:border-neutral-300 dark:hover:border-[#333] transition-all duration-300
-                dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-sm hover:shadow-xl dark:shadow-none hover:-translate-y-0.5">
+                dark:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.05)] shadow-xs hover:shadow-xl dark:shadow-none hover:-translate-y-0.5">
 
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
@@ -148,7 +148,7 @@ export default async function DashboardPage() {
                     {order.templates?.tech_stack?.map((tech: string) => (
                       <span key={tech}
                         className="text-[11px] bg-white dark:bg-[#161616] border border-neutral-200 dark:border-[#222]
-                          text-neutral-500 dark:text-[#555] px-2 py-0.5 rounded-md shadow-sm dark:shadow-none">
+                          text-neutral-500 dark:text-[#555] px-2 py-0.5 rounded-md shadow-xs dark:shadow-none">
                         {tech}
                       </span>
                     ))}
@@ -181,7 +181,7 @@ export default async function DashboardPage() {
                       border border-neutral-200 hover:border-neutral-300 dark:border-[#222] dark:hover:border-[#333]
                       text-neutral-600 hover:text-neutral-900 dark:text-[#666] dark:hover:text-[#A0A0A0]
                       text-xs px-3.5 py-2 rounded-lg bg-white dark:bg-transparent
-                      transition-all shadow-sm dark:shadow-none"
+                      transition-all shadow-xs dark:shadow-none"
                   >
                     <IconExternalLink size={13} />
                     Preview

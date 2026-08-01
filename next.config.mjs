@@ -1,14 +1,19 @@
 /** @type {import('next').NextConfig} */
-import createMDX from "@next/mdx";
-
 const nextConfig = {
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
   output: 'standalone',
   transpilePackages: ['shiki'],
+
+  // Pin the workspace root. A stray package-lock.json in the user's home dir
+  // otherwise makes Turbopack infer the wrong root and emit a warning.
+  turbopack: {
+    root: import.meta.dirname,
+  },
   
-  // Image optimization
+  // Image optimization. `images.domains` was removed in Next 16 — remotePatterns
+  // is the replacement and is stricter (protocol + pathname are explicit).
   images: {
-    domains: [
+    remotePatterns: [
       "lh3.googleusercontent.com",
       "img.freepik.com",
       "images.pexels.com",
@@ -16,8 +21,8 @@ const nextConfig = {
       "plus.unsplash.com",
       "res.cloudinary.com",
       "genie.arihantcodes.com",
-      "www.shadcnblocks.com"
-    ],
+      "www.shadcnblocks.com",
+    ].map((hostname) => ({ protocol: 'https', hostname, pathname: '/**' })),
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -34,7 +39,10 @@ const nextConfig = {
   // Performance optimizations (optimizeCss disabled — breaks CSS HMR in dev)
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
-    outputFileTracingIncludes: {
+  },
+
+  // Promoted out of `experimental` in Next 15; it is a top-level key in Next 16.
+  outputFileTracingIncludes: {
       '/docs/**/*': [
         './app/(docs)/docs/**/*.tsx',
         './components/ui/**/*.tsx',
@@ -58,7 +66,6 @@ const nextConfig = {
         './public/agents.md',
         './public/llms*.txt',
       ],
-    },
   },
 
   // Compression
@@ -87,14 +94,10 @@ const nextConfig = {
         { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
       ],
     },
-    // Static JS/CSS chunks — production only (content-hashed, safe to cache forever)
+    // NOTE: /_next/static is deliberately NOT listed here. Next already serves it
+    // with `max-age=31536000, immutable`, and overriding it makes Next 16 warn
+    // that the custom header can break dev behaviour.
     ...(process.env.NODE_ENV === 'production' ? [
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
       {
         source: '/images/(.*)',
         headers: [
@@ -111,11 +114,4 @@ const nextConfig = {
   ],
 };
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;

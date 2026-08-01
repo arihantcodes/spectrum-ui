@@ -991,8 +991,7 @@
       "@react-three/fiber",
       "@react-three/drei",
       "@react-three/rapier",
-      "meshline",
-      "leva"
+      "meshline"
     ],
     "registryDependencies": [],
     "installation": {
@@ -1000,7 +999,7 @@
         "npx shadcn@latest add @spectrumui/event-badge-3d"
       ],
       "dependencyCommands": [
-        "npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline leva"
+        "npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline"
       ],
       "manualPaths": [
         "app/(docs)/docs/badge/badgedemo.tsx",

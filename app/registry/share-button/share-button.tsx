@@ -87,7 +87,7 @@ const BUTTON_BASE_CLASSES = cn(
   "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-100",
   "dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800",
   "shadow-[0px_1px_2px_0px_rgba(0,0,0,0.04),0px_2px_4px_0px_rgba(0,0,0,0.04)] dark:shadow-none",
-  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+  "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
 )
 
 /** Inline share-nodes glyph so the collapsed trigger has zero icon deps */

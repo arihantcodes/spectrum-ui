@@ -223,7 +223,7 @@ export function CommandSearch({
       aria-activedescendant={activeOptionId}
       onKeyDown={handleKeyDown}
       className={cn(
-        "relative flex w-full flex-col overflow-hidden rounded-[14px] bg-white p-2 pb-11 outline-none",
+        "relative flex w-full flex-col overflow-hidden rounded-[14px] bg-white p-2 pb-11 outline-hidden",
         "shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_0_0_1px_rgba(10,10,10,0.05)] drop-shadow-[0_4px_14.2px_rgba(108,108,108,0.25)]",
         "focus-visible:ring-2 focus-visible:ring-neutral-400/40 dark:focus-visible:ring-neutral-500/40",
         "dark:bg-neutral-950 dark:shadow-[0_1px_3px_0_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.12)]",
@@ -285,7 +285,7 @@ export function CommandSearch({
                   onMouseEnter={() => setHoveredLabel(item.label)}
                   onFocus={() => setHoveredLabel(item.label)}
                   whileTap={{ scale: 0.985 }}
-                  className="relative flex h-9 w-full items-center gap-3 rounded-lg px-3 text-left outline-none"
+                  className="relative flex h-9 w-full items-center gap-3 rounded-lg px-3 text-left outline-hidden"
                 >
                   <span className="flex min-w-0 items-center gap-3">
                     <motion.span

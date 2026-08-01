@@ -54,7 +54,7 @@ export function ProfileView({
         <div className="enter-fx">
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-1.5 rounded-md text-sm text-muted-foreground outline-none transition-[transform,color] duration-150 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.98]"
+            className="mb-8 inline-flex items-center gap-1.5 rounded-md text-sm text-muted-foreground outline-hidden transition-[transform,color] duration-150 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring motion-safe:active:scale-[0.98]"
           >
             <IconArrowLeft size={15} aria-hidden />
             Back home
@@ -113,7 +113,7 @@ export function ProfileView({
               href={`https://github.com/${user.github_username}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 shrink-0 items-center gap-2 self-start rounded-full bg-black/[0.045] px-4 text-[13px] font-medium text-foreground shadow-[0_0_0_1px_hsl(var(--border))] outline-none transition-[transform,background-color] duration-150 ease-out hover:bg-black/[0.08] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/[0.1] sm:self-auto"
+              className="inline-flex h-9 shrink-0 items-center gap-2 self-start rounded-full bg-black/4.5 px-4 text-[13px] font-medium text-foreground shadow-[0_0_0_1px_hsl(var(--border))] outline-hidden transition-[transform,background-color] duration-150 ease-out hover:bg-black/8 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card motion-safe:active:scale-[0.98] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/10 sm:self-auto"
             >
               <Icons.gitHub className="size-4" />
               View on GitHub
@@ -153,7 +153,7 @@ export function ProfileView({
         >
           <a
             href="mailto:jainari1208@gmail.com"
-            className="inline-flex items-center gap-2 rounded-md text-sm text-muted-foreground outline-none transition-colors duration-150 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex items-center gap-2 rounded-md text-sm text-muted-foreground outline-hidden transition-colors duration-150 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
             <IconlyEmailDocument className="size-4" />
             Need help? Contact support
@@ -162,7 +162,7 @@ export function ProfileView({
           <form action={signOutAction}>
             <button
               type="submit"
-              className="inline-flex h-9 items-center gap-2 rounded-full px-4 text-[13px] font-medium text-red-600 shadow-[0_0_0_1px_hsl(var(--border))] outline-none transition-[transform,background-color] duration-150 ease-out hover:bg-red-500/10 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:active:scale-[0.98] dark:text-red-500"
+              className="inline-flex h-9 items-center gap-2 rounded-full px-4 text-[13px] font-medium text-red-600 shadow-[0_0_0_1px_hsl(var(--border))] outline-hidden transition-[transform,background-color] duration-150 ease-out hover:bg-red-500/10 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:active:scale-[0.98] dark:text-red-500"
             >
               <IconlyLogout className="size-4" />
               Sign out

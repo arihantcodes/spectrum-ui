@@ -5,7 +5,7 @@ import { Bell, Home, Search, Settings } from "lucide-react";
 export default function CircularNavbar() {
   return (
     // add fixed  to the nav class name to make the navbar stick to the bottom of the screen
-    <nav className=" bottom-0 left-0 right-0 border-t bg-background p-4 backdrop-blur-sm">
+    <nav className=" bottom-0 left-0 right-0 border-t bg-background p-4 backdrop-blur-xs">
       <div className="container mx-auto flex items-center justify-between">
         <Button size="icon" className="rounded-full" variant="ghost">
           <Home className="h-6 w-6" />

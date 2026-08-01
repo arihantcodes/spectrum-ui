@@ -18,12 +18,12 @@ import UndoPillDurationDemo from "./undo-pill-duration-demo"
 export const metadata: Metadata = baseMetadata({
   title: "Undo Pill",
   description:
-    "An inline undo pill with a draining countdown ring that pauses on hover. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
+    "An inline undo pill with a draining countdown ring-3 that pauses on hover. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
   keywords: [
     "undo pill component",
     "React undo button",
     "undo toast component",
-    "countdown ring animation",
+    "countdown ring-3 animation",
     "undo delete micro interaction",
     "snackbar undo component",
     "framer motion countdown",
@@ -34,7 +34,7 @@ export const metadata: Metadata = baseMetadata({
 
 const page = () => {
   const description =
-    "An inline undo pill with a draining countdown ring that pauses on hover."
+    "An inline undo pill with a draining countdown ring-3 that pauses on hover."
 
   return (
     <SEOWrapper
@@ -44,7 +44,7 @@ const page = () => {
       keywords={[
         "undo pill component",
         "undo toast component",
-        "countdown ring animation",
+        "countdown ring-3 animation",
         "undo delete micro interaction",
       ]}
     >

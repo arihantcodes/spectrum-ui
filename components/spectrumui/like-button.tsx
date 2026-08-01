@@ -159,11 +159,11 @@ export function LikeButton({
       className={cn(
         "group relative inline-flex touch-manipulation select-none items-center justify-center rounded-full border font-medium transition-colors",
         "shadow-[0px_1px_2px_0px_rgba(0,0,0,0.04),0px_2px_4px_0px_rgba(0,0,0,0.04)] dark:shadow-none",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
         "disabled:pointer-events-none disabled:opacity-50",
         liked
           ? "border-rose-200 bg-rose-50 text-rose-600 hover:border-rose-300 hover:bg-rose-100/70 active:bg-rose-100 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-400 dark:hover:border-rose-500/50 dark:hover:bg-rose-500/15 dark:active:bg-rose-500/20"
-          : "border-neutral-200 bg-white text-neutral-600 hover:border-rose-200 hover:bg-rose-50/60 hover:text-rose-500 active:bg-rose-50 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:border-rose-500/40 dark:hover:bg-rose-500/[0.06] dark:hover:text-rose-400 dark:active:bg-rose-500/10",
+          : "border-neutral-200 bg-white text-neutral-600 hover:border-rose-200 hover:bg-rose-50/60 hover:text-rose-500 active:bg-rose-50 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:border-rose-500/40 dark:hover:bg-rose-500/6 dark:hover:text-rose-400 dark:active:bg-rose-500/10",
         sizeClasses,
         className,
       )}

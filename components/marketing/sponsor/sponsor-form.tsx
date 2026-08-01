@@ -200,7 +200,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                       className={cn(
                         "relative text-left p-4 rounded-xl border transition-all duration-300 flex flex-col justify-between min-h-[95px]",
                         active
-                          ? "border-neutral-900 dark:border-white bg-neutral-50/50 dark:bg-neutral-900/40 shadow-sm"
+                          ? "border-neutral-900 dark:border-white bg-neutral-50/50 dark:bg-neutral-900/40 shadow-xs"
                           : "border-neutral-200 dark:border-neutral-800 bg-transparent hover:border-neutral-400 dark:hover:border-neutral-700"
                       )}
                     >
@@ -244,7 +244,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                     placeholder="jane@acme.com"
                     {...register("contact_email")}
                     className={cn(
-                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-hidden transition-colors",
                       errors.contact_email 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
@@ -269,7 +269,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                     placeholder="Acme Corp"
                     {...register("company_name")}
                     className={cn(
-                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-hidden transition-colors",
                       errors.company_name 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
@@ -295,7 +295,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                     placeholder="https://spectrumhq.in"
                     {...register("product_link")}
                     className={cn(
-                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-hidden transition-colors",
                       errors.product_link 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
@@ -337,7 +337,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                     placeholder="Acme Developer Tools"
                     {...register("ads_title")}
                     className={cn(
-                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors",
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-hidden transition-colors",
                       errors.ads_title 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"
@@ -362,7 +362,7 @@ export function SponsorForm({ className }: SponsorFormProps) {
                     placeholder="The fastest way to build your next big idea."
                     {...register("ads_description")}
                     className={cn(
-                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-none transition-colors resize-none",
+                      "w-full pl-9 pr-3 py-2.5 rounded-lg border bg-transparent text-xs placeholder:text-neutral-400 focus:outline-hidden transition-colors resize-none",
                       errors.ads_description 
                         ? "border-red-500 focus:border-red-500" 
                         : "border-neutral-200 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white"

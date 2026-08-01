@@ -25,7 +25,7 @@ export function BorderBeam({
     <div
       className={cn(
         "pointer-events-none absolute inset-0 z-0 rounded-[inherit] border border-transparent",
-        "![mask-clip:padding-box,border-box] ![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)]",
+        "[mask-clip:padding-box,border-box]! mask-intersect! [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)]",
         className
       )}
       style={{

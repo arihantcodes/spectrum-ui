@@ -265,7 +265,7 @@ export function HoldToConfirmButton({
       }
       className={cn(
         "relative inline-flex touch-none select-none items-center justify-center rounded-full border font-medium transition-colors",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+        "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
         "disabled:pointer-events-none disabled:opacity-50",
         confirmed
           ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-400"

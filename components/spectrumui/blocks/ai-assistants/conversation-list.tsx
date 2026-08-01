@@ -61,7 +61,7 @@ export function ConversationList({
     <nav
       aria-label="Conversations"
       className={cn(
-        'w-full max-w-[300px] rounded-2xl border border-black/[0.08] bg-white p-2 shadow-sm dark:border-white/[0.09] dark:bg-[#0B0B0D]',
+        'w-full max-w-[300px] rounded-2xl border border-black/[0.08] bg-white p-2 shadow-xs dark:border-white/[0.09] dark:bg-[#0B0B0D]',
         className,
       )}
     >
@@ -85,7 +85,7 @@ export function ConversationList({
                       className={cn(
                         'flex w-full items-center gap-2 rounded-lg px-2 text-left transition-[background-color,transform] duration-150 active:scale-[0.99]',
                         compact ? 'py-1.5' : 'py-2',
-                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                        'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                         isActive
                           ? 'bg-black/[0.05] dark:bg-white/[0.07]'
                           : 'hover:bg-black/[0.03] dark:hover:bg-white/[0.04]',
@@ -119,7 +119,7 @@ export function ConversationList({
                       className={cn(
                         'absolute right-1.5 top-1/2 grid size-6 -translate-y-1/2 place-items-center rounded-md',
                         'transition-[opacity,color,transform] duration-150 active:scale-[0.9]',
-                        'focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400',
+                        'focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                         pinned
                           ? 'text-neutral-700 dark:text-neutral-200'
                           : 'text-neutral-400 opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover/item:opacity-100 dark:text-neutral-500',

@@ -208,7 +208,7 @@ export function ReactionBar({
               }`}
               className={cn(
                 "inline-flex select-none touch-manipulation items-center rounded-full border font-medium transition-colors",
-                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+                "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
                 reacted
                   ? "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-500/30 dark:bg-sky-500/10 dark:text-sky-400"
                   : "border-neutral-200 bg-white text-neutral-600 hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:border-neutral-700",
@@ -277,7 +277,7 @@ export function ReactionBar({
             className={cn(
               "inline-flex touch-manipulation items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-500 transition-colors",
               "hover:border-neutral-300 hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:border-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-neutral-200",
-              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
+              "focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300",
               add,
             )}
           >
@@ -338,7 +338,7 @@ export function ReactionBar({
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
                     onClick={() => addReaction(emoji)}
                     aria-label={`React with ${emoji}`}
-                    className="flex h-7 w-7 touch-manipulation select-none items-center justify-center rounded-full text-sm leading-none transition-colors hover:bg-neutral-100 active:bg-neutral-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-700 dark:focus-visible:ring-neutral-300"
+                    className="flex h-7 w-7 touch-manipulation select-none items-center justify-center rounded-full text-sm leading-none transition-colors hover:bg-neutral-100 active:bg-neutral-200 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-neutral-800 dark:active:bg-neutral-700 dark:focus-visible:ring-neutral-300"
                   >
                     {emoji}
                   </motion.button>

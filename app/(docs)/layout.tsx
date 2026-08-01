@@ -34,7 +34,7 @@ export default function DocsLayout({
         <div className="min-w-0 self-start py-6 lg:py-8">
           <div
             data-docs-content
-            className="rounded-[15px] border border-black/[0.08] bg-white px-4 py-6 dark:border-white/10 dark:bg-neutral-950/60 sm:px-10 sm:py-8"
+            className="rounded-[15px] border border-black/8 bg-white px-4 py-6 dark:border-white/10 dark:bg-neutral-950/60 sm:px-10 sm:py-8"
           >
             {children}
           </div>

@@ -51,7 +51,7 @@ const DualRangeSliderPage = () => {
         path="app/(docs)/docs/badge/badgedemo.tsx"
         cli="@spectrumui/event-badge-3d"
       
-        installScript="npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline leva"
+        installScript="npm install three @react-three/fiber @react-three/drei @react-three/rapier meshline"
         installCodePath="app/(docs)/docs/badge/badgedemo.tsx"
       >
         <EventBadge />

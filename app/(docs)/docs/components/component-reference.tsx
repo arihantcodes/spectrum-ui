@@ -238,7 +238,7 @@ function RelatedTopicGuides({ component }: { component: ComponentDoc }) {
           <Link
             key={hub.slug}
             href={hub.href}
-            className="rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="rounded-full border border-border px-3.5 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             {hub.label}
           </Link>

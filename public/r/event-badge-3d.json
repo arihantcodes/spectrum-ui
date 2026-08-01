@@ -8,8 +8,7 @@
     "@react-three/fiber",
     "@react-three/drei",
     "@react-three/rapier",
-    "meshline",
-    "leva"
+    "meshline"
   ],
   "files": [
     {

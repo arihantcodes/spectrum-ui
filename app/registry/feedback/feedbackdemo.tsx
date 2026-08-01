@@ -64,7 +64,7 @@ export const Feedback = () => {
         happiness ? { borderRadius: "0.5rem" } : { borderRadius: "2rem" }
       }
       className={twMerge(
-        "w-fit overflow-hidden border py-2 shadow-sm dark:border-neutral-800 dark:bg-neutral-950",
+        "w-fit overflow-hidden border py-2 shadow-xs dark:border-neutral-800 dark:bg-neutral-950",
       )}
     >
       <span className="flex items-center justify-center gap-3 pl-4 pr-2">
@@ -108,7 +108,7 @@ export const Feedback = () => {
               <textarea
                 ref={textRef}
                 placeholder="Your app is awesoooome"
-                className="min-h-32 w-full resize-none rounded-md border bg-transparent p-2 text-sm placeholder-neutral-400 focus:border-neutral-400 focus:outline-0 dark:border-neutral-800 focus:dark:border-white"
+                className="min-h-32 w-full resize-none rounded-md border bg-transparent p-2 text-sm placeholder-neutral-400 focus:border-neutral-400 focus:outline-0 dark:border-neutral-800 dark:focus:border-white"
               />
               <div className="flex h-fit w-full justify-end">
                 <button

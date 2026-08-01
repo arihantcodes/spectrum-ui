@@ -21,7 +21,7 @@ export default function SponsorPage() {
   return (
     <div className="relative w-full bg-neutral-50 dark:bg-[#0C0C0C] text-neutral-900 dark:text-neutral-100 font-sans">
       {/* Subtle background grid — matching founder-story */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-size-[24px_24px]" />
 
       <main className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex flex-col pb-32">
         <HeroSection />

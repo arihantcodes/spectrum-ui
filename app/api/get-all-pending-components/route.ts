@@ -4,7 +4,7 @@ import { connectDb } from "@/config/dbConfig/dbConfig";
 
 // api/get-all-pending-components?email={ADMIN_EMAIL}&password={ADMIN_PASSWORD}
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest) {
   try {
     const email = req.nextUrl.searchParams.get("email");
     const password = req.nextUrl.searchParams.get("password");

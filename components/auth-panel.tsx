@@ -83,7 +83,7 @@ function ProviderSubmitButton({
       disabled={pending}
       aria-busy={pending}
       className={cn(
-        'flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-6 text-[15px] font-medium outline-none',
+        'flex h-12 w-full items-center justify-center gap-2.5 rounded-full px-6 text-[15px] font-medium outline-hidden',
         'transition-[transform,background-color,box-shadow,opacity] duration-150 ease-out',
         // Press feedback lives on :active so it fires on pointer-down.
         'active:scale-[0.98]',
@@ -95,7 +95,7 @@ function ProviderSubmitButton({
             'bg-primary text-primary-foreground hover:bg-primary/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_2px_rgba(0,0,0,0.3),0_8px_24px_-8px_rgba(0,0,0,0.4)] dark:shadow-[0_0_28px_rgba(255,255,255,0.22),0_1px_3px_rgba(0,0,0,0.5)]'
           : // Translucent material pill — same language as the reference's
             // secondary actions.
-            'bg-black/[0.045] text-foreground shadow-[0_0_0_1px_hsl(var(--border))] hover:bg-black/[0.08] dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/[0.1]',
+            'bg-black/4.5 text-foreground shadow-[0_0_0_1px_hsl(var(--border))] hover:bg-black/8 dark:bg-white/[0.07] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] dark:hover:bg-white/10',
       )}
     >
       {pending ? (
@@ -161,7 +161,7 @@ export function AuthPanel({
           key={mode}
           className="flex flex-col items-center justify-center mt-5 animate-[auth-fade_180ms_ease-out]"
         >
-          <h1 className="font-spectral text-[23px] font-normal leading-[1.1] tracking-tighter text-foreground [text-wrap:balance] sm:text-[28px]">
+          <h1 className="font-spectral text-[23px] font-normal leading-[1.1] tracking-tighter text-foreground text-balance sm:text-[28px]">
             {copy.heading}
           </h1>
           <p className="mx-auto mt-2 max-w-[20rem] text-[15px] leading-relaxed text-muted-foreground">
@@ -175,13 +175,13 @@ export function AuthPanel({
           className="auth-enter mt-6"
           style={{ animationDelay: '60ms' }}
         >
-          <TabsPrimitive.List className="relative grid h-11 grid-cols-2 rounded-full bg-black/[0.045] p-1 shadow-[inset_0_1px_1px_rgba(0,0,0,0.04)] dark:bg-white/[0.06] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]">
+          <TabsPrimitive.List className="relative grid h-11 grid-cols-2 rounded-full bg-black/4.5 p-1 shadow-[inset_0_1px_1px_rgba(0,0,0,0.04)] dark:bg-white/6 dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.35)]">
             {/* Sliding pill — one element translating between halves, so the
                 switch reads as movement instead of two swapped states. */}
             <span
               aria-hidden="true"
               className={cn(
-                'auth-pill absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-background shadow-[0_1px_2px_rgba(0,0,0,0.08),0_0_0_0.5px_hsl(var(--border))] dark:bg-white/[0.12] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_3px_rgba(0,0,0,0.45)]',
+                'auth-pill absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-background shadow-[0_1px_2px_rgba(0,0,0,0.08),0_0_0_0.5px_hsl(var(--border))] dark:bg-white/12 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_1px_3px_rgba(0,0,0,0.45)]',
                 mode === 'signup' && 'translate-x-full',
               )}
             />
@@ -190,7 +190,7 @@ export function AuthPanel({
                 key={value}
                 value={value}
                 className={cn(
-                  'relative z-[1] rounded-full text-sm font-medium outline-none',
+                  'relative z-1 rounded-full text-sm font-medium outline-hidden',
                   'transition-colors duration-150 ease-out',
                   'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                   'data-[state=active]:text-foreground',
@@ -206,7 +206,7 @@ export function AuthPanel({
             <TabsPrimitive.Content
               key={value}
               value={value}
-              className="mt-5 outline-none data-[state=active]:animate-[auth-fade_180ms_ease-out]"
+              className="mt-5 outline-hidden data-[state=active]:animate-[auth-fade_180ms_ease-out]"
             >
               <form action={githubAction}>
                 <ProviderSubmitButton variant="primary" icon={<GitHubIcon />}>
@@ -239,14 +239,14 @@ export function AuthPanel({
           By continuing, you agree to our{' '}
           <Link
             href="/tos"
-            className="rounded-sm font-medium text-foreground underline-offset-4 outline-none transition-colors duration-150 hover:underline focus-visible:ring-2 focus-visible:ring-ring"
+            className="rounded-sm font-medium text-foreground underline-offset-4 outline-hidden transition-colors duration-150 hover:underline focus-visible:ring-2 focus-visible:ring-ring"
           >
             Terms
           </Link>{' '}
           and{' '}
           <Link
             href="/privacy-policy"
-            className="whitespace-nowrap rounded-sm font-medium text-foreground underline-offset-4 outline-none transition-colors duration-150 hover:underline focus-visible:ring-2 focus-visible:ring-ring"
+            className="whitespace-nowrap rounded-sm font-medium text-foreground underline-offset-4 outline-hidden transition-colors duration-150 hover:underline focus-visible:ring-2 focus-visible:ring-ring"
           >
             Privacy Policy
           </Link>

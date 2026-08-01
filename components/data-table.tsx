@@ -413,7 +413,7 @@ export function SubscriberDataTable({
             <div className="relative flex-1 max-w-[260px] cursor-pointer">
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500 dark:text-neutral-400" />
               <Input
-                className="rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-sm dark:bg-neutral-900"
+                className="rounded-md bg-muted border h-9 pl-10 pr-4 text-sm shadow-xs dark:bg-neutral-900"
                 placeholder="Search subscribers..."
                 type="search"
                 value={globalFilter}
@@ -422,32 +422,32 @@ export function SubscriberDataTable({
             </div>
 
             {/* Date Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900 outline-none">
-              <CalendarDays className="h-4 w-4 mr-2 outline-none" />
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900 outline-hidden">
+              <CalendarDays className="h-4 w-4 mr-2 outline-hidden" />
               <Select value={dateFilter} onValueChange={setDateFilter}>
-                <SelectTrigger className="border-none bg-transparent p-0 h-auto shadow-none outline-none">
+                <SelectTrigger className="border-none bg-transparent p-0 h-auto shadow-none outline-hidden">
                   <SelectValue
                     placeholder="Signup Date"
-                    className="border-none outline-none "
+                    className="border-none outline-hidden "
                   />
                 </SelectTrigger>
-                <SelectContent className="outline-none">
-                  <SelectItem value="allTime" className="outline-none">
+                <SelectContent className="outline-hidden">
+                  <SelectItem value="allTime" className="outline-hidden">
                     All Time
                   </SelectItem>
-                  <SelectItem value="today" className="outline-none">
+                  <SelectItem value="today" className="outline-hidden">
                     Today
                   </SelectItem>
-                  <SelectItem value="week" className="outline-none">
+                  <SelectItem value="week" className="outline-hidden">
                     This Week
                   </SelectItem>
-                  <SelectItem value="month" className="outline-none">
+                  <SelectItem value="month" className="outline-hidden">
                     This Month
                   </SelectItem>
-                  <SelectItem value="quarter" className="outline-none">
+                  <SelectItem value="quarter" className="outline-hidden">
                     This Quarter
                   </SelectItem>
-                  <SelectItem value="year" className="outline-none">
+                  <SelectItem value="year" className="outline-hidden">
                     This Year
                   </SelectItem>
                 </SelectContent>
@@ -455,7 +455,7 @@ export function SubscriberDataTable({
             </div>
 
             {/* Status Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900">
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900">
               <IoNavigate className="h-4 w-4 mr-2" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -489,7 +489,7 @@ export function SubscriberDataTable({
             </div>
 
             {/* Source Filter */}
-            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-sm dark:bg-neutral-900">
+            <div className="flex items-center rounded-md bg-muted border h-9 px-3 text-sm shadow-xs dark:bg-neutral-900">
               <ArrowUpRight className="h-4 w-4 mr-2" />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
