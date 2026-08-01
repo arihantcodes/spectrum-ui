@@ -483,6 +483,11 @@
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     --radius: 0.5rem;
+    /* Spectrum Design — tint held behind gallery media while it loads. Sitting
+       just off the page background stops a grid of loading cards reading as
+       holes in the layout. Paired with the stored aspect ratio, this is what
+       makes the feed load without any visible reflow. */
+    --design-media-placeholder: hsl(0 0% 96%);
     --chart-1: 199 89% 48%;
     --chart-2: 209 75% 64%;
     --chart-3: 197 37% 24%;
@@ -507,6 +512,7 @@
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
+    --design-media-placeholder: hsl(0 0% 9%);
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
