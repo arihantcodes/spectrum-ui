@@ -173,6 +173,9 @@ function buildCompactFile() {
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
+    '- [Brand kit](' +
+      siteUrl +
+      '/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links',
     '',
     '## Installation',
     '',
@@ -346,6 +349,7 @@ function buildFullFile() {
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Colors: ' + siteUrl + '/colors',
+    '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',
     '- Privacy: ' + siteUrl + '/privacy-policy',
     '- Terms: ' + siteUrl + '/tos',

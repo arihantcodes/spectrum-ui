@@ -929,6 +929,7 @@ What makes it hard to build well:
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
 - Colors: https://ui.spectrumhq.in/colors
+- Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs
 - Privacy: https://ui.spectrumhq.in/privacy-policy
 - Terms: https://ui.spectrumhq.in/tos
