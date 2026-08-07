@@ -111,6 +111,7 @@ const primaryLinks = [
   { label: 'Colors', href: '/colors' },
   { label: 'FAQs', href: '/faqs' },
   { label: 'LLM Info', href: '/llm-info' },
+  { label: 'Brand', href: '/brandkit' },
 ];
 
 export default function Footer() {

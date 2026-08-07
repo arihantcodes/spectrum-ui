@@ -15,6 +15,7 @@
     "check:llms": "node scripts/generate-llms.mjs --check",
     "generate:component-docs": "node scripts/generate-component-docs.mjs --write",
     "check:component-docs": "node scripts/generate-component-docs.mjs --check",
+    "generate:brand-assets": "node scripts/generate-brand-assets.mjs",
     "generate:card-snippets": "node scripts/generate-card-snippets.mjs --write",
     "check:card-snippets": "node scripts/generate-card-snippets.mjs --check",
     "generate:registry": "node scripts/generate-registry-items.mjs --write && node scripts/generate-registry-index.mjs --write",
