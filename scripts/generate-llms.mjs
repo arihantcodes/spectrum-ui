@@ -175,7 +175,7 @@ function buildCompactFile() {
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
-      '/brandkit): Official logos (SVG and PNG, light and dark), typography, brand colors, and social links',
+      '/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links',
     '',
     '## Installation',
     '',
@@ -349,7 +349,7 @@ function buildFullFile() {
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Colors: ' + siteUrl + '/colors',
-    '- Brand kit (official logos, typography, colors): ' + siteUrl + '/brandkit',
+    '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',
     '- Privacy: ' + siteUrl + '/privacy-policy',
     '- Terms: ' + siteUrl + '/tos',

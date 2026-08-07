@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
@@ -104,7 +104,8 @@ const README = `Spectrum UI brand assets
 ========================
 
 Logo mark and wordmark, each in dark (for light backgrounds) and light
-(for dark backgrounds), as SVG and transparent PNG.
+(for dark backgrounds), as SVG and transparent PNG, plus press-quality
+product screenshots (spectrum-ui-screenshot-*.png, light and dark).
 
 Please keep the mark's shape, proportions, and colors as shipped — don't
 redraw, recolor, or add effects.
@@ -133,6 +134,17 @@ async function main() {
     writeFileSync(path.join(outputDir, asset.file), contents);
     zip.file(asset.file, contents, { date: zipDate });
     console.log(`wrote public/brand/${asset.file} (${contents.length} bytes)`);
+  }
+
+  // Product screenshots are captured by hand, not generated: production site
+  // at a 1440x900 viewport, @2x, chat widget (#spectrum-chat) hidden, saved
+  // as public/brand/spectrum-ui-screenshot-<page>-<light|dark>.png. Bundle
+  // whatever captures are present so the zip stays complete.
+  for (const file of readdirSync(outputDir).sort()) {
+    if (!/^spectrum-ui-screenshot-.*\.png$/.test(file)) continue;
+    const contents = readFileSync(path.join(outputDir, file));
+    zip.file(file, contents, { date: zipDate });
+    console.log(`bundled public/brand/${file} (${contents.length} bytes)`);
   }
 
   const zipBuffer = await zip.generateAsync({

@@ -17,7 +17,7 @@ const url = `${siteConfig.url}/brandkit`;
 export const metadata: Metadata = baseMetadata({
   title: 'Brand Kit',
   description:
-    'Official Spectrum UI brand assets: logo mark and wordmark as SVG and PNG for light and dark backgrounds, plus typography, colors, and social links.',
+    'Official Spectrum UI brand assets: logo mark and wordmark as SVG and PNG for light and dark, plus product screenshots, typography, colors, and social links.',
   canonicalUrl: url,
 });
 
@@ -45,7 +45,7 @@ const LOGO_ASSETS: LogoAsset[] = [
     variant: 'Dark',
     note: 'Use on light backgrounds.',
     base: 'spectrum-ui-mark-dark',
-    pngSize: '901 × 1024',
+    pngSize: '901×1024',
     width: 35,
     height: 40,
     imgClass: 'h-24 w-auto sm:h-28',
@@ -55,7 +55,7 @@ const LOGO_ASSETS: LogoAsset[] = [
     variant: 'Light',
     note: 'Use on dark backgrounds.',
     base: 'spectrum-ui-mark-light',
-    pngSize: '901 × 1024',
+    pngSize: '901×1024',
     width: 35,
     height: 40,
     imgClass: 'h-24 w-auto sm:h-28',
@@ -65,7 +65,7 @@ const LOGO_ASSETS: LogoAsset[] = [
     variant: 'Dark',
     note: 'Use on light backgrounds.',
     base: 'spectrum-ui-wordmark-dark',
-    pngSize: '2400 × 452',
+    pngSize: '2400×452',
     width: 594,
     height: 112,
     imgClass: 'h-auto w-full max-w-sm',
@@ -75,10 +75,39 @@ const LOGO_ASSETS: LogoAsset[] = [
     variant: 'Light',
     note: 'Use on dark backgrounds.',
     base: 'spectrum-ui-wordmark-light',
-    pngSize: '2400 × 452',
+    pngSize: '2400×452',
     width: 594,
     height: 112,
     imgClass: 'h-auto w-full max-w-sm',
+  },
+];
+
+// Captured from the production site at 1440x900 @2x with the chat widget
+// hidden — see the capture note in scripts/generate-brand-assets.mjs.
+const SCREENSHOTS = [
+  {
+    name: 'Homepage',
+    variant: 'Light',
+    base: 'spectrum-ui-screenshot-home-light',
+    size: '2880×1800',
+  },
+  {
+    name: 'Homepage',
+    variant: 'Dark',
+    base: 'spectrum-ui-screenshot-home-dark',
+    size: '2880×1800',
+  },
+  {
+    name: 'AI blocks',
+    variant: 'Light',
+    base: 'spectrum-ui-screenshot-blocks-light',
+    size: '2880×1800',
+  },
+  {
+    name: 'AI blocks',
+    variant: 'Dark',
+    base: 'spectrum-ui-screenshot-blocks-dark',
+    size: '2880×1800',
   },
 ];
 
@@ -317,8 +346,9 @@ export default function BrandKitPage() {
               Spectrum UI brand assets
             </h1>
             <p className="mt-4 max-w-[600px] font-inter text-[14px] leading-[21px] text-[#646464] dark:text-neutral-400">
-              Logos, type, color, and links — everything you need to write about or link to
-              Spectrum UI. Download files individually below, or grab the whole kit at once.
+              Logos, product screenshots, type, color, and links — everything you need to write
+              about or link to Spectrum UI. Download files individually below, or grab the whole
+              kit at once.
             </p>
           </AnimateEnter>
 
@@ -334,7 +364,8 @@ export default function BrandKitPage() {
                     The whole kit
                   </h2>
                   <p className="mt-0.5 font-inter text-[14px] leading-[21px] text-[#646464] dark:text-neutral-400">
-                    Marks and wordmarks in light and dark — SVG and transparent PNG, plus a readme.
+                    Marks, wordmarks, and product screenshots in light and dark — SVG and PNG,
+                    plus a readme.
                   </p>
                 </div>
               </div>
@@ -358,6 +389,48 @@ export default function BrandKitPage() {
               {LOGO_ASSETS.map((asset, i) => (
                 <AnimateEnter key={asset.base} delay={(i % 2) * 0.08}>
                   <LogoCard asset={asset} />
+                </AnimateEnter>
+              ))}
+            </div>
+          </Section>
+
+          {/* Screenshots */}
+          <Section className="mt-14">
+            <AnimateEnter>
+              <SectionHeader
+                tag="Screenshots"
+                heading="The product, at press quality."
+                sub="High-resolution captures of the live site in light and dark — drop them straight into an article or roundup."
+              />
+            </AnimateEnter>
+            <div className="grid gap-4 md:grid-cols-2">
+              {SCREENSHOTS.map((shot, i) => (
+                <AnimateEnter key={shot.base} delay={(i % 2) * 0.08}>
+                  <div className={cn(CARD, 'overflow-hidden')}>
+                    <Image
+                      src={`/brand/${shot.base}.png`}
+                      alt={`Spectrum UI ${shot.name.toLowerCase()} screenshot, ${shot.variant.toLowerCase()} mode`}
+                      width={1440}
+                      height={900}
+                      sizes="(min-width: 768px) 480px, 100vw"
+                      className="h-auto w-full border-b border-black/[0.06] dark:border-white/[0.08]"
+                      loading="lazy"
+                    />
+                    <div className="flex flex-col gap-4 p-5">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <h3 className="font-inter text-[15px] font-medium text-neutral-900 dark:text-neutral-100">
+                          {shot.name}
+                          <span className="text-neutral-400 dark:text-neutral-500"> — {shot.variant}</span>
+                        </h3>
+                      </div>
+                      <FileRow
+                        label={`${shot.base}.png`}
+                        meta={shot.size}
+                        href={`/brand/${shot.base}.png`}
+                        kind="PNG"
+                      />
+                    </div>
+                  </div>
                 </AnimateEnter>
               ))}
             </div>
