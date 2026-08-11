@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { ArrowUpRight, Download, FileArchive } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpRight, Download, FileArchive } from 'lucide-react';
 
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import { AnimateEnter } from '@/app/home/AnimateEnter';
@@ -10,7 +10,7 @@ import { generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
 
-import { CopyButton } from './parts';
+import { CopyButton, SwatchCard } from './parts';
 
 const url = `${siteConfig.url}/brandkit`;
 
@@ -188,12 +188,6 @@ const LinkedInIcon = (props: IconProps) => (
   </svg>
 );
 
-const InstagramIcon = (props: IconProps) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-  </svg>
-);
-
 const SOCIALS = [
   {
     name: 'X (Twitter)',
@@ -212,12 +206,6 @@ const SOCIALS = [
     handle: 'in/arihantcodes',
     href: siteConfig.links.linkedin,
     Icon: LinkedInIcon,
-  },
-  {
-    name: 'Instagram',
-    handle: '@arihantjainn18',
-    href: siteConfig.links.instagram,
-    Icon: InstagramIcon,
   },
 ];
 
@@ -270,13 +258,20 @@ function FileRow({ label, meta, href, kind }: { label: string; meta?: string; hr
       <a
         href={href}
         download
-        className="shrink-0 font-inter text-xs font-medium text-neutral-900 underline-offset-4 transition-colors duration-200 ease-out hover:text-[#f9452d] hover:underline dark:text-neutral-100 dark:hover:text-[#E1F435]"
+        className="group inline-flex shrink-0 items-center gap-1 rounded-md px-1.5 py-1 font-inter text-xs font-medium text-neutral-900 transition-colors duration-150 ease-out hover:text-[#f9452d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-100 dark:hover:text-[#E1F435] dark:focus-visible:ring-neutral-600"
       >
         {kind}
+        <ArrowDownToLine className="size-3 text-neutral-400 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-px group-hover:text-current" />
       </a>
     </div>
   );
 }
+
+/** Dot-grid backdrop for asset previews — the transparent-file convention. */
+const PREVIEW_LIGHT =
+  'bg-white bg-[radial-gradient(circle,rgba(10,10,10,0.07)_1px,transparent_1px)] bg-[length:16px_16px]';
+const PREVIEW_DARK =
+  'bg-[#0A0A0A] bg-[radial-gradient(circle,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:16px_16px]';
 
 function LogoCard({ asset }: { asset: LogoAsset }) {
   const onLight = asset.variant === 'Dark';
@@ -285,7 +280,7 @@ function LogoCard({ asset }: { asset: LogoAsset }) {
       <div
         className={cn(
           'flex min-h-52 items-center justify-center p-10 sm:min-h-60',
-          onLight ? 'bg-white' : 'bg-[#0A0A0A]',
+          onLight ? PREVIEW_LIGHT : PREVIEW_DARK,
         )}
       >
         <Image
@@ -365,12 +360,19 @@ export default function BrandKitPage() {
                   </h2>
                   <p className="mt-0.5 font-inter text-[14px] leading-[21px] text-[#646464] dark:text-neutral-400">
                     Marks, wordmarks, and product screenshots in light and dark — SVG and PNG,
-                    plus a readme.
+                    plus a readme. <span className="whitespace-nowrap">13 files · 0.9 MB.</span>
                   </p>
                 </div>
               </div>
-              <a href="/brand/spectrum-ui-brand-kit.zip" download className={cn(PILL_BUTTON, 'w-full sm:w-auto')}>
-                <Download className="size-4" />
+              <a
+                href="/brand/spectrum-ui-brand-kit.zip"
+                download
+                className={cn(
+                  PILL_BUTTON,
+                  'group w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:w-auto dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-950',
+                )}
+              >
+                <Download className="size-4 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-px" />
                 Download ZIP
               </a>
             </div>
@@ -476,10 +478,10 @@ export default function BrandKitPage() {
                         href={face.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-inter text-xs font-medium text-neutral-900 underline-offset-4 transition-colors duration-200 ease-out hover:text-[#f9452d] hover:underline dark:text-neutral-100 dark:hover:text-[#E1F435]"
+                        className="group inline-flex items-center gap-1 rounded-md px-1.5 py-1 font-inter text-xs font-medium text-neutral-900 transition-colors duration-150 ease-out hover:text-[#f9452d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-100 dark:hover:text-[#E1F435] dark:focus-visible:ring-neutral-600"
                       >
                         {face.source}
-                        <ArrowUpRight className="size-3" />
+                        <ArrowUpRight className="size-3 text-neutral-400 transition-[transform,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-px group-hover:translate-x-px group-hover:text-current" />
                       </a>
                     </div>
                   </div>
@@ -500,22 +502,7 @@ export default function BrandKitPage() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {COLORS.map((color, i) => (
                 <AnimateEnter key={color.hex} delay={i * 0.06}>
-                  <div className={cn(CARD, 'overflow-hidden')}>
-                    <div
-                      className="h-24 border-b border-black/[0.06] dark:border-white/[0.08]"
-                      style={{ backgroundColor: color.hex }}
-                    />
-                    <div className="flex items-center justify-between gap-2 p-4">
-                      <div className="min-w-0">
-                        <p className="font-inter text-sm font-medium text-neutral-900 dark:text-neutral-100">
-                          {color.name}
-                          <span className="font-normal text-neutral-400 dark:text-neutral-500"> · {color.role}</span>
-                        </p>
-                        <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400">{color.hex}</p>
-                      </div>
-                      <CopyButton text={color.hex} label={`Copy ${color.hex}`} />
-                    </div>
-                  </div>
+                  <SwatchCard name={color.name} hex={color.hex} role={color.role} cardClass={CARD} />
                 </AnimateEnter>
               ))}
             </div>
@@ -600,7 +587,7 @@ export default function BrandKitPage() {
                 sub="Component drops, changelog notes, and the occasional build-in-public thread."
               />
             </AnimateEnter>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {SOCIALS.map((social, i) => (
                 <AnimateEnter key={social.name} delay={i * 0.06}>
                   <a
@@ -609,14 +596,14 @@ export default function BrandKitPage() {
                     rel="noreferrer"
                     className={cn(
                       CARD,
-                      'group flex h-full flex-col gap-8 p-5 transition-transform duration-200 ease-out motion-safe:hover:-translate-y-0.5',
+                      'group flex h-full flex-col gap-8 p-5 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#FAFAFA] active:scale-[0.98] motion-safe:hover:-translate-y-0.5 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-[#0A0A0A]',
                     )}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="flex size-9 items-center justify-center rounded-xl bg-black text-white transition-transform duration-200 ease-out group-hover:scale-105 dark:bg-white dark:text-black">
+                      <span className="flex size-9 items-center justify-center rounded-xl bg-black text-white transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105 dark:bg-white dark:text-black">
                         <social.Icon className="size-4" />
                       </span>
-                      <ArrowUpRight className="size-4 text-neutral-400 transition-all duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f9452d] dark:group-hover:text-[#E1F435]" />
+                      <ArrowUpRight className="size-4 text-neutral-400 transition-[transform,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f9452d] dark:group-hover:text-[#E1F435]" />
                     </div>
                     <div>
                       <p className="font-inter text-[15px] font-medium text-neutral-900 dark:text-neutral-100">
