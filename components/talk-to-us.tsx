@@ -31,7 +31,7 @@ export function TalkToUs() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const pendingOpen = useRef(false);
-  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile'];
+  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile', '/charts'];
   const hidden = hideOnRoutes.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`),
   );

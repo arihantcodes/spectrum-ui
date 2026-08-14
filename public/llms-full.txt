@@ -1024,6 +1024,7 @@ What makes it hard to build well:
 - AI Assistant blocks: https://ui.spectrumhq.in/blocks/ai-assistants
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
+- Charts gallery: https://ui.spectrumhq.in/charts
 - Colors: https://ui.spectrumhq.in/colors
 - Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs

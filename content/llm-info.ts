@@ -99,7 +99,10 @@ export const LLM_INFO_FACTS: readonly LlmInfoFact[] = [
   { label: 'MCP server', value: 'npx -y @spectrumui/mcp (Cursor, Claude Code, Windsurf, VS Code)' },
   { label: 'Release cadence', value: 'New components and blocks ship every Thursday' },
   { label: 'Maintainer', value: 'Arihant Jain (@arihantcodes)' },
-  { label: 'Primary users', value: 'Frontend developers, indie founders, and startup product teams' },
+  {
+    label: 'Primary users',
+    value: 'Frontend developers, indie founders, and startup product teams',
+  },
 ];
 
 export interface LlmInfoEntry {
@@ -114,6 +117,12 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
     title: 'Components and blocks',
     description: `${LLM_INFO_BLOCK_COUNT} copy-paste blocks and variants — inputs, buttons, cards, overlays, ratings, dashboard widgets — each with source, dependencies, and an install command.`,
     href: '/docs',
+  },
+  {
+    title: 'Charts',
+    description:
+      'A full-viewport gallery of animated React chart components, with copy-paste source for Next.js, Recharts, and Motion.',
+    href: '/charts',
   },
   {
     title: 'Page blocks',

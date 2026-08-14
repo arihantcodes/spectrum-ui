@@ -10,14 +10,15 @@ import { Icons } from '@/components/icon';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 import { cn } from '@/lib/utils';
-import { CHART_CATALOG, UI_COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
+import {
+  CHART_CATALOG,
+  UI_COMPONENT_CATALOG,
+  compareComponentNames,
+  componentDocsPath,
+} from '@/lib/component-catalog';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -51,6 +52,10 @@ const mainNav = [
   {
     title: 'Components',
     href: '/docs',
+  },
+  {
+    title: 'Charts',
+    href: '/charts',
   },
   {
     title: 'Founder Story',

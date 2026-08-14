@@ -37,6 +37,7 @@
 - [Blog](https://ui.spectrumhq.in/blog)
 - [Changelog](https://ui.spectrumhq.in/changelog): What is new — releases across blocks, components, docs, and the MCP server
 - [AI Assistant Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page
+- [Charts](https://ui.spectrumhq.in/charts): Full-viewport gallery of animated React chart components
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
 

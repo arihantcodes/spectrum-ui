@@ -43,6 +43,7 @@ const gettingStarted =
 const resources = [
   { label: "MCP Server (Cursor, Claude, Windsurf)", href: "/docs/mcp" },
   { label: "LLM info (facts for AI assistants)", href: "/llm-info" },
+  { label: "Charts gallery", href: "/charts" },
   { label: "Colors & palettes", href: "/colors" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faqs" },

@@ -172,6 +172,7 @@ function buildCompactFile() {
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
+    '- [Charts](' + siteUrl + '/charts): Full-viewport gallery of animated React chart components',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
@@ -348,6 +349,7 @@ function buildFullFile() {
     '- AI Assistant blocks: ' + siteUrl + '/blocks/ai-assistants',
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
+    '- Charts gallery: ' + siteUrl + '/charts',
     '- Colors: ' + siteUrl + '/colors',
     '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',
