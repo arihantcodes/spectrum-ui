@@ -11,6 +11,14 @@ export interface ComponentCatalogItem {
 
 export const COMPONENT_CATALOG = componentCatalog as readonly ComponentCatalogItem[];
 
+export const CHART_CATALOG = COMPONENT_CATALOG.filter(
+  (component) => component.category === 'Chart',
+);
+
+export const UI_COMPONENT_CATALOG = COMPONENT_CATALOG.filter(
+  (component) => component.category !== 'Chart',
+);
+
 export function componentDocsPath(slug: string) {
   return `/docs/${slug}`;
 }

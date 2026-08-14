@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/collapsible';
 
 import { cn } from '@/lib/utils';
-import { COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
+import { CHART_CATALOG, UI_COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -83,7 +83,7 @@ const sidebarNav: NavSection[] = [
     title: 'Components',
     groupKey: 'components',
     groupValue: 'Components',
-    items: [...COMPONENT_CATALOG]
+    items: [...UI_COMPONENT_CATALOG]
       .sort((a, b) => compareComponentNames(a.name, b.name))
       .map((component) => ({
         label: component.name,
@@ -91,6 +91,23 @@ const sidebarNav: NavSection[] = [
         url: componentDocsPath(component.slug),
         items: [],
       })),
+  },
+  {
+    title: 'Charts',
+    groupKey: 'charts',
+    groupValue: 'Charts',
+    items: [
+      { title: 'Overview', href: '/docs/charts', items: [], new: true },
+      ...[...CHART_CATALOG]
+        .sort((a, b) => compareComponentNames(a.name, b.name))
+        .map((component) => ({
+          label: component.name,
+          value: component.slug,
+          url: componentDocsPath(component.slug),
+          items: [],
+          new: component.new,
+        })),
+    ],
   },
   {
     title: 'Topic Guides',

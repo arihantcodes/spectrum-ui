@@ -728,27 +728,27 @@ export default function AnalyticsPage() {
       },
     ],
     componentSlugs: [
-      'animatedchart',
+      'charts/revenue-area',
+      'charts/latency-bands',
+      'charts/infra-trio',
       'datetime-picker',
       'kanban',
       'status-badge',
       'progress-with-value',
       'notification-bell',
-      'profile',
-      'task-checkbox',
     ],
     codeExample: {
-      title: 'Add a scheduling surface to a dashboard',
+      title: 'Add a revenue chart to a dashboard',
       description:
-        'The calendar example supplies the UI; load and persist events through your application layer.',
-      installCommands: ['npx shadcn@latest add @spectrumui/event-calendar'],
-      code: `import EventCalendar from '@/components/spectrumui/event-calendar';
+        'The chart supplies the UI; load and format metrics through your application layer.',
+      installCommands: ['npx shadcn@latest add @spectrumui/revenue-area'],
+      code: `import { RevenueAreaChart } from '@/components/spectrumui/charts/revenue-area';
 
-export default function SchedulePage() {
+export default function RevenuePage() {
   return (
-    <section aria-labelledby="team-schedule">
-      <h1 id="team-schedule">Team schedule</h1>
-      <EventCalendar />
+    <section aria-labelledby="monthly-revenue">
+      <h1 id="monthly-revenue">Monthly revenue</h1>
+      <RevenueAreaChart />
     </section>
   );
 }`,

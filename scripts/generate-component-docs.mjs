@@ -30,13 +30,14 @@ const CONTEXTS_BY_CATEGORY = {
   Rating: ['feedback forms', 'review flows', 'support surveys'],
   Review: ['landing pages', 'case-study pages', 'product marketing'],
   Status: ['dashboards', 'operations tables', 'account pages'],
+  Chart: ['analytics dashboards', 'SaaS metrics views', 'operations consoles'],
   Text: ['landing-page headings', 'product launches', 'editorial sections'],
   Utility: ['application interfaces', 'documentation examples', 'admin tools'],
 };
 
 const CATEGORY_CLUSTERS = [
   ['Action', 'Control', 'Form', 'Input', 'Progress', 'Rating'],
-  ['Calendar', 'Data', 'Feedback', 'Status'],
+  ['Calendar', 'Chart', 'Data', 'Feedback', 'Status'],
   ['Card', 'Layout', 'Media', 'Profile', 'Review', 'Text'],
   ['Disclosure', 'Navigation', 'Overlay'],
   ['Interaction', 'Utility'],

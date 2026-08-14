@@ -73,7 +73,7 @@ export function SaveAction() {
 }
 ```
 
-## Component reference (44)
+## Component reference (56)
 
 ### Accordion
 
@@ -426,6 +426,102 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Category: Feedback
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
+
+### Revenue Area
+
+A revenue area chart whose headline KPI rewinds as you scrub across months.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/revenue-area
+- Verified install command: `npx shadcn@latest add @spectrumui/revenue-area`
+
+### Live Traffic
+
+A live traffic line that appends samples and pauses when you hover the plot.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/live-traffic
+- Verified install command: `npx shadcn@latest add @spectrumui/live-traffic`
+
+### Route Throughput
+
+Ranked API route bars that dim siblings on hover and pin a selected path.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/route-throughput
+- Verified install command: `npx shadcn@latest add @spectrumui/route-throughput`
+
+### Activity Lattice
+
+A yearly activity lattice with a floating day card and a five-stop intensity scale.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/activity-lattice
+- Verified install command: `npx shadcn@latest add @spectrumui/activity-lattice`
+
+### Conversion Cascade
+
+A conversion cascade of rounded stages with drop-off percentages between each step.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/conversion-cascade
+- Verified install command: `npx shadcn@latest add @spectrumui/conversion-cascade`
+
+### Latency Bands
+
+Latency percentile bands with clickable P50, P95, and P99 tiles against an SLO zone.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/latency-bands
+- Verified install command: `npx shadcn@latest add @spectrumui/latency-bands`
+
+### Share Ring
+
+A donut chart that puts the active share in the hole and uses the list as a legend.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/share-ring
+- Verified install command: `npx shadcn@latest add @spectrumui/share-ring`
+
+### Actual vs Forecast
+
+Solid actual and dashed forecast lines with a callout at the plan crossover.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/actual-forecast
+- Verified install command: `npx shadcn@latest add @spectrumui/actual-forecast`
+
+### Quota Gauge
+
+A quota gauge with tick marks that warms when usage crosses eighty-five percent.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/quota-gauge
+- Verified install command: `npx shadcn@latest add @spectrumui/quota-gauge`
+
+### Cohort Retention
+
+A cohort retention matrix that highlights the hovered row and week together.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/cohort-retention
+- Verified install command: `npx shadcn@latest add @spectrumui/cohort-retention`
+
+### Infra Trio
+
+Three aligned infrastructure sparks that share one hover cursor across host metrics.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/infra-trio
+- Verified install command: `npx shadcn@latest add @spectrumui/infra-trio`
+
+### Period Compare
+
+This-versus-last period overlay with a 7D, 30D, and 90D toggle that morphs the series.
+
+- Category: Chart
+- Documentation: https://ui.spectrumhq.in/docs/charts/period-compare
+- Verified install command: `npx shadcn@latest add @spectrumui/period-compare`
 
 ## AI Assistant block reference (27)
 

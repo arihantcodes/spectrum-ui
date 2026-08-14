@@ -44,6 +44,9 @@ function catalogSlugFor(name) {
   for (const candidate of [name, base, name.replace(/-/g, ''), base.replace(/-/g, '')]) {
     if (categoryBySlug.has(candidate)) return candidate;
   }
+  for (const candidate of [`charts/${name}`, `charts/${base}`]) {
+    if (categoryBySlug.has(candidate)) return candidate;
+  }
   return null;
 }
 

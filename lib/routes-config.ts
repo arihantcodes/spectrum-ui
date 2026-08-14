@@ -1,6 +1,11 @@
 import { siteConfig } from "@/config/site";
 import { RoutesProps } from "@/types";
-import { Component, FileText, ShieldUser } from "lucide-react";
+import { Component, FileText, LineChart, ShieldUser } from "lucide-react";
+import {
+  CHART_CATALOG,
+  compareComponentNames,
+  componentDocsPath,
+} from "@/lib/component-catalog";
 
 // Define base path only once
 const BASE_PATH = "/docs";
@@ -194,6 +199,25 @@ export const ROUTES: RoutesProps[] = [
         value: "spinner",
         url: `${BASE_PATH}/spinner`,
       },
+    ],
+  },
+  {
+    groupKey: "charts",
+    groupValue: "Charts",
+    icon: LineChart,
+    children: [
+      {
+        label: "Overview",
+        value: "charts",
+        url: `${BASE_PATH}/charts`,
+      },
+      ...[...CHART_CATALOG]
+        .sort((a, b) => compareComponentNames(a.name, b.name))
+        .map((component) => ({
+          label: component.name,
+          value: component.slug,
+          url: componentDocsPath(component.slug),
+        })),
     ],
   },
   {

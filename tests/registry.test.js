@@ -8,7 +8,7 @@ const docsDir = path.join(rootDir, 'app/(docs)/docs');
 // Standard shadcn components that do not need to be in registry.json
 const shadcnComponents = new Set([
   'accordion', 'alert', 'alert-dialog', 'aspect-ratio', 'avatar', 'badge',
-  'breadcrumb', 'button', 'calendar', 'card', 'carousel', 'checkbox',
+  'breadcrumb', 'button', 'calendar', 'card', 'carousel', 'chart', 'checkbox',
   'collapsible', 'command', 'context-menu', 'dialog', 'drawer', 'dropdown-menu',
   'form', 'hover-card', 'input', 'input-otp', 'label', 'menubar',
   'navigation-menu', 'pagination', 'popover', 'progress', 'radio-group',

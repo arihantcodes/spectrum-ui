@@ -70,6 +70,7 @@ const routeConfig: Record<string, RouteConfig> = {
   "/colors": { changeFrequency: "monthly", priority: 0.5 },
   "/compare": { changeFrequency: "monthly", priority: 0.7 },
   "/docs": { changeFrequency: "weekly", priority: 0.9 },
+  "/docs/charts": { changeFrequency: "weekly", priority: 0.8 },
   "/docs/guides": { changeFrequency: "monthly", priority: 0.7 },
   "/docs/installation": { changeFrequency: "monthly", priority: 0.8 },
   "/docs/mcp": { changeFrequency: "monthly", priority: 0.7 },

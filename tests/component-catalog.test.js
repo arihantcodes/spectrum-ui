@@ -6,11 +6,12 @@ const projectRoot = path.resolve(__dirname, '..');
 const docsRoot = path.join(projectRoot, 'app', '(docs)', 'docs');
 const catalog = require(path.join(projectRoot, 'content', 'component-catalog.json'));
 // Non-component doc routes, plus the 17 components delisted from the shipped
-// catalog. Their pages still resolve (as on main) but are not part of the 44.
+// catalog. Their pages still resolve (as on main) but are not part of the 56.
 const nonComponentRoutes = new Set([
   'guides',
   'installation',
   'mcp',
+  'charts',
   'animatedtestimonials',
   'animatedtext',
   'bento-grid',
@@ -38,12 +39,25 @@ const routeSlugs = fs
       !nonComponentRoutes.has(entry.name) &&
       fs.existsSync(path.join(docsRoot, entry.name, 'page.tsx')),
   )
-  .map((entry) => entry.name)
-  .sort();
+  .map((entry) => entry.name);
+
+const chartsRoot = path.join(docsRoot, 'charts');
+if (fs.existsSync(chartsRoot)) {
+  for (const entry of fs.readdirSync(chartsRoot, { withFileTypes: true })) {
+    if (
+      entry.isDirectory() &&
+      fs.existsSync(path.join(chartsRoot, entry.name, 'page.tsx'))
+    ) {
+      routeSlugs.push(`charts/${entry.name}`);
+    }
+  }
+}
+
+routeSlugs.sort();
 
 const catalogSlugs = catalog.map((component) => component.slug).sort();
 
-assert.equal(catalog.length, 44, 'The component catalog should contain 44 routes');
+assert.equal(catalog.length, 56, 'The component catalog should contain 56 routes');
 assert.equal(new Set(catalogSlugs).size, catalog.length, 'Component slugs must be unique');
 assert.equal(
   new Set(catalog.map((component) => component.name)).size,

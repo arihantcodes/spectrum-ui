@@ -3476,6 +3476,370 @@
         "web",
         "search"
       ]
+    },
+    {
+      "name": "chart-kit",
+      "type": "registry:component",
+      "title": "Chart Kit",
+      "description": "Shared primitives for Spectrum Charts: animated numbers, tooltips, legends, palettes, and SVG defs.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ]
+    },
+    {
+      "name": "revenue-area",
+      "type": "registry:component",
+      "title": "Revenue Area",
+      "description": "A revenue area chart whose headline KPI rewinds as you scrub across months.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/revenue-area.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/revenue-area.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/revenue-area",
+      "new": true
+    },
+    {
+      "name": "live-traffic",
+      "type": "registry:component",
+      "title": "Live Traffic",
+      "description": "A live traffic line that appends samples and pauses when you hover the plot.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/live-traffic.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/live-traffic.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/live-traffic",
+      "new": true
+    },
+    {
+      "name": "route-throughput",
+      "type": "registry:component",
+      "title": "Route Throughput",
+      "description": "Ranked API route bars that dim siblings on hover and pin a selected path.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/route-throughput.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/route-throughput.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/route-throughput",
+      "new": true
+    },
+    {
+      "name": "activity-lattice",
+      "type": "registry:component",
+      "title": "Activity Lattice",
+      "description": "A yearly activity lattice with a floating day card and a five-stop intensity scale.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/activity-lattice.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/activity-lattice.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/activity-lattice",
+      "new": true
+    },
+    {
+      "name": "conversion-cascade",
+      "type": "registry:component",
+      "title": "Conversion Cascade",
+      "description": "A conversion cascade of rounded stages with drop-off percentages between each step.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/conversion-cascade.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/conversion-cascade.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/conversion-cascade",
+      "new": true
+    },
+    {
+      "name": "latency-bands",
+      "type": "registry:component",
+      "title": "Latency Bands",
+      "description": "Latency percentile bands with clickable P50, P95, and P99 tiles against an SLO zone.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/latency-bands.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/latency-bands.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/latency-bands",
+      "new": true
+    },
+    {
+      "name": "share-ring",
+      "type": "registry:component",
+      "title": "Share Ring",
+      "description": "A donut chart that puts the active share in the hole and uses the list as a legend.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/share-ring.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/share-ring.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/share-ring",
+      "new": true
+    },
+    {
+      "name": "actual-forecast",
+      "type": "registry:component",
+      "title": "Actual vs Forecast",
+      "description": "Solid actual and dashed forecast lines with a callout at the plan crossover.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/actual-forecast.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/actual-forecast.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/actual-forecast",
+      "new": true
+    },
+    {
+      "name": "quota-gauge",
+      "type": "registry:component",
+      "title": "Quota Gauge",
+      "description": "A quota gauge with tick marks that warms when usage crosses eighty-five percent.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/quota-gauge.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/quota-gauge.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/quota-gauge",
+      "new": true
+    },
+    {
+      "name": "cohort-retention",
+      "type": "registry:component",
+      "title": "Cohort Retention",
+      "description": "A cohort retention matrix that highlights the hovered row and week together.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/cohort-retention.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/cohort-retention.tsx"
+        }
+      ],
+      "dependencies": [
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/cohort-retention",
+      "new": true
+    },
+    {
+      "name": "infra-trio",
+      "type": "registry:component",
+      "title": "Infra Trio",
+      "description": "Three aligned infrastructure sparks that share one hover cursor across host metrics.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/infra-trio.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/infra-trio.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/infra-trio",
+      "new": true
+    },
+    {
+      "name": "period-compare",
+      "type": "registry:component",
+      "title": "Period Compare",
+      "description": "This-versus-last period overlay with a 7D, 30D, and 90D toggle that morphs the series.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/period-compare.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/period-compare.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "dashboard"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/docs/charts/period-compare",
+      "new": true
     }
   ]
 }
