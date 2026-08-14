@@ -35,7 +35,6 @@ import {
   EdgeFade,
   GRID_OPACITY,
   GRID_STROKE,
-  GlowDot,
   PlotTexture,
   RechartsCursor,
   SPRING_FLUID,
@@ -188,7 +187,7 @@ export function RevenueAreaChart({
                 strokeWidth={2.4}
                 dot={false}
                 isAnimationActive={false}
-                activeDot={<GlowDot r={5} />}
+                activeDot={false}
               />
               <ReferenceDot
                 x={active.month}
