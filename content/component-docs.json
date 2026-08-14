@@ -6245,6 +6245,36 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the active property in the exported source type."
+      },
+      {
+        "name": "payload",
+        "type": "{ payload: RevenuePoint }[]",
+        "required": false,
+        "description": "Value accepted by the payload property in the exported source type."
+      },
+      {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -6263,28 +6293,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
-      },
-      {
-        "name": "active",
-        "type": "boolean",
-        "required": false,
-        "description": "Value accepted by the active property in the exported source type."
-      },
-      {
-        "name": "payload",
-        "type": "ChartTooltipItem[]",
-        "required": false,
-        "description": "Value accepted by the payload property in the exported source type."
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "formatter",
@@ -6302,7 +6314,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -6326,25 +6338,13 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
         "type": "string",
         "required": true,
         "description": "Value accepted by the id property in the exported source type."
-      },
-      {
-        "name": "from",
-        "type": "string",
-        "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
       }
     ],
     "useCases": [
@@ -6459,7 +6459,7 @@
         "name": "data",
         "type": "TrafficPoint[]",
         "required": false,
-        "description": "Seed window. New points append on an interval until hover pauses."
+        "description": "Value accepted by the data property in the exported source type."
       },
       {
         "name": "intervalMs",
@@ -6480,6 +6480,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -6498,16 +6516,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -6537,7 +6549,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -6561,19 +6573,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "description": "Value accepted by the id property in the exported source type."
-      },
-      {
-        "name": "from",
-        "type": "string",
-        "required": false,
-        "description": "CSS color or `var(--chart-from)`"
+        "description": "Value accepted by the layoutId property in the exported source type."
       }
     ],
     "useCases": [
@@ -6696,6 +6696,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -6714,16 +6732,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -6753,7 +6765,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -6777,7 +6789,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -6789,19 +6801,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [
@@ -6931,6 +6931,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -6949,16 +6967,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -6988,7 +7000,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -7012,25 +7024,13 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
         "type": "string",
         "required": true,
         "description": "Value accepted by the id property in the exported source type."
-      },
-      {
-        "name": "from",
-        "type": "string",
-        "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
       }
     ],
     "useCases": [
@@ -7153,6 +7153,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -7171,16 +7189,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -7210,7 +7222,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -7234,7 +7246,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -7246,19 +7258,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [
@@ -7388,6 +7388,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -7406,16 +7424,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -7445,7 +7457,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -7469,25 +7481,13 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
         "type": "string",
         "required": true,
         "description": "Value accepted by the id property in the exported source type."
-      },
-      {
-        "name": "from",
-        "type": "string",
-        "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
       }
     ],
     "useCases": [
@@ -7617,6 +7617,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -7635,16 +7653,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -7674,7 +7686,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -7698,25 +7710,13 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
         "type": "string",
         "required": true,
         "description": "Value accepted by the id property in the exported source type."
-      },
-      {
-        "name": "from",
-        "type": "string",
-        "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
       }
     ],
     "useCases": [
@@ -7840,6 +7840,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -7858,16 +7876,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -7897,7 +7909,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -7921,7 +7933,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -7933,19 +7945,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [
@@ -8086,6 +8086,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -8104,16 +8122,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -8143,7 +8155,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -8162,18 +8174,6 @@
         "type": "(value: string) => void",
         "required": true,
         "description": "Callback exposed by the component source."
-      },
-      {
-        "name": "layoutId",
-        "type": "string",
-        "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "description": "Value accepted by the id property in the exported source type."
       }
     ],
     "useCases": [
@@ -8296,6 +8296,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -8314,16 +8332,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -8353,7 +8365,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -8377,7 +8389,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -8389,19 +8401,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [
@@ -8525,6 +8525,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -8543,16 +8561,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -8582,7 +8594,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -8606,7 +8618,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -8618,19 +8630,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [
@@ -8754,6 +8754,24 @@
         "description": "Additional classes accepted by the component source."
       },
       {
+        "name": "palette",
+        "type": "ChartPaletteName",
+        "required": true,
+        "description": "Value accepted by the palette property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "side",
+        "type": "'left' | 'right' | 'top' | 'bottom'",
+        "required": false,
+        "description": "Value accepted by the side property in the exported source type."
+      },
+      {
         "name": "value",
         "type": "number",
         "required": true,
@@ -8772,16 +8790,10 @@
         "description": "Value accepted by the label property in the exported source type."
       },
       {
-        "name": "children",
-        "type": "React.ReactNode",
-        "required": false,
-        "description": "Content rendered inside the component."
-      },
-      {
         "name": "frosted",
         "type": "boolean",
         "required": false,
-        "description": "Frosted overlay instead of a solid elevated surface"
+        "description": "Value accepted by the frosted property in the exported source type."
       },
       {
         "name": "active",
@@ -8811,7 +8823,7 @@
         "name": "activeKeys",
         "type": "readonly string[]",
         "required": false,
-        "description": "Keys currently visible. Omit for all-on, uncontrolled-looking display"
+        "description": "Value accepted by the activeKeys property in the exported source type."
       },
       {
         "name": "onToggle",
@@ -8835,7 +8847,7 @@
         "name": "layoutId",
         "type": "string",
         "required": false,
-        "description": "Unique layoutId so multiple toggles on one page do not collide"
+        "description": "Value accepted by the layoutId property in the exported source type."
       },
       {
         "name": "id",
@@ -8847,19 +8859,7 @@
         "name": "from",
         "type": "string",
         "required": false,
-        "description": "CSS color or `var(--chart-from)`"
-      },
-      {
-        "name": "to",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the to property in the exported source type."
-      },
-      {
-        "name": "orientation",
-        "type": "\"vertical\" | \"horizontal\"",
-        "required": false,
-        "description": "Value accepted by the orientation property in the exported source type."
+        "description": "Value accepted by the from property in the exported source type."
       }
     ],
     "useCases": [

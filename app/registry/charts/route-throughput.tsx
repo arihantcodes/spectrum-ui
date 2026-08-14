@@ -7,78 +7,80 @@
  * Dependencies: framer-motion, @/lib/utils
  */
 
-"use client"
+'use client';
 
-import * as React from "react"
-import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+import * as React from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import {
-  CHART_PALETTE_CLASS,
+  AnimatedNumber,
+  ChartEyebrow,
+  ChartSurface,
   SPRING_ENTRANCE,
-  chartSurfaceClassName,
   formatCompact,
   useChartMotion,
-} from "./chart-kit"
+} from './chart-kit';
 
 export interface RouteRow {
-  method: string
-  path: string
-  count: number
+  method: string;
+  path: string;
+  count: number;
 }
 
 export interface RouteThroughputChartProps {
-  data?: RouteRow[]
-  className?: string
+  data?: RouteRow[];
+  className?: string;
 }
 
 const SAMPLE: RouteRow[] = [
-  { method: "GET", path: "/v1/models", count: 18420 },
-  { method: "POST", path: "/v1/chat/completions", count: 12640 },
-  { method: "GET", path: "/v1/files", count: 8310 },
-  { method: "POST", path: "/v1/embeddings", count: 6180 },
-  { method: "DELETE", path: "/v1/files/:id", count: 2140 },
-  { method: "GET", path: "/v1/usage", count: 1620 },
-]
+  { method: 'GET', path: '/v1/models', count: 18420 },
+  { method: 'POST', path: '/v1/chat/completions', count: 12640 },
+  { method: 'GET', path: '/v1/files', count: 8310 },
+  { method: 'POST', path: '/v1/embeddings', count: 6180 },
+  { method: 'DELETE', path: '/v1/files/:id', count: 2140 },
+  { method: 'GET', path: '/v1/usage', count: 1620 },
+];
 
-export function RouteThroughputChart({
-  data = SAMPLE,
-  className,
-}: RouteThroughputChartProps) {
-  const { reduce } = useChartMotion()
-  const [hovered, setHovered] = React.useState<string | null>(null)
-  const [pinned, setPinned] = React.useState<string | null>(null)
-  const max = Math.max(...data.map((row) => row.count), 1)
-  const activeKey = pinned ?? hovered
+const METHOD_TONE: Record<string, string> = {
+  GET: 'bg-cyan-500/12 text-cyan-700 dark:text-cyan-300',
+  POST: 'bg-violet-500/12 text-violet-700 dark:text-violet-300',
+  PUT: 'bg-amber-500/12 text-amber-700 dark:text-amber-300',
+  PATCH: 'bg-amber-500/12 text-amber-700 dark:text-amber-300',
+  DELETE: 'bg-rose-500/12 text-rose-700 dark:text-rose-300',
+};
+
+export function RouteThroughputChart({ data = SAMPLE, className }: RouteThroughputChartProps) {
+  const { reduce } = useChartMotion();
+  const [hovered, setHovered] = React.useState<string | null>(null);
+  const [pinned, setPinned] = React.useState<string | null>(null);
+  const max = Math.max(...data.map((row) => row.count), 1);
+  const activeKey = pinned ?? hovered;
+  const total = data.reduce((sum, row) => sum + row.count, 0);
 
   return (
-    <figure
-      className={cn(
-        chartSurfaceClassName,
-        CHART_PALETTE_CLASS.growth,
-        "flex flex-col gap-4 p-5 sm:p-6",
-        className,
-      )}
+    <ChartSurface
+      palette="growth"
+      className={cn('flex flex-col gap-5 p-5 sm:p-6', className)}
       aria-label="API route throughput"
     >
-      <div className="flex items-baseline justify-between gap-3">
+      <div className="relative z-10 flex items-end justify-between gap-3">
         <div>
-          <p className="text-xs font-medium text-neutral-400 dark:text-neutral-500">
-            API requests
-          </p>
-          <p className="mt-1 text-sm font-medium text-neutral-900 dark:text-neutral-100">
+          <ChartEyebrow>API requests</ChartEyebrow>
+          <p className="mt-2 text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
             Last 24 hours
           </p>
         </div>
-        <p className="text-xs tabular-nums text-neutral-400 dark:text-neutral-500">
-          {formatCompact(data.reduce((sum, row) => sum + row.count, 0))} total
+        <p className="text-[1.65rem] leading-none font-semibold tabular-nums tracking-tighter text-neutral-900 dark:text-neutral-100">
+          <AnimatedNumber value={total} format={formatCompact} />
         </p>
       </div>
 
-      <ul className="flex flex-col gap-2.5" onMouseLeave={() => setHovered(null)}>
+      <ul className="relative z-10 flex flex-col gap-3.5" onMouseLeave={() => setHovered(null)}>
         {data.map((row, index) => {
-          const key = `${row.method}:${row.path}`
-          const dimmed = activeKey != null && activeKey !== key
-          const width = `${(row.count / max) * 100}%`
+          const key = `${row.method}:${row.path}`;
+          const dimmed = activeKey != null && activeKey !== key;
+          const hot = activeKey === key;
+          const share = (row.count / total) * 100;
 
           return (
             <li key={key}>
@@ -89,53 +91,65 @@ export function RouteThroughputChart({
                 onBlur={() => setHovered(null)}
                 onClick={() => setPinned((current) => (current === key ? null : key))}
                 onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault()
-                    setPinned((current) => (current === key ? null : key))
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setPinned((current) => (current === key ? null : key));
                   }
                 }}
                 aria-pressed={pinned === key}
                 className={cn(
-                  "grid w-full grid-cols-[4.5rem_1fr_3.25rem] items-center gap-3 rounded-lg text-left transition-opacity",
-                  "focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:outline-hidden dark:focus-visible:ring-neutral-300",
-                  dimmed && "opacity-35",
+                  'w-full rounded-xl text-left transition-opacity duration-200',
+                  'focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:outline-hidden dark:focus-visible:ring-neutral-300',
+                  dimmed && 'opacity-35',
                 )}
               >
-                <span className="font-mono text-[11px] font-medium tracking-wide text-neutral-400 dark:text-neutral-500">
-                  {row.method}
-                </span>
-                <span className="relative h-6 overflow-hidden rounded-md bg-neutral-100 dark:bg-neutral-800">
-                  <motion.span
-                    className="absolute inset-y-0 left-0 rounded-md"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(90deg, var(--chart-from), var(--chart-to))",
-                    }}
-                    initial={reduce ? { width } : { width: 0 }}
-                    animate={{ width }}
-                    transition={
-                      reduce
-                        ? { duration: 0 }
-                        : { ...SPRING_ENTRANCE, delay: index * 0.05 }
-                    }
-                  />
-                  <span className="relative z-10 flex h-full items-center px-2 font-mono text-[11px] text-neutral-800 dark:text-neutral-100">
+                <span className="flex items-baseline gap-2.5">
+                  <span className="w-5 font-mono text-[10px] tabular-nums text-neutral-400 dark:text-neutral-600">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span
+                    className={cn(
+                      'rounded-md px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-wider',
+                      METHOD_TONE[row.method] ??
+                        'bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400',
+                    )}
+                  >
+                    {row.method}
+                  </span>
+                  <span className="min-w-0 flex-1 truncate font-mono text-[12px] text-neutral-700 dark:text-neutral-300">
                     {row.path}
                   </span>
+                  <span className="text-xs font-semibold tabular-nums tracking-tight text-neutral-900 dark:text-neutral-100">
+                    {formatCompact(row.count)}
+                  </span>
+                  <span className="w-8 text-right text-[10px] tabular-nums text-neutral-400 dark:text-neutral-500">
+                    {share.toFixed(0)}%
+                  </span>
                 </span>
-                <span className="text-right text-xs font-medium tabular-nums text-neutral-700 dark:text-neutral-300">
-                  {formatCompact(row.count)}
+                <span className="mt-1.5 ml-7 block h-1.5 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-900">
+                  <motion.span
+                    className="block h-full origin-left rounded-full"
+                    style={{
+                      backgroundImage: 'linear-gradient(90deg, var(--chart-from), var(--chart-to))',
+                      boxShadow: hot ? '0 0 16px var(--chart-glow)' : 'none',
+                      width: '100%',
+                    }}
+                    initial={reduce ? { scaleX: row.count / max } : { scaleX: 0 }}
+                    animate={{ scaleX: row.count / max }}
+                    transition={
+                      reduce ? { duration: 0 } : { ...SPRING_ENTRANCE, delay: index * 0.05 }
+                    }
+                  />
                 </span>
               </button>
             </li>
-          )
+          );
         })}
       </ul>
 
-      <p className="text-xs text-neutral-400 dark:text-neutral-500">
-        Click a route to pin it
-        {pinned ? " · click again to clear" : ""}
+      <p className="relative z-10 text-[11px] text-neutral-400 dark:text-neutral-500">
+        Click a route to pin it{pinned ? ' · click again to clear' : ''}
       </p>
-    </figure>
-  )
+    </ChartSurface>
+  );
 }

@@ -7,126 +7,160 @@
  * Dependencies: recharts, framer-motion, @/lib/utils
  */
 
-"use client"
+'use client';
 
-import * as React from "react"
-import { Area, AreaChart, ResponsiveContainer, Tooltip, YAxis } from "recharts"
-import { cn } from "@/lib/utils"
+import * as React from 'react';
+import { Area, ComposedChart, Line, ResponsiveContainer, Tooltip, YAxis } from 'recharts';
+import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import {
-  CHART_PALETTE_CLASS,
+  ChartEyebrow,
+  ChartGlowFilter,
   ChartGradient,
-  ChartReveal,
+  ChartSurface,
   RechartsCursor,
-  chartSurfaceClassName,
-} from "./chart-kit"
+  SPRING_SNAPPY,
+  useChartMotion,
+} from './chart-kit';
 
-export type InfraStatus = "ok" | "warn" | "critical"
+export type InfraStatus = 'ok' | 'warn' | 'critical';
 
 export interface InfraSeries {
-  key: string
-  label: string
-  unit: string
-  status: InfraStatus
-  points: { t: string; value: number }[]
+  key: string;
+  label: string;
+  unit: string;
+  status: InfraStatus;
+  points: { t: string; value: number }[];
 }
 
 export interface InfraTrioChartProps {
-  series?: InfraSeries[]
-  className?: string
+  series?: InfraSeries[];
+  className?: string;
 }
 
 function spark(offset: number, base: number, amp: number) {
   return Array.from({ length: 24 }, (_, i) => ({
     t: `${i}`,
     value: Math.round(base + Math.sin(i / 2.2 + offset) * amp + ((i * 3) % 5) - 2),
-  }))
+  }));
 }
 
 const SAMPLE: InfraSeries[] = [
-  { key: "cpu", label: "CPU", unit: "%", status: "ok", points: spark(0.2, 34, 12) },
-  { key: "mem", label: "Memory", unit: "%", status: "warn", points: spark(1.1, 71, 8) },
-  { key: "disk", label: "Disk", unit: "%", status: "ok", points: spark(2.4, 48, 6) },
-]
+  { key: 'cpu', label: 'CPU', unit: '%', status: 'ok', points: spark(0.2, 34, 12) },
+  { key: 'mem', label: 'Memory', unit: '%', status: 'warn', points: spark(1.1, 71, 8) },
+  { key: 'disk', label: 'Disk', unit: '%', status: 'ok', points: spark(2.4, 48, 6) },
+];
 
 const STATUS_DOT: Record<InfraStatus, string> = {
-  ok: "bg-emerald-500",
-  warn: "bg-amber-500",
-  critical: "bg-rose-500",
-}
+  ok: 'bg-emerald-400 shadow-[0_0_10px_#34d399]',
+  warn: 'bg-amber-400 shadow-[0_0_10px_#fbbf24]',
+  critical: 'bg-rose-400 shadow-[0_0_10px_#fb7185]',
+};
+
+const STATUS_LABEL: Record<InfraStatus, string> = {
+  ok: 'Healthy',
+  warn: 'Elevated',
+  critical: 'Critical',
+};
 
 export function InfraTrioChart({ series = SAMPLE, className }: InfraTrioChartProps) {
-  const [cursorIndex, setCursorIndex] = React.useState<number | null>(null)
-  const gradientId = React.useId().replace(/:/g, "")
+  const { reduce } = useChartMotion();
+  const [cursorIndex, setCursorIndex] = React.useState<number | null>(null);
+  const id = React.useId().replace(/:/g, '');
 
   return (
-    <figure
-      className={cn(
-        chartSurfaceClassName,
-        CHART_PALETTE_CLASS.ink,
-        "flex flex-col gap-4 p-5 sm:p-6",
-        className,
-      )}
+    <ChartSurface
+      palette="ink"
+      className={cn('flex flex-col gap-5 p-5 sm:p-6', className)}
       aria-label="Infrastructure metrics"
     >
-      <p className="text-xs font-medium text-neutral-400 dark:text-neutral-500">Hosts · prod-eu</p>
-      <ul className="flex flex-col gap-3">
+      <div className="relative z-10 flex items-end justify-between gap-3">
+        <ChartEyebrow>Hosts · prod-eu</ChartEyebrow>
+        <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
+          {cursorIndex == null ? 'Live' : `t+${cursorIndex}`}
+        </p>
+      </div>
+      <ul className="relative z-10 flex flex-col gap-5">
         {series.map((row) => {
-          const last = row.points[row.points.length - 1]
-          const index = cursorIndex ?? row.points.length - 1
-          const point = row.points[index] ?? last
+          const last = row.points[row.points.length - 1];
+          const index = cursorIndex ?? row.points.length - 1;
+          const point = row.points[index] ?? last;
           return (
-            <li key={row.key} className="grid grid-cols-[5.5rem_1fr_2.75rem] items-center gap-3">
-              <div className="flex items-center gap-2">
-                <span
-                  aria-hidden="true"
-                  className={cn("size-1.5 rounded-full", STATUS_DOT[row.status])}
-                />
-                <span className="text-xs font-medium text-neutral-700 dark:text-neutral-300">
-                  {row.label}
-                </span>
+            <li key={row.key} className="grid grid-cols-[6.25rem_1fr_3.75rem] items-center gap-3">
+              <div>
+                <div className="flex items-center gap-2">
+                  <motion.span
+                    aria-hidden="true"
+                    className={cn('size-1.5 rounded-full', STATUS_DOT[row.status])}
+                    animate={reduce || row.status === 'ok' ? { scale: 1 } : { scale: [1, 1.35, 1] }}
+                    transition={
+                      row.status === 'ok'
+                        ? SPRING_SNAPPY
+                        : { duration: 1.4, repeat: Infinity, ease: 'easeInOut' }
+                    }
+                  />
+                  <span className="text-xs font-medium text-neutral-800 dark:text-neutral-200">
+                    {row.label}
+                  </span>
+                </div>
+                <p className="mt-0.5 pl-3.5 text-[10px] tracking-wide text-neutral-400 uppercase dark:text-neutral-500">
+                  {STATUS_LABEL[row.status]}
+                </p>
               </div>
-              <ChartReveal className="h-10">
+              <div className="h-14">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart
+                  <ComposedChart
                     data={row.points}
-                    margin={{ top: 2, right: 0, left: 0, bottom: 0 }}
+                    margin={{ top: 6, right: 0, left: 0, bottom: 0 }}
                     onMouseMove={(state) => {
-                      if (typeof state?.activeTooltipIndex === "number") {
-                        setCursorIndex(state.activeTooltipIndex)
+                      if (typeof state?.activeTooltipIndex === 'number') {
+                        setCursorIndex(state.activeTooltipIndex);
                       }
                     }}
                     onMouseLeave={() => setCursorIndex(null)}
                   >
                     <defs>
+                      <ChartGlowFilter id={`infra-${row.key}-${id}`} stdDeviation={3.5} />
                       <ChartGradient
-                        id={`infra-${row.key}-${gradientId}`}
-                        from="var(--chart-solid)"
-                        to="var(--chart-solid)"
-                        fromOpacity={0.22}
+                        id={`infra-fill-${row.key}-${id}`}
+                        fromOpacity={0.38}
+                        midOpacity={0.1}
                         toOpacity={0}
                       />
                     </defs>
-                    <YAxis hide domain={["dataMin - 6", "dataMax + 6"]} />
-                    <Tooltip cursor={<RechartsCursor />} content={() => null} isAnimationActive={false} />
+                    <YAxis hide domain={['dataMin - 6', 'dataMax + 6']} />
+                    <Tooltip
+                      cursor={<RechartsCursor />}
+                      content={() => null}
+                      isAnimationActive={false}
+                    />
                     <Area
                       type="monotone"
                       dataKey="value"
-                      stroke="var(--chart-solid)"
-                      strokeWidth={1.5}
-                      fill={`url(#infra-${row.key}-${gradientId})`}
+                      stroke="none"
+                      fill={`url(#infra-fill-${row.key}-${id})`}
                       isAnimationActive={false}
                     />
-                  </AreaChart>
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="var(--chart-solid)"
+                      strokeWidth={1.9}
+                      dot={false}
+                      isAnimationActive={false}
+                      filter={`url(#infra-${row.key}-${id})`}
+                    />
+                  </ComposedChart>
                 </ResponsiveContainer>
-              </ChartReveal>
-              <span className="text-right text-sm font-medium tabular-nums text-neutral-900 dark:text-neutral-100">
+              </div>
+              <span className="text-right text-lg font-semibold tabular-nums tracking-tighter text-neutral-900 dark:text-neutral-100">
                 {point.value}
-                {row.unit}
+                <span className="text-[11px] font-medium text-neutral-400">{row.unit}</span>
               </span>
             </li>
-          )
+          );
         })}
       </ul>
-    </figure>
-  )
+    </ChartSurface>
+  );
 }
