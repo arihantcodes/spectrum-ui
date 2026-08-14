@@ -14,11 +14,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 
 import { cn } from '@/lib/utils';
 import {
-  CHART_CATALOG,
   UI_COMPONENT_CATALOG,
   compareComponentNames,
   componentDocsPath,
 } from '@/lib/component-catalog';
+import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -102,16 +102,14 @@ const sidebarNav: NavSection[] = [
     groupKey: 'charts',
     groupValue: 'Charts',
     items: [
-      { title: 'Overview', href: '/docs/charts', items: [], new: true },
-      ...[...CHART_CATALOG]
-        .sort((a, b) => compareComponentNames(a.name, b.name))
-        .map((component) => ({
-          label: component.name,
-          value: component.slug,
-          url: componentDocsPath(component.slug),
-          items: [],
-          new: component.new,
-        })),
+      { title: 'Overview', href: '/charts', items: [], new: true },
+      ...CHART_LIBRARY.map((chart) => ({
+        label: chart.name,
+        value: chart.slug,
+        url: chartLibraryPath(chart.slug),
+        items: [],
+        new: true,
+      })),
     ],
   },
   {

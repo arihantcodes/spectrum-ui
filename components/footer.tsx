@@ -119,8 +119,8 @@ export default function Footer() {
   const pathname = usePathname();
 
   // Hide footer on auth/onboarding pages (they have their own layout)
-  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/charts'];
-  if (hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
+  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user'];
+  if (pathname === '/charts' || hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
     return null;
   }
 

@@ -728,9 +728,6 @@ export default function AnalyticsPage() {
       },
     ],
     componentSlugs: [
-      'charts/revenue-area',
-      'charts/latency-bands',
-      'charts/infra-trio',
       'datetime-picker',
       'kanban',
       'status-badge',
@@ -738,17 +735,17 @@ export default function AnalyticsPage() {
       'notification-bell',
     ],
     codeExample: {
-      title: 'Add a revenue chart to a dashboard',
+      title: 'Add a kanban board to a dashboard',
       description:
-        'The chart supplies the UI; load and format metrics through your application layer.',
-      installCommands: ['npx shadcn@latest add @spectrumui/revenue-area'],
-      code: `import { RevenueAreaChart } from '@/components/spectrumui/charts/revenue-area';
+        'The board supplies the UI; load and format tasks through your application layer.',
+      installCommands: ['npx shadcn@latest add @spectrumui/kanbanboard'],
+      code: `import KanbanBoard from '@/components/spectrumui/kanbanboard';
 
-export default function RevenuePage() {
+export default function SprintPage() {
   return (
-    <section aria-labelledby="monthly-revenue">
-      <h1 id="monthly-revenue">Monthly revenue</h1>
-      <RevenueAreaChart />
+    <section aria-labelledby="sprint-board">
+      <h1 id="sprint-board">Sprint board</h1>
+      <KanbanBoard />
     </section>
   );
 }`,

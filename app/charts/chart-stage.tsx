@@ -4,18 +4,13 @@ import * as React from 'react';
 import Link from 'next/link';
 import { animate, motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { RevenueAreaChart } from '@/app/registry/charts/revenue-area';
-import { LiveTrafficChart } from '@/app/registry/charts/live-traffic';
-import { RouteThroughputChart } from '@/app/registry/charts/route-throughput';
-import { ShareRingChart } from '@/app/registry/charts/share-ring';
-import { ActualForecastChart } from '@/app/registry/charts/actual-forecast';
-import { PeriodCompareChart } from '@/app/registry/charts/period-compare';
-import { LatencyBandsChart } from '@/app/registry/charts/latency-bands';
-import { QuotaGaugeChart } from '@/app/registry/charts/quota-gauge';
-import { InfraTrioChart } from '@/app/registry/charts/infra-trio';
-import { ActivityLatticeChart } from '@/app/registry/charts/activity-lattice';
-import { ConversionCascadeChart } from '@/app/registry/charts/conversion-cascade';
-import { CohortRetentionChart } from '@/app/registry/charts/cohort-retention';
+import { DefaultBarChart, HatchedBarChart, HorizontalBarChart } from '@/app/registry/charts/bar-chart';
+import { DefaultLineChart, GlowingLineChart } from '@/app/registry/charts/line-chart';
+import { DefaultAreaChart, StackedAreaChart } from '@/app/registry/charts/area-chart';
+import { DonutPieChart, GlowingPieChart } from '@/app/registry/charts/pie-chart';
+import { DefaultRadarChart } from '@/app/registry/charts/radar-chart';
+import { SemiRadialChart } from '@/app/registry/charts/radial-chart';
+import { DefaultComposedChart } from '@/app/registry/charts/composed-chart';
 
 const CANVAS_W = 1680;
 const CANVAS_H = 1480;
@@ -37,124 +32,124 @@ type StageCard = {
 
 const CARDS: StageCard[] = [
   {
-    id: 'revenue-area',
-    title: 'revenue-area.tsx',
-    href: '/docs/charts/revenue-area',
+    id: 'bar-chart',
+    title: 'bar-chart.tsx',
+    href: '/charts/bar',
     x: 40,
     y: 20,
     w: 500,
     h: 320,
-    node: <RevenueAreaChart className={previewClass} />,
+    node: <DefaultBarChart className={previewClass} />,
   },
   {
-    id: 'live-traffic',
-    title: 'live-traffic.tsx',
-    href: '/docs/charts/live-traffic',
+    id: 'hatched-bar',
+    title: 'hatched-bar.tsx',
+    href: '/charts/bar',
     x: 40,
     y: 370,
     w: 500,
     h: 300,
-    node: <LiveTrafficChart className={previewClass} />,
+    node: <HatchedBarChart className={previewClass} />,
   },
   {
-    id: 'route-throughput',
-    title: 'route-throughput.tsx',
-    href: '/docs/charts/route-throughput',
+    id: 'horizontal-bar',
+    title: 'horizontal-bar.tsx',
+    href: '/charts/bar',
     x: 40,
     y: 700,
     w: 500,
     h: 340,
-    node: <RouteThroughputChart className={previewClass} />,
+    node: <HorizontalBarChart className={previewClass} />,
   },
   {
-    id: 'share-ring',
-    title: 'share-ring.tsx',
-    href: '/docs/charts/share-ring',
+    id: 'line-chart',
+    title: 'line-chart.tsx',
+    href: '/charts/line',
     x: 40,
     y: 1070,
     w: 500,
     h: 320,
-    node: <ShareRingChart className={previewClass} />,
+    node: <DefaultLineChart className={previewClass} />,
   },
   {
-    id: 'period-compare',
-    title: 'period-compare.tsx',
-    href: '/docs/charts/period-compare',
+    id: 'area-chart',
+    title: 'area-chart.tsx',
+    href: '/charts/area',
     x: 580,
     y: 60,
     w: 500,
     h: 310,
-    node: <PeriodCompareChart className={previewClass} />,
+    node: <DefaultAreaChart className={previewClass} />,
   },
   {
-    id: 'actual-forecast',
-    title: 'actual-forecast.tsx',
-    href: '/docs/charts/actual-forecast',
+    id: 'stacked-area',
+    title: 'stacked-area.tsx',
+    href: '/charts/area',
     x: 580,
     y: 400,
     w: 500,
     h: 310,
-    node: <ActualForecastChart className={previewClass} />,
+    node: <StackedAreaChart className={previewClass} />,
   },
   {
-    id: 'latency-bands',
-    title: 'latency-bands.tsx',
-    href: '/docs/charts/latency-bands',
+    id: 'glowing-line',
+    title: 'glowing-line.tsx',
+    href: '/charts/line',
     x: 580,
     y: 740,
     w: 500,
     h: 310,
-    node: <LatencyBandsChart className={previewClass} />,
+    node: <GlowingLineChart className={previewClass} />,
   },
   {
-    id: 'quota-gauge',
-    title: 'quota-gauge.tsx',
-    href: '/docs/charts/quota-gauge',
+    id: 'composed-chart',
+    title: 'composed-chart.tsx',
+    href: '/charts/composed',
     x: 580,
     y: 1080,
     w: 500,
     h: 320,
-    node: <QuotaGaugeChart className={previewClass} />,
+    node: <DefaultComposedChart className={previewClass} />,
   },
   {
-    id: 'infra-trio',
-    title: 'infra-trio.tsx',
-    href: '/docs/charts/infra-trio',
+    id: 'donut-pie',
+    title: 'pie-chart.tsx',
+    href: '/charts/pie',
     x: 1120,
     y: 20,
     w: 500,
     h: 300,
-    node: <InfraTrioChart className={previewClass} />,
+    node: <DonutPieChart className={previewClass} />,
   },
   {
-    id: 'activity-lattice',
-    title: 'activity-lattice.tsx',
-    href: '/docs/charts/activity-lattice',
+    id: 'radar-chart',
+    title: 'radar-chart.tsx',
+    href: '/charts/radar',
     x: 1120,
     y: 350,
     w: 500,
     h: 310,
-    node: <ActivityLatticeChart className={previewClass} />,
+    node: <DefaultRadarChart className={previewClass} />,
   },
   {
-    id: 'conversion-cascade',
-    title: 'conversion-cascade.tsx',
-    href: '/docs/charts/conversion-cascade',
+    id: 'radial-chart',
+    title: 'radial-chart.tsx',
+    href: '/charts/radial',
     x: 1120,
     y: 690,
     w: 500,
     h: 330,
-    node: <ConversionCascadeChart className={previewClass} />,
+    node: <SemiRadialChart className={previewClass} />,
   },
   {
-    id: 'cohort-retention',
-    title: 'cohort-retention.tsx',
-    href: '/docs/charts/cohort-retention',
+    id: 'glowing-pie',
+    title: 'glowing-pie.tsx',
+    href: '/charts/pie',
     x: 1120,
     y: 1050,
     w: 500,
     h: 330,
-    node: <CohortRetentionChart className={previewClass} />,
+    node: <GlowingPieChart className={previewClass} />,
   },
 ];
 

@@ -1,0 +1,123 @@
+/**
+ * Spectrum UI — Radar Chart
+ *
+ * Radar plots with filled or outline series, polygon or circle grids, and glow.
+ *
+ * Dependencies: recharts, framer-motion, @/lib/utils
+ */
+
+'use client';
+
+import * as React from 'react';
+import {
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart as RechartsRadarChart,
+  ResponsiveContainer,
+  Tooltip,
+} from 'recharts';
+import { cn } from '@/lib/utils';
+import {
+  ChartFrame,
+  ChartGlowFilter,
+  ChartLegend,
+  ChartLoadingBars,
+  ChartTooltipContent,
+  RADAR_METRICS,
+  SERIES,
+  axisTick,
+  useChartId,
+  useChartMotion,
+} from './chart-kit';
+
+export type RadarFillVariant = 'filled' | 'lines';
+export type RadarGridType = 'polygon' | 'circle';
+
+export interface SpectrumRadarChartProps {
+  className?: string;
+  data?: typeof RADAR_METRICS;
+  variant?: RadarFillVariant;
+  gridType?: RadarGridType;
+  glowing?: boolean;
+  isLoading?: boolean;
+  showLegend?: boolean;
+}
+
+export function RadarChart({
+  className,
+  data = RADAR_METRICS,
+  variant = 'filled',
+  gridType = 'polygon',
+  glowing = false,
+  isLoading = false,
+  showLegend = true,
+}: SpectrumRadarChartProps) {
+  const id = useChartId('radar');
+  const { isAnimationActive, animationDuration } = useChartMotion();
+  const glowId = `${id}-glow`;
+  const filled = variant === 'filled';
+
+  return (
+    <ChartFrame className={cn('flex flex-col', className)}>
+      {showLegend ? <ChartLegend /> : null}
+      {isLoading ? (
+        <ChartLoadingBars count={8} />
+      ) : (
+        <div className="min-h-0 flex-1">
+          <ResponsiveContainer width="100%" height="100%">
+            <RechartsRadarChart data={data} cx="50%" cy="50%" outerRadius="72%">
+              <defs>{glowing ? <ChartGlowFilter id={glowId} /> : null}</defs>
+              <PolarGrid
+                gridType={gridType}
+                stroke="currentColor"
+                strokeOpacity={0.22}
+              />
+              <PolarAngleAxis dataKey="metric" tick={axisTick} />
+              <PolarRadiusAxis tick={false} axisLine={false} />
+              <Tooltip content={<ChartTooltipContent />} />
+              <Radar
+                dataKey="desktop"
+                name={SERIES.desktop.label}
+                stroke={SERIES.desktop.color}
+                fill={SERIES.desktop.color}
+                fillOpacity={filled ? 0.28 : 0}
+                strokeWidth={2}
+                isAnimationActive={isAnimationActive}
+                animationDuration={animationDuration}
+                filter={glowing ? `url(#${glowId})` : undefined}
+              />
+              <Radar
+                dataKey="mobile"
+                name={SERIES.mobile.label}
+                stroke={SERIES.mobile.color}
+                fill={SERIES.mobile.color}
+                fillOpacity={filled ? 0.22 : 0}
+                strokeWidth={2}
+                isAnimationActive={isAnimationActive}
+                animationDuration={animationDuration}
+              />
+            </RechartsRadarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </ChartFrame>
+  );
+}
+
+export function DefaultRadarChart(props: SpectrumRadarChartProps) {
+  return <RadarChart variant="filled" {...props} />;
+}
+
+export function LinesRadarChart(props: SpectrumRadarChartProps) {
+  return <RadarChart variant="lines" {...props} />;
+}
+
+export function CircleGridRadarChart(props: SpectrumRadarChartProps) {
+  return <RadarChart gridType="circle" {...props} />;
+}
+
+export function GlowingRadarChart(props: SpectrumRadarChartProps) {
+  return <RadarChart glowing {...props} />;
+}

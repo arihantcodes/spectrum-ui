@@ -121,7 +121,7 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
   {
     title: 'Charts',
     description:
-      'A full-viewport gallery of animated React chart components, with copy-paste source for Next.js, Recharts, and Motion.',
+      'Bar, line, area, pie, radar, radial, and composed Recharts charts — copy-paste React source, separate from the component docs.',
     href: '/charts',
   },
   {

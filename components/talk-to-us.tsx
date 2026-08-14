@@ -31,10 +31,10 @@ export function TalkToUs() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const pendingOpen = useRef(false);
-  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile', '/charts'];
-  const hidden = hideOnRoutes.some(
-    (route) => pathname === route || pathname.startsWith(`${route}/`),
-  );
+  const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile'];
+  const hidden =
+    pathname === '/charts' ||
+    hideOnRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
 
   // Mirror the widget's open state: it toggles an `open` class on its bubble.
   useEffect(() => {

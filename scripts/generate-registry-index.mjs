@@ -44,10 +44,13 @@ function catalogSlugFor(name) {
   for (const candidate of [name, base, name.replace(/-/g, ''), base.replace(/-/g, '')]) {
     if (categoryBySlug.has(candidate)) return candidate;
   }
-  for (const candidate of [`charts/${name}`, `charts/${base}`]) {
-    if (categoryBySlug.has(candidate)) return candidate;
-  }
   return null;
+}
+
+function chartLibraryPathFor(name) {
+  if (name === 'chart-kit') return '/charts';
+  const match = name.match(/^(bar|line|area|pie|radar|radial|composed)-chart$/);
+  return match ? `/charts/${match[1]}` : null;
 }
 
 const duplicates = [];
@@ -58,6 +61,7 @@ const items = registry.items.map((item) => {
   seen.add(item.name);
 
   const slug = catalogSlugFor(item.name);
+  const chartPath = chartLibraryPathFor(item.name);
 
   // Preserve key order so diffs stay readable: identity fields, then files,
   // then dependency arrays, then the metadata we add.
@@ -78,6 +82,8 @@ const items = registry.items.map((item) => {
   if (slug) {
     next.docsUrl = `${registry.homepage}/docs/${slug}`;
     if (isNewBySlug.get(slug)) next.new = true;
+  } else if (chartPath) {
+    next.docsUrl = `${registry.homepage}${chartPath}`;
   }
 
   return next;

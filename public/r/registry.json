@@ -3481,38 +3481,12 @@
       "name": "chart-kit",
       "type": "registry:component",
       "title": "Chart Kit",
-      "description": "Shared primitives for Spectrum Charts: animated numbers, tooltips, legends, palettes, and SVG defs.",
+      "description": "Shared data, fills, tooltip, and axis chrome for Spectrum Charts.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
           "type": "registry:component",
           "target": "components/spectrumui/charts/chart-kit.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ]
-    },
-    {
-      "name": "revenue-area",
-      "type": "registry:component",
-      "title": "Revenue Area",
-      "description": "A revenue area chart whose headline KPI rewinds as you scrub across months.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/revenue-area.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/revenue-area.tsx"
         }
       ],
       "dependencies": [
@@ -3522,16 +3496,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/revenue-area",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts"
     },
     {
-      "name": "live-traffic",
+      "name": "bar-chart",
       "type": "registry:component",
-      "title": "Live Traffic",
-      "description": "A live traffic line that appends samples and pauses when you hover the plot.",
+      "title": "Bar Chart",
+      "description": "Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, and glow fills.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3539,9 +3512,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/live-traffic.tsx",
+          "path": "app/registry/charts/bar-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/live-traffic.tsx"
+          "target": "components/spectrumui/charts/bar-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3551,16 +3524,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/live-traffic",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/bar"
     },
     {
-      "name": "route-throughput",
+      "name": "line-chart",
       "type": "registry:component",
-      "title": "Route Throughput",
-      "description": "Ranked API route bars that dim siblings on hover and pin a selected path.",
+      "title": "Line Chart",
+      "description": "Multi-series lines with solid, dashed, bump, step, gradient, and glow strokes.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3568,93 +3540,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/route-throughput.tsx",
+          "path": "app/registry/charts/line-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/route-throughput.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/route-throughput",
-      "new": true
-    },
-    {
-      "name": "activity-lattice",
-      "type": "registry:component",
-      "title": "Activity Lattice",
-      "description": "A yearly activity lattice with a floating day card and a five-stop intensity scale.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/activity-lattice.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/activity-lattice.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/activity-lattice",
-      "new": true
-    },
-    {
-      "name": "conversion-cascade",
-      "type": "registry:component",
-      "title": "Conversion Cascade",
-      "description": "A conversion cascade of rounded stages with drop-off percentages between each step.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/conversion-cascade.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/conversion-cascade.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/conversion-cascade",
-      "new": true
-    },
-    {
-      "name": "latency-bands",
-      "type": "registry:component",
-      "title": "Latency Bands",
-      "description": "Latency percentile bands with clickable P50, P95, and P99 tiles against an SLO zone.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/latency-bands.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/latency-bands.tsx"
+          "target": "components/spectrumui/charts/line-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3664,16 +3552,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/latency-bands",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/line"
     },
     {
-      "name": "share-ring",
+      "name": "area-chart",
       "type": "registry:component",
-      "title": "Share Ring",
-      "description": "A donut chart that puts the active share in the hole and uses the list as a legend.",
+      "title": "Area Chart",
+      "description": "Filled areas with gradient, hatch, dotted, stacked, and dashed-stroke variants.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3681,9 +3568,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/share-ring.tsx",
+          "path": "app/registry/charts/area-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/share-ring.tsx"
+          "target": "components/spectrumui/charts/area-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3693,16 +3580,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/share-ring",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/area"
     },
     {
-      "name": "actual-forecast",
+      "name": "pie-chart",
       "type": "registry:component",
-      "title": "Actual vs Forecast",
-      "description": "Solid actual and dashed forecast lines with a callout at the plan crossover.",
+      "title": "Pie Chart",
+      "description": "Pie and donut charts with padded sectors, labels, and optional sector glow.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3710,9 +3596,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/actual-forecast.tsx",
+          "path": "app/registry/charts/pie-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/actual-forecast.tsx"
+          "target": "components/spectrumui/charts/pie-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3722,16 +3608,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/actual-forecast",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/pie"
     },
     {
-      "name": "quota-gauge",
+      "name": "radar-chart",
       "type": "registry:component",
-      "title": "Quota Gauge",
-      "description": "A quota gauge with tick marks that warms when usage crosses eighty-five percent.",
+      "title": "Radar Chart",
+      "description": "Radar plots with filled or outline series, circle grids, and glow.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3739,65 +3624,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/quota-gauge.tsx",
+          "path": "app/registry/charts/radar-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/quota-gauge.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/quota-gauge",
-      "new": true
-    },
-    {
-      "name": "cohort-retention",
-      "type": "registry:component",
-      "title": "Cohort Retention",
-      "description": "A cohort retention matrix that highlights the hovered row and week together.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/cohort-retention.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/cohort-retention.tsx"
-        }
-      ],
-      "dependencies": [
-        "framer-motion"
-      ],
-      "category": "Chart",
-      "tags": [
-        "chart",
-        "dashboard"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/cohort-retention",
-      "new": true
-    },
-    {
-      "name": "infra-trio",
-      "type": "registry:component",
-      "title": "Infra Trio",
-      "description": "Three aligned infrastructure sparks that share one hover cursor across host metrics.",
-      "files": [
-        {
-          "path": "app/registry/charts/chart-kit.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/chart-kit.tsx"
-        },
-        {
-          "path": "app/registry/charts/infra-trio.tsx",
-          "type": "registry:component",
-          "target": "components/spectrumui/charts/infra-trio.tsx"
+          "target": "components/spectrumui/charts/radar-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3807,16 +3636,15 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/infra-trio",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/radar"
     },
     {
-      "name": "period-compare",
+      "name": "radial-chart",
       "type": "registry:component",
-      "title": "Period Compare",
-      "description": "This-versus-last period overlay with a 7D, 30D, and 90D toggle that morphs the series.",
+      "title": "Radial Chart",
+      "description": "Full and semi-circle radial bars for share and progress.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3824,9 +3652,9 @@
           "target": "components/spectrumui/charts/chart-kit.tsx"
         },
         {
-          "path": "app/registry/charts/period-compare.tsx",
+          "path": "app/registry/charts/radial-chart.tsx",
           "type": "registry:component",
-          "target": "components/spectrumui/charts/period-compare.tsx"
+          "target": "components/spectrumui/charts/radial-chart.tsx"
         }
       ],
       "dependencies": [
@@ -3836,10 +3664,37 @@
       "category": "Chart",
       "tags": [
         "chart",
-        "dashboard"
+        "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/docs/charts/period-compare",
-      "new": true
+      "docsUrl": "https://ui.spectrumhq.in/charts/radial"
+    },
+    {
+      "name": "composed-chart",
+      "type": "registry:component",
+      "title": "Composed Chart",
+      "description": "Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/composed-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/composed-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/composed"
     }
   ]
 }

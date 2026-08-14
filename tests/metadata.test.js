@@ -124,7 +124,7 @@ const staticDescriptions = [
   'Learn how to build modern React applications with Spectrum UI. Step-by-step tutorials, best practices, and real-world examples.',
   'Use Spectrum UI with AI coding assistants like Claude, Cursor, and Windsurf. Browse, search, and install components directly from your AI editor via the @spectrumui/mcp server.',
   'UI components, React, design systems, and frontend engineering from Spectrum UI. Practical guides for shipping better Next.js interfaces.',
-  'A full-viewport gallery of Spectrum UI chart components. Copy-paste React source for Next.js, Tailwind CSS, Recharts, and Motion.',
+  'A full-viewport gallery of Spectrum UI chart components. Copy-paste React source for Next.js, Tailwind CSS, Recharts, and Motion. Browse bar, line, area, pie, radar, radial, and composed charts.',
   'Explore curated color palettes for React and Next.js. Copy Tailwind CSS and CSS variable values for your design system.',
   'Answers about installing Spectrum UI, using its MCP server, shadcn/ui compatibility, code ownership, updates, and commercial projects.',
   'Read the founder story behind Spectrum UI, from repeated interface work to an open-source library of animation-ready React components and blocks.',
@@ -148,7 +148,7 @@ const publicDescriptions = [
   ...topicHubDescriptions,
 ];
 
-assert.equal(componentTitles.length, 56);
+assert.equal(componentTitles.length, 44);
 assert.ok(componentTitles.every((title) => title.length <= 60));
 assert.ok(componentDescriptions.every((description) => description.length <= 155));
 assert.ok(blogTitles.every((title) => title.length <= 60));

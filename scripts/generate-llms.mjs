@@ -172,7 +172,7 @@ function buildCompactFile() {
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
-    '- [Charts](' + siteUrl + '/charts): Full-viewport gallery of animated React chart components',
+    '- [Charts](' + siteUrl + '/charts): Bar, line, area, pie, radar, radial, and composed Recharts charts',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
@@ -350,6 +350,13 @@ function buildFullFile() {
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Charts gallery: ' + siteUrl + '/charts',
+    '- Bar chart: ' + siteUrl + '/charts/bar',
+    '- Line chart: ' + siteUrl + '/charts/line',
+    '- Area chart: ' + siteUrl + '/charts/area',
+    '- Pie chart: ' + siteUrl + '/charts/pie',
+    '- Radar chart: ' + siteUrl + '/charts/radar',
+    '- Radial chart: ' + siteUrl + '/charts/radial',
+    '- Composed chart: ' + siteUrl + '/charts/composed',
     '- Colors: ' + siteUrl + '/colors',
     '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',

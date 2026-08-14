@@ -37,7 +37,7 @@
 - [Blog](https://ui.spectrumhq.in/blog)
 - [Changelog](https://ui.spectrumhq.in/changelog): What is new — releases across blocks, components, docs, and the MCP server
 - [AI Assistant Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page
-- [Charts](https://ui.spectrumhq.in/charts): Full-viewport gallery of animated React chart components
+- [Charts](https://ui.spectrumhq.in/charts): Bar, line, area, pie, radar, radial, and composed Recharts charts
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
 
@@ -52,7 +52,7 @@ npx shadcn@latest add @spectrumui/accordion
 
 Components can also be copied manually from their documentation source. Install only the dependencies listed for that component.
 
-## Component documentation (56 pages, 250+ blocks and variants)
+## Component documentation (44 pages, 250+ blocks and variants)
 
 - [Accordion](https://ui.spectrumhq.in/docs/accordion): A vertically stacked set of interactive headings that each reveal a section of content.
 - [Animated Alert](https://ui.spectrumhq.in/docs/alert): An animated alert that displays notifications, warnings, and success messages.
@@ -98,18 +98,6 @@ Components can also be copied manually from their documentation source. Install 
 - [Task Checkbox](https://ui.spectrumhq.in/docs/task-checkbox): A todo checkbox that celebrates completion with a confetti burst and strikethrough.
 - [3D Tilt Card](https://ui.spectrumhq.in/docs/tilt-card): A 3D card that tilts toward the pointer with parallax depth and glare.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
-- [Revenue Area](https://ui.spectrumhq.in/docs/charts/revenue-area): A revenue area chart whose headline KPI rewinds as you scrub across months.
-- [Live Traffic](https://ui.spectrumhq.in/docs/charts/live-traffic): A live traffic line that appends samples and pauses when you hover the plot.
-- [Route Throughput](https://ui.spectrumhq.in/docs/charts/route-throughput): Ranked API route bars that dim siblings on hover and pin a selected path.
-- [Activity Lattice](https://ui.spectrumhq.in/docs/charts/activity-lattice): A yearly activity lattice with a floating day card and a five-stop intensity scale.
-- [Conversion Cascade](https://ui.spectrumhq.in/docs/charts/conversion-cascade): A conversion cascade of rounded stages with drop-off percentages between each step.
-- [Latency Bands](https://ui.spectrumhq.in/docs/charts/latency-bands): Latency percentile bands with clickable P50, P95, and P99 tiles against an SLO zone.
-- [Share Ring](https://ui.spectrumhq.in/docs/charts/share-ring): A donut chart that puts the active share in the hole and uses the list as a legend.
-- [Actual vs Forecast](https://ui.spectrumhq.in/docs/charts/actual-forecast): Solid actual and dashed forecast lines with a callout at the plan crossover.
-- [Quota Gauge](https://ui.spectrumhq.in/docs/charts/quota-gauge): A quota gauge with tick marks that warms when usage crosses eighty-five percent.
-- [Cohort Retention](https://ui.spectrumhq.in/docs/charts/cohort-retention): A cohort retention matrix that highlights the hovered row and week together.
-- [Infra Trio](https://ui.spectrumhq.in/docs/charts/infra-trio): Three aligned infrastructure sparks that share one hover cursor across host metrics.
-- [Period Compare](https://ui.spectrumhq.in/docs/charts/period-compare): This-versus-last period overlay with a 7D, 30D, and 90D toggle that morphs the series.
 
 ## AI Assistant blocks (27)
 
