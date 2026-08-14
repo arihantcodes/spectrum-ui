@@ -55,7 +55,7 @@ export default function Page() {
       node: <BumpAreaChartDemo />,
     },
     {
-      title: "strokeVariant='dashed'",
+      title: "strokeVariant='animated-dashed'",
       path: 'app/charts/(library)/area/demos/dashed.tsx',
       node: <DashedAreaChartDemo />,
     }

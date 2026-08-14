@@ -24,10 +24,13 @@ import {
   ChartGlowFilter,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
   ChartTooltipContent,
+  HOVER_TRANSITION,
   RADAR_METRICS,
   SERIES,
   axisTick,
+  markOpacity,
   useChartId,
   useChartMotion,
 } from './chart-kit';
@@ -56,6 +59,7 @@ export function RadarChart({
 }: SpectrumRadarChartProps) {
   const id = useChartId('radar');
   const { isAnimationActive, animationDuration } = useChartMotion();
+  const [activeKey, setActiveKey] = React.useState<string | null>(null);
   const glowId = `${id}-glow`;
   const filled = variant === 'filled';
 
@@ -65,15 +69,17 @@ export function RadarChart({
       {isLoading ? (
         <ChartLoadingBars count={8} />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
           <ResponsiveContainer width="100%" height="100%">
-            <RechartsRadarChart data={data} cx="50%" cy="50%" outerRadius="72%">
+            <RechartsRadarChart
+              data={data}
+              cx="50%"
+              cy="50%"
+              outerRadius="72%"
+              onMouseLeave={() => setActiveKey(null)}
+            >
               <defs>{glowing ? <ChartGlowFilter id={glowId} /> : null}</defs>
-              <PolarGrid
-                gridType={gridType}
-                stroke="currentColor"
-                strokeOpacity={0.22}
-              />
+              <PolarGrid gridType={gridType} stroke="currentColor" strokeOpacity={0.18} />
               <PolarAngleAxis dataKey="metric" tick={axisTick} />
               <PolarRadiusAxis tick={false} axisLine={false} />
               <Tooltip content={<ChartTooltipContent />} />
@@ -82,25 +88,39 @@ export function RadarChart({
                 name={SERIES.desktop.label}
                 stroke={SERIES.desktop.color}
                 fill={SERIES.desktop.color}
-                fillOpacity={filled ? 0.28 : 0}
+                fillOpacity={filled ? 0.22 : 0}
                 strokeWidth={2}
                 isAnimationActive={isAnimationActive}
                 animationDuration={animationDuration}
+                animationEasing="ease-out"
                 filter={glowing ? `url(#${glowId})` : undefined}
+                style={{
+                  opacity: markOpacity(activeKey, 'desktop'),
+                  transition: HOVER_TRANSITION,
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={() => setActiveKey('desktop')}
               />
               <Radar
                 dataKey="mobile"
                 name={SERIES.mobile.label}
                 stroke={SERIES.mobile.color}
                 fill={SERIES.mobile.color}
-                fillOpacity={filled ? 0.22 : 0}
+                fillOpacity={filled ? 0.16 : 0}
                 strokeWidth={2}
                 isAnimationActive={isAnimationActive}
                 animationDuration={animationDuration}
+                animationEasing="ease-out"
+                style={{
+                  opacity: markOpacity(activeKey, 'mobile'),
+                  transition: HOVER_TRANSITION,
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={() => setActiveKey('mobile')}
               />
             </RechartsRadarChart>
           </ResponsiveContainer>
-        </div>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );

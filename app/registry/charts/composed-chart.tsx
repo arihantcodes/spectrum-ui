@@ -2,6 +2,7 @@
  * Spectrum UI — Composed Chart
  *
  * Bars, a line, and an area on one plot. Mix bar fills, line dashes, and glow.
+ * Bars grow from the baseline; the line wipes in behind a Motion SVG mask.
  *
  * Dependencies: recharts, framer-motion, @/lib/utils
  */
@@ -20,24 +21,37 @@ import {
 import { cn } from '@/lib/utils';
 import {
   AreaFillDefs,
+  AnimatedDashedStroke,
   BarFillDefs,
   type BarFillVariant,
+  ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
   ChartGrid,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
+  ChartRestingDot,
   ChartTooltipContent,
   ChartXAxis,
   ChartYAxis,
+  type ChartDotRenderProps,
   MONTHLY_TRAFFIC,
+  RevealMask,
   SERIES,
   type StrokeVariant,
   areaFillUrl,
   barFillUrl,
+  createGrowBarShape,
+  HoverIndexProvider,
+  readActiveTooltipIndex,
+  strokeDasharray,
   useChartId,
   useChartMotion,
+  useIntroStartedAt,
 } from './chart-kit';
+
+const BAR_RADIUS = [4, 4, 0, 0] as [number, number, number, number];
 
 export interface SpectrumComposedChartProps {
   className?: string;
@@ -61,8 +75,25 @@ export function ComposedChart({
   showLegend = true,
 }: SpectrumComposedChartProps) {
   const id = useChartId('composed');
-  const { isAnimationActive, animationDuration } = useChartMotion();
+  const { reduce } = useChartMotion();
+  const introStartedAt = useIntroStartedAt();
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
   const glowId = `${id}-glow`;
+  const maskId = `${id}-reveal`;
+  const maskStyle = reduce ? undefined : { mask: `url(#${maskId})` };
+
+  const barShape = React.useMemo(
+    () =>
+      createGrowBarShape({
+        introStartedAt,
+        dataLength: data.length,
+        reduce,
+        radius: BAR_RADIUS,
+        stripped: barVariant === 'stripped',
+        glowId: glowing ? glowId : undefined,
+      }),
+    [introStartedAt, data.length, reduce, barVariant, glowing, glowId],
+  );
 
   return (
     <ChartFrame className={cn('flex flex-col', className)}>
@@ -70,19 +101,29 @@ export function ComposedChart({
       {isLoading ? (
         <ChartLoadingBars />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
+          <HoverIndexProvider value={activeIndex}>
           <ResponsiveContainer width="100%" height="100%">
-            <RechartsComposedChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+            <RechartsComposedChart
+              data={data}
+              margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
+              onMouseMove={(state) => {
+                const next = readActiveTooltipIndex(state);
+                setActiveIndex((current) => (current === next ? current : next));
+              }}
+              onMouseLeave={() => setActiveIndex(null)}
+            >
               <defs>
                 <BarFillDefs id={`${id}-bar`} color={SERIES.desktop.color} variant={barVariant} />
                 <AreaFillDefs id={`${id}-area`} color={SERIES.mobile.color} variant="gradient" />
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
+                <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
               <ChartGrid />
               <ChartXAxis dataKey="month" />
               <ChartYAxis />
               <Tooltip
-                cursor={{ fill: 'currentColor', fillOpacity: 0.06 }}
+                cursor={{ fill: 'currentColor', fillOpacity: 0.05 }}
                 content={<ChartTooltipContent />}
               />
               <Area
@@ -92,18 +133,19 @@ export function ComposedChart({
                 stroke={SERIES.mobile.color}
                 strokeWidth={1.5}
                 fill={areaFillUrl(`${id}-area`, 'gradient', SERIES.mobile.color)}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
+                isAnimationActive={false}
+                legendType="none"
+                tooltipType="none"
+                style={maskStyle}
               />
               <Bar
                 dataKey="desktop"
                 name={SERIES.desktop.label}
                 fill={barFillUrl(`${id}-bar`, barVariant, SERIES.desktop.color)}
-                radius={[4, 4, 0, 0]}
+                radius={BAR_RADIUS}
                 maxBarSize={28}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
-                filter={glowing ? `url(#${glowId})` : undefined}
+                isAnimationActive={false}
+                shape={barShape}
               />
               <Line
                 type={lineCurve}
@@ -111,16 +153,28 @@ export function ComposedChart({
                 name={`${SERIES.mobile.label} trend`}
                 stroke={SERIES.mobile.color}
                 strokeWidth={2.25}
-                strokeDasharray={lineStroke === 'dashed' ? '5 5' : undefined}
-                dot={false}
-                activeDot={{ r: 4, strokeWidth: 0 }}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
+                strokeDasharray={strokeDasharray(lineStroke)}
+                dot={(props: ChartDotRenderProps) => (
+                  <ChartRestingDot
+                    cx={props.cx}
+                    cy={props.cy}
+                    color={SERIES.mobile.color}
+                    maskId={reduce ? undefined : maskId}
+                  />
+                )}
+                activeDot={(props: ChartDotRenderProps) => (
+                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
+                )}
+                isAnimationActive={false}
                 legendType="none"
-              />
+                style={maskStyle}
+              >
+                {lineStroke === 'animated-dashed' ? <AnimatedDashedStroke /> : null}
+              </Line>
             </RechartsComposedChart>
           </ResponsiveContainer>
-        </div>
+          </HoverIndexProvider>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );
@@ -139,7 +193,7 @@ export function DuotoneComposedChart(props: SpectrumComposedChartProps) {
 }
 
 export function DashedComposedChart(props: SpectrumComposedChartProps) {
-  return <ComposedChart lineStroke="dashed" {...props} />;
+  return <ComposedChart lineStroke="animated-dashed" {...props} />;
 }
 
 export function GlowingComposedChart(props: SpectrumComposedChartProps) {

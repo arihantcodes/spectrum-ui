@@ -38,7 +38,7 @@ export default function Page() {
       node: <DuotoneComposedChartDemo />,
     },
     {
-      title: "lineStroke='dashed'",
+      title: "lineStroke='animated-dashed'",
       path: 'app/charts/(library)/composed/demos/dashed.tsx',
       node: <DashedComposedChartDemo />,
     },

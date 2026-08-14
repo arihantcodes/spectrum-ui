@@ -3,7 +3,7 @@
  *
  * Recharts bars with per-series fill variants: default, hatched, duotone,
  * gradient, and stripped. Supports stacked / percent stacks, horizontal
- * layout, and a soft glow.
+ * layout, and a soft glow. Bars grow from the baseline with Motion.
  *
  * Dependencies: recharts, framer-motion, @/lib/utils
  */
@@ -21,20 +21,28 @@ import {
   ChartGrid,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
   ChartTooltipContent,
   ChartXAxis,
   ChartYAxis,
   MONTHLY_TRAFFIC,
   SERIES,
   barFillUrl,
+  createGrowBarShape,
+  HoverIndexProvider,
+  readActiveTooltipIndex,
   useChartId,
   useChartMotion,
+  useIntroStartedAt,
 } from './chart-kit';
 
 export type { BarFillVariant };
 
 export type BarStackType = 'none' | 'stacked' | 'percent';
 export type BarLayout = 'vertical' | 'horizontal';
+
+const VERTICAL_RADIUS = [4, 4, 0, 0] as [number, number, number, number];
+const HORIZONTAL_RADIUS = [0, 4, 4, 0] as [number, number, number, number];
 
 export interface SpectrumBarChartProps {
   className?: string;
@@ -64,13 +72,43 @@ export function BarChart({
   showGrid = true,
 }: SpectrumBarChartProps) {
   const id = useChartId('bar');
-  const { isAnimationActive, animationDuration } = useChartMotion();
+  const { reduce } = useChartMotion();
+  const introStartedAt = useIntroStartedAt();
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
   const desktopFill = desktopVariant ?? variant;
   const mobileFill = mobileVariant ?? variant;
   const stacked = stackType !== 'none';
   const horizontal = layout === 'horizontal';
   const categoryKey = 'month';
   const glowId = `${id}-glow`;
+  const radius = horizontal ? HORIZONTAL_RADIUS : VERTICAL_RADIUS;
+
+  const desktopShape = React.useMemo(
+    () =>
+      createGrowBarShape({
+        horizontal,
+        introStartedAt,
+        dataLength: data.length,
+        reduce,
+        radius,
+        stripped: desktopFill === 'stripped',
+        glowId: glowing ? glowId : undefined,
+      }),
+    [horizontal, introStartedAt, data.length, reduce, radius, desktopFill, glowing, glowId],
+  );
+
+  const mobileShape = React.useMemo(
+    () =>
+      createGrowBarShape({
+        horizontal,
+        introStartedAt,
+        dataLength: data.length,
+        reduce,
+        radius,
+        stripped: mobileFill === 'stripped',
+      }),
+    [horizontal, introStartedAt, data.length, reduce, radius, mobileFill],
+  );
 
   return (
     <ChartFrame className={cn('flex flex-col', className)}>
@@ -78,7 +116,8 @@ export function BarChart({
       {isLoading ? (
         <ChartLoadingBars />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
+          <HoverIndexProvider value={activeIndex}>
           <ResponsiveContainer width="100%" height="100%">
             <RechartsBarChart
               data={data}
@@ -87,6 +126,11 @@ export function BarChart({
               margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
               barCategoryGap="18%"
               barGap={4}
+              onMouseMove={(state) => {
+                const next = readActiveTooltipIndex(state);
+                setActiveIndex((current) => (current === next ? current : next));
+              }}
+              onMouseLeave={() => setActiveIndex(null)}
             >
               <defs>
                 <BarFillDefs id={`${id}-desktop`} color={SERIES.desktop.color} variant={desktopFill} />
@@ -108,33 +152,33 @@ export function BarChart({
                 </>
               )}
               <Tooltip
-                cursor={{ fill: 'currentColor', fillOpacity: 0.06 }}
+                cursor={{ fill: 'currentColor', fillOpacity: 0.05 }}
                 content={<ChartTooltipContent />}
               />
               <Bar
                 dataKey="desktop"
                 name={SERIES.desktop.label}
                 fill={barFillUrl(`${id}-desktop`, desktopFill, SERIES.desktop.color)}
-                radius={horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0]}
+                radius={radius}
                 stackId={stacked ? 'traffic' : undefined}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
-                filter={glowing ? `url(#${glowId})` : undefined}
+                isAnimationActive={false}
+                shape={desktopShape}
                 maxBarSize={36}
               />
               <Bar
                 dataKey="mobile"
                 name={SERIES.mobile.label}
                 fill={barFillUrl(`${id}-mobile`, mobileFill, SERIES.mobile.color)}
-                radius={horizontal ? [0, 4, 4, 0] : [4, 4, 0, 0]}
+                radius={radius}
                 stackId={stacked ? 'traffic' : undefined}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
+                isAnimationActive={false}
+                shape={mobileShape}
                 maxBarSize={36}
               />
             </RechartsBarChart>
           </ResponsiveContainer>
-        </div>
+          </HoverIndexProvider>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );

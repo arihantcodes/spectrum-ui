@@ -1,8 +1,9 @@
 /**
  * Spectrum UI — Line Chart
  *
- * Multi-series Recharts lines with solid / dashed strokes, bump and step
- * curves, gradient strokes, and optional glow.
+ * Multi-series Recharts lines with solid / dashed / animated-dashed strokes,
+ * bump and step curves, gradient strokes, and optional glow. A Motion SVG
+ * mask wipes the stroke and dots in together.
  *
  * Dependencies: recharts, framer-motion, @/lib/utils
  */
@@ -13,19 +14,27 @@ import * as React from 'react';
 import { Line, LineChart as RechartsLineChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { cn } from '@/lib/utils';
 import {
+  AnimatedDashedStroke,
+  ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
   ChartGrid,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
+  ChartRestingDot,
   ChartTooltipContent,
   ChartXAxis,
   ChartYAxis,
+  type ChartDotRenderProps,
   MONTHLY_TRAFFIC,
+  RevealMask,
   SERIES,
   type StrokeVariant,
+  strokeDasharray,
   useChartId,
   useChartMotion,
+  useIntroStartedAt,
 } from './chart-kit';
 
 export type LineCurve = 'monotone' | 'bump' | 'step' | 'linear';
@@ -55,12 +64,18 @@ export function LineChart({
   gradientStroke = false,
   isLoading = false,
   showLegend = true,
-  showDots = false,
+  showDots = true,
 }: SpectrumLineChartProps) {
   const id = useChartId('line');
-  const { isAnimationActive, animationDuration } = useChartMotion();
+  const { reduce } = useChartMotion();
+  const introStartedAt = useIntroStartedAt();
   const glowId = `${id}-glow`;
-  const dash = (variant: StrokeVariant) => (variant === 'dashed' ? '5 5' : undefined);
+  const maskId = `${id}-reveal`;
+  const desktopKind = desktopStroke ?? strokeVariant;
+  const mobileKind = mobileStroke ?? strokeVariant;
+  const desktopColor = gradientStroke ? `url(#${id}-desktop-stroke)` : SERIES.desktop.color;
+  const mobileColor = gradientStroke ? `url(#${id}-mobile-stroke)` : SERIES.mobile.color;
+  const maskStyle = reduce ? undefined : { mask: `url(#${maskId})` };
 
   return (
     <ChartFrame className={cn('flex flex-col', className)}>
@@ -68,7 +83,7 @@ export function LineChart({
       {isLoading ? (
         <ChartLoadingBars />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
           <ResponsiveContainer width="100%" height="100%">
             <RechartsLineChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
               <defs>
@@ -85,44 +100,73 @@ export function LineChart({
                   </>
                 ) : null}
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
+                <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
               <ChartGrid />
               <ChartXAxis dataKey="month" />
               <ChartYAxis />
               <Tooltip
-                cursor={{ stroke: 'currentColor', strokeOpacity: 0.2, strokeDasharray: '4 4' }}
+                cursor={{ stroke: 'currentColor', strokeOpacity: 0.22, strokeDasharray: '4 4' }}
                 content={<ChartTooltipContent />}
               />
               <Line
                 type={curveType}
                 dataKey="desktop"
                 name={SERIES.desktop.label}
-                stroke={
-                  gradientStroke ? `url(#${id}-desktop-stroke)` : SERIES.desktop.color
-                }
+                stroke={desktopColor}
                 strokeWidth={2.25}
-                strokeDasharray={dash(desktopStroke ?? strokeVariant)}
-                dot={showDots ? { r: 3, fill: SERIES.desktop.color, strokeWidth: 0 } : false}
-                activeDot={{ r: 4, strokeWidth: 0 }}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
+                strokeDasharray={strokeDasharray(desktopKind)}
+                dot={
+                  showDots
+                    ? (props: ChartDotRenderProps) => (
+                        <ChartRestingDot
+                          cx={props.cx}
+                          cy={props.cy}
+                          color={SERIES.desktop.color}
+                          maskId={reduce ? undefined : maskId}
+                        />
+                      )
+                    : false
+                }
+                activeDot={(props: ChartDotRenderProps) => (
+                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.desktop.color} />
+                )}
+                isAnimationActive={false}
                 filter={glowing ? `url(#${glowId})` : undefined}
-              />
+                style={maskStyle}
+              >
+                {desktopKind === 'animated-dashed' ? <AnimatedDashedStroke /> : null}
+              </Line>
               <Line
                 type={curveType}
                 dataKey="mobile"
                 name={SERIES.mobile.label}
-                stroke={gradientStroke ? `url(#${id}-mobile-stroke)` : SERIES.mobile.color}
+                stroke={mobileColor}
                 strokeWidth={2.25}
-                strokeDasharray={dash(mobileStroke ?? strokeVariant)}
-                dot={showDots ? { r: 3, fill: SERIES.mobile.color, strokeWidth: 0 } : false}
-                activeDot={{ r: 4, strokeWidth: 0 }}
-                isAnimationActive={isAnimationActive}
-                animationDuration={animationDuration}
-              />
+                strokeDasharray={strokeDasharray(mobileKind)}
+                dot={
+                  showDots
+                    ? (props: ChartDotRenderProps) => (
+                        <ChartRestingDot
+                          cx={props.cx}
+                          cy={props.cy}
+                          color={SERIES.mobile.color}
+                          maskId={reduce ? undefined : maskId}
+                        />
+                      )
+                    : false
+                }
+                activeDot={(props: ChartDotRenderProps) => (
+                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
+                )}
+                isAnimationActive={false}
+                style={maskStyle}
+              >
+                {mobileKind === 'animated-dashed' ? <AnimatedDashedStroke /> : null}
+              </Line>
             </RechartsLineChart>
           </ResponsiveContainer>
-        </div>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );
@@ -133,7 +177,7 @@ export function DefaultLineChart(props: SpectrumLineChartProps) {
 }
 
 export function DashedLineChart(props: SpectrumLineChartProps) {
-  return <LineChart strokeVariant="dashed" {...props} />;
+  return <LineChart strokeVariant="animated-dashed" {...props} />;
 }
 
 export function BumpLineChart(props: SpectrumLineChartProps) {

@@ -2,6 +2,7 @@
  * Spectrum UI — Pie Chart
  *
  * Pie and donut charts with padded sectors, labels, and optional glow.
+ * Hover dims sibling slices; intro stays under 300ms.
  *
  * Dependencies: recharts, framer-motion, @/lib/utils
  */
@@ -18,7 +19,10 @@ import {
   ChartGlowFilter,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
   ChartTooltipContent,
+  HOVER_TRANSITION,
+  markOpacity,
   useChartId,
   useChartMotion,
 } from './chart-kit';
@@ -48,6 +52,7 @@ export function PieChart({
 }: SpectrumPieChartProps) {
   const id = useChartId('pie');
   const { isAnimationActive, animationDuration } = useChartMotion();
+  const [activeName, setActiveName] = React.useState<string | null>(null);
   const glowId = `${id}-glow`;
   const rows = data.map((item, index) => ({
     ...item,
@@ -62,7 +67,7 @@ export function PieChart({
       {isLoading ? (
         <ChartLoadingBars count={6} />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
           <ResponsiveContainer width="100%" height="100%">
             <RechartsPieChart>
               <defs>{glowing ? <ChartGlowFilter id={glowId} /> : null}</defs>
@@ -77,6 +82,7 @@ export function PieChart({
                 cornerRadius={cornerRadius}
                 isAnimationActive={isAnimationActive}
                 animationDuration={animationDuration}
+                animationEasing="ease-out"
                 label={
                   showLabels
                     ? ({ name, percent }) => `${name} ${Math.round((percent ?? 0) * 100)}%`
@@ -84,14 +90,26 @@ export function PieChart({
                 }
                 labelLine={showLabels}
                 filter={glowing ? `url(#${glowId})` : undefined}
+                onMouseLeave={() => setActiveName(null)}
               >
                 {rows.map((item) => (
-                  <Cell key={item.name} fill={item.fill} stroke="transparent" />
+                  <Cell
+                    key={item.name}
+                    fill={item.fill}
+                    stroke="var(--spectrum-chart-surface)"
+                    strokeWidth={1.5}
+                    style={{
+                      opacity: markOpacity(activeName, item.name),
+                      transition: HOVER_TRANSITION,
+                      cursor: 'pointer',
+                    }}
+                    onMouseEnter={() => setActiveName(item.name)}
+                  />
                 ))}
               </Pie>
             </RechartsPieChart>
           </ResponsiveContainer>
-        </div>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );

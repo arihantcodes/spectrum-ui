@@ -10,6 +10,7 @@
 
 import * as React from 'react';
 import {
+  Cell,
   PolarGrid,
   RadialBar,
   RadialBarChart as RechartsRadialBarChart,
@@ -24,7 +25,10 @@ import {
   ChartGlowFilter,
   ChartLegend,
   ChartLoadingBars,
+  ChartPlotSurface,
   ChartTooltipContent,
+  HOVER_TRANSITION,
+  markOpacity,
   useChartId,
   useChartMotion,
 } from './chart-kit';
@@ -50,6 +54,7 @@ export function RadialChart({
 }: SpectrumRadialChartProps) {
   const id = useChartId('radial');
   const { isAnimationActive, animationDuration } = useChartMotion();
+  const [activeName, setActiveName] = React.useState<string | null>(null);
   const glowId = `${id}-glow`;
   const semi = variant === 'semi';
   const rows = data.map((item, index) => ({
@@ -65,7 +70,7 @@ export function RadialChart({
       {isLoading ? (
         <ChartLoadingBars count={6} />
       ) : (
-        <div className="min-h-0 flex-1">
+        <ChartPlotSurface>
           <ResponsiveContainer width="100%" height="100%">
             <RechartsRadialBarChart
               data={rows}
@@ -74,22 +79,44 @@ export function RadialChart({
               startAngle={semi ? 180 : 90}
               endAngle={semi ? 0 : -270}
               cy={semi ? '64%' : '50%'}
+              onMouseLeave={() => setActiveName(null)}
             >
               <defs>{glowing ? <ChartGlowFilter id={glowId} /> : null}</defs>
-              <PolarGrid gridType="circle" radialLines={false} stroke="currentColor" strokeOpacity={0.16} />
+              <PolarGrid
+                gridType="circle"
+                radialLines={false}
+                stroke="currentColor"
+                strokeOpacity={0.14}
+              />
               <Tooltip content={<ChartTooltipContent />} />
               <RadialBar
                 dataKey="value"
                 name="Share"
-                background={{ fill: 'currentColor', fillOpacity: 0.08 }}
+                background={{ fill: 'currentColor', fillOpacity: 0.07 }}
                 cornerRadius={6}
                 isAnimationActive={isAnimationActive}
                 animationDuration={animationDuration}
+                animationEasing="ease-out"
                 filter={glowing ? `url(#${glowId})` : undefined}
-              />
+              >
+                {rows.map((item) => (
+                  <Cell
+                    key={item.name}
+                    fill={item.fill}
+                    stroke="var(--spectrum-chart-surface)"
+                    strokeWidth={1}
+                    style={{
+                      opacity: markOpacity(activeName, item.name),
+                      transition: HOVER_TRANSITION,
+                      cursor: 'pointer',
+                    }}
+                    onMouseEnter={() => setActiveName(item.name)}
+                  />
+                ))}
+              </RadialBar>
             </RechartsRadialBarChart>
           </ResponsiveContainer>
-        </div>
+        </ChartPlotSurface>
       )}
     </ChartFrame>
   );

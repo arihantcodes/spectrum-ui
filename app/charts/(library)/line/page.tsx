@@ -29,7 +29,7 @@ export default function Page() {
       node: <DefaultLineChartDemo />,
     },
     {
-      title: "strokeVariant='dashed'",
+      title: "strokeVariant='animated-dashed'",
       path: 'app/charts/(library)/line/demos/dashed.tsx',
       node: <DashedLineChartDemo />,
     },
