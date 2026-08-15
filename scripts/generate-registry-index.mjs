@@ -49,7 +49,7 @@ function catalogSlugFor(name) {
 
 function chartLibraryPathFor(name) {
   if (name === 'chart-kit') return '/charts';
-  const match = name.match(/^(bar|line|area|pie|radar|radial|composed)-chart$/);
+  const match = name.match(/^(bar|line|area|pie|radar|radial|composed|candlestick|sparkline|price)-chart$/);
   return match ? `/charts/${match[1]}` : null;
 }
 

@@ -4,13 +4,16 @@ import * as React from 'react';
 import Link from 'next/link';
 import { animate, motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { DefaultBarChart, HatchedBarChart, HorizontalBarChart } from '@/app/registry/charts/bar-chart';
+import { DefaultBarChart, HorizontalBarChart } from '@/app/registry/charts/bar-chart';
 import { DefaultLineChart, GlowingLineChart } from '@/app/registry/charts/line-chart';
-import { DefaultAreaChart, StackedAreaChart } from '@/app/registry/charts/area-chart';
-import { DonutPieChart, GlowingPieChart } from '@/app/registry/charts/pie-chart';
+import { DefaultAreaChart } from '@/app/registry/charts/area-chart';
+import { DonutPieChart } from '@/app/registry/charts/pie-chart';
 import { DefaultRadarChart } from '@/app/registry/charts/radar-chart';
 import { SemiRadialChart } from '@/app/registry/charts/radial-chart';
 import { DefaultComposedChart } from '@/app/registry/charts/composed-chart';
+import { DefaultCandlestickChart } from '@/app/registry/charts/candlestick-chart';
+import { DefaultPriceChart } from '@/app/registry/charts/price-chart';
+import { Watchlist } from '@/app/registry/charts/sparkline-chart';
 
 const CANVAS_W = 1680;
 const CANVAS_H = 1480;
@@ -42,14 +45,14 @@ const CARDS: StageCard[] = [
     node: <DefaultBarChart className={previewClass} />,
   },
   {
-    id: 'hatched-bar',
-    title: 'hatched-bar.tsx',
-    href: '/charts/bar',
+    id: 'candlestick',
+    title: 'candlestick-chart.tsx',
+    href: '/charts/candlestick',
     x: 40,
     y: 370,
     w: 500,
     h: 300,
-    node: <HatchedBarChart className={previewClass} />,
+    node: <DefaultCandlestickChart className={previewClass} />,
   },
   {
     id: 'horizontal-bar',
@@ -82,14 +85,14 @@ const CARDS: StageCard[] = [
     node: <DefaultAreaChart className={previewClass} />,
   },
   {
-    id: 'stacked-area',
-    title: 'stacked-area.tsx',
-    href: '/charts/area',
+    id: 'price-chart',
+    title: 'price-chart.tsx',
+    href: '/charts/price',
     x: 580,
     y: 400,
     w: 500,
     h: 310,
-    node: <StackedAreaChart className={previewClass} />,
+    node: <DefaultPriceChart className={previewClass} />,
   },
   {
     id: 'glowing-line',
@@ -142,14 +145,14 @@ const CARDS: StageCard[] = [
     node: <SemiRadialChart className={previewClass} />,
   },
   {
-    id: 'glowing-pie',
-    title: 'glowing-pie.tsx',
-    href: '/charts/pie',
+    id: 'watchlist',
+    title: 'watchlist.tsx',
+    href: '/charts/sparkline',
     x: 1120,
     y: 1050,
     w: 500,
     h: 330,
-    node: <GlowingPieChart className={previewClass} />,
+    node: <Watchlist className={previewClass} />,
   },
 ];
 

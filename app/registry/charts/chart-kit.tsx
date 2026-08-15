@@ -48,6 +48,167 @@ export const RADAR_METRICS = [
   { metric: 'Cost', desktop: 214, mobile: 140 },
 ];
 
+export type CandlePoint = {
+  date: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+};
+
+export type PricePoint = {
+  time: string;
+  price: number;
+};
+
+export type SparkPoint = {
+  i: number;
+  value: number;
+};
+
+export type WatchlistRow = {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  series: SparkPoint[];
+};
+
+/** Specimen SOL/USD daily candles — not a live feed. */
+export const SOL_CANDLES: CandlePoint[] = [
+  { date: 'Jul 1', open: 128.4, high: 132.1, low: 126.8, close: 131.2, volume: 38_400_000 },
+  { date: 'Jul 2', open: 131.2, high: 134.6, low: 129.9, close: 130.4, volume: 41_200_000 },
+  { date: 'Jul 3', open: 130.4, high: 133.8, low: 127.1, close: 128.6, volume: 52_800_000 },
+  { date: 'Jul 6', open: 128.6, high: 129.4, low: 121.2, close: 123.8, volume: 61_500_000 },
+  { date: 'Jul 7', open: 123.8, high: 126.9, low: 122.4, close: 125.1, volume: 44_100_000 },
+  { date: 'Jul 8', open: 125.1, high: 131.7, low: 124.8, close: 130.9, volume: 48_600_000 },
+  { date: 'Jul 9', open: 130.9, high: 136.4, low: 130.2, close: 135.6, volume: 55_200_000 },
+  { date: 'Jul 10', open: 135.6, high: 137.2, low: 132.8, close: 133.4, volume: 39_800_000 },
+  { date: 'Jul 13', open: 133.4, high: 139.8, low: 133.1, close: 138.9, volume: 47_300_000 },
+  { date: 'Jul 14', open: 138.9, high: 142.6, low: 137.4, close: 141.2, volume: 51_900_000 },
+  { date: 'Jul 15', open: 141.2, high: 143.1, low: 136.5, close: 137.8, volume: 58_400_000 },
+  { date: 'Jul 16', open: 137.8, high: 140.4, low: 135.9, close: 139.6, volume: 36_700_000 },
+  { date: 'Jul 17', open: 139.6, high: 146.2, low: 139.1, close: 145.4, volume: 62_100_000 },
+  { date: 'Jul 20', open: 145.4, high: 147.8, low: 141.6, close: 142.3, volume: 49_500_000 },
+  { date: 'Jul 21', open: 142.3, high: 144.9, low: 140.8, close: 144.1, volume: 33_200_000 },
+  { date: 'Jul 22', open: 144.1, high: 148.6, low: 143.7, close: 147.9, volume: 54_800_000 },
+  { date: 'Jul 23', open: 147.9, high: 149.4, low: 144.2, close: 145.6, volume: 42_600_000 },
+  { date: 'Jul 24', open: 145.6, high: 151.2, low: 145.1, close: 150.4, volume: 57_300_000 },
+];
+
+/** Specimen AAPL daily candles — not a live feed. */
+export const AAPL_CANDLES: CandlePoint[] = [
+  { date: 'Jul 1', open: 214.2, high: 216.8, low: 213.1, close: 215.6, volume: 48_200_000 },
+  { date: 'Jul 2', open: 215.6, high: 217.4, low: 214.8, close: 216.9, volume: 41_600_000 },
+  { date: 'Jul 3', open: 216.9, high: 218.1, low: 212.4, close: 213.2, volume: 55_400_000 },
+  { date: 'Jul 6', open: 213.2, high: 214.6, low: 208.9, close: 210.4, volume: 62_800_000 },
+  { date: 'Jul 7', open: 210.4, high: 212.8, low: 209.6, close: 211.9, volume: 39_100_000 },
+  { date: 'Jul 8', open: 211.9, high: 217.3, low: 211.4, close: 216.8, volume: 51_700_000 },
+  { date: 'Jul 9', open: 216.8, high: 219.6, low: 216.1, close: 218.4, volume: 44_300_000 },
+  { date: 'Jul 10', open: 218.4, high: 219.2, low: 214.7, close: 215.1, volume: 47_900_000 },
+  { date: 'Jul 13', open: 215.1, high: 221.4, low: 214.8, close: 220.6, volume: 53_200_000 },
+  { date: 'Jul 14', open: 220.6, high: 223.8, low: 219.9, close: 222.1, volume: 49_800_000 },
+  { date: 'Jul 15', open: 222.1, high: 222.9, low: 217.6, close: 218.4, volume: 58_100_000 },
+  { date: 'Jul 16', open: 218.4, high: 221.2, low: 217.9, close: 220.8, volume: 36_400_000 },
+  { date: 'Jul 17', open: 220.8, high: 226.4, low: 220.3, close: 225.7, volume: 61_500_000 },
+  { date: 'Jul 20', open: 225.7, high: 227.1, low: 222.8, close: 223.4, volume: 42_700_000 },
+  { date: 'Jul 21', open: 223.4, high: 225.6, low: 222.1, close: 224.9, volume: 33_900_000 },
+  { date: 'Jul 22', open: 224.9, high: 229.3, low: 224.4, close: 228.6, volume: 56_200_000 },
+  { date: 'Jul 23', open: 228.6, high: 229.8, low: 225.2, close: 226.1, volume: 40_800_000 },
+  { date: 'Jul 24', open: 226.1, high: 231.4, low: 225.8, close: 230.2, volume: 52_600_000 },
+];
+
+const SOL_PRICES = [
+  128.4, 129.1, 127.6, 130.8, 132.4, 131.2, 129.8, 133.6, 136.2, 134.9, 132.1, 135.8, 138.4, 141.2,
+  139.6, 137.8, 140.4, 144.1, 146.8, 145.2, 142.6, 147.4, 149.1, 150.4,
+];
+const NVDA_PRICES = [
+  118.2, 119.4, 117.8, 121.6, 124.1, 123.2, 126.8, 129.4, 128.1, 131.6, 134.2, 132.8, 136.4, 139.1,
+  137.6, 141.2, 144.8, 143.2, 147.6, 151.4, 149.8, 153.2, 156.1, 158.4,
+];
+const ETH_PRICES = [
+  3420, 3398, 3444, 3482, 3461, 3510, 3548, 3522, 3494, 3556, 3602, 3580, 3624, 3668, 3640, 3612,
+  3674, 3718, 3690, 3742, 3788, 3760, 3812, 3846,
+];
+const TVL_VALUES = [
+  6.12, 6.18, 6.09, 6.24, 6.41, 6.36, 6.28, 6.52, 6.71, 6.64, 6.48, 6.69, 6.88, 7.04, 6.96, 6.82,
+  7.11, 7.28, 7.19, 7.42, 7.58, 7.51, 7.69, 7.84,
+];
+
+function toPriceSeries(values: number[], prefix = 't'): PricePoint[] {
+  return values.map((price, index) => ({ time: `${prefix}${index + 1}`, price }));
+}
+
+function toSpark(values: number[]): SparkPoint[] {
+  return values.map((value, i) => ({ i, value }));
+}
+
+export const SOL_PRICE = toPriceSeries(SOL_PRICES);
+export const NVDA_PRICE = toPriceSeries(NVDA_PRICES);
+export const ETH_PRICE = toPriceSeries(ETH_PRICES);
+export const SOLANA_TVL = toPriceSeries(TVL_VALUES.map((value) => value * 1_000_000_000));
+
+export const WATCHLIST: WatchlistRow[] = [
+  {
+    symbol: 'SOL',
+    name: 'Solana',
+    price: 150.4,
+    change: 17.13,
+    series: toSpark(SOL_PRICES),
+  },
+  {
+    symbol: 'ETH',
+    name: 'Ethereum',
+    price: 3846,
+    change: 12.46,
+    series: toSpark(ETH_PRICES),
+  },
+  {
+    symbol: 'JUP',
+    name: 'Jupiter',
+    price: 0.84,
+    change: -6.21,
+    series: toSpark([0.91, 0.89, 0.9, 0.87, 0.86, 0.88, 0.85, 0.83, 0.84, 0.82, 0.81, 0.84]),
+  },
+  {
+    symbol: 'AAPL',
+    name: 'Apple',
+    price: 230.2,
+    change: 7.47,
+    series: toSpark(AAPL_CANDLES.map((row) => row.close)),
+  },
+  {
+    symbol: 'NVDA',
+    name: 'NVIDIA',
+    price: 158.4,
+    change: 34.01,
+    series: toSpark(NVDA_PRICES),
+  },
+];
+
+export function formatUsd(value: number, compact = false) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    notation: compact ? 'compact' : 'standard',
+    maximumFractionDigits: compact ? 2 : value >= 100 ? 2 : value >= 1 ? 2 : 4,
+  }).format(value);
+}
+
+export function formatPct(value: number) {
+  const sign = value > 0 ? '+' : '';
+  return `${sign}${value.toFixed(2)}%`;
+}
+
+export function seriesDelta(values: number[]) {
+  if (values.length < 2) return 0;
+  const first = values[0];
+  const last = values[values.length - 1];
+  if (first === 0) return 0;
+  return ((last - first) / first) * 100;
+}
+
 export const SERIES = {
   desktop: { label: 'Desktop', color: 'var(--spectrum-chart-1)' },
   mobile: { label: 'Mobile', color: 'var(--spectrum-chart-2)' },
@@ -61,9 +222,9 @@ export const CHART_COLORS = [
   'var(--spectrum-chart-5)',
 ] as const;
 
-/** Ink / zinc / slate — two or three colors developers actually ship. */
+/** Ink / zinc / slate — two or three colors developers actually ship. Up/down alias the same pair. */
 export const chartVarsClassName =
-  '[--spectrum-chart-1:#171717] [--spectrum-chart-2:#737373] [--spectrum-chart-3:#52525b] [--spectrum-chart-4:#a3a3a3] [--spectrum-chart-5:#d4d4d8] [--spectrum-chart-surface:#fff] dark:[--spectrum-chart-1:#f5f5f5] dark:[--spectrum-chart-2:#a3a3a3] dark:[--spectrum-chart-3:#d4d4d8] dark:[--spectrum-chart-4:#737373] dark:[--spectrum-chart-5:#52525b] dark:[--spectrum-chart-surface:#0a0a0a]';
+  '[--spectrum-chart-1:#171717] [--spectrum-chart-2:#737373] [--spectrum-chart-3:#52525b] [--spectrum-chart-4:#a3a3a3] [--spectrum-chart-5:#d4d4d8] [--spectrum-chart-surface:#fff] [--spectrum-chart-up:var(--spectrum-chart-1)] [--spectrum-chart-down:var(--spectrum-chart-2)] dark:[--spectrum-chart-1:#f5f5f5] dark:[--spectrum-chart-2:#a3a3a3] dark:[--spectrum-chart-3:#d4d4d8] dark:[--spectrum-chart-4:#737373] dark:[--spectrum-chart-5:#52525b] dark:[--spectrum-chart-surface:#0a0a0a]';
 
 export const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 export const BAR_STAGGER = 0.04;

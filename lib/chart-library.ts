@@ -50,6 +50,27 @@ export const CHART_LIBRARY: readonly ChartLibraryItem[] = [
     description: 'Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.',
     registryName: 'composed-chart',
   },
+  {
+    slug: 'candlestick',
+    name: 'Candlestick Chart',
+    description:
+      'OHLC candles with optional volume and hollow-up bodies — for stocks, SOL, and any market pair.',
+    registryName: 'candlestick-chart',
+  },
+  {
+    slug: 'price',
+    name: 'Price Chart',
+    description:
+      'Ticker chrome with last price and signed delta. Use it for tokens, equities, or protocol TVL.',
+    registryName: 'price-chart',
+  },
+  {
+    slug: 'sparkline',
+    name: 'Sparkline',
+    description:
+      'Compact inline price marks for watchlists, token tables, and portfolio rows.',
+    registryName: 'sparkline-chart',
+  },
 ];
 
 export function chartLibraryPath(slug: string) {

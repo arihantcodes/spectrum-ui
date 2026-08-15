@@ -121,7 +121,7 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
   {
     title: 'Charts',
     description:
-      'Bar, line, area, pie, radar, radial, and composed Recharts charts — copy-paste React source, separate from the component docs.',
+      'Recharts charts for product, trading, and onchain UIs — including candlestick, price, and sparkline — copy-paste React source, separate from the component docs.',
     href: '/charts',
   },
   {

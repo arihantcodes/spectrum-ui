@@ -172,7 +172,7 @@ function buildCompactFile() {
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
-    '- [Charts](' + siteUrl + '/charts): Bar, line, area, pie, radar, radial, and composed Recharts charts',
+    '- [Charts](' + siteUrl + '/charts): Bar, line, area, pie, radar, radial, composed, candlestick, price, and sparkline Recharts charts',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
@@ -357,6 +357,9 @@ function buildFullFile() {
     '- Radar chart: ' + siteUrl + '/charts/radar',
     '- Radial chart: ' + siteUrl + '/charts/radial',
     '- Composed chart: ' + siteUrl + '/charts/composed',
+    '- Candlestick chart: ' + siteUrl + '/charts/candlestick',
+    '- Price chart: ' + siteUrl + '/charts/price',
+    '- Sparkline: ' + siteUrl + '/charts/sparkline',
     '- Colors: ' + siteUrl + '/colors',
     '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',

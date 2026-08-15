@@ -11,7 +11,7 @@ import { ChartStage } from './chart-stage';
 export const metadata: Metadata = baseMetadata({
   title: 'Animated React Charts',
   description:
-    'A full-viewport gallery of Spectrum UI chart components. Copy-paste React source for Next.js, Tailwind CSS, Recharts, and Motion. Browse bar, line, area, pie, radar, radial, and composed charts.',
+    'A full-viewport gallery of Spectrum UI chart components. Copy-paste React source for Next.js, Tailwind CSS, Recharts, and Motion. Built for product, trading, and onchain dashboards.',
   keywords: [
     'React charts',
     'animated chart components',
@@ -62,8 +62,8 @@ export default async function ChartsLandingPage() {
             </span>
           </h1>
           <p className="text-[15px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-            Animated, interactive chart components for React. Built on Recharts and Motion, designed
-            for Spectrum UI — copy, paste, and ship.
+            Animated chart components for product dashboards, trading UIs, and
+            Solana apps. Built on Recharts and Motion — copy, paste, and ship.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Button asChild className="rounded-full">

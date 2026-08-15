@@ -3528,6 +3528,93 @@
         "recharts",
         "framer-motion"
       ]
+    },
+    {
+      "name": "candlestick-chart",
+      "type": "registry:component",
+      "title": "Candlestick Chart",
+      "description": "OHLC candles with optional volume and hollow-up bodies — for stocks, SOL, and any market pair.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/candlestick-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/candlestick-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "candlestick",
+        "trading"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "price-chart",
+      "type": "registry:component",
+      "title": "Price Chart",
+      "description": "Ticker chrome with last price and signed delta. Use it for tokens, equities, or protocol TVL.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/price-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/price-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "price",
+        "token"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "sparkline-chart",
+      "type": "registry:component",
+      "title": "Sparkline",
+      "description": "Compact inline price marks for watchlists, token tables, and portfolio rows.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/sparkline-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/sparkline-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "sparkline",
+        "watchlist"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ]
     }
   ]
 }

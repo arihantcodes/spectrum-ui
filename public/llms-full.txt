@@ -936,6 +936,9 @@ What makes it hard to build well:
 - Radar chart: https://ui.spectrumhq.in/charts/radar
 - Radial chart: https://ui.spectrumhq.in/charts/radial
 - Composed chart: https://ui.spectrumhq.in/charts/composed
+- Candlestick chart: https://ui.spectrumhq.in/charts/candlestick
+- Price chart: https://ui.spectrumhq.in/charts/price
+- Sparkline: https://ui.spectrumhq.in/charts/sparkline
 - Colors: https://ui.spectrumhq.in/colors
 - Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs
