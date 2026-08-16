@@ -11,6 +11,8 @@ export interface ComponentCatalogItem {
 
 export const COMPONENT_CATALOG = componentCatalog as readonly ComponentCatalogItem[];
 
+export const UI_COMPONENT_CATALOG = COMPONENT_CATALOG;
+
 export function componentDocsPath(slug: string) {
   return `/docs/${slug}`;
 }

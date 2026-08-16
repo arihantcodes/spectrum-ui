@@ -928,6 +928,17 @@ What makes it hard to build well:
 - AI Assistant blocks: https://ui.spectrumhq.in/blocks/ai-assistants
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
+- Charts gallery: https://ui.spectrumhq.in/charts
+- Bar chart: https://ui.spectrumhq.in/charts/bar
+- Line chart: https://ui.spectrumhq.in/charts/line
+- Area chart: https://ui.spectrumhq.in/charts/area
+- Pie chart: https://ui.spectrumhq.in/charts/pie
+- Radar chart: https://ui.spectrumhq.in/charts/radar
+- Radial chart: https://ui.spectrumhq.in/charts/radial
+- Composed chart: https://ui.spectrumhq.in/charts/composed
+- Candlestick chart: https://ui.spectrumhq.in/charts/candlestick
+- Price chart: https://ui.spectrumhq.in/charts/price
+- Sparkline: https://ui.spectrumhq.in/charts/sparkline
 - Colors: https://ui.spectrumhq.in/colors
 - Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs

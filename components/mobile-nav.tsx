@@ -10,14 +10,15 @@ import { Icons } from '@/components/icon';
 
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from '@/components/ui/collapsible';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 import { cn } from '@/lib/utils';
-import { COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
+import {
+  UI_COMPONENT_CATALOG,
+  compareComponentNames,
+  componentDocsPath,
+} from '@/lib/component-catalog';
+import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -53,6 +54,10 @@ const mainNav = [
     href: '/docs',
   },
   {
+    title: 'Charts',
+    href: '/charts',
+  },
+  {
     title: 'Founder Story',
     href: '/founder-story',
   },
@@ -83,7 +88,7 @@ const sidebarNav: NavSection[] = [
     title: 'Components',
     groupKey: 'components',
     groupValue: 'Components',
-    items: [...COMPONENT_CATALOG]
+    items: [...UI_COMPONENT_CATALOG]
       .sort((a, b) => compareComponentNames(a.name, b.name))
       .map((component) => ({
         label: component.name,
@@ -91,6 +96,21 @@ const sidebarNav: NavSection[] = [
         url: componentDocsPath(component.slug),
         items: [],
       })),
+  },
+  {
+    title: 'Charts',
+    groupKey: 'charts',
+    groupValue: 'Charts',
+    items: [
+      { title: 'Overview', href: '/charts', items: [], new: true },
+      ...CHART_LIBRARY.map((chart) => ({
+        label: chart.name,
+        value: chart.slug,
+        url: chartLibraryPath(chart.slug),
+        items: [],
+        new: true,
+      })),
+    ],
   },
   {
     title: 'Topic Guides',

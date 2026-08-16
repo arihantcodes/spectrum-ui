@@ -728,27 +728,24 @@ export default function AnalyticsPage() {
       },
     ],
     componentSlugs: [
-      'animatedchart',
       'datetime-picker',
       'kanban',
       'status-badge',
       'progress-with-value',
       'notification-bell',
-      'profile',
-      'task-checkbox',
     ],
     codeExample: {
-      title: 'Add a scheduling surface to a dashboard',
+      title: 'Add a kanban board to a dashboard',
       description:
-        'The calendar example supplies the UI; load and persist events through your application layer.',
-      installCommands: ['npx shadcn@latest add @spectrumui/event-calendar'],
-      code: `import EventCalendar from '@/components/spectrumui/event-calendar';
+        'The board supplies the UI; load and format tasks through your application layer.',
+      installCommands: ['npx shadcn@latest add @spectrumui/kanbanboard'],
+      code: `import KanbanBoard from '@/components/spectrumui/kanbanboard';
 
-export default function SchedulePage() {
+export default function SprintPage() {
   return (
-    <section aria-labelledby="team-schedule">
-      <h1 id="team-schedule">Team schedule</h1>
-      <EventCalendar />
+    <section aria-labelledby="sprint-board">
+      <h1 id="sprint-board">Sprint board</h1>
+      <KanbanBoard />
     </section>
   );
 }`,

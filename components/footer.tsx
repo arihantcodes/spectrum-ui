@@ -103,6 +103,7 @@ const socialLinks = [
 /** Primary pages — a compact quick-nav row so the footer stays useful. */
 const primaryLinks = [
   { label: 'Components', href: '/docs' },
+  { label: 'Charts', href: '/charts' },
   { label: 'Blocks', href: '/blocks/ai-assistants' },
   { label: 'Guides', href: '/docs/guides' },
   { label: 'MCP', href: '/docs/mcp' },
@@ -119,7 +120,7 @@ export default function Footer() {
 
   // Hide footer on auth/onboarding pages (they have their own layout)
   const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user'];
-  if (hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
+  if (pathname === '/charts' || hideOnRoutes.some((r) => pathname === r || pathname.startsWith(r + '/'))) {
     return null;
   }
 

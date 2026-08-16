@@ -3476,6 +3476,315 @@
         "web",
         "search"
       ]
+    },
+    {
+      "name": "chart-kit",
+      "type": "registry:component",
+      "title": "Chart Kit",
+      "description": "Shared data, fills, tooltip, and axis chrome for Spectrum Charts.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts"
+    },
+    {
+      "name": "bar-chart",
+      "type": "registry:component",
+      "title": "Bar Chart",
+      "description": "Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, and glow fills.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/bar-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/bar-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/bar"
+    },
+    {
+      "name": "line-chart",
+      "type": "registry:component",
+      "title": "Line Chart",
+      "description": "Multi-series lines with solid, dashed, bump, step, gradient, and glow strokes.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/line-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/line-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/line"
+    },
+    {
+      "name": "area-chart",
+      "type": "registry:component",
+      "title": "Area Chart",
+      "description": "Filled areas with gradient, hatch, dotted, stacked, and dashed-stroke variants.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/area-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/area-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/area"
+    },
+    {
+      "name": "pie-chart",
+      "type": "registry:component",
+      "title": "Pie Chart",
+      "description": "Pie and donut charts with padded sectors, labels, and optional sector glow.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/pie-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/pie-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/pie"
+    },
+    {
+      "name": "radar-chart",
+      "type": "registry:component",
+      "title": "Radar Chart",
+      "description": "Radar plots with filled or outline series, circle grids, and glow.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/radar-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/radar-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/radar"
+    },
+    {
+      "name": "radial-chart",
+      "type": "registry:component",
+      "title": "Radial Chart",
+      "description": "Full and semi-circle radial bars for share and progress.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/radial-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/radial-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/radial"
+    },
+    {
+      "name": "composed-chart",
+      "type": "registry:component",
+      "title": "Composed Chart",
+      "description": "Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/composed-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/composed-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/composed"
+    },
+    {
+      "name": "candlestick-chart",
+      "type": "registry:component",
+      "title": "Candlestick Chart",
+      "description": "OHLC candles with optional volume and hollow-up bodies — for stocks, SOL, and any market pair.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/candlestick-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/candlestick-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "candlestick",
+        "trading"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/candlestick"
+    },
+    {
+      "name": "price-chart",
+      "type": "registry:component",
+      "title": "Price Chart",
+      "description": "Ticker chrome with last price and signed delta. Use it for tokens, equities, or protocol TVL.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/price-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/price-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "price",
+        "token"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/price"
+    },
+    {
+      "name": "sparkline-chart",
+      "type": "registry:component",
+      "title": "Sparkline",
+      "description": "Compact inline price marks for watchlists, token tables, and portfolio rows.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-kit.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-kit.tsx"
+        },
+        {
+          "path": "app/registry/charts/sparkline-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/sparkline-chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "recharts",
+        "sparkline",
+        "watchlist"
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/charts/sparkline"
     }
   ]
 }

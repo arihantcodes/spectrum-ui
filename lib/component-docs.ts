@@ -61,6 +61,12 @@ export function getComponentDocByName(name: string) {
 }
 
 export function getComponentDocFromUrl(url: string) {
-  const slug = new URL(url).pathname.split('/').filter(Boolean).at(-1);
+  const parts = new URL(url).pathname.split('/').filter(Boolean);
+  if (parts[0] === 'docs' && parts.length >= 3) {
+    const nested = parts.slice(1).join('/');
+    const nestedDoc = getComponentDocBySlug(nested);
+    if (nestedDoc) return nestedDoc;
+  }
+  const slug = parts.at(-1);
   return slug ? getComponentDocBySlug(slug) : undefined;
 }

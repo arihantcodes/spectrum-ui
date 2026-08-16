@@ -1,4 +1,7 @@
-import { COMPONENT_CATALOG, componentDocsPath } from "@/lib/component-catalog";
+import {
+  UI_COMPONENT_CATALOG,
+  componentDocsPath,
+} from "@/lib/component-catalog";
 import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
 
 interface Documentation {
@@ -61,7 +64,7 @@ export const DOCS: Documentation[] = [
   {
     groupKey: 'components',
     groupValue: 'Components',
-    children: COMPONENT_CATALOG.map((component) => ({
+    children: UI_COMPONENT_CATALOG.map((component) => ({
       label: component.name,
       value: component.slug,
       url: componentDocsPath(component.slug),

@@ -14,6 +14,7 @@ export function LinkPrefetch() {
     // Prefetch critical routes
     const criticalRoutes = [
       "/docs",
+      "/charts",
       "/docs/installation",
       "/docs/accordion",
       "/docs/button",
