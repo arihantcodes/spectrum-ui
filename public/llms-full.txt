@@ -6,7 +6,7 @@
 - Source: https://github.com/arihantcodes/spectrum-ui
 - License: [Apache License 2.0](https://github.com/arihantcodes/spectrum-ui/blob/main/LICENSE)
 - Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.
-- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).
+- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, 13 pre-built page blocks).
 - Release cadence: New components ship every Thursday.
 
 ## Setup
@@ -73,7 +73,7 @@ export function SaveAction() {
 }
 ```
 
-## Component reference (44)
+## Component reference (45)
 
 ### Accordion
 
@@ -210,6 +210,14 @@ A follow button that morphs its width, fill, and label between states.
 - Category: Action
 - Documentation: https://ui.spectrumhq.in/docs/follow-button
 - Verified install command: `npx shadcn@latest add @spectrumui/follow-button`
+
+### Footer
+
+A collection of 25 production-ready website footers for SaaS, enterprise, and marketing sites.
+
+- Category: Layout
+- Documentation: https://ui.spectrumhq.in/docs/footer
+- Verified install command: `npx shadcn@latest add @spectrumui/enterprise-grid-footer`
 
 ### Hold to Confirm
 

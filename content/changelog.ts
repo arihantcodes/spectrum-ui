@@ -27,6 +27,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    slug: 'aug-16-2026',
+    date: '2026-08-16',
+    groups: [
+      {
+        label: 'New',
+        items: [
+          '25 production-ready [website footers](/docs/footer) for SaaS, enterprise, developer, and marketing sites — each with a distinct layout, viewport previews, and a CLI install.',
+        ],
+      },
+    ],
+    media: { kind: 'terminal', command: 'npx shadcn@latest add @spectrumui/enterprise-grid-footer' },
+  },
+  {
     slug: 'jul-31-2026',
     date: '2026-07-31',
     groups: [

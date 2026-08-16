@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typography-footer",
+  "title": "Typography Footer",
+  "description": "A typography-led footer where the oversized wordmark is the primary structure.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "@spectrumui/footer-primitives",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/footers/typography-footer.tsx",
+      "content": "\"use client\"\n\nimport { motion, useReducedMotion } from \"framer-motion\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  DEFAULT_LEGAL,\n  DEFAULT_SOCIALS,\n  FOOTER_EASE,\n  FooterLegalBar,\n  FooterSocialLinks,\n  FooterTextLink,\n  defaultCopyright,\n} from \"./primitives\"\nimport type { FooterBrand, FooterNavGroup, SpectrumFooterProps } from \"./types\"\n\nexport interface TypographyFooterProps extends SpectrumFooterProps {}\n\nconst BRAND: FooterBrand = {\n  name: \"Monument\",\n  href: \"#\",\n}\n\nconst GROUPS: FooterNavGroup[] = [\n  {\n    title: \"Navigate\",\n    links: [\n      { label: \"Work\", href: \"#work\" },\n      { label: \"Studio\", href: \"#studio\" },\n      { label: \"Journal\", href: \"#journal\" },\n      { label: \"Contact\", href: \"#contact\" },\n    ],\n  },\n]\n\nexport function TypographyFooter({\n  brand = BRAND,\n  groups = GROUPS,\n  socials = DEFAULT_SOCIALS,\n  legal = DEFAULT_LEGAL,\n  copyright,\n  className,\n}: TypographyFooterProps) {\n  const reduceMotion = useReducedMotion()\n  const letters = Array.from(brand.name)\n  const links = groups.flatMap((group) => group.links)\n\n  return (\n    <footer className={cn(\"bg-background text-foreground\", className)}>\n      <div className=\"mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-24\">\n        <a\n          href={brand.href ?? \"#\"}\n          className=\"flex flex-wrap font-serif text-[clamp(3.5rem,14vw,9rem)] leading-[0.85] tracking-[-0.07em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n          aria-label={brand.name}\n        >\n          {letters.map((letter, index) => (\n            <motion.span\n              key={`${letter}-${index}`}\n              initial={reduceMotion ? false : { opacity: 0.25 }}\n              whileInView={{ opacity: 1 }}\n              viewport={{ once: true }}\n              transition={{ duration: 0.45, delay: index * 0.04, ease: FOOTER_EASE }}\n              className=\"transition-colors hover:text-muted-foreground\"\n            >\n              {letter === \" \" ? \"\\u00a0\" : letter}\n            </motion.span>\n          ))}\n        </a>\n\n        <nav aria-label=\"Monument\" className=\"mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-8\">\n          {links.map((link) => (\n            <FooterTextLink key={link.label} href={link.href} className=\"text-base\">\n              {link.label}\n            </FooterTextLink>\n          ))}\n          <FooterSocialLinks socials={socials} className=\"ml-auto\" />\n        </nav>\n        <FooterLegalBar copyright={defaultCopyright(brand.name, copyright)} legal={legal} />\n      </div>\n    </footer>\n  )\n}\n\nexport default TypographyFooter\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/footers/typography-footer.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

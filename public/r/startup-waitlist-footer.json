@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "startup-waitlist-footer",
+  "title": "Startup Waitlist Footer",
+  "description": "A conversion footer for early-stage products collecting a waitlist or newsletter.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "@spectrumui/footer-primitives",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/footers/startup-waitlist-footer.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  DEFAULT_LEGAL,\n  DEFAULT_SOCIALS,\n  FooterBrandLink,\n  FooterLegalBar,\n  FooterNewsletter,\n  FooterReveal,\n  FooterSocialLinks,\n  defaultCopyright,\n} from \"./primitives\"\nimport type { FooterBrand, FooterNewsletterConfig, SpectrumFooterProps } from \"./types\"\n\nexport interface StartupWaitlistFooterProps extends SpectrumFooterProps {\n  newsletter?: FooterNewsletterConfig\n  proofLabel?: string\n  headline?: string\n}\n\nconst BRAND: FooterBrand = {\n  name: \"Seedling\",\n  href: \"#\",\n  tagline: \"The quiet CRM for founding teams\",\n}\n\nconst NEWSLETTER: FooterNewsletterConfig = {\n  title: \"\",\n  description: undefined,\n  label: \"Work email\",\n  placeholder: \"you@startup.com\",\n  submitLabel: \"Join the waitlist\",\n  successMessage: \"You’re on the Seedling waitlist. We’ll write when seats open.\",\n}\n\nexport function StartupWaitlistFooter({\n  brand = BRAND,\n  socials = DEFAULT_SOCIALS,\n  legal = DEFAULT_LEGAL,\n  copyright,\n  className,\n  newsletter = NEWSLETTER,\n  proofLabel = \"2,847 operators already in line\",\n  headline = \"We’re opening Seedling to a few more teams this month.\",\n}: StartupWaitlistFooterProps) {\n  return (\n    <footer className={cn(\"relative overflow-hidden border-t border-border bg-background text-foreground\", className)}>\n      <div\n        aria-hidden\n        className=\"pointer-events-none absolute inset-x-0 top-0 h-56 bg-[radial-gradient(circle_at_top,hsl(var(--primary)_/_0.16),transparent_60%)]\"\n      />\n      <div className=\"relative mx-auto flex w-full max-w-xl flex-col items-center px-4 py-16 text-center sm:px-6 lg:py-20\">\n        <FooterReveal>\n          <FooterBrandLink brand={{ ...brand, tagline: undefined }} className=\"justify-center\" />\n          <h2 className=\"mt-8 text-3xl font-semibold tracking-tight text-balance sm:text-4xl\">{headline}</h2>\n          {brand.tagline ? <p className=\"mt-3 text-sm text-muted-foreground\">{brand.tagline}</p> : null}\n        </FooterReveal>\n\n        <FooterReveal delay={0.06} className=\"mt-8 w-full text-left\">\n          <FooterNewsletter config={newsletter} variant=\"stacked\" />\n        </FooterReveal>\n\n        <FooterReveal delay={0.1} className=\"mt-6 flex items-center gap-3\">\n          <span className=\"flex -space-x-2\" aria-hidden>\n            {[\"AL\", \"JM\", \"RK\", \"PS\"].map((initials) => (\n              <span\n                key={initials}\n                className=\"grid size-8 place-items-center rounded-full border-2 border-background bg-muted text-[10px] font-medium\"\n              >\n                {initials}\n              </span>\n            ))}\n          </span>\n          <p className=\"text-xs text-muted-foreground\">{proofLabel}</p>\n        </FooterReveal>\n\n        <div className=\"mt-10\">\n          <FooterSocialLinks socials={socials} className=\"justify-center\" />\n        </div>\n        <FooterLegalBar\n          copyright={defaultCopyright(brand.name, copyright)}\n          legal={legal}\n          className=\"w-full items-center border-transparent sm:flex-col\"\n        />\n      </div>\n    </footer>\n  )\n}\n\nexport default StartupWaitlistFooter\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/footers/startup-waitlist-footer.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

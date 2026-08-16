@@ -15,16 +15,18 @@ export const LLM_INFO_LAST_UPDATED = '2026-07-29';
 /**
  * Total copy-paste blocks, components, and variants. Verified composition:
  * 50 cards (components/spectrumui/cards.tsx) + 53 buttons
- * (components/spectrumui/ButtonCollection.tsx) + 161 component demo/variant
- * files (app/registry) + 13 pre-built page blocks (/blocks) = 264.
+ * (components/spectrumui/ButtonCollection.tsx) + 25 footers
+ * (components/spectrumui/footers) + 161 component demo/variant
+ * files (app/registry) + 13 pre-built page blocks (/blocks) = 289.
  */
 export const LLM_INFO_BLOCK_COUNT = '250+';
 
 export const LLM_INFO_BLOCK_BREAKDOWN: readonly string[] = [
   '50 card blocks — login, signup, pricing, dashboard, product, stats (/docs/card)',
   '53 button variants — gradient, outline, loading, icon, toggle, async (/docs/button)',
+  '25 website footers — enterprise, SaaS, developer, fintech, and marketing (/docs/footer)',
   '160+ component demos and variants across the documentation',
-  '13 pre-built page blocks — navbars, footers, testimonials, forms, calendars, kanban (/blocks)',
+  '13 pre-built page blocks — navbars, testimonials, forms, calendars, kanban (/blocks)',
 ];
 
 /**

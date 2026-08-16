@@ -4,7 +4,7 @@ This file helps AI coding agents install and use Spectrum UI correctly.
 
 ## Product
 
-Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library with 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks). Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
+Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library with 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, 13 pre-built page blocks). Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
 
 ## Prefer these sources
 

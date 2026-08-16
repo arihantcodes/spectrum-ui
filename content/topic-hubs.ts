@@ -832,7 +832,7 @@ export default function SprintPage() {
           'Keep sections as local components so campaigns can share structure without duplicating an entire page implementation.',
       },
     ],
-    componentSlugs: ['imagepreview', 'animatedcard', 'share-button', 'follow-button'],
+    componentSlugs: ['footer', 'imagepreview', 'animatedcard', 'share-button', 'follow-button'],
     codeExample: {
       title: 'Build a compact feature section with Bento Grid',
       description:

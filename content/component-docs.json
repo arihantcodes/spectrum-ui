@@ -2182,6 +2182,135 @@
     ]
   },
   {
+    "slug": "footer",
+    "name": "Footer",
+    "description": "A collection of 25 production-ready website footers for SaaS, enterprise, and marketing sites.",
+    "category": "Layout",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion",
+      "shadcn/ui"
+    ],
+    "dependencies": [
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "@spectrumui/footer-primitives",
+      "button",
+      "input",
+      "label",
+      "icon"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/enterprise-grid-footer",
+        "npx shadcn@latest add @spectrumui/animated-wave-footer",
+        "npx shadcn@latest add @spectrumui/stackedcircular-footer",
+        "npx shadcn@latest add @spectrumui/floatingparticle-footer"
+      ],
+      "dependencyCommands": [
+        "npm i lucide-react framer-motion"
+      ],
+      "manualPaths": [
+        "components/spectrumui/footers/enterprise-grid-footer.tsx",
+        "components/spectrumui/animate-footer.tsx",
+        "components/spectrumui/stacked-footer.tsx",
+        "components/spectrumui/floatingparticle-footer.tsx",
+        "components/spectrumui/footers/catalog.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "featured",
+        "type": "{\n    eyebrow?: string\n    title: string\n    description: string\n    href: string\n    label: string\n  }",
+        "required": false,
+        "description": "Featured product or solution card in the first column"
+      }
+    ],
+    "useCases": [
+      "interfaces that need a collection of 25 production-ready website footers for SaaS, enterprise, and marketing sites",
+      "dashboard layouts",
+      "landing pages"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "shadcn/ui dependencies: button, input, label, icon",
+      "Spectrum UI registry dependencies: @spectrumui/footer-primitives",
+      "Responsive Tailwind variants present in the source",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "animatedcard",
+        "name": "Animated Card",
+        "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "avatar-stack",
+        "name": "Avatar Stack",
+        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
+      },
+      {
+        "slug": "badge",
+        "name": "3D Event Badge",
+        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
+      },
+      {
+        "slug": "card",
+        "name": "Card",
+        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Footer free to use in commercial projects?",
+        "answer": "Yes. The public Footer source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Footer?",
+        "answer": "Run npx shadcn@latest add @spectrumui/enterprise-grid-footer or npx shadcn@latest add @spectrumui/animated-wave-footer or npx shadcn@latest add @spectrumui/stackedcircular-footer or npx shadcn@latest add @spectrumui/floatingparticle-footer. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Footer require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Footer."
+      },
+      {
+        "question": "Does Footer use shadcn/ui or Radix UI?",
+        "answer": "Footer uses the button, input, label, icon shadcn/ui dependencies."
+      },
+      {
+        "question": "Can I use Footer in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Footer?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
     "slug": "hold-to-confirm",
     "name": "Hold to Confirm",
     "description": "A press-and-hold button that fills a progress ring before confirming destructive actions.",

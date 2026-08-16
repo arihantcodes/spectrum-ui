@@ -106,6 +106,13 @@
     "new": true
   },
   {
+    "slug": "footer",
+    "name": "Footer",
+    "description": "A collection of 25 production-ready website footers for SaaS, enterprise, and marketing sites.",
+    "category": "Layout",
+    "new": true
+  },
+  {
     "slug": "hold-to-confirm",
     "name": "Hold to Confirm",
     "description": "A press-and-hold button that fills a progress ring before confirming destructive actions.",
