@@ -10,6 +10,8 @@ interface BlocksSidebarProps {
   title: string;
   tagline: string;
   items: { slug: string; name: string; isNew?: boolean }[];
+  categories?: { slug: string; name: string; href: string }[];
+  activeCategory?: string;
 }
 
 /**
@@ -17,7 +19,13 @@ interface BlocksSidebarProps {
  * active item tracks the reader's scroll position. Hidden below lg — on small
  * screens the sections themselves are the navigation.
  */
-export function BlocksSidebar({ title, tagline, items }: BlocksSidebarProps) {
+export function BlocksSidebar({
+  title,
+  tagline,
+  items,
+  categories,
+  activeCategory,
+}: BlocksSidebarProps) {
   const [active, setActive] = useState(items[0]?.slug);
 
   useEffect(() => {
@@ -42,6 +50,38 @@ export function BlocksSidebar({ title, tagline, items }: BlocksSidebarProps) {
   return (
     <aside className="hidden w-[220px] shrink-0 lg:block">
       <div className="sticky top-24">
+        {categories && categories.length > 1 ? (
+          <>
+            <p className="mb-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-neutral-400 dark:text-neutral-600">
+              Categories
+            </p>
+            <nav aria-label="Block categories" className="mb-8">
+              <ul>
+                {categories.map((category) => {
+                  const isActive = category.slug === activeCategory;
+                  return (
+                    <li key={category.slug}>
+                      <Link
+                        href={category.href}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={cn(
+                          'flex h-[30px] items-center rounded-md px-2.5 text-[13px] transition-colors duration-150',
+                          'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
+                          isActive
+                            ? 'bg-black/[0.05] font-medium text-neutral-900 dark:bg-white/[0.07] dark:text-neutral-50'
+                            : 'text-neutral-500 hover:text-neutral-800 dark:text-neutral-500 dark:hover:text-neutral-200',
+                        )}
+                      >
+                        {category.name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </>
+        ) : null}
+
         <p className="font-spectral text-[19px] leading-tight tracking-[-0.3px] text-neutral-900 dark:text-neutral-50">
           {title}
         </p>

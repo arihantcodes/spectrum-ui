@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cloud-status-footer",
+  "title": "Cloud Status Footer",
+  "description": "A cloud-platform footer that presents service status as the primary information.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "@spectrumui/footer-primitives",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/footers/cloud-status-footer.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  DEFAULT_LEGAL,\n  DEFAULT_SOCIALS,\n  FooterBrandLink,\n  FooterLegalBar,\n  FooterReveal,\n  FooterSocialLinks,\n  FooterTextLink,\n  ResponsiveNavGroup,\n  StatusDot,\n  defaultCopyright,\n} from \"./primitives\"\nimport type { FooterBrand, FooterNavGroup, FooterStatusItem, SpectrumFooterProps } from \"./types\"\n\nexport interface CloudStatusFooterProps extends SpectrumFooterProps {\n  services?: FooterStatusItem[]\n  incidentHref?: string\n}\n\nconst BRAND: FooterBrand = {\n  name: \"Nimbus\",\n  href: \"#\",\n  tagline: \"Managed cloud for regulated workloads\",\n}\n\nconst SERVICES: FooterStatusItem[] = [\n  { name: \"Compute\", status: \"operational\", detail: \"us-east, eu-west\" },\n  { name: \"Object storage\", status: \"operational\", detail: \"99.999%\" },\n  { name: \"Managed Postgres\", status: \"maintenance\", detail: \"eu-central window\" },\n  { name: \"Observability\", status: \"operational\", detail: \"all regions\" },\n  { name: \"Identity\", status: \"degraded\", detail: \"SSO latency\" },\n  { name: \"Networking\", status: \"operational\", detail: \"anycast healthy\" },\n]\n\nconst GROUPS: FooterNavGroup[] = [\n  {\n    title: \"Platform\",\n    links: [\n      { label: \"Products\", href: \"#products\" },\n      { label: \"Regions\", href: \"#regions\" },\n      { label: \"Pricing\", href: \"#pricing\" },\n      { label: \"Docs\", href: \"#docs\" },\n    ],\n  },\n]\n\nexport function CloudStatusFooter({\n  brand = BRAND,\n  groups = GROUPS,\n  socials = DEFAULT_SOCIALS,\n  legal = DEFAULT_LEGAL,\n  copyright,\n  className,\n  services = SERVICES,\n  incidentHref = \"#incidents\",\n}: CloudStatusFooterProps) {\n  return (\n    <footer className={cn(\"border-t border-border bg-background text-foreground\", className)}>\n      <div className=\"mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16\">\n        <FooterReveal className=\"flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between\">\n          <FooterBrandLink brand={brand} />\n          <FooterTextLink href={incidentHref} className=\"text-sm\">\n            Incident history\n          </FooterTextLink>\n        </FooterReveal>\n\n        <FooterReveal delay={0.05}>\n          <div className=\"mt-8 overflow-hidden rounded-2xl border border-border bg-[linear-gradient(180deg,rgba(16,185,129,0.06),transparent_28%)]\">\n            <div className=\"flex items-center justify-between border-b border-border px-4 py-3\">\n              <p className=\"text-sm font-medium\">Service status</p>\n              <p className=\"font-mono text-[11px] uppercase tracking-wider text-muted-foreground\">Live</p>\n            </div>\n            <ul>\n              {services.map((service) => (\n                <li\n                  key={service.name}\n                  className=\"flex items-center justify-between gap-4 border-b border-border px-4 py-3 last:border-0 hover:bg-muted/40\"\n                >\n                  <span className=\"inline-flex items-center gap-3 text-sm\">\n                    <StatusDot status={service.status} />\n                    {service.name}\n                  </span>\n                  <span className=\"text-xs text-muted-foreground\">{service.detail}</span>\n                </li>\n              ))}\n            </ul>\n          </div>\n        </FooterReveal>\n\n        <nav aria-label=\"Nimbus\" className=\"mt-10\">\n          {groups.map((group) => (\n            <ResponsiveNavGroup key={group.title} group={group} />\n          ))}\n        </nav>\n\n        <div className=\"mt-8\">\n          <FooterSocialLinks socials={socials} />\n        </div>\n        <FooterLegalBar copyright={defaultCopyright(brand.name, copyright)} legal={legal} />\n      </div>\n    </footer>\n  )\n}\n\nexport default CloudStatusFooter\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/footers/cloud-status-footer.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

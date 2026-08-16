@@ -4,7 +4,7 @@ This file helps AI coding agents install and use Spectrum UI correctly.
 
 ## Product
 
-Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library with 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks). Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
+Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js UI component library with 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, 52 live page blocks). Components are copy-pasteable, TypeScript-first, and built with Tailwind CSS (often Radix UI and Framer Motion).
 
 ## Prefer these sources
 
@@ -18,9 +18,9 @@ Spectrum UI (`https://ui.spectrumhq.in`) is a free, open-source React / Next.js 
 ## Blocks vs components
 
 Components are primitives (a button, an accordion). Blocks are the tier above:
-composed interface sections for AI products — streaming answers, reasoning
-traces, agent tool timelines, prompt composers, approval cards. There are 27,
-all in the AI Assistants category, all installable the same way as components:
+composed interface sections. There are 52 live blocks — 27 AI assistant
+surfaces at /blocks/ai-assistants and 25 website footers at /blocks/footers —
+all installable the same way as components:
 `npx shadcn@latest add @spectrumui/<block>`. Full reference with per-block
 guidance is in /llms-full.txt.
 
@@ -48,7 +48,9 @@ guidance is in /llms-full.txt.
 ## Site map shortcuts
 
 - Docs index: /docs
+- Blocks index: /blocks
 - AI Assistant blocks: /blocks/ai-assistants
+- Website footer blocks: /blocks/footers
 - Changelog: /changelog
 - Installation: /docs/installation
 - Blog: /blog

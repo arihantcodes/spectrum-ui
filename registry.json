@@ -1009,7 +1009,7 @@
       "name": "message-actions",
       "type": "registry:block",
       "title": "Message Actions",
-      "description": "Per-message controls \u2014 copy, regenerate, and thumb feedback.",
+      "description": "Per-message controls — copy, regenerate, and thumb feedback.",
       "files": [
         {
           "path": "components/spectrumui/blocks/ai-assistants/message-actions.tsx",
@@ -1756,7 +1756,7 @@
       "name": "thinking-dots",
       "type": "registry:block",
       "title": "Thinking Dots",
-      "description": "A minimal typing indicator \u2014 bouncing dots or a sliding bar.",
+      "description": "A minimal typing indicator — bouncing dots or a sliding bar.",
       "files": [
         {
           "path": "components/spectrumui/blocks/ai-assistants/thinking-dots.tsx",
@@ -3506,7 +3506,7 @@
       "name": "composed-chart",
       "type": "registry:component",
       "title": "Composed Chart",
-      "description": "Bars, lines, and areas on one plot \u2014 mix fills, dashes, and glow per series.",
+      "description": "Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.",
       "files": [
         {
           "path": "app/registry/charts/chart-kit.tsx",
@@ -3613,6 +3613,564 @@
       ],
       "dependencies": [
         "recharts",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "footer-primitives",
+      "type": "registry:component",
+      "title": "Footer Primitives",
+      "description": "Shared types and controls used by Spectrum UI website footer components.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/footers/types.ts"
+        },
+        {
+          "path": "components/spectrumui/footers/primitives.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/primitives.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "enterprise-grid-footer",
+      "type": "registry:component",
+      "title": "Enterprise Grid Footer",
+      "description": "A structured mega footer for multi-product enterprise marketing sites.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/enterprise-grid-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/enterprise-grid-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "conversion-saas-footer",
+      "type": "registry:component",
+      "title": "Conversion SaaS Footer",
+      "description": "A minimal SaaS footer that leads with a conversion band, then a slim link row.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/conversion-saas-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/conversion-saas-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "developer-cloud-footer",
+      "type": "registry:component",
+      "title": "Developer Cloud Footer",
+      "description": "A terminal-inspired footer for infrastructure and developer-tool companies.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/developer-cloud-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/developer-cloud-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "fintech-trust-footer",
+      "type": "registry:component",
+      "title": "Fintech Trust Footer",
+      "description": "A compliance-forward footer with trust badges, legal density, and regulatory copy.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/fintech-trust-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/fintech-trust-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "ai-prompt-footer",
+      "type": "registry:component",
+      "title": "AI Prompt Footer",
+      "description": "An AI product footer built around an animated command and prompt composer.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/ai-prompt-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/ai-prompt-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "product-switcher-footer",
+      "type": "registry:component",
+      "title": "Product Switcher Footer",
+      "description": "A multi-product company footer whose directories change with the selected product.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/product-switcher-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/product-switcher-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "global-network-footer",
+      "type": "registry:component",
+      "title": "Global Network Footer",
+      "description": "A global enterprise footer with regions, local times, and language selection.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/global-network-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/global-network-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "editorial-footer",
+      "type": "registry:component",
+      "title": "Editorial Footer",
+      "description": "A magazine-style footer for articles, reports, and resource libraries.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/editorial-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/editorial-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "commerce-platform-footer",
+      "type": "registry:component",
+      "title": "Commerce Platform Footer",
+      "description": "An e-commerce platform footer with category navigation and merchant paths.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/commerce-platform-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/commerce-platform-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "developer-docs-footer",
+      "type": "registry:component",
+      "title": "Developer Docs Footer",
+      "description": "A developer-platform footer with documentation jump-off and API status.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/developer-docs-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/developer-docs-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "cybersecurity-footer",
+      "type": "registry:component",
+      "title": "Cybersecurity Footer",
+      "description": "A security-product footer with trust badges, disclosure, and incident resources.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/cybersecurity-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/cybersecurity-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "creative-studio-footer",
+      "type": "registry:component",
+      "title": "Creative Studio Footer",
+      "description": "A typography-forward footer for creative software with restrained motion.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/creative-studio-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/creative-studio-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "productivity-footer",
+      "type": "registry:component",
+      "title": "Productivity Footer",
+      "description": "A productivity-platform footer with integrations and use-case entry points.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/productivity-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/productivity-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "startup-waitlist-footer",
+      "type": "registry:component",
+      "title": "Startup Waitlist Footer",
+      "description": "A conversion footer for early-stage products collecting a waitlist or newsletter.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/startup-waitlist-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/startup-waitlist-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "marketplace-footer",
+      "type": "registry:component",
+      "title": "Marketplace Footer",
+      "description": "A marketplace footer with category mosaic tiles and community destinations.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/marketplace-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/marketplace-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "open-source-footer",
+      "type": "registry:component",
+      "title": "Open Source Footer",
+      "description": "An open-source footer with repository stats and a contributor call to action.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/open-source-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/open-source-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "cloud-status-footer",
+      "type": "registry:component",
+      "title": "Cloud Status Footer",
+      "description": "A cloud-platform footer that presents service status as the primary information.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/cloud-status-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/cloud-status-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "healthcare-privacy-footer",
+      "type": "registry:component",
+      "title": "Healthcare Privacy Footer",
+      "description": "A calm healthtech footer that leads with privacy, HIPAA, and audience paths.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/healthcare-privacy-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/healthcare-privacy-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "education-platform-footer",
+      "type": "registry:component",
+      "title": "Education Platform Footer",
+      "description": "An education footer with distinct learner and institution navigation.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/education-platform-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/education-platform-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "market-data-footer",
+      "type": "registry:component",
+      "title": "Market Data Footer",
+      "description": "A financial-dashboard footer with a market ticker and data disclaimer.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/market-data-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/market-data-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "bento-footer",
+      "type": "registry:component",
+      "title": "Bento Footer",
+      "description": "A modular bento-grid footer that treats brand, CTA, nav, and legal as cells.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/bento-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/bento-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "typography-footer",
+      "type": "registry:component",
+      "title": "Typography Footer",
+      "description": "A typography-led footer where the oversized wordmark is the primary structure.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/typography-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/typography-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "accordion-footer",
+      "type": "registry:component",
+      "title": "Accordion Footer",
+      "description": "A mobile-first accordion footer that stays usable when expanded on desktop.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/accordion-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/accordion-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "contextual-cta-footer",
+      "type": "registry:component",
+      "title": "Contextual CTA Footer",
+      "description": "A footer preceded by a large pre-footer conversion experience, then a slim bar.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/contextual-cta-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/contextual-cta-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "experimental-aurora-footer",
+      "type": "registry:component",
+      "title": "Experimental Aurora Footer",
+      "description": "A premium experimental footer with a restrained animated atmosphere.",
+      "files": [
+        {
+          "path": "components/spectrumui/footers/experimental-aurora-footer.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/footers/experimental-aurora-footer.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/footer-primitives",
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
         "framer-motion"
       ]
     }

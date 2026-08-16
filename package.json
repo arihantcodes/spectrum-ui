@@ -18,6 +18,8 @@
     "generate:brand-assets": "node scripts/generate-brand-assets.mjs",
     "generate:card-snippets": "node scripts/generate-card-snippets.mjs --write",
     "check:card-snippets": "node scripts/generate-card-snippets.mjs --check",
+    "generate:footer-snippets": "node scripts/generate-footer-snippets.mjs --write",
+    "check:footer-snippets": "node scripts/generate-footer-snippets.mjs --check",
     "generate:registry": "node scripts/generate-registry-items.mjs --write && node scripts/generate-registry-index.mjs --write",
     "check:registry-generated": "node scripts/generate-registry-items.mjs --check && node scripts/generate-registry-index.mjs --check",
     "test:registry": "node tests/registry.test.js",
@@ -27,7 +29,8 @@
     "test:metadata": "node tests/metadata.test.js",
     "test:structured-data": "node tests/structured-data.test.js",
     "test:topic-hubs": "node tests/topic-hubs.test.js",
-    "test": "npm run test:registry && npm run test:registry-integrity && npm run check:registry-generated && npm run test:catalog && npm run test:component-docs && npm run check:card-snippets && npm run test:metadata && npm run test:structured-data && npm run test:topic-hubs"
+    "test:block-catalog": "node tests/block-catalog.test.js",
+    "test": "npm run test:registry && npm run test:registry-integrity && npm run check:registry-generated && npm run test:catalog && npm run test:component-docs && npm run check:card-snippets && npm run check:footer-snippets && npm run test:metadata && npm run test:structured-data && npm run test:topic-hubs && npm run test:block-catalog"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

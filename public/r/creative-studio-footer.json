@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "creative-studio-footer",
+  "title": "Creative Studio Footer",
+  "description": "A typography-forward footer for creative software with restrained motion.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "@spectrumui/footer-primitives",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/footers/creative-studio-footer.tsx",
+      "content": "\"use client\"\n\nimport { useReducedMotion } from \"framer-motion\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  DEFAULT_LEGAL,\n  DEFAULT_SOCIALS,\n  FooterGrain,\n  FooterLegalBar,\n  FooterReveal,\n  FooterSocialLinks,\n  FooterTextLink,\n  defaultCopyright,\n} from \"./primitives\"\nimport type { FooterBrand, FooterNavGroup, SpectrumFooterProps } from \"./types\"\n\nexport interface CreativeStudioFooterProps extends SpectrumFooterProps {\n  capabilities?: string[]\n}\n\nconst BRAND: FooterBrand = {\n  name: \"Prism\",\n  href: \"#\",\n}\n\nconst CAPABILITIES = [\n  \"Motion\",\n  \"Layout\",\n  \"Type\",\n  \"Color\",\n  \"3D\",\n  \"Prototyping\",\n  \"Handoff\",\n  \"Design systems\",\n]\n\nconst GROUPS: FooterNavGroup[] = [\n  {\n    title: \"Product\",\n    links: [\n      { label: \"Studio\", href: \"#studio\" },\n      { label: \"Review\", href: \"#review\" },\n      { label: \"Libraries\", href: \"#libraries\" },\n      { label: \"Pricing\", href: \"#pricing\" },\n    ],\n  },\n]\n\nexport function CreativeStudioFooter({\n  brand = BRAND,\n  groups = GROUPS,\n  socials = DEFAULT_SOCIALS,\n  legal = DEFAULT_LEGAL,\n  copyright,\n  className,\n  capabilities = CAPABILITIES,\n}: CreativeStudioFooterProps) {\n  const reduceMotion = useReducedMotion()\n  const links = groups.flatMap((group) => group.links)\n  const tape = [...capabilities, ...capabilities]\n\n  return (\n    <footer className={cn(\"relative overflow-hidden bg-foreground text-background\", className)}>\n      <FooterGrain className=\"opacity-40 mix-blend-overlay\" />\n      <div className=\"relative mx-auto w-full max-w-6xl px-4 pt-12 sm:px-6 lg:px-8 lg:pt-16\">\n        <FooterReveal>\n          <a\n            href={brand.href ?? \"#\"}\n            className=\"block font-serif text-[clamp(4.5rem,18vw,11rem)] leading-[0.8] tracking-[-0.06em] [text-wrap:balance] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background\"\n          >\n            {brand.name}\n          </a>\n        </FooterReveal>\n      </div>\n\n      <div className=\"relative mt-8 border-y border-background/15\">\n        <div className=\"sr-only\">Capabilities: {capabilities.join(\", \")}</div>\n        <div\n          className={cn(\n            \"flex gap-10 py-3 font-mono text-xs uppercase tracking-[0.22em] text-background/70\",\n            !reduceMotion && \"animate-[footer-marquee_28s_linear_infinite] hover:[animation-play-state:paused]\",\n          )}\n        >\n          {(reduceMotion ? capabilities : tape).map((item, index) => (\n            <span key={`${item}-${index}`} className=\"shrink-0 px-2\">\n              {item}\n            </span>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8\">\n        <nav aria-label=\"Prism\" className=\"flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-10\">\n          {links.map((link) => (\n            <FooterTextLink\n              key={link.label}\n              href={link.href}\n              className=\"text-2xl tracking-tight text-background/80 hover:text-background sm:text-3xl\"\n            >\n              {link.label}\n            </FooterTextLink>\n          ))}\n        </nav>\n        <FooterSocialLinks\n          socials={socials}\n          className=\"[&_a]:border-background/20 [&_a]:text-background [&_a:hover]:bg-background [&_a:hover]:text-foreground\"\n        />\n        <FooterLegalBar\n          copyright={defaultCopyright(brand.name, copyright)}\n          legal={legal}\n          className=\"border-background/15 text-background/60 [&_a]:text-background/60 [&_a:hover]:text-background\"\n        />\n      </div>\n      <style>{`\n        @keyframes footer-marquee {\n          from { transform: translateX(0); }\n          to { transform: translateX(-50%); }\n        }\n      `}</style>\n    </footer>\n  )\n}\n\nexport default CreativeStudioFooter\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/footers/creative-studio-footer.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

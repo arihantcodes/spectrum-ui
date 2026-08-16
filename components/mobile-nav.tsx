@@ -58,6 +58,10 @@ const mainNav = [
     href: '/charts',
   },
   {
+    title: 'Blocks',
+    href: '/blocks',
+  },
+  {
     title: 'Founder Story',
     href: '/founder-story',
   },

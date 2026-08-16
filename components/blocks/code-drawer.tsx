@@ -24,6 +24,7 @@ interface CodeDrawerProps {
   name: string;
   slug: string;
   source: string;
+  sourcePath?: string;
 }
 
 /**
@@ -32,7 +33,9 @@ interface CodeDrawerProps {
  * (same icons, same Shiki themes, same auth gate). Copying any of the three
  * requires login, exactly like /docs/<component>.
  */
-export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawerProps) {
+export function CodeDrawer({ open, onOpenChange, name, slug, source, sourcePath }: CodeDrawerProps) {
+  const filePath = sourcePath ?? `components/spectrumui/blocks/ai-assistants/${slug}.tsx`;
+
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
@@ -42,7 +45,7 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
         <SheetHeader className="text-left">
           <SheetTitle className="text-[17px] tracking-[-0.2px]">{name}</SheetTitle>
           <SheetDescription className="font-mono text-[11.5px]">
-            components/spectrumui/blocks/ai-assistants/{slug}.tsx
+            {filePath}
           </SheetDescription>
         </SheetHeader>
 

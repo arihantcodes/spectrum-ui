@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { FOOTER_BLOCK_DEMOS } from '@/components/blocks/footer-demos';
 import { LoadingState } from '@/components/spectrumui/blocks/ai-assistants/loading-state';
 import { ReasoningTrace } from '@/components/spectrumui/blocks/ai-assistants/reasoning-trace';
 import { StreamingText } from '@/components/spectrumui/blocks/ai-assistants/streaming-text';
@@ -52,6 +53,7 @@ import type {
  * A block without a demo here cannot be marked `live` in the catalog.
  */
 export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> = {
+  ...FOOTER_BLOCK_DEMOS,
   'loading-state': (variant) => (
     <LoadingState variant={variant as 'Drive' | 'Dots' | 'Orbit'} />
   ),

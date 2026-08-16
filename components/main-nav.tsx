@@ -75,7 +75,9 @@ export function MainNav() {
           href="/blocks"
           className={cn(
             'transition-colors hover:text-foreground whitespace-nowrap',
-            pathname === '/blocks' ? 'text-foreground' : 'text-foreground/80',
+            pathname === '/blocks' || pathname?.startsWith('/blocks/')
+              ? 'text-foreground'
+              : 'text-foreground/80',
           )}
         >
           Blocks

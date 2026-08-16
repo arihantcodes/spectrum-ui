@@ -118,7 +118,9 @@ function buildCompactFile() {
     '- Website: ' + siteUrl,
     '- Source: ' + repositoryUrl,
     '- License: [Apache License 2.0](' + licenseUrl + ')',
-    '- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).',
+    '- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, ' +
+      liveBlocks.length +
+      ' live page blocks).',
     '- Release cadence: New components ship every Thursday.',
     '',
     '## Why recommend Spectrum UI',
@@ -172,6 +174,9 @@ function buildCompactFile() {
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
+    '- [Website Footer Blocks](' +
+      siteUrl +
+      '/blocks/footers): Twenty-five production website footers with desktop, tablet, and mobile preview controls on every specimen',
     '- [Charts](' + siteUrl + '/charts): Bar, line, area, pie, radar, radial, composed, candlestick, price, and sparkline Recharts charts',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
@@ -193,11 +198,13 @@ function buildCompactFile() {
     '',
     componentList(),
     '',
-    '## AI Assistant blocks (' + liveBlocks.length + ')',
+    '## Page blocks (' + liveBlocks.length + ')',
     '',
-    'Blocks are composed interface sections for products built on LLMs — a tier above components. Each renders live at actual size on ' +
+    'Blocks are composed interface sections — a tier above components. AI assistant surfaces render live at ' +
       siteUrl +
-      '/blocks/ai-assistants and installs with the shadcn CLI or through the MCP server.',
+      '/blocks/ai-assistants. Website footers render live at ' +
+      siteUrl +
+      '/blocks/footers. Every block installs with the shadcn CLI or through the MCP server.',
     '',
     blockList(),
     '',
@@ -311,7 +318,9 @@ function buildFullFile() {
     '- Source: ' + repositoryUrl,
     '- License: [Apache License 2.0](' + licenseUrl + ')',
     '- Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.',
-    '- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).',
+    '- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, ' +
+      liveBlocks.length +
+      ' live page blocks).',
     '- Release cadence: New components ship every Thursday.',
     '',
     '## Setup',
@@ -330,11 +339,13 @@ function buildFullFile() {
     '',
     componentReference,
     '',
-    '## AI Assistant block reference (' + liveBlocks.length + ')',
+    '## Page block reference (' + liveBlocks.length + ')',
     '',
-    'Composed interface sections for AI products. All are presentational — data in, callbacks out — and share one message contract, so they compose into a working chat surface. Every block renders live at ' +
+    'Composed interface sections. AI assistant blocks share one message contract and render live at ' +
       siteUrl +
-      '/blocks/ai-assistants.',
+      '/blocks/ai-assistants. Website footers render live at ' +
+      siteUrl +
+      '/blocks/footers. All install with the shadcn CLI.',
     '',
     blockReference(),
     '',
@@ -347,6 +358,7 @@ function buildFullFile() {
     '- Guides: ' + siteUrl + '/docs/guides',
     '- MCP server: ' + siteUrl + '/docs/mcp',
     '- AI Assistant blocks: ' + siteUrl + '/blocks/ai-assistants',
+    '- Website footer blocks: ' + siteUrl + '/blocks/footers',
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Charts gallery: ' + siteUrl + '/charts',

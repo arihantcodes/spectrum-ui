@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-footer",
+  "title": "Bento Footer",
+  "description": "A modular bento-grid footer that treats brand, CTA, nav, and legal as cells.",
+  "dependencies": [
+    "lucide-react",
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "@spectrumui/footer-primitives",
+    "button",
+    "input"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/footers/bento-footer.tsx",
+      "content": "\"use client\"\n\nimport { cn } from \"@/lib/utils\"\nimport {\n  DEFAULT_LEGAL,\n  DEFAULT_SOCIALS,\n  FooterBrandLink,\n  FooterLegalBar,\n  FooterLinkList,\n  FooterNewsletter,\n  FooterReveal,\n  FooterSocialLinks,\n  defaultCopyright,\n} from \"./primitives\"\nimport type { FooterBrand, FooterNavGroup, FooterNewsletterConfig, SpectrumFooterProps } from \"./types\"\n\nexport interface BentoFooterProps extends SpectrumFooterProps {\n  newsletter?: FooterNewsletterConfig\n}\n\nconst BRAND: FooterBrand = {\n  name: \"Mosaic\",\n  href: \"#\",\n  tagline: \"Modular software for operators\",\n}\n\nconst GROUPS: FooterNavGroup[] = [\n  {\n    title: \"Product\",\n    links: [\n      { label: \"Overview\", href: \"#overview\" },\n      { label: \"Integrations\", href: \"#integrations\" },\n      { label: \"Pricing\", href: \"#pricing\" },\n    ],\n  },\n  {\n    title: \"Company\",\n    links: [\n      { label: \"About\", href: \"#about\" },\n      { label: \"Careers\", href: \"#careers\" },\n      { label: \"Blog\", href: \"#blog\" },\n    ],\n  },\n]\n\nconst NEWSLETTER: FooterNewsletterConfig = {\n  title: \"Release notes\",\n  description: \"Short, useful, monthly.\",\n  submitLabel: \"Join\",\n  successMessage: \"You’re subscribed to Mosaic notes.\",\n}\n\nexport function BentoFooter({\n  brand = BRAND,\n  groups = GROUPS,\n  socials = DEFAULT_SOCIALS,\n  legal = DEFAULT_LEGAL,\n  copyright,\n  className,\n  newsletter = NEWSLETTER,\n}: BentoFooterProps) {\n  return (\n    <footer className={cn(\"border-t border-border bg-background text-foreground\", className)}>\n      <div className=\"mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8\">\n        <FooterReveal className=\"grid auto-rows-fr gap-3 md:grid-cols-6 md:grid-rows-2\">\n          <div className=\"rounded-3xl border border-border bg-foreground p-6 text-background md:col-span-2 md:row-span-2\">\n            <FooterBrandLink\n              brand={brand}\n              className=\"[&_span]:text-background [&_.bg-foreground]:bg-background [&_.text-background]:text-foreground\"\n            />\n            <p className=\"mt-4 text-sm leading-relaxed text-background/70\">\n              Mosaic is a fictional product used to show a footer as a set of modules instead of columns.\n            </p>\n            <FooterSocialLinks\n              socials={socials}\n              className=\"mt-8 [&_a]:border-background/20 [&_a]:text-background [&_a:hover]:bg-background [&_a:hover]:text-foreground\"\n            />\n          </div>\n\n          <div className=\"rounded-3xl border border-border bg-muted/40 p-6 md:col-span-2\">\n            <FooterNewsletter config={newsletter} variant=\"stacked\" />\n          </div>\n\n          {groups.map((group) => (\n            <nav key={group.title} aria-label={group.title} className=\"rounded-3xl border border-border p-6 md:col-span-1\">\n              <h3 className=\"text-sm font-medium\">{group.title}</h3>\n              <FooterLinkList links={group.links} className=\"mt-3\" />\n            </nav>\n          ))}\n\n          <div className=\"rounded-3xl border border-border p-6 md:col-span-2\">\n            <FooterLegalBar\n              copyright={defaultCopyright(brand.name, copyright)}\n              legal={legal}\n              className=\"border-0 pt-0 sm:flex-col sm:items-start\"\n            />\n          </div>\n        </FooterReveal>\n      </div>\n    </footer>\n  )\n}\n\nexport default BentoFooter\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/footers/bento-footer.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
