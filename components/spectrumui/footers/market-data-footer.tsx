@@ -86,8 +86,8 @@ export function MarketDataFooter({
       <div className="border-b border-white/10 bg-black">
         <div className="sr-only">Market quotes, delayed 15 minutes</div>
         <div
-          className={cn(
-            "flex gap-8 py-2 font-mono text-xs",
+              className={cn(
+                "flex gap-8 py-2.5 font-mono text-xs tracking-wide",
             !reduceMotion && "animate-[footer-ticker_32s_linear_infinite] hover:[animation-play-state:paused]",
             reduceMotion && "flex-wrap px-4",
           )}

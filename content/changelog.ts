@@ -33,7 +33,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       {
         label: 'New',
         items: [
-          '25 production-ready [website footers](/docs/footer) for SaaS, enterprise, developer, and marketing sites — each with a distinct layout, viewport previews, and a CLI install.',
+          '25 production-ready [website footers](/docs/footer) — also live as a [Blocks category](/blocks/footers) with desktop, tablet, and mobile preview controls on every specimen.',
         ],
       },
     ],

@@ -2,25 +2,21 @@
 
 import { useMemo, useState, type CSSProperties } from "react"
 import Link from "next/link"
-import { Monitor, Moon, Smartphone, Sun, Tablet } from "lucide-react"
+import { Monitor, Moon, Sun } from "lucide-react"
 
 import Copy from "@/components/copy"
+import {
+  DevicePreviewFrame,
+  DeviceViewToolbar,
+  useDevicePreview,
+  type DeviceView,
+} from "@/components/blocks/device-preview"
 import { cn } from "@/lib/utils"
 import { FOOTER_CATALOG, FOOTER_CATEGORIES } from "./catalog"
 import { FOOTER_COMPONENTS } from "./component-map"
 import { FOOTER_SOURCE } from "./footers.source"
 import type { FooterCategory } from "./types"
 
-const VIEWPORTS = [
-  { id: "full", label: "Full", width: "100%", icon: Monitor },
-  { id: "wide", label: "Wide", width: 1440, icon: Monitor },
-  { id: "desktop", label: "Desktop", width: 1280, icon: Monitor },
-  { id: "laptop", label: "Laptop", width: 1024, icon: Monitor },
-  { id: "tablet", label: "Tablet", width: 768, icon: Tablet },
-  { id: "mobile", label: "Mobile", width: 375, icon: Smartphone },
-] as const
-
-type ViewportId = (typeof VIEWPORTS)[number]["id"]
 type PreviewTheme = "system" | "light" | "dark"
 
 const LIGHT_VARS = {
@@ -63,33 +59,98 @@ export function FooterPreviewFrame({
   slug,
   viewport,
   theme,
+  fit = false,
+  remountKey,
   className,
 }: {
   slug: string
-  viewport: ViewportId
+  viewport: DeviceView
   theme: PreviewTheme
+  fit?: boolean
+  remountKey?: number
   className?: string
 }) {
   const Footer = FOOTER_COMPONENTS[slug]
-  const preset = VIEWPORTS.find((item) => item.id === viewport) ?? VIEWPORTS[0]
-  const width = preset.width
 
   if (!Footer) return null
 
   return (
-    <div className={cn("overflow-x-auto rounded-xl border border-border bg-muted/30", className)}>
+    <DevicePreviewFrame
+      view={viewport}
+      fit={fit}
+      remountKey={remountKey}
+      sitAtBottom
+      className={cn("rounded-xl border border-border bg-muted/40 p-3", className)}
+    >
       <div
         className={cn("min-w-0", theme === "dark" && "dark")}
-        style={{
-          width: width === "100%" ? "100%" : width,
-          ...(theme === "light" ? LIGHT_VARS : theme === "dark" ? DARK_VARS : {}),
-        }}
+        style={theme === "light" ? LIGHT_VARS : theme === "dark" ? DARK_VARS : undefined}
       >
         <div className="bg-background text-foreground">
           <Footer />
         </div>
       </div>
-    </div>
+    </DevicePreviewFrame>
+  )
+}
+
+function FooterPreviewCard({
+  slug,
+  title,
+  useCase,
+  cli,
+  componentName,
+  theme,
+  highlighted,
+}: {
+  slug: string
+  title: string
+  useCase: string
+  cli: string
+  componentName: string
+  theme: PreviewTheme
+  highlighted?: boolean
+}) {
+  const preview = useDevicePreview("desktop")
+
+  return (
+    <section
+      id={slug}
+      className={cn("scroll-mt-36", highlighted && "rounded-2xl ring-1 ring-ring/40")}
+    >
+      <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h3 className="text-base font-medium tracking-tight">{title}</h3>
+          <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">{useCase}</p>
+          <p className="mt-2 font-mono text-[11px] text-muted-foreground">
+            npx shadcn@latest add @spectrumui/{cli}
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <DeviceViewToolbar
+            view={preview.view}
+            onViewChange={preview.setView}
+            fit={preview.fit}
+            onFitChange={preview.setFit}
+            onReset={preview.reset}
+          />
+          <Copy content={FOOTER_SOURCE[componentName] ?? ""} />
+          <Link
+            href={`/docs/footer/${slug}`}
+            className="inline-flex h-8 items-center rounded-md border border-border px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Open
+          </Link>
+        </div>
+      </div>
+      <FooterPreviewFrame
+        slug={slug}
+        viewport={preview.view}
+        theme={theme}
+        fit={preview.fit}
+        remountKey={preview.remountKey}
+      />
+    </section>
   )
 }
 
@@ -99,7 +160,6 @@ export function FooterGallery({
   activeSlug?: string
 }) {
   const [category, setCategory] = useState<FooterCategory | "all">("all")
-  const [viewport, setViewport] = useState<ViewportId>("full")
   const [theme, setTheme] = useState<PreviewTheme>("system")
 
   const entries = useMemo(
@@ -130,83 +190,45 @@ export function FooterGallery({
             </button>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex flex-wrap gap-1" role="group" aria-label="Preview width">
-            {VIEWPORTS.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={viewport === item.id}
-                onClick={() => setViewport(item.id)}
-                className={cn(
-                  "inline-flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  viewport === item.id
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                <item.icon className="size-3.5" />
-                {item.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-1" role="group" aria-label="Preview theme">
-            {(
-              [
-                { id: "system", label: "System", icon: Monitor },
-                { id: "light", label: "Light", icon: Sun },
-                { id: "dark", label: "Dark", icon: Moon },
-              ] as const
-            ).map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={theme === item.id}
-                onClick={() => setTheme(item.id)}
-                className={cn(
-                  "inline-flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  theme === item.id
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                <item.icon className="size-3.5" />
-                {item.label}
-              </button>
-            ))}
-          </div>
+        <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Preview theme">
+          {(
+            [
+              { id: "system", label: "System", icon: Monitor },
+              { id: "light", label: "Light", icon: Sun },
+              { id: "dark", label: "Dark", icon: Moon },
+            ] as const
+          ).map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-pressed={theme === item.id}
+              onClick={() => setTheme(item.id)}
+              className={cn(
+                "inline-flex h-8 items-center gap-1.5 rounded-md px-2.5 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                theme === item.id
+                  ? "bg-muted text-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <item.icon className="size-3.5" />
+              {item.label}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className="space-y-16">
         {entries.map((entry) => (
-          <section
+          <FooterPreviewCard
             key={entry.slug}
-            id={entry.slug}
-            className={cn("scroll-mt-36", activeSlug === entry.slug && "ring-1 ring-ring/40 rounded-2xl")}
-          >
-            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h3 className="text-base font-medium tracking-tight">{entry.title}</h3>
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  {entry.useCase}
-                </p>
-                <p className="mt-2 font-mono text-[11px] text-muted-foreground">
-                  npx shadcn@latest add @spectrumui/{entry.cli}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Copy content={FOOTER_SOURCE[entry.componentName] ?? ""} />
-                <Link
-                  href={`/docs/footer/${entry.slug}`}
-                  className="inline-flex h-8 items-center rounded-md border border-border px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  Open
-                </Link>
-              </div>
-            </div>
-            <FooterPreviewFrame slug={entry.slug} viewport={viewport} theme={theme} />
-          </section>
+            slug={entry.slug}
+            title={entry.title}
+            useCase={entry.useCase}
+            cli={entry.cli}
+            componentName={entry.componentName}
+            theme={theme}
+            highlighted={activeSlug === entry.slug}
+          />
         ))}
       </div>
     </div>

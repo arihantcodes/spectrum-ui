@@ -85,31 +85,45 @@ export function ConversionSaasFooter({
 }: ConversionSaasFooterProps) {
   return (
     <footer className={cn("bg-background text-foreground", className)}>
-      <div className="border-y border-border bg-muted/30">
-        <FooterReveal className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16 lg:px-8 lg:py-16">
+      <div className="relative overflow-hidden border-y border-border bg-foreground text-background">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-24 top-0 size-[28rem] rounded-full bg-background/10 blur-3xl"
+        />
+        <FooterReveal className="relative mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16 lg:px-8 lg:py-20">
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{cta.eyebrow}</p>
-            <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/55">{cta.eyebrow}</p>
+            <h2 className="mt-3 max-w-xl font-spectral text-4xl font-medium tracking-tight text-balance sm:text-5xl">
               {cta.title}
             </h2>
             {cta.description ? (
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">{cta.description}</p>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-background/70">{cta.description}</p>
             ) : null}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="h-11 w-full sm:w-auto">
+              <Button asChild className="h-11 w-full bg-background text-foreground hover:bg-background/90 sm:w-auto">
                 <a href={cta.primaryHref}>
                   {cta.primaryLabel}
                   <ArrowRight className="size-4" />
                 </a>
               </Button>
               {cta.secondaryLabel && cta.secondaryHref ? (
-                <Button asChild variant="outline" className="h-11 w-full sm:w-auto">
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-11 w-full border-background/25 bg-transparent text-background hover:bg-background/10 hover:text-background sm:w-auto"
+                >
                   <a href={cta.secondaryHref}>{cta.secondaryLabel}</a>
                 </Button>
               ) : null}
             </div>
           </div>
-          <FooterNewsletter config={newsletter} variant="stacked" />
+          <div className="rounded-2xl border border-background/15 bg-background/10 p-5 backdrop-blur-sm">
+            <FooterNewsletter
+              config={newsletter}
+              variant="stacked"
+              className="[&_p]:text-background [&_p.text-muted-foreground]:text-background/70 [&_input]:border-background/20 [&_input]:bg-background/90 [&_input]:text-foreground [&_button]:bg-background [&_button]:text-foreground [&_button]:hover:bg-background/90"
+            />
+          </div>
         </FooterReveal>
       </div>
 

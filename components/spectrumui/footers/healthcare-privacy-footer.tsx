@@ -68,9 +68,9 @@ export function HealthcarePrivacyFooter({
   const panelId = useId()
 
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground", className)}>
+    <footer className={cn("border-t border-border bg-[#F4F7F5] text-foreground dark:bg-background", className)}>
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <FooterReveal className="rounded-2xl border border-border bg-muted/40 p-5 sm:p-6">
+        <FooterReveal className="rounded-2xl border border-emerald-900/10 bg-white/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:p-6">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
             Privacy
           </p>

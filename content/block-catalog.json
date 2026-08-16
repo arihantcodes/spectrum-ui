@@ -6,6 +6,13 @@
       "tagline": "Interface surfaces for products built on LLMs.",
       "description": "Composed sections for AI products — conversation threads with streaming and markdown, prompt composers with attachments and model selection, reasoning traces, agent tool timelines, and citation displays. Each block renders standalone with realistic data and shares one message contract, so they compose into a working chat surface.",
       "order": 1
+    },
+    {
+      "slug": "footers",
+      "name": "Footers",
+      "tagline": "Production website footers for SaaS, enterprise, and marketing sites.",
+      "description": "Twenty-five installable website footers — mega grids, conversion bands, developer terminals, editorial mastheads, and experimental surfaces. Each block is a complete last viewport with unique information architecture, and every preview includes desktop, tablet, and mobile controls.",
+      "order": 2
     }
   ],
   "blocks": [
@@ -696,6 +703,762 @@
       "index": 27,
       "status": "live",
       "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "enterprise-grid-footer",
+      "name": "Enterprise Grid Footer",
+      "category": "footers",
+      "subcategory": "Enterprise",
+      "description": "A structured mega footer for multi-product enterprise marketing sites.",
+      "summary": "Use on enterprise SaaS marketing sites that need dense, scannable product, solution, industry, and resource navigation without looking like a generic four-column dump.",
+      "hardParts": [
+        "A 12-column mega grid with a featured product card that collapses to a disclosure stack without losing the product rail",
+        "Staggered column reveal and underline sweep that respect prefers-reduced-motion",
+        "Five labelled directories that stay scannable instead of a generic sitemap dump"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on enterprise SaaS marketing sites that need dense, scannable product, solution, industry, and resource navigation without looking like a generic four-column dump.",
+      "index": 28,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/enterprise-grid-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "conversion-saas-footer",
+      "name": "Conversion SaaS Footer",
+      "category": "footers",
+      "subcategory": "SaaS",
+      "description": "A minimal SaaS footer that leads with a conversion band, then a slim link row.",
+      "summary": "Use on product-led SaaS marketing pages where the footer should recapture attention with a trial or demo CTA instead of a large sitemap.",
+      "hardParts": [
+        "A conversion band that must feel like a last-chance CTA without trapping keyboard users",
+        "Newsletter success morph that does not jump the legal row",
+        "Two compact link clusters that wrap cleanly under the band on mobile"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on product-led SaaS marketing pages where the footer should recapture attention with a trial or demo CTA instead of a large sitemap.",
+      "index": 29,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/conversion-saas-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "developer-cloud-footer",
+      "name": "Developer Cloud Footer",
+      "category": "footers",
+      "subcategory": "Developer",
+      "description": "A terminal-inspired footer for infrastructure and developer-tool companies.",
+      "summary": "Use on developer-tool, infrastructure, and platform sites where docs, CLI, status, and API surfaces belong in the last viewport.",
+      "hardParts": [
+        "A terminal pane that reads as chrome, not decoration, including a reduced-motion caret",
+        "Live status pulses that remain readable on a forced-dark surface",
+        "Monospaced directories that still collapse into accessible disclosures on small screens"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on developer-tool, infrastructure, and platform sites where docs, CLI, status, and API surfaces belong in the last viewport.",
+      "index": 30,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/developer-cloud-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "fintech-trust-footer",
+      "name": "Fintech Trust Footer",
+      "category": "footers",
+      "subcategory": "Fintech",
+      "description": "A compliance-forward footer with trust badges, legal density, and regulatory copy.",
+      "summary": "Use on fintech, payments, and banking products that must surface security, licenses, and disclosures as first-class footer content.",
+      "hardParts": [
+        "Trust badges that look like marks, not marketing chips",
+        "A serif disclaimer strip that stays readable at legal density",
+        "Four dense columns that do not collapse into an unreadable accordion soup"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on fintech, payments, and banking products that must surface security, licenses, and disclosures as first-class footer content.",
+      "index": 31,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/fintech-trust-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "ai-prompt-footer",
+      "name": "AI Prompt Footer",
+      "category": "footers",
+      "subcategory": "AI",
+      "description": "An AI product footer built around an animated command and prompt composer.",
+      "summary": "Use on AI assistant, copilot, and model-platform marketing sites where the footer should feel like a continuation of the product surface.",
+      "hardParts": [
+        "A prompt composer that is a real form, not a fake search field",
+        "Placeholder cycling that pauses when reduced motion is requested",
+        "Suggestion chips that fill the field without stealing focus unexpectedly"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on AI assistant, copilot, and model-platform marketing sites where the footer should feel like a continuation of the product surface.",
+      "index": 32,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/ai-prompt-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "product-switcher-footer",
+      "name": "Product Switcher Footer",
+      "category": "footers",
+      "subcategory": "Enterprise",
+      "description": "A multi-product company footer whose directories change with the selected product.",
+      "summary": "Use on companies with several named products that should not dump every sitemap into one mega footer.",
+      "hardParts": [
+        "A product rail that is tabs on desktop and a horizontal scroller on mobile",
+        "Content pane crossfade that keeps the legal bar from jumping",
+        "Scoped directories so each product has its own sitemap, not a union of all of them"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on companies with several named products that should not dump every sitemap into one mega footer.",
+      "index": 33,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/product-switcher-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "global-network-footer",
+      "name": "Global Network Footer",
+      "category": "footers",
+      "subcategory": "Enterprise",
+      "description": "A global enterprise footer with regions, local times, and language selection.",
+      "summary": "Use on multinational companies that need region, language, and office context beside conventional directories.",
+      "hardParts": [
+        "Local times that tick without layout shift, using tabular figures",
+        "A language control that is a real labelled select, not a fake globe icon",
+        "Region cards that remain tappable on a phone without crowding the directories"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on multinational companies that need region, language, and office context beside conventional directories.",
+      "index": 34,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/global-network-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "editorial-footer",
+      "name": "Editorial Footer",
+      "category": "footers",
+      "subcategory": "Creative",
+      "description": "A magazine-style footer for articles, reports, and resource libraries.",
+      "summary": "Use on research, media, and thought-leadership sites where the footer should keep readers in the content graph.",
+      "hardParts": [
+        "A masthead and featured story that read as editorial, not a card grid",
+        "Teaser list hierarchy that still works when images are off",
+        "Topic directories that do not compete with the lead story"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on research, media, and thought-leadership sites where the footer should keep readers in the content graph.",
+      "index": 35,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/editorial-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "commerce-platform-footer",
+      "name": "Commerce Platform Footer",
+      "category": "footers",
+      "subcategory": "Commerce",
+      "description": "An e-commerce platform footer with category navigation and merchant paths.",
+      "summary": "Use on marketplace or commerce-platform marketing sites that serve both buyers and sellers.",
+      "hardParts": [
+        "A category cloud that wraps without looking like leftover tags",
+        "Separate Shop and Sell paths so merchants are not buried in buyer links",
+        "Payment marks that look like trust chrome, not a logo dump"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on marketplace or commerce-platform marketing sites that serve both buyers and sellers.",
+      "index": 36,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/commerce-platform-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "developer-docs-footer",
+      "name": "Developer Docs Footer",
+      "category": "footers",
+      "subcategory": "Developer",
+      "description": "A developer-platform footer with documentation jump-off and API status.",
+      "summary": "Use on API platforms and SDK companies where developers leave a docs page and still need status, references, and support.",
+      "hardParts": [
+        "A docs jump field that looks like product chrome, not a generic search input",
+        "SDK pills and an endpoint status table that remain useful on a phone",
+        "Status color that is never the only signal — each row has a label"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on API platforms and SDK companies where developers leave a docs page and still need status, references, and support.",
+      "index": 37,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/developer-docs-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "cybersecurity-footer",
+      "name": "Cybersecurity Footer",
+      "category": "footers",
+      "subcategory": "Security",
+      "description": "A security-product footer with trust badges, disclosure, and incident resources.",
+      "summary": "Use on cybersecurity, identity, and compliance products that need a responsible-disclosure path and visible certifications.",
+      "hardParts": [
+        "A disclosure CTA that is the first action, not a buried legal link",
+        "Certification marks on a dark surface without looking like neon marketing",
+        "Forced-dark tokens that still work when the page around them is light"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on cybersecurity, identity, and compliance products that need a responsible-disclosure path and visible certifications.",
+      "index": 38,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/cybersecurity-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "creative-studio-footer",
+      "name": "Creative Studio Footer",
+      "category": "footers",
+      "subcategory": "Creative",
+      "description": "A typography-forward footer for creative software with restrained motion.",
+      "summary": "Use on design-tool and creative-suite marketing sites that can carry oversized type without looking decorative.",
+      "hardParts": [
+        "An inverted surface with oversized type that still meets contrast",
+        "A capability marquee that pauses on hover and reduced motion",
+        "Large-type links that wrap on mobile without colliding the legal row"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on design-tool and creative-suite marketing sites that can carry oversized type without looking decorative.",
+      "index": 39,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/creative-studio-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "productivity-footer",
+      "name": "Productivity Footer",
+      "category": "footers",
+      "subcategory": "SaaS",
+      "description": "A productivity-platform footer with integrations and use-case entry points.",
+      "summary": "Use on workspace, notes, and ops tools that sell through integrations and job-to-be-done stories.",
+      "hardParts": [
+        "An integration rail that shifts from muted to full color without layout jump",
+        "Use-case cards that are destinations, not three identical feature tiles",
+        "Directories that stay secondary to the integration story"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on workspace, notes, and ops tools that sell through integrations and job-to-be-done stories.",
+      "index": 40,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/productivity-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "startup-waitlist-footer",
+      "name": "Startup Waitlist Footer",
+      "category": "footers",
+      "subcategory": "SaaS",
+      "description": "A conversion footer for early-stage products collecting a waitlist or newsletter.",
+      "summary": "Use on launch pages and early-stage marketing sites where the footer is the last chance to collect an email.",
+      "hardParts": [
+        "A waitlist form that morphs to success without shifting the proof row",
+        "Social-proof avatars that are decorative and labelled for assistive tech",
+        "Sparse legal that still covers privacy on a conversion-first layout"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on launch pages and early-stage marketing sites where the footer is the last chance to collect an email.",
+      "index": 41,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/startup-waitlist-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "marketplace-footer",
+      "name": "Marketplace Footer",
+      "category": "footers",
+      "subcategory": "Commerce",
+      "description": "A marketplace footer with category mosaic tiles and community destinations.",
+      "summary": "Use on two-sided marketplaces that need browse paths, community, and seller conversion in the last screen.",
+      "hardParts": [
+        "A mosaic whose first tile spans without breaking the two-column mobile wrap",
+        "Listing counts that stay tabular and do not wrap under the label",
+        "A seller CTA that is obvious without swallowing community links"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on two-sided marketplaces that need browse paths, community, and seller conversion in the last screen.",
+      "index": 42,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/marketplace-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "open-source-footer",
+      "name": "Open Source Footer",
+      "category": "footers",
+      "subcategory": "Community",
+      "description": "An open-source footer with repository stats and a contributor call to action.",
+      "summary": "Use on OSS project sites, developer tools with public repos, and foundation marketing pages.",
+      "hardParts": [
+        "Count-up stats that freeze immediately when reduced motion is requested",
+        "A contributor CTA that reads as GitHub-adjacent without copying GitHub chrome",
+        "Forced-dark tokens that remain isolated on a light documentation page"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on OSS project sites, developer tools with public repos, and foundation marketing pages.",
+      "index": 43,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/open-source-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "cloud-status-footer",
+      "name": "Cloud Status Footer",
+      "category": "footers",
+      "subcategory": "Developer",
+      "description": "A cloud-platform footer that presents service status as the primary information.",
+      "summary": "Use on cloud, observability, and infrastructure platforms where uptime is part of the brand promise.",
+      "hardParts": [
+        "A service matrix that is the primary content, not a widget shoved above links",
+        "Status dots with text labels so color is never the only signal",
+        "An incident link that stays available when every service is green"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on cloud, observability, and infrastructure platforms where uptime is part of the brand promise.",
+      "index": 44,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/cloud-status-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "healthcare-privacy-footer",
+      "name": "Healthcare Privacy Footer",
+      "category": "footers",
+      "subcategory": "Industry",
+      "description": "A calm healthtech footer that leads with privacy, HIPAA, and audience paths.",
+      "summary": "Use on clinical, patient, and health-operations products that must treat privacy as a primary footer message.",
+      "hardParts": [
+        "A privacy notice that expands in place without burying patient and provider paths",
+        "A calm clinical surface that does not look like a consumer SaaS tint",
+        "Compliance marks that read as facts, not badges for conversion"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on clinical, patient, and health-operations products that must treat privacy as a primary footer message.",
+      "index": 45,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/healthcare-privacy-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "education-platform-footer",
+      "name": "Education Platform Footer",
+      "category": "footers",
+      "subcategory": "Industry",
+      "description": "An education footer with distinct learner and institution navigation.",
+      "summary": "Use on EdTech products that sell to both individual learners and schools or universities.",
+      "hardParts": [
+        "An audience switch that swaps directories without a page reload or lost focus",
+        "Learner and institution CTAs that change with the pane",
+        "Accreditation copy that stays a footnote, not a fake seal wall"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on EdTech products that sell to both individual learners and schools or universities.",
+      "index": 46,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/education-platform-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "market-data-footer",
+      "name": "Market Data Footer",
+      "category": "footers",
+      "subcategory": "Fintech",
+      "description": "A financial-dashboard footer with a market ticker and data disclaimer.",
+      "summary": "Use on trading, treasury, and market-data products where delayed quotes and disclosures belong in the chrome.",
+      "hardParts": [
+        "A ticker that pauses on hover and reduced motion, wrapping to chips on mobile",
+        "Up/down color that is never the only change signal — the sign is in the text",
+        "A delayed-data disclaimer that is visible, not a 9px afterthought"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on trading, treasury, and market-data products where delayed quotes and disclosures belong in the chrome.",
+      "index": 47,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/market-data-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "bento-footer",
+      "name": "Bento Footer",
+      "category": "footers",
+      "subcategory": "Experimental",
+      "description": "A modular bento-grid footer that treats brand, CTA, nav, and legal as cells.",
+      "summary": "Use on modern SaaS marketing sites that already use bento language in the page and want the footer to match.",
+      "hardParts": [
+        "Unequal cell spans that reorder on mobile without orphaning legal",
+        "A newsletter cell whose success state does not blow the grid",
+        "Mixed fill, radius, and type so the bento is not 6 identical cards"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on modern SaaS marketing sites that already use bento language in the page and want the footer to match.",
+      "index": 48,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/bento-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "typography-footer",
+      "name": "Typography Footer",
+      "category": "footers",
+      "subcategory": "Creative",
+      "description": "A typography-led footer where the oversized wordmark is the primary structure.",
+      "summary": "Use on brand-forward marketing sites that can spend a viewport on type and still need a complete legal and nav close.",
+      "hardParts": [
+        "A wrapping logotype that remains a single accessible link",
+        "Letter cascade that disables when reduced motion is requested",
+        "A hairline utility row that still holds legal on a phone"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on brand-forward marketing sites that can spend a viewport on type and still need a complete legal and nav close.",
+      "index": 49,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/typography-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "accordion-footer",
+      "name": "Accordion Footer",
+      "category": "footers",
+      "subcategory": "SaaS",
+      "description": "A mobile-first accordion footer that stays usable when expanded on desktop.",
+      "summary": "Use when the majority of traffic is mobile and a mega grid would create an excessively long page.",
+      "hardParts": [
+        "One-open-at-a-time disclosures on mobile that become columns on desktop",
+        "Height animation that becomes instant under reduced motion",
+        "A persistent brand and legal row that never hides inside a panel"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use when the majority of traffic is mobile and a mega grid would create an excessively long page.",
+      "index": 50,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/accordion-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "contextual-cta-footer",
+      "name": "Contextual CTA Footer",
+      "category": "footers",
+      "subcategory": "SaaS",
+      "description": "A footer preceded by a large pre-footer conversion experience, then a slim bar.",
+      "summary": "Use on high-intent marketing pages where the last viewport should convert, and the sitemap can stay secondary.",
+      "hardParts": [
+        "A split-color conversion band stacked on a slim footer without double borders",
+        "Primary and secondary actions that stay full-width and tappable on mobile",
+        "A sitemap that is secondary and still complete"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on high-intent marketing pages where the last viewport should convert, and the sitemap can stay secondary.",
+      "index": 51,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/contextual-cta-footer.tsx",
+      "stage": "full-bleed"
+    },
+    {
+      "slug": "experimental-aurora-footer",
+      "name": "Experimental Aurora Footer",
+      "category": "footers",
+      "subcategory": "Experimental",
+      "description": "A premium experimental footer with a restrained animated atmosphere.",
+      "summary": "Use on flagship brand pages that can afford atmosphere if it stays quiet, accessible, and content-first.",
+      "hardParts": [
+        "Mesh atmosphere that becomes static when reduced motion is requested",
+        "Centered sparse directories that still have a complete legal close",
+        "Grain and glow that do not fight text contrast"
+      ],
+      "variants": [
+        "Default"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "framer-motion"
+      ],
+      "aiHints": "Use on flagship brand pages that can afford atmosphere if it stays quiet, accessible, and content-first.",
+      "index": 52,
+      "status": "live",
+      "addedAt": "2026-08-16",
+      "sourceFile": "components/spectrumui/footers/experimental-aurora-footer.tsx",
+      "stage": "full-bleed"
     }
   ]
 }

@@ -107,7 +107,11 @@ export function AiPromptFooter({
     <footer className={cn("relative overflow-hidden border-t border-border bg-background text-foreground", className)}>
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.22),transparent_65%)] blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-foreground/25 to-transparent"
       />
       <div className="relative mx-auto w-full max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
         <FooterReveal className="flex flex-col items-center text-center">
@@ -116,8 +120,8 @@ export function AiPromptFooter({
             <label htmlFor={fieldId} className="sr-only">
               Ask {brand.name}
             </label>
-            <div className="flex items-center gap-2 rounded-2xl border border-border bg-background/80 p-2 shadow-sm backdrop-blur-sm focus-within:ring-2 focus-within:ring-ring">
-              <Sparkles className="ml-2 size-4 shrink-0 text-muted-foreground" aria-hidden />
+            <div className="flex items-center gap-2 rounded-2xl border border-border/80 bg-background/75 p-2 shadow-[0_18px_50px_rgba(15,15,15,0.08)] backdrop-blur-md focus-within:ring-2 focus-within:ring-ring">
+              <Sparkles className="ml-2 size-4 shrink-0 text-indigo-500" aria-hidden />
               <input
                 id={fieldId}
                 value={value}
@@ -146,7 +150,7 @@ export function AiPromptFooter({
                     setValue(suggestion)
                     setSent(false)
                   }}
-                  className="rounded-full border border-border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="rounded-full border border-border/80 bg-background/70 px-3 py-1.5 text-xs text-muted-foreground shadow-xs transition-colors hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {suggestion}
                 </button>

@@ -10,6 +10,7 @@ import {
   DEFAULT_LEGAL,
   DEFAULT_SOCIALS,
   FooterBrandLink,
+  FooterGrain,
   FooterLegalBar,
   FooterReveal,
   FooterSocialLinks,
@@ -92,8 +93,9 @@ export function OpenSourceFooter({
   stats = STATS,
 }: OpenSourceFooterProps) {
   return (
-    <footer className={cn("dark border-t border-border bg-zinc-950 text-zinc-50", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <footer className={cn("dark relative overflow-hidden border-t border-border bg-zinc-950 text-zinc-50", className)}>
+      <FooterGrain className="opacity-20 mix-blend-overlay" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <FooterBrandLink brand={brand} className="[&_span]:text-zinc-50" />
@@ -103,6 +105,18 @@ export function OpenSourceFooter({
             <Button asChild className="mt-6 w-full bg-white text-zinc-950 hover:bg-zinc-200 sm:w-auto">
               <a href="#contribute">Become a contributor</a>
             </Button>
+            <div className="mt-8 grid grid-cols-[repeat(14,minmax(0,1fr))] gap-1" aria-hidden>
+              {Array.from({ length: 70 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="size-2.5 rounded-[2px]"
+                  style={{
+                    background:
+                      ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"][i % 5 === 0 ? 0 : (i * 3) % 5],
+                  }}
+                />
+              ))}
+            </div>
           </div>
           <ul className="grid grid-cols-3 gap-3">
             {stats.map((stat) => {

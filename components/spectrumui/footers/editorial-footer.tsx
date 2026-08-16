@@ -88,11 +88,16 @@ export function EditorialFooter({
   articles = ARTICLES,
 }: EditorialFooterProps) {
   return (
-    <footer className={cn("border-t border-foreground/20 bg-background text-foreground", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <FooterReveal className="flex items-end justify-between gap-6 border-b border-foreground/15 pb-6">
+    <footer className={cn("relative overflow-hidden border-t border-foreground/20 bg-[#F4F1EA] text-foreground dark:bg-zinc-950", className)}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-foreground/10 lg:block"
+      />
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <FooterReveal className="flex items-end justify-between gap-6 border-b border-foreground/20 pb-6">
           <div>
-            <p className="font-serif text-3xl tracking-tight sm:text-4xl">{brand.name}</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Vol. 04 · Issue 16</p>
+            <p className="mt-2 font-serif text-4xl tracking-tight sm:text-5xl">{brand.name}</p>
             {brand.tagline ? <p className="mt-1 text-sm text-muted-foreground">{brand.tagline}</p> : null}
           </div>
           <FooterBrandLink brand={{ ...brand, tagline: undefined }} className="hidden sm:inline-flex" />
@@ -103,8 +108,8 @@ export function EditorialFooter({
             href={featured.href}
             className="group lg:col-span-6"
           >
-            <div className="overflow-hidden rounded-sm border border-foreground/10">
-              <div className="h-40 bg-linear-to-br from-foreground/90 to-foreground/30 transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]" />
+            <div className="overflow-hidden rounded-sm border border-foreground/15">
+              <div className="h-44 bg-[linear-gradient(135deg,#1c1917_0%,#78716c_48%,#e7e5e4_100%)] transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]" />
             </div>
             <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
               {featured.category} · {featured.date}

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 import {
   DEFAULT_LEGAL,
   DEFAULT_SOCIALS,
+  FooterGrain,
   FooterLegalBar,
   FooterReveal,
   FooterSocialLinks,
@@ -60,12 +61,13 @@ export function CreativeStudioFooter({
   const tape = [...capabilities, ...capabilities]
 
   return (
-    <footer className={cn("overflow-hidden bg-foreground text-background", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 pt-12 sm:px-6 lg:px-8 lg:pt-16">
+    <footer className={cn("relative overflow-hidden bg-foreground text-background", className)}>
+      <FooterGrain className="opacity-40 mix-blend-overlay" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 pt-12 sm:px-6 lg:px-8 lg:pt-16">
         <FooterReveal>
           <a
             href={brand.href ?? "#"}
-            className="block font-serif text-[clamp(4.5rem,18vw,11rem)] leading-[0.8] tracking-[-0.06em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background"
+            className="block font-serif text-[clamp(4.5rem,18vw,11rem)] leading-[0.8] tracking-[-0.06em] [text-wrap:balance] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background"
           >
             {brand.name}
           </a>

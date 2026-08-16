@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
 import { BLOCK_DEMOS } from '@/components/blocks/demos';
 import { CodeDrawer } from '@/components/blocks/code-drawer';
+import {
+  DevicePreviewFrame,
+  DeviceViewToolbar,
+  useDevicePreview,
+} from '@/components/blocks/device-preview';
 import { Copy1Icon, TerminalIcon } from '@/app/(docs)/layout-parts/docs-icons';
 import { useAuthGate } from '@/hooks/use-auth-gate';
 import { trackEvent } from '@/lib/events';
@@ -21,6 +26,10 @@ interface SpecimenProps {
   source: string;
   cli: string;
   isNew?: boolean;
+  /** Path shown in the code drawer. */
+  sourcePath?: string;
+  /** `full-bleed` adds a per-preview device toolbar (desktop / tablet / mobile). */
+  stage?: 'centered' | 'full-bleed';
 }
 
 /**
@@ -29,10 +38,23 @@ interface SpecimenProps {
  * the block's state in place; the code button opens a right-hand drawer with
  * the three install paths (CLI, MCP, source), each login-gated like /docs.
  */
-export function Specimen({ slug, number, name, description, variants, source, cli, isNew }: SpecimenProps) {
+export function Specimen({
+  slug,
+  number,
+  name,
+  description,
+  variants,
+  source,
+  cli,
+  isNew,
+  sourcePath,
+  stage = 'centered',
+}: SpecimenProps) {
   const [variant, setVariant] = useState(variants[0] ?? 'default');
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const preview = useDevicePreview('desktop');
   const demo = BLOCK_DEMOS[slug];
+  const fullBleed = stage === 'full-bleed';
 
   return (
     <section id={slug} aria-labelledby={`${slug}-title`} className="scroll-mt-28">
@@ -53,16 +75,48 @@ export function Specimen({ slug, number, name, description, variants, source, cl
 
       {/* Stage */}
       <div className="relative mt-4 overflow-hidden rounded-2xl border border-black/[0.06] bg-[#F2F2F3] dark:border-white/[0.07] dark:bg-white/[0.035]">
-        <div className="absolute right-3 top-3 z-10 flex gap-1.5">
-          <CopySourceButton source={source} slug={slug} />
-          <IconButton label={`View ${name} code and install options`} onClick={() => setDrawerOpen(true)}>
-            <CodeGlyph />
-          </IconButton>
+        <div
+          className={cn(
+            'z-10 flex items-center gap-2',
+            fullBleed
+              ? 'justify-between border-b border-black/[0.04] px-3 py-2 dark:border-white/[0.05]'
+              : 'absolute right-3 top-3',
+          )}
+        >
+          {fullBleed ? (
+            <DeviceViewToolbar
+              view={preview.view}
+              onViewChange={preview.setView}
+              fit={preview.fit}
+              onFitChange={preview.setFit}
+              onReset={preview.reset}
+            />
+          ) : (
+            <span className="sr-only">Preview</span>
+          )}
+          <div className="flex gap-1.5">
+            <CopySourceButton source={source} slug={slug} />
+            <IconButton label={`View ${name} code and install options`} onClick={() => setDrawerOpen(true)}>
+              <CodeGlyph />
+            </IconButton>
+          </div>
         </div>
 
-        <div className="flex min-h-[440px] items-center justify-center px-6 py-14 sm:px-10">
-          {demo ? demo(variant) : null}
-        </div>
+        {fullBleed ? (
+          <DevicePreviewFrame
+            view={preview.view}
+            fit={preview.fit}
+            remountKey={preview.remountKey}
+            sitAtBottom
+            className="bg-[#EDEDEE] p-3 dark:bg-white/[0.02]"
+          >
+            {demo ? demo(variant) : null}
+          </DevicePreviewFrame>
+        ) : (
+          <div className="flex min-h-[440px] items-center justify-center px-6 py-14 sm:px-10">
+            {demo ? demo(variant) : null}
+          </div>
+        )}
 
         {variants.length > 1 && (
           <div
@@ -102,6 +156,7 @@ export function Specimen({ slug, number, name, description, variants, source, cl
         name={name}
         slug={slug}
         source={source}
+        sourcePath={sourcePath}
       />
     </section>
   );

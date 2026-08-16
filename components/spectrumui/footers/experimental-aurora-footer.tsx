@@ -7,6 +7,7 @@ import {
   DEFAULT_LEGAL,
   DEFAULT_SOCIALS,
   FooterBrandLink,
+  FooterGrain,
   FooterLegalBar,
   FooterReveal,
   FooterSocialLinks,
@@ -69,13 +70,21 @@ export function ExperimentalAuroraFooter({
         )}
       />
 
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute left-1/2 top-8 size-[22rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(244,114,182,0.16),transparent_65%)] blur-2xl",
+          !reduceMotion && "motion-safe:animate-[aurora-drift_26s_ease-in-out_infinite]",
+        )}
+      />
+      <FooterGrain className="opacity-30" />
+
       <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-20 text-center sm:px-6">
-        <FooterReveal>
+        <FooterReveal className="w-full rounded-3xl border border-border/70 bg-background/55 px-8 py-10 shadow-[0_20px_80px_rgba(15,15,15,0.06)] backdrop-blur-md">
           <FooterBrandLink brand={brand} className="justify-center" />
           <p className="mt-8 max-w-md text-lg leading-relaxed text-muted-foreground">
             A quieter last viewport. Veil is a fictional brand — keep the atmosphere, replace the copy.
           </p>
-        </FooterReveal>
 
         <nav aria-label="Veil" className="mt-10 grid w-full gap-8 sm:grid-cols-2">
           {groups.map((group) => (
@@ -100,6 +109,7 @@ export function ExperimentalAuroraFooter({
           legal={legal}
           className="w-full items-center sm:flex-col"
         />
+        </FooterReveal>
       </div>
       <style>{`
         @keyframes aurora-drift {

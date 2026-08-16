@@ -65,9 +65,14 @@ export default function FooterPage() {
 
         <PageSubTitle>Usage</PageSubTitle>
         <p className="mb-8 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-          Preview every footer at mobile, tablet, laptop, and desktop widths. Switch the isolated
-          light and dark themes, copy the component source, or open a footer for its use case and
-          properties. Install with{" "}
+          Preview every footer at desktop, tablet, and mobile widths from the toolbar on each
+          card. Switch the isolated light and dark themes, copy the component source, or open a
+          footer for its use case and properties. The same collection also lives as live specimens
+          on{" "}
+          <a href="/blocks/footers" className="underline underline-offset-4">
+            /blocks/footers
+          </a>
+          . Install with{" "}
           <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
             npx shadcn@latest add @spectrumui/&lt;name&gt;
           </code>

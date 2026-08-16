@@ -86,18 +86,22 @@ export function FintechTrustFooter({
   disclaimer = DISCLAIMER,
 }: FintechTrustFooterProps) {
   return (
-    <footer className={cn("border-t-2 border-foreground/15 bg-background text-foreground", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <footer className={cn("relative overflow-hidden border-t-2 border-foreground/20 bg-[#F6F3EC] text-foreground dark:bg-zinc-950", className)}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(transparent,transparent_27px,rgba(0,0,0,0.045)_28px)]"
+      />
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <FooterReveal>
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {badges.map((badge) => (
               <li
                 key={badge.label}
-                className="flex items-start gap-3 rounded-lg border border-foreground/10 bg-muted/30 px-3 py-3"
+                className="flex items-start gap-3 rounded-sm border border-foreground/15 bg-background/70 px-3 py-3 shadow-[2px_2px_0_rgba(0,0,0,0.06)]"
               >
                 <ShieldCheck className="mt-0.5 size-4 shrink-0 text-foreground" aria-hidden />
                 <span>
-                  <span className="block text-sm font-medium">{badge.label}</span>
+                  <span className="block font-serif text-sm font-medium">{badge.label}</span>
                   <span className="text-xs text-muted-foreground">{badge.detail}</span>
                 </span>
               </li>
@@ -122,7 +126,7 @@ export function FintechTrustFooter({
         </FooterReveal>
 
         <FooterReveal delay={0.08}>
-          <p className="mt-12 border-y border-foreground/10 py-5 font-serif text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-12 border-y border-foreground/15 py-5 font-serif text-[15px] leading-relaxed text-foreground/80">
             {disclaimer}
           </p>
         </FooterReveal>

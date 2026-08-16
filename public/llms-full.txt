@@ -6,7 +6,7 @@
 - Source: https://github.com/arihantcodes/spectrum-ui
 - License: [Apache License 2.0](https://github.com/arihantcodes/spectrum-ui/blob/main/LICENSE)
 - Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.
-- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, 13 pre-built page blocks).
+- Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 25 website footers, 160+ component demos, 52 live page blocks).
 - Release cadence: New components ship every Thursday.
 
 ## Setup
@@ -435,9 +435,9 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## AI Assistant block reference (27)
+## Page block reference (52)
 
-Composed interface sections for AI products. All are presentational — data in, callbacks out — and share one message contract, so they compose into a working chat surface. Every block renders live at https://ui.spectrumhq.in/blocks/ai-assistants.
+Composed interface sections. AI assistant blocks share one message contract and render live at https://ui.spectrumhq.in/blocks/ai-assistants. Website footers render live at https://ui.spectrumhq.in/blocks/footers. All install with the shadcn CLI.
 
 ### Loading State
 
@@ -925,6 +925,456 @@ What makes it hard to build well:
 - Date grouping happens in data, not in the component's opinion of time
 - Active and pinned are independent states
 
+### Enterprise Grid Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#enterprise-grid-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/enterprise-grid-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on enterprise SaaS marketing sites that need dense, scannable product, solution, industry, and resource navigation without looking like a generic four-column dump.
+
+When to use it: Use on enterprise SaaS marketing sites that need dense, scannable product, solution, industry, and resource navigation without looking like a generic four-column dump.
+
+What makes it hard to build well:
+- A 12-column mega grid with a featured product card that collapses to a disclosure stack without losing the product rail
+- Staggered column reveal and underline sweep that respect prefers-reduced-motion
+- Five labelled directories that stay scannable instead of a generic sitemap dump
+
+### Conversion SaaS Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#conversion-saas-footer
+- Category: footers / SaaS
+- Install: npx shadcn@latest add @spectrumui/conversion-saas-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on product-led SaaS marketing pages where the footer should recapture attention with a trial or demo CTA instead of a large sitemap.
+
+When to use it: Use on product-led SaaS marketing pages where the footer should recapture attention with a trial or demo CTA instead of a large sitemap.
+
+What makes it hard to build well:
+- A conversion band that must feel like a last-chance CTA without trapping keyboard users
+- Newsletter success morph that does not jump the legal row
+- Two compact link clusters that wrap cleanly under the band on mobile
+
+### Developer Cloud Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#developer-cloud-footer
+- Category: footers / Developer
+- Install: npx shadcn@latest add @spectrumui/developer-cloud-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on developer-tool, infrastructure, and platform sites where docs, CLI, status, and API surfaces belong in the last viewport.
+
+When to use it: Use on developer-tool, infrastructure, and platform sites where docs, CLI, status, and API surfaces belong in the last viewport.
+
+What makes it hard to build well:
+- A terminal pane that reads as chrome, not decoration, including a reduced-motion caret
+- Live status pulses that remain readable on a forced-dark surface
+- Monospaced directories that still collapse into accessible disclosures on small screens
+
+### Fintech Trust Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#fintech-trust-footer
+- Category: footers / Fintech
+- Install: npx shadcn@latest add @spectrumui/fintech-trust-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on fintech, payments, and banking products that must surface security, licenses, and disclosures as first-class footer content.
+
+When to use it: Use on fintech, payments, and banking products that must surface security, licenses, and disclosures as first-class footer content.
+
+What makes it hard to build well:
+- Trust badges that look like marks, not marketing chips
+- A serif disclaimer strip that stays readable at legal density
+- Four dense columns that do not collapse into an unreadable accordion soup
+
+### AI Prompt Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#ai-prompt-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/ai-prompt-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on AI assistant, copilot, and model-platform marketing sites where the footer should feel like a continuation of the product surface.
+
+When to use it: Use on AI assistant, copilot, and model-platform marketing sites where the footer should feel like a continuation of the product surface.
+
+What makes it hard to build well:
+- A prompt composer that is a real form, not a fake search field
+- Placeholder cycling that pauses when reduced motion is requested
+- Suggestion chips that fill the field without stealing focus unexpectedly
+
+### Product Switcher Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#product-switcher-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/product-switcher-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on companies with several named products that should not dump every sitemap into one mega footer.
+
+When to use it: Use on companies with several named products that should not dump every sitemap into one mega footer.
+
+What makes it hard to build well:
+- A product rail that is tabs on desktop and a horizontal scroller on mobile
+- Content pane crossfade that keeps the legal bar from jumping
+- Scoped directories so each product has its own sitemap, not a union of all of them
+
+### Global Network Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#global-network-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/global-network-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on multinational companies that need region, language, and office context beside conventional directories.
+
+When to use it: Use on multinational companies that need region, language, and office context beside conventional directories.
+
+What makes it hard to build well:
+- Local times that tick without layout shift, using tabular figures
+- A language control that is a real labelled select, not a fake globe icon
+- Region cards that remain tappable on a phone without crowding the directories
+
+### Editorial Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#editorial-footer
+- Category: footers / Creative
+- Install: npx shadcn@latest add @spectrumui/editorial-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on research, media, and thought-leadership sites where the footer should keep readers in the content graph.
+
+When to use it: Use on research, media, and thought-leadership sites where the footer should keep readers in the content graph.
+
+What makes it hard to build well:
+- A masthead and featured story that read as editorial, not a card grid
+- Teaser list hierarchy that still works when images are off
+- Topic directories that do not compete with the lead story
+
+### Commerce Platform Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#commerce-platform-footer
+- Category: footers / Commerce
+- Install: npx shadcn@latest add @spectrumui/commerce-platform-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on marketplace or commerce-platform marketing sites that serve both buyers and sellers.
+
+When to use it: Use on marketplace or commerce-platform marketing sites that serve both buyers and sellers.
+
+What makes it hard to build well:
+- A category cloud that wraps without looking like leftover tags
+- Separate Shop and Sell paths so merchants are not buried in buyer links
+- Payment marks that look like trust chrome, not a logo dump
+
+### Developer Docs Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#developer-docs-footer
+- Category: footers / Developer
+- Install: npx shadcn@latest add @spectrumui/developer-docs-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on API platforms and SDK companies where developers leave a docs page and still need status, references, and support.
+
+When to use it: Use on API platforms and SDK companies where developers leave a docs page and still need status, references, and support.
+
+What makes it hard to build well:
+- A docs jump field that looks like product chrome, not a generic search input
+- SDK pills and an endpoint status table that remain useful on a phone
+- Status color that is never the only signal — each row has a label
+
+### Cybersecurity Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#cybersecurity-footer
+- Category: footers / Security
+- Install: npx shadcn@latest add @spectrumui/cybersecurity-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on cybersecurity, identity, and compliance products that need a responsible-disclosure path and visible certifications.
+
+When to use it: Use on cybersecurity, identity, and compliance products that need a responsible-disclosure path and visible certifications.
+
+What makes it hard to build well:
+- A disclosure CTA that is the first action, not a buried legal link
+- Certification marks on a dark surface without looking like neon marketing
+- Forced-dark tokens that still work when the page around them is light
+
+### Creative Studio Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#creative-studio-footer
+- Category: footers / Creative
+- Install: npx shadcn@latest add @spectrumui/creative-studio-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on design-tool and creative-suite marketing sites that can carry oversized type without looking decorative.
+
+When to use it: Use on design-tool and creative-suite marketing sites that can carry oversized type without looking decorative.
+
+What makes it hard to build well:
+- An inverted surface with oversized type that still meets contrast
+- A capability marquee that pauses on hover and reduced motion
+- Large-type links that wrap on mobile without colliding the legal row
+
+### Productivity Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#productivity-footer
+- Category: footers / SaaS
+- Install: npx shadcn@latest add @spectrumui/productivity-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on workspace, notes, and ops tools that sell through integrations and job-to-be-done stories.
+
+When to use it: Use on workspace, notes, and ops tools that sell through integrations and job-to-be-done stories.
+
+What makes it hard to build well:
+- An integration rail that shifts from muted to full color without layout jump
+- Use-case cards that are destinations, not three identical feature tiles
+- Directories that stay secondary to the integration story
+
+### Startup Waitlist Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#startup-waitlist-footer
+- Category: footers / SaaS
+- Install: npx shadcn@latest add @spectrumui/startup-waitlist-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on launch pages and early-stage marketing sites where the footer is the last chance to collect an email.
+
+When to use it: Use on launch pages and early-stage marketing sites where the footer is the last chance to collect an email.
+
+What makes it hard to build well:
+- A waitlist form that morphs to success without shifting the proof row
+- Social-proof avatars that are decorative and labelled for assistive tech
+- Sparse legal that still covers privacy on a conversion-first layout
+
+### Marketplace Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#marketplace-footer
+- Category: footers / Commerce
+- Install: npx shadcn@latest add @spectrumui/marketplace-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on two-sided marketplaces that need browse paths, community, and seller conversion in the last screen.
+
+When to use it: Use on two-sided marketplaces that need browse paths, community, and seller conversion in the last screen.
+
+What makes it hard to build well:
+- A mosaic whose first tile spans without breaking the two-column mobile wrap
+- Listing counts that stay tabular and do not wrap under the label
+- A seller CTA that is obvious without swallowing community links
+
+### Open Source Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#open-source-footer
+- Category: footers / Community
+- Install: npx shadcn@latest add @spectrumui/open-source-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on OSS project sites, developer tools with public repos, and foundation marketing pages.
+
+When to use it: Use on OSS project sites, developer tools with public repos, and foundation marketing pages.
+
+What makes it hard to build well:
+- Count-up stats that freeze immediately when reduced motion is requested
+- A contributor CTA that reads as GitHub-adjacent without copying GitHub chrome
+- Forced-dark tokens that remain isolated on a light documentation page
+
+### Cloud Status Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#cloud-status-footer
+- Category: footers / Developer
+- Install: npx shadcn@latest add @spectrumui/cloud-status-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on cloud, observability, and infrastructure platforms where uptime is part of the brand promise.
+
+When to use it: Use on cloud, observability, and infrastructure platforms where uptime is part of the brand promise.
+
+What makes it hard to build well:
+- A service matrix that is the primary content, not a widget shoved above links
+- Status dots with text labels so color is never the only signal
+- An incident link that stays available when every service is green
+
+### Healthcare Privacy Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#healthcare-privacy-footer
+- Category: footers / Industry
+- Install: npx shadcn@latest add @spectrumui/healthcare-privacy-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on clinical, patient, and health-operations products that must treat privacy as a primary footer message.
+
+When to use it: Use on clinical, patient, and health-operations products that must treat privacy as a primary footer message.
+
+What makes it hard to build well:
+- A privacy notice that expands in place without burying patient and provider paths
+- A calm clinical surface that does not look like a consumer SaaS tint
+- Compliance marks that read as facts, not badges for conversion
+
+### Education Platform Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#education-platform-footer
+- Category: footers / Industry
+- Install: npx shadcn@latest add @spectrumui/education-platform-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on EdTech products that sell to both individual learners and schools or universities.
+
+When to use it: Use on EdTech products that sell to both individual learners and schools or universities.
+
+What makes it hard to build well:
+- An audience switch that swaps directories without a page reload or lost focus
+- Learner and institution CTAs that change with the pane
+- Accreditation copy that stays a footnote, not a fake seal wall
+
+### Market Data Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#market-data-footer
+- Category: footers / Fintech
+- Install: npx shadcn@latest add @spectrumui/market-data-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on trading, treasury, and market-data products where delayed quotes and disclosures belong in the chrome.
+
+When to use it: Use on trading, treasury, and market-data products where delayed quotes and disclosures belong in the chrome.
+
+What makes it hard to build well:
+- A ticker that pauses on hover and reduced motion, wrapping to chips on mobile
+- Up/down color that is never the only change signal — the sign is in the text
+- A delayed-data disclaimer that is visible, not a 9px afterthought
+
+### Bento Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#bento-footer
+- Category: footers / Experimental
+- Install: npx shadcn@latest add @spectrumui/bento-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on modern SaaS marketing sites that already use bento language in the page and want the footer to match.
+
+When to use it: Use on modern SaaS marketing sites that already use bento language in the page and want the footer to match.
+
+What makes it hard to build well:
+- Unequal cell spans that reorder on mobile without orphaning legal
+- A newsletter cell whose success state does not blow the grid
+- Mixed fill, radius, and type so the bento is not 6 identical cards
+
+### Typography Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#typography-footer
+- Category: footers / Creative
+- Install: npx shadcn@latest add @spectrumui/typography-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on brand-forward marketing sites that can spend a viewport on type and still need a complete legal and nav close.
+
+When to use it: Use on brand-forward marketing sites that can spend a viewport on type and still need a complete legal and nav close.
+
+What makes it hard to build well:
+- A wrapping logotype that remains a single accessible link
+- Letter cascade that disables when reduced motion is requested
+- A hairline utility row that still holds legal on a phone
+
+### Accordion Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#accordion-footer
+- Category: footers / SaaS
+- Install: npx shadcn@latest add @spectrumui/accordion-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use when the majority of traffic is mobile and a mega grid would create an excessively long page.
+
+When to use it: Use when the majority of traffic is mobile and a mega grid would create an excessively long page.
+
+What makes it hard to build well:
+- One-open-at-a-time disclosures on mobile that become columns on desktop
+- Height animation that becomes instant under reduced motion
+- A persistent brand and legal row that never hides inside a panel
+
+### Contextual CTA Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#contextual-cta-footer
+- Category: footers / SaaS
+- Install: npx shadcn@latest add @spectrumui/contextual-cta-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on high-intent marketing pages where the last viewport should convert, and the sitemap can stay secondary.
+
+When to use it: Use on high-intent marketing pages where the last viewport should convert, and the sitemap can stay secondary.
+
+What makes it hard to build well:
+- A split-color conversion band stacked on a slim footer without double borders
+- Primary and secondary actions that stay full-width and tappable on mobile
+- A sitemap that is secondary and still complete
+
+### Experimental Aurora Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#experimental-aurora-footer
+- Category: footers / Experimental
+- Install: npx shadcn@latest add @spectrumui/experimental-aurora-footer
+- Variants: Default
+- Dependencies: lucide-react, framer-motion
+- Added: 2026-08-16
+
+Use on flagship brand pages that can afford atmosphere if it stays quiet, accessible, and content-first.
+
+When to use it: Use on flagship brand pages that can afford atmosphere if it stays quiet, accessible, and content-first.
+
+What makes it hard to build well:
+- Mesh atmosphere that becomes static when reduced motion is requested
+- Centered sparse directories that still have a complete legal close
+- Grain and glow that do not fight text contrast
+
 ## Other public pages
 
 - Home: https://ui.spectrumhq.in
@@ -934,6 +1384,7 @@ What makes it hard to build well:
 - Guides: https://ui.spectrumhq.in/docs/guides
 - MCP server: https://ui.spectrumhq.in/docs/mcp
 - AI Assistant blocks: https://ui.spectrumhq.in/blocks/ai-assistants
+- Website footer blocks: https://ui.spectrumhq.in/blocks/footers
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
 - Charts gallery: https://ui.spectrumhq.in/charts

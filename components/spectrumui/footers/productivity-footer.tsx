@@ -99,7 +99,7 @@ export function ProductivityFooter({
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="inline-flex h-10 items-center rounded-full border border-border px-3 text-sm text-muted-foreground grayscale transition-all hover:border-foreground/30 hover:text-foreground hover:grayscale-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex h-10 items-center rounded-full border border-border bg-muted/40 px-3.5 text-sm text-muted-foreground transition-all hover:border-foreground/30 hover:bg-foreground hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {item.name}
                 </a>
@@ -114,7 +114,7 @@ export function ProductivityFooter({
               <li key={item.title}>
                 <a
                   href={item.href}
-                  className="group flex h-full flex-col rounded-2xl border border-border p-5 transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group flex h-full flex-col rounded-2xl border border-border/80 bg-linear-to-br from-muted/50 to-background p-5 transition-colors hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <span className="text-sm font-medium">{item.title}</span>
                   <span className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">

@@ -63,15 +63,21 @@ export function BentoFooter({
     <footer className={cn("border-t border-border bg-background text-foreground", className)}>
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <FooterReveal className="grid auto-rows-fr gap-3 md:grid-cols-6 md:grid-rows-2">
-          <div className="rounded-3xl border border-border bg-muted/30 p-6 md:col-span-2 md:row-span-2">
-            <FooterBrandLink brand={brand} />
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          <div className="rounded-3xl border border-border bg-foreground p-6 text-background md:col-span-2 md:row-span-2">
+            <FooterBrandLink
+              brand={brand}
+              className="[&_span]:text-background [&_.bg-foreground]:bg-background [&_.text-background]:text-foreground"
+            />
+            <p className="mt-4 text-sm leading-relaxed text-background/70">
               Mosaic is a fictional product used to show a footer as a set of modules instead of columns.
             </p>
-            <FooterSocialLinks socials={socials} className="mt-8" />
+            <FooterSocialLinks
+              socials={socials}
+              className="mt-8 [&_a]:border-background/20 [&_a]:text-background [&_a:hover]:bg-background [&_a:hover]:text-foreground"
+            />
           </div>
 
-          <div className="rounded-3xl border border-border p-6 md:col-span-2">
+          <div className="rounded-3xl border border-border bg-muted/40 p-6 md:col-span-2">
             <FooterNewsletter config={newsletter} variant="stacked" />
           </div>
 

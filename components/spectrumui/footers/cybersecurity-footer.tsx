@@ -8,6 +8,7 @@ import {
   DEFAULT_LEGAL,
   DEFAULT_SOCIALS,
   FooterBrandLink,
+  FooterGrain,
   FooterLegalBar,
   FooterReveal,
   FooterSocialLinks,
@@ -64,8 +65,13 @@ export function CybersecurityFooter({
   certifications = CERTS,
 }: CybersecurityFooterProps) {
   return (
-    <footer className={cn("dark border-t border-emerald-500/20 bg-zinc-950 text-zinc-50", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <footer className={cn("dark relative overflow-hidden border-t border-emerald-500/20 bg-zinc-950 text-zinc-50", className)}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.18] [background-image:radial-gradient(circle_at_center,rgba(16,185,129,0.55)_0.8px,transparent_1.1px)] [background-size:22px_22px]"
+      />
+      <FooterGrain className="opacity-25 mix-blend-overlay" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <FooterBrandLink

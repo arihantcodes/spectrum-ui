@@ -229,7 +229,7 @@ export function FooterSocialLinks({
               target="_blank"
               rel="noreferrer"
               aria-label={social.label}
-              className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/30 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95"
+              className="grid size-9 place-items-center rounded-full border border-border/80 bg-background/60 text-muted-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/25 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95"
             >
               <Icon className="size-4" />
             </a>
@@ -436,6 +436,32 @@ export function FooterReveal({
     >
       {children}
     </motion.div>
+  )
+}
+
+/** Film-grain overlay. Pair with a relative parent. */
+export function FooterGrain({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute inset-0 bg-noise opacity-[0.28] mix-blend-multiply",
+        className,
+      )}
+    />
+  )
+}
+
+/** Hairline column grid that fades toward the bottom. */
+export function FooterGrid({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.045)_1px,transparent_1px)] bg-size-[56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent)]",
+        className,
+      )}
+    />
   )
 }
 

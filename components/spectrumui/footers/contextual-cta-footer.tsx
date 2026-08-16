@@ -60,11 +60,15 @@ export function ContextualCtaFooter({
 
   return (
     <footer className={cn("bg-background text-foreground", className)}>
-      <section className="bg-foreground text-background">
-        <FooterReveal className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-8 lg:py-20">
+      <section className="relative overflow-hidden bg-foreground text-background">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 top-0 size-[22rem] rounded-full bg-background/10 blur-3xl"
+        />
+        <FooterReveal className="relative mx-auto grid w-full max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:px-8 lg:py-20">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-background/60">{cta.eyebrow}</p>
-            <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
+            <h2 className="mt-3 max-w-xl font-spectral text-4xl font-medium tracking-tight text-balance sm:text-5xl">
               {cta.title}
             </h2>
             {cta.description ? (

@@ -134,8 +134,19 @@ export function GlobalNetworkFooter({
   const [language, setLanguage] = useState(languages[0]?.code ?? "en")
 
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <footer className={cn("relative overflow-hidden border-t border-border bg-background text-foreground", className)}>
+      <svg
+        aria-hidden
+        viewBox="0 0 800 220"
+        className="pointer-events-none absolute inset-x-0 top-0 h-48 w-full text-foreground/10"
+      >
+        {Array.from({ length: 48 }).map((_, i) => {
+          const x = 30 + (i % 16) * 48
+          const y = 24 + Math.floor(i / 16) * 42 + ((i * 7) % 11)
+          return <circle key={i} cx={x} cy={y} r={i % 5 === 0 ? 2.4 : 1.2} fill="currentColor" />
+        })}
+      </svg>
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <FooterBrandLink brand={brand} />
           <div>

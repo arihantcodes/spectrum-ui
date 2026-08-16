@@ -84,7 +84,7 @@ export function EducationPlatformFooter({
   const groups = audience === "learner" ? learnerGroups : institutionGroups
 
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground", className)}>
+    <footer className={cn("border-t border-border bg-[#F7F4EE] text-foreground dark:bg-background", className)}>
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <FooterBrandLink brand={brand} />
@@ -121,7 +121,7 @@ export function EducationPlatformFooter({
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: FOOTER_EASE }}
-              className="mt-10 grid gap-8 rounded-2xl border border-border bg-background p-6 sm:grid-cols-2"
+              className="mt-10 grid gap-8 rounded-2xl border border-foreground/10 bg-background/80 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] sm:grid-cols-2"
             >
               {groups.map((group) => (
                 <section key={group.title}>

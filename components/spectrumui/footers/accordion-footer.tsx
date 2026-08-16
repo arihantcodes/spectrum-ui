@@ -101,7 +101,12 @@ export function AccordionFooter({
                     className="flex w-full items-center justify-between py-4 text-left text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:pointer-events-none lg:cursor-default lg:py-0"
                     onClick={() => setOpen((current) => (current === group.title ? null : group.title))}
                   >
-                    {group.title}
+                    <span className="inline-flex items-center gap-3">
+                      <span className="font-mono text-[11px] tabular-nums text-muted-foreground">
+                        {String(groups.indexOf(group) + 1).padStart(2, "0")}
+                      </span>
+                      {group.title}
+                    </span>
                     <ChevronDown
                       className={cn(
                         "size-4 text-muted-foreground transition-transform lg:hidden",

@@ -120,7 +120,11 @@ export function ProductSwitcherFooter({
   const tablistId = useId()
 
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground", className)}>
+    <footer className={cn("relative overflow-hidden border-t border-border bg-background text-foreground", className)}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-0 hidden w-px bg-linear-to-b from-transparent via-foreground/20 to-transparent lg:block"
+      />
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <div className="lg:w-64 lg:shrink-0">
@@ -179,7 +183,7 @@ export function ProductSwitcherFooter({
                   animate={{ opacity: 1, y: 0 }}
                   exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
                   transition={{ duration: 0.22, ease: FOOTER_EASE }}
-                  className="grid gap-8 rounded-2xl border border-border p-6 sm:grid-cols-2"
+                  className="grid gap-8 rounded-2xl border border-border/80 bg-muted/20 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.5)] sm:grid-cols-2"
                 >
                   {active.groups.map((group) => (
                     <section key={group.title}>

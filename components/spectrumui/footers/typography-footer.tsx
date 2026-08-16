@@ -50,7 +50,7 @@ export function TypographyFooter({
       <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <a
           href={brand.href ?? "#"}
-          className="flex flex-wrap font-serif text-[clamp(3.5rem,14vw,9rem)] leading-[0.85] tracking-[-0.07em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex flex-wrap font-serif text-[clamp(3.5rem,14vw,9rem)] leading-[0.85] tracking-[-0.07em] [-webkit-text-stroke:1px_currentColor] text-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:text-foreground hover:[-webkit-text-stroke:0]"
           aria-label={brand.name}
         >
           {letters.map((letter, index) => (
@@ -60,7 +60,7 @@ export function TypographyFooter({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.04, ease: FOOTER_EASE }}
-              className="transition-colors hover:text-muted-foreground"
+              className="transition-colors hover:text-foreground"
             >
               {letter === " " ? "\u00a0" : letter}
             </motion.span>

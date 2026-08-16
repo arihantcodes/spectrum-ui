@@ -52,6 +52,16 @@ export interface BlockCatalogItem {
    * that way the site never advertises something you cannot install.
    */
   status: 'live' | 'planned';
+  /**
+   * Path to the installable source, relative to the repo root. Defaults to
+   * `components/spectrumui/blocks/{category}/{slug}.tsx`.
+   */
+  sourceFile?: string;
+  /**
+   * How the specimen stage should present this block. `full-bleed` is for
+   * page-width sections (footers) with a per-preview device toolbar.
+   */
+  stage?: 'centered' | 'full-bleed';
 }
 
 const catalog = blockCatalog as {
@@ -86,6 +96,18 @@ export function blockPath(categorySlug: string, blockSlug: string) {
 /** The install command shown on cards and detail pages. */
 export function blockCliCommand(blockSlug: string) {
   return `npx shadcn@latest add @spectrumui/${blockSlug}`;
+}
+
+/** File the CLI copies — used by the specimen source reader and code drawer. */
+export function blockSourcePath(block: BlockCatalogItem) {
+  return (
+    block.sourceFile ??
+    `components/spectrumui/blocks/${block.category}/${block.slug}.tsx`
+  );
+}
+
+export function categoryHasFullBleed(categorySlug: string) {
+  return blocksInCategory(categorySlug).some((block) => block.stage === 'full-bleed');
 }
 
 export function findBlockCategory(categorySlug: string) {

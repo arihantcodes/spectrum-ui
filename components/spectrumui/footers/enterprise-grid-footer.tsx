@@ -8,6 +8,8 @@ import {
   DEFAULT_LEGAL,
   DEFAULT_SOCIALS,
   FooterBrandLink,
+  FooterGrain,
+  FooterGrid,
   FooterLegalBar,
   FooterReveal,
   FooterSocialLinks,
@@ -102,19 +104,25 @@ export function EnterpriseGridFooter({
   featured = FEATURED,
 }: EnterpriseGridFooterProps) {
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground motion-reduce:transition-none", className)}>
-      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <footer className={cn("relative overflow-hidden border-t border-border bg-background text-foreground motion-reduce:transition-none", className)}>
+      <FooterGrid className="opacity-70" />
+      <FooterGrain className="opacity-20" />
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="grid gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="flex flex-col gap-6 lg:col-span-3">
             <FooterBrandLink brand={brand} />
             <a
               href={featured.href}
-              className="group rounded-2xl border border-border bg-muted/40 p-5 transition-colors hover:bg-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="group relative overflow-hidden rounded-2xl border border-border/80 bg-linear-to-br from-muted/80 to-background p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] transition-colors hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-foreground/5 blur-2xl transition-opacity group-hover:opacity-100"
+              />
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
                 {featured.eyebrow}
               </p>
-              <p className="mt-2 text-base font-semibold tracking-tight">{featured.title}</p>
+              <p className="mt-2 font-spectral text-xl tracking-tight">{featured.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{featured.description}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium">
                 {featured.label}
@@ -127,8 +135,13 @@ export function EnterpriseGridFooter({
           </div>
 
           <nav aria-label="Northstar directories" className="grid gap-2 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-5 lg:gap-6">
-            {groups.map((group) => (
-              <ResponsiveNavGroup key={group.title} group={group} />
+            {groups.map((group, index) => (
+              <div key={group.title} className="relative">
+                <span className="mb-2 hidden font-mono text-[10px] tabular-nums text-muted-foreground/70 lg:block">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <ResponsiveNavGroup group={group} />
+              </div>
             ))}
           </nav>
         </FooterReveal>

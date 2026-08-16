@@ -68,7 +68,7 @@ export function CloudStatusFooter({
         </FooterReveal>
 
         <FooterReveal delay={0.05}>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-border">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-[linear-gradient(180deg,rgba(16,185,129,0.06),transparent_28%)]">
             <div className="flex items-center justify-between border-b border-border px-4 py-3">
               <p className="text-sm font-medium">Service status</p>
               <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">Live</p>

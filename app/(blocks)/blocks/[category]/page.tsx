@@ -9,7 +9,9 @@ import {
   BLOCK_CATEGORIES,
   blockCategoryPath,
   blockCliCommand,
+  blockSourcePath,
   blocksInCategory,
+  categoryHasFullBleed,
   findBlockCategory,
   newBlockSlugs,
 } from '@/lib/block-catalog';
@@ -45,10 +47,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 /** The code shown and copied is the file the CLI installs, read off disk. */
-async function readSource(category: string, slug: string) {
-  const relative = path.join('components', 'spectrumui', 'blocks', category, `${slug}.tsx`);
+async function readSource(sourceFile: string) {
   try {
-    return await fs.readFile(path.join(process.cwd(), relative), 'utf8');
+    return await fs.readFile(path.join(process.cwd(), sourceFile), 'utf8');
   } catch {
     return null;
   }
@@ -66,8 +67,9 @@ export default async function BlockCategoryPage({ params }: PageProps) {
 
   const blocks = blocksInCategory(slug);
   const isNew = newBlockSlugs();
-  const sources = await Promise.all(blocks.map((block) => readSource(slug, block.slug)));
+  const sources = await Promise.all(blocks.map((block) => readSource(blockSourcePath(block))));
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
+  const wide = categoryHasFullBleed(slug);
 
   const breadcrumb = generateBreadcrumbStructuredData([
     { name: 'Home', url: siteConfig.url },
@@ -122,9 +124,15 @@ export default async function BlockCategoryPage({ params }: PageProps) {
             name: block.name,
             isNew: isNew.has(block.slug),
           }))}
+          categories={BLOCK_CATEGORIES.map((item) => ({
+            slug: item.slug,
+            name: item.name,
+            href: blockCategoryPath(item.slug),
+          }))}
+          activeCategory={slug}
         />
 
-        <main className="min-w-0 max-w-[760px] flex-1">
+        <main className={wide ? 'min-w-0 flex-1' : 'min-w-0 max-w-[760px] flex-1'}>
           {/* The visual title lives in the sidebar on desktop; the document's
               h1 is visible on mobile and screen-reader-only above lg. */}
           <header className="lg:sr-only">
@@ -151,6 +159,8 @@ export default async function BlockCategoryPage({ params }: PageProps) {
                   source={sources[position] ?? '// Source unavailable'}
                   cli={blockCliCommand(block.slug)}
                   isNew={isNew.has(block.slug)}
+                  sourcePath={blockSourcePath(block)}
+                  stage={block.stage ?? 'centered'}
                 />
               </div>
             ))}

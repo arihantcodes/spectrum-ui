@@ -96,8 +96,11 @@ export function DeveloperDocsFooter({
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search endpoints, SDKs, guides"
-                  className="h-11 w-full rounded-lg border border-input bg-background pl-10 pr-3 text-sm transition-[box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="h-11 w-full rounded-lg border border-input bg-background pl-10 pr-16 font-mono text-sm transition-[box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 />
+                <kbd className="pointer-events-none absolute right-2.5 top-1/2 hidden -translate-y-1/2 rounded border border-border bg-muted px-1.5 font-mono text-[10px] text-muted-foreground sm:inline">
+                  /
+                </kbd>
               </div>
             </form>
             <ul className="mt-4 flex flex-wrap gap-2" aria-label="SDKs">
@@ -114,20 +117,20 @@ export function DeveloperDocsFooter({
             </ul>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-border">
-            <div className="border-b border-border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+          <div className="overflow-hidden rounded-xl border border-border bg-[#0B0D10] text-zinc-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+            <div className="border-b border-white/10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-zinc-500">
               API status
             </div>
             <table className="w-full text-left text-sm">
               <caption className="sr-only">Relay API endpoint status</caption>
               <tbody>
                 {endpoints.map((endpoint) => (
-                  <tr key={endpoint.name} className="border-b border-border last:border-0 hover:bg-muted/40">
-                    <th scope="row" className="px-4 py-3 font-mono text-xs font-medium">
+                  <tr key={endpoint.name} className="border-b border-white/10 last:border-0 hover:bg-white/5">
+                    <th scope="row" className="px-4 py-3 font-mono text-xs font-medium text-zinc-100">
                       {endpoint.name}
                     </th>
                     <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                      <span className="inline-flex items-center gap-2 text-xs text-zinc-400">
                         <StatusDot status={endpoint.status} />
                         {endpoint.detail}
                       </span>

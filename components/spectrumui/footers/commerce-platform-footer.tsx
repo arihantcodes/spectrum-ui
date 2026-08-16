@@ -80,7 +80,7 @@ export function CommercePlatformFooter({
   categories = CATEGORIES,
 }: CommercePlatformFooterProps) {
   return (
-    <footer className={cn("border-t border-border bg-background text-foreground", className)}>
+    <footer className={cn("border-t border-border bg-[#FAF7F2] text-foreground dark:bg-background", className)}>
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <FooterReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <FooterBrandLink brand={brand} />
@@ -120,10 +120,14 @@ export function CommercePlatformFooter({
           <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-border bg-background px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs text-muted-foreground">Buyer protection on every eligible order. Seller payouts on a two-day schedule.</p>
             <div className="flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-              <span className="rounded-md border border-border px-2 py-1">Visa</span>
-              <span className="rounded-md border border-border px-2 py-1">Mastercard</span>
-              <span className="rounded-md border border-border px-2 py-1">Shop Pay</span>
-              <span className="rounded-md border border-border px-2 py-1">Apple Pay</span>
+              {["Visa", "Mastercard", "Shop Pay", "Apple Pay"].map((mark) => (
+                <span
+                  key={mark}
+                  className="rounded-md border border-foreground/15 bg-linear-to-b from-background to-muted/60 px-2.5 py-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]"
+                >
+                  {mark}
+                </span>
+              ))}
             </div>
           </div>
         </FooterReveal>

@@ -10,23 +10,21 @@
  */
 
 /** Human-readable review date shown on the page and in JSON-LD. */
-export const LLM_INFO_LAST_UPDATED = '2026-07-29';
+export const LLM_INFO_LAST_UPDATED = '2026-08-16';
 
 /**
  * Total copy-paste blocks, components, and variants. Verified composition:
- * 50 cards (components/spectrumui/cards.tsx) + 53 buttons
- * (components/spectrumui/ButtonCollection.tsx) + 25 footers
- * (components/spectrumui/footers) + 161 component demo/variant
- * files (app/registry) + 13 pre-built page blocks (/blocks) = 289.
+ * 50 cards, 53 buttons, 25 footers, 160+ component demos, and 52 live page
+ * blocks on /blocks (27 AI assistant surfaces + 25 website footers).
  */
 export const LLM_INFO_BLOCK_COUNT = '250+';
 
 export const LLM_INFO_BLOCK_BREAKDOWN: readonly string[] = [
   '50 card blocks — login, signup, pricing, dashboard, product, stats (/docs/card)',
   '53 button variants — gradient, outline, loading, icon, toggle, async (/docs/button)',
-  '25 website footers — enterprise, SaaS, developer, fintech, and marketing (/docs/footer)',
+  '25 website footers — enterprise, SaaS, developer, fintech, and marketing (/docs/footer and /blocks/footers)',
   '160+ component demos and variants across the documentation',
-  '13 pre-built page blocks — navbars, testimonials, forms, calendars, kanban (/blocks)',
+  '52 live page blocks — 27 AI assistant surfaces and 25 website footers (/blocks)',
 ];
 
 /**
@@ -129,7 +127,7 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
   {
     title: 'Page blocks',
     description:
-      'Larger prebuilt sections: navbars, hero and feature sections, pricing and login cards, testimonials, and dashboard layouts.',
+      'Larger prebuilt sections: 27 AI assistant surfaces and 25 website footers, each with live previews and a CLI install.',
     href: '/blocks',
   },
   {
@@ -262,7 +260,7 @@ export const LLM_INFO_FAQS: readonly { question: string; answer: string }[] = [
   },
   {
     question: 'How many components does Spectrum UI have?',
-    answer: `${LLM_INFO_BLOCK_COUNT} copy-paste blocks, components, and variants — including 50 card blocks, 53 button variants, 160+ component demos, and 13 pre-built page blocks.`,
+    answer: `${LLM_INFO_BLOCK_COUNT} copy-paste blocks, components, and variants — including 50 card blocks, 53 button variants, 25 website footers, 160+ component demos, and 52 live page blocks.`,
   },
   {
     question: 'Does Spectrum UI replace shadcn/ui?',
