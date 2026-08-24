@@ -79,12 +79,12 @@ export default async function ChartsLandingPage() {
       {/* Hero — copy left, a chart you can actually scrub on the right. */}
       <FrameBand dots>
         <section className="container grid gap-10 py-14 md:py-18 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-14">
-          <div>
-            <div className="enter-fx" style={step(0)}>
+          <div className="text-center md:text-left">
+            <div className="enter-fx flex justify-center md:justify-start" style={step(0)}>
               <Eyebrow>Charts</Eyebrow>
             </div>
             <h1
-              className="enter-fx mt-5 max-w-[24ch] font-spectral text-[32px] leading-[1.04] tracking-[-1.2px] text-[#111110] dark:text-neutral-50 md:text-[44px]"
+              className="enter-fx mx-auto mt-5 max-w-[24ch] font-spectral text-[32px] leading-[1.04] tracking-[-1.2px] text-[#111110] dark:text-neutral-50 md:mx-0 md:text-[44px]"
               style={step(1)}
             >
             Beautiful React Charts
@@ -92,17 +92,17 @@ export default async function ChartsLandingPage() {
               for Modern Web Apps
             </h1>
             <p
-              className="enter-fx mt-4 max-w-[46ch] font-inter text-[15.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/62 dark:text-neutral-400 md:text-[16.5px]"
+              className="enter-fx mx-auto mt-4 max-w-[46ch] font-inter text-[15.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/62 dark:text-neutral-400 md:mx-0 md:text-[16.5px]"
               style={step(2)}
             >
               Candlesticks, order books, depth and cohorts the set shadcn/ui
               leaves out, on a dependency-free SVG engine.
             </p>
 
-            <div className="enter-fx mt-7 flex justify-evenly  items-center gap-3" style={step(3)}>
+            <div className="enter-fx mt-7 flex flex-col gap-3 md:flex-row" style={step(3)}>
               <Link
                 href="/charts/market"
-                className="group inline-flex h-10 items-center gap-2 rounded-full bg-[#111110] px-5 font-inter text-[12px] font-medium text-white transition-[transform,background-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-[#f9452d] dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-[#E1F435]"
+                className="group inline-flex h-10 w-full items-center justify-center gap-2 rounded-full bg-[#111110] px-5 font-inter text-[14px] font-medium text-white transition-[transform,background-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-[#f9452d] dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-[#E1F435] md:w-auto"
               >
                 Browse the charts
                 <ArrowRight className="size-4 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5" />
@@ -111,7 +111,7 @@ export default async function ChartsLandingPage() {
                 href={siteConfig.links.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-10 items-center gap-2 rounded-full border border-border px-5 font-inter text-[12px] font-medium text-[#111110] transition-[transform,border-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:border-[#111110] dark:text-neutral-100 dark:hover:border-neutral-100"
+                className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-full border border-border px-5 font-inter text-[14px] font-medium text-[#111110] transition-[transform,border-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:border-[#111110] dark:text-neutral-100 dark:hover:border-neutral-100 md:w-auto"
               >
                 <Icons.gitHub className="size-3.5" />
                 Star on GitHub
