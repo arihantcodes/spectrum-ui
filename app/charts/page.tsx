@@ -102,7 +102,7 @@ export default async function ChartsLandingPage() {
             <div className="enter-fx mt-7 flex flex-col gap-3 md:flex-row" style={step(3)}>
               <Link
                 href="/charts/market"
-                className="group inline-flex h-10 w-full items-center justify-center gap-2 rounded-full bg-[#111110] px-5 font-inter text-[12px] font-medium text-white transition-[transform,background-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-[#f9452d] dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-[#E1F435] md:w-auto"
+                className="group inline-flex h-10 w-full items-center justify-center gap-2 rounded-full bg-[#111110] px-5 font-inter text-[14px] font-medium text-white transition-[transform,background-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:bg-[#f9452d] dark:bg-neutral-50 dark:text-neutral-950 dark:hover:bg-[#E1F435] md:w-auto"
               >
                 Browse the charts
                 <ArrowRight className="size-4 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5" />
@@ -111,7 +111,7 @@ export default async function ChartsLandingPage() {
                 href={siteConfig.links.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-full border border-border px-5 font-inter text-[12px] font-medium text-[#111110] transition-[transform,border-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:border-[#111110] dark:text-neutral-100 dark:hover:border-neutral-100 md:w-auto"
+                className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-full border border-border px-5 font-inter text-[14px] font-medium text-[#111110] transition-[transform,border-color] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] hover:border-[#111110] dark:text-neutral-100 dark:hover:border-neutral-100 md:w-auto"
               >
                 <Icons.gitHub className="size-3.5" />
                 Star on GitHub
