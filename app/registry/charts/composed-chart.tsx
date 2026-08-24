@@ -1,22 +1,16 @@
-/**
- * Spectrum UI — Composed Chart
- *
- * Bars, a line, and an area on one plot. Mix bar fills, line dashes, and glow.
- * Bars grow from the baseline; the line wipes in behind a Motion SVG mask.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
 import {
   Area,
   Bar,
+  CartesianGrid,
   ComposedChart as RechartsComposedChart,
   Line,
   ResponsiveContainer,
   Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 import { cn } from '@/lib/utils';
 import {
@@ -27,14 +21,14 @@ import {
   ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLegend,
   ChartLoadingBars,
   ChartPlotSurface,
   ChartRestingDot,
   ChartTooltipContent,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   type ChartDotRenderProps,
   MONTHLY_TRAFFIC,
   RevealMask,
@@ -119,9 +113,9 @@ export function ComposedChart({
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
                 <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
-              <ChartGrid />
-              <ChartXAxis dataKey="month" />
-              <ChartYAxis />
+              <CartesianGrid {...chartGrid} />
+              <XAxis {...chartXAxis} dataKey="month" />
+              <YAxis {...chartYAxis} />
               <Tooltip
                 cursor={{ fill: 'currentColor', fillOpacity: 0.05 }}
                 content={<ChartTooltipContent />}
@@ -156,6 +150,7 @@ export function ComposedChart({
                 strokeDasharray={strokeDasharray(lineStroke)}
                 dot={(props: ChartDotRenderProps) => (
                   <ChartRestingDot
+                    key={`dot-${props.index}`}
                     cx={props.cx}
                     cy={props.cy}
                     color={SERIES.mobile.color}
@@ -163,7 +158,7 @@ export function ComposedChart({
                   />
                 )}
                 activeDot={(props: ChartDotRenderProps) => (
-                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
+                  <ChartActiveDot key={`active-${props.index}`} cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
                 )}
                 isAnimationActive={false}
                 legendType="none"

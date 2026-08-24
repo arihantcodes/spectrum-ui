@@ -24,10 +24,11 @@
     "test:registry-integrity": "node tests/registry-integrity.test.js",
     "test:catalog": "node tests/component-catalog.test.js",
     "test:component-docs": "npm run check:component-docs && node tests/component-docs.test.js",
+    "test:charts": "node tests/charts.test.js",
     "test:metadata": "node tests/metadata.test.js",
     "test:structured-data": "node tests/structured-data.test.js",
     "test:topic-hubs": "node tests/topic-hubs.test.js",
-    "test": "npm run test:registry && npm run test:registry-integrity && npm run check:registry-generated && npm run test:catalog && npm run test:component-docs && npm run check:card-snippets && npm run test:metadata && npm run test:structured-data && npm run test:topic-hubs"
+    "test": "npm run test:registry && npm run test:registry-integrity && npm run check:registry-generated && npm run test:catalog && npm run test:component-docs && npm run check:card-snippets && npm run test:charts && npm run test:metadata && npm run test:structured-data && npm run test:topic-hubs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

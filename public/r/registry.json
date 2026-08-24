@@ -3697,6 +3697,344 @@
       "docsUrl": "https://ui.spectrumhq.in/charts/composed"
     },
     {
+      "name": "chart-data",
+      "type": "registry:component",
+      "title": "Connecting Real Data",
+      "description": "Wiring any chart to a real source: fetch in an effect, SWR or React Query, server components, and streaming — with every outcome mapped onto a status.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/market-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/market-chart.tsx"
+        },
+        {
+          "path": "app/registry/charts/chart-data.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-data.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "data-fetching",
+        "swr",
+        "react-query",
+        "websocket",
+        "server-component"
+      ]
+    },
+    {
+      "name": "chart-states",
+      "type": "registry:component",
+      "title": "Chart States",
+      "description": "Loading skeletons, empty states and error states for every chart — one wrapper, six skeleton shapes, and a frame height that never shifts between them.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/cohort-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/cohort-chart.tsx"
+        },
+        {
+          "path": "app/registry/charts/chart-states.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-states.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "loading",
+        "skeleton",
+        "empty-state",
+        "error-state",
+        "a11y"
+      ]
+    },
+    {
+      "name": "market-chart",
+      "type": "registry:component",
+      "title": "Market Chart",
+      "description": "A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair with axis-pinned price and time, a range selector that morphs the series, and a live tape.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/market-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/market-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "candlestick",
+        "trading",
+        "stock",
+        "crypto",
+        "ohlc",
+        "animated"
+      ]
+    },
+    {
+      "name": "indicator-chart",
+      "type": "registry:component",
+      "title": "Indicator Chart",
+      "description": "Price, RSI and MACD stacked on one time axis with a single crosshair that reports all three panes at once.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/indicator-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/indicator-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "rsi",
+        "macd",
+        "indicators",
+        "trading",
+        "technical-analysis"
+      ]
+    },
+    {
+      "name": "depth-chart",
+      "type": "registry:component",
+      "title": "Depth Chart",
+      "description": "Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports the size resting up to any price.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/depth-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/depth-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "depth",
+        "order-book",
+        "liquidity",
+        "dex",
+        "trading"
+      ]
+    },
+    {
+      "name": "order-book",
+      "type": "registry:component",
+      "title": "Order Book",
+      "description": "A trading ladder with cumulative depth bars, a spread row, and flashing updates in live mode.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/order-book.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/order-book.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "order-book",
+        "ladder",
+        "trading",
+        "bid-ask",
+        "live"
+      ]
+    },
+    {
+      "name": "portfolio-chart",
+      "type": "registry:component",
+      "title": "Portfolio Chart",
+      "description": "Account value against cost basis with drawdown from the running peak shaded underneath.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/portfolio-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/portfolio-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "portfolio",
+        "pnl",
+        "drawdown",
+        "cost-basis"
+      ]
+    },
+    {
+      "name": "market-heatmap",
+      "type": "registry:component",
+      "title": "Market Heatmap",
+      "description": "A squarified treemap sized by market cap and coloured on a diverging change ramp — the market map.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/market-heatmap.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/market-heatmap.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "heatmap",
+        "treemap",
+        "market-map",
+        "sectors"
+      ]
+    },
+    {
+      "name": "calendar-heatmap",
+      "type": "registry:component",
+      "title": "Calendar Heatmap",
+      "description": "A year of daily values as week columns — the contributions grid, with five quantised intensity steps, streak stats, and month rails.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/calendar-heatmap.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/calendar-heatmap.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "calendar",
+        "heatmap",
+        "activity",
+        "contributions"
+      ]
+    },
+    {
+      "name": "cohort-chart",
+      "type": "registry:component",
+      "title": "Cohort Retention",
+      "description": "The retention triangle: cohorts down, periods across, intensity by share retained, with a row and column crosshair and a period average.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/cohort-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/cohort-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "cohort",
+        "retention",
+        "analytics",
+        "grid"
+      ]
+    },
+    {
+      "name": "stat-cards",
+      "type": "registry:component",
+      "title": "Stat Cards",
+      "description": "KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline or progress bar beside it — the row every dashboard opens with.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/stat-cards.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/stat-cards.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "kpi",
+        "stat-card",
+        "sparkline",
+        "dashboard"
+      ]
+    },
+    {
+      "name": "histogram-chart",
+      "type": "registry:component",
+      "title": "Histogram",
+      "description": "A distribution of raw samples binned on nice edges, with p50 / p95 / p99 pinned onto the plot — the chart that shows the tail your average hides.",
+      "files": [
+        {
+          "path": "app/registry/charts/chart-engine.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/chart-engine.tsx"
+        },
+        {
+          "path": "app/registry/charts/histogram-chart.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/charts/histogram-chart.tsx"
+        }
+      ],
+      "category": "Chart",
+      "tags": [
+        "chart",
+        "svg",
+        "histogram",
+        "distribution",
+        "latency",
+        "percentile"
+      ]
+    },
+    {
       "name": "candlestick-chart",
       "type": "registry:component",
       "title": "Candlestick Chart",

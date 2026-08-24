@@ -1,31 +1,29 @@
-/**
- * Spectrum UI — Line Chart
- *
- * Multi-series Recharts lines with solid / dashed / animated-dashed strokes,
- * bump and step curves, gradient strokes, and optional glow. A Motion SVG
- * mask wipes the stroke and dots in together.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
-import { Line, LineChart as RechartsLineChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  CartesianGrid,
+  Line,
+  LineChart as RechartsLineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { cn } from '@/lib/utils';
 import {
   AnimatedDashedStroke,
   ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLegend,
   ChartLoadingBars,
   ChartPlotSurface,
   ChartRestingDot,
   ChartTooltipContent,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   type ChartDotRenderProps,
   MONTHLY_TRAFFIC,
   RevealMask,
@@ -102,9 +100,9 @@ export function LineChart({
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
                 <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
-              <ChartGrid />
-              <ChartXAxis dataKey="month" />
-              <ChartYAxis />
+              <CartesianGrid {...chartGrid} />
+              <XAxis {...chartXAxis} dataKey="month" />
+              <YAxis {...chartYAxis} />
               <Tooltip
                 cursor={{ stroke: 'currentColor', strokeOpacity: 0.22, strokeDasharray: '4 4' }}
                 content={<ChartTooltipContent />}
@@ -120,6 +118,7 @@ export function LineChart({
                   showDots
                     ? (props: ChartDotRenderProps) => (
                         <ChartRestingDot
+                          key={`dot-${props.index}`}
                           cx={props.cx}
                           cy={props.cy}
                           color={SERIES.desktop.color}
@@ -129,7 +128,7 @@ export function LineChart({
                     : false
                 }
                 activeDot={(props: ChartDotRenderProps) => (
-                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.desktop.color} />
+                  <ChartActiveDot key={`active-${props.index}`} cx={props.cx} cy={props.cy} color={SERIES.desktop.color} />
                 )}
                 isAnimationActive={false}
                 filter={glowing ? `url(#${glowId})` : undefined}
@@ -148,6 +147,7 @@ export function LineChart({
                   showDots
                     ? (props: ChartDotRenderProps) => (
                         <ChartRestingDot
+                          key={`dot-${props.index}`}
                           cx={props.cx}
                           cy={props.cy}
                           color={SERIES.mobile.color}
@@ -157,7 +157,7 @@ export function LineChart({
                     : false
                 }
                 activeDot={(props: ChartDotRenderProps) => (
-                  <ChartActiveDot cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
+                  <ChartActiveDot key={`active-${props.index}`} cx={props.cx} cy={props.cy} color={SERIES.mobile.color} />
                 )}
                 isAnimationActive={false}
                 style={maskStyle}

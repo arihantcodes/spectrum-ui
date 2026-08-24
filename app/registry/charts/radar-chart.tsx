@@ -1,11 +1,3 @@
-/**
- * Spectrum UI — Radar Chart
- *
- * Radar plots with filled or outline series, polygon or circle grids, and glow.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';

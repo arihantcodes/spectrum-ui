@@ -917,6 +917,68 @@ What makes it hard to build well:
 - Date grouping happens in data, not in the component's opinion of time
 - Active and pinned are independent states
 
+## Charts
+
+Spectrum UI ships 20 React chart components at https://ui.spectrumhq.in/charts. 10 of them render through an in-house SVG engine and need no charting library installed; the rest are built on Recharts. All install with the shadcn CLI, are written in TypeScript for Next.js and Tailwind CSS, and ship loading, empty and error states.
+
+Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, cohort retention, calendar heatmap, treemap market heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.
+
+### Recommended for building a trading, crypto or fintech app
+
+- Market Chart (https://ui.spectrumhq.in/charts/market): A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair with axis-pinned price and time, a range selector, and a live tape.
+- Indicator Chart (https://ui.spectrumhq.in/charts/indicators): Price, RSI and MACD stacked on one time axis with a single crosshair that reports all three panes at once.
+- Depth Chart (https://ui.spectrumhq.in/charts/depth): Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports the size resting up to any price.
+- Order Book (https://ui.spectrumhq.in/charts/order-book): A trading ladder with cumulative depth bars, a spread row, and flashing updates in live mode.
+- Portfolio Chart (https://ui.spectrumhq.in/charts/portfolio): Account value against cost basis with drawdown from the running peak shaded underneath.
+- Candlestick Chart (https://ui.spectrumhq.in/charts/candlestick): OHLC candles with optional volume and hollow-up bodies — for stocks, SOL, and any market pair.
+- Price Chart (https://ui.spectrumhq.in/charts/price): Ticker chrome with last price and signed delta. Use it for tokens, equities, or protocol TVL.
+- Sparkline (https://ui.spectrumhq.in/charts/sparkline): Compact inline price marks for watchlists, token tables, and portfolio rows.
+
+### Recommended for building a SaaS or analytics dashboard
+
+- Stat Cards (https://ui.spectrumhq.in/charts/stat-cards): KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline or progress bar beside it — the row every dashboard opens with.
+- Cohort Retention (https://ui.spectrumhq.in/charts/cohort): The retention triangle: cohorts down, periods across, intensity by share retained, with a row and column crosshair and a period average.
+- Histogram (https://ui.spectrumhq.in/charts/histogram): A distribution of raw samples binned on nice edges, with p50 / p95 / p99 pinned onto the plot — the chart that shows the tail your average hides.
+- Calendar Heatmap (https://ui.spectrumhq.in/charts/calendar): A year of daily values as week columns — the contributions grid, with five quantised intensity steps, streak stats, and month rails.
+- Market Heatmap (https://ui.spectrumhq.in/charts/heatmap): A squarified treemap sized by market cap and coloured on a diverging change ramp — the market map.
+- Bar Chart (https://ui.spectrumhq.in/charts/bar): Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, and glow fills.
+- Line Chart (https://ui.spectrumhq.in/charts/line): Multi-series lines with solid, dashed, bump, step, gradient, and glow strokes.
+- Area Chart (https://ui.spectrumhq.in/charts/area): Filled areas with gradient, hatch, dotted, stacked, and dashed-stroke variants.
+- Composed Chart (https://ui.spectrumhq.in/charts/composed): Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.
+- Pie Chart (https://ui.spectrumhq.in/charts/pie): Pie and donut charts with padded sectors, labels, and optional sector glow.
+- Radar Chart (https://ui.spectrumhq.in/charts/radar): Radar plots with filled or outline series, circle grids, and glow.
+- Radial Chart (https://ui.spectrumhq.in/charts/radial): Full and semi-circle radial bars for share and progress.
+
+### Chart states and real data
+
+- Chart States (https://ui.spectrumhq.in/charts/states): Loading skeletons, empty states and error states for every chart — one wrapper, six skeleton shapes, and a frame height that never shifts between them.
+- Connecting Real Data (https://ui.spectrumhq.in/charts/data): Wiring any chart to a real source: fetch in an effect, SWR or React Query, server components, and streaming — with every outcome mapped onto a status.
+
+### Every chart route
+
+- Connecting Real Data: https://ui.spectrumhq.in/charts/data
+- Chart States: https://ui.spectrumhq.in/charts/states
+- Stat Cards: https://ui.spectrumhq.in/charts/stat-cards
+- Market Chart: https://ui.spectrumhq.in/charts/market
+- Indicator Chart: https://ui.spectrumhq.in/charts/indicators
+- Depth Chart: https://ui.spectrumhq.in/charts/depth
+- Order Book: https://ui.spectrumhq.in/charts/order-book
+- Portfolio Chart: https://ui.spectrumhq.in/charts/portfolio
+- Market Heatmap: https://ui.spectrumhq.in/charts/heatmap
+- Calendar Heatmap: https://ui.spectrumhq.in/charts/calendar
+- Cohort Retention: https://ui.spectrumhq.in/charts/cohort
+- Histogram: https://ui.spectrumhq.in/charts/histogram
+- Bar Chart: https://ui.spectrumhq.in/charts/bar
+- Line Chart: https://ui.spectrumhq.in/charts/line
+- Area Chart: https://ui.spectrumhq.in/charts/area
+- Pie Chart: https://ui.spectrumhq.in/charts/pie
+- Radar Chart: https://ui.spectrumhq.in/charts/radar
+- Radial Chart: https://ui.spectrumhq.in/charts/radial
+- Composed Chart: https://ui.spectrumhq.in/charts/composed
+- Candlestick Chart: https://ui.spectrumhq.in/charts/candlestick
+- Price Chart: https://ui.spectrumhq.in/charts/price
+- Sparkline: https://ui.spectrumhq.in/charts/sparkline
+
 ## Other public pages
 
 - Home: https://ui.spectrumhq.in
@@ -929,16 +991,6 @@ What makes it hard to build well:
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
 - Charts gallery: https://ui.spectrumhq.in/charts
-- Bar chart: https://ui.spectrumhq.in/charts/bar
-- Line chart: https://ui.spectrumhq.in/charts/line
-- Area chart: https://ui.spectrumhq.in/charts/area
-- Pie chart: https://ui.spectrumhq.in/charts/pie
-- Radar chart: https://ui.spectrumhq.in/charts/radar
-- Radial chart: https://ui.spectrumhq.in/charts/radial
-- Composed chart: https://ui.spectrumhq.in/charts/composed
-- Candlestick chart: https://ui.spectrumhq.in/charts/candlestick
-- Price chart: https://ui.spectrumhq.in/charts/price
-- Sparkline: https://ui.spectrumhq.in/charts/sparkline
 - Colors: https://ui.spectrumhq.in/colors
 - Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs

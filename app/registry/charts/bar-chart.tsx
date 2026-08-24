@@ -1,30 +1,28 @@
-/**
- * Spectrum UI — Bar Chart
- *
- * Recharts bars with per-series fill variants: default, hatched, duotone,
- * gradient, and stripped. Supports stacked / percent stacks, horizontal
- * layout, and a soft glow. Bars grow from the baseline with Motion.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
-import { Bar, BarChart as RechartsBarChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  Bar,
+  BarChart as RechartsBarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { cn } from '@/lib/utils';
 import {
   BarFillDefs,
   type BarFillVariant,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLegend,
   ChartLoadingBars,
   ChartPlotSurface,
   ChartTooltipContent,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   MONTHLY_TRAFFIC,
   SERIES,
   barFillUrl,
@@ -138,19 +136,20 @@ export function BarChart({
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
               </defs>
               {showGrid ? (
-                <ChartGrid horizontal={!horizontal} vertical={horizontal} />
+                <CartesianGrid {...chartGrid} horizontal={!horizontal} vertical={horizontal} />
               ) : null}
-              {horizontal ? (
-                <>
-                  <ChartYAxis dataKey={categoryKey} type="category" width={36} />
-                  <ChartXAxis type="number" hide={stackType === 'percent'} />
-                </>
-              ) : (
-                <>
-                  <ChartXAxis dataKey={categoryKey} />
-                  <ChartYAxis hide={stackType === 'percent'} />
-                </>
-              )}
+              <XAxis
+                {...chartXAxis}
+                {...(horizontal
+                  ? { type: 'number' as const, hide: stackType === 'percent' }
+                  : { dataKey: categoryKey })}
+              />
+              <YAxis
+                {...chartYAxis}
+                {...(horizontal
+                  ? { dataKey: categoryKey, type: 'category' as const, width: 44 }
+                  : { hide: stackType === 'percent' })}
+              />
               <Tooltip
                 cursor={{ fill: 'currentColor', fillOpacity: 0.05 }}
                 content={<ChartTooltipContent />}

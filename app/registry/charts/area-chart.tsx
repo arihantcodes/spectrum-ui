@@ -1,17 +1,15 @@
-/**
- * Spectrum UI — Area Chart
- *
- * Filled Recharts areas with gradient, reverse-gradient, solid, hatched, and
- * dotted fills. Supports stacked / expanded stacks and dashed strokes. A
- * Motion SVG mask wipes fill and stroke in together.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
-import { Area, AreaChart as RechartsAreaChart, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  Area,
+  AreaChart as RechartsAreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { cn } from '@/lib/utils';
 import {
   AreaFillDefs,
@@ -20,13 +18,13 @@ import {
   ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLegend,
   ChartLoadingBars,
   ChartPlotSurface,
   ChartTooltipContent,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   type ChartDotRenderProps,
   MONTHLY_TRAFFIC,
   RevealMask,
@@ -100,9 +98,9 @@ export function AreaChart({
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
                 <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
-              <ChartGrid />
-              <ChartXAxis dataKey="month" />
-              <ChartYAxis hide={stackType === 'expanded'} />
+              <CartesianGrid {...chartGrid} />
+              <XAxis {...chartXAxis} dataKey="month" />
+              <YAxis {...chartYAxis} hide={stackType === 'expanded'} />
               <Tooltip
                 cursor={{ stroke: 'currentColor', strokeOpacity: 0.22, strokeDasharray: '4 4' }}
                 content={<ChartTooltipContent />}

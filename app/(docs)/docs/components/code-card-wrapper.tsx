@@ -12,6 +12,7 @@ interface Props {
   installScript?: string;
   installCode?: string;
   installContent?: React.ReactNode;
+  files?: { name: string; code: string }[];
   withInstallation?: boolean;
 }
 
@@ -24,6 +25,7 @@ const CodeCardWrapper = ({
   installScript,
   installCode,
   installContent,
+  files,
   withInstallation,
 }: Props) => {
   return (
@@ -35,6 +37,7 @@ const CodeCardWrapper = ({
       installScript={installScript}
       installCode={installCode}
       installContent={installContent}
+      files={files}
       withInstallation={withInstallation}
     >
       {children}

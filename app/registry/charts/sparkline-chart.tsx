@@ -1,12 +1,3 @@
-/**
- * Spectrum UI — Sparkline
- *
- * Compact price marks for watchlists, token tables, and portfolio rows.
- * Color follows the series direction using the ink / zinc pair.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';

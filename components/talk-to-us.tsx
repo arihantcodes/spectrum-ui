@@ -109,6 +109,7 @@ export function TalkToUs() {
         onClick={toggleChat}
         aria-expanded={open}
         aria-label={open ? 'Close chat' : 'Open chat'}
+        data-talk-to-us
         className="fixed bottom-4 right-4 z-50 gap-1.5 rounded-full border border-neutral-200 px-3 py-2.5 h-[40px] font-inter text-base font-normal tracking-wide shadow-md [&_svg]:size-6"
       >
         <ChatIcon aria-hidden className="size-6 shrink-0" />

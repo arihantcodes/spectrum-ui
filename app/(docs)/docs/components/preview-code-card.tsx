@@ -21,6 +21,14 @@ interface PreviewCodeCardProps {
   installContent?: React.ReactNode;
   /** Set false to hide the auto-rendered "Installation" section */
   withInstallation?: boolean;
+  /**
+   * Extra source files to offer in the Code tab alongside the demo. The demo
+   * only shows how to call the component; copying it by hand needs the
+   * component itself and anything it imports.
+   */
+  sourcePaths?: string[];
+  /** Label for the demo file in the Code tab switcher. */
+  demoLabel?: string;
 }
 
 const PreviewCodeCard = async ({
@@ -32,6 +40,8 @@ const PreviewCodeCard = async ({
   installCodePath,
   installContent,
   withInstallation,
+  sourcePaths,
+  demoLabel = 'usage.tsx',
 }: PreviewCodeCardProps) => {
   // Read the demo file
   let demoCode: string;
@@ -53,6 +63,23 @@ const PreviewCodeCard = async ({
     }
   }
 
+  // Read the extra files offered in the Code tab.
+  let files: { name: string; code: string }[] | undefined;
+  if (sourcePaths?.length) {
+    const extra = await Promise.all(
+      sourcePaths.map(async (sourcePath) => {
+        try {
+          const absolute = nodePath.join(process.cwd(), sourcePath);
+          return { name: nodePath.basename(sourcePath), code: await fs.readFile(absolute, 'utf8') };
+        } catch {
+          return null;
+        }
+      }),
+    );
+    const loaded = extra.filter((file): file is { name: string; code: string } => file !== null);
+    if (loaded.length) files = [{ name: demoLabel, code: demoCode }, ...loaded];
+  }
+
   if (!demoCode) return null;
 
   return (
@@ -63,6 +90,7 @@ const PreviewCodeCard = async ({
       installScript={installScript}
       installCode={installCode}
       installContent={installContent}
+      files={files}
       withInstallation={withInstallation}
     >
       {children}
