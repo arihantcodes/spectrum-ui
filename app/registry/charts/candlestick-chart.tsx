@@ -1,23 +1,17 @@
-/**
- * Spectrum UI — Candlestick Chart
- *
- * OHLC candles with optional volume, hollow-up bodies, and a Motion grow-in.
- * Built for trading desks, token pages, and market dashboards.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import {
   Bar,
+  CartesianGrid,
   ComposedChart,
   Customized,
   Line,
   ResponsiveContainer,
   Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 import { cn } from '@/lib/utils';
 import {
@@ -27,11 +21,11 @@ import {
   type CandlePoint,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLoadingBars,
   ChartPlotSurface,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   EASE_OUT,
   HOVER_OPACITY,
   HOVER_TRANSITION,
@@ -282,15 +276,15 @@ export function CandlestickChart({
                   <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
                   {glowing ? <ChartGlowFilter id={glowId} /> : null}
                 </defs>
-                <ChartGrid />
-                <ChartXAxis dataKey="date" />
-                <ChartYAxis
+                <CartesianGrid {...chartGrid} />
+                <XAxis {...chartXAxis} dataKey="date" />
+                <YAxis {...chartYAxis}
                   domain={['dataMin', 'dataMax']}
                   tickFormatter={(value: number) => formatUsd(value, true)}
                   width={48}
                 />
                 {showVolume ? (
-                  <ChartYAxis
+                  <YAxis {...chartYAxis}
                     yAxisId="volume"
                     orientation="right"
                     hide

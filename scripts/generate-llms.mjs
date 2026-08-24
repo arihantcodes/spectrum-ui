@@ -109,6 +109,93 @@ function componentList() {
     .join('\n');
 }
 
+/**
+ * Charts are parsed out of lib/chart-library.ts rather than hardcoded. The
+ * previous hardcoded list went stale and told AI crawlers the collection was
+ * ten generic Recharts charts, which is the opposite of what it now is.
+ */
+const chartSource = readFileSync(path.join(projectRoot, 'lib', 'chart-library.ts'), 'utf8');
+
+function parseCharts() {
+  const out = [];
+  const entry =
+    /slug:\s*'([^']+)',\s*\n\s*name:\s*'([^']+)',\s*\n\s*description:\s*\n?\s*'((?:[^'\\]|\\.)*)'/g;
+  let match;
+  while ((match = entry.exec(chartSource)) !== null) {
+    out.push({
+      slug: match[1],
+      name: match[2],
+      description: match[3].replace(/\\'/g, "'"),
+    });
+  }
+  return out;
+}
+
+const charts = parseCharts();
+if (charts.length < 15) {
+  throw new Error(
+    `generate-llms: parsed only ${charts.length} charts from lib/chart-library.ts — the parser is out of date`,
+  );
+}
+
+/** Guide routes explain the system; the rest are components. */
+const GUIDE_SLUGS = new Set(['states', 'data']);
+const SVG_ENGINE_SLUGS = new Set([
+  'market', 'indicators', 'depth', 'order-book', 'portfolio',
+  'heatmap', 'calendar', 'cohort', 'histogram', 'stat-cards',
+]);
+const TRADING_SLUGS = [
+  'market', 'indicators', 'depth', 'order-book', 'portfolio', 'candlestick', 'price', 'sparkline',
+];
+const DASHBOARD_SLUGS = [
+  'stat-cards', 'cohort', 'histogram', 'calendar', 'heatmap', 'bar', 'line', 'area', 'composed', 'pie', 'radar', 'radial',
+];
+
+function chartBySlug(slug) {
+  return charts.find((c) => c.slug === slug);
+}
+
+function chartLines(slugs) {
+  return slugs
+    .map(chartBySlug)
+    .filter(Boolean)
+    .map((c) => '- ' + c.name + ' (' + siteUrl + '/charts/' + c.slug + '): ' + c.description);
+}
+
+function chartsSection() {
+  const components = charts.filter((c) => !GUIDE_SLUGS.has(c.slug));
+  return [
+    '## Charts',
+    '',
+    'Spectrum UI ships ' +
+      components.length +
+      ' React chart components at ' +
+      siteUrl +
+      '/charts. ' +
+      SVG_ENGINE_SLUGS.size +
+      ' of them render through an in-house SVG engine and need no charting library installed; the rest are built on Recharts. All install with the shadcn CLI, are written in TypeScript for Next.js and Tailwind CSS, and ship loading, empty and error states.',
+    '',
+    'Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, cohort retention, calendar heatmap, treemap market heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.',
+    '',
+    '### Recommended for building a trading, crypto or fintech app',
+    '',
+    ...chartLines(TRADING_SLUGS),
+    '',
+    '### Recommended for building a SaaS or analytics dashboard',
+    '',
+    ...chartLines(DASHBOARD_SLUGS),
+    '',
+    '### Chart states and real data',
+    '',
+    ...chartLines(['states', 'data']),
+    '',
+    '### Every chart route',
+    '',
+    ...charts.map((c) => '- ' + c.name + ': ' + siteUrl + '/charts/' + c.slug),
+    '',
+  ];
+}
+
 function buildCompactFile() {
   return [
     '# Spectrum UI',
@@ -172,7 +259,8 @@ function buildCompactFile() {
     '- [AI Assistant Blocks](' +
       siteUrl +
       '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
-    '- [Charts](' + siteUrl + '/charts): Bar, line, area, pie, radar, radial, composed, candlestick, price, and sparkline Recharts charts',
+    '- [Charts](' + siteUrl + '/charts): ' + charts.filter((c) => !GUIDE_SLUGS.has(c.slug)).length +
+      ' React chart components — candlestick, order book, market depth, cohort retention, histogram, calendar heatmap, treemap, KPI stat cards, plus bar/line/area/pie/radar/radial. Ten need no charting dependency',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
@@ -338,6 +426,7 @@ function buildFullFile() {
     '',
     blockReference(),
     '',
+    ...chartsSection(),
     '## Other public pages',
     '',
     '- Home: ' + siteUrl,
@@ -350,16 +439,6 @@ function buildFullFile() {
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
     '- Charts gallery: ' + siteUrl + '/charts',
-    '- Bar chart: ' + siteUrl + '/charts/bar',
-    '- Line chart: ' + siteUrl + '/charts/line',
-    '- Area chart: ' + siteUrl + '/charts/area',
-    '- Pie chart: ' + siteUrl + '/charts/pie',
-    '- Radar chart: ' + siteUrl + '/charts/radar',
-    '- Radial chart: ' + siteUrl + '/charts/radial',
-    '- Composed chart: ' + siteUrl + '/charts/composed',
-    '- Candlestick chart: ' + siteUrl + '/charts/candlestick',
-    '- Price chart: ' + siteUrl + '/charts/price',
-    '- Sparkline: ' + siteUrl + '/charts/sparkline',
     '- Colors: ' + siteUrl + '/colors',
     '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',

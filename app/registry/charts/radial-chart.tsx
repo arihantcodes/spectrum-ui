@@ -1,11 +1,3 @@
-/**
- * Spectrum UI — Radial Chart
- *
- * Full and semi-circle radial bars for share and progress.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';

@@ -1,12 +1,3 @@
-/**
- * Spectrum UI — Chart kit
- *
- * Shared data, colors, SVG fills, Motion intro, tooltip, and axis chrome for
- * the Charts collection. Copy this file with any chart you install.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
@@ -75,7 +66,6 @@ export type WatchlistRow = {
   series: SparkPoint[];
 };
 
-/** Specimen SOL/USD daily candles — not a live feed. */
 export const SOL_CANDLES: CandlePoint[] = [
   { date: 'Jul 1', open: 128.4, high: 132.1, low: 126.8, close: 131.2, volume: 38_400_000 },
   { date: 'Jul 2', open: 131.2, high: 134.6, low: 129.9, close: 130.4, volume: 41_200_000 },
@@ -97,7 +87,6 @@ export const SOL_CANDLES: CandlePoint[] = [
   { date: 'Jul 24', open: 145.6, high: 151.2, low: 145.1, close: 150.4, volume: 57_300_000 },
 ];
 
-/** Specimen AAPL daily candles — not a live feed. */
 export const AAPL_CANDLES: CandlePoint[] = [
   { date: 'Jul 1', open: 214.2, high: 216.8, low: 213.1, close: 215.6, volume: 48_200_000 },
   { date: 'Jul 2', open: 215.6, high: 217.4, low: 214.8, close: 216.9, volume: 41_600_000 },
@@ -222,9 +211,11 @@ export const CHART_COLORS = [
   'var(--spectrum-chart-5)',
 ] as const;
 
-/** Ink / zinc / slate — two or three colors developers actually ship. Up/down alias the same pair. */
 export const chartVarsClassName =
-  '[--spectrum-chart-1:#171717] [--spectrum-chart-2:#737373] [--spectrum-chart-3:#52525b] [--spectrum-chart-4:#a3a3a3] [--spectrum-chart-5:#d4d4d8] [--spectrum-chart-surface:#fff] [--spectrum-chart-up:var(--spectrum-chart-1)] [--spectrum-chart-down:var(--spectrum-chart-2)] dark:[--spectrum-chart-1:#f5f5f5] dark:[--spectrum-chart-2:#a3a3a3] dark:[--spectrum-chart-3:#d4d4d8] dark:[--spectrum-chart-4:#737373] dark:[--spectrum-chart-5:#52525b] dark:[--spectrum-chart-surface:#0a0a0a]';
+  '[--spectrum-chart-1:#2563eb] [--spectrum-chart-2:#f59e0b] [--spectrum-chart-3:#0d9488] [--spectrum-chart-4:#7c3aed] [--spectrum-chart-5:#64748b] [--spectrum-chart-surface:#fff] [--spectrum-chart-up:#059669] [--spectrum-chart-down:#e11d48] dark:[--spectrum-chart-1:#60a5fa] dark:[--spectrum-chart-2:#fbbf24] dark:[--spectrum-chart-3:#2dd4bf] dark:[--spectrum-chart-4:#a78bfa] dark:[--spectrum-chart-5:#94a3b8] dark:[--spectrum-chart-surface:#0a0a0a] dark:[--spectrum-chart-up:#34d399] dark:[--spectrum-chart-down:#fb7185]';
+
+export const chartVarsNeutral =
+  '[--spectrum-chart-1:#171717] [--spectrum-chart-2:#737373] [--spectrum-chart-3:#52525b] [--spectrum-chart-4:#a3a3a3] [--spectrum-chart-5:#d4d4d8] [--spectrum-chart-surface:#fff] [--spectrum-chart-up:#059669] [--spectrum-chart-down:#e11d48] dark:[--spectrum-chart-1:#f5f5f5] dark:[--spectrum-chart-2:#a3a3a3] dark:[--spectrum-chart-3:#d4d4d8] dark:[--spectrum-chart-4:#737373] dark:[--spectrum-chart-5:#52525b] dark:[--spectrum-chart-surface:#0a0a0a] dark:[--spectrum-chart-up:#34d399] dark:[--spectrum-chart-down:#fb7185]';
 
 export const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 export const BAR_STAGGER = 0.04;
@@ -261,7 +252,6 @@ export function useChartMotion() {
   };
 }
 
-/** Stamp once on mount so Recharts remounts (hover) cannot replay the intro. */
 export function useIntroStartedAt() {
   const [introStartedAt] = React.useState(() => Date.now());
   return introStartedAt;
@@ -391,42 +381,28 @@ export const axisTick = {
   fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
 } as const;
 
-export function ChartGrid(props: React.ComponentProps<typeof CartesianGrid>) {
-  return (
-    <CartesianGrid
-      vertical={false}
-      stroke="currentColor"
-      strokeOpacity={0.14}
-      strokeDasharray="3 3"
-      {...props}
-    />
-  );
-}
+export const chartGrid = {
+  vertical: false,
+  stroke: 'currentColor',
+  strokeOpacity: 0.14,
+  strokeDasharray: '3 3',
+} satisfies Partial<React.ComponentProps<typeof CartesianGrid>>;
 
-export function ChartXAxis(props: React.ComponentProps<typeof XAxis>) {
-  return (
-    <XAxis
-      axisLine={false}
-      tickLine={false}
-      tickMargin={8}
-      tick={axisTick}
-      {...props}
-    />
-  );
-}
+export const chartXAxis = {
+  axisLine: false,
+  tickLine: false,
+  tickMargin: 8,
+  tick: axisTick,
+  minTickGap: 8,
+} satisfies Partial<React.ComponentProps<typeof XAxis>>;
 
-export function ChartYAxis(props: React.ComponentProps<typeof YAxis>) {
-  return (
-    <YAxis
-      axisLine={false}
-      tickLine={false}
-      tickMargin={8}
-      tick={axisTick}
-      width={36}
-      {...props}
-    />
-  );
-}
+export const chartYAxis = {
+  axisLine: false,
+  tickLine: false,
+  tickMargin: 8,
+  tick: axisTick,
+  width: 44,
+} satisfies Partial<React.ComponentProps<typeof YAxis>>;
 
 export function ChartGlowFilter({ id }: { id: string }) {
   return (
@@ -449,7 +425,6 @@ export function ChartGlowFilter({ id }: { id: string }) {
   );
 }
 
-/** Left-to-right SVG wipe. Stroke and dots share this mask so they uncover together. */
 export function RevealMask({
   id,
   introStartedAt,
@@ -459,7 +434,6 @@ export function RevealMask({
   introStartedAt: number;
   reduce?: boolean;
 }) {
-  // Resume mid-wipe if Recharts remounts this mask (hover re-render).
   // eslint-disable-next-line react-hooks/purity -- one-shot intro is anchored to mount time
   const elapsed = Date.now() - introStartedAt;
   const durationMs = REVEAL_DURATION * 1000;
@@ -498,7 +472,6 @@ export function RevealMask({
   );
 }
 
-/** Looping dashed stroke via SVG `<animate>` — constant motion, so linear. */
 export function AnimatedDashedStroke() {
   const reduce = Boolean(useReducedMotion());
   if (reduce) return null;
@@ -506,6 +479,7 @@ export function AnimatedDashedStroke() {
   return (
     <>
       <animate
+        key="dasharray"
         attributeName="stroke-dasharray"
         values="5 5; 0 5; 5 5"
         dur="1s"
@@ -513,6 +487,7 @@ export function AnimatedDashedStroke() {
         calcMode="linear"
       />
       <animate
+        key="dashoffset"
         attributeName="stroke-dashoffset"
         values="0; -10"
         dur="1s"
@@ -527,6 +502,7 @@ export type ChartDotRenderProps = {
   cx?: number;
   cy?: number;
   fill?: string;
+  index?: number;
 };
 
 export function ChartRestingDot({

@@ -1,28 +1,28 @@
-/**
- * Spectrum UI — Price Chart
- *
- * Token or stock price with ticker chrome: last price, signed delta, and a
- * Motion SVG wipe. Same component for SOL, NVDA, or protocol TVL.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { Area, ComposedChart, Line, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  Area,
+  CartesianGrid,
+  ComposedChart,
+  Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { cn } from '@/lib/utils';
 import {
   AreaFillDefs,
   ChartActiveDot,
   ChartFrame,
   ChartGlowFilter,
-  ChartGrid,
+  chartGrid,
   ChartLoadingBars,
   ChartPlotSurface,
-  ChartXAxis,
-  ChartYAxis,
+  chartXAxis,
+  chartYAxis,
   type ChartDotRenderProps,
   ETH_PRICE,
   EASE_OUT,
@@ -174,9 +174,17 @@ export function PriceChart({
                 {glowing ? <ChartGlowFilter id={glowId} /> : null}
                 <RevealMask id={maskId} introStartedAt={introStartedAt} reduce={reduce} />
               </defs>
-              <ChartGrid />
-              <ChartXAxis dataKey="time" hide />
-              <ChartYAxis domain={['dataMin', 'dataMax']} hide width={0} />
+              <CartesianGrid {...chartGrid} />
+              <XAxis {...chartXAxis} dataKey="time" tickFormatter={() => ''} height={8} />
+              <YAxis
+                {...chartYAxis}
+                domain={([min, max]: [number, number]) => {
+                  const pad = (max - min) * 0.18 || Math.abs(max) * 0.02 || 1;
+                  return [min - pad, max + pad];
+                }}
+                tickFormatter={(value: number) => formatPrice(value, resolvedFormat)}
+                width={64}
+              />
               <Tooltip
                 cursor={{ stroke: 'currentColor', strokeOpacity: 0.22, strokeDasharray: '4 4' }}
                 content={

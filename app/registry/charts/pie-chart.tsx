@@ -1,12 +1,3 @@
-/**
- * Spectrum UI — Pie Chart
- *
- * Pie and donut charts with padded sectors, labels, and optional glow.
- * Hover dims sibling slices; intro stays under 300ms.
- *
- * Dependencies: recharts, framer-motion, @/lib/utils
- */
-
 'use client';
 
 import * as React from 'react';
