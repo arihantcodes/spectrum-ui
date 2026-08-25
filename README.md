@@ -36,7 +36,7 @@
 
 Spectrum UI is a free collection of React components built on shadcn/ui, Tailwind CSS, and Motion. Nothing is hidden behind a package. The source lands in your project, and from there it's yours to change.
 
-There are 44 components in the docs today, plus page blocks and a few full templates. Every one has a live preview and its code sitting right underneath.
+There are 250 components in the docs today, plus page blocks and a few full templates. Every one has a live preview and its code sitting right underneath.
 
 ## Getting a component
 
