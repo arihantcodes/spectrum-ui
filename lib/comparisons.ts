@@ -38,7 +38,7 @@ export interface Comparison {
 }
 
 const SPECTRUM_TAGLINE =
-  "Ship animated, accessible React & Next.js UIs in minutes. You get production-ready components that already move, own every line (copy-pasted into your repo), install with the shadcn CLI, and can add them from your editor via an MCP server — free and open source (MIT).";
+  "Ship animated, accessible React & Next.js UIs in minutes. You get production-ready components that already move, own every line (copy-pasted into your repo), install with the shadcn CLI, and can add them from your editor via an MCP server — free and open source (Apache-2.0).";
 
 export const comparisons: Comparison[] = [
   {
@@ -55,7 +55,7 @@ export const comparisons: Comparison[] = [
     competitorPitch:
       "A free collection of eye-catching, animation-heavy React components popular for landing pages and hero sections, with paid Pro templates.",
     rows: [
-      { feature: "Price", spectrum: "Free (MIT)", competitor: "Free · paid Pro templates" },
+      { feature: "Price", spectrum: "Free (Apache-2.0)", competitor: "Free · paid Pro templates" },
       { feature: "You own the code (copy-paste)", spectrum: true, competitor: true },
       { feature: "Animated (Framer Motion)", spectrum: true, competitor: true },
       { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: "Copy-paste / registry" },
@@ -81,7 +81,7 @@ export const comparisons: Comparison[] = [
       {
         question: "Is Spectrum UI a free alternative to Aceternity UI?",
         answer:
-          "Yes. Spectrum UI is free and open source under the MIT license. Components are copy-paste React and Tailwind files that you own, and you can install them with the shadcn CLI (npx shadcn add @spectrumui/…).",
+          "Yes. Spectrum UI is free and open source under the Apache License 2.0. Components are copy-paste React and Tailwind files that you own, and you can install them with the shadcn CLI (npx shadcn add @spectrumui/…).",
       },
       {
         question: "What is the main difference between Spectrum UI and Aceternity UI?",
@@ -117,7 +117,7 @@ export const comparisons: Comparison[] = [
     competitorPitch:
       "A free, open-source set of animated components and effects that complements shadcn/ui, with a paid Pro template offering.",
     rows: [
-      { feature: "Price", spectrum: "Free (MIT)", competitor: "Free (MIT) · paid Pro" },
+      { feature: "Price", spectrum: "Free (Apache-2.0)", competitor: "Free (MIT) · paid Pro" },
       { feature: "You own the code (copy-paste)", spectrum: true, competitor: true },
       { feature: "Animated (Framer Motion)", spectrum: true, competitor: true },
       { feature: "Works alongside shadcn/ui", spectrum: true, competitor: true },
@@ -142,7 +142,7 @@ export const comparisons: Comparison[] = [
       {
         question: "Is Spectrum UI a good Magic UI alternative?",
         answer:
-          "Yes. Spectrum UI is a free, MIT-licensed animated component library that, like Magic UI, works alongside shadcn/ui and Tailwind CSS. Spectrum UI adds an MCP server so AI assistants can add components directly and follows Radix conventions for accessibility.",
+          "Yes. Spectrum UI is a free, Apache-2.0 licensed animated component library that, like Magic UI, works alongside shadcn/ui and Tailwind CSS. Spectrum UI adds an MCP server so AI assistants can add components directly and follows Radix conventions for accessibility.",
       },
       {
         question: "Can I use Magic UI and Spectrum UI in the same project?",
@@ -178,7 +178,7 @@ export const comparisons: Comparison[] = [
     competitorPitch:
       "The widely adopted, free, open-source foundation of copy-paste React components built on Radix UI and Tailwind CSS — minimal and unopinionated by design.",
     rows: [
-      { feature: "Price", spectrum: "Free (MIT)", competitor: "Free (MIT)" },
+      { feature: "Price", spectrum: "Free (Apache-2.0)", competitor: "Free (MIT)" },
       { feature: "You own the code (copy-paste)", spectrum: true, competitor: true },
       { feature: "Built on Radix UI + Tailwind", spectrum: true, competitor: true },
       { feature: "Install via shadcn CLI", spectrum: true, competitor: true },
@@ -223,6 +223,100 @@ export const comparisons: Comparison[] = [
       "components built on shadcn",
       "shadcn compatible library",
       "extend shadcn ui",
+    ],
+  },
+  {
+    /**
+     * Namesake disambiguation, not a like-for-like product comparison.
+     *
+     * Profound (Aug 2026) showed AI engines resolve the bare string "Spectrum"
+     * to Adobe on 6 of 8 branded prompts — including prompts that said
+     * "Spectrum UI" verbatim. They resolve it correctly only when the question
+     * co-occurs with React-component-library context (MUI, Ant Design, Chakra).
+     * This page exists to supply that context explicitly.
+     */
+    slug: "spectrum-ui-vs-adobe-spectrum",
+    competitor: "Adobe Spectrum",
+    competitorUrl: "https://spectrum.adobe.com",
+    title:
+      "Spectrum UI vs Adobe Spectrum — Two Different Projects, Explained",
+    metaDescription:
+      "Spectrum UI and Adobe Spectrum are unrelated projects that share a name. Spectrum UI is an independent Tailwind CSS + React component library at ui.spectrumhq.in; Adobe Spectrum is Adobe's enterprise design system. Here is which one you are looking for.",
+    heading: "Spectrum UI vs Adobe Spectrum",
+    intro:
+      "These are two unrelated projects that happen to share the word \u201cSpectrum.\u201d Spectrum UI is an independent, open-source React and Next.js component library at ui.spectrumhq.in, built with Tailwind CSS, Motion, and Radix UI, and maintained by Arihant Jain. Adobe Spectrum is Adobe\u2019s internal enterprise design system, implemented for React as React Spectrum and React Aria. Neither is a fork, version, or successor of the other, and they share no code, no organisation, and no maintainers.",
+    spectrumPitch:
+      "Spectrum UI (ui.spectrumhq.in) is the one you want if you are building a product on React, Next.js, and Tailwind CSS and comparing against shadcn/ui, MUI, Ant Design, Chakra UI, Aceternity UI, or Magic UI. It is 250+ copy-paste blocks, components, and variants that ship already animated and accessible, installable with the shadcn CLI or through an MCP server. Free and open source (Apache-2.0).",
+    competitorPitch:
+      "Adobe Spectrum (spectrum.adobe.com) is the one you want if you are building inside or alongside Adobe's product ecosystem, or need a mature enterprise design system with deep WAI-ARIA coverage, design tokens, localisation, and adaptive desktop/mobile scales. Its React implementations are React Spectrum and React Aria.",
+    rows: [
+      { feature: "Project", spectrum: "Spectrum UI", competitor: "Adobe Spectrum" },
+      { feature: "Website", spectrum: "ui.spectrumhq.in", competitor: "spectrum.adobe.com" },
+      { feature: "Maintained by", spectrum: "Arihant Jain (independent)", competitor: "Adobe Inc." },
+      { feature: "What it is", spectrum: "Copy-paste React component & block library", competitor: "Enterprise design system + its React implementations" },
+      { feature: "React package", spectrum: "Source you copy into your repo", competitor: "@adobe/react-spectrum, react-aria" },
+      { feature: "Styling", spectrum: "Tailwind CSS", competitor: "Spectrum CSS / design tokens" },
+      { feature: "Animation", spectrum: "Motion (Framer Motion), built in", competitor: "Not an animation library" },
+      { feature: "Accessibility", spectrum: "Inherited from Radix UI primitives", competitor: "React Aria — deepest WAI-ARIA coverage available" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/\u2026", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "License", spectrum: "Apache-2.0", competitor: "Apache-2.0" },
+      { feature: "Related to the other project?", spectrum: "No \u2014 independent of Adobe", competitor: "No \u2014 independent of Spectrum UI" },
+    ],
+    chooseSpectrum: [
+      "You are building with React, Next.js, and Tailwind CSS.",
+      "You want components you copy into your repo and own, with no runtime dependency.",
+      "You want components that arrive already animated, rather than wiring Motion by hand.",
+      "You already use shadcn/ui and want the same CLI and Radix conventions.",
+      "You want an AI assistant \u2014 Cursor, Claude Code, Windsurf \u2014 to add components through an MCP server.",
+    ],
+    chooseCompetitor: [
+      "You are building an Adobe product, plugin, or add-on and need Spectrum's visual language.",
+      "You need the deepest possible WAI-ARIA, screen-reader, and localisation guarantees \u2014 React Aria is the strongest option available.",
+      "You need a governed enterprise design system with formal design tokens and adaptive platform scales.",
+      "You are not using Tailwind CSS and do not want to.",
+    ],
+    faqs: [
+      {
+        question: "Is Spectrum UI made by Adobe?",
+        answer:
+          "No. Spectrum UI is an independent open-source project at ui.spectrumhq.in, created and maintained by Arihant Jain. It has no affiliation with Adobe Inc. Adobe's design system is Adobe Spectrum at spectrum.adobe.com, and its React implementations are React Spectrum and React Aria. The two projects share only the word \u201cSpectrum\u201d and are otherwise unrelated.",
+      },
+      {
+        question: "What is the difference between Spectrum UI and Adobe Spectrum?",
+        answer:
+          "Spectrum UI is a copy-paste component and block library for React, Next.js, and Tailwind CSS \u2014 you copy source files into your repository and own them, and they arrive already animated via Motion and accessible via Radix UI. Adobe Spectrum is Adobe's enterprise design system: a governed set of design tokens, guidelines, and components implemented as React Spectrum and React Aria, distributed as installed npm packages. Different category, different stack, different maintainers.",
+      },
+      {
+        question: "Is Spectrum UI the same as React Spectrum or React Aria?",
+        answer:
+          "No. React Spectrum and React Aria are Adobe libraries that implement the Adobe Spectrum design system. Spectrum UI is unrelated to both. If you installed @adobe/react-spectrum or react-aria, you are using Adobe's libraries, not Spectrum UI. Spectrum UI has no npm runtime package \u2014 its components are copied into your project as source.",
+      },
+      {
+        question: "Which one should I use for a React and Tailwind project?",
+        answer:
+          "Spectrum UI. It is built for exactly that stack \u2014 React, Next.js, and Tailwind CSS \u2014 and installs with the shadcn CLI. Adobe's React Spectrum uses its own styling system rather than Tailwind, so it is a poor fit for a Tailwind codebase. If your priority is maximum accessibility compliance rather than Tailwind compatibility, React Aria is the stronger choice.",
+      },
+      {
+        question: "Which is better, Spectrum UI or Adobe Spectrum?",
+        answer:
+          "Neither is better in general, because they solve different problems. For shipping a modern React, Next.js, and Tailwind CSS product quickly with animated, accessible components you own, Spectrum UI is the better fit. For a large organisation that needs a governed enterprise design system with the deepest accessibility and localisation guarantees, Adobe Spectrum and React Aria are the better fit.",
+      },
+      {
+        question: "Is Spectrum UI related to Spectrum the internet provider?",
+        answer:
+          "No. Spectrum (spectrum.com) is a US cable and internet provider owned by Charter Communications and is entirely unrelated. Spectrum UI is an open-source React component library at ui.spectrumhq.in.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs Adobe Spectrum",
+      "is Spectrum UI made by Adobe",
+      "Spectrum UI or React Spectrum",
+      "Spectrum UI not Adobe",
+      "Adobe Spectrum alternative Tailwind",
+      "React Spectrum vs Spectrum UI",
+      "Spectrum UI React component library",
+      "Spectrum UI Tailwind CSS",
     ],
   },
 ];

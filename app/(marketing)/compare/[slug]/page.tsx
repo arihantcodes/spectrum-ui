@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ComparisonView } from "@/components/compare/comparison-view";
 import { comparisons, getComparison } from "@/lib/comparisons";
 import {
@@ -65,16 +65,8 @@ export default async function ComparePage(
 
   return (
     <>
-      <Script
-        id={`faq-ld-${data.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
-      <Script
-        id={`breadcrumb-ld-${data.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
+      <JsonLd id={`faq-ld-${data.slug}`} data={faqLd} />
+      <JsonLd id={`breadcrumb-ld-${data.slug}`} data={breadcrumbLd} />
       <ComparisonView data={data} reviewedLabel={REVIEWED_LABEL} />
     </>
   );
