@@ -36,7 +36,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
-import { TalkToUs } from "@/components/talk-to-us";
+import { WorkWithMe } from "@/components/work-with-me";
 import { JsonLd } from "@/components/seo/json-ld";
 import { generateSiteStructuredData } from "@/lib/site-structured-data";
 
@@ -173,7 +173,7 @@ gtag('config', 'G-K7ZP6JB4MG');
             {" "}
             {children}
           </main>
-          <TalkToUs />
+          <WorkWithMe />
 
           <Toaster />
         

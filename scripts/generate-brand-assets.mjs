@@ -137,7 +137,7 @@ async function main() {
   }
 
   // Product screenshots are captured by hand, not generated: production site
-  // at a 1440x900 viewport, @2x, chat widget (#spectrum-chat) hidden, saved
+  // at a 1440x900 viewport, @2x, floating CTA ([data-work-with-me]) hidden, saved
   // as public/brand/spectrum-ui-screenshot-<page>-<light|dark>.png. Bundle
   // whatever captures are present so the zip stays complete.
   for (const file of readdirSync(outputDir).sort()) {

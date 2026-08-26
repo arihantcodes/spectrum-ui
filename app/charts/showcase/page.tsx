@@ -18,12 +18,11 @@ export default function ChartsShowcasePage() {
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-background [--showcase-accent:#f9452d] dark:[--showcase-accent:#E1F435]"
       data-showcase-stage
     >
-      {/* The chat widget mounts at the maximum z-index and would sit in every
-          frame. The Next dev indicator is dev-only and disappears in a
-          production build, which is what the reel is recorded against. */}
+      {/* The floating CTA would sit in every frame. The Next dev indicator is
+          dev-only and disappears in a production build, which is what the reel
+          is recorded against. */}
       <style>{`
-        #spectrum-chat-preview,
-        [data-talk-to-us],
+        [data-work-with-me],
         nextjs-portal { display: none !important; }
       `}</style>
       <ShowcaseStage />
