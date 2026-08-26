@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
+import { JsonLd } from "@/components/seo/json-ld";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { FrameBand } from "@/components/compare/frame";
 import { FaqAccordion } from "@/components/compare/faq-accordion";
@@ -61,9 +61,9 @@ const entries: Entry[] = [
     url: "https://ui.spectrumhq.in",
     internalHref: "/docs",
     summary:
-      "Ship polished, animated interfaces in minutes — production-ready React & Next.js components that already move, so you skip wiring Framer Motion by hand. You own every line (copy-pasted into your repo) and they're accessible out of the box via Radix. Install with the shadcn CLI, or let Cursor and Claude add them straight from your editor through the MCP server. Free and open source (MIT).",
+      "Ship polished, animated interfaces in minutes — production-ready React & Next.js components that already move, so you skip wiring Framer Motion by hand. You own every line (copy-pasted into your repo) and they're accessible out of the box via Radix. Install with the shadcn CLI, or let Cursor and Claude add them straight from your editor through the MCP server. Free and open source (Apache-2.0).",
     bestFor: "Shipping polished, animated product UIs fast",
-    price: "Free (MIT)",
+    price: "Free (Apache-2.0)",
   },
   {
     name: "Aceternity UI",
@@ -114,7 +114,7 @@ const faqs = [
   {
     question: "What is the best animated React component library in 2026?",
     answer:
-      "There's no single winner — it depends on your goal. Spectrum UI is best for animated, accessible components in real products (free, MIT, installs with the shadcn CLI, ships an MCP server). Aceternity UI is best for bold landing-page hero effects, Magic UI for a broad catalog of effects, and shadcn/ui as the unstyled base layer you add animation on top of.",
+      "There's no single winner — it depends on your goal. Spectrum UI is best for animated, accessible components in real products (free, Apache-2.0, installs with the shadcn CLI, ships an MCP server). Aceternity UI is best for bold landing-page hero effects, Magic UI for a broad catalog of effects, and shadcn/ui as the unstyled base layer you add animation on top of.",
   },
   {
     question: "Are these animated React component libraries free?",
@@ -154,21 +154,9 @@ export default function BestAnimatedLibrariesPage() {
 
   return (
     <>
-      <Script
-        id="best-libraries-itemlist-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
-      />
-      <Script
-        id="best-libraries-faq-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
-      />
-      <Script
-        id="best-libraries-breadcrumb-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
+      <JsonLd id="best-libraries-itemlist-ld" data={itemListLd} />
+      <JsonLd id="best-libraries-faq-ld" data={faqLd} />
+      <JsonLd id="best-libraries-breadcrumb-ld" data={breadcrumbLd} />
 
       {/* Header */}
       <FrameBand>

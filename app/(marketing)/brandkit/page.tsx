@@ -168,7 +168,7 @@ const COLORS = [
 const ABOUT_PARAGRAPHS = [
   'Spectrum UI is an open-source library of 250+ animation-ready blocks, components, and variants for React and Next.js, built with Tailwind CSS, Motion, TypeScript, and shadcn/ui.',
   'Every component ships as source code you own: copy it from the docs, install it with the shadcn CLI, or let your AI agent wire it in through the Spectrum UI MCP server.',
-  'Spectrum UI is built by Arihant Jain and maintained in the open on GitHub under the MIT license.',
+  'Spectrum UI is built by Arihant Jain and maintained in the open on GitHub under the Apache License 2.0.',
 ];
 
 const FACTS = [
@@ -176,7 +176,7 @@ const FACTS = [
   { label: 'Category', value: 'React component library' },
   { label: 'Library', value: '250+ blocks, components, and variants' },
   { label: 'Stack', value: 'Next.js, Tailwind CSS, Motion, TypeScript' },
-  { label: 'License', value: 'MIT' },
+  { label: 'License', value: 'Apache-2.0' },
   { label: 'Author', value: 'Arihant Jain' },
 ];
 

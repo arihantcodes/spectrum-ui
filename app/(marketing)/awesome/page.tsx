@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ArrowUpRight } from "lucide-react";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { FrameBand } from "@/components/compare/frame";
@@ -106,16 +106,8 @@ export default function AwesomePage() {
 
   return (
     <>
-      <Script
-        id="awesome-collection-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
-      />
-      <Script
-        id="awesome-breadcrumb-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
+      <JsonLd id="awesome-collection-ld" data={itemListLd} />
+      <JsonLd id="awesome-breadcrumb-ld" data={breadcrumbLd} />
 
       {/* Hero */}
       <FrameBand>

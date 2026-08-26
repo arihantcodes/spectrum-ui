@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
+import { JsonLd } from "@/components/seo/json-ld";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { FrameBand } from "@/components/compare/frame";
@@ -13,7 +13,7 @@ const url = `${siteConfig.url}/compare`;
 export const metadata: Metadata = {
   title: { absolute: "Spectrum UI Comparisons & Alternatives" },
   description:
-    "Compare Spectrum UI with other React component libraries — Aceternity UI, Magic UI, and shadcn/ui. Honest, side-by-side feature comparisons for animated, copy-paste Next.js components.",
+    "Compare Spectrum UI with other React component libraries — Aceternity UI, Magic UI, and shadcn/ui — and see how it differs from Adobe Spectrum, the unrelated Adobe design system. Honest, side-by-side feature comparisons for animated, copy-paste Next.js components.",
   keywords: [
     "Spectrum UI comparison",
     "React component library comparison",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Spectrum UI Comparisons & Alternatives",
     description:
-      "Side-by-side comparisons of Spectrum UI vs Aceternity UI, Magic UI, and shadcn/ui.",
+      "Side-by-side comparisons of Spectrum UI vs Aceternity UI, Magic UI, shadcn/ui, and Adobe Spectrum.",
     url,
     type: "website",
     siteName: "Spectrum UI",
@@ -52,16 +52,8 @@ export default function CompareHubPage() {
 
   return (
     <>
-      <Script
-        id="compare-itemlist-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }}
-      />
-      <Script
-        id="compare-breadcrumb-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
-      />
+      <JsonLd id="compare-itemlist-ld" data={itemListLd} />
+      <JsonLd id="compare-breadcrumb-ld" data={breadcrumbLd} />
 
       {/* Hero */}
       <FrameBand>

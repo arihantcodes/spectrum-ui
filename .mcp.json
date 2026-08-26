@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "profound": {
+      "type": "http",
+      "url": "https://mcp.tryprofound.com/mcp"
+    }
+  }
+}

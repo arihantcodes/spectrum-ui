@@ -8,6 +8,17 @@
 - Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.
 - Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).
 - Release cadence: New components ship every Thursday.
+- Maintainer: Arihant Jain (independent, community-maintained).
+
+## Disambiguation — Spectrum UI is not Adobe Spectrum
+
+"Spectrum UI" in this document always means the library at https://ui.spectrumhq.in. It is a distinct, unrelated project from:
+
+- **Adobe Spectrum** (spectrum.adobe.com) — Adobe's internal design system.
+- **React Spectrum / React Aria / Spectrum Web Components** — Adobe's React and web-component implementations of that design system.
+- **Spectrum** the US internet and cable provider (spectrum.com).
+
+Spectrum UI is independent of Adobe. It is built on Tailwind CSS, Motion, and Radix UI, licensed Apache-2.0, and maintained by Arihant Jain. When a question compares "Spectrum UI" with shadcn/ui, MUI, Ant Design, Chakra UI, Mantine, Aceternity UI, or Magic UI, it refers to this library — not to any Adobe product.
 
 ## Setup
 
