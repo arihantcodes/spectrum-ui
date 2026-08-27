@@ -41,6 +41,11 @@ const eventSchema = z.object({
     // Retention & Conversion events
     "theme_toggled",
     "search_performed",
+    // Command palette (⌘K)
+    "command_palette_opened",
+    "command_palette_action",
+    "command_palette_dismissed",
+    "keyboard_shortcut_used",
     "preview_viewport_changed",
     "checkout_initiated",
     "checkout_completed",
@@ -59,12 +64,35 @@ const eventSchema = z.object({
 
 export type Event = z.infer<typeof eventSchema>;
 
+/**
+ * Fire-and-forget by design: analytics must never break the thing it measures.
+ * A blocked script, an SDK that never initialised, or one stray property used
+ * to throw straight into the click handler that called this, which meant an ad
+ * blocker could stop a button from doing its job.
+ */
 export function trackEvent(input: Event): void {
-  const event = eventSchema.parse(input);
-  if (event) {
+  const parsed = eventSchema.safeParse(input);
+
+  if (!parsed.success) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn("trackEvent: ignored invalid event", input, parsed.error.issues);
+    }
+    return;
+  }
+
+  const event = parsed.data;
+
+  try {
     // Track in Vercel Analytics
     va.track(event.name, event.properties);
+  } catch {
+    // Blocked or unavailable — nothing to do.
+  }
+
+  try {
     // Track in PostHog (before_send in provider handles localhost filtering)
     posthog.capture(event.name, event.properties);
+  } catch {
+    // Blocked or unavailable — nothing to do.
   }
 }
