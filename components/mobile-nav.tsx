@@ -4,7 +4,7 @@ import Link, { LinkProps } from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import * as React from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, Search } from 'lucide-react';
 
 import { Icons } from '@/components/icon';
 
@@ -22,6 +22,7 @@ import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { openCommandMenu } from '@/lib/command-menu';
 
 interface NavItem {
   title?: string;
@@ -175,6 +176,19 @@ export function MobileNav() {
           <Icons.logo className="mr-2 size-4" />
           <span className="font-semibold">Spectrum UI</span>
         </Link>
+        <div className="px-4 pt-4">
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+              openCommandMenu({ source: 'mobile_nav' });
+            }}
+            className="flex h-10 w-full items-center gap-2.5 rounded-xl bg-neutral-100 px-3.5 text-sm text-muted-foreground transition-colors hover:text-foreground dark:bg-neutral-900"
+          >
+            <Search className="size-4 shrink-0" aria-hidden />
+            Search components, blocks, charts…
+          </button>
+        </div>
         <ScrollArea className="min-h-0 flex-1">
           <div className="flex flex-col space-y-4 p-4">
             {/* Main Navigation */}

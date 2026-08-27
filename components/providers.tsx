@@ -7,6 +7,7 @@ import { PostHogIdentify } from "@/components/posthog-identify";
 import { AuthGateProvider } from "@/lib/auth-gate-store";
 import { AuthGateModal } from "@/components/auth-gate-modal";
 import { BookmarkProvider } from "@/lib/bookmark-store";
+import { CommandMenu } from "@/components/command-menu";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -23,6 +24,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
             <BookmarkProvider>
               {children}
               <AuthGateModal />
+              <CommandMenu />
             </BookmarkProvider>
           </AuthGateProvider>
         </PostHogProvider>

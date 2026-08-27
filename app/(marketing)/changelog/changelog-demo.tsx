@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { LoadingState } from '@/components/spectrumui/blocks/ai-assistants/loading-state';
 import { ThinkingDots } from '@/components/spectrumui/blocks/ai-assistants/thinking-dots';
 import { VoiceInput } from '@/components/spectrumui/blocks/ai-assistants/voice-input';
@@ -32,6 +34,29 @@ const CARET = `@keyframes su-caret { 0%, 49% { opacity: 1 } 50%, 100% { opacity:
  * interactive voice recorder, a terminal with a blinking caret.
  */
 export function ChangelogMedia({ media }: { media: ChangelogMediaKind }) {
+  if (media.kind === 'image') {
+    // Two files, one visible: a light screenshot on a dark page reads as a
+    // hole punched through it.
+    const shared = {
+      width: media.width,
+      height: media.height,
+      sizes: '(min-width: 1024px) 592px, 100vw',
+      className: 'block h-auto w-full',
+    };
+
+    return (
+      <figure className="overflow-hidden rounded-[20px] border border-black/[0.06] bg-[#F2F2F3] dark:border-white/[0.07] dark:bg-white/[0.035]">
+        <span className="block dark:hidden">
+          <Image src={media.src} alt={media.alt} {...shared} />
+        </span>
+        <span className="hidden dark:block">
+          {/* The duplicate is decorative — the visible one above carries the alt. */}
+          <Image src={media.srcDark} alt="" {...shared} />
+        </span>
+      </figure>
+    );
+  }
+
   if (media.kind === 'terminal') {
     const tokens = media.command.split(' ');
     return (
@@ -39,13 +64,20 @@ export function ChangelogMedia({ media }: { media: ChangelogMediaKind }) {
         <style dangerouslySetInnerHTML={{ __html: CARET }} />
         <div className="flex items-center gap-1.5 border-b border-white/[0.07] px-4 py-3">
           {['#f9452d', '#febc2e', '#28c840'].map((color) => (
-            <span key={color} aria-hidden className="size-2.5 rounded-full opacity-80" style={{ backgroundColor: color }} />
+            <span
+              key={color}
+              aria-hidden
+              className="size-2.5 rounded-full opacity-80"
+              style={{ backgroundColor: color }}
+            />
           ))}
           <span className="ml-2 font-mono text-[11px] text-neutral-500">spectrum-ui — zsh</span>
         </div>
         <div className="overflow-x-auto px-5 py-10 md:py-12">
           <code className="block whitespace-nowrap font-mono text-[13px] leading-relaxed md:text-[14px]">
-            <span aria-hidden className="mr-2.5 select-none text-neutral-600">❯</span>
+            <span aria-hidden className="mr-2.5 select-none text-neutral-600">
+              ❯
+            </span>
             {tokens.map((token, index) => (
               <span
                 key={index}
