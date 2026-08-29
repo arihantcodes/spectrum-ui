@@ -30,9 +30,19 @@ export function createTopicHubStructuredData(hub: TopicHub) {
     { name: 'Guides', url: `${siteConfig.url}/docs/guides` },
     { name: hub.label, url },
   ]);
-  const faq = generateFAQStructuredData(
-    hub.faqs.map(({ question, answer }) => ({ question, answer })),
-  );
+  // Verdicts render on the page as a visible question/answer list, so they
+  // belong in FAQPage alongside the authored FAQs. Answer text is joined from
+  // the same two visible strings — the markup never states more than the page.
+  const verdictEntries = (hub.verdicts ?? []).map((verdict) => ({
+    question: verdict.need,
+    // `why` is written to start with the pick so it can be quoted alone, which
+    // would otherwise read as "Spectrum UI. Spectrum UI is the best…".
+    answer: verdict.why.startsWith(verdict.pick) ? verdict.why : `${verdict.pick}. ${verdict.why}`,
+  }));
+  const faq = generateFAQStructuredData([
+    ...verdictEntries,
+    ...hub.faqs.map(({ question, answer }) => ({ question, answer })),
+  ]);
 
   return { collection, breadcrumbs, faq };
 }

@@ -53,6 +53,11 @@ const requiredSlugs = [
   'pricing-sections',
   'authentication-components',
   'ai-ui-components',
+  'copy-paste-react-components',
+  'open-source-ui-components',
+  'accessible-react-components',
+  'design-system-integration',
+  'rapid-prototyping-ui-library',
 ];
 
 function hasPublicRoute(href) {
@@ -120,7 +125,7 @@ function installedComponentPaths(commands) {
   return installedPaths;
 }
 
-assert.equal(TOPIC_HUBS.length, 12);
+assert.equal(TOPIC_HUBS.length, requiredSlugs.length);
 assert.deepEqual(
   TOPIC_HUBS.map((hub) => hub.slug),
   requiredSlugs,

@@ -218,18 +218,7 @@ export default function Footer() {
                   <p className="font-mono text-xs font-medium uppercase tracking-[0.28px] text-neutral-500 dark:text-neutral-400">
                     © {new Date().getFullYear()} Spectrum UI. All rights reserved.
                   </p>
-                  <p className="font-mono text-xs font-medium uppercase tracking-[0.28px] text-neutral-500 dark:text-neutral-400">
-                    Built by{' '}
-                    <Link
-                      href={siteConfig.links.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-black underline-offset-4 transition-colors duration-200 ease-out hover:text-[#f9452d] hover:underline dark:text-neutral-300 dark:hover:text-[#E1F435]"
-                    >
-                      {siteConfig.author.name}
-                    </Link>{' '}
-                    — available for work
-                  </p>
+               
                 </div>
 
                 <nav

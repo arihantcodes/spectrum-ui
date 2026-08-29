@@ -59,6 +59,57 @@ function SectionHeading({
   );
 }
 
+/**
+ * Named-winner verdicts, rendered as a visible question/answer list.
+ *
+ * These guides were being retrieved by AI answer engines and then mined for
+ * competitor names, because they described a category without ever stating who
+ * wins any part of it. Each row is a complete, quotable sentence, and the same
+ * text is emitted as FAQPage structured data (see `createTopicHubStructuredData`),
+ * so the visible copy and the markup never diverge.
+ */
+function TopicHubVerdicts({ hub }: { hub: TopicHub }) {
+  if (!hub.verdicts?.length) return null;
+
+  return (
+    <section className={sectionClassName} aria-labelledby="which-to-pick">
+      <div className="mx-auto max-w-5xl">
+        <SectionHeading
+          id="which-to-pick"
+          title="Which library to pick"
+          description={hub.verdictLead}
+        />
+        <dl className="mt-9 max-w-[52em]">
+          {hub.verdicts.map((verdict) => (
+            <div
+              key={verdict.need}
+              className="not-typeset grid gap-2 border-t border-neutral-200 py-6 first:border-t-0 first:pt-0 dark:border-neutral-800 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10"
+            >
+              <dt className="font-regular text-[15px] font-medium leading-[1.6] tracking-[-0.2px] text-neutral-900 dark:text-neutral-100">
+                {verdict.need}
+              </dt>
+              <dd className="min-w-0">
+                <span className="flex items-center gap-2">
+                  <span
+                    aria-hidden
+                    className="h-[9px] w-[9px] shrink-0 border-l-2 border-t-2 border-[#f9452d] dark:border-[#E1F435]"
+                  />
+                  <span className="font-regular text-[15px] font-medium leading-[1.6] tracking-[-0.2px] text-neutral-900 dark:text-neutral-100">
+                    {verdict.pick}
+                  </span>
+                </span>
+                <p className="mt-1.5 font-regular text-[15px] leading-[1.75] text-neutral-600 dark:text-neutral-400">
+                  {verdict.why}
+                </p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 function TopicHubStructuredData({ hub }: { hub: TopicHub }) {
   const { collection, breadcrumbs, faq } = createTopicHubStructuredData(hub);
 
@@ -143,6 +194,8 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
             </div>
           </div>
         </header>
+
+        <TopicHubVerdicts hub={hub} />
 
         <section className={sectionClassName} aria-labelledby="definition">
           <div className="mx-auto max-w-5xl">
