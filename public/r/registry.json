@@ -4123,6 +4123,239 @@
         "watchlist"
       ],
       "docsUrl": "https://ui.spectrumhq.in/charts/sparkline"
+    },
+    {
+      "name": "offset-tiers",
+      "type": "registry:block",
+      "title": "Offset Tiers",
+      "description": "Staggered serif panels on a dot grid, with one entry price and expert CTAs.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/offset-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/offset-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "tiers",
+        "serif"
+      ]
+    },
+    {
+      "name": "gradient-tiers",
+      "type": "registry:block",
+      "title": "Gradient Tiers",
+      "description": "Pastel gradient card headers with icons and color-coded inheritance labels.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/gradient-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/gradient-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "tiers",
+        "gradient"
+      ]
+    },
+    {
+      "name": "dark-matrix",
+      "type": "registry:block",
+      "title": "Dark Matrix",
+      "description": "A dark comparison table with dashed rows, mint checks, and per-plan CTA pills.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/dark-matrix.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/dark-matrix.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "comparison",
+        "dark"
+      ]
+    },
+    {
+      "name": "blueprint-tiers",
+      "type": "registry:block",
+      "title": "Blueprint Tiers",
+      "description": "A Swiss-style pricing table with crop marks, mono labels, and a royal-blue accent.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/blueprint-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/blueprint-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/price-figure.tsx",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/price-figure.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "table",
+        "technical"
+      ]
+    },
+    {
+      "name": "serif-tiers",
+      "type": "registry:block",
+      "title": "Serif Tiers",
+      "description": "Cream serif cards with a black featured card lit by a crimson glow.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/serif-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/serif-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/price-figure.tsx",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/price-figure.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "tiers",
+        "serif"
+      ]
+    },
+    {
+      "name": "banner-tiers",
+      "type": "registry:block",
+      "title": "Banner Tiers",
+      "description": "A brutalist plan table whose featured column wears a blue banner on top.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/banner-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/banner-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/price-figure.tsx",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/price-figure.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "tiers",
+        "brutalist"
+      ]
+    },
+    {
+      "name": "receipt-tiers",
+      "type": "registry:block",
+      "title": "Receipt Tiers",
+      "description": "Plans printed as thermal receipts with torn edges, dotted leaders, and a rubber stamp.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/pricing/receipt-tiers.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/pricing/receipt-tiers.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/types.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/types.ts"
+        },
+        {
+          "path": "components/spectrumui/blocks/pricing/reveal.ts",
+          "type": "registry:file",
+          "target": "components/spectrumui/blocks/pricing/reveal.ts"
+        }
+      ],
+      "category": "Pricing",
+      "tags": [
+        "pricing",
+        "receipt",
+        "mono"
+      ]
     }
   ]
 }

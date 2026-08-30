@@ -2,16 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
-import { BlocksSidebar } from '@/components/blocks/blocks-sidebar';
 import { Specimen } from '@/components/blocks/specimen';
 import { JsonLd } from '@/components/seo/json-ld';
 import {
   BLOCK_CATEGORIES,
   blockCategoryPath,
-  blockCliCommand,
   blocksInCategory,
   findBlockCategory,
-  newBlockSlugs,
 } from '@/lib/block-catalog';
 import { generateBreadcrumbStructuredData } from '@/lib/seo-utils';
 import { siteConfig } from '@/config/site';
@@ -65,7 +62,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
   if (!category) notFound();
 
   const blocks = blocksInCategory(slug);
-  const isNew = newBlockSlugs();
+  const wide = category.layout === 'wide';
   const sources = await Promise.all(blocks.map((block) => readSource(slug, block.slug)));
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
 
@@ -113,50 +110,39 @@ export default async function BlockCategoryPage({ params }: PageProps) {
       <JsonLd id={`blocks-${slug}-itemlist`} data={itemList} />
       <JsonLd id={`blocks-${slug}-source`} data={softwareSource} />
 
-      <div className="flex gap-14 py-12 lg:py-16">
-        <BlocksSidebar
-          title={category.name}
-          tagline={category.tagline}
-          items={blocks.map((block) => ({
-            slug: block.slug,
-            name: block.name,
-            isNew: isNew.has(block.slug),
-          }))}
-        />
+      <main className={wide ? undefined : 'mx-auto max-w-[760px]'}>
+        <header className="mb-12">
+          <h1 className="font-spectral text-[30px] leading-[1.1] tracking-[-0.6px] text-neutral-900 dark:text-neutral-50">
+            {category.name}
+          </h1>
+          <p className="mt-2.5 max-w-[68ch] text-[14px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
+            {category.description}
+          </p>
+        </header>
 
-        <main className="min-w-0 max-w-[760px] flex-1">
-          {/* The visual title lives in the sidebar on desktop; the document's
-              h1 is visible on mobile and screen-reader-only above lg. */}
-          <header className="lg:sr-only">
-            <h1 className="font-spectral text-[28px] leading-[1.1] tracking-[-0.6px] text-neutral-900 dark:text-neutral-50">
-              {category.name}
-            </h1>
-            <p className="mt-2 text-[13.5px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
-              {category.tagline}
-            </p>
-          </header>
-
-          <div className="mt-10 space-y-20 lg:mt-0 lg:space-y-24">
-            {blocks.map((block, position) => (
-              <div
-                key={block.slug}
-                className={position > 0 ? 'border-t border-dashed border-black/[0.09] pt-16 dark:border-white/[0.09] lg:pt-20' : undefined}
-              >
-                <Specimen
-                  slug={block.slug}
-                  number={String(position + 1).padStart(2, '0')}
-                  name={block.name}
-                  description={block.description}
-                  variants={block.variants}
-                  source={sources[position] ?? '// Source unavailable'}
-                  cli={blockCliCommand(block.slug)}
-                  isNew={isNew.has(block.slug)}
-                />
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
+        <div className="space-y-20 lg:space-y-24">
+          {blocks.map((block, position) => (
+            <div
+              key={block.slug}
+              className={
+                position > 0
+                  ? 'border-t border-dashed border-black/[0.09] pt-16 dark:border-white/[0.09] lg:pt-20'
+                  : undefined
+              }
+            >
+              <Specimen
+                slug={block.slug}
+                number={String(position + 1).padStart(2, '0')}
+                name={block.name}
+                description={block.description}
+                variants={block.variants}
+                source={sources[position] ?? '// Source unavailable'}
+                stage={wide ? 'bleed' : 'inset'}
+              />
+            </div>
+          ))}
+        </div>
+      </main>
     </>
   );
 }

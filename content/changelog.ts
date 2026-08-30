@@ -32,6 +32,33 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    slug: 'aug-30-2026',
+    date: '2026-08-30',
+    groups: [
+      {
+        label: 'New',
+        items: [
+          '7 Pricing blocks — a serif panel grid, pastel gradient cards, a comparison matrix, a Swiss table with crop marks, cream cards with a glowing plan, a brutalist banner table and thermal receipts, all [live on one page](/blocks/pricing).',
+          'Every block themes for light and dark, rolls its prices on the billing toggle, and sizes off its own width — so it stays right in a narrow column, not just at full bleed.',
+        ],
+      },
+      {
+        label: 'Improvements',
+        items: [
+          'Blocks moved onto the docs layout: a collapsible rail to switch categories and a wider column, so a page-width section is shown page-width.',
+        ],
+      },
+    ],
+    media: {
+      kind: 'image',
+      src: '/changelog/pricing-light.webp',
+      srcDark: '/changelog/pricing-dark.webp',
+      alt: 'The Serif Tiers pricing block: three plans on cream cards with the middle plan on black, lit by a crimson glow.',
+      width: 990,
+      height: 956,
+    },
+  },
+  {
     slug: 'aug-27-2026',
     date: '2026-08-27',
     groups: [

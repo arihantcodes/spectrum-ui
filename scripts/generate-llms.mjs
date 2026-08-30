@@ -19,15 +19,67 @@ const blockCatalog = JSON.parse(
 );
 const liveBlocks = blockCatalog.blocks.filter((block) => block.status === 'live');
 
+/** Categories that have at least one live block, in catalog order. */
+const blockCategories = [...blockCatalog.categories]
+  .sort((a, b) => a.order - b.order)
+  .filter((category) => liveBlocks.some((block) => block.category === category.slug));
+
+function blocksIn(categorySlug) {
+  return liveBlocks.filter((block) => block.category === categorySlug);
+}
+
 function blockUrl(block) {
   return siteUrl + '/blocks/' + block.category + '#' + block.slug;
 }
 
-/** Compact one-liners for llms.txt. */
-function blockList() {
-  return liveBlocks
+/** Compact one-liners for llms.txt, one section per category. */
+function blockList(categorySlug) {
+  return blocksIn(categorySlug)
     .map((block) => '- [' + block.name + '](' + blockUrl(block) + '): ' + block.description)
     .join('\n');
+}
+
+/**
+ * The block sections, one per category. Generated rather than hand-listed so a
+ * new category cannot ship invisible to llms.txt the way /blocks once did.
+ */
+function blockSections(reference) {
+  return blockCategories.flatMap((category) => [
+    '## ' +
+      category.name +
+      ' blocks (' +
+      blocksIn(category.slug).length +
+      ')' +
+      (reference ? ' — reference' : ''),
+    '',
+    category.description,
+    '',
+    'Every block in this category renders live at actual size on ' +
+      siteUrl +
+      '/blocks/' +
+      category.slug +
+      ' and installs with the shadcn CLI or through the MCP server.',
+    '',
+    reference ? blockReference(category.slug) : blockList(category.slug),
+    '',
+  ]);
+}
+
+function blockCategoryLinks() {
+  return blockCategories.map(
+    (category) =>
+      '- [' +
+      category.name +
+      ' Blocks](' +
+      siteUrl +
+      '/blocks/' +
+      category.slug +
+      '): ' +
+      category.tagline +
+      ' ' +
+      blocksIn(category.slug).length +
+      ' blocks, each with variants and source on one page',
+  );
 }
 
 /**
@@ -35,8 +87,8 @@ function blockList() {
  * the catalog's richest prose — become citable; the specimen page deliberately
  * shows only a one-line description to stay readable.
  */
-function blockReference() {
-  return liveBlocks
+function blockReference(categorySlug) {
+  return blocksIn(categorySlug)
     .map((block) =>
       [
         '### ' + block.name,
@@ -141,14 +193,40 @@ if (charts.length < 15) {
 /** Guide routes explain the system; the rest are components. */
 const GUIDE_SLUGS = new Set(['states', 'data']);
 const SVG_ENGINE_SLUGS = new Set([
-  'market', 'indicators', 'depth', 'order-book', 'portfolio',
-  'heatmap', 'calendar', 'cohort', 'histogram', 'stat-cards',
+  'market',
+  'indicators',
+  'depth',
+  'order-book',
+  'portfolio',
+  'heatmap',
+  'calendar',
+  'cohort',
+  'histogram',
+  'stat-cards',
 ]);
 const TRADING_SLUGS = [
-  'market', 'indicators', 'depth', 'order-book', 'portfolio', 'candlestick', 'price', 'sparkline',
+  'market',
+  'indicators',
+  'depth',
+  'order-book',
+  'portfolio',
+  'candlestick',
+  'price',
+  'sparkline',
 ];
 const DASHBOARD_SLUGS = [
-  'stat-cards', 'cohort', 'histogram', 'calendar', 'heatmap', 'bar', 'line', 'area', 'composed', 'pie', 'radar', 'radial',
+  'stat-cards',
+  'cohort',
+  'histogram',
+  'calendar',
+  'heatmap',
+  'bar',
+  'line',
+  'area',
+  'composed',
+  'pie',
+  'radar',
+  'radial',
 ];
 
 function chartBySlug(slug) {
@@ -255,11 +333,14 @@ function buildCompactFile() {
     '- [Guides](' + siteUrl + '/docs/guides)',
     '- [MCP server](' + siteUrl + '/docs/mcp)',
     '- [Blog](' + siteUrl + '/blog)',
-    '- [Changelog](' + siteUrl + '/changelog): What is new — releases across blocks, components, docs, and the MCP server',
-    '- [AI Assistant Blocks](' +
+    '- [Changelog](' +
       siteUrl +
-      '/blocks/ai-assistants): Live, full-size AI interface blocks — loading states, reasoning traces, and streaming chat threads — with variants and source on one page',
-    '- [Charts](' + siteUrl + '/charts): ' + charts.filter((c) => !GUIDE_SLUGS.has(c.slug)).length +
+      '/changelog): What is new — releases across blocks, components, docs, and the MCP server',
+    ...blockCategoryLinks(),
+    '- [Charts](' +
+      siteUrl +
+      '/charts): ' +
+      charts.filter((c) => !GUIDE_SLUGS.has(c.slug)).length +
       ' React chart components — candlestick, order book, market depth, cohort retention, histogram, calendar heatmap, treemap, KPI stat cards, plus bar/line/area/pie/radar/radial. Ten need no charting dependency',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
@@ -281,14 +362,11 @@ function buildCompactFile() {
     '',
     componentList(),
     '',
-    '## AI Assistant blocks (' + liveBlocks.length + ')',
+    '## Blocks (' + liveBlocks.length + ', a tier above components)',
     '',
-    'Blocks are composed interface sections for products built on LLMs — a tier above components. Each renders live at actual size on ' +
-      siteUrl +
-      '/blocks/ai-assistants and installs with the shadcn CLI or through the MCP server.',
+    'Blocks are composed interface sections — several components assembled into a section you install whole.',
     '',
-    blockList(),
-    '',
+    ...blockSections(false),
     '## Machine-readable resources',
     '',
     '- [Expanded catalog](' + siteUrl + '/llms-full.txt)',
@@ -418,14 +496,11 @@ function buildFullFile() {
     '',
     componentReference,
     '',
-    '## AI Assistant block reference (' + liveBlocks.length + ')',
+    '## Block reference (' + liveBlocks.length + ')',
     '',
-    'Composed interface sections for AI products. All are presentational — data in, callbacks out — and share one message contract, so they compose into a working chat surface. Every block renders live at ' +
-      siteUrl +
-      '/blocks/ai-assistants.',
+    'Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.',
     '',
-    blockReference(),
-    '',
+    ...blockSections(true),
     ...chartsSection(),
     '## Other public pages',
     '',

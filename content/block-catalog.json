@@ -6,6 +6,14 @@
       "tagline": "Interface surfaces for products built on LLMs.",
       "description": "Composed sections for AI products — conversation threads with streaming and markdown, prompt composers with attachments and model selection, reasoning traces, agent tool timelines, and citation displays. Each block renders standalone with realistic data and shares one message contract, so they compose into a working chat surface.",
       "order": 1
+    },
+    {
+      "slug": "pricing",
+      "name": "Pricing",
+      "tagline": "Sections that ask for money and get an answer.",
+      "description": "Seven complete pricing sections, each a different art direction: staggered serif panels on a dot grid, pastel gradient cards, a dark comparison matrix, a Swiss-style table with crop marks, cream serif cards with a glowing featured plan, a brutalist banner table, and plans printed as thermal receipts. Every block ships with realistic plan data, its own palette themed for light and dark, live billing interactions, and scroll-triggered entrances.",
+      "order": 2,
+      "layout": "wide"
     }
   ],
   "blocks": [
@@ -696,6 +704,184 @@
       "index": 27,
       "status": "live",
       "addedAt": "2026-07-31"
+    },
+    {
+      "slug": "offset-tiers",
+      "name": "Offset Tiers",
+      "category": "pricing",
+      "subcategory": "Tier cards",
+      "description": "Staggered serif panels on a dot grid, with one entry price and expert CTAs.",
+      "summary": "Three square-cornered panels step down the page over a dot-grid canvas, each split by hairlines into name, features, and a footer. Serif display names, blue circular checks, and a single \"From\" price on the first tier — the other two send you to a person.",
+      "hardParts": [
+        "Staggered offsets must collapse to a flat stack on mobile without leaving dead space",
+        "The dot grid has to live behind the panels, not inside them, or it reads as texture on the cards",
+        "Only one tier carries a price, so the footers need equal weight without pretending parity"
+      ],
+      "variants": [
+        "Staggered",
+        "Level"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "A consultative, sales-led pricing section for services and high-touch products. Takes Plan[]; a null price renders \"Talk to us to find out more\". Carries its own canvas and themes for light and dark. Optional eyebrow, heading, and subheading props render a headline styled in this block’s own art direction.",
+      "index": 28,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "gradient-tiers",
+      "name": "Gradient Tiers",
+      "category": "pricing",
+      "subcategory": "Tier cards",
+      "description": "Pastel gradient card headers with icons and color-coded inheritance labels.",
+      "summary": "Three columns in one hairline frame, each washed from the top with its own pastel — blue, chartreuse, violet — under a matching icon. Serif names, a price row that pairs the figure with its qualifier, and \"Everything in X, plus:\" labels tinted per column.",
+      "hardParts": [
+        "The gradient wash has to fade out before the checklist or every row fights a tint",
+        "Per-column accent colors must agree across icon, label, and badge without a token system",
+        "The price row baseline-aligns a figure and a right-hand note that wrap independently"
+      ],
+      "variants": [
+        "Tinted",
+        "Plain"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "A warm editorial pricing section for API and credit-based products. Prices come as display strings via the notes prop, so \"Free\", \"$250 /mo\" and \"Custom pricing\" all render alike. Themes for light and dark — the pastel washes become deep tints on dark. Optional eyebrow, heading, and subheading props render a headline styled in this block’s own art direction.",
+      "index": 29,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "dark-matrix",
+      "name": "Dark Matrix",
+      "category": "pricing",
+      "subcategory": "Comparison",
+      "description": "A dark comparison table with dashed rows, mint checks, and per-plan CTA pills.",
+      "summary": "A dark comparison table. Plan headers carry an icon, a name, and a pill CTA; group labels break the grid into sections; data rows sit on a slightly lighter panel behind dashed rules, with mint checks, muted crosses, and hint circles on ambiguous labels.",
+      "hardParts": [
+        "Row strips need a bg one step above the canvas or the dashed rules read as clutter",
+        "Mixing dashed row rules with solid column rules means styling borders per edge, not per element",
+        "Hint circles must expose their text to screen readers, not just to hover"
+      ],
+      "variants": [
+        "Sections",
+        "Flat"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "The long comparison table for a dark pricing page. Takes plans plus FeatureGroup[] with positional values; hints map row labels to tooltip text. Themes light and dark; scrolls horizontally under 720px. Optional eyebrow, heading, and subheading props render a headline styled in this block’s own art direction.",
+      "index": 30,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "blueprint-tiers",
+      "name": "Blueprint Tiers",
+      "category": "pricing",
+      "subcategory": "Comparison",
+      "description": "A Swiss-style pricing table with crop marks, mono labels, and a royal-blue accent.",
+      "summary": "Pricing drawn like a technical sheet: columns divided by hairlines with registration marks at the intersections, mono uppercase chips, per-column billed-yearly switches, and a diagonal hatch band closing the section. The featured CTA is royal blue inside corner ticks.",
+      "hardParts": [
+        "Crop marks sit on grid intersections, so they must be positioned off the borders, not the content",
+        "Each paid column owns its own yearly toggle - one shared switch would misprice the others",
+        "The hatch band is a repeating gradient, not an image, so it must align to the hairline grid"
+      ],
+      "variants": [
+        "Marks",
+        "Clean"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "A technical, engineering-flavored pricing section including its own centered header (eyebrow, heading, subheading props). Per-plan yearly toggles switch between monthly and annual prices. Themes for light and dark.",
+      "index": 31,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "serif-tiers",
+      "name": "Serif Tiers",
+      "category": "pricing",
+      "subcategory": "Tier cards",
+      "description": "Cream serif cards with a black featured card lit by a crimson glow.",
+      "summary": "Warm and editorial: serif names and serif prices on soft cream cards, star-glyph feature bullets, and a centered Monthly/Yearly pill. The featured plan turns black and glows crimson from its lower corner under a rose-gradient POPULAR pill.",
+      "hardParts": [
+        "The glow is two stacked blurred circles, and clipping them needs overflow-hidden without cutting the card shadow",
+        "Serif digits are not tabular, so the rolling price needs per-digit width control to avoid wobble",
+        "White pill CTAs must read as buttons on cream and on black with the same treatment"
+      ],
+      "variants": [
+        "Ember",
+        "Ink"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "A warm, consumer-friendly pricing section including its own centered header. The billing toggle rolls per-user prices. Cream in light, warm charcoal in dark; the featured card stays black with its ember in both.",
+      "index": 32,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "banner-tiers",
+      "name": "Banner Tiers",
+      "category": "pricing",
+      "subcategory": "Comparison",
+      "description": "A brutalist plan table whose featured column wears a blue banner on top.",
+      "summary": "A display-serif headline over three bordered columns fused into one table, with mono CTAs and circled blue checks on hairline feature rows. The featured column is outlined in royal blue and carries a solid blue \"Most popular\" banner above its header; a rectangular blue switch flips yearly and monthly.",
+      "hardParts": [
+        "The banner extends above the grid, so the section needs reserved headroom or it clips",
+        "Adjacent column borders double to 2px unless each seam is owned by exactly one column",
+        "Feature rows align across columns only if every cell is one line - the copy is part of the layout"
+      ],
+      "variants": [
+        "Banner",
+        "Badge"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "aiHints": "A bold, developer-tool pricing section including its own centered serif header. The switch swaps yearly and monthly prices. Themes for light and dark with a #2337f0 accent.",
+      "index": 33,
+      "status": "live",
+      "addedAt": "2026-08-28"
+    },
+    {
+      "slug": "receipt-tiers",
+      "name": "Receipt Tiers",
+      "category": "pricing",
+      "subcategory": "Tier cards",
+      "description": "Plans printed as thermal receipts with torn edges, dotted leaders, and a rubber stamp.",
+      "summary": "Three till receipts on a counter: mono type, a merchant header, features as line items priced INCL with dotted leaders, a subtotal showing the yearly seat discount, a bold TOTAL, a barcode, and a serial footer. The popular plan takes a rotated red rubber stamp; Tilted lays them down at slight angles.",
+      "hardParts": [
+        "The torn bottom edge is a clip-path polygon, so padding must clear the zigzag or text gets cut",
+        "Dotted leaders between item and price need a flexible dotted border, not typed periods",
+        "The stamp reads as ink only with mix-blend-multiply on paper — and that blend must be undone on dark"
+      ],
+      "variants": [
+        "Tilted",
+        "Straight"
+      ],
+      "complexity": "composed",
+      "composedOf": [],
+      "dependencies": [],
+      "aiHints": "A playful, print-flavored pricing section that works for products with simple per-seat maths. The discount line derives from the plan’s monthly and annual prices. Paper stays paper in dark mode — the receipt darkens, the red stamp stays red. Optional eyebrow, heading, and subheading props render a headline styled in this block’s own art direction.",
+      "index": 34,
+      "status": "live",
+      "addedAt": "2026-08-29"
     }
   ]
 }
