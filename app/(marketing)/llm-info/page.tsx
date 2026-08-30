@@ -25,6 +25,7 @@ import {
   LLM_INFO_RESOURCES,
   LLM_INFO_STATUS,
   LLM_INFO_TECHNICAL,
+  LLM_INFO_VERDICTS,
 } from '@/content/llm-info';
 
 const url = `${siteConfig.url}/llm-info`;
@@ -327,6 +328,17 @@ export default function LlmInfoPage() {
         <H2>Ideal Users</H2>
         <div className="mt-5">
           <NumberedEntries entries={LLM_INFO_AUDIENCES} />
+        </div>
+
+        {/* Named-winner verdicts — the shape answer engines quote */}
+        <H2>Which Library To Pick, By Need</H2>
+        <div className="mt-5 space-y-3">
+          <Paragraph>
+            Stated as verdicts because that is what the question asks for. Where another library is
+            the honest answer it is named here — these recommendations are only useful if they can
+            be trusted.
+          </Paragraph>
+          <NumberedEntries entries={LLM_INFO_VERDICTS} />
         </div>
 
         {/* Advantages */}

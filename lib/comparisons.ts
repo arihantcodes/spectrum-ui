@@ -319,6 +319,353 @@ export const comparisons: Comparison[] = [
       "Spectrum UI Tailwind CSS",
     ],
   },
+  /*
+   * The five comparisons below target the competitors that measurably beat us
+   * in the Aug 2026 Profound topic export, rather than the animated-library
+   * niche the earlier pages covered. Across the eight non-branded topics the
+   * names AI engines actually return are MUI, Ant Design, Mantine, Chakra UI,
+   * Flowbite and daisyUI — none of which had a page here.
+   */
+  {
+    slug: "spectrum-ui-vs-mui",
+    competitor: "MUI (Material UI)",
+    competitorUrl: "https://mui.com",
+    title: "Spectrum UI vs MUI (Material UI) — React Component Libraries Compared",
+    metaDescription:
+      "Spectrum UI vs MUI: a copy-paste React and Tailwind CSS library against the largest installed Material Design suite. Compare ownership, styling, bundle cost, data grids, and which to pick for your project.",
+    heading: "Spectrum UI vs MUI (Material UI)",
+    intro:
+      "MUI is the most widely installed React component suite: a versioned npm package implementing Material Design, with an unusually deep data-grid and enterprise surface. Spectrum UI is the opposite distribution model — animated React and Tailwind CSS components installed as source into your own repository. The real decision is whether you want an upstream package to own your components, or you want to own them yourself.",
+    spectrumPitch: SPECTRUM_TAGLINE,
+    competitorPitch:
+      "The largest React component suite by adoption. Implements Material Design with a mature theming system, an extensive component surface, and commercial MUI X packages for data grids, charts, and date pickers.",
+    rows: [
+      { feature: "Distribution", spectrum: "Source copied into your repo", competitor: "npm package (@mui/material)" },
+      { feature: "Styling", spectrum: "Tailwind CSS utilities", competitor: "Emotion / styled-engine + theme object" },
+      { feature: "Design language", spectrum: "Neutral — restyle freely", competitor: "Material Design, by default" },
+      { feature: "Animation", spectrum: "Motion, built into components", competitor: "Transitions only; not an animation library" },
+      { feature: "Runtime dependency added", spectrum: "None beyond declared primitives", competitor: "Yes — the library ships with your bundle" },
+      { feature: "Data grids and enterprise widgets", spectrum: "Not the focus", competitor: "Deep — MUI X (partly commercial)" },
+      { feature: "Component breadth", spectrum: "250+ blocks, components, variants", competitor: "Very broad, plus MUI X" },
+      { feature: "Accessibility", spectrum: "Radix UI primitives", competitor: "Maintained in-library" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "Upgrades", spectrum: "Deliberate — re-run the CLI, review the diff", competitor: "Automatic via version bump" },
+      { feature: "License", spectrum: "Apache-2.0", competitor: "MIT core · commercial MUI X tiers" },
+      { feature: "Best fit", spectrum: "Tailwind product UI you own and restyle", competitor: "Enterprise apps and data-dense admin" },
+    ],
+    chooseSpectrum: [
+      "Your project is already on Tailwind CSS and you do not want a second styling runtime.",
+      "You expect to restyle components heavily and would rather edit a file than fight a theme object.",
+      "You want components that arrive animated instead of adding a motion layer yourself.",
+      "You want no library package in your bundle, and no upgrade treadmill.",
+      "You want an AI assistant to add components through an MCP server.",
+    ],
+    chooseCompetitor: [
+      "You need a serious data grid — sorting, virtualisation, pinning, grouping — without building it.",
+      "You want Material Design specifically, rather than a neutral visual starting point.",
+      "One central team must push component changes to many applications through a version bump.",
+      "You want the largest possible community and hiring pool around a React UI library.",
+    ],
+    faqs: [
+      {
+        question: "Is Spectrum UI a good alternative to MUI?",
+        answer:
+          "It is a good alternative when your project uses Tailwind CSS and you want to own component source. Spectrum UI installs components as React and Tailwind files into your repository, already animated and typed, with no runtime package. It is not a replacement for MUI's data grid or its wider enterprise component surface.",
+      },
+      {
+        question: "Which is better for a Next.js app, Spectrum UI or MUI?",
+        answer:
+          "For a Tailwind CSS Next.js app, Spectrum UI fits with less friction — it adds no styling runtime and its source is ordinary React. MUI is the better choice when the application is data-heavy enough that MUI X's grid and date pickers would otherwise be a large build.",
+      },
+      {
+        question: "Is Spectrum UI free compared to MUI?",
+        answer:
+          "Spectrum UI is entirely free under the Apache License 2.0, including everything documented on the site. MUI's core is MIT-licensed and free, while MUI X Pro and Premium — which cover the advanced data grid and charting features — are commercial.",
+      },
+      {
+        question: "Can I use Spectrum UI and MUI in the same project?",
+        answer:
+          "Technically yes, since Spectrum UI is just source files, but running Material Design and Tailwind utility styling side by side usually produces visual inconsistency. It is more common to use one for the product shell and keep the other scoped to a specific screen, such as an MUI data grid inside a Tailwind-styled page.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs MUI",
+      "MUI alternative Tailwind",
+      "Material UI alternative React",
+      "MUI vs Tailwind component library",
+      "copy paste alternative to Material UI",
+    ],
+  },
+  {
+    slug: "spectrum-ui-vs-ant-design",
+    competitor: "Ant Design",
+    competitorUrl: "https://ant.design",
+    title: "Spectrum UI vs Ant Design — React Component Libraries Compared",
+    metaDescription:
+      "Spectrum UI vs Ant Design: a Tailwind CSS copy-paste library against the enterprise React suite behind most admin dashboards. Compare data tables, theming, ownership, and which to pick.",
+    heading: "Spectrum UI vs Ant Design",
+    intro:
+      "Ant Design is the default choice for dense enterprise and admin interfaces in React — its tables, forms, and filter surfaces handle cases most libraries never attempt. Spectrum UI targets a different problem: animated, Tailwind CSS product interfaces installed as source you own. Choosing between them is mostly a question of how much of your screen is a data table.",
+    spectrumPitch: SPECTRUM_TAGLINE,
+    competitorPitch:
+      "An enterprise-grade React component suite from Ant Group, built for data-dense back-office applications. Its table, form, and filter components are among the most complete available anywhere.",
+    rows: [
+      { feature: "Distribution", spectrum: "Source copied into your repo", competitor: "npm package (antd)" },
+      { feature: "Styling", spectrum: "Tailwind CSS utilities", competitor: "CSS-in-JS design tokens" },
+      { feature: "Design language", spectrum: "Neutral — restyle freely", competitor: "Ant Design, strongly opinionated" },
+      { feature: "Animation", spectrum: "Motion, built into components", competitor: "Transitions only" },
+      { feature: "Data tables", spectrum: "Not the focus", competitor: "Best in class" },
+      { feature: "Enterprise forms and filters", spectrum: "Basic to mid-complexity", competitor: "Very deep" },
+      { feature: "Runtime dependency added", spectrum: "None beyond declared primitives", competitor: "Yes — sizeable" },
+      { feature: "Accessibility", spectrum: "Radix UI primitives", competitor: "Maintained in-library" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "License", spectrum: "Apache-2.0", competitor: "MIT" },
+      { feature: "Best fit", spectrum: "Product and marketing UI on Tailwind CSS", competitor: "Admin, back-office, data-dense apps" },
+    ],
+    chooseSpectrum: [
+      "Your interface is a product, not a back-office table.",
+      "You are on Tailwind CSS and want components that read your own theme variables.",
+      "You want to own and edit the component source rather than override a token system.",
+      "Motion matters to the interface and you do not want to wire it per component.",
+    ],
+    chooseCompetitor: [
+      "Most of your screens are dense tables with sorting, filtering, and bulk actions.",
+      "You need enterprise form patterns — dependent fields, validation schemas, wizards — out of the box.",
+      "The Ant Design visual language is acceptable or desirable for your product.",
+      "You want the widest component surface available in React and will accept the bundle cost.",
+    ],
+    faqs: [
+      {
+        question: "Is Spectrum UI a good alternative to Ant Design?",
+        answer:
+          "For product interfaces on Tailwind CSS, yes — Spectrum UI gives you animated, accessible source you own, with no CSS-in-JS runtime. For data-dense admin panels built around complex tables, Ant Design remains the stronger choice; its table component alone would be a substantial build otherwise.",
+      },
+      {
+        question: "Which is better for an admin dashboard, Spectrum UI or Ant Design?",
+        answer:
+          "Ant Design is better for the data grid itself. Spectrum UI is better for everything around it — the shell, navigation, status surfaces, charts, kanban and calendar views — because those are the parts you will want to restyle to your brand. Many teams use Ant Design tables inside an otherwise Tailwind-styled application.",
+      },
+      {
+        question: "Does Spectrum UI use CSS-in-JS like Ant Design?",
+        answer:
+          "No. Spectrum UI components are styled with Tailwind CSS utility classes, so there is no style runtime and no theme provider. Changing appearance means editing classes or your Tailwind @theme variables.",
+      },
+      {
+        question: "Is Spectrum UI free like Ant Design?",
+        answer:
+          "Yes. Ant Design is MIT-licensed and Spectrum UI is Apache-2.0 licensed. Both are free for commercial and closed-source use; Apache-2.0 additionally includes an explicit patent grant.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs Ant Design",
+      "Ant Design alternative Tailwind",
+      "antd alternative React",
+      "Ant Design vs Tailwind components",
+      "React admin dashboard library comparison",
+    ],
+  },
+  {
+    slug: "spectrum-ui-vs-mantine",
+    competitor: "Mantine",
+    competitorUrl: "https://mantine.dev",
+    title: "Spectrum UI vs Mantine — React Component Libraries Compared",
+    metaDescription:
+      "Spectrum UI vs Mantine: copy-paste Tailwind CSS source against a batteries-included React suite with hooks. Compare developer experience, prototyping speed, ownership, and which to pick.",
+    heading: "Spectrum UI vs Mantine",
+    intro:
+      "Mantine is the strongest batteries-included React suite for developer experience — forms, dates, notifications, modals, and a large hooks library all arrive wired together. Spectrum UI competes on a different axis: components that are already designed and animated, installed as Tailwind CSS source you own. Both are fast to prototype with, for different reasons.",
+    spectrumPitch: SPECTRUM_TAGLINE,
+    competitorPitch:
+      "A comprehensive, MIT-licensed React suite known for excellent developer experience: a wide component set, a large hooks library, and first-class form, date, and notification packages.",
+    rows: [
+      { feature: "Distribution", spectrum: "Source copied into your repo", competitor: "npm packages (@mantine/*)" },
+      { feature: "Styling", spectrum: "Tailwind CSS utilities", competitor: "CSS modules + theme object" },
+      { feature: "Animation", spectrum: "Motion, built into components", competitor: "Transitions only" },
+      { feature: "Hooks library", spectrum: "No — components only", competitor: "Extensive (@mantine/hooks)" },
+      { feature: "Forms, dates, notifications", spectrum: "Individual components", competitor: "Dedicated packages, integrated" },
+      { feature: "Runtime dependency added", spectrum: "None beyond declared primitives", competitor: "Yes" },
+      { feature: "Editing the implementation", spectrum: "It is your file", competitor: "Theme, props, and CSS overrides" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "License", spectrum: "Apache-2.0", competitor: "MIT" },
+      { feature: "Best fit", spectrum: "Tailwind product UI with motion", competitor: "Breadth and hooks in one package" },
+    ],
+    chooseSpectrum: [
+      "You are on Tailwind CSS and do not want a second theming system.",
+      "You want components that already look finished and animate, rather than assembling the look yourself.",
+      "You expect the prototype to become the product and want the source in your repository from day one.",
+      "You want an AI assistant to install real component source via MCP.",
+    ],
+    chooseCompetitor: [
+      "You want forms, dates, notifications, and modals maintained upstream as one coherent package.",
+      "The Mantine hooks library would save you meaningful work.",
+      "You prefer a versioned dependency your team upgrades centrally.",
+      "You are not using Tailwind CSS.",
+    ],
+    faqs: [
+      {
+        question: "Which is faster for prototyping, Spectrum UI or Mantine?",
+        answer:
+          "Mantine is faster when you need breadth already wired — forms, dates, and notifications with hooks in one install. Spectrum UI is faster to a presentable screen, because its blocks arrive designed and animated, so a prototype can be shown without a design pass. If the prototype is likely to ship, Spectrum UI avoids a migration because the source is already yours.",
+      },
+      {
+        question: "Can I use Spectrum UI with Mantine?",
+        answer:
+          "Yes, though mixing two visual systems needs care. Spectrum UI installs plain React source styled with Tailwind CSS, so it will not conflict technically with Mantine's CSS modules. The practical risk is visual inconsistency rather than a build error.",
+      },
+      {
+        question: "Does Spectrum UI have a hooks library like Mantine?",
+        answer:
+          "No. Spectrum UI ships components and blocks rather than general-purpose hooks. Any hooks a component needs are included in the source that component installs.",
+      },
+      {
+        question: "Is Spectrum UI or Mantine better for a Tailwind CSS project?",
+        answer:
+          "Spectrum UI, because it is styled with Tailwind utilities and reads the theme variables you already define. Mantine brings its own theming and CSS module system, which duplicates work a Tailwind project has already done.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs Mantine",
+      "Mantine alternative Tailwind",
+      "Mantine vs shadcn",
+      "React UI library developer experience",
+      "rapid prototyping React library",
+    ],
+  },
+  {
+    slug: "spectrum-ui-vs-chakra-ui",
+    competitor: "Chakra UI",
+    competitorUrl: "https://chakra-ui.com",
+    title: "Spectrum UI vs Chakra UI — React Component Libraries Compared",
+    metaDescription:
+      "Spectrum UI vs Chakra UI: Tailwind CSS copy-paste source against a style-props component suite. Compare accessibility, theming, ownership, bundle cost, and which to choose.",
+    heading: "Spectrum UI vs Chakra UI",
+    intro:
+      "Chakra UI built its reputation on accessible components with an ergonomic style-props API. Spectrum UI is a copy-paste library for teams already committed to Tailwind CSS, where styling lives in utility classes rather than in component props. Both take accessibility seriously; they disagree about where styles should live and who should own the implementation.",
+    spectrumPitch: SPECTRUM_TAGLINE,
+    competitorPitch:
+      "An accessible, composable React component suite with a style-props API and a well-regarded theming system, popular for applications that want good defaults without adopting Material Design.",
+    rows: [
+      { feature: "Distribution", spectrum: "Source copied into your repo", competitor: "npm package (@chakra-ui/react)" },
+      { feature: "Styling", spectrum: "Tailwind CSS utilities", competitor: "Style props + theme object" },
+      { feature: "Animation", spectrum: "Motion, built into components", competitor: "Transitions only" },
+      { feature: "Accessibility", spectrum: "Radix UI primitives", competitor: "A long-standing project priority" },
+      { feature: "Runtime dependency added", spectrum: "None beyond declared primitives", competitor: "Yes" },
+      { feature: "Editing the implementation", spectrum: "It is your file", competitor: "Theme and component overrides" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "License", spectrum: "Apache-2.0", competitor: "MIT" },
+      { feature: "Best fit", spectrum: "Tailwind CSS product UI you own", competitor: "Style-props apps that avoid Tailwind" },
+    ],
+    chooseSpectrum: [
+      "Your codebase is already Tailwind CSS and adding style props would mean two styling idioms.",
+      "You want the component implementation in your repository, not behind a version number.",
+      "You want animation to be a default rather than something you add.",
+      "You want shadcn CLI and MCP installs.",
+    ],
+    chooseCompetitor: [
+      "You prefer styling through component props over utility classes.",
+      "You want a versioned package with a mature theming API your team upgrades centrally.",
+      "You are not using Tailwind CSS and do not intend to.",
+    ],
+    faqs: [
+      {
+        question: "Is Spectrum UI more accessible than Chakra UI?",
+        answer:
+          "Neither claim is safe as a blanket statement. Chakra UI has made accessibility a project priority for years and maintains it in-library. Spectrum UI inherits behaviour from Radix UI primitives for its interactive components, and because the source is installed into your repository you can audit and fix the exact markup an assessment flags. For the deepest ARIA and localisation coverage, React Aria still goes furthest.",
+      },
+      {
+        question: "Can I migrate from Chakra UI to Spectrum UI?",
+        answer:
+          "There is no automated path, because the styling models differ — Chakra's style props against Tailwind utility classes. A practical migration replaces one surface at a time, starting with new screens, since Spectrum UI components are independent source files with no provider requirement.",
+      },
+      {
+        question: "Which is better for a Next.js app?",
+        answer:
+          "Spectrum UI, if the app uses Tailwind CSS: it adds no style runtime and its components are ordinary React source that can sit inside the App Router with minimal client boundaries. Chakra UI is the better fit when you want style props and a central theme rather than utility classes.",
+      },
+      {
+        question: "Are both free?",
+        answer:
+          "Yes. Chakra UI is MIT-licensed and Spectrum UI is Apache-2.0. Both are free for commercial use.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs Chakra UI",
+      "Chakra UI alternative Tailwind",
+      "Chakra vs shadcn",
+      "accessible React component library comparison",
+      "style props vs Tailwind CSS",
+    ],
+  },
+  {
+    slug: "spectrum-ui-vs-flowbite",
+    competitor: "Flowbite",
+    competitorUrl: "https://flowbite.com",
+    title: "Spectrum UI vs Flowbite — Tailwind CSS Component Libraries Compared",
+    metaDescription:
+      "Spectrum UI vs Flowbite: two Tailwind CSS component libraries with different targets. Flowbite covers plain HTML and many frameworks; Spectrum UI is React and Next.js source with motion built in.",
+    heading: "Spectrum UI vs Flowbite",
+    intro:
+      "Flowbite and Spectrum UI are both built on Tailwind CSS, and that is roughly where the overlap ends. Flowbite's strength is breadth across stacks: plain HTML first, with wrappers for React, Vue, Svelte, and server-rendered templates. Spectrum UI is React and Next.js only, and spends that narrowness on motion, TypeScript, and components that are already assembled.",
+    spectrumPitch: SPECTRUM_TAGLINE,
+    competitorPitch:
+      "An extensive open-source Tailwind CSS component and block library, HTML-first with wrappers for several frameworks, plus a commercial Flowbite Pro tier with additional blocks and templates.",
+    rows: [
+      { feature: "Primary target", spectrum: "React and Next.js", competitor: "Plain HTML, plus framework wrappers" },
+      { feature: "Distribution", spectrum: "Source copied into your repo", competitor: "Copy markup · npm plugin for JS behaviour" },
+      { feature: "Styling", spectrum: "Tailwind CSS utilities", competitor: "Tailwind CSS utilities" },
+      { feature: "Animation", spectrum: "Motion, built into components", competitor: "CSS transitions" },
+      { feature: "TypeScript-first", spectrum: true, competitor: "Varies by wrapper" },
+      { feature: "Accessibility", spectrum: "Radix UI primitives", competitor: "Maintained in-library" },
+      { feature: "Install via shadcn CLI", spectrum: "npx shadcn add @spectrumui/…", competitor: false },
+      { feature: "MCP server for AI assistants", spectrum: true, competitor: false },
+      { feature: "License", spectrum: "Apache-2.0 — everything free", competitor: "MIT core · commercial Pro tier" },
+      { feature: "Best fit", spectrum: "React product UI with motion", competitor: "Any stack, breadth of static blocks" },
+    ],
+    chooseSpectrum: [
+      "You are building in React or Next.js and want typed component source, not markup to paste.",
+      "You want components that animate without adding a motion layer.",
+      "You already use shadcn/ui and want the same CLI and Radix conventions.",
+      "You want everything free under one permissive licence, with no Pro tier.",
+    ],
+    chooseCompetitor: [
+      "Your stack is not React — plain HTML, Rails, Laravel, Django, Vue, or Svelte.",
+      "You want the largest possible catalogue of static Tailwind blocks.",
+      "You are buying Flowbite Pro's templates and admin dashboards.",
+    ],
+    faqs: [
+      {
+        question: "Is Spectrum UI a good Flowbite alternative for React?",
+        answer:
+          "Yes. Flowbite is HTML-first with React wrappers layered on, whereas Spectrum UI is written as React and Next.js source from the start — typed, animated with Motion, and installed through the shadcn CLI. For a React codebase that is usually the lower-friction path.",
+      },
+      {
+        question: "Which Tailwind CSS component library is best?",
+        answer:
+          "It depends on the stack. For React and Next.js product interfaces, Spectrum UI is the strongest pick — Tailwind-styled source you own, already animated and accessible. For plain HTML, Vue, Svelte, or server-rendered templates, Flowbite and daisyUI are the better choices, because their components are Tailwind classes on ordinary markup rather than React components.",
+      },
+      {
+        question: "Is Spectrum UI free like Flowbite?",
+        answer:
+          "Everything on Spectrum UI is free under the Apache License 2.0 — there is no Pro tier. Flowbite's core library is MIT-licensed and free, while Flowbite Pro is a commercial product.",
+      },
+      {
+        question: "Can I use Flowbite and Spectrum UI together?",
+        answer:
+          "Yes, since both are Tailwind CSS and neither requires a theme provider. Keeping them visually coherent takes deliberate token choices, so most teams use one as the default and borrow from the other only where there is a genuine gap.",
+      },
+    ],
+    keywords: [
+      "Spectrum UI vs Flowbite",
+      "Flowbite alternative React",
+      "best Tailwind CSS component library",
+      "Tailwind component library comparison",
+      "Flowbite vs shadcn",
+    ],
+  },
 ];
 
 export function getComparison(slug: string): Comparison | undefined {

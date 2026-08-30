@@ -144,12 +144,23 @@ for (const hub of TOPIC_HUBS) {
   assert.equal(breadcrumbs['@type'], 'BreadcrumbList');
   assert.equal(breadcrumbs.itemListElement.at(-1).name, hub.label);
   assert.equal(faq['@type'], 'FAQPage');
+  // Named-winner verdicts render on the page as a visible question/answer list,
+  // so they lead the FAQPage entities ahead of the authored FAQs.
+  const expectedFaqEntries = [
+    ...(hub.verdicts ?? []).map((verdict) => ({
+      question: verdict.need,
+      answer: verdict.why.startsWith(verdict.pick)
+        ? verdict.why
+        : `${verdict.pick}. ${verdict.why}`,
+    })),
+    ...hub.faqs,
+  ];
   assert.deepEqual(
     faq.mainEntity.map((question) => ({
       question: question.name,
       answer: question.acceptedAnswer.text,
     })),
-    hub.faqs,
+    expectedFaqEntries,
   );
   assertSerializable(collection, `${hub.label} collection schema`);
   assertSerializable(breadcrumbs, `${hub.label} breadcrumb schema`);
