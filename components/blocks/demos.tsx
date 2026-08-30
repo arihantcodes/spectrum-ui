@@ -18,14 +18,23 @@ import { InlineEdit } from '@/components/spectrumui/blocks/ai-assistants/inline-
 import { ThinkingDots } from '@/components/spectrumui/blocks/ai-assistants/thinking-dots';
 import { TaskRows, type TaskRow } from '@/components/spectrumui/blocks/ai-assistants/task-rows';
 import { AgentPlan } from '@/components/spectrumui/blocks/ai-assistants/agent-plan';
-import { WebSearch, type SearchResult } from '@/components/spectrumui/blocks/ai-assistants/web-search';
+import {
+  WebSearch,
+  type SearchResult,
+} from '@/components/spectrumui/blocks/ai-assistants/web-search';
 import { DiffView } from '@/components/spectrumui/blocks/ai-assistants/diff-view';
 import { CodeBlock } from '@/components/spectrumui/blocks/ai-assistants/code-block';
 import { InsightCards } from '@/components/spectrumui/blocks/ai-assistants/insight-cards';
 import { ErrorState } from '@/components/spectrumui/blocks/ai-assistants/error-state';
 import { QuotaBanner } from '@/components/spectrumui/blocks/ai-assistants/quota-banner';
-import { MemoryChips, type MemoryItem } from '@/components/spectrumui/blocks/ai-assistants/memory-chips';
-import { SuggestionBanner, type SuggestionState } from '@/components/spectrumui/blocks/ai-assistants/suggestion-banner';
+import {
+  MemoryChips,
+  type MemoryItem,
+} from '@/components/spectrumui/blocks/ai-assistants/memory-chips';
+import {
+  SuggestionBanner,
+  type SuggestionState,
+} from '@/components/spectrumui/blocks/ai-assistants/suggestion-banner';
 import { StatusTracker } from '@/components/spectrumui/blocks/ai-assistants/status-tracker';
 import { ConversationList } from '@/components/spectrumui/blocks/ai-assistants/conversation-list';
 import {
@@ -37,11 +46,73 @@ import {
   PORTSIDE_TOOL_CALLS,
   PORTSIDE_USAGE,
 } from '@/components/spectrumui/blocks/ai-assistants/_fixtures/conversation';
+import { BannerTiers } from '@/components/spectrumui/blocks/pricing/banner-tiers';
+import { ReceiptTiers } from '@/components/spectrumui/blocks/pricing/receipt-tiers';
+import { BlueprintTiers } from '@/components/spectrumui/blocks/pricing/blueprint-tiers';
+import { DarkMatrix } from '@/components/spectrumui/blocks/pricing/dark-matrix';
+import { GradientTiers } from '@/components/spectrumui/blocks/pricing/gradient-tiers';
+import { OffsetTiers } from '@/components/spectrumui/blocks/pricing/offset-tiers';
+import { SerifTiers } from '@/components/spectrumui/blocks/pricing/serif-tiers';
+import {
+  CORMORANT_PLANS,
+  NORTHGATE_TIERS,
+  PORTSIDE_COMPARISON,
+  PORTSIDE_LADDER,
+  PORTSIDE_PLANS,
+} from '@/components/spectrumui/blocks/pricing/_fixtures/plans';
 import type {
   Attachment,
   ToolCall,
   ToolCallStatus,
 } from '@/components/spectrumui/blocks/ai-assistants/types';
+
+/* Per-block arrangements of the shared price book: each reference design shows
+   three tiers, so every demo picks its three and adjusts only presentation
+   fields (badge text, CTA copy) — never prices or features. */
+const GRADIENT_PLANS = [
+  CORMORANT_PLANS[0],
+  { ...CORMORANT_PLANS[1], badge: 'Most Popular' },
+  CORMORANT_PLANS[2],
+];
+
+const MATRIX_PLANS = [
+  { ...PORTSIDE_PLANS[1], cta: 'Try for free' },
+  { ...PORTSIDE_PLANS[2], cta: 'Get started' },
+  { ...PORTSIDE_PLANS[3], cta: 'Contact us' },
+];
+
+const MATRIX_GROUPS = PORTSIDE_COMPARISON.map((group) => ({
+  ...group,
+  rows: group.rows.map((row) => ({ ...row, values: row.values.slice(1) })),
+}));
+
+const BLUEPRINT_PLANS = [
+  PORTSIDE_PLANS[0],
+  { ...PORTSIDE_PLANS[1], featured: true, badge: 'Most popular' },
+  { ...PORTSIDE_PLANS[2], featured: false, badge: undefined },
+];
+
+const SERIF_PLANS = [
+  { ...PORTSIDE_PLANS[0], features: PORTSIDE_PLANS[0].features.slice(0, 4) },
+  { ...PORTSIDE_PLANS[2], badge: 'Popular', features: PORTSIDE_PLANS[2].features.slice(0, 4) },
+  { ...PORTSIDE_LADDER[3], features: PORTSIDE_LADDER[3].features.slice(0, 4) },
+];
+
+const BANNER_PLANS = [
+  { ...PORTSIDE_PLANS[0], cta: 'Start today', features: PORTSIDE_PLANS[0].features.slice(0, 5) },
+  { ...PORTSIDE_PLANS[2], cta: 'Get Pro now', features: PORTSIDE_PLANS[2].features.slice(0, 5) },
+  {
+    ...PORTSIDE_LADDER[3],
+    cta: 'Get an inquiry',
+    features: PORTSIDE_LADDER[3].features.slice(0, 5),
+  },
+];
+
+const PAID_TRIO = [
+  { ...PORTSIDE_PLANS[1], features: PORTSIDE_PLANS[1].features.slice(0, 5) },
+  { ...PORTSIDE_PLANS[2], badge: 'Most popular', features: PORTSIDE_PLANS[2].features.slice(0, 5) },
+  { ...PORTSIDE_LADDER[3], features: PORTSIDE_LADDER[3].features.slice(0, 5) },
+];
 
 /**
  * Live demos, keyed by block slug. The specimen page renders these full-size on
@@ -52,18 +123,10 @@ import type {
  * A block without a demo here cannot be marked `live` in the catalog.
  */
 export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> = {
-  'loading-state': (variant) => (
-    <LoadingState variant={variant as 'Drive' | 'Dots' | 'Orbit'} />
-  ),
-  'reasoning-trace': (variant) => (
-    <ReasoningTraceDemo variant={variant as 'Steps' | 'Reasoning'} />
-  ),
-  'streaming-text': (variant) => (
-    <StreamingTextDemo variant={variant as 'Answer' | 'Sources'} />
-  ),
-  'prompt-composer': (variant) => (
-    <PromptComposerDemo variant={variant as 'Default' | 'Minimal'} />
-  ),
+  'loading-state': (variant) => <LoadingState variant={variant as 'Drive' | 'Dots' | 'Orbit'} />,
+  'reasoning-trace': (variant) => <ReasoningTraceDemo variant={variant as 'Steps' | 'Reasoning'} />,
+  'streaming-text': (variant) => <StreamingTextDemo variant={variant as 'Answer' | 'Sources'} />,
+  'prompt-composer': (variant) => <PromptComposerDemo variant={variant as 'Default' | 'Minimal'} />,
   'chat-empty-state': (variant) => (
     <ChatEmptyState
       title={PORTSIDE_GREETING.title}
@@ -72,9 +135,7 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
       variant={variant as 'Default' | 'Centered'}
     />
   ),
-  'message-actions': (variant) => (
-    <MessageActionsDemo variant={variant as 'Ghost' | 'Pill'} />
-  ),
+  'message-actions': (variant) => <MessageActionsDemo variant={variant as 'Ghost' | 'Pill'} />,
   'citation-sources': (variant) => (
     <CitationSources
       text="Rotterdam–Felixstowe on-time delivery fell to 71.4% last week [1]. The cause was terminal congestion at Rotterdam following a crane fault at Berth 3 [2], and average transit ran 2.3 days over the contracted SLA with Meridian Lines [3]."
@@ -82,19 +143,13 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
       variant={variant as 'Inline' | 'Footnotes'}
     />
   ),
-  'agent-steps': (variant) => (
-    <AgentStepsDemo variant={variant as 'Default' | 'Compact'} />
-  ),
-  'tool-chips': (variant) => (
-    <ToolChipsDemo variant={variant as 'Row' | 'Stack'} />
-  ),
+  'agent-steps': (variant) => <AgentStepsDemo variant={variant as 'Default' | 'Compact'} />,
+  'tool-chips': (variant) => <ToolChipsDemo variant={variant as 'Row' | 'Stack'} />,
   'approval-card': () => <ApprovalCardDemo />,
   'model-selector': (variant) => (
     <ModelSelector models={PORTSIDE_MODELS} variant={variant as 'List' | 'Segmented'} />
   ),
-  'usage-meter': (variant) => (
-    <UsageMeterDemo variant={variant as 'Bar' | 'Inline'} />
-  ),
+  'usage-meter': (variant) => <UsageMeterDemo variant={variant as 'Bar' | 'Inline'} />,
   'voice-input': () => <VoiceInputDemo />,
   'inline-edit': () => <InlineEditDemo />,
   'thinking-dots': (variant) => (
@@ -119,17 +174,97 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
   ),
   'error-state': (variant) => <ErrorState variant={variant as 'Card' | 'Inline'} />,
   'quota-banner': (variant) => (
-    <QuotaBanner used={18} limit={20} resetsInSeconds={252} variant={variant as 'Banner' | 'Compact'} />
+    <QuotaBanner
+      used={18}
+      limit={20}
+      resetsInSeconds={252}
+      variant={variant as 'Banner' | 'Compact'}
+    />
   ),
   'memory-chips': (variant) => <MemoryChipsDemo variant={variant as 'Panel' | 'Row'} />,
   'suggestion-banner': (variant) => (
     <SuggestionBannerDemo variant={variant as 'Inline' | 'Floating'} />
   ),
-  'status-tracker': (variant) => (
-    <StatusTrackerDemo variant={variant as 'Default' | 'Minimal'} />
-  ),
+  'status-tracker': (variant) => <StatusTrackerDemo variant={variant as 'Default' | 'Minimal'} />,
   'conversation-list': (variant) => (
-    <ConversationList conversations={CONVERSATION_ENTRIES} variant={variant as 'Default' | 'Compact'} />
+    <ConversationList
+      conversations={CONVERSATION_ENTRIES}
+      variant={variant as 'Default' | 'Compact'}
+    />
+  ),
+  'offset-tiers': (variant) => (
+    <OffsetTiers
+      plans={NORTHGATE_TIERS}
+      eyebrow="Engagements"
+      heading="Three ways to run Northgate."
+      subheading="Every engagement starts on the same platform — choose how much of it we operate for you."
+      variant={variant as 'Staggered' | 'Level'}
+    />
+  ),
+  'gradient-tiers': (variant) => (
+    <GradientTiers
+      eyebrow="Plans and pricing"
+      heading="Start free. Scale when it works."
+      subheading="Metered from the first token, with volume discounts that apply themselves."
+      plans={GRADIENT_PLANS}
+      notes={[
+        {
+          price: 'Free',
+          priceNote: 'Up to your first 2M tokens',
+          footnote: 'Then, $1.10 per million tokens after your first 2M.',
+        },
+        { price: '$250 /mo', priceNote: 'Plus usage at listed rates' },
+        { price: 'Custom pricing' },
+      ]}
+      variant={variant as 'Tinted' | 'Plain'}
+    />
+  ),
+  'dark-matrix': (variant) => (
+    <DarkMatrix
+      eyebrow="Compare"
+      heading="Every plan, line by line."
+      subheading="The full feature matrix — no asterisks, no fine print."
+      plans={MATRIX_PLANS}
+      groups={MATRIX_GROUPS}
+      hints={{
+        'Tracked lanes': 'One origin-destination pair on one carrier.',
+        'Data refresh': 'How often carrier feeds are pulled.',
+      }}
+      variant={variant as 'Sections' | 'Flat'}
+    />
+  ),
+  'blueprint-tiers': (variant) => (
+    <BlueprintTiers
+      plans={BLUEPRINT_PLANS}
+      eyebrow="Simple and transparent"
+      heading="Pricing that scales with growth"
+      subheading="Flexible plans designed to support early teams today and complex freight operations as your company scales."
+      variant={variant as 'Marks' | 'Clean'}
+    />
+  ),
+  'serif-tiers': (variant) => (
+    <SerifTiers
+      plans={SERIF_PLANS}
+      heading="Simple, flexible pricing for teams"
+      subheading="Transparent plans that scale with you at every stage."
+      variant={variant as 'Ember' | 'Ink'}
+    />
+  ),
+  'banner-tiers': (variant) => (
+    <BannerTiers
+      plans={BANNER_PLANS}
+      heading="Start for free, upgrade when you’re ready, and scale without limits."
+      variant={variant as 'Banner' | 'Badge'}
+    />
+  ),
+  'receipt-tiers': (variant) => (
+    <ReceiptTiers
+      plans={PAID_TRIO}
+      eyebrow="Price list"
+      heading="Pricing, printed plain"
+      subheading="No hidden fees · No card on file · Cancel at the till any time"
+      variant={variant as 'Tilted' | 'Straight'}
+    />
   ),
 };
 
@@ -295,8 +430,8 @@ function MessageActionsDemo({ variant }: { variant: 'Ghost' | 'Pill' }) {
   return (
     <div className="group/message w-full max-w-[440px] rounded-2xl border border-black/[0.07] bg-white p-4 dark:border-white/[0.08] dark:bg-[#0B0B0D]">
       <p className="text-[13px] leading-[1.65] text-neutral-700 dark:text-neutral-300">
-        Average transit ran 6.3 days against a contracted 4.0 — that reads as an
-        SLA breach rather than acceptable variance.
+        Average transit ran 6.3 days against a contracted 4.0 — that reads as an SLA breach rather
+        than acceptable variance.
       </p>
       <div className="mt-2.5">
         <MessageActions
@@ -314,7 +449,13 @@ function MessageActionsDemo({ variant }: { variant: 'Ghost' | 'Pill' }) {
 function withStatuses(calls: ToolCall[], through: number, running: boolean): ToolCall[] {
   return calls.map((call, index) => {
     const status: ToolCallStatus =
-      index < through ? 'success' : index === through ? (running ? 'running' : 'pending') : 'pending';
+      index < through
+        ? 'success'
+        : index === through
+          ? running
+            ? 'running'
+            : 'pending'
+          : 'pending';
     return { ...call, status: index === 3 && index <= through ? 'pending' : status };
   });
 }
@@ -451,27 +592,57 @@ function InlineEditDemo() {
   );
 }
 
-
 /* ── Fixture data for the second wave ───────────────────── */
 
 const PLAN_STEPS = [
   { id: 'p1', title: 'Pull week-28 lane performance', detail: 'query_lane_performance on RTM→FXT' },
   { id: 'p2', title: 'Cross-check incidents at Rotterdam', detail: 'search_incidents, 13–20 July' },
-  { id: 'p3', title: 'Compare observed transit to the SLA', detail: 'compare_to_sla for Meridian Lines' },
+  {
+    id: 'p3',
+    title: 'Compare observed transit to the SLA',
+    detail: 'compare_to_sla for Meridian Lines',
+  },
   { id: 'p4', title: 'Draft the carrier notice', detail: 'Held for your approval before sending' },
 ];
 
 const TASKS: TaskRow[] = [
-  { id: 't1', title: 'Verified vendor records', detail: '12 suppliers', status: 'completed', note: 'All cold-chain certifications present; two renewals due next month.' },
-  { id: 't2', title: 'Rebuilt lane performance index', detail: '4 lanes', status: 'completed', note: 'Week 28 figures now include the Rotterdam congestion window.' },
+  {
+    id: 't1',
+    title: 'Verified vendor records',
+    detail: '12 suppliers',
+    status: 'completed',
+    note: 'All cold-chain certifications present; two renewals due next month.',
+  },
+  {
+    id: 't2',
+    title: 'Rebuilt lane performance index',
+    detail: '4 lanes',
+    status: 'completed',
+    note: 'Week 28 figures now include the Rotterdam congestion window.',
+  },
   { id: 't3', title: 'Drafting carrier notice', status: 'running' },
   { id: 't4', title: 'Schedule follow-up review', status: 'queued' },
 ];
 
 const SEARCH_RESULTS: SearchResult[] = [
-  { id: 's1', title: 'Port of Rotterdam berth status', domain: 'portofrotterdam.com', snippet: 'Berth 3 crane maintenance completed; full availability restored as of 21 July.' },
-  { id: 's2', title: 'North Sea congestion tracker', domain: 'seaintel.com', snippet: 'Rotterdam dwell times normalising after last week\'s equipment fault.' },
-  { id: 's3', title: 'Meridian Lines service updates', domain: 'meridianlines.com', snippet: 'Schedule recovery expected across North Europe strings within one week.' },
+  {
+    id: 's1',
+    title: 'Port of Rotterdam berth status',
+    domain: 'portofrotterdam.com',
+    snippet: 'Berth 3 crane maintenance completed; full availability restored as of 21 July.',
+  },
+  {
+    id: 's2',
+    title: 'North Sea congestion tracker',
+    domain: 'seaintel.com',
+    snippet: "Rotterdam dwell times normalising after last week's equipment fault.",
+  },
+  {
+    id: 's3',
+    title: 'Meridian Lines service updates',
+    domain: 'meridianlines.com',
+    snippet: 'Schedule recovery expected across North Europe strings within one week.',
+  },
 ];
 
 const DIFFS = [
@@ -506,8 +677,22 @@ const SAMPLE_CODE = `export function breachSection(lanes: Lane[]) {
 }`;
 
 const INSIGHTS = [
-  { id: 'i1', label: 'On-time delivery', value: '71.4%', change: -18.2, spark: [82, 88, 85, 90, 87, 71], note: 'Dip traces to the Rotterdam crane fault, not carrier performance.' },
-  { id: 'i2', label: 'Avg transit — RTM→FXT', value: '6.3d', change: 57.5, spark: [40, 42, 38, 41, 44, 96], note: '2.3 days over the contracted SLA window.' },
+  {
+    id: 'i1',
+    label: 'On-time delivery',
+    value: '71.4%',
+    change: -18.2,
+    spark: [82, 88, 85, 90, 87, 71],
+    note: 'Dip traces to the Rotterdam crane fault, not carrier performance.',
+  },
+  {
+    id: 'i2',
+    label: 'Avg transit — RTM→FXT',
+    value: '6.3d',
+    change: 57.5,
+    spark: [40, 42, 38, 41, 44, 96],
+    note: '2.3 days over the contracted SLA window.',
+  },
 ];
 
 const MEMORIES: MemoryItem[] = [
@@ -549,7 +734,11 @@ function TaskRowsDemo({ variant }: { variant: 'Default' | 'Compact' }) {
     : TASKS.map((task, index) => ({
         ...task,
         status:
-          index < step ? ('completed' as const) : index === step ? ('running' as const) : ('queued' as const),
+          index < step
+            ? ('completed' as const)
+            : index === step
+              ? ('running' as const)
+              : ('queued' as const),
       }));
 
   return <TaskRows tasks={tasks} variant={variant} />;
@@ -576,7 +765,14 @@ function WebSearchDemo({ variant }: { variant: 'Default' | 'Compact' }) {
           : ('idle' as const),
   }));
 
-  return <WebSearch query="rotterdam berth 3 crane status" results={results} moreCount={7} variant={variant} />;
+  return (
+    <WebSearch
+      query="rotterdam berth 3 crane status"
+      results={results}
+      moreCount={7}
+      variant={variant}
+    />
+  );
 }
 
 function DiffViewDemo({ variant }: { variant: 'Default' | 'Summary' }) {

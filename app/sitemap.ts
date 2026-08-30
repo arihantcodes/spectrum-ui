@@ -20,7 +20,6 @@ const componentRoutes = new Set(
 const topicHubRoutes = new Set(TOPIC_HUB_LINKS.map((hub) => topicHubPath(hub.slug)));
 const nonIndexableRoutes = new Set([
   // Redirects to the first block category; the category pages are indexed below.
-  '/blocks',
   '/bookmarks',
   '/create-user',
   '/dashboard',

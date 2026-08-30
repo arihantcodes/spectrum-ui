@@ -17,6 +17,12 @@ export interface BlockCategory {
   /** Prose for the category page and its meta description. */
   description: string;
   order: number;
+  /**
+   * `wide` widens the specimen column past 760px and switches the stage to a
+   * bleed — no padding, no centring. Page-width sections (pricing tables,
+   * footers, navbars) read as cards when floated in a padded letterbox.
+   */
+  layout?: 'default' | 'wide';
 }
 
 export interface BlockCatalogItem {
@@ -43,7 +49,7 @@ export interface BlockCatalogItem {
   aiHints: string;
   /** Stable catalog number — drives the "01 / 08" label on cards. */
   index: number;
-  /** ISO date the block shipped. Drives the self-expiring New badge. */
+  /** ISO date the block shipped. Feeds JSON-LD dateCreated and llms.txt. */
   addedAt: string;
   /**
    * `planned` entries are the roadmap: they exist in the catalog so ordering and
@@ -83,20 +89,13 @@ export function blockPath(categorySlug: string, blockSlug: string) {
   return `/blocks/${categorySlug}#${blockSlug}`;
 }
 
-/** The install command shown on cards and detail pages. */
-export function blockCliCommand(blockSlug: string) {
-  return `npx shadcn@latest add @spectrumui/${blockSlug}`;
-}
-
 export function findBlockCategory(categorySlug: string) {
   return BLOCK_CATEGORIES.find((category) => category.slug === categorySlug);
 }
 
 /** Only resolves live blocks, so planned slugs 404 rather than render empty. */
 export function findBlock(categorySlug: string, blockSlug: string) {
-  return LIVE_BLOCKS.find(
-    (block) => block.category === categorySlug && block.slug === blockSlug,
-  );
+  return LIVE_BLOCKS.find((block) => block.category === categorySlug && block.slug === blockSlug);
 }
 
 /** Every block that is actually installable. This is what pages render. */
@@ -106,27 +105,6 @@ export const LIVE_BLOCKS: readonly BlockCatalogItem[] = BLOCK_CATALOG.filter(
 
 export function blocksInCategory(categorySlug: string) {
   return LIVE_BLOCKS.filter((block) => block.category === categorySlug);
-}
-
-/** How long a block wears its New badge. */
-const NEW_FOR_DAYS = 30;
-
-/**
- * Blocks that shipped recently enough to badge.
- *
- * Returns nothing when *every* block is new — during a launch the badge marks
- * all 27 and therefore distinguishes none, so it is only noise. It starts
- * earning its place the moment some blocks are older than others, and expires
- * on its own so the catalog never accumulates stale badges the way the
- * component sidebar did.
- */
-export function newBlockSlugs(now: Date = new Date()): ReadonlySet<string> {
-  const cutoff = now.getTime() - NEW_FOR_DAYS * 24 * 60 * 60 * 1000;
-  const recent = LIVE_BLOCKS.filter(
-    (block) => new Date(`${block.addedAt}T00:00:00Z`).getTime() >= cutoff,
-  );
-  if (recent.length === LIVE_BLOCKS.length) return new Set();
-  return new Set(recent.map((block) => block.slug));
 }
 
 /** Includes planned entries — for roadmap copy, not for cards. */

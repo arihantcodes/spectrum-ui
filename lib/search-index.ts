@@ -67,11 +67,6 @@ const STATIC_PAGES: readonly Omit<SearchDocument, 'id' | 'group'>[] = [
     keywords: 'mcp cursor claude ai editor agent model context protocol',
   },
   {
-    title: 'Blocks',
-    href: '/blocks',
-    keywords: 'sections composed layouts full page blocks',
-  },
-  {
     title: 'Charts',
     href: '/charts',
     keywords: 'charts graphs data visualisation dashboards recharts svg',
