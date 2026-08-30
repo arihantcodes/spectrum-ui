@@ -324,3 +324,69 @@ One caveat worth keeping in view: **do not tune the tracked prompt set to move t
 - `/compare/spectrum-ui-vs-adobe-spectrum` retrieved on a branded prompt.
 - The "complex web apps" or "mobile-first" branded phrasing resolving to us instead of Adobe.
 - Rank out of the bottom decile on ChatGPT and Perplexity.
+
+---
+
+## 9. Profound topic export — 2026-08-29 (brand/topic visibility rankings)
+
+> **Source:** `spectrum_ui_ui_component_library_brand_topic_visibility_rankings_2026-08-29_19-52.json`
+> **Window:** 2026-08-24 → 2026-08-28, no persona, visibility analysis.
+> **Shape:** 9 topics × (1 rollup + ~5 prompts), 44 prompt groups, top-10 brands each. 96 distinct brand strings.
+
+### 9.1 The result in one line
+
+**Spectrum UI appears in exactly one of nine topics — the branded one.**
+
+| Topic | Our best rank | #1 brand | Do we have a page? |
+|---|---|---|---|
+| Spectrum UI vs Competitors | **#4 (32.12%)** | Adobe 80% | ✅ `/compare/*` |
+| Accessible UI Design | — | Adobe 67.22% | ❌ → now `/accessible-react-components` |
+| Copy-and-paste UI Blocks | — | shadcn 59.89% | ⚠️ hub only → now `/copy-paste-react-components` |
+| Dashboard & Admin Interfaces | — | Ant Design 84.71% | ⚠️ hub, no verdict |
+| Design System Integration | — | MUI 54% | ❌ → now `/design-system-integration` |
+| Developer DX & Rapid Prototyping | — | MUI 65.34% | ❌ → now `/rapid-prototyping-ui-library` |
+| Open-source UI Resources | — | Radix 53.78% | ❌ → now `/open-source-ui-components` |
+| Production-ready React Components | — | MUI 84.83% | ⚠️ hub, no verdict |
+| Tailwind CSS–based Styling | — | Flowbite 82.84% | ⚠️ hub, no verdict |
+
+Across the **40 non-branded prompts** we are outside the top 10 everywhere. Across the **4 branded prompts** we place 4th, 5th, and 6th on three of them, and are absent from the fourth ("Adobe Spectrum or other UI component libraries" — a prompt that names another company's product, which we cannot win).
+
+Read against §6, this is the same finding a month later, now measured at topic granularity: **branded resolution is improving, non-branded presence is still zero.** The §6.2 diagnosis holds — the bottleneck is extraction, not retrieval.
+
+### 9.2 What the export adds that §6 did not have
+
+**1. The competitor set we were writing against was the wrong one.** Our comparison pages targeted Aceternity UI, Magic UI, and shadcn/ui — the animated-library niche. Counting brand appearances across all 530 rows, the names AI engines actually return are:
+
+`MUI 40 · Ant Design 35 · shadcn 33 · Radix 28 · Mantine 27 · Chakra UI 26 · Tailwind 22 · Adobe 18 · daisyUI 19 · Flowbite 8 · Aceternity 6`
+
+Aceternity and Magic UI barely register outside the "copy-and-paste blocks" topic. We had zero pages against MUI, Ant Design, Mantine, Chakra UI, or Flowbite — the five brands that actually beat us — and four pages against brands that mostly do not appear.
+
+**2. Two topics are not component-library questions at all.** "Design System Integration" is won by Figma (46.89%), Storybook (43.44%), Zeroheight, Supernova, Tokens Studio, and Chromatic. "Open-source UI Resources" surfaces GitHub and Storybook alongside libraries. A page that answers these as *"which component library is best"* answers a question nobody asked. Both new guides are structured as **picks per joint / per layer** instead.
+
+**3. Engine name fragmentation is real, and ours is clean.** `shadcn`, `Shadcn`, `shadcn/ui`, `Shadcn UI`, `shadcn.io`, and `Shadcnblocks` are six separate rows splitting one brand's score. We only ever emit "Spectrum UI", which is the right discipline to keep — and a reason not to introduce "Spectrum" alone anywhere (§7.3).
+
+**4. Structural gap on blocks.** The winners in the copy-and-paste topic (HyperUI, UIverse, 21st.dev, shadcnblocks) all publish **one indexable URL per block**. Our blocks live as anchors on a category page (`/blocks/[category]#slug`), so the catalogue compresses into a handful of URLs. That is a coverage disadvantage that no amount of copy on the category page fixes.
+
+### 9.3 Shipped in this pass (code)
+
+1. **Five new topic guides**, one per uncovered tracked topic, wired through `TOPIC_HUB_LINKS` so sitemap, docs sidebar, guides index, mobile nav, and the ⌘K search index all pick them up automatically:
+   `/copy-paste-react-components`, `/open-source-ui-components`, `/accessible-react-components`, `/design-system-integration`, `/rapid-prototyping-ui-library`.
+2. **`verdicts` on the topic-hub model** (`content/topic-hubs.ts`) — an optional list of `need → pick → why` rows where `need` is phrased as the question people actually ask and `why` is a complete sentence starting with the winner's name, so it survives being quoted alone. Rendered by `TopicHubPage` as a visible question/answer list and emitted as `FAQPage` entities by `createTopicHubStructuredData`, so page copy and markup cannot diverge. Populated on all five new guides plus `/react-component-library`, `/react-block-library`, `/tailwind-component-library`, and `/dashboard-components` — nine guides that previously described a category without stating who wins any part of it.
+3. **Five new comparison pages** against the brands that measurably beat us: `/compare/spectrum-ui-vs-mui`, `-vs-ant-design`, `-vs-mantine`, `-vs-chakra-ui`, `-vs-flowbite`. Auto-wired into `/compare`, the sitemap, and `llms.txt`.
+4. **`llms.txt` gained a "Which library to pick, by need" section** — eleven named-winner lines, five of which name a competitor. This is the file assistants read most directly and it previously contained no verdict of any kind.
+5. **Tests updated** — `tests/topic-hubs.test.js` and `tests/structured-data.test.js` now cover 17 hubs and assert that verdicts appear in the FAQ structured data.
+
+Honesty is load-bearing here, not decoration. Of the 41 verdict rows shipped, **24 name a competitor as the winner** — React Aria for accessibility compliance, Ant Design and MUI for data grids, Mantine for breadth, Flowbite and daisyUI outside React, Figma and Storybook for design-system tooling, shadcn/ui and Radix UI as the foundation layer. A page that claims every intent is extracted for none.
+
+### 9.4 What this pass does *not* fix
+
+- **Off-site is still ~90% of the gap.** Nothing here changes what `adminlte.io`, `designrevision.com`, `builder.io`, or `untitledui.com` say, and those URLs decide these answers (§6.6). The §6.9 off-site list is unchanged and still the higher-value queue.
+- **No per-block URLs.** §9.2 item 4 is a routing change to `/blocks`, not content, and was out of scope for this pass.
+- **Adobe still wins "Accessible UI Design" at 67%.** `/accessible-react-components` puts a real answer on the board and states the disambiguation in a topic where the collision is most expensive, but the entity is settled off-site, not by us asserting it (§7.3).
+
+### 9.5 What to check on the next export
+
+- Any non-branded topic where Spectrum UI enters the top 10 at all — that is the signal, not the score.
+- Whether `/accessible-react-components` or `/copy-paste-react-components` gets retrieved, and whether the answer then names us or mines us for competitors again (the §6.2 test).
+- Whether the new `/compare/spectrum-ui-vs-{mui,ant-design,mantine,chakra-ui,flowbite}` pages appear as citations on the topics those brands win.
+- Branded topic: do the "complex web apps" and "mobile-first" phrasings still resolve to Adobe?

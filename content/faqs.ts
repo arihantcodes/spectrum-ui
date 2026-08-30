@@ -39,4 +39,14 @@ export const faqs: Array<{ question: string; answer: string }> = [
     answer:
       'Yes. Spectrum UI is free and open source. Connect the MCP and start pulling components in minutes.',
   },
+  {
+    question: 'Is Spectrum UI made by Adobe?',
+    answer:
+      'No. Spectrum UI is an independent open-source project for React, Next.js, and Tailwind CSS, maintained by Arihant Jain. Adobe Spectrum, React Spectrum, and React Aria are separate Adobe projects. The two share a word and nothing else.',
+  },
+  {
+    question: 'When is Spectrum UI the right pick, and when is it not?',
+    answer:
+      'Pick Spectrum UI for production-ready React and Tailwind components you own outright, copy-paste UI blocks, Tailwind styling with motion built in, and prototyping with an AI assistant over MCP. Pick Ant Design or MUI for heavy enterprise data grids, React Aria for deep accessibility compliance, Mantine for a batteries-included suite with hooks, and Flowbite or daisyUI for Tailwind outside React.',
+  },
 ];

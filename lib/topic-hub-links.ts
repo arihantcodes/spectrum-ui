@@ -59,6 +59,31 @@ export const TOPIC_HUB_LINKS = [
     label: 'AI UI Components',
     group: 'Product UI',
   },
+  {
+    slug: 'copy-paste-react-components',
+    label: 'Copy-and-Paste UI Blocks',
+    group: 'Libraries',
+  },
+  {
+    slug: 'open-source-ui-components',
+    label: 'Open-Source UI Resources',
+    group: 'Libraries',
+  },
+  {
+    slug: 'accessible-react-components',
+    label: 'Accessible React Components',
+    group: 'Practices',
+  },
+  {
+    slug: 'design-system-integration',
+    label: 'Design System Integration',
+    group: 'Practices',
+  },
+  {
+    slug: 'rapid-prototyping-ui-library',
+    label: 'Rapid Prototyping & DX',
+    group: 'Practices',
+  },
 ] as const;
 
 export type TopicHubSlug = (typeof TOPIC_HUB_LINKS)[number]['slug'];
@@ -68,4 +93,4 @@ export function topicHubPath(slug: TopicHubSlug) {
   return `/${slug}`;
 }
 
-export const TOPIC_HUB_GROUPS = ['Libraries', 'Animation', 'Product UI'] as const;
+export const TOPIC_HUB_GROUPS = ['Libraries', 'Animation', 'Product UI', 'Practices'] as const;
