@@ -5503,14 +5503,16 @@
       "Copy-paste source that remains in your repository",
       "TypeScript source included with the component",
       "Tailwind CSS classes editable in the component source",
-      "Responsive Tailwind variants present in the source"
+      "Reduced-motion handling present in the source"
     ],
     "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
       "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
     ],
     "customization": [
       "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
     ],
     "related": [
       {
@@ -5557,7 +5559,7 @@
       },
       {
         "question": "What accessibility checks should I run for Status Badge?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
