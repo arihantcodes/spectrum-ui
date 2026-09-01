@@ -2344,10 +2344,93 @@
         }
       ],
       "registryDependencies": [
-        "accordion"
+        "@spectrumui/accordion-dependencies"
       ],
       "category": "Disclosure",
       "docsUrl": "https://ui.spectrumhq.in/docs/accordion"
+    },
+    {
+      "name": "accordion-dependencies",
+      "type": "registry:component",
+      "title": "Accordion Dependencies",
+      "description": "component for the Accordion Dependencies",
+      "files": [
+        {
+          "path": "app/registry/spectrumui/accordion.tsx",
+          "type": "registry:component",
+          "target": "components/ui/accordion.tsx"
+        }
+      ],
+      "dependencies": [
+        "@radix-ui/react-accordion",
+        "lucide-react"
+      ],
+      "category": "Disclosure",
+      "docsUrl": "https://ui.spectrumhq.in/docs/accordion"
+    },
+    {
+      "name": "accordion-card",
+      "type": "registry:component",
+      "title": "Accordion Card",
+      "description": "component for the Accordion Card",
+      "files": [
+        {
+          "path": "app/registry/accordion/usage/accordion-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-card.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/accordion-dependencies"
+      ]
+    },
+    {
+      "name": "accordion-filled",
+      "type": "registry:component",
+      "title": "Accordion Filled",
+      "description": "component for the Accordion Filled",
+      "files": [
+        {
+          "path": "app/registry/accordion/usage/accordion-filled.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-filled.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/accordion-dependencies"
+      ]
+    },
+    {
+      "name": "accordion-ghost",
+      "type": "registry:component",
+      "title": "Accordion Ghost",
+      "description": "component for the Accordion Ghost",
+      "files": [
+        {
+          "path": "app/registry/accordion/usage/accordion-ghost.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-ghost.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/accordion-dependencies"
+      ]
+    },
+    {
+      "name": "accordion-generative",
+      "type": "registry:component",
+      "title": "Accordion Generative",
+      "description": "component for the Accordion Generative",
+      "files": [
+        {
+          "path": "app/registry/accordion/usage/accordion-generative.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/accordion-generative.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/accordion-dependencies"
+      ]
     },
     {
       "name": "skeleton",

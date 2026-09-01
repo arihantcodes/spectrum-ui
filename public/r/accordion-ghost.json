@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-ghost",
+  "title": "Accordion Ghost",
+  "description": "component for the Accordion Ghost",
+  "registryDependencies": [
+    "@spectrumui/accordion-dependencies"
+  ],
+  "files": [
+    {
+      "path": "app/registry/accordion/usage/accordion-ghost.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nconst sections = [\n  {\n    value: \"install\",\n    title: \"Install the package\",\n    body: \"Run the CLI command, then import the accordion from your components directory.\",\n  },\n  {\n    value: \"compose\",\n    title: \"Compose the items\",\n    body: \"Each item takes a trigger and a panel. Values must be unique inside one accordion.\",\n  },\n  {\n    value: \"theme\",\n    title: \"Theme it\",\n    body: \"Pick a variant, then adjust the Tailwind classes in the copied source to match your tokens.\",\n  },\n];\n\nexport default function AccordionGhost() {\n  return (\n    <Accordion\n      type=\"single\"\n      collapsible\n      variant=\"ghost\"\n      indicator=\"plus\"\n      className=\"w-full max-w-lg\"\n    >\n      {sections.map((section, index) => (\n        <AccordionItem key={section.value} value={section.value}>\n          <AccordionTrigger>\n            <span className=\"flex items-center gap-3\">\n              <span className=\"w-4 font-mono text-xs text-neutral-400 dark:text-neutral-500\">\n                {String(index + 1).padStart(2, \"0\")}\n              </span>\n              {section.title}\n            </span>\n          </AccordionTrigger>\n          <AccordionContent className=\"pl-7\">{section.body}</AccordionContent>\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/accordion-ghost.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

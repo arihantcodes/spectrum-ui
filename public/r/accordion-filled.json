@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-filled",
+  "title": "Accordion Filled",
+  "description": "component for the Accordion Filled",
+  "registryDependencies": [
+    "@spectrumui/accordion-dependencies"
+  ],
+  "files": [
+    {
+      "path": "app/registry/accordion/usage/accordion-filled.tsx",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nexport default function AccordionFilled() {\n  return (\n    <Accordion\n      type=\"multiple\"\n      variant=\"filled\"\n      indicator=\"plus\"\n      defaultValue={[\"shipping\"]}\n      className=\"w-full max-w-lg\"\n    >\n      <AccordionItem value=\"shipping\">\n        <AccordionTrigger>Shipping</AccordionTrigger>\n        <AccordionContent>\n          Orders leave the warehouse within two business days and arrive in\n          three to seven, depending on the destination.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"returns\">\n        <AccordionTrigger>Returns</AccordionTrigger>\n        <AccordionContent>\n          Unopened items can go back within 30 days. We cover return postage on\n          anything that arrived damaged.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"warranty\">\n        <AccordionTrigger>Warranty</AccordionTrigger>\n        <AccordionContent>\n          Two years against manufacturing defects, transferable if the product\n          changes hands.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/accordion-filled.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
