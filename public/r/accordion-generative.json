@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-generative",
+  "title": "Accordion Generative",
+  "description": "component for the Accordion Generative",
+  "registryDependencies": [
+    "@spectrumui/accordion-dependencies"
+  ],
+  "files": [
+    {
+      "path": "app/registry/accordion/usage/accordion-generative.tsx",
+      "content": "import { Sparkles } from \"lucide-react\";\n\nimport {\n  Accordion,\n  AccordionItem,\n  AccordionStreamingContent,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nconst answers = [\n  {\n    value: \"what\",\n    question: \"What does this component do?\",\n    answer:\n      \"It streams the answer in one character at a time, the way a model writes it. The panel opens to the height of the finished text first, so nothing below it jumps while the words arrive.\",\n  },\n  {\n    value: \"how\",\n    question: \"How is the effect built?\",\n    answer:\n      \"A timer reveals a growing slice of the string while a caret trails the last character. The full text sits underneath at zero visibility to reserve the space, and it is the copy a screen reader reads.\",\n  },\n  {\n    value: \"speed\",\n    question: \"Can I change the pace?\",\n    answer:\n      \"Yes. Set speed for milliseconds per character and startDelay for the pause before the first word. Punctuation adds a beat on its own, and a reduced-motion preference skips straight to the finished answer.\",\n  },\n];\n\nexport default function AccordionGenerative() {\n  return (\n    <Accordion\n      type=\"single\"\n      collapsible\n      variant=\"card\"\n      className=\"w-full max-w-lg\"\n    >\n      {answers.map((item) => (\n        <AccordionItem key={item.value} value={item.value}>\n          <AccordionTrigger>\n            <span className=\"flex items-center gap-2.5\">\n              <Sparkles\n                aria-hidden=\"true\"\n                className=\"size-4 shrink-0 text-violet-500 dark:text-violet-400\"\n                strokeWidth={2}\n              />\n              {item.question}\n            </span>\n          </AccordionTrigger>\n          <AccordionStreamingContent text={item.answer} speed={12} />\n        </AccordionItem>\n      ))}\n    </Accordion>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/accordion-generative.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

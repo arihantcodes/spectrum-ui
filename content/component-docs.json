@@ -13,16 +13,24 @@
     ],
     "dependencies": [],
     "registryDependencies": [
-      "accordion"
+      "@spectrumui/accordion-dependencies"
     ],
     "installation": {
       "cliCommands": [
-        "npx shadcn@latest add @spectrumui/accordion"
+        "npx shadcn@latest add @spectrumui/accordion",
+        "npx shadcn@latest add @spectrumui/accordion-card",
+        "npx shadcn@latest add @spectrumui/accordion-filled",
+        "npx shadcn@latest add @spectrumui/accordion-ghost",
+        "npx shadcn@latest add @spectrumui/accordion-generative"
       ],
       "dependencyCommands": [],
       "manualPaths": [
         "components/ui/accordion.tsx",
-        "components/spectrumui/accordion-demo.tsx"
+        "components/spectrumui/accordion-demo.tsx",
+        "components/spectrumui/accordion-card.tsx",
+        "components/spectrumui/accordion-filled.tsx",
+        "components/spectrumui/accordion-ghost.tsx",
+        "components/spectrumui/accordion-generative.tsx"
       ]
     },
     "coverage": {
@@ -40,10 +48,14 @@
       "Copy-paste source that remains in your repository",
       "TypeScript source included with the component",
       "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: accordion"
+      "shadcn/ui dependencies: local UI primitives",
+      "Spectrum UI registry dependencies: @spectrumui/accordion-dependencies",
+      "Reduced-motion handling present in the source"
     ],
     "accessibility": [
       "The source uses Radix UI primitives for the interactions detected on this component.",
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
       "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
     ],
     "customization": [
@@ -79,7 +91,7 @@
       },
       {
         "question": "How do I install Accordion?",
-        "answer": "Run npx shadcn@latest add @spectrumui/accordion. The page also exposes the source for manual installation."
+        "answer": "Run npx shadcn@latest add @spectrumui/accordion or npx shadcn@latest add @spectrumui/accordion-card or npx shadcn@latest add @spectrumui/accordion-filled or npx shadcn@latest add @spectrumui/accordion-ghost or npx shadcn@latest add @spectrumui/accordion-generative. The page also exposes the source for manual installation."
       },
       {
         "question": "Does Accordion require Motion?",
@@ -87,7 +99,7 @@
       },
       {
         "question": "Does Accordion use shadcn/ui or Radix UI?",
-        "answer": "Accordion uses the accordion shadcn/ui dependencies and imports Radix UI directly."
+        "answer": "Accordion uses local shadcn/ui primitives and imports Radix UI directly."
       },
       {
         "question": "Can I use Accordion in Next.js?",
@@ -95,7 +107,7 @@
       },
       {
         "question": "What accessibility checks should I run for Accordion?",
-        "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
+        "answer": "The source includes Radix UI primitives, ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -5503,14 +5515,16 @@
       "Copy-paste source that remains in your repository",
       "TypeScript source included with the component",
       "Tailwind CSS classes editable in the component source",
-      "Responsive Tailwind variants present in the source"
+      "Reduced-motion handling present in the source"
     ],
     "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
       "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
     ],
     "customization": [
       "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
     ],
     "related": [
       {
@@ -5557,7 +5571,7 @@
       },
       {
         "question": "What accessibility checks should I run for Status Badge?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },

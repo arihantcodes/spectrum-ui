@@ -4,12 +4,12 @@
   "title": "Accordion",
   "description": "component for the Accordion",
   "registryDependencies": [
-    "accordion"
+    "@spectrumui/accordion-dependencies"
   ],
   "files": [
     {
       "path": "app/registry/accordion/accordion-demo.tsx",
-      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nexport function AccordionDemo() {\n  return (\n    <Accordion type=\"single\" collapsible className=\"w-4/5\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Is it accessible?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It adheres to the WAI-ARIA design pattern.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>Is it styled?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It comes with default styles that matches the other\n          components&apos; aesthetic.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>Is it animated?</AccordionTrigger>\n        <AccordionContent>\n          Yes. Its animated by default, but you can disable it if you prefer.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n}\n",
+      "content": "import {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nexport function AccordionDemo() {\n  return (\n    <Accordion type=\"single\" collapsible className=\"w-full max-w-lg\">\n      <AccordionItem value=\"item-1\">\n        <AccordionTrigger>Is it accessible?</AccordionTrigger>\n        <AccordionContent>\n          Yes. It follows the WAI-ARIA disclosure pattern, so headings stay\n          focusable and every panel is reachable with the keyboard.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-2\">\n        <AccordionTrigger>Is it styled?</AccordionTrigger>\n        <AccordionContent>\n          Yes. Four variants ship with it — line, card, filled, and ghost — and\n          every class stays editable in the copied source.\n        </AccordionContent>\n      </AccordionItem>\n      <AccordionItem value=\"item-3\">\n        <AccordionTrigger>Is it animated?</AccordionTrigger>\n        <AccordionContent>\n          Yes. Panels expand on a height transition and the indicator rotates\n          with it. Both respect a reduced-motion preference.\n        </AccordionContent>\n      </AccordionItem>\n    </Accordion>\n  );\n}\n",
       "type": "registry:component",
       "target": "components/spectrumui/accordion-demo.tsx"
     }
