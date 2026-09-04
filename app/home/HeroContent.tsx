@@ -24,15 +24,12 @@ export function HeroContent() {
 
   return (
     <div className="z-3 flex w-full flex-col">
-   
       <div className="relative flex flex-col lg:h-[calc(100dvh-3.5rem)] lg:max-h-[880px] lg:min-h-[640px] lg:flex-row">
-      
         <div className="relative z-10 flex flex-col items-start justify-center gap-3 px-4 pb-10 pt-12 text-start sm:pt-16 lg:w-[46%] lg:min-w-[440px] lg:pt-0 lg:pb-16 lg:pe-8 xl:ps-6">
           <AnimateEnter delay={0.1} isWhileInView={false}>
             <CornerBadge />
           </AnimateEnter>
 
-       
           <h1 className="chroma-text chroma-text-animate max-w-[553px] mb-[calc(1rem-0.25em)] pt-[0.12em] pb-[0.25em] text-balance font-spectral font-light capitalize text-[30px] leading-[0.95] tracking-[-0.09em] text-black dark:text-white sm:text-[42px] lg:text-[54px] lg:leading-[51px] lg:tracking-[-5px]">
             The component library
             <br />
@@ -97,13 +94,13 @@ export function HeroContent() {
                 fills its box; Next is all-caps). Heights are tuned per logo so the
                 *words* read at a matching optical size across the row rather than
                 matching raw SVG heights. */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3 sm:gap-x-6">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-3 sm:gap-x-6">
               <Image
                 src="/shadcn.svg"
                 alt="shadcn/ui"
                 width={137}
                 height={32}
-                className="h-[18px] w-auto sm:h-5"
+                className="h-4 w-auto sm:h-5"
                 loading="eager"
               />
               <Image
@@ -111,7 +108,7 @@ export function HeroContent() {
                 alt="Tailwind CSS"
                 width={194}
                 height={24}
-                className="h-3 w-auto sm:h-3.5"
+                className="h-[11px] w-auto sm:h-3.5"
                 loading="eager"
               />
               <span className="flex items-center gap-1.5">
@@ -123,7 +120,7 @@ export function HeroContent() {
                   className="h-3 w-3 sm:h-3.5 sm:w-3.5"
                   loading="eager"
                 />
-                <span className="text-[13px] font-semibold leading-none text-[#797C7C] sm:text-[14px]">
+                <span className="text-[12px] font-semibold leading-none text-[#797C7C] sm:text-[14px]">
                   Motion
                 </span>
               </span>
@@ -132,7 +129,7 @@ export function HeroContent() {
                 alt="Next.js"
                 width={120}
                 height={24}
-                className="h-3 w-auto sm:h-[13px]"
+                className="h-[11px] w-auto sm:h-[13px]"
                 loading="eager"
               />
             </div>

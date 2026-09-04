@@ -236,8 +236,26 @@ export function HeroStage({ className }: { className?: string }) {
     const setCamera = (lookX: number, lookY: number, s: number) => {
       el.style.transform = `translate(${cx - lookX * s}px, ${cy - lookY * s}px) scale(${s})`;
     };
-    const targetX = focus.x + focus.w / 2;
-    const targetY = focus.y + focus.h / 2;
+    const rawX = focus.x + focus.w / 2;
+    const rawY = focus.y + focus.h / 2;
+    // Narrow stages (phones) fill the whole width, so a centred card near the
+    // canvas edge would leave a band of bare dot grid; clamp the window inside
+    // the canvas there. Wide stages keep true centring — the left fade hides
+    // any margin.
+    const narrow = viewport.w < 640;
+    const halfW = viewport.w / 2 / scale;
+    const halfH = viewport.h / 2 / scale;
+    const canvasH = el.offsetHeight;
+    const targetX = narrow
+      ? CANVAS_W > 2 * halfW
+        ? clamp(halfW, rawX, CANVAS_W - halfW)
+        : CANVAS_W / 2
+      : rawX;
+    const targetY = narrow
+      ? canvasH > 2 * halfH
+        ? clamp(halfH, rawY, canvasH - halfH)
+        : canvasH / 2
+      : rawY;
 
     flightRef.current?.stop();
     if (!engaged || reducedMotion || shownRef.current === active) {
