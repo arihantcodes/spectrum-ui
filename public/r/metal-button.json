@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-button",
+  "title": "Metal Button",
+  "description": "A pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets.",
+  "dependencies": [
+    "metal-fx"
+  ],
+  "registryDependencies": [
+    "@spectrumui/use-surface-theme"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/metal-button.tsx",
+      "content": "/**\n * Spectrum UI — MetalButton\n *\n * A pill button framed by a real-time liquid-metal ring. The ring is painted by\n * `metal-fx` (Jakub Antalík, MIT, https://metal.jakubantalik.com): one shared\n * WebGL shader drives every instance on the page, pauses offscreen and renders\n * a transparent placeholder on the server. This wrapper adds the button\n * surface, sizes, and class-based dark/light detection so the ring matches a\n * shadcn-style `.dark` theme instead of only the OS preference.\n *\n * Dependencies: metal-fx, @/lib/utils, @/components/spectrumui/use-surface-theme\n *\n * @example\n * <MetalButton preset=\"gold\">Upgrade to Pro</MetalButton>\n */\n\n'use client';\n\nimport * as React from 'react';\nimport { MetalFx, type MetalFxPreset } from 'metal-fx';\n\nimport { cn } from '@/lib/utils';\nimport { useSurfaceTheme, type SurfaceTheme } from '@/components/spectrumui/use-surface-theme';\n\nexport interface MetalButtonProps extends Omit<\n  React.ButtonHTMLAttributes<HTMLButtonElement>,\n  'className'\n> {\n  /** Metal palette. Default \"chromatic\" */\n  preset?: MetalFxPreset;\n  /** \"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\" */\n  theme?: SurfaceTheme;\n  /** Ring intensity 0–1. Default 1 */\n  strength?: number;\n  /** Pill height and type size. Default \"md\" */\n  size?: 'sm' | 'md' | 'lg';\n  /** Freeze the shader on its current frame */\n  paused?: boolean;\n  /** Classes for the inner button */\n  className?: string;\n  /** Classes for the MetalFx wrapper */\n  wrapperClassName?: string;\n}\n\nconst SIZE = {\n  sm: 'h-9 px-4 text-[13px]',\n  md: 'h-11 px-5 text-[15px]',\n  lg: 'h-13 px-7 text-base',\n} as const;\n\nexport function MetalButton({\n  preset = 'chromatic',\n  theme = 'auto',\n  strength = 1,\n  size = 'md',\n  paused = false,\n  className,\n  wrapperClassName,\n  children,\n  type = 'button',\n  ...props\n}: MetalButtonProps) {\n  const resolved = useSurfaceTheme(theme);\n  return (\n    <MetalFx\n      variant=\"button\"\n      preset={preset}\n      theme={resolved}\n      strength={strength}\n      paused={paused}\n      className={cn('inline-flex', wrapperClassName)}\n    >\n      <button\n        type={type}\n        className={cn(\n          'inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-[-0.01em] transition-[transform,background-color] duration-200 ease-out',\n          // metal-fx keeps the host fill transparent so the ring frames the page surface; only the label carries the theme\n          'text-neutral-900 hover:opacity-80 active:scale-[0.97] dark:text-white',\n          'focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-60',\n          SIZE[size],\n          className,\n        )}\n        {...props}\n      >\n        {children}\n      </button>\n    </MetalFx>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/metal-button.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beam-card-demo",
+  "title": "Beam Card Demo",
+  "description": "Demo usage for the Beam Card component",
+  "registryDependencies": [
+    "@spectrumui/beam-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/beam-card/beam-card-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { BeamCard } from '@/components/spectrumui/beam-card';\n\nexport default function BeamCardDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"grid w-full max-w-[720px] gap-6 sm:grid-cols-2\">\n        <BeamCard\n          eyebrow=\"Traveling · colorful\"\n          title=\"Realtime collaboration\"\n          description=\"Cursors, comments and presence sync in under 40ms, everywhere.\"\n        >\n          <div className=\"flex -space-x-2\">\n            {['AC', 'MR', 'PN', '+4'].map((initials) => (\n              <span\n                key={initials}\n                className=\"flex size-8 items-center justify-center rounded-full border-2 border-white bg-neutral-100 text-[11px] font-medium text-neutral-600 dark:border-neutral-950 dark:bg-neutral-800 dark:text-neutral-300\"\n              >\n                {initials}\n              </span>\n            ))}\n          </div>\n        </BeamCard>\n        <BeamCard\n          size=\"pulse-outside\"\n          colorVariant=\"ocean\"\n          eyebrow=\"Breathing · ocean\"\n          title=\"Edge inference\"\n          description=\"Models run in the region closest to the user, with a warm cache.\"\n        >\n          <p className=\"font-mono text-2xl font-medium tabular-nums text-neutral-900 dark:text-neutral-100\">\n            18 <span className=\"text-sm text-neutral-500\">ms p95</span>\n          </p>\n        </BeamCard>\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Traveling and breathing beams that hug the radius of each card.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/beam-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

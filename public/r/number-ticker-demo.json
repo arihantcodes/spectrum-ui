@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker-demo",
+  "title": "Number Ticker Demo",
+  "description": "Demo usage for the Number Ticker component",
+  "registryDependencies": [
+    "@spectrumui/number-ticker"
+  ],
+  "files": [
+    {
+      "path": "app/registry/number-ticker/number-ticker-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Minus, Plus, Shuffle } from 'lucide-react';\nimport { NumberTicker } from '@/components/motion/number-ticker';\n\nconst STEP = 1250;\n\nfunction RoundButton({\n  onClick,\n  children,\n  label,\n}: {\n  onClick: () => void;\n  children: React.ReactNode;\n  label: string;\n}) {\n  return (\n    <button\n      type=\"button\"\n      aria-label={label}\n      onClick={onClick}\n      className=\"flex size-9 items-center justify-center rounded-full border border-black/10 text-neutral-700 transition-colors hover:bg-black/4 active:scale-95 dark:border-white/12 dark:text-neutral-200 dark:hover:bg-white/6\"\n    >\n      {children}\n    </button>\n  );\n}\n\nexport default function NumberTickerDemo() {\n  const [value, setValue] = React.useState(48250);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-6 py-10\">\n      <div className=\"w-full max-w-[360px] rounded-2xl border border-black/8 bg-white p-6 dark:border-white/10 dark:bg-neutral-950\">\n        <p className=\"font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400\">\n          Monthly revenue\n        </p>\n        <div className=\"mt-3 text-[40px] font-semibold leading-none tracking-[-0.03em] text-neutral-900 dark:text-neutral-100\">\n          <NumberTicker value={value} prefix=\"$\" locale blur />\n        </div>\n        <p className=\"mt-3 text-sm text-neutral-500 dark:text-neutral-400\">\n          Each digit rolls to its new value.\n        </p>\n      </div>\n      <div className=\"flex items-center gap-2\">\n        <RoundButton label=\"Decrease\" onClick={() => setValue((v) => Math.max(0, v - STEP))}>\n          <Minus className=\"size-4\" />\n        </RoundButton>\n        <RoundButton\n          label=\"Randomize\"\n          onClick={() => setValue(Math.round(10000 + Math.random() * 990000))}\n        >\n          <Shuffle className=\"size-4\" />\n        </RoundButton>\n        <RoundButton label=\"Increase\" onClick={() => setValue((v) => v + STEP)}>\n          <Plus className=\"size-4\" />\n        </RoundButton>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/number-ticker-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

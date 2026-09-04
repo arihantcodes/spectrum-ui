@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "account-access-card-demo",
+  "title": "Account Access Card Demo",
+  "description": "Demo usage for the Account Access Card component",
+  "registryDependencies": [
+    "@spectrumui/account-access-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/account-access-card/account-access-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { AccountAccessCard } from \"@/components/spectrumui/account-access-card\"\n\nexport default function AccountAccessCardDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"w-full max-w-[360px]\">\n        <AccountAccessCard />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/account-access-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

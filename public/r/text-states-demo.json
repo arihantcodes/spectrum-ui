@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-states-demo",
+  "title": "Text States Demo",
+  "description": "Demo usage for the Text States component",
+  "registryDependencies": [
+    "@spectrumui/text-states"
+  ],
+  "files": [
+    {
+      "path": "app/registry/text-states/text-states-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Check, Loader2 } from 'lucide-react';\nimport { TextStates } from '@/components/spectrumui/text-states';\n\ntype Phase = 'idle' | 'saving' | 'saved';\nconst LABEL: Record<Phase, string> = { idle: 'Save changes', saving: 'Saving…', saved: 'Saved' };\n\nexport default function TextStatesDemo() {\n  const [phase, setPhase] = React.useState<Phase>('idle');\n\n  const save = () => {\n    if (phase !== 'idle') return;\n    setPhase('saving');\n    window.setTimeout(() => setPhase('saved'), 1400);\n    window.setTimeout(() => setPhase('idle'), 3200);\n  };\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <button\n        type=\"button\"\n        onClick={save}\n        className=\"inline-flex h-11 min-w-[168px] items-center justify-center gap-2 rounded-full bg-neutral-900 px-5 text-[15px] font-medium text-white transition-[transform,background-color] hover:bg-neutral-800 active:scale-[0.97] dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white\"\n      >\n        {phase === 'saving' && <Loader2 className=\"size-4 animate-spin\" aria-hidden />}\n        {phase === 'saved' && <Check className=\"size-4\" aria-hidden />}\n        <TextStates text={LABEL[phase]} />\n      </button>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Click — the label exits up with blur and the next state enters from below.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/text-states-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

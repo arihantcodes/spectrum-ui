@@ -33,7 +33,7 @@ export function BookmarksView({ bookmarks }: { bookmarks: BookmarkRow[] }) {
   return (
     // Same framed band as the rest of the site: side borders at 1400px,
     // bottom border hands off to the footer.
-    <div className="container-frame min-h-screen border-b border-border bg-background">
+    <div className="container-frame min-h-screen bg-background">
       <div className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-6 sm:py-16">
         {/* Eyebrow + heading, same language as the profile page */}
         <div className="enter-fx mb-10">

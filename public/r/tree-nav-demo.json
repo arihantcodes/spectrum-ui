@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tree-nav-demo",
+  "title": "Tree Nav Demo",
+  "description": "Demo usage for the Tree Nav component",
+  "registryDependencies": [
+    "@spectrumui/tree-nav"
+  ],
+  "files": [
+    {
+      "path": "app/registry/tree-nav/tree-nav-demo.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { TreeNav } from \"@/components/spectrumui/tree-nav\"\n\nconst ITEMS = [\n  { label: \"Overview\", href: \"#overview\" },\n  { label: \"Installation\", href: \"#installation\" },\n  { label: \"Usage\", href: \"#usage\" },\n  { label: \"Theming\", href: \"#theming\", badge: \"New\" },\n  { label: \"Accessibility\", href: \"#accessibility\" },\n  { label: \"Changelog\", href: \"#changelog\" },\n]\n\nexport default function TreeNavDemo() {\n  const [active, setActive] = React.useState(ITEMS[0].href)\n\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <TreeNav\n        className=\"w-full max-w-[240px]\"\n        items={ITEMS}\n        activeHref={active}\n        onSelect={(item, event) => {\n          event.preventDefault()\n          setActive(item.href)\n        }}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/tree-nav-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

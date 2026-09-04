@@ -6,7 +6,7 @@ import { ArrowUp, MessageCircleDashed, Plus, RefreshCw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { useTypewriter } from "./use-typewriter";
+import { useTypewriter } from "@/components/spectrumui/use-typewriter";
 
 export interface AIChatCardProps {
   title?: string;

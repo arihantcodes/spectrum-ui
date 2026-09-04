@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nav-list-card",
+  "title": "Nav List Card",
+  "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "app/registry/nav-list-card/nav-list-card.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { motion } from \"motion/react\";\nimport {\n  BookOpen,\n  ChartNoAxesColumn,\n  CircleHelp,\n  CreditCard,\n  FileText,\n  MessagesSquare,\n} from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface NavListItem {\n  icon?: React.ReactNode;\n  label: string;\n  href?: string;\n}\n\nexport interface NavListCardProps {\n  title?: string;\n  items?: NavListItem[];\n  className?: string;\n}\n\nexport const PLANNING_NAV_ITEMS: NavListItem[] = [\n  { icon: <FileText />, label: \"Documents\" },\n  { icon: <CreditCard />, label: \"Budget\" },\n  { icon: <ChartNoAxesColumn />, label: \"Reports\" },\n];\n\nexport const SUPPORT_NAV_ITEMS: NavListItem[] = [\n  { icon: <CircleHelp />, label: \"Help Center\" },\n  { icon: <BookOpen />, label: \"Docs\" },\n  { icon: <MessagesSquare />, label: \"Contact Us\" },\n];\n\nexport function NavListCard({\n  title = \"Planning\",\n  items = PLANNING_NAV_ITEMS,\n  className,\n}: NavListCardProps) {\n  return (\n    <div\n      className={cn(\n        \"w-full rounded-[16px] bg-white pb-2 pt-4\",\n        \"shadow-[0_0_0_1px_rgba(10,10,10,0.05),0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)]\",\n        \"dark:bg-neutral-950 dark:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_1px_3px_0_rgba(0,0,0,0.5)]\",\n        className,\n      )}\n    >\n      <p className=\"px-5 text-xs font-medium leading-4 text-foreground/70\">\n        {title}\n      </p>\n      <ul className=\"mt-2 space-y-1 px-2\">\n        {items.map((item) => {\n          const inner = (\n            <motion.span\n              whileHover={{ x: 2 }}\n              whileTap={{ scale: 0.98 }}\n              transition={{ type: \"spring\", bounce: 0.4, duration: 0.3 }}\n              className=\"flex h-8 items-center gap-2 rounded-full px-2.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900\"\n            >\n              {item.icon ? (\n                <span className=\"flex shrink-0 text-foreground [&_svg]:h-4 [&_svg]:w-4\">\n                  {item.icon}\n                </span>\n              ) : null}\n              <span className=\"truncate text-sm leading-5 text-foreground\">\n                {item.label}\n              </span>\n            </motion.span>\n          );\n          return (\n            <li key={item.label}>\n              {item.href ? (\n                <a href={item.href} className=\"block\">\n                  {inner}\n                </a>\n              ) : (\n                <button type=\"button\" className=\"block w-full text-left\">\n                  {inner}\n                </button>\n              )}\n            </li>\n          );\n        })}\n      </ul>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/nav-list-card.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

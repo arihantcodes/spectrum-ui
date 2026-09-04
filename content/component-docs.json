@@ -52,24 +52,24 @@
     ],
     "related": [
       {
+        "slug": "faq-tabs-card",
+        "name": "FAQ Tabs Card",
+        "description": "A tabbed FAQ card with animated accordion answers and a support footer."
+      },
+      {
         "slug": "animateddrawer",
         "name": "Animated Drawer",
         "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
       },
       {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
+        "slug": "nav-list-card",
+        "name": "Nav List Card",
+        "description": "A compact navigation card that lists links with icons, with a spring slide on hover."
       },
       {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
+        "slug": "tree-nav",
+        "name": "Tree Nav",
+        "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link."
       }
     ],
     "faqs": [
@@ -96,6 +96,396 @@
       {
         "question": "What accessibility checks should I run for Accordion?",
         "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "account-access-card",
+    "name": "Account Access Card",
+    "description": "A credentials card that auto-fills email and password on a loop, with a danger zone.",
+    "category": "Form",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-typewriter"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/account-access-card"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/account-access-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the description property in the exported source type."
+      },
+      {
+        "name": "emailLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the emailLabel property in the exported source type."
+      },
+      {
+        "name": "passwordLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the passwordLabel property in the exported source type."
+      },
+      {
+        "name": "forgotLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the forgotLabel property in the exported source type."
+      },
+      {
+        "name": "buttonLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the buttonLabel property in the exported source type."
+      },
+      {
+        "name": "buttonIcon",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Value accepted by the buttonIcon property in the exported source type."
+      },
+      {
+        "name": "dangerTitle",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the dangerTitle property in the exported source type."
+      },
+      {
+        "name": "dangerDescription",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the dangerDescription property in the exported source type."
+      },
+      {
+        "name": "credentials",
+        "type": "AccountCredential[]",
+        "required": false,
+        "description": "Accounts the card cycles through, typing each one in."
+      },
+      {
+        "name": "animated",
+        "type": "boolean",
+        "required": false,
+        "description": "Turn the auto-fill animation off and show static values."
+      },
+      {
+        "name": "emailValue",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the emailValue property in the exported source type."
+      },
+      {
+        "name": "passwordValue",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the passwordValue property in the exported source type."
+      },
+      {
+        "name": "onSubmit",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onForgot",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onDanger",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a credentials card that auto-fills email and password on a loop, with a danger zone",
+      "authentication flows",
+      "settings forms"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Spectrum UI registry dependencies: @spectrumui/use-typewriter"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "autosize-textarea",
+        "name": "Autosize Textarea",
+        "description": "A textarea that automatically grows and shrinks to fit its content."
+      },
+      {
+        "slug": "datetime-picker",
+        "name": "Datetime Picker",
+        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
+      },
+      {
+        "slug": "dual-range-slider",
+        "name": "Dual Range Slider",
+        "description": "A slider with two draggable thumbs for selecting a range of values."
+      },
+      {
+        "slug": "floating-label-input",
+        "name": "Floating Label Input",
+        "description": "An input whose label floats above the field when focused or filled."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Account Access Card free to use in commercial projects?",
+        "answer": "Yes. The public Account Access Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Account Access Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/account-access-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Account Access Card require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Account Access Card."
+      },
+      {
+        "question": "Does Account Access Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Account Access Card source."
+      },
+      {
+        "question": "Can I use Account Access Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Account Access Card?",
+        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "ai-chat-card",
+    "name": "AI Chat Card",
+    "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions.",
+    "category": "Card",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-typewriter"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/ai-chat-card"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/ai-chat-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "subtitle",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the subtitle property in the exported source type."
+      },
+      {
+        "name": "greeting",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the greeting property in the exported source type."
+      },
+      {
+        "name": "prompt",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the prompt property in the exported source type."
+      },
+      {
+        "name": "prompts",
+        "type": "string[]",
+        "required": false,
+        "description": "Prompts the composer types out on a loop."
+      },
+      {
+        "name": "autoType",
+        "type": "boolean",
+        "required": false,
+        "description": "Turn the prompt-typing animation off."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the placeholder property in the exported source type."
+      },
+      {
+        "name": "icon",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Value accepted by the icon property in the exported source type."
+      },
+      {
+        "name": "onSend",
+        "type": "(message: string) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onReset",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onAttach",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need an AI chat card that types prompts into its composer, with send, attach and reset actions",
+      "SaaS dashboards",
+      "product pages"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Spectrum UI registry dependencies: @spectrumui/use-typewriter"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "animatedcard",
+        "name": "Animated Card",
+        "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "beam-card",
+        "name": "Beam Card",
+        "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes."
+      },
+      {
+        "slug": "card",
+        "name": "Card",
+        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
+      },
+      {
+        "slug": "tilt-card",
+        "name": "3D Tilt Card",
+        "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is AI Chat Card free to use in commercial projects?",
+        "answer": "Yes. The public AI Chat Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install AI Chat Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/ai-chat-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does AI Chat Card require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for AI Chat Card."
+      },
+      {
+        "question": "Does AI Chat Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented AI Chat Card source."
+      },
+      {
+        "question": "Can I use AI Chat Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for AI Chat Card?",
+        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -191,9 +581,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "spinner",
-        "name": "Spinner",
-        "description": "A loading spinner with multiple sizes and variants for async states."
+        "slug": "skeleton-reveal",
+        "name": "Skeleton Reveal",
+        "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content."
       }
     ],
     "faqs": [
@@ -335,24 +725,24 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
       },
       {
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
+      },
+      {
         "slug": "button",
         "name": "Button",
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
-      },
-      {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
-      },
-      {
-        "slug": "dual-range-slider",
-        "name": "Dual Range Slider",
-        "description": "A slider with two draggable thumbs for selecting a range of values."
       }
     ],
     "faqs": [
@@ -441,6 +831,16 @@
     ],
     "related": [
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
+        "slug": "beam-card",
+        "name": "Beam Card",
+        "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes."
+      },
+      {
         "slug": "card",
         "name": "Card",
         "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
@@ -449,16 +849,6 @@
         "slug": "tilt-card",
         "name": "3D Tilt Card",
         "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      },
-      {
-        "slug": "badge",
-        "name": "3D Event Badge",
-        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -555,14 +945,14 @@
         "description": "A drag-and-drop kanban board for organizing tasks into columns."
       },
       {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
+        "slug": "number-ticker",
+        "name": "Number Ticker",
+        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
       },
       {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
+        "slug": "recent-activity",
+        "name": "Recent Activity",
+        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -659,19 +1049,19 @@
         "description": "A vertically stacked set of interactive headings that each reveal a section of content."
       },
       {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
+        "slug": "faq-tabs-card",
+        "name": "FAQ Tabs Card",
+        "description": "A tabbed FAQ card with animated accordion answers and a support footer."
       },
       {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
+        "slug": "nav-list-card",
+        "name": "Nav List Card",
+        "description": "A compact navigation card that lists links with icons, with a spring slide on hover."
       },
       {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
+        "slug": "tree-nav",
+        "name": "Tree Nav",
+        "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link."
       }
     ],
     "faqs": [
@@ -786,6 +1176,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "datetime-picker",
         "name": "Datetime Picker",
         "description": "A date and time picker built on shadcn/ui with no extra dependencies."
@@ -799,11 +1194,6 @@
         "slug": "floating-label-input",
         "name": "Floating Label Input",
         "description": "An input whose label floats above the field when focused or filled."
-      },
-      {
-        "slug": "input-model",
-        "name": "Input Model",
-        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -934,6 +1324,11 @@
         "description": "A user profile dropdown menu with avatar, settings, and logout actions."
       },
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
@@ -942,11 +1337,6 @@
         "slug": "badge",
         "name": "3D Event Badge",
         "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
-      },
-      {
-        "slug": "card",
-        "name": "Card",
-        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       }
     ],
     "faqs": [
@@ -1072,14 +1462,14 @@
         "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag."
       },
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -1106,6 +1496,334 @@
       {
         "question": "What accessibility checks should I run for 3D Event Badge?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+      }
+    ]
+  },
+  {
+    "slug": "beam-card",
+    "name": "Beam Card",
+    "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes.",
+    "category": "Card",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [
+      "border-beam"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-surface-theme"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/beam-card"
+      ],
+      "dependencyCommands": [
+        "npm i border-beam"
+      ],
+      "manualPaths": [
+        "components/spectrumui/beam-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "eyebrow",
+        "type": "string",
+        "required": false,
+        "description": "Small mono label above the title"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the description property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Body content rendered under the description"
+      },
+      {
+        "name": "size",
+        "type": "Extract<BorderBeamSize, 'md' | 'sm' | 'pulse-inner' | 'pulse-outside'>",
+        "required": false,
+        "description": "Beam family: \"md\" travels, \"pulse-inner\" breathes inside, \"pulse-outside\" blooms out. Default \"md\""
+      },
+      {
+        "name": "colorVariant",
+        "type": "BorderBeamColorVariant",
+        "required": false,
+        "description": "Palette: \"colorful\" | \"ocean\" | \"sunset\" | \"mono\". Default \"colorful\""
+      },
+      {
+        "name": "theme",
+        "type": "SurfaceTheme",
+        "required": false,
+        "description": "\"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\""
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "description": "Play or fade the beam out. Default true"
+      },
+      {
+        "name": "strength",
+        "type": "number",
+        "required": false,
+        "description": "Beam intensity 0–1. Default 1"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the inner card"
+      }
+    ],
+    "useCases": [
+      "interfaces that need a card wrapped in an animated border beam, traveling or breathing, in four color palettes",
+      "SaaS dashboards",
+      "product pages"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Spectrum UI registry dependencies: @spectrumui/use-surface-theme",
+      "Responsive Tailwind variants present in the source"
+    ],
+    "accessibility": [
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
+        "slug": "animatedcard",
+        "name": "Animated Card",
+        "description": "A card that animates on hover to showcase tools, technologies, and features."
+      },
+      {
+        "slug": "card",
+        "name": "Card",
+        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
+      },
+      {
+        "slug": "tilt-card",
+        "name": "3D Tilt Card",
+        "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Beam Card free to use in commercial projects?",
+        "answer": "Yes. The public Beam Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Beam Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/beam-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Beam Card require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Beam Card."
+      },
+      {
+        "question": "Does Beam Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Beam Card source."
+      },
+      {
+        "question": "Can I use Beam Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Beam Card?",
+        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+      }
+    ]
+  },
+  {
+    "slug": "beam-search",
+    "name": "Beam Search Bar",
+    "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus.",
+    "category": "Input",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [
+      "border-beam",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-surface-theme"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/beam-search"
+      ],
+      "dependencyCommands": [
+        "npm i border-beam lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/beam-search.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "value",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the value property in the exported source type."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the defaultValue property in the exported source type."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onSubmit",
+        "type": "(value: string) => void",
+        "required": false,
+        "description": "Fires on Enter with the current value"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the placeholder property in the exported source type."
+      },
+      {
+        "name": "alwaysOn",
+        "type": "boolean",
+        "required": false,
+        "description": "Keep the beam running even without focus. Default false"
+      },
+      {
+        "name": "colorVariant",
+        "type": "BorderBeamColorVariant",
+        "required": false,
+        "description": "Palette: \"colorful\" | \"ocean\" | \"sunset\" | \"mono\". Default \"colorful\""
+      },
+      {
+        "name": "theme",
+        "type": "SurfaceTheme",
+        "required": false,
+        "description": "\"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\""
+      },
+      {
+        "name": "trailing",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Right-hand slot, e.g. a keyboard hint"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a search bar whose bottom edge lights up with a traveling beam while it has focus",
+      "forms",
+      "search workflows"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Spectrum UI registry dependencies: @spectrumui/use-surface-theme"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source includes keyboard event handling; verify it alongside pointer behavior.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "command-search",
+        "name": "Command Search",
+        "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation."
+      },
+      {
+        "slug": "kbd-key",
+        "name": "Kbd Key",
+        "description": "A 3D keycap that physically depresses when the matching key is pressed."
+      },
+      {
+        "slug": "metal-prompt-bar",
+        "name": "Metal Prompt Bar",
+        "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it."
+      },
+      {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Beam Search Bar free to use in commercial projects?",
+        "answer": "Yes. The public Beam Search Bar source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Beam Search Bar?",
+        "answer": "Run npx shadcn@latest add @spectrumui/beam-search. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Beam Search Bar require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Beam Search Bar."
+      },
+      {
+        "question": "Does Beam Search Bar use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Beam Search Bar source."
+      },
+      {
+        "question": "Can I use Beam Search Bar in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Beam Search Bar?",
+        "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -1159,6 +1877,11 @@
     ],
     "related": [
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -1172,11 +1895,6 @@
         "slug": "like-button",
         "name": "Like Button",
         "description": "A heart button that pops with a particle burst and rolling count."
-      },
-      {
-        "slug": "loading-button",
-        "name": "Loading Button",
-        "description": "A shadcn/ui button with a built-in loading spinner state."
       }
     ],
     "faqs": [
@@ -1257,24 +1975,24 @@
     ],
     "related": [
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
       },
       {
+        "slug": "beam-card",
+        "name": "Beam Card",
+        "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes."
+      },
+      {
         "slug": "tilt-card",
         "name": "3D Tilt Card",
         "description": "A 3D card that tilts toward the pointer with parallax depth and glare."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      },
-      {
-        "slug": "badge",
-        "name": "3D Event Badge",
-        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -1300,6 +2018,175 @@
       },
       {
         "question": "What accessibility checks should I run for Card?",
+        "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "command-search",
+    "name": "Command Search",
+    "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation.",
+    "category": "Input",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-typewriter"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/command-search"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/command-search.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "query",
+        "type": "string",
+        "required": false,
+        "description": "Static text for the search field (used when `autoType` is false)."
+      },
+      {
+        "name": "queries",
+        "type": "string[]",
+        "required": false,
+        "description": "Queries the palette types out and live-filters by."
+      },
+      {
+        "name": "autoType",
+        "type": "boolean",
+        "required": false,
+        "description": "Type the queries automatically and filter results as they type."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the placeholder property in the exported source type."
+      },
+      {
+        "name": "groups",
+        "type": "CommandSearchGroup[]",
+        "required": false,
+        "description": "Grouped results rendered below the search field."
+      },
+      {
+        "name": "onSelect",
+        "type": "(item: CommandSearchItem) => void",
+        "required": false,
+        "description": "Called with the item when a row is clicked."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "required": false,
+        "description": "Fixed height of the palette. Content overflows are clipped like a real palette."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "description": "Value accepted by the label property in the exported source type."
+      },
+      {
+        "name": "needle",
+        "type": "string",
+        "required": true,
+        "description": "Value accepted by the needle property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a command palette that types queries and live-filters grouped results, with keyboard navigation",
+      "forms",
+      "search workflows"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Spectrum UI registry dependencies: @spectrumui/use-typewriter"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source includes keyboard event handling; verify it alongside pointer behavior.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
+      },
+      {
+        "slug": "kbd-key",
+        "name": "Kbd Key",
+        "description": "A 3D keycap that physically depresses when the matching key is pressed."
+      },
+      {
+        "slug": "metal-prompt-bar",
+        "name": "Metal Prompt Bar",
+        "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it."
+      },
+      {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Command Search free to use in commercial projects?",
+        "answer": "Yes. The public Command Search source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Command Search?",
+        "answer": "Run npx shadcn@latest add @spectrumui/command-search. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Command Search require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Command Search."
+      },
+      {
+        "question": "Does Command Search use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Command Search source."
+      },
+      {
+        "question": "Can I use Command Search in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Command Search?",
         "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
@@ -1478,6 +2365,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -1491,11 +2383,6 @@
         "slug": "floating-label-input",
         "name": "Floating Label Input",
         "description": "An input whose label floats above the field when focused or filled."
-      },
-      {
-        "slug": "input-model",
-        "name": "Input Model",
-        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -1602,6 +2489,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -1615,11 +2507,6 @@
         "slug": "floating-label-input",
         "name": "Floating Label Input",
         "description": "An input whose label floats above the field when focused or filled."
-      },
-      {
-        "slug": "input-model",
-        "name": "Input Model",
-        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -1646,6 +2533,341 @@
       {
         "question": "What accessibility checks should I run for Dual Range Slider?",
         "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "dynamic-island",
+    "name": "Dynamic Island",
+    "description": "An iOS-style island pill that morphs between live activity views with a bouncy resize.",
+    "category": "Status",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/dynamic-island"
+      ],
+      "dependencyCommands": [
+        "npm i motion clsx tailwind-merge"
+      ],
+      "manualPaths": [
+        "components/motion/dynamic-island.tsx",
+        "lib/ease.ts"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "keyId",
+        "type": "string",
+        "required": true,
+        "description": "Value accepted by the keyId property in the exported source type."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Content rendered inside the component."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "view",
+        "type": "string | null",
+        "required": true,
+        "description": "Active view id. `null` shows the compact pill."
+      },
+      {
+        "name": "compact",
+        "type": "ReactNode",
+        "required": false,
+        "description": "Compact pill content, shown when no view is active."
+      },
+      {
+        "name": "id",
+        "type": "string",
+        "required": true,
+        "description": "Matches the parent `view` prop when active."
+      }
+    ],
+    "useCases": [
+      "interfaces that need an iOS-style island pill that morphs between live activity views with a bouncy resize",
+      "dashboards",
+      "operations tables"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
+      },
+      {
+        "slug": "animatedchart",
+        "name": "Animated SVG Chart",
+        "description": "An animated SVG chart for visualizing data on dashboards and reports."
+      },
+      {
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
+      },
+      {
+        "slug": "infinite-scroll",
+        "name": "Infinite Scroll",
+        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Dynamic Island free to use in commercial projects?",
+        "answer": "Yes. The public Dynamic Island source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Dynamic Island?",
+        "answer": "Run npx shadcn@latest add @spectrumui/dynamic-island. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Dynamic Island require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Dynamic Island."
+      },
+      {
+        "question": "Does Dynamic Island use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Dynamic Island source."
+      },
+      {
+        "question": "Can I use Dynamic Island in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Dynamic Island?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "expandable-action-bar",
+    "name": "Expandable Action Bar",
+    "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.",
+    "category": "Action",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/expandable-action-bar"
+      ],
+      "dependencyCommands": [
+        "npm i motion clsx tailwind-merge"
+      ],
+      "manualPaths": [
+        "components/motion/expandable-action-bar.tsx",
+        "lib/hooks/use-dismiss.ts",
+        "lib/hooks/use-hover-gesture.ts",
+        "lib/hooks/use-tap-gesture.ts",
+        "lib/touch.ts"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "items",
+        "type": "ExpandableActionBarItem[]",
+        "required": true,
+        "description": "Value accepted by the items property in the exported source type."
+      },
+      {
+        "name": "expanded",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the expanded property in the exported source type."
+      },
+      {
+        "name": "defaultExpanded",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the defaultExpanded property in the exported source type."
+      },
+      {
+        "name": "onExpandedChange",
+        "type": "(expanded: boolean) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "activeId",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the activeId property in the exported source type."
+      },
+      {
+        "name": "onAction",
+        "type": "(item: ExpandableActionBarItem) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "size",
+        "type": "ExpandableActionBarSize",
+        "required": false,
+        "description": "Value accepted by the size property in the exported source type."
+      },
+      {
+        "name": "expandOnHover",
+        "type": "boolean",
+        "required": false,
+        "description": "Expand when a pointer that hovers rests on the bar. Default true. It also\ngoverns the touch equivalent: with no hover to reveal the labels, the\nfirst tap expands the bar and runs no action, and the second one acts.\nSet false to make every tap and click act immediately."
+      },
+      {
+        "name": "expandOnFocus",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the expandOnFocus property in the exported source type."
+      },
+      {
+        "name": "collapseDelay",
+        "type": "number",
+        "required": false,
+        "description": "Value accepted by the collapseDelay property in the exported source type."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "classNames",
+        "type": "ExpandableActionBarClassNames",
+        "required": false,
+        "description": "Value accepted by the classNames property in the exported source type."
+      },
+      {
+        "name": "renderItem",
+        "type": "(item: ExpandableActionBarItem, state: { expanded: boolean; active: boolean }) => ReactNode",
+        "required": false,
+        "description": "Value accepted by the renderItem property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need compact icon actions that expand into labeled controls on hover or focus with shared layout motion",
+      "SaaS workflows",
+      "onboarding flows"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Responsive Tailwind variants present in the source",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source includes keyboard event handling; verify it alongside pointer behavior.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "button",
+        "name": "Button",
+        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
+      },
+      {
+        "slug": "follow-button",
+        "name": "Follow Button",
+        "description": "A follow button that morphs its width, fill, and label between states."
+      },
+      {
+        "slug": "hold-to-confirm",
+        "name": "Hold to Confirm",
+        "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
+      },
+      {
+        "slug": "like-button",
+        "name": "Like Button",
+        "description": "A heart button that pops with a particle burst and rolling count."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Expandable Action Bar free to use in commercial projects?",
+        "answer": "Yes. The public Expandable Action Bar source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Expandable Action Bar?",
+        "answer": "Run npx shadcn@latest add @spectrumui/expandable-action-bar. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Expandable Action Bar require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Expandable Action Bar."
+      },
+      {
+        "question": "Does Expandable Action Bar use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Expandable Action Bar source."
+      },
+      {
+        "question": "Can I use Expandable Action Bar in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Expandable Action Bar?",
+        "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -1762,6 +2984,11 @@
         "description": "An animated star rating input with hover preview and sparkle burst effects."
       },
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "animated-switch",
         "name": "Animated Switch",
         "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
@@ -1770,11 +2997,6 @@
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "button",
-        "name": "Button",
-        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       }
     ],
     "faqs": [
@@ -1801,6 +3023,147 @@
       {
         "question": "What accessibility checks should I run for Face Rating?",
         "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "faq-tabs-card",
+    "name": "FAQ Tabs Card",
+    "description": "A tabbed FAQ card with animated accordion answers and a support footer.",
+    "category": "Disclosure",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/faq-tabs-card"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/faq-tabs-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "tabs",
+        "type": "FaqTab[]",
+        "required": false,
+        "description": "Value accepted by the tabs property in the exported source type."
+      },
+      {
+        "name": "defaultTab",
+        "type": "number",
+        "required": false,
+        "description": "Index of the tab selected initially."
+      },
+      {
+        "name": "defaultOpenIndex",
+        "type": "number",
+        "required": false,
+        "description": "Index of the FAQ expanded initially (-1 for none)."
+      },
+      {
+        "name": "footerLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the footerLabel property in the exported source type."
+      },
+      {
+        "name": "onFooterClick",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a tabbed FAQ card with animated accordion answers and a support footer",
+      "documentation pages",
+      "support centers"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "accordion",
+        "name": "Accordion",
+        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
+      },
+      {
+        "slug": "animateddrawer",
+        "name": "Animated Drawer",
+        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
+      },
+      {
+        "slug": "nav-list-card",
+        "name": "Nav List Card",
+        "description": "A compact navigation card that lists links with icons, with a spring slide on hover."
+      },
+      {
+        "slug": "tree-nav",
+        "name": "Tree Nav",
+        "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is FAQ Tabs Card free to use in commercial projects?",
+        "answer": "Yes. The public FAQ Tabs Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install FAQ Tabs Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/faq-tabs-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does FAQ Tabs Card require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for FAQ Tabs Card."
+      },
+      {
+        "question": "Does FAQ Tabs Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented FAQ Tabs Card source."
+      },
+      {
+        "question": "Can I use FAQ Tabs Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for FAQ Tabs Card?",
+        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -1877,9 +3240,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "spinner",
-        "name": "Spinner",
-        "description": "A loading spinner with multiple sizes and variants for async states."
+        "slug": "skeleton-reveal",
+        "name": "Skeleton Reveal",
+        "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content."
       }
     ],
     "faqs": [
@@ -1973,6 +3336,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -1986,11 +3354,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "input-model",
-        "name": "Input Model",
-        "description": "A modal dialog with an input form for quick data entry."
       }
     ],
     "faqs": [
@@ -2139,6 +3502,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
@@ -2147,11 +3515,6 @@
         "slug": "like-button",
         "name": "Like Button",
         "description": "A heart button that pops with a particle burst and rolling count."
-      },
-      {
-        "slug": "loading-button",
-        "name": "Loading Button",
-        "description": "A shadcn/ui button with a built-in loading spinner state."
       }
     ],
     "faqs": [
@@ -2301,6 +3664,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -2309,11 +3677,6 @@
         "slug": "like-button",
         "name": "Like Button",
         "description": "A heart button that pops with a particle burst and rolling count."
-      },
-      {
-        "slug": "loading-button",
-        "name": "Loading Button",
-        "description": "A shadcn/ui button with a built-in loading spinner state."
       }
     ],
     "faqs": [
@@ -2441,14 +3804,14 @@
         "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag."
       },
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -2589,14 +3952,14 @@
         "description": "A drag-and-drop kanban board for organizing tasks into columns."
       },
       {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
+        "slug": "number-ticker",
+        "name": "Number Ticker",
+        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
       },
       {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
+        "slug": "recent-activity",
+        "name": "Recent Activity",
+        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -2684,6 +4047,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -2697,11 +4065,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -2806,14 +4169,14 @@
         "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
       },
       {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
+        "slug": "number-ticker",
+        "name": "Number Ticker",
+        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
       },
       {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
+        "slug": "recent-activity",
+        "name": "Recent Activity",
+        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -2950,24 +4313,24 @@
     ],
     "related": [
       {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
       },
       {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
+        "slug": "command-search",
+        "name": "Command Search",
+        "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation."
       },
       {
-        "slug": "button",
-        "name": "Button",
-        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
+        "slug": "metal-prompt-bar",
+        "name": "Metal Prompt Bar",
+        "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it."
       },
       {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
       }
     ],
     "faqs": [
@@ -3121,6 +4484,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -3129,11 +4497,6 @@
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
-      },
-      {
-        "slug": "loading-button",
-        "name": "Loading Button",
-        "description": "A shadcn/ui button with a built-in loading spinner state."
       }
     ],
     "faqs": [
@@ -3246,6 +4609,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -3254,11 +4622,6 @@
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
-      },
-      {
-        "slug": "like-button",
-        "name": "Like Button",
-        "description": "A heart button that pops with a particle burst and rolling count."
       }
     ],
     "faqs": [
@@ -3350,19 +4713,19 @@
         "description": "A vertically stacked set of interactive headings that each reveal a section of content."
       },
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "alert",
         "name": "Animated Alert",
         "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
-      },
-      {
-        "slug": "animatedcard",
-        "name": "Animated Card",
-        "description": "A card that animates on hover to showcase tools, technologies, and features."
       }
     ],
     "faqs": [
@@ -3389,6 +4752,305 @@
       {
         "question": "What accessibility checks should I run for Login Card?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+      }
+    ]
+  },
+  {
+    "slug": "metal-button",
+    "name": "Metal Button",
+    "description": "A pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets.",
+    "category": "Action",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [
+      "metal-fx"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-surface-theme"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/metal-button"
+      ],
+      "dependencyCommands": [
+        "npm i metal-fx"
+      ],
+      "manualPaths": [
+        "components/spectrumui/metal-button.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "preset",
+        "type": "MetalFxPreset",
+        "required": false,
+        "description": "Metal palette. Default \"chromatic\""
+      },
+      {
+        "name": "theme",
+        "type": "SurfaceTheme",
+        "required": false,
+        "description": "\"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\""
+      },
+      {
+        "name": "strength",
+        "type": "number",
+        "required": false,
+        "description": "Ring intensity 0–1. Default 1"
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "description": "Pill height and type size. Default \"md\""
+      },
+      {
+        "name": "paused",
+        "type": "boolean",
+        "required": false,
+        "description": "Freeze the shader on its current frame"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the inner button"
+      },
+      {
+        "name": "wrapperClassName",
+        "type": "string",
+        "required": false,
+        "description": "Classes for the MetalFx wrapper"
+      }
+    ],
+    "useCases": [
+      "interfaces that need a pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets",
+      "SaaS workflows",
+      "onboarding flows"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Spectrum UI registry dependencies: @spectrumui/use-surface-theme",
+      "Responsive Tailwind variants present in the source"
+    ],
+    "accessibility": [
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "button",
+        "name": "Button",
+        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
+      },
+      {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
+        "slug": "follow-button",
+        "name": "Follow Button",
+        "description": "A follow button that morphs its width, fill, and label between states."
+      },
+      {
+        "slug": "hold-to-confirm",
+        "name": "Hold to Confirm",
+        "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Metal Button free to use in commercial projects?",
+        "answer": "Yes. The public Metal Button source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Metal Button?",
+        "answer": "Run npx shadcn@latest add @spectrumui/metal-button. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Metal Button require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Metal Button."
+      },
+      {
+        "question": "Does Metal Button use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Metal Button source."
+      },
+      {
+        "question": "Can I use Metal Button in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Metal Button?",
+        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+      }
+    ]
+  },
+  {
+    "slug": "metal-prompt-bar",
+    "name": "Metal Prompt Bar",
+    "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it.",
+    "category": "Input",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [
+      "metal-fx",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-surface-theme"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/metal-prompt-bar"
+      ],
+      "dependencyCommands": [
+        "npm i metal-fx lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/metal-prompt-bar.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "placeholder",
+        "type": "string",
+        "required": false,
+        "description": "Placeholder for the empty composer. Default \"Build anything…\""
+      },
+      {
+        "name": "chips",
+        "type": "string[]",
+        "required": false,
+        "description": "Pills shown bottom-left; each one reflects the metal ring in dark mode. Default [\"Agent\", \"Auto\"]"
+      },
+      {
+        "name": "preset",
+        "type": "MetalFxPreset",
+        "required": false,
+        "description": "Metal palette for the send ring. Default \"chromatic\""
+      },
+      {
+        "name": "theme",
+        "type": "SurfaceTheme",
+        "required": false,
+        "description": "\"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\""
+      },
+      {
+        "name": "onSubmit",
+        "type": "(text: string) => void",
+        "required": false,
+        "description": "Fires with the trimmed text on Enter or the send button; the field clears afterwards"
+      },
+      {
+        "name": "onChipClick",
+        "type": "(chip: string) => void",
+        "required": false,
+        "description": "Fires when a chip is clicked"
+      },
+      {
+        "name": "maxRows",
+        "type": "number",
+        "required": false,
+        "description": "Max textarea rows before it scrolls. Default 6"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need an AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it",
+      "forms",
+      "search workflows"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Spectrum UI registry dependencies: @spectrumui/use-surface-theme",
+      "Responsive Tailwind variants present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source includes keyboard event handling; verify it alongside pointer behavior.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
+      },
+      {
+        "slug": "command-search",
+        "name": "Command Search",
+        "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation."
+      },
+      {
+        "slug": "kbd-key",
+        "name": "Kbd Key",
+        "description": "A 3D keycap that physically depresses when the matching key is pressed."
+      },
+      {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Metal Prompt Bar free to use in commercial projects?",
+        "answer": "Yes. The public Metal Prompt Bar source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Metal Prompt Bar?",
+        "answer": "Run npx shadcn@latest add @spectrumui/metal-prompt-bar. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Metal Prompt Bar require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Metal Prompt Bar."
+      },
+      {
+        "question": "Does Metal Prompt Bar use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Metal Prompt Bar source."
+      },
+      {
+        "question": "Can I use Metal Prompt Bar in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Metal Prompt Bar?",
+        "answer": "The source includes ARIA markup, keyboard handlers. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -3533,6 +5195,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -3541,11 +5208,6 @@
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
-      },
-      {
-        "slug": "like-button",
-        "name": "Like Button",
-        "description": "A heart button that pops with a particle burst and rolling count."
       }
     ],
     "faqs": [
@@ -3800,6 +5462,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -3813,11 +5480,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -3914,6 +5576,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -3927,11 +5594,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -3957,6 +5619,128 @@
       },
       {
         "question": "What accessibility checks should I run for Multistep Form?",
+        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
+      }
+    ]
+  },
+  {
+    "slug": "nav-list-card",
+    "name": "Nav List Card",
+    "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
+    "category": "Navigation",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/nav-list-card"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/nav-list-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "items",
+        "type": "NavListItem[]",
+        "required": false,
+        "description": "Value accepted by the items property in the exported source type."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a compact navigation card that lists links with icons, with a spring slide on hover",
+      "application shells",
+      "dashboards"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion"
+    ],
+    "accessibility": [
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "tree-nav",
+        "name": "Tree Nav",
+        "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link."
+      },
+      {
+        "slug": "accordion",
+        "name": "Accordion",
+        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
+      },
+      {
+        "slug": "animateddrawer",
+        "name": "Animated Drawer",
+        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
+      },
+      {
+        "slug": "faq-tabs-card",
+        "name": "FAQ Tabs Card",
+        "description": "A tabbed FAQ card with animated accordion answers and a support footer."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Nav List Card free to use in commercial projects?",
+        "answer": "Yes. The public Nav List Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Nav List Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/nav-list-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Nav List Card require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Nav List Card."
+      },
+      {
+        "question": "Does Nav List Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Nav List Card source."
+      },
+      {
+        "question": "Can I use Nav List Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Nav List Card?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
       }
     ]
@@ -4077,9 +5861,9 @@
         "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
       },
       {
-        "slug": "spinner",
-        "name": "Spinner",
-        "description": "A loading spinner with multiple sizes and variants for async states."
+        "slug": "skeleton-reveal",
+        "name": "Skeleton Reveal",
+        "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content."
       }
     ],
     "faqs": [
@@ -4105,6 +5889,198 @@
       },
       {
         "question": "What accessibility checks should I run for Notification Bell?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "number-ticker",
+    "name": "Number Ticker",
+    "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur.",
+    "category": "Data",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/number-ticker"
+      ],
+      "dependencyCommands": [
+        "npm i motion clsx tailwind-merge"
+      ],
+      "manualPaths": [
+        "components/motion/number-ticker.tsx",
+        "lib/ease.ts"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": "Value accepted by the value property in the exported source type."
+      },
+      {
+        "name": "pad",
+        "type": "number",
+        "required": false,
+        "description": "Digits to pad to (left)."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "required": false,
+        "description": "Per-digit roll duration in seconds."
+      },
+      {
+        "name": "stagger",
+        "type": "number",
+        "required": false,
+        "description": "Stagger between digits."
+      },
+      {
+        "name": "startOnView",
+        "type": "boolean",
+        "required": false,
+        "description": "Render only after the element enters the viewport."
+      },
+      {
+        "name": "prefix",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the prefix property in the exported source type."
+      },
+      {
+        "name": "suffix",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the suffix property in the exported source type."
+      },
+      {
+        "name": "blur",
+        "type": "boolean",
+        "required": false,
+        "description": "Add a small blur during digit rolls."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "digitClassName",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the digitClassName property in the exported source type."
+      },
+      {
+        "name": "locale",
+        "type": "boolean",
+        "required": false,
+        "description": "Insert locale group separators (commas). Server-component safe."
+      },
+      {
+        "name": "format",
+        "type": "(value: number) => string",
+        "required": false,
+        "description": "Custom formatter. Client-only — server components must use `locale` instead."
+      },
+      {
+        "name": "digit",
+        "type": "number",
+        "required": true,
+        "description": "Value accepted by the digit property in the exported source type."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "required": true,
+        "description": "Value accepted by the delay property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a rolling digit ticker that counts to a value with per-digit stagger, padding and blur",
+      "analytics dashboards",
+      "reporting views"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "animatedchart",
+        "name": "Animated SVG Chart",
+        "description": "An animated SVG chart for visualizing data on dashboards and reports."
+      },
+      {
+        "slug": "infinite-scroll",
+        "name": "Infinite Scroll",
+        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
+      },
+      {
+        "slug": "kanban",
+        "name": "Kanban Board",
+        "description": "A drag-and-drop kanban board for organizing tasks into columns."
+      },
+      {
+        "slug": "recent-activity",
+        "name": "Recent Activity",
+        "description": "An activity feed card that lists agent runs with duration and recency chips."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Number Ticker free to use in commercial projects?",
+        "answer": "Yes. The public Number Ticker source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Number Ticker?",
+        "answer": "Run npx shadcn@latest add @spectrumui/number-ticker. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Number Ticker require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Number Ticker."
+      },
+      {
+        "question": "Does Number Ticker use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Number Ticker source."
+      },
+      {
+        "question": "Can I use Number Ticker in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Number Ticker?",
         "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
@@ -4253,6 +6229,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -4266,11 +6247,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -4363,6 +6339,11 @@
         "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       },
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
@@ -4371,11 +6352,6 @@
         "slug": "badge",
         "name": "3D Event Badge",
         "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
-      },
-      {
-        "slug": "card",
-        "name": "Card",
-        "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
       }
     ],
     "faqs": [
@@ -4486,6 +6462,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "animated-switch",
         "name": "Animated Switch",
         "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
@@ -4496,14 +6477,9 @@
         "description": "A textarea that automatically grows and shrinks to fit its content."
       },
       {
-        "slug": "button",
-        "name": "Button",
-        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
-      },
-      {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
       }
     ],
     "faqs": [
@@ -4647,6 +6623,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -4660,11 +6641,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -4811,9 +6787,9 @@
         "description": "A bell button that swings on new notifications with a rolling unread badge."
       },
       {
-        "slug": "spinner",
-        "name": "Spinner",
-        "description": "A loading spinner with multiple sizes and variants for async states."
+        "slug": "skeleton-reveal",
+        "name": "Skeleton Reveal",
+        "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content."
       }
     ],
     "faqs": [
@@ -4840,6 +6816,141 @@
       {
         "question": "What accessibility checks should I run for Reaction Bar?",
         "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "recent-activity",
+    "name": "Recent Activity",
+    "description": "An activity feed card that lists agent runs with duration and recency chips.",
+    "category": "Data",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/recent-activity"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/recent-activity.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "titleIcon",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Value accepted by the titleIcon property in the exported source type."
+      },
+      {
+        "name": "items",
+        "type": "ActivityItem[]",
+        "required": false,
+        "description": "Value accepted by the items property in the exported source type."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": "Value accepted by the value property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need an activity feed card that lists agent runs with duration and recency chips",
+      "analytics dashboards",
+      "reporting views"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Responsive Tailwind variants present in the source"
+    ],
+    "accessibility": [
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "animatedchart",
+        "name": "Animated SVG Chart",
+        "description": "An animated SVG chart for visualizing data on dashboards and reports."
+      },
+      {
+        "slug": "infinite-scroll",
+        "name": "Infinite Scroll",
+        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
+      },
+      {
+        "slug": "kanban",
+        "name": "Kanban Board",
+        "description": "A drag-and-drop kanban board for organizing tasks into columns."
+      },
+      {
+        "slug": "number-ticker",
+        "name": "Number Ticker",
+        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Recent Activity free to use in commercial projects?",
+        "answer": "Yes. The public Recent Activity source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Recent Activity?",
+        "answer": "Run npx shadcn@latest add @spectrumui/recent-activity. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Recent Activity require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Recent Activity."
+      },
+      {
+        "question": "Does Recent Activity use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Recent Activity source."
+      },
+      {
+        "question": "Can I use Recent Activity in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Recent Activity?",
+        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
       }
     ]
   },
@@ -4985,14 +7096,14 @@
         "description": "An image preview component with zoom, lightbox, and gallery support."
       },
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
       }
     ],
     "faqs": [
@@ -5129,6 +7240,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -5137,11 +7253,6 @@
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
-      },
-      {
-        "slug": "like-button",
-        "name": "Like Button",
-        "description": "A heart button that pops with a particle burst and rolling count."
       }
     ],
     "faqs": [
@@ -5168,6 +7279,146 @@
       {
         "question": "What accessibility checks should I run for Share Button?",
         "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "skeleton-reveal",
+    "name": "Skeleton Reveal",
+    "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content.",
+    "category": "Feedback",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/skeleton-reveal"
+      ],
+      "dependencyCommands": [],
+      "manualPaths": [
+        "components/spectrumui/skeleton-reveal.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": true,
+        "description": "While true the skeleton shows and pulses; flipping to false reveals the content"
+      },
+      {
+        "name": "skeleton",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Placeholder layer — bring your own bars and avatar"
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "description": "Real content, rendered in the same slot"
+      },
+      {
+        "name": "pulseCount",
+        "type": "number",
+        "required": false,
+        "description": "Pulse cycles before settling. Default 1"
+      },
+      {
+        "name": "pulseDuration",
+        "type": "number",
+        "required": false,
+        "description": "One pulse cycle in ms. Default 1000"
+      },
+      {
+        "name": "revealDuration",
+        "type": "number",
+        "required": false,
+        "description": "Cross-fade duration in ms. Default 400"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a skeleton that pulses while loading, then cross-fades and un-blurs into the real content",
+      "form workflows",
+      "support tools"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
+      },
+      {
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
+      },
+      {
+        "slug": "notification-bell",
+        "name": "Notification Bell",
+        "description": "A bell button that swings on new notifications with a rolling unread badge."
+      },
+      {
+        "slug": "reaction-bar",
+        "name": "Reaction Bar",
+        "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Skeleton Reveal free to use in commercial projects?",
+        "answer": "Yes. The public Skeleton Reveal source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Skeleton Reveal?",
+        "answer": "Run npx shadcn@latest add @spectrumui/skeleton-reveal. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Skeleton Reveal require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Skeleton Reveal."
+      },
+      {
+        "question": "Does Skeleton Reveal use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Skeleton Reveal source."
+      },
+      {
+        "question": "Can I use Skeleton Reveal in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Skeleton Reveal?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -5420,6 +7671,11 @@
         "description": "A five-level rating input where an SVG face morphs between moods."
       },
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "animated-switch",
         "name": "Animated Switch",
         "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
@@ -5428,11 +7684,6 @@
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "button",
-        "name": "Button",
-        "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       }
     ],
     "faqs": [
@@ -5626,16 +7877,22 @@
         "description": "Fraction of actionWidth the drag must pass to commit. Default 0.6"
       },
       {
-        "name": "showButtonOnHover",
+        "name": "revealOnHover",
         "type": "boolean",
         "required": false,
-        "description": "Show a fallback delete button on row hover/focus. Default true"
+        "description": "Nudge the row on hover/focus to preview the delete zone (pointer devices). Default true"
+      },
+      {
+        "name": "hoverPeek",
+        "type": "number",
+        "required": false,
+        "description": "How far in pixels the row nudges left for the hover preview. Default 56"
       },
       {
         "name": "disabled",
         "type": "boolean",
         "required": false,
-        "description": "Disables dragging, the delete button and keyboard deletion"
+        "description": "Disables dragging, the delete zone and keyboard deletion"
       },
       {
         "name": "className",
@@ -5674,6 +7931,11 @@
         "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles."
       },
       {
+        "slug": "expandable-action-bar",
+        "name": "Expandable Action Bar",
+        "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion."
+      },
+      {
         "slug": "follow-button",
         "name": "Follow Button",
         "description": "A follow button that morphs its width, fill, and label between states."
@@ -5682,11 +7944,6 @@
         "slug": "hold-to-confirm",
         "name": "Hold to Confirm",
         "description": "A press-and-hold button that fills a progress ring before confirming destructive actions."
-      },
-      {
-        "slug": "like-button",
-        "name": "Like Button",
-        "description": "A heart button that pops with a particle burst and rolling count."
       }
     ],
     "faqs": [
@@ -5823,6 +8080,11 @@
     ],
     "related": [
       {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
@@ -5836,11 +8098,6 @@
         "slug": "dual-range-slider",
         "name": "Dual Range Slider",
         "description": "A slider with two draggable thumbs for selecting a range of values."
-      },
-      {
-        "slug": "floating-label-input",
-        "name": "Floating Label Input",
-        "description": "An input whose label floats above the field when focused or filled."
       }
     ],
     "faqs": [
@@ -5866,6 +8123,134 @@
       },
       {
         "question": "What accessibility checks should I run for Task Checkbox?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "text-states",
+    "name": "Text States",
+    "description": "A status label that swaps its text in place, exiting up with blur and entering from below.",
+    "category": "Feedback",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "dependencies": [],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/text-states"
+      ],
+      "dependencyCommands": [],
+      "manualPaths": [
+        "components/spectrumui/text-states.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "Current text. Each change runs the exit/enter swap"
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "required": false,
+        "description": "Swap duration in ms (each phase). Default 150"
+      },
+      {
+        "name": "translateY",
+        "type": "number",
+        "required": false,
+        "description": "Travel distance in px. Default 4"
+      },
+      {
+        "name": "blur",
+        "type": "number",
+        "required": false,
+        "description": "Blur amount in px. Default 2"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a status label that swaps its text in place, exiting up with blur and entering from below",
+      "form workflows",
+      "support tools"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
+    ],
+    "related": [
+      {
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
+      },
+      {
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
+      },
+      {
+        "slug": "notification-bell",
+        "name": "Notification Bell",
+        "description": "A bell button that swings on new notifications with a rolling unread badge."
+      },
+      {
+        "slug": "reaction-bar",
+        "name": "Reaction Bar",
+        "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Text States free to use in commercial projects?",
+        "answer": "Yes. The public Text States source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Text States?",
+        "answer": "Run npx shadcn@latest add @spectrumui/text-states. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Text States require Motion?",
+        "answer": "No Motion dependency was detected in the documented source or registry entry for Text States."
+      },
+      {
+        "question": "Does Text States use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Text States source."
+      },
+      {
+        "question": "Can I use Text States in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Text States?",
         "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
@@ -5989,24 +8374,24 @@
     ],
     "related": [
       {
+        "slug": "ai-chat-card",
+        "name": "AI Chat Card",
+        "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions."
+      },
+      {
         "slug": "animatedcard",
         "name": "Animated Card",
         "description": "A card that animates on hover to showcase tools, technologies, and features."
       },
       {
+        "slug": "beam-card",
+        "name": "Beam Card",
+        "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes."
+      },
+      {
         "slug": "card",
         "name": "Card",
         "description": "A set of pre-designed cards for login, signup, pricing, and dashboards."
-      },
-      {
-        "slug": "avatar-stack",
-        "name": "Avatar Stack",
-        "description": "An overlapping avatar row that fans apart on hover with springy name tooltips."
-      },
-      {
-        "slug": "badge",
-        "name": "3D Event Badge",
-        "description": "An interactive 3D event badge rendered with Three.js and React Three Fiber."
       }
     ],
     "faqs": [
@@ -6033,6 +8418,525 @@
       {
         "question": "What accessibility checks should I run for 3D Tilt Card?",
         "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "toast-stack",
+    "name": "Toast Stack",
+    "description": "Stacked toasts with status morphs, swipe to dismiss, actions and layout-aware motion.",
+    "category": "Feedback",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "clsx",
+      "tailwind-merge",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/toast-stack"
+      ],
+      "dependencyCommands": [
+        "npm i motion clsx tailwind-merge lucide-react"
+      ],
+      "manualPaths": [
+        "components/motion/animated-toast-stack.tsx",
+        "lib/ease.ts"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "toasts",
+        "type": "AnimatedToast[]",
+        "required": true,
+        "description": "Value accepted by the toasts property in the exported source type."
+      },
+      {
+        "name": "onDismiss",
+        "type": "(id: string) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "position",
+        "type": "ToastPosition",
+        "required": false,
+        "description": "Value accepted by the position property in the exported source type."
+      },
+      {
+        "name": "placement",
+        "type": "\"static\" | \"fixed\" | \"absolute\"",
+        "required": false,
+        "description": "Value accepted by the placement property in the exported source type."
+      },
+      {
+        "name": "fixed",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the fixed property in the exported source type."
+      },
+      {
+        "name": "portal",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the portal property in the exported source type."
+      },
+      {
+        "name": "portalRoot",
+        "type": "Element | null",
+        "required": false,
+        "description": "Value accepted by the portalRoot property in the exported source type."
+      },
+      {
+        "name": "maxVisible",
+        "type": "number",
+        "required": false,
+        "description": "Value accepted by the maxVisible property in the exported source type."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "classNames",
+        "type": "ToastClassNames",
+        "required": false,
+        "description": "Value accepted by the classNames property in the exported source type."
+      },
+      {
+        "name": "icons",
+        "type": "Partial<Record<ToastStatus, ReactNode>>",
+        "required": false,
+        "description": "Value accepted by the icons property in the exported source type."
+      },
+      {
+        "name": "renderToast",
+        "type": "(toast: AnimatedToast) => ReactNode",
+        "required": false,
+        "description": "Value accepted by the renderToast property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need stacked toasts with status morphs, swipe to dismiss, actions and layout-aware motion",
+      "form workflows",
+      "support tools"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "alert",
+        "name": "Animated Alert",
+        "description": "An animated alert that displays notifications, warnings, and success messages."
+      },
+      {
+        "slug": "feedback",
+        "name": "Feedback Card",
+        "description": "A feedback card that collects ratings and comments with emoji reactions."
+      },
+      {
+        "slug": "notification-bell",
+        "name": "Notification Bell",
+        "description": "A bell button that swings on new notifications with a rolling unread badge."
+      },
+      {
+        "slug": "reaction-bar",
+        "name": "Reaction Bar",
+        "description": "A Slack-style emoji reaction bar with animated chips and rolling counts."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Toast Stack free to use in commercial projects?",
+        "answer": "Yes. The public Toast Stack source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Toast Stack?",
+        "answer": "Run npx shadcn@latest add @spectrumui/toast-stack. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Toast Stack require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Toast Stack."
+      },
+      {
+        "question": "Does Toast Stack use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Toast Stack source."
+      },
+      {
+        "question": "Can I use Toast Stack in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Toast Stack?",
+        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "transfer-funds-card",
+    "name": "Transfer Funds Card",
+    "description": "A money transfer form card with account pickers, a summary and a confirm action.",
+    "category": "Form",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/transfer-funds-card"
+      ],
+      "dependencyCommands": [
+        "npm i motion lucide-react"
+      ],
+      "manualPaths": [
+        "components/spectrumui/transfer-funds-card.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the title property in the exported source type."
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the description property in the exported source type."
+      },
+      {
+        "name": "amountLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the amountLabel property in the exported source type."
+      },
+      {
+        "name": "currencySymbol",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the currencySymbol property in the exported source type."
+      },
+      {
+        "name": "amount",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the amount property in the exported source type."
+      },
+      {
+        "name": "fromLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the fromLabel property in the exported source type."
+      },
+      {
+        "name": "fromAccount",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the fromAccount property in the exported source type."
+      },
+      {
+        "name": "toLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the toLabel property in the exported source type."
+      },
+      {
+        "name": "toAccount",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the toAccount property in the exported source type."
+      },
+      {
+        "name": "summary",
+        "type": "TransferSummaryRow[]",
+        "required": false,
+        "description": "Value accepted by the summary property in the exported source type."
+      },
+      {
+        "name": "buttonLabel",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the buttonLabel property in the exported source type."
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "required": true,
+        "description": "Value accepted by the value property in the exported source type."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a money transfer form card with account pickers, a summary and a confirm action",
+      "authentication flows",
+      "settings forms"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "account-access-card",
+        "name": "Account Access Card",
+        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
+      },
+      {
+        "slug": "autosize-textarea",
+        "name": "Autosize Textarea",
+        "description": "A textarea that automatically grows and shrinks to fit its content."
+      },
+      {
+        "slug": "datetime-picker",
+        "name": "Datetime Picker",
+        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
+      },
+      {
+        "slug": "dual-range-slider",
+        "name": "Dual Range Slider",
+        "description": "A slider with two draggable thumbs for selecting a range of values."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Transfer Funds Card free to use in commercial projects?",
+        "answer": "Yes. The public Transfer Funds Card source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Transfer Funds Card?",
+        "answer": "Run npx shadcn@latest add @spectrumui/transfer-funds-card. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Transfer Funds Card require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Transfer Funds Card."
+      },
+      {
+        "question": "Does Transfer Funds Card use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Transfer Funds Card source."
+      },
+      {
+        "question": "Can I use Transfer Funds Card in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Transfer Funds Card?",
+        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
+    "slug": "tree-nav",
+    "name": "Tree Nav",
+    "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link.",
+    "category": "Navigation",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion"
+    ],
+    "registryDependencies": [
+      "@spectrumui/use-typewriter"
+    ],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/tree-nav"
+      ],
+      "dependencyCommands": [
+        "npm i motion"
+      ],
+      "manualPaths": [
+        "components/spectrumui/tree-nav.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "items",
+        "type": "TreeNavItem[]",
+        "required": true,
+        "description": "Value accepted by the items property in the exported source type."
+      },
+      {
+        "name": "activeHref",
+        "type": "string",
+        "required": false,
+        "description": "href of the current page; the marker and background rest on this row."
+      },
+      {
+        "name": "followHover",
+        "type": "boolean",
+        "required": false,
+        "description": "Slide the marker and background to the hovered row and spring back on leave."
+      },
+      {
+        "name": "linkComponent",
+        "type": "LinkComponent",
+        "required": false,
+        "description": "Element used for links, e.g. Next's Link. Defaults to a plain anchor."
+      },
+      {
+        "name": "onSelect",
+        "type": "(item: TreeNavItem, event: React.MouseEvent<HTMLAnchorElement>) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "required": false,
+        "description": "Additional classes accepted by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a nav list with a tree rail and a spring marker that follows hover and settles on the active link",
+      "application shells",
+      "dashboards"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Spectrum UI registry dependencies: @spectrumui/use-typewriter"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "nav-list-card",
+        "name": "Nav List Card",
+        "description": "A compact navigation card that lists links with icons, with a spring slide on hover."
+      },
+      {
+        "slug": "accordion",
+        "name": "Accordion",
+        "description": "A vertically stacked set of interactive headings that each reveal a section of content."
+      },
+      {
+        "slug": "animateddrawer",
+        "name": "Animated Drawer",
+        "description": "A drawer panel that slides in smoothly for menus, settings, and sidebars."
+      },
+      {
+        "slug": "faq-tabs-card",
+        "name": "FAQ Tabs Card",
+        "description": "A tabbed FAQ card with animated accordion answers and a support footer."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Tree Nav free to use in commercial projects?",
+        "answer": "Yes. The public Tree Nav source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Tree Nav?",
+        "answer": "Run npx shadcn@latest add @spectrumui/tree-nav. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Tree Nav require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Tree Nav."
+      },
+      {
+        "question": "Does Tree Nav use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Tree Nav source."
+      },
+      {
+        "question": "Can I use Tree Nav in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Tree Nav?",
+        "answer": "The source includes ARIA markup. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },

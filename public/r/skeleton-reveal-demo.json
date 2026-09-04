@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton-reveal-demo",
+  "title": "Skeleton Reveal Demo",
+  "description": "Demo usage for the Skeleton Reveal component",
+  "registryDependencies": [
+    "@spectrumui/skeleton-reveal"
+  ],
+  "files": [
+    {
+      "path": "app/registry/skeleton-reveal/skeleton-reveal-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { RotateCcw } from 'lucide-react';\nimport { SkeletonReveal } from '@/components/spectrumui/skeleton-reveal';\n\nconst PULSES = 2;\nconst PULSE_MS = 900;\n\nexport default function SkeletonRevealDemo() {\n  const [loading, setLoading] = React.useState(true);\n\n  React.useEffect(() => {\n    if (!loading) return;\n    const timer = window.setTimeout(() => setLoading(false), PULSES * PULSE_MS);\n    return () => window.clearTimeout(timer);\n  }, [loading]);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-[420px] rounded-2xl border border-black/8 bg-white p-4 dark:border-white/10 dark:bg-neutral-950\">\n        <SkeletonReveal\n          loading={loading}\n          pulseCount={PULSES}\n          pulseDuration={PULSE_MS}\n          skeleton={\n            <div className=\"flex items-center gap-3\">\n              <span className=\"size-11 rounded-full bg-neutral-200 dark:bg-neutral-800\" />\n              <span className=\"flex-1 space-y-2\">\n                <span className=\"block h-3.5 w-2/5 rounded bg-neutral-200 dark:bg-neutral-800\" />\n                <span className=\"block h-3 w-4/5 rounded bg-neutral-200 dark:bg-neutral-800\" />\n              </span>\n            </div>\n          }\n        >\n          <div className=\"flex items-center gap-3\">\n            <span className=\"flex size-11 items-center justify-center rounded-full bg-neutral-900 text-sm font-medium text-white dark:bg-neutral-100 dark:text-neutral-900\">\n              AC\n            </span>\n            <span className=\"min-w-0 flex-1\">\n              <span className=\"block truncate text-[15px] font-medium text-neutral-900 dark:text-neutral-100\">\n                Ava Chen\n              </span>\n              <span className=\"block truncate text-sm text-neutral-500 dark:text-neutral-400\">\n                Design review notes — the new empty states look great\n              </span>\n            </span>\n          </div>\n        </SkeletonReveal>\n      </div>\n      <button\n        type=\"button\"\n        onClick={() => setLoading(true)}\n        disabled={loading}\n        className=\"inline-flex items-center gap-1.5 text-sm font-medium text-neutral-600 underline-offset-4 hover:underline disabled:opacity-50 dark:text-neutral-300\"\n      >\n        <RotateCcw className=\"size-3.5\" /> Replay\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/skeleton-reveal-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

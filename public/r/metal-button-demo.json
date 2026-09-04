@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-button-demo",
+  "title": "Metal Button Demo",
+  "description": "Demo usage for the Metal Button component",
+  "registryDependencies": [
+    "@spectrumui/metal-button"
+  ],
+  "files": [
+    {
+      "path": "app/registry/metal-button/metal-button-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { ArrowUpRight, Sparkles } from 'lucide-react';\nimport { MetalButton } from '@/components/spectrumui/metal-button';\n\nexport default function MetalButtonDemo() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-6 py-10\">\n      <div className=\"flex flex-wrap items-center justify-center gap-5\">\n        <MetalButton preset=\"chromatic\">\n          <Sparkles className=\"size-4\" />\n          Upgrade to Pro\n        </MetalButton>\n        <MetalButton preset=\"silver\">Continue</MetalButton>\n        <MetalButton preset=\"gold\" size=\"lg\">\n          Get started\n          <ArrowUpRight className=\"size-4\" />\n        </MetalButton>\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        One shared WebGL shader paints every ring — chromatic, silver and gold presets.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/metal-button-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

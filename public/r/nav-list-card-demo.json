@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "nav-list-card-demo",
+  "title": "Nav List Card Demo",
+  "description": "Demo usage for the Nav List Card component",
+  "registryDependencies": [
+    "@spectrumui/nav-list-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/nav-list-card/nav-list-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { NavListCard, SUPPORT_NAV_ITEMS } from \"@/components/spectrumui/nav-list-card\"\n\nexport default function NavListCardDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"grid w-full max-w-[360px] grid-cols-2 items-start gap-3\">\n        <NavListCard />\n        <NavListCard title=\"Support\" items={SUPPORT_NAV_ITEMS} />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/nav-list-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

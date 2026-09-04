@@ -4356,6 +4356,787 @@
         "receipt",
         "mono"
       ]
+    },
+    {
+      "name": "use-typewriter",
+      "type": "registry:hook",
+      "title": "useTypewriter",
+      "description": "A typewriter hook that types, holds and deletes phrases on a loop, plus a prefers-reduced-motion hook.",
+      "files": [
+        {
+          "path": "app/registry/use-typewriter/use-typewriter.ts",
+          "type": "registry:hook",
+          "target": "components/spectrumui/use-typewriter.ts"
+        }
+      ]
+    },
+    {
+      "name": "command-search",
+      "type": "registry:component",
+      "title": "Command Search",
+      "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation.",
+      "files": [
+        {
+          "path": "app/registry/command-search/command-search.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-search.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-typewriter"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/command-search",
+      "new": true
+    },
+    {
+      "name": "command-search-demo",
+      "type": "registry:component",
+      "title": "Command Search Demo",
+      "description": "Demo usage for the Command Search component",
+      "files": [
+        {
+          "path": "app/registry/command-search/command-search-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/command-search-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/command-search"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/command-search",
+      "new": true
+    },
+    {
+      "name": "recent-activity",
+      "type": "registry:component",
+      "title": "Recent Activity",
+      "description": "An activity feed card that lists agent runs with duration and recency chips.",
+      "files": [
+        {
+          "path": "app/registry/recent-activity/recent-activity.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/recent-activity.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/recent-activity",
+      "new": true
+    },
+    {
+      "name": "recent-activity-demo",
+      "type": "registry:component",
+      "title": "Recent Activity Demo",
+      "description": "Demo usage for the Recent Activity component",
+      "files": [
+        {
+          "path": "app/registry/recent-activity/recent-activity-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/recent-activity-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/recent-activity"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/recent-activity",
+      "new": true
+    },
+    {
+      "name": "account-access-card",
+      "type": "registry:component",
+      "title": "Account Access Card",
+      "description": "A credentials card that auto-fills email and password on a loop, with a danger zone.",
+      "files": [
+        {
+          "path": "app/registry/account-access-card/account-access-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/account-access-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-typewriter"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/account-access-card",
+      "new": true
+    },
+    {
+      "name": "account-access-card-demo",
+      "type": "registry:component",
+      "title": "Account Access Card Demo",
+      "description": "Demo usage for the Account Access Card component",
+      "files": [
+        {
+          "path": "app/registry/account-access-card/account-access-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/account-access-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/account-access-card"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/account-access-card",
+      "new": true
+    },
+    {
+      "name": "ai-chat-card",
+      "type": "registry:component",
+      "title": "AI Chat Card",
+      "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions.",
+      "files": [
+        {
+          "path": "app/registry/ai-chat-card/ai-chat-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/ai-chat-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-typewriter"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/ai-chat-card",
+      "new": true
+    },
+    {
+      "name": "ai-chat-card-demo",
+      "type": "registry:component",
+      "title": "AI Chat Card Demo",
+      "description": "Demo usage for the AI Chat Card component",
+      "files": [
+        {
+          "path": "app/registry/ai-chat-card/ai-chat-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/ai-chat-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/ai-chat-card"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/ai-chat-card",
+      "new": true
+    },
+    {
+      "name": "nav-list-card",
+      "type": "registry:component",
+      "title": "Nav List Card",
+      "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
+      "files": [
+        {
+          "path": "app/registry/nav-list-card/nav-list-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/nav-list-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "category": "Navigation",
+      "docsUrl": "https://ui.spectrumhq.in/docs/nav-list-card",
+      "new": true
+    },
+    {
+      "name": "nav-list-card-demo",
+      "type": "registry:component",
+      "title": "Nav List Card Demo",
+      "description": "Demo usage for the Nav List Card component",
+      "files": [
+        {
+          "path": "app/registry/nav-list-card/nav-list-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/nav-list-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/nav-list-card"
+      ],
+      "category": "Navigation",
+      "docsUrl": "https://ui.spectrumhq.in/docs/nav-list-card",
+      "new": true
+    },
+    {
+      "name": "transfer-funds-card",
+      "type": "registry:component",
+      "title": "Transfer Funds Card",
+      "description": "A money transfer form card with account pickers, a summary and a confirm action.",
+      "files": [
+        {
+          "path": "app/registry/transfer-funds-card/transfer-funds-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/transfer-funds-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/transfer-funds-card",
+      "new": true
+    },
+    {
+      "name": "transfer-funds-card-demo",
+      "type": "registry:component",
+      "title": "Transfer Funds Card Demo",
+      "description": "Demo usage for the Transfer Funds Card component",
+      "files": [
+        {
+          "path": "app/registry/transfer-funds-card/transfer-funds-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/transfer-funds-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/transfer-funds-card"
+      ],
+      "category": "Form",
+      "docsUrl": "https://ui.spectrumhq.in/docs/transfer-funds-card",
+      "new": true
+    },
+    {
+      "name": "faq-tabs-card",
+      "type": "registry:component",
+      "title": "FAQ Tabs Card",
+      "description": "A tabbed FAQ card with animated accordion answers and a support footer.",
+      "files": [
+        {
+          "path": "app/registry/faq-tabs-card/faq-tabs-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/faq-tabs-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "category": "Disclosure",
+      "docsUrl": "https://ui.spectrumhq.in/docs/faq-tabs-card",
+      "new": true
+    },
+    {
+      "name": "faq-tabs-card-demo",
+      "type": "registry:component",
+      "title": "FAQ Tabs Card Demo",
+      "description": "Demo usage for the FAQ Tabs Card component",
+      "files": [
+        {
+          "path": "app/registry/faq-tabs-card/faq-tabs-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/faq-tabs-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/faq-tabs-card"
+      ],
+      "category": "Disclosure",
+      "docsUrl": "https://ui.spectrumhq.in/docs/faq-tabs-card",
+      "new": true
+    },
+    {
+      "name": "tree-nav",
+      "type": "registry:component",
+      "title": "Tree Nav",
+      "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link.",
+      "files": [
+        {
+          "path": "app/registry/tree-nav/tree-nav.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tree-nav.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-typewriter"
+      ],
+      "category": "Navigation",
+      "docsUrl": "https://ui.spectrumhq.in/docs/tree-nav",
+      "new": true
+    },
+    {
+      "name": "tree-nav-demo",
+      "type": "registry:component",
+      "title": "Tree Nav Demo",
+      "description": "Demo usage for the Tree Nav component",
+      "files": [
+        {
+          "path": "app/registry/tree-nav/tree-nav-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/tree-nav-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/tree-nav"
+      ],
+      "category": "Navigation",
+      "docsUrl": "https://ui.spectrumhq.in/docs/tree-nav",
+      "new": true
+    },
+    {
+      "name": "use-surface-theme",
+      "type": "registry:hook",
+      "title": "useSurfaceTheme",
+      "description": "Resolves auto to dark or light from a .dark class on <html>, then the OS preference, updating live.",
+      "files": [
+        {
+          "path": "components/spectrumui/use-surface-theme.ts",
+          "type": "registry:hook",
+          "target": "components/spectrumui/use-surface-theme.ts"
+        }
+      ]
+    },
+    {
+      "name": "metal-button",
+      "type": "registry:component",
+      "title": "Metal Button",
+      "description": "A pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets.",
+      "files": [
+        {
+          "path": "components/spectrumui/metal-button.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/metal-button.tsx"
+        }
+      ],
+      "dependencies": [
+        "metal-fx"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-surface-theme"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/metal-button",
+      "new": true
+    },
+    {
+      "name": "metal-button-demo",
+      "type": "registry:component",
+      "title": "Metal Button Demo",
+      "description": "Demo usage for the Metal Button component",
+      "files": [
+        {
+          "path": "app/registry/metal-button/metal-button-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/metal-button-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/metal-button"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/metal-button",
+      "new": true
+    },
+    {
+      "name": "metal-prompt-bar",
+      "type": "registry:component",
+      "title": "Metal Prompt Bar",
+      "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it.",
+      "files": [
+        {
+          "path": "components/spectrumui/metal-prompt-bar.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/metal-prompt-bar.tsx"
+        }
+      ],
+      "dependencies": [
+        "metal-fx",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-surface-theme"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/metal-prompt-bar",
+      "new": true
+    },
+    {
+      "name": "metal-prompt-bar-demo",
+      "type": "registry:component",
+      "title": "Metal Prompt Bar Demo",
+      "description": "Demo usage for the Metal Prompt Bar component",
+      "files": [
+        {
+          "path": "app/registry/metal-prompt-bar/metal-prompt-bar-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/metal-prompt-bar-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/metal-prompt-bar"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/metal-prompt-bar",
+      "new": true
+    },
+    {
+      "name": "beam-card",
+      "type": "registry:component",
+      "title": "Beam Card",
+      "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes.",
+      "files": [
+        {
+          "path": "components/spectrumui/beam-card.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/beam-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "border-beam"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-surface-theme"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/beam-card",
+      "new": true
+    },
+    {
+      "name": "beam-card-demo",
+      "type": "registry:component",
+      "title": "Beam Card Demo",
+      "description": "Demo usage for the Beam Card component",
+      "files": [
+        {
+          "path": "app/registry/beam-card/beam-card-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/beam-card-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/beam-card"
+      ],
+      "category": "Card",
+      "docsUrl": "https://ui.spectrumhq.in/docs/beam-card",
+      "new": true
+    },
+    {
+      "name": "beam-search",
+      "type": "registry:component",
+      "title": "Beam Search Bar",
+      "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus.",
+      "files": [
+        {
+          "path": "components/spectrumui/beam-search.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/beam-search.tsx"
+        }
+      ],
+      "dependencies": [
+        "border-beam",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@spectrumui/use-surface-theme"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/beam-search",
+      "new": true
+    },
+    {
+      "name": "beam-search-demo",
+      "type": "registry:component",
+      "title": "Beam Search Bar Demo",
+      "description": "Demo usage for the Beam Search Bar component",
+      "files": [
+        {
+          "path": "app/registry/beam-search/beam-search-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/beam-search-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/beam-search"
+      ],
+      "category": "Input",
+      "docsUrl": "https://ui.spectrumhq.in/docs/beam-search",
+      "new": true
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:component",
+      "title": "Dynamic Island",
+      "description": "An iOS-style island pill that morphs between live activity views with a bouncy resize.",
+      "files": [
+        {
+          "path": "components/motion/dynamic-island.tsx",
+          "type": "registry:component",
+          "target": "components/motion/dynamic-island.tsx"
+        },
+        {
+          "path": "lib/ease.ts",
+          "type": "registry:lib",
+          "target": "lib/ease.ts"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "category": "Status",
+      "docsUrl": "https://ui.spectrumhq.in/docs/dynamic-island",
+      "new": true
+    },
+    {
+      "name": "dynamic-island-demo",
+      "type": "registry:component",
+      "title": "Dynamic Island Demo",
+      "description": "Demo usage for the Dynamic Island component",
+      "files": [
+        {
+          "path": "app/registry/dynamic-island/dynamic-island-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/dynamic-island-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/dynamic-island"
+      ],
+      "category": "Status",
+      "docsUrl": "https://ui.spectrumhq.in/docs/dynamic-island",
+      "new": true
+    },
+    {
+      "name": "expandable-action-bar",
+      "type": "registry:component",
+      "title": "Expandable Action Bar",
+      "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.",
+      "files": [
+        {
+          "path": "components/motion/expandable-action-bar.tsx",
+          "type": "registry:component",
+          "target": "components/motion/expandable-action-bar.tsx"
+        },
+        {
+          "path": "lib/hooks/use-dismiss.ts",
+          "type": "registry:hook",
+          "target": "lib/hooks/use-dismiss.ts"
+        },
+        {
+          "path": "lib/hooks/use-hover-gesture.ts",
+          "type": "registry:hook",
+          "target": "lib/hooks/use-hover-gesture.ts"
+        },
+        {
+          "path": "lib/hooks/use-tap-gesture.ts",
+          "type": "registry:hook",
+          "target": "lib/hooks/use-tap-gesture.ts"
+        },
+        {
+          "path": "lib/touch.ts",
+          "type": "registry:lib",
+          "target": "lib/touch.ts"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/expandable-action-bar",
+      "new": true
+    },
+    {
+      "name": "expandable-action-bar-demo",
+      "type": "registry:component",
+      "title": "Expandable Action Bar Demo",
+      "description": "Demo usage for the Expandable Action Bar component",
+      "files": [
+        {
+          "path": "app/registry/expandable-action-bar/expandable-action-bar-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/expandable-action-bar-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/expandable-action-bar"
+      ],
+      "category": "Action",
+      "docsUrl": "https://ui.spectrumhq.in/docs/expandable-action-bar",
+      "new": true
+    },
+    {
+      "name": "toast-stack",
+      "type": "registry:component",
+      "title": "Toast Stack",
+      "description": "Stacked toasts with status morphs, swipe to dismiss, actions and layout-aware motion.",
+      "files": [
+        {
+          "path": "components/motion/animated-toast-stack.tsx",
+          "type": "registry:component",
+          "target": "components/motion/animated-toast-stack.tsx"
+        },
+        {
+          "path": "lib/ease.ts",
+          "type": "registry:lib",
+          "target": "lib/ease.ts"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/toast-stack",
+      "new": true
+    },
+    {
+      "name": "toast-stack-demo",
+      "type": "registry:component",
+      "title": "Toast Stack Demo",
+      "description": "Demo usage for the Toast Stack component",
+      "files": [
+        {
+          "path": "app/registry/toast-stack/toast-stack-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/toast-stack-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/toast-stack"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/toast-stack",
+      "new": true
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:component",
+      "title": "Number Ticker",
+      "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur.",
+      "files": [
+        {
+          "path": "components/motion/number-ticker.tsx",
+          "type": "registry:component",
+          "target": "components/motion/number-ticker.tsx"
+        },
+        {
+          "path": "lib/ease.ts",
+          "type": "registry:lib",
+          "target": "lib/ease.ts"
+        }
+      ],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/number-ticker",
+      "new": true
+    },
+    {
+      "name": "number-ticker-demo",
+      "type": "registry:component",
+      "title": "Number Ticker Demo",
+      "description": "Demo usage for the Number Ticker component",
+      "files": [
+        {
+          "path": "app/registry/number-ticker/number-ticker-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/number-ticker-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/number-ticker"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/number-ticker",
+      "new": true
+    },
+    {
+      "name": "text-states",
+      "type": "registry:component",
+      "title": "Text States",
+      "description": "A status label that swaps its text in place, exiting up with blur and entering from below.",
+      "files": [
+        {
+          "path": "components/spectrumui/text-states.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/text-states.tsx"
+        }
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/text-states",
+      "new": true
+    },
+    {
+      "name": "text-states-demo",
+      "type": "registry:component",
+      "title": "Text States Demo",
+      "description": "Demo usage for the Text States component",
+      "files": [
+        {
+          "path": "app/registry/text-states/text-states-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/text-states-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/text-states"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/text-states",
+      "new": true
+    },
+    {
+      "name": "skeleton-reveal",
+      "type": "registry:component",
+      "title": "Skeleton Reveal",
+      "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content.",
+      "files": [
+        {
+          "path": "components/spectrumui/skeleton-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/skeleton-reveal.tsx"
+        }
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/skeleton-reveal",
+      "new": true
+    },
+    {
+      "name": "skeleton-reveal-demo",
+      "type": "registry:component",
+      "title": "Skeleton Reveal Demo",
+      "description": "Demo usage for the Skeleton Reveal component",
+      "files": [
+        {
+          "path": "app/registry/skeleton-reveal/skeleton-reveal-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/skeleton-reveal-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/skeleton-reveal"
+      ],
+      "category": "Feedback",
+      "docsUrl": "https://ui.spectrumhq.in/docs/skeleton-reveal",
+      "new": true
     }
   ]
 }

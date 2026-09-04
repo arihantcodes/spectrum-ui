@@ -108,7 +108,7 @@ const page = () => {
                 type: "string",
                 default: `"item"`,
                 description:
-                  "Accessible name of the row; also used for the delete button label",
+                  "Accessible name of the row; also used for the delete zone label",
               },
               {
                 prop: "actionWidth",
@@ -126,12 +126,20 @@ const page = () => {
                   "Fraction of actionWidth the drag must pass to commit the delete",
               },
               {
-                prop: "showButtonOnHover",
+                prop: "revealOnHover",
                 required: false,
                 type: "boolean",
                 default: "true",
                 description:
-                  "Show a fallback delete button on row hover/focus for non-touch users",
+                  "Nudge the row on hover or focus to preview the delete zone on pointer devices",
+              },
+              {
+                prop: "hoverPeek",
+                required: false,
+                type: "number",
+                default: "56",
+                description:
+                  "How far in pixels the row nudges left for the hover preview",
               },
               {
                 prop: "disabled",
@@ -139,7 +147,7 @@ const page = () => {
                 type: "boolean",
                 default: "false",
                 description:
-                  "Disables dragging, the delete button and keyboard deletion",
+                  "Disables dragging, the delete zone and keyboard deletion",
               },
               {
                 prop: "className",

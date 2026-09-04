@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-stack-demo",
+  "title": "Toast Stack Demo",
+  "description": "Demo usage for the Toast Stack component",
+  "registryDependencies": [
+    "@spectrumui/toast-stack"
+  ],
+  "files": [
+    {
+      "path": "app/registry/toast-stack/toast-stack-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport {\n  AnimatedToastStack,\n  useAnimatedToastStack,\n} from '@/components/motion/animated-toast-stack';\n\nfunction PillButton({ onClick, children }: { onClick: () => void; children: React.ReactNode }) {\n  return (\n    <button\n      type=\"button\"\n      onClick={onClick}\n      className=\"rounded-full border border-black/10 px-3.5 py-1.5 text-[13px] font-medium text-neutral-700 transition-colors hover:bg-black/4 active:scale-[0.97] dark:border-white/12 dark:text-neutral-200 dark:hover:bg-white/6\"\n    >\n      {children}\n    </button>\n  );\n}\n\nexport default function ToastStackDemo() {\n  const { toasts, showToast, updateToast, dismissToast } = useAnimatedToastStack({ limit: 4 });\n\n  const deploy = () => {\n    const id = showToast({ status: 'loading', title: 'Deploying to production…', duration: 0 });\n    window.setTimeout(() => {\n      updateToast(id, {\n        status: 'success',\n        title: 'Deployed',\n        description: 'spectrum-ui · 42s · 3 regions',\n        duration: 4200,\n        action: { label: 'Open', onClick: () => undefined },\n      });\n    }, 1800);\n  };\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"flex flex-wrap items-center justify-center gap-2\">\n        <PillButton onClick={deploy}>Deploy</PillButton>\n        <PillButton\n          onClick={() =>\n            showToast({\n              status: 'info',\n              title: 'New comment',\n              description: 'Ava replied on “Empty states”.',\n            })\n          }\n        >\n          Info\n        </PillButton>\n        <PillButton\n          onClick={() =>\n            showToast({\n              status: 'error',\n              title: 'Payment failed',\n              description: 'Card declined. Try another method.',\n              action: { label: 'Retry', onClick: () => undefined },\n            })\n          }\n        >\n          Error\n        </PillButton>\n        <PillButton onClick={() => showToast({ status: 'neutral', title: 'Copied to clipboard' })}>\n          Neutral\n        </PillButton>\n      </div>\n      <div className=\"relative flex min-h-[220px] w-full max-w-[480px] items-end justify-center\">\n        <AnimatedToastStack\n          toasts={toasts}\n          onDismiss={dismissToast}\n          placement=\"static\"\n          position=\"bottom-center\"\n        />\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Toasts stack, morph between statuses and swipe away.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/toast-stack-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
