@@ -6,7 +6,7 @@ import { ChevronRight, CircleAlert, Lock } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import { usePrefersReducedMotion } from "./use-typewriter";
+import { usePrefersReducedMotion } from "@/components/spectrumui/use-typewriter";
 
 export interface AccountCredential {
   email: string;

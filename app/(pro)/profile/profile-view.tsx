@@ -48,7 +48,7 @@ export function ProfileView({
   return (
     // Same framed band as the rest of the site: side borders at 1400px,
     // bottom border hands off to the footer.
-    <div className="container-frame min-h-screen border-b border-border bg-background">
+    <div className="container-frame min-h-screen bg-background">
       <div className="mx-auto w-full max-w-2xl px-5 py-12 sm:px-6 sm:py-16">
         {/* Back */}
         <div className="enter-fx">

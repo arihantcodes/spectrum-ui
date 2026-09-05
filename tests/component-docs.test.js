@@ -7,7 +7,7 @@ const catalog = require(path.join(projectRoot, 'content', 'component-catalog.jso
 const componentDocs = require(path.join(projectRoot, 'content', 'component-docs.json'));
 const docsRoot = path.join(projectRoot, 'app', '(docs)', 'docs');
 
-assert.equal(componentDocs.length, 44, 'Every component route needs generated documentation');
+assert.equal(componentDocs.length, 62, 'Every component route needs generated documentation');
 assert.deepEqual(
   componentDocs.map((component) => component.slug).sort(),
   catalog.map((component) => component.slug).sort(),

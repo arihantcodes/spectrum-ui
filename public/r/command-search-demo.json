@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-search-demo",
+  "title": "Command Search Demo",
+  "description": "Demo usage for the Command Search component",
+  "registryDependencies": [
+    "@spectrumui/command-search"
+  ],
+  "files": [
+    {
+      "path": "app/registry/command-search/command-search-demo.tsx",
+      "content": "\"use client\"\n\nimport { CommandSearch } from \"@/components/spectrumui/command-search\"\n\nexport default function CommandSearchDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"w-full max-w-[512px]\">\n        <CommandSearch />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/command-search-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

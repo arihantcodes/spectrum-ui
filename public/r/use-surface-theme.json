@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-surface-theme",
+  "title": "useSurfaceTheme",
+  "description": "Resolves auto to dark or light from a .dark class on <html>, then the OS preference, updating live.",
+  "files": [
+    {
+      "path": "components/spectrumui/use-surface-theme.ts",
+      "content": "/**\n * Spectrum UI — useSurfaceTheme\n *\n * Resolves \"auto\" to \"dark\" or \"light\" by reading a `.dark`/`.light` class on\n * <html> first (shadcn / next-themes convention) and falling back to the OS\n * preference, updating live on either change. metal-fx and border-beam only\n * know about the OS preference, so their wrappers use this to follow the app's\n * own theme toggle.\n */\n\n'use client';\n\nimport { useSyncExternalStore } from 'react';\n\nexport type SurfaceTheme = 'auto' | 'dark' | 'light';\n\nconst DARK_QUERY = '(prefers-color-scheme: dark)';\n\nfunction subscribe(onChange: () => void) {\n  const observer = new MutationObserver(onChange);\n  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });\n  const mq = window.matchMedia(DARK_QUERY);\n  mq.addEventListener('change', onChange);\n  return () => {\n    observer.disconnect();\n    mq.removeEventListener('change', onChange);\n  };\n}\n\nfunction read(): 'dark' | 'light' {\n  const list = document.documentElement.classList;\n  if (list.contains('dark')) return 'dark';\n  if (list.contains('light')) return 'light';\n  return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light';\n}\n\nconst onServer = () => 'dark' as const;\n\nexport function useSurfaceTheme(theme: SurfaceTheme = 'auto'): 'dark' | 'light' {\n  const resolved = useSyncExternalStore(subscribe, read, onServer);\n  return theme === 'auto' ? resolved : theme;\n}\n",
+      "type": "registry:hook",
+      "target": "components/spectrumui/use-surface-theme.ts"
+    }
+  ],
+  "type": "registry:hook"
+}

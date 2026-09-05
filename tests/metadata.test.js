@@ -148,7 +148,7 @@ const publicDescriptions = [
   ...topicHubDescriptions,
 ];
 
-assert.equal(componentTitles.length, 44);
+assert.equal(componentTitles.length, 62);
 assert.ok(componentTitles.every((title) => title.length <= 60));
 assert.ok(componentDescriptions.every((description) => description.length <= 155));
 assert.ok(blogTitles.every((title) => title.length <= 60));

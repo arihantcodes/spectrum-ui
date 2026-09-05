@@ -33,7 +33,7 @@ export default async function CreateUserPage(
   return (
     // Same framed band as sign-in/sign-up: side borders at 1400px, bottom
     // border hands off to the footer; the global navbar provides the chrome.
-    <div className="container-frame border-b border-border bg-background">
+    <div className="container-frame bg-background">
       <div className="mx-auto flex min-h-[calc(100svh-2.5rem)] w-full max-w-[400px] flex-col justify-center px-5 py-12">
         <div className="auth-enter flex justify-center">
           {/* Same rounded-tile logo treatment as the navbar — the bare mark

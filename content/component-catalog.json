@@ -6,6 +6,20 @@
     "category": "Disclosure"
   },
   {
+    "slug": "account-access-card",
+    "name": "Account Access Card",
+    "description": "A credentials card that auto-fills email and password on a loop, with a danger zone.",
+    "category": "Form",
+    "new": true
+  },
+  {
+    "slug": "ai-chat-card",
+    "name": "AI Chat Card",
+    "description": "An AI chat card that types prompts into its composer, with send, attach and reset actions.",
+    "category": "Card",
+    "new": true
+  },
+  {
     "slug": "alert",
     "name": "Animated Alert",
     "description": "An animated alert that displays notifications, warnings, and success messages.",
@@ -56,6 +70,20 @@
     "category": "Media"
   },
   {
+    "slug": "beam-card",
+    "name": "Beam Card",
+    "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes.",
+    "category": "Card",
+    "new": true
+  },
+  {
+    "slug": "beam-search",
+    "name": "Beam Search Bar",
+    "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus.",
+    "category": "Input",
+    "new": true
+  },
+  {
     "slug": "button",
     "name": "Button",
     "description": "A set of pre-designed buttons including gradient, outline, loading, and icon styles.",
@@ -66,6 +94,13 @@
     "name": "Card",
     "description": "A set of pre-designed cards for login, signup, pricing, and dashboards.",
     "category": "Card"
+  },
+  {
+    "slug": "command-search",
+    "name": "Command Search",
+    "description": "A command palette that types queries and live-filters grouped results, with keyboard navigation.",
+    "category": "Input",
+    "new": true
   },
   {
     "slug": "datetime-picker",
@@ -80,10 +115,31 @@
     "category": "Form"
   },
   {
+    "slug": "dynamic-island",
+    "name": "Dynamic Island",
+    "description": "An iOS-style island pill that morphs between live activity views with a bouncy resize.",
+    "category": "Status",
+    "new": true
+  },
+  {
+    "slug": "expandable-action-bar",
+    "name": "Expandable Action Bar",
+    "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.",
+    "category": "Action",
+    "new": true
+  },
+  {
     "slug": "face-rating",
     "name": "Face Rating",
     "description": "A five-level rating input where an SVG face morphs between moods.",
     "category": "Rating",
+    "new": true
+  },
+  {
+    "slug": "faq-tabs-card",
+    "name": "FAQ Tabs Card",
+    "description": "A tabbed FAQ card with animated accordion answers and a support footer.",
+    "category": "Disclosure",
     "new": true
   },
   {
@@ -162,6 +218,20 @@
     "category": "Auth"
   },
   {
+    "slug": "metal-button",
+    "name": "Metal Button",
+    "description": "A pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets.",
+    "category": "Action",
+    "new": true
+  },
+  {
+    "slug": "metal-prompt-bar",
+    "name": "Metal Prompt Bar",
+    "description": "An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it.",
+    "category": "Input",
+    "new": true
+  },
+  {
     "slug": "morph-button",
     "name": "Morph Button",
     "description": "An async button that morphs between idle, loading, success, and error states.",
@@ -180,10 +250,24 @@
     "category": "Form"
   },
   {
+    "slug": "nav-list-card",
+    "name": "Nav List Card",
+    "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
+    "category": "Navigation",
+    "new": true
+  },
+  {
     "slug": "notification-bell",
     "name": "Notification Bell",
     "description": "A bell button that swings on new notifications with a rolling unread badge.",
     "category": "Feedback",
+    "new": true
+  },
+  {
+    "slug": "number-ticker",
+    "name": "Number Ticker",
+    "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur.",
+    "category": "Data",
     "new": true
   },
   {
@@ -219,6 +303,13 @@
     "new": true
   },
   {
+    "slug": "recent-activity",
+    "name": "Recent Activity",
+    "description": "An activity feed card that lists agent runs with duration and recency chips.",
+    "category": "Data",
+    "new": true
+  },
+  {
     "slug": "scratch-card",
     "name": "Scratch Card",
     "description": "A scratch-to-reveal card that wipes away a canvas foil overlay on drag.",
@@ -230,6 +321,13 @@
     "name": "Share Button",
     "description": "A share button that fans out into copy-link and custom share actions.",
     "category": "Action"
+  },
+  {
+    "slug": "skeleton-reveal",
+    "name": "Skeleton Reveal",
+    "description": "A skeleton that pulses while loading, then cross-fades and un-blurs into the real content.",
+    "category": "Feedback",
+    "new": true
   },
   {
     "slug": "spinner",
@@ -265,10 +363,38 @@
     "new": true
   },
   {
+    "slug": "text-states",
+    "name": "Text States",
+    "description": "A status label that swaps its text in place, exiting up with blur and entering from below.",
+    "category": "Feedback",
+    "new": true
+  },
+  {
     "slug": "tilt-card",
     "name": "3D Tilt Card",
     "description": "A 3D card that tilts toward the pointer with parallax depth and glare.",
     "category": "Card",
+    "new": true
+  },
+  {
+    "slug": "toast-stack",
+    "name": "Toast Stack",
+    "description": "Stacked toasts with status morphs, swipe to dismiss, actions and layout-aware motion.",
+    "category": "Feedback",
+    "new": true
+  },
+  {
+    "slug": "transfer-funds-card",
+    "name": "Transfer Funds Card",
+    "description": "A money transfer form card with account pickers, a summary and a confirm action.",
+    "category": "Form",
+    "new": true
+  },
+  {
+    "slug": "tree-nav",
+    "name": "Tree Nav",
+    "description": "A nav list with a tree rail and a spring marker that follows hover and settles on the active link.",
+    "category": "Navigation",
     "new": true
   },
   {

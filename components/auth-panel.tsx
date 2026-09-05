@@ -145,7 +145,7 @@ export function AuthPanel({
     // Same framed band the rest of the site uses: side borders at 1400px,
     // bottom border hands off to the footer. No card, no backdrop — a plain
     // neutral page; the column is centered but its content reads left-aligned.
-    <div className="container-frame border-b border-border bg-background">
+    <div className="container-frame bg-background">
       <div className="mx-auto flex min-h-[calc(100svh-3.5rem)] w-full max-w-[372px] flex-col justify-center px-5 py-14">
         <div className="auth-enter flex justify-center">
           {/* Same rounded-tile logo treatment as the navbar — the bare mark

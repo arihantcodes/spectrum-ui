@@ -77,7 +77,7 @@ export default async function ChartsLandingPage() {
   return (
     <>
       {/* Hero — copy left, a chart you can actually scrub on the right. */}
-      <FrameBand dots>
+      <FrameBand>
         <section className="container grid gap-10 py-14 md:py-18 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-14">
           <div className="text-center md:text-left">
             <div className="enter-fx flex justify-center md:justify-start" style={step(0)}>
@@ -87,16 +87,16 @@ export default async function ChartsLandingPage() {
               className="enter-fx mx-auto mt-5 max-w-[24ch] font-spectral text-[32px] leading-[1.04] tracking-[-1.2px] text-[#111110] dark:text-neutral-50 md:mx-0 md:text-[44px]"
               style={step(1)}
             >
-            Beautiful React Charts
-              <br/>
+              Beautiful React Charts
+              <br />
               for Modern Web Apps
             </h1>
             <p
               className="enter-fx mx-auto mt-4 max-w-[46ch] font-inter text-[15.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/62 dark:text-neutral-400 md:mx-0 md:text-[16.5px]"
               style={step(2)}
             >
-              Candlesticks, order books, depth and cohorts the set shadcn/ui
-              leaves out, on a dependency-free SVG engine.
+              Candlesticks, order books, depth and cohorts the set shadcn/ui leaves out, on a
+              dependency-free SVG engine.
             </p>
 
             <div className="enter-fx mt-7 flex flex-col gap-3 md:flex-row" style={step(3)}>
@@ -131,15 +131,15 @@ export default async function ChartsLandingPage() {
       </FrameBand>
 
       {/* The index */}
-      <FrameBand border="none">
+      <FrameBand>
         <section className="container pt-14 md:pt-18">
           <Eyebrow>Every chart</Eyebrow>
           <h2 className="mt-5 max-w-[20ch] font-spectral text-[26px] leading-[1.08] tracking-[-0.9px] text-[#111110] dark:text-neutral-50 md:text-[34px]">
             Live previews, not screenshots
           </h2>
           <p className="mt-4 max-w-[52ch] font-inter text-[15.5px] leading-[1.6] tracking-[-0.2px] text-[#080808]/62 dark:text-neutral-400 md:text-[16px]">
-            Every cell below is the real component running on this page. Open one
-            for the variants, the props, and the source.
+            Every cell below is the real component running on this page. Open one for the variants,
+            the props, and the source.
           </p>
         </section>
         <div className="container mt-10 px-0 xl:px-0">

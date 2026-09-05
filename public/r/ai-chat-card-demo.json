@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-chat-card-demo",
+  "title": "AI Chat Card Demo",
+  "description": "Demo usage for the AI Chat Card component",
+  "registryDependencies": [
+    "@spectrumui/ai-chat-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/ai-chat-card/ai-chat-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { AIChatCard } from \"@/components/spectrumui/ai-chat-card\"\n\nexport default function AIChatCardDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"w-full max-w-[360px]\">\n        <AIChatCard className=\"min-h-[520px]\" />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/ai-chat-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

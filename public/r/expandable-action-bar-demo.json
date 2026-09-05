@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-action-bar-demo",
+  "title": "Expandable Action Bar Demo",
+  "description": "Demo usage for the Expandable Action Bar component",
+  "registryDependencies": [
+    "@spectrumui/expandable-action-bar"
+  ],
+  "files": [
+    {
+      "path": "app/registry/expandable-action-bar/expandable-action-bar-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { Bookmark, Copy, Link2, Pencil, Share2, Trash2 } from 'lucide-react';\nimport { ExpandableActionBar } from '@/components/motion/expandable-action-bar';\n\nconst ITEMS = [\n  { id: 'edit', label: 'Edit', icon: <Pencil className=\"size-4\" />, shortcut: 'E' },\n  { id: 'copy', label: 'Duplicate', icon: <Copy className=\"size-4\" />, shortcut: '⌘D' },\n  { id: 'link', label: 'Copy link', icon: <Link2 className=\"size-4\" /> },\n  { id: 'share', label: 'Share', icon: <Share2 className=\"size-4\" /> },\n  { id: 'save', label: 'Save', icon: <Bookmark className=\"size-4\" />, badge: 3 },\n  { id: 'delete', label: 'Delete', icon: <Trash2 className=\"size-4\" /> },\n];\n\nexport default function ExpandableActionBarDemo() {\n  const [last, setLast] = React.useState<string | null>(null);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <ExpandableActionBar items={ITEMS} onAction={(item) => setLast(String(item.label))} />\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        {last\n          ? `Last action: ${last}`\n          : 'Hover or focus the bar — the icons expand into labeled controls.'}\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/expandable-action-bar-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

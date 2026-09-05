@@ -79,7 +79,7 @@ export default function SwipeToDeleteDemo() {
       </div>
 
       <p className="text-sm text-neutral-500 dark:text-neutral-400">
-        Drag a row left to delete — or hover for the button
+        Drag a row left to delete — or hover to peek, then click the zone
       </p>
     </div>
   )

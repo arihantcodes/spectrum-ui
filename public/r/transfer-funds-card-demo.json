@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "transfer-funds-card-demo",
+  "title": "Transfer Funds Card Demo",
+  "description": "Demo usage for the Transfer Funds Card component",
+  "registryDependencies": [
+    "@spectrumui/transfer-funds-card"
+  ],
+  "files": [
+    {
+      "path": "app/registry/transfer-funds-card/transfer-funds-card-demo.tsx",
+      "content": "\"use client\"\n\nimport { TransferFundsCard } from \"@/components/spectrumui/transfer-funds-card\"\n\nexport default function TransferFundsCardDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"w-full max-w-[378px]\">\n        <TransferFundsCard />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/transfer-funds-card-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

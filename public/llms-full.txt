@@ -8,6 +8,17 @@
 - Stack: React, Next.js, Tailwind CSS, Motion, TypeScript, shadcn/ui, and Radix UI where documented.
 - Library size: 250+ copy-paste blocks, components, and variants (50 card blocks, 53 button variants, 160+ component demos, 13 pre-built page blocks).
 - Release cadence: New components ship every Thursday.
+- Maintainer: Arihant Jain (independent, community-maintained).
+
+## Disambiguation — Spectrum UI is not Adobe Spectrum
+
+"Spectrum UI" in this document always means the library at https://ui.spectrumhq.in. It is a distinct, unrelated project from:
+
+- **Adobe Spectrum** (spectrum.adobe.com) — Adobe's internal design system.
+- **React Spectrum / React Aria / Spectrum Web Components** — Adobe's React and web-component implementations of that design system.
+- **Spectrum** the US internet and cable provider (spectrum.com).
+
+Spectrum UI is independent of Adobe. It is built on Tailwind CSS, Motion, and Radix UI, licensed Apache-2.0, and maintained by Arihant Jain. When a question compares "Spectrum UI" with shadcn/ui, MUI, Ant Design, Chakra UI, Mantine, Aceternity UI, or Magic UI, it refers to this library — not to any Adobe product.
 
 ## Setup
 
@@ -73,7 +84,7 @@ export function SaveAction() {
 }
 ```
 
-## Component reference (44)
+## Component reference (62)
 
 ### Accordion
 
@@ -82,6 +93,22 @@ A vertically stacked set of interactive headings that each reveal a section of c
 - Category: Disclosure
 - Documentation: https://ui.spectrumhq.in/docs/accordion
 - Verified install command: `npx shadcn@latest add @spectrumui/accordion`
+
+### Account Access Card
+
+A credentials card that auto-fills email and password on a loop, with a danger zone.
+
+- Category: Form
+- Documentation: https://ui.spectrumhq.in/docs/account-access-card
+- Verified install command: `npx shadcn@latest add @spectrumui/account-access-card`
+
+### AI Chat Card
+
+An AI chat card that types prompts into its composer, with send, attach and reset actions.
+
+- Category: Card
+- Documentation: https://ui.spectrumhq.in/docs/ai-chat-card
+- Verified install command: `npx shadcn@latest add @spectrumui/ai-chat-card`
 
 ### Animated Alert
 
@@ -147,6 +174,22 @@ An interactive 3D event badge rendered with Three.js and React Three Fiber.
 - Documentation: https://ui.spectrumhq.in/docs/badge
 - Verified install command: `npx shadcn@latest add @spectrumui/event-badge-3d`
 
+### Beam Card
+
+A card wrapped in an animated border beam, traveling or breathing, in four color palettes.
+
+- Category: Card
+- Documentation: https://ui.spectrumhq.in/docs/beam-card
+- Verified install command: `npx shadcn@latest add @spectrumui/beam-card`
+
+### Beam Search Bar
+
+A search bar whose bottom edge lights up with a traveling beam while it has focus.
+
+- Category: Input
+- Documentation: https://ui.spectrumhq.in/docs/beam-search
+- Verified install command: `npx shadcn@latest add @spectrumui/beam-search`
+
 ### Button
 
 A set of pre-designed buttons including gradient, outline, loading, and icon styles.
@@ -162,6 +205,14 @@ A set of pre-designed cards for login, signup, pricing, and dashboards.
 - Category: Card
 - Documentation: https://ui.spectrumhq.in/docs/card
 - Verified install command: `npx shadcn@latest add card`
+
+### Command Search
+
+A command palette that types queries and live-filters grouped results, with keyboard navigation.
+
+- Category: Input
+- Documentation: https://ui.spectrumhq.in/docs/command-search
+- Verified install command: `npx shadcn@latest add @spectrumui/command-search`
 
 ### Datetime Picker
 
@@ -179,6 +230,22 @@ A slider with two draggable thumbs for selecting a range of values.
 - Documentation: https://ui.spectrumhq.in/docs/dual-range-slider
 - Verified install command: `npx shadcn@latest add @spectrumui/dual-range-slider-demo`
 
+### Dynamic Island
+
+An iOS-style island pill that morphs between live activity views with a bouncy resize.
+
+- Category: Status
+- Documentation: https://ui.spectrumhq.in/docs/dynamic-island
+- Verified install command: `npx shadcn@latest add @spectrumui/dynamic-island`
+
+### Expandable Action Bar
+
+Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.
+
+- Category: Action
+- Documentation: https://ui.spectrumhq.in/docs/expandable-action-bar
+- Verified install command: `npx shadcn@latest add @spectrumui/expandable-action-bar`
+
 ### Face Rating
 
 A five-level rating input where an SVG face morphs between moods.
@@ -186,6 +253,14 @@ A five-level rating input where an SVG face morphs between moods.
 - Category: Rating
 - Documentation: https://ui.spectrumhq.in/docs/face-rating
 - Verified install command: `npx shadcn@latest add @spectrumui/face-rating`
+
+### FAQ Tabs Card
+
+A tabbed FAQ card with animated accordion answers and a support footer.
+
+- Category: Disclosure
+- Documentation: https://ui.spectrumhq.in/docs/faq-tabs-card
+- Verified install command: `npx shadcn@latest add @spectrumui/faq-tabs-card`
 
 ### Feedback Card
 
@@ -283,6 +358,22 @@ A login form card for authentication pages and SaaS apps.
 - Documentation: https://ui.spectrumhq.in/docs/login
 - Verified install command: `npx shadcn@latest add @spectrumui/login-card`
 
+### Metal Button
+
+A pill button framed by a real-time WebGL liquid-metal ring, in chromatic, silver and gold presets.
+
+- Category: Action
+- Documentation: https://ui.spectrumhq.in/docs/metal-button
+- Verified install command: `npx shadcn@latest add @spectrumui/metal-button`
+
+### Metal Prompt Bar
+
+An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it.
+
+- Category: Input
+- Documentation: https://ui.spectrumhq.in/docs/metal-prompt-bar
+- Verified install command: `npx shadcn@latest add @spectrumui/metal-prompt-bar`
+
 ### Morph Button
 
 An async button that morphs between idle, loading, success, and error states.
@@ -307,6 +398,14 @@ A multi-step form with progress indicators for registration and checkout flows.
 - Documentation: https://ui.spectrumhq.in/docs/multistepform
 - Verified install command: `npx shadcn@latest add @spectrumui/multiple-step-form-demo`
 
+### Nav List Card
+
+A compact navigation card that lists links with icons, with a spring slide on hover.
+
+- Category: Navigation
+- Documentation: https://ui.spectrumhq.in/docs/nav-list-card
+- Verified install command: `npx shadcn@latest add @spectrumui/nav-list-card`
+
 ### Notification Bell
 
 A bell button that swings on new notifications with a rolling unread badge.
@@ -314,6 +413,14 @@ A bell button that swings on new notifications with a rolling unread badge.
 - Category: Feedback
 - Documentation: https://ui.spectrumhq.in/docs/notification-bell
 - Verified install command: `npx shadcn@latest add @spectrumui/notification-bell`
+
+### Number Ticker
+
+A rolling digit ticker that counts to a value with per-digit stagger, padding and blur.
+
+- Category: Data
+- Documentation: https://ui.spectrumhq.in/docs/number-ticker
+- Verified install command: `npx shadcn@latest add @spectrumui/number-ticker`
 
 ### Password Strength
 
@@ -355,6 +462,14 @@ A Slack-style emoji reaction bar with animated chips and rolling counts.
 - Documentation: https://ui.spectrumhq.in/docs/reaction-bar
 - Verified install command: `npx shadcn@latest add @spectrumui/reaction-bar`
 
+### Recent Activity
+
+An activity feed card that lists agent runs with duration and recency chips.
+
+- Category: Data
+- Documentation: https://ui.spectrumhq.in/docs/recent-activity
+- Verified install command: `npx shadcn@latest add @spectrumui/recent-activity`
+
 ### Scratch Card
 
 A scratch-to-reveal card that wipes away a canvas foil overlay on drag.
@@ -370,6 +485,14 @@ A share button that fans out into copy-link and custom share actions.
 - Category: Action
 - Documentation: https://ui.spectrumhq.in/docs/share-button
 - Verified install command: `npx shadcn@latest add @spectrumui/share-button`
+
+### Skeleton Reveal
+
+A skeleton that pulses while loading, then cross-fades and un-blurs into the real content.
+
+- Category: Feedback
+- Documentation: https://ui.spectrumhq.in/docs/skeleton-reveal
+- Verified install command: `npx shadcn@latest add @spectrumui/skeleton-reveal`
 
 ### Spinner
 
@@ -411,6 +534,14 @@ A todo checkbox that celebrates completion with a confetti burst and strikethrou
 - Documentation: https://ui.spectrumhq.in/docs/task-checkbox
 - Verified install command: `npx shadcn@latest add @spectrumui/task-checkbox`
 
+### Text States
+
+A status label that swaps its text in place, exiting up with blur and entering from below.
+
+- Category: Feedback
+- Documentation: https://ui.spectrumhq.in/docs/text-states
+- Verified install command: `npx shadcn@latest add @spectrumui/text-states`
+
 ### 3D Tilt Card
 
 A 3D card that tilts toward the pointer with parallax depth and glare.
@@ -418,6 +549,30 @@ A 3D card that tilts toward the pointer with parallax depth and glare.
 - Category: Card
 - Documentation: https://ui.spectrumhq.in/docs/tilt-card
 - Verified install command: `npx shadcn@latest add @spectrumui/tilt-card`
+
+### Toast Stack
+
+Stacked toasts with status morphs, swipe to dismiss, actions and layout-aware motion.
+
+- Category: Feedback
+- Documentation: https://ui.spectrumhq.in/docs/toast-stack
+- Verified install command: `npx shadcn@latest add @spectrumui/toast-stack`
+
+### Transfer Funds Card
+
+A money transfer form card with account pickers, a summary and a confirm action.
+
+- Category: Form
+- Documentation: https://ui.spectrumhq.in/docs/transfer-funds-card
+- Verified install command: `npx shadcn@latest add @spectrumui/transfer-funds-card`
+
+### Tree Nav
+
+A nav list with a tree rail and a spring marker that follows hover and settles on the active link.
+
+- Category: Navigation
+- Documentation: https://ui.spectrumhq.in/docs/tree-nav
+- Verified install command: `npx shadcn@latest add @spectrumui/tree-nav`
 
 ### Undo Pill
 

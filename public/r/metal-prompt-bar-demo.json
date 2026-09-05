@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metal-prompt-bar-demo",
+  "title": "Metal Prompt Bar Demo",
+  "description": "Demo usage for the Metal Prompt Bar component",
+  "registryDependencies": [
+    "@spectrumui/metal-prompt-bar"
+  ],
+  "files": [
+    {
+      "path": "app/registry/metal-prompt-bar/metal-prompt-bar-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { MetalPromptBar } from '@/components/spectrumui/metal-prompt-bar';\n\nexport default function MetalPromptBarDemo() {\n  const [sent, setSent] = React.useState<string[]>([]);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-[560px]\">\n        <MetalPromptBar\n          chips={['Agent', 'Auto', 'Tools']}\n          onSubmit={(text) => setSent((list) => [text, ...list].slice(0, 3))}\n        />\n      </div>\n      {sent.length > 0 ? (\n        <ul className=\"w-full max-w-[560px] space-y-1 text-sm text-neutral-600 dark:text-neutral-300\">\n          {sent.map((line, index) => (\n            <li key={`${line}-${index}`} className=\"truncate\">\n              → {line}\n            </li>\n          ))}\n        </ul>\n      ) : (\n        <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n          Type and press Enter — in dark mode the chips reflect the send ring.\n        </p>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/metal-prompt-bar-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

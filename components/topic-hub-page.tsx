@@ -131,7 +131,7 @@ export function TopicHubPage({ hub }: { hub: TopicHub }) {
   return (
     <>
       <TopicHubStructuredData hub={hub} />
-      <article className="container-frame border-b border-neutral-200 dark:border-neutral-800">
+      <article className="container-frame">
         <header className="px-5 py-14 sm:px-8 md:px-10 md:py-20 lg:py-24">
           <div className="mx-auto max-w-5xl">
             <nav aria-label="Breadcrumb" className="mb-9">

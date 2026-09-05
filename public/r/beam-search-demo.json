@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beam-search-demo",
+  "title": "Beam Search Bar Demo",
+  "description": "Demo usage for the Beam Search Bar component",
+  "registryDependencies": [
+    "@spectrumui/beam-search"
+  ],
+  "files": [
+    {
+      "path": "app/registry/beam-search/beam-search-demo.tsx",
+      "content": "'use client';\n\nimport * as React from 'react';\nimport { BeamSearch } from '@/components/spectrumui/beam-search';\n\nconst ITEMS = [\n  'Accordion',\n  'Animated Switch',\n  'Avatar Stack',\n  'Beam Card',\n  'Command Search',\n  'Dynamic Island',\n  'Kanban Board',\n  'Metal Button',\n  'Number Ticker',\n  'Swipe to Delete',\n];\n\nexport default function BeamSearchDemo() {\n  const [query, setQuery] = React.useState('');\n  const matches = ITEMS.filter((item) => item.toLowerCase().includes(query.trim().toLowerCase()));\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-5 py-10\">\n      <div className=\"w-full max-w-[520px]\">\n        <BeamSearch\n          placeholder=\"Search components…\"\n          onChange={setQuery}\n          trailing={\n            <kbd className=\"rounded-md border border-black/10 px-1.5 py-0.5 font-mono text-[11px] text-neutral-500 dark:border-white/12 dark:text-neutral-400\">\n              ⌘K\n            </kbd>\n          }\n        />\n        <ul className=\"mt-3 grid grid-cols-2 gap-1 text-sm text-neutral-600 dark:text-neutral-300\">\n          {matches.slice(0, 6).map((item) => (\n            <li key={item} className=\"truncate rounded-lg px-2 py-1\">\n              {item}\n            </li>\n          ))}\n          {matches.length === 0 && (\n            <li className=\"col-span-2 px-2 py-1 text-neutral-400\">No matches</li>\n          )}\n        </ul>\n      </div>\n      <p className=\"text-sm text-neutral-500 dark:text-neutral-400\">\n        Focus the field — the beam travels along the bottom edge while you type.\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/beam-search-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

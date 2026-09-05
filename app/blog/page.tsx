@@ -94,7 +94,7 @@ export default async function BlogPage() {
       <JsonLd id="blog-structured-data" data={structuredData} />
       <JsonLd id="blog-breadcrumbs" data={breadcrumbData} />
 
-      <div className="container-frame border-b border-border bg-background">
+      <div className="container-frame bg-background">
         <div className="px-5 pb-24 pt-14 sm:px-8 sm:pt-20 lg:px-[52px]">
           {/* Header */}
           <header className="enter-fx flex max-w-2xl flex-col gap-5">

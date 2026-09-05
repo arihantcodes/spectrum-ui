@@ -130,10 +130,7 @@ export default function Footer() {
         {/* One framed box aligned with the site's `container-frame`: the vertical
           (Y) borders match the sections above and run to the very bottom. */}
         <div className="container-frame relative">
-          <CornerDot className="-left-2.5 -top-2.5" />
-          <CornerDot className="-right-2.5 -top-2.5" />
-          <CornerDot className="-bottom-2.5 -left-2.5" />
-          <CornerDot className="-bottom-2.5 -right-2.5" />
+         
 
           {/* CTA band */}
           <Reveal className="flex flex-col items-start gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-center md:justify-between md:px-10 md:py-14">
@@ -192,7 +189,7 @@ export default function Footer() {
 
             {/* All components — full internal link map for SEO / crawlability */}
             <Reveal>
-              <section className="flex flex-col gap-5 border-t border-border pt-10">
+              <section className="flex flex-col gap-5  pt-10">
                 <h3 className="font-mono text-xs font-medium uppercase tracking-[0.28px] text-neutral-500">
                   Components
                   <span className="ml-2 text-neutral-400 dark:text-neutral-600">

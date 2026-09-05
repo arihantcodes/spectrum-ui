@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "recent-activity-demo",
+  "title": "Recent Activity Demo",
+  "description": "Demo usage for the Recent Activity component",
+  "registryDependencies": [
+    "@spectrumui/recent-activity"
+  ],
+  "files": [
+    {
+      "path": "app/registry/recent-activity/recent-activity-demo.tsx",
+      "content": "\"use client\"\n\nimport { RecentActivity } from \"@/components/spectrumui/recent-activity\"\n\nexport default function RecentActivityDemo() {\n  return (\n    <div className=\"flex w-full justify-center py-8\">\n      <div className=\"w-full max-w-[512px]\">\n        <RecentActivity />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/recent-activity-demo.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

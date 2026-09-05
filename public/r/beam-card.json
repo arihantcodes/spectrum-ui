@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beam-card",
+  "title": "Beam Card",
+  "description": "A card wrapped in an animated border beam, traveling or breathing, in four color palettes.",
+  "dependencies": [
+    "border-beam"
+  ],
+  "registryDependencies": [
+    "@spectrumui/use-surface-theme"
+  ],
+  "files": [
+    {
+      "path": "components/spectrumui/beam-card.tsx",
+      "content": "/**\n * Spectrum UI — BeamCard\n *\n * A card wrapped in an animated border beam from `border-beam` (Jakub Antalík,\n * MIT, https://libraries.dev/beam). The beam either travels around the edge\n * (rotate family) or breathes (pulse family), in four palettes, and reads the\n * card's own border radius so it always hugs the corners. This wrapper adds a\n * ready-made card surface with an eyebrow, title, description and slot, plus\n * class-based dark/light detection so the beam matches a `.dark` theme.\n *\n * Dependencies: border-beam, @/lib/utils\n *\n * @example\n * <BeamCard eyebrow=\"Pro\" title=\"Unlimited projects\" description=\"…\" />\n */\n\n'use client';\n\nimport * as React from 'react';\nimport { BorderBeam, type BorderBeamColorVariant, type BorderBeamSize } from 'border-beam';\n\nimport { cn } from '@/lib/utils';\nimport { useSurfaceTheme, type SurfaceTheme } from '@/components/spectrumui/use-surface-theme';\n\nexport interface BeamCardProps {\n  /** Small mono label above the title */\n  eyebrow?: string;\n  title?: string;\n  description?: string;\n  /** Body content rendered under the description */\n  children?: React.ReactNode;\n  /** Beam family: \"md\" travels, \"pulse-inner\" breathes inside, \"pulse-outside\" blooms out. Default \"md\" */\n  size?: Extract<BorderBeamSize, 'md' | 'sm' | 'pulse-inner' | 'pulse-outside'>;\n  /** Palette: \"colorful\" | \"ocean\" | \"sunset\" | \"mono\". Default \"colorful\" */\n  colorVariant?: BorderBeamColorVariant;\n  /** \"auto\" follows a `.dark`/`.light` class on <html>, then the OS. Default \"auto\" */\n  theme?: SurfaceTheme;\n  /** Play or fade the beam out. Default true */\n  active?: boolean;\n  /** Beam intensity 0–1. Default 1 */\n  strength?: number;\n  /** Classes for the inner card */\n  className?: string;\n}\n\nexport function BeamCard({\n  eyebrow,\n  title,\n  description,\n  children,\n  size = 'md',\n  colorVariant = 'colorful',\n  theme = 'auto',\n  active = true,\n  strength = 1,\n  className,\n}: BeamCardProps) {\n  const resolved = useSurfaceTheme(theme);\n  return (\n    <BorderBeam\n      size={size}\n      colorVariant={colorVariant}\n      theme={resolved}\n      active={active}\n      strength={strength}\n      className=\"w-full\"\n    >\n      <div\n        className={cn(\n          // pulse-outside rides on this 1px border as its idle hairline\n          'w-full rounded-2xl border border-black/10 bg-white p-6 dark:border-white/12 dark:bg-neutral-950',\n          className,\n        )}\n      >\n        {eyebrow && (\n          <p className=\"font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400\">\n            {eyebrow}\n          </p>\n        )}\n        {title && (\n          <h3 className=\"mt-2 text-[17px] font-semibold leading-6 tracking-[-0.01em] text-neutral-900 dark:text-neutral-100\">\n            {title}\n          </h3>\n        )}\n        {description && (\n          <p className=\"mt-1.5 text-sm leading-6 text-neutral-500 dark:text-neutral-400\">\n            {description}\n          </p>\n        )}\n        {children && <div className=\"mt-5\">{children}</div>}\n      </div>\n    </BorderBeam>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/spectrumui/beam-card.tsx"
+    }
+  ],
+  "type": "registry:component"
+}
