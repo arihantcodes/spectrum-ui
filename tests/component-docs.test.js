@@ -67,8 +67,20 @@ const pageTemplateSource = fs.readFileSync(
   path.join(docsRoot, 'components', 'page-template.tsx'),
   'utf8',
 );
-assert.match(pageTemplateSource, /<ComponentOverview/);
 assert.match(pageTemplateSource, /<ComponentReference/);
+
+// The demo must be the first thing under the title; the SEO prose block
+// (Overview, Technologies, Use cases, FAQ...) trails it.
+assert.ok(
+  pageTemplateSource.indexOf('{children}') < pageTemplateSource.indexOf('<ComponentReference'),
+  'the SEO reference block must render after the page children',
+);
+
+const componentReferenceSource = fs.readFileSync(
+  path.join(docsRoot, 'components', 'component-reference.tsx'),
+  'utf8',
+);
+assert.match(componentReferenceSource, /<ComponentOverview/);
 
 const seoWrapperSource = fs.readFileSync(
   path.join(docsRoot, 'components', 'seo-wrapper.tsx'),

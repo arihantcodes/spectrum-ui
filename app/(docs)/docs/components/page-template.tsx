@@ -2,10 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { BookmarkButton } from '@/components/bookmark-button';
 import { getComponentDocByName } from '@/lib/component-docs';
-import {
-  ComponentOverview,
-  ComponentReference,
-} from '@/app/(docs)/docs/components/component-reference';
+import { ComponentReference } from '@/app/(docs)/docs/components/component-reference';
 
 interface PageTemplateProps {
   title?: string;
@@ -41,9 +38,7 @@ const PageTemplate = ({ title, description, children, className, slug }: PageTem
           />
         )}
       </div>
-      {componentDoc ? (
-        <ComponentOverview component={componentDoc} />
-      ) : description ? (
+      {description ? (
         <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%] font-light">
           {description}
         </p>

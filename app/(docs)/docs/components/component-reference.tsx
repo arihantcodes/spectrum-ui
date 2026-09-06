@@ -64,13 +64,10 @@ function formatList(items: string[]) {
   return `${items.slice(0, -1).join(', ')}, and ${items.at(-1)}`;
 }
 
-export function ComponentOverview({ component }: { component: ComponentDoc }) {
+function ComponentOverview({ component }: { component: ComponentDoc }) {
   return (
     <>
-      <section aria-labelledby="overview" className="mt-8">
-        <h2 id="overview" className={headingClassName}>
-          Overview
-        </h2>
+      <Section id="overview" title="Overview">
         <div className="mt-4 flex max-w-3xl flex-col gap-3 text-sm leading-6 text-muted-foreground sm:text-base">
           <p>{component.description}</p>
           <p>
@@ -79,7 +76,7 @@ export function ComponentOverview({ component }: { component: ComponentDoc }) {
             the final behavior and styling stay inside your project.
           </p>
         </div>
-      </section>
+      </Section>
 
       <Section id="technologies" title="Technologies">
         <div className="mt-5 flex flex-wrap gap-2">
@@ -270,6 +267,7 @@ function ComponentFAQ({ component }: { component: ComponentDoc }) {
 export function ComponentReference({ component }: { component: ComponentDoc }) {
   return (
     <div className="pb-12">
+      <ComponentOverview component={component} />
       <MissingInstallation component={component} />
       <MissingUsage component={component} />
       <MissingProps component={component} />
