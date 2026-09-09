@@ -22,7 +22,18 @@ const nextConfig = {
       "res.cloudinary.com",
       "genie.arihantcodes.com",
       "www.shadcnblocks.com",
-    ].map((hostname) => ({ protocol: 'https', hostname, pathname: '/**' })),
+      // Cloudflare R2 bucket serving /design gallery media. Set
+      // NEXT_PUBLIC_R2_PUBLIC_HOST to the bucket's public hostname (either the
+      // pub-<id>.r2.dev subdomain or a custom domain). next/image rejects any
+      // host that is not listed here, so gallery images 400 without it.
+      process.env.NEXT_PUBLIC_R2_PUBLIC_HOST,
+      // Supabase Storage serves the seeded /design media (public bucket
+      // `design-media`) until the R2 ingest pipeline exists.
+      process.env.NEXT_PUBLIC_SUPABASE_URL &&
+        new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname,
+    ]
+      .filter(Boolean)
+      .map((hostname) => ({ protocol: 'https', hostname, pathname: '/**' })),
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

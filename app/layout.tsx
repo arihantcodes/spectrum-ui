@@ -38,6 +38,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { LinkPrefetch } from "@/components/seo/link-prefetch";
 import { WorkWithMe } from "@/components/work-with-me";
 import { JsonLd } from "@/components/seo/json-ld";
+import { AdSenseScript } from "@/components/seo/adsense-script";
 import { generateSiteStructuredData } from "@/lib/site-structured-data";
 
 inject();
@@ -156,12 +157,7 @@ gtag('config', 'G-K7ZP6JB4MG');
           id="spectrum-ui-structured-data"
           data={generateSiteStructuredData()}
         />
-        <Script
-          id="adsense"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8119622964025792"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
+        <AdSenseScript />
       </head>
       <body className="font-regular" suppressHydrationWarning>
         <Providers>
