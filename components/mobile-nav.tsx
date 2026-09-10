@@ -22,6 +22,7 @@ import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { SponsorButton } from '@/components/sponsor-button';
 import { openCommandMenu } from '@/lib/command-menu';
 
 interface NavItem {
@@ -215,10 +216,13 @@ export function MobileNav() {
             </div>
           </div>
         </ScrollArea>
-        {/* The header hides the theme switcher on phones, so it lives here */}
-        <div className="flex items-center justify-between border-t border-border px-4 py-3">
-          <span className="text-sm text-muted-foreground">Theme</span>
-          <ThemeToggle />
+        <div className="space-y-3 border-t border-border px-4 py-3">
+          <SponsorButton fullWidth source="mobile_nav" onNavigate={() => setIsOpen(false)} />
+          {/* The header hides the theme switcher on phones, so it lives here */}
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-muted-foreground">Theme</span>
+            <ThemeToggle />
+          </div>
         </div>
       </SheetContent>
     </Sheet>

@@ -7,6 +7,7 @@ import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
 import { CommandMenuTrigger } from './command-menu-trigger';
 import { GithubStarButton } from './github-star-button';
+import { SponsorButton } from './sponsor-button';
 import { ThemeToggle } from './theme-toggle';
 import { UserNav } from './user-nav';
 import { Button } from './ui/button';
@@ -45,6 +46,7 @@ export function SiteHeader({ session }: { session: Session | null }) {
 
             <nav className="flex items-center gap-1.5 sm:gap-2">
               <CommandMenuTrigger />
+              <SponsorButton />
               <GithubStarButton />
               {/* On phones the switcher lives inside the mobile menu — the
                   header row is too narrow for all three controls */}

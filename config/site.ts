@@ -179,6 +179,7 @@ export const siteConfig = {
   links: {
     twitter: "https://x.com/arihantcodes",
     github: "https://github.com/arihantcodes/spectrum-ui",
+    sponsors: "https://github.com/sponsors/arihantcodes",
     linkedin: "https://www.linkedin.com/in/arihantcodes",
     instagram: "https://www.instagram.com/arihantjainn18",
     discord: "https://discord.gg/spectrum-ui", // Add if you have one

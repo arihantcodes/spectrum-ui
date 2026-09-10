@@ -55,6 +55,7 @@ const eventSchema = z.object({
     "onboarding_completed",
     "pro_page_viewed",
     "pro_waitlist_success_viewed",
+    "sponsor_button_clicked",
   ]),
   // declare type AllowedPropertyValues = string | number | boolean | null
   properties: z
