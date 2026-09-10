@@ -182,6 +182,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/arihantcodes",
     instagram: "https://www.instagram.com/arihantjainn18",
     discord: "https://discord.gg/spectrum-ui", // Add if you have one
+    sponsor: "/sponsor",
   },
   author: {
     name: "Arihant Jain",
