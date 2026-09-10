@@ -107,6 +107,7 @@ const primaryLinks = [
   { label: 'Blocks', href: '/blocks/ai-assistants' },
   { label: 'Guides', href: '/docs/guides' },
   { label: 'MCP', href: '/docs/mcp' },
+  { label: 'Sponsor', href: '/sponsor' },
   { label: 'Changelog', href: '/changelog' },
   { label: 'Blog', href: '/blog' },
   { label: 'Colors', href: '/colors' },

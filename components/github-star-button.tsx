@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 import { Icons } from "./icon";
 
 function formatStars(n: number) {
@@ -14,7 +15,7 @@ function formatStars(n: number) {
  *  /api/github-stars route (server-cached hourly). Microinteractions: the
  *  star fills amber and tilts on hover, the pill lifts, and the count
  *  ticks up from 0 when it loads. */
-export function GithubStarButton() {
+export function GithubStarButton({ className }: { className?: string }) {
   const [stars, setStars] = useState<number | null>(null);
   const [display, setDisplay] = useState(0);
 
@@ -61,7 +62,10 @@ export function GithubStarButton() {
           ? `Star Spectrum UI on GitHub — ${stars.toLocaleString()} stars`
           : "Star Spectrum UI on GitHub"
       }
-      className="group hidden h-8 items-center gap-1.5 rounded-full border border-neutral-200 px-2.5 font-mono text-xs font-medium text-foreground/80 shadow-xs transition-all duration-200 ease-out hover:border-neutral-300 hover:text-foreground   dark:border-neutral-800 dark:hover:border-neutral-700 sm:flex"
+      className={cn(
+        "group inline-flex h-8 items-center gap-1.5 rounded-full border border-neutral-200 px-2.5 font-mono text-xs font-medium text-foreground/80 shadow-xs transition-all duration-200 ease-out hover:border-neutral-300 hover:text-foreground dark:border-neutral-800 dark:hover:border-neutral-700",
+        className,
+      )}
     >
       <Icons.gitHub className="size-4 shrink-0" />
       <svg

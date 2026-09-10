@@ -7,6 +7,7 @@ import { MobileNav } from '@/components/mobile-nav';
 import { MainNav } from './main-nav';
 import { CommandMenuTrigger } from './command-menu-trigger';
 import { GithubStarButton } from './github-star-button';
+import { SponsorButton } from './sponsor-button';
 import { ThemeToggle } from './theme-toggle';
 import { UserNav } from './user-nav';
 import { Button } from './ui/button';
@@ -45,7 +46,18 @@ export function SiteHeader({ session }: { session: Session | null }) {
 
             <nav className="flex items-center gap-1.5 sm:gap-2">
               <CommandMenuTrigger />
-              <GithubStarButton />
+              {/* Star count + Sponsor share one pill: the live number is the
+                  social proof, and the heart is the conversion sitting next
+                  to it. Icon-only on phones where the star count hides. */}
+              <SponsorButton className="sm:hidden" compact />
+              <div className="hidden h-8 overflow-hidden rounded-full border border-neutral-200 shadow-xs sm:flex dark:border-neutral-800">
+                <GithubStarButton className="rounded-none border-0 shadow-none hover:bg-neutral-50 dark:hover:bg-neutral-900" />
+                <span
+                  aria-hidden
+                  className="w-px self-stretch bg-neutral-200 dark:bg-neutral-800"
+                />
+                <SponsorButton className="rounded-none border-0 shadow-none hover:bg-neutral-50 dark:hover:bg-neutral-900" />
+              </div>
               {/* On phones the switcher lives inside the mobile menu — the
                   header row is too narrow for all three controls */}
               <div className="hidden sm:block">
