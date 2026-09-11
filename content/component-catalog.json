@@ -103,6 +103,13 @@
     "new": true
   },
   {
+    "slug": "data-table",
+    "name": "Data Table",
+    "description": "A typed data table with sorting, search and row selection, where rows glide into their new order.",
+    "category": "Data",
+    "new": true
+  },
+  {
     "slug": "datetime-picker",
     "name": "Datetime Picker",
     "description": "A date and time picker built on shadcn/ui with no extra dependencies.",
@@ -115,24 +122,10 @@
     "category": "Form"
   },
   {
-    "slug": "dynamic-island",
-    "name": "Dynamic Island",
-    "description": "An iOS-style island pill that morphs between live activity views with a bouncy resize.",
-    "category": "Status",
-    "new": true
-  },
-  {
     "slug": "expandable-action-bar",
     "name": "Expandable Action Bar",
     "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.",
     "category": "Action",
-    "new": true
-  },
-  {
-    "slug": "face-rating",
-    "name": "Face Rating",
-    "description": "A five-level rating input where an SVG face morphs between moods.",
-    "category": "Rating",
     "new": true
   },
   {
@@ -179,12 +172,6 @@
     "name": "Infinite Scroll",
     "description": "An infinite scroll container that loads more content using the IntersectionObserver API.",
     "category": "Data"
-  },
-  {
-    "slug": "input-model",
-    "name": "Input Model",
-    "description": "A modal dialog with an input form for quick data entry.",
-    "category": "Form"
   },
   {
     "slug": "kanban",
@@ -244,12 +231,6 @@
     "category": "Form"
   },
   {
-    "slug": "multistepform",
-    "name": "Multistep Form",
-    "description": "A multi-step form with progress indicators for registration and checkout flows.",
-    "category": "Form"
-  },
-  {
     "slug": "nav-list-card",
     "name": "Nav List Card",
     "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
@@ -282,12 +263,6 @@
     "name": "Profile Dropdown",
     "description": "A user profile dropdown menu with avatar, settings, and logout actions.",
     "category": "Profile"
-  },
-  {
-    "slug": "progress-with-value",
-    "name": "Progress With Value",
-    "description": "A progress bar that displays the current value.",
-    "category": "Progress"
   },
   {
     "slug": "quantity-stepper",

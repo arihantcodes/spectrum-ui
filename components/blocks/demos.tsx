@@ -46,6 +46,21 @@ import {
   PORTSIDE_TOOL_CALLS,
   PORTSIDE_USAGE,
 } from '@/components/spectrumui/blocks/ai-assistants/_fixtures/conversation';
+import { PaymentsTable } from '@/components/spectrumui/blocks/tables/payments-table';
+import { TeamMembersTable } from '@/components/spectrumui/blocks/tables/team-members-table';
+import { InvoicesTable } from '@/components/spectrumui/blocks/tables/invoices-table';
+import { OrdersTable } from '@/components/spectrumui/blocks/tables/orders-table';
+import { CustomersTable } from '@/components/spectrumui/blocks/tables/customers-table';
+import { ApiKeysTable } from '@/components/spectrumui/blocks/tables/api-keys-table';
+import { AuditLogTable } from '@/components/spectrumui/blocks/tables/audit-log-table';
+import { DeploymentsTable } from '@/components/spectrumui/blocks/tables/deployments-table';
+import { FeatureFlagsTable } from '@/components/spectrumui/blocks/tables/feature-flags-table';
+import { TicketsTable } from '@/components/spectrumui/blocks/tables/tickets-table';
+import { TopPagesTable } from '@/components/spectrumui/blocks/tables/top-pages-table';
+import { MarketTable } from '@/components/spectrumui/blocks/tables/market-table';
+import { InventoryTable } from '@/components/spectrumui/blocks/tables/inventory-table';
+import { LeaderboardTable } from '@/components/spectrumui/blocks/tables/leaderboard-table';
+import { FilesTable } from '@/components/spectrumui/blocks/tables/files-table';
 import { BannerTiers } from '@/components/spectrumui/blocks/pricing/banner-tiers';
 import { ReceiptTiers } from '@/components/spectrumui/blocks/pricing/receipt-tiers';
 import { BlueprintTiers } from '@/components/spectrumui/blocks/pricing/blueprint-tiers';
@@ -266,6 +281,31 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
       variant={variant as 'Tilted' | 'Straight'}
     />
   ),
+  'payments-table': (variant) => <PaymentsTable variant={variant as 'Comfortable' | 'Striped'} />,
+  'team-members-table': (variant) => (
+    <TeamMembersTable variant={variant as 'Comfortable' | 'Compact'} />
+  ),
+  'invoices-table': (variant) => <InvoicesTable variant={variant as 'Panel' | 'Minimal'} />,
+  'orders-table': (variant) => <OrdersTable variant={variant as 'Comfortable' | 'Bordered'} />,
+  'customers-table': (variant) => <CustomersTable variant={variant as 'Comfortable' | 'Compact'} />,
+  'api-keys-table': (variant) => <ApiKeysTable variant={variant as 'Masked' | 'Revealed'} />,
+  'audit-log-table': (variant) => <AuditLogTable variant={variant as 'Pinned' | 'Paged'} />,
+  'deployments-table': (variant) => (
+    <DeploymentsTable variant={variant as 'Comfortable' | 'Compact'} />
+  ),
+  'feature-flags-table': (variant) => (
+    <FeatureFlagsTable variant={variant as 'Comfortable' | 'Compact'} />
+  ),
+  'tickets-table': (variant) => <TicketsTable variant={variant as 'Comfortable' | 'Striped'} />,
+  'top-pages-table': (variant) => <TopPagesTable variant={variant as 'Bars' | 'Plain'} />,
+  'market-table': (variant) => <MarketTable variant={variant as 'Comfortable' | 'Dense'} />,
+  'inventory-table': (variant) => (
+    <InventoryTable variant={variant as 'Comfortable' | 'Bordered'} />
+  ),
+  'leaderboard-table': (variant) => (
+    <LeaderboardTable variant={variant as 'Comfortable' | 'Striped'} />
+  ),
+  'files-table': (variant) => <FilesTable variant={variant as 'Comfortable' | 'Compact'} />,
 };
 
 function usePrefersReducedMotion() {

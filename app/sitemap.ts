@@ -33,6 +33,11 @@ const nonIndexableRoutes = new Set([
   // Delisted components: pages still resolve but are not part of the shipped
   // 44-component catalog, so keep them out of the sitemap.
   '/docs/animatedtestimonials',
+  '/docs/dynamic-island',
+  '/docs/face-rating',
+  '/docs/input-model',
+  '/docs/multistepform',
+  '/docs/progress-with-value',
   '/docs/animatedtext',
   '/docs/bento-grid',
   '/docs/command-palette',

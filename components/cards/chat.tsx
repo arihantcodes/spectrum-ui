@@ -40,27 +40,27 @@ const users = [
   {
     name: "Olivia Martin",
     email: "m@example.com",
-    avatar: "/avatars/01.png",
+    avatar: "/avatars/people/01.jpg",
   },
   {
     name: "Isabella Nguyen",
     email: "isabella.nguyen@email.com",
-    avatar: "/avatars/03.png",
+    avatar: "/avatars/people/03.jpg",
   },
   {
     name: "Emma Wilson",
     email: "emma@example.com",
-    avatar: "/avatars/05.png",
+    avatar: "/avatars/people/05.jpg",
   },
   {
     name: "Jackson Lee",
     email: "lee@example.com",
-    avatar: "/avatars/02.png",
+    avatar: "/avatars/people/02.jpg",
   },
   {
     name: "William Kim",
     email: "will@email.com",
-    avatar: "/avatars/04.png",
+    avatar: "/avatars/people/04.jpg",
   },
 ] as const;
 
@@ -97,7 +97,7 @@ export function CardsChat() {
         <CardHeader className="flex flex-row items-center">
           <div className="flex items-center space-x-4">
             <Avatar>
-              <AvatarImage src="/avatars/01.png" alt="Image" />
+              <AvatarImage src="/avatars/people/01.jpg" alt="Image" />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>

@@ -40,3 +40,8 @@ next-env.d.ts
 
 # dodo doc
 /docs
+
+# Agent skills are internal tooling, not part of the published library.
+.agents/skills/
+.claude/skills/
+skills-lock.json

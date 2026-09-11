@@ -51,7 +51,7 @@ import {
 import { IconCookieFilled } from '@tabler/icons-react';
 
 import Copy from '../copy';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -726,9 +726,9 @@ export function StorageUsageCard() {
 
 export function LeaderboardCard() {
   const people = [
-    { name: 'Ada Lovelace', initials: 'AL', score: '2,480' },
-    { name: 'Alan Turing', initials: 'AT', score: '2,145' },
-    { name: 'Grace Hopper', initials: 'GH', score: '1,932' },
+    { name: 'Ada Lovelace', initials: 'AL', avatar: '/avatars/people/01.jpg', score: '2,480' },
+    { name: 'Alan Turing', initials: 'AT', avatar: '/avatars/people/03.jpg', score: '2,145' },
+    { name: 'Grace Hopper', initials: 'GH', avatar: '/avatars/people/06.jpg', score: '1,932' },
   ];
 
   return (
@@ -745,6 +745,7 @@ export function LeaderboardCard() {
           >
             <span className="w-4 text-xs tabular-nums text-muted-foreground">{index + 1}</span>
             <Avatar className="size-7">
+              <AvatarImage src={person.avatar} alt="" />
               <AvatarFallback className="text-[10px]">{person.initials}</AvatarFallback>
             </Avatar>
             <span className="min-w-0 flex-1 truncate text-sm">{person.name}</span>
@@ -988,6 +989,7 @@ export function CommitCard() {
         </p>
         <div className="mt-3 flex items-center gap-2">
           <Avatar className="size-5">
+            <AvatarImage src="/avatars/people/01.jpg" alt="" />
             <AvatarFallback className="text-[9px]">AL</AvatarFallback>
           </Avatar>
           <span className="text-xs text-muted-foreground">Ada Lovelace committed 3h ago</span>
@@ -1071,6 +1073,7 @@ export function KanbanTaskCard() {
             </span>
           </div>
           <Avatar className="size-5">
+            <AvatarImage src="/avatars/people/06.jpg" alt="" />
             <AvatarFallback className="text-[9px]">GH</AvatarFallback>
           </Avatar>
         </div>
@@ -1120,9 +1123,27 @@ export function OnboardingChecklistCard() {
 
 export function ActivityFeedCard() {
   const events = [
-    { who: 'AL', what: 'merged', target: '#412 Fix retries', when: '2m' },
-    { who: 'AT', what: 'opened', target: '#413 Add tracing', when: '1h' },
-    { who: 'GH', what: 'commented on', target: '#409', when: '3h' },
+    {
+      who: 'AL',
+      avatar: '/avatars/people/01.jpg',
+      what: 'merged',
+      target: '#412 Fix retries',
+      when: '2m',
+    },
+    {
+      who: 'AT',
+      avatar: '/avatars/people/03.jpg',
+      what: 'opened',
+      target: '#413 Add tracing',
+      when: '1h',
+    },
+    {
+      who: 'GH',
+      avatar: '/avatars/people/06.jpg',
+      what: 'commented on',
+      target: '#409',
+      when: '3h',
+    },
   ];
 
   return (
@@ -1135,6 +1156,7 @@ export function ActivityFeedCard() {
           {events.map((event, index) => (
             <div key={index} className="flex gap-3">
               <Avatar className="size-6 shrink-0">
+                <AvatarImage src={event.avatar} alt="" />
                 <AvatarFallback className="text-[9px]">{event.who}</AvatarFallback>
               </Avatar>
               <div className="min-w-0 flex-1">
@@ -1160,6 +1182,7 @@ export function CommentCard() {
       <CardContent className="p-6">
         <div className="flex items-center gap-2.5">
           <Avatar className="size-7">
+            <AvatarImage src="/avatars/people/03.jpg" alt="" />
             <AvatarFallback className="text-[10px]">AT</AvatarFallback>
           </Avatar>
           <div className="min-w-0 flex-1">
@@ -1197,9 +1220,14 @@ export function CalendarEventCard() {
           <p className="text-sm font-medium">Design review</p>
           <p className="mt-0.5 text-xs tabular-nums text-muted-foreground">2:00 – 3:00 PM · Zoom</p>
           <div className="mt-2.5 flex -space-x-1.5">
-            {['AL', 'AT', 'GH'].map((initials) => (
-              <Avatar key={initials} className="size-5 border-2 border-background">
-                <AvatarFallback className="text-[9px]">{initials}</AvatarFallback>
+            {[
+              { initials: 'AL', avatar: '/avatars/people/01.jpg' },
+              { initials: 'AT', avatar: '/avatars/people/03.jpg' },
+              { initials: 'GH', avatar: '/avatars/people/06.jpg' },
+            ].map((attendee) => (
+              <Avatar key={attendee.initials} className="size-5 border-2 border-background">
+                <AvatarImage src={attendee.avatar} alt="" />
+                <AvatarFallback className="text-[9px]">{attendee.initials}</AvatarFallback>
               </Avatar>
             ))}
           </div>
@@ -1223,9 +1251,9 @@ export function CalendarEventCard() {
 
 export function TeamMembersCard() {
   const members = [
-    { name: 'Ada Lovelace', initials: 'AL', role: 'Owner' },
-    { name: 'Alan Turing', initials: 'AT', role: 'Admin' },
-    { name: 'Grace Hopper', initials: 'GH', role: 'Member' },
+    { name: 'Ada Lovelace', initials: 'AL', avatar: '/avatars/people/01.jpg', role: 'Owner' },
+    { name: 'Alan Turing', initials: 'AT', avatar: '/avatars/people/03.jpg', role: 'Admin' },
+    { name: 'Grace Hopper', initials: 'GH', avatar: '/avatars/people/06.jpg', role: 'Member' },
   ];
 
   return (
@@ -1241,6 +1269,7 @@ export function TeamMembersCard() {
             className="-mx-2 flex items-center gap-3 rounded-md px-2 py-2 transition-colors hover:bg-muted/50"
           >
             <Avatar className="size-7">
+              <AvatarImage src={member.avatar} alt="" />
               <AvatarFallback className="text-[10px]">{member.initials}</AvatarFallback>
             </Avatar>
             <span className="min-w-0 flex-1 truncate text-sm">{member.name}</span>
@@ -1550,6 +1579,7 @@ export function ProfileCard() {
       <CardContent className="p-6 pt-0">
         <div className="flex items-end justify-between">
           <Avatar className="-mt-6 size-12 ring-4 ring-card">
+            <AvatarImage src="/avatars/people/01.jpg" alt="" />
             <AvatarFallback className="text-xs">AL</AvatarFallback>
           </Avatar>
           <Badge variant="secondary">Pro</Badge>
@@ -1639,6 +1669,7 @@ export function BlogPostCard() {
         </p>
         <div className="mt-3 flex items-center gap-2">
           <Avatar className="size-5">
+            <AvatarImage src="/avatars/people/03.jpg" alt="" />
             <AvatarFallback className="text-[9px]">AT</AvatarFallback>
           </Avatar>
           <span className="text-xs text-muted-foreground">Alan Turing · Jun 12</span>
@@ -1665,6 +1696,7 @@ export function TestimonialCard() {
         </p>
         <div className="mt-4 flex items-center gap-2.5">
           <Avatar className="size-8">
+            <AvatarImage src="/avatars/people/06.jpg" alt="" />
             <AvatarFallback className="text-[10px]">GH</AvatarFallback>
           </Avatar>
           <div className="min-w-0">

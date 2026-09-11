@@ -1,40 +1,35 @@
-import React from "react"
-import {
-  PageSectionTitle,
-  PageSubTitle,
-  PageTemplate,
-} from "../components/page-template"
-import PreviewCodeCard from "@/app/(docs)/docs/components/preview-code-card"
-import CodeHighlight from "@/app/(docs)/docs/components/code-card/parts/code-highlight"
-import { PropsTable } from "@/app/(docs)/docs/components/props-table/props-table"
-import { InlineCode } from "@/components/ui/inline-code"
-import { Metadata } from "next"
-import { baseMetadata } from "@/app/(docs)/layout-parts/base-metadata"
-import { SEOWrapper } from "@/app/(docs)/docs/components/seo-wrapper"
+import React from 'react';
+import { PageSectionTitle, PageSubTitle, PageTemplate } from '../components/page-template';
+import PreviewCodeCard from '@/app/(docs)/docs/components/preview-code-card';
+import CodeHighlight from '@/app/(docs)/docs/components/code-card/parts/code-highlight';
+import { PropsTable } from '@/app/(docs)/docs/components/props-table/props-table';
+import { InlineCode } from '@/components/ui/inline-code';
+import { Metadata } from 'next';
+import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
+import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 
-import FollowButtonDemo from "./follow-button-demo"
-import FollowButtonSizesDemo from "./follow-button-sizes-demo"
+import FollowButtonDemo from './follow-button-demo';
+import FollowButtonSizesDemo from './follow-button-sizes-demo';
 
 export const metadata: Metadata = baseMetadata({
-  title: "Follow Button",
+  title: 'Follow Button',
   description:
-    "A follow button that morphs its width, fill, and label between states. A free React and Next.js component built with Framer Motion and Tailwind CSS.",
+    'A follow button that morphs its width, fill, and label between states. A free React and Next.js component built with Framer Motion and Tailwind CSS.',
   keywords: [
-    "follow button component",
-    "React follow button",
-    "unfollow button animation",
-    "morphing button component",
-    "micro interaction component",
-    "animated check icon",
-    "framer motion button",
-    "Next.js follow button",
+    'follow button component',
+    'React follow button',
+    'unfollow button animation',
+    'morphing button component',
+    'micro interaction component',
+    'animated check icon',
+    'framer motion button',
+    'Next.js follow button',
   ],
-  canonicalUrl: "https://ui.spectrumhq.in/docs/follow-button",
-})
+  canonicalUrl: 'https://ui.spectrumhq.in/docs/follow-button',
+});
 
 const page = () => {
-  const description =
-    "A follow button that morphs its width, fill, and label between states."
+  const description = 'A follow button that morphs its width, fill, and label between states.';
 
   return (
     <SEOWrapper
@@ -42,10 +37,10 @@ const page = () => {
       description={description}
       url="https://ui.spectrumhq.in/docs/follow-button"
       keywords={[
-        "follow button component",
-        "unfollow button animation",
-        "morphing button component",
-        "micro interaction component",
+        'follow button component',
+        'unfollow button animation',
+        'morphing button component',
+        'micro interaction component',
       ]}
     >
       <PageTemplate title="Follow Button" description={description}>
@@ -76,78 +71,74 @@ const page = () => {
         <PageSubTitle>API Reference</PageSubTitle>
         <PageSectionTitle className="mt-0">FollowButton</PageSectionTitle>
         <p className="mt-3 text-base leading-[26px] text-[#686868] dark:text-neutral-400">
-          Renders a single <InlineCode>button</InlineCode> element with{" "}
-          <InlineCode>aria-pressed</InlineCode> reflecting the following state.
-          Pass <InlineCode>following</InlineCode> to control it from outside, or{" "}
-          <InlineCode>defaultFollowing</InlineCode> to let it manage its own
-          state.
+          Renders a single <InlineCode>button</InlineCode> element with{' '}
+          <InlineCode>aria-pressed</InlineCode> reflecting the following state. Pass{' '}
+          <InlineCode>following</InlineCode> to control it from outside, or{' '}
+          <InlineCode>defaultFollowing</InlineCode> to let it manage its own state.
         </p>
         <div className="mt-4">
           <PropsTable
             withTitle={false}
             props={[
               {
-                prop: "following",
+                prop: 'following',
                 required: false,
-                type: "boolean",
-                description:
-                  "Controlled following state. Leave undefined for uncontrolled usage",
+                type: 'boolean',
+                description: 'Controlled following state. Leave undefined for uncontrolled usage',
               },
               {
-                prop: "defaultFollowing",
+                prop: 'defaultFollowing',
                 required: false,
-                type: "boolean",
-                default: "false",
-                description: "Initial following state when uncontrolled",
+                type: 'boolean',
+                default: 'false',
+                description: 'Initial following state when uncontrolled',
               },
               {
-                prop: "onFollowingChange",
+                prop: 'onFollowingChange',
                 required: false,
-                type: "(following: boolean) => void",
-                description:
-                  "Fires with the next following state on every toggle",
+                type: '(following: boolean) => void',
+                description: 'Fires with the next following state on every toggle',
               },
               {
-                prop: "followLabel",
+                prop: 'followLabel',
                 required: false,
-                type: "string",
+                type: 'string',
                 default: `"Follow"`,
-                description: "Label of the idle call-to-action pill",
+                description: 'Label of the idle call-to-action pill',
               },
               {
-                prop: "followingLabel",
+                prop: 'followingLabel',
                 required: false,
-                type: "string",
+                type: 'string',
                 default: `"Following"`,
-                description: "Label shown while followed",
+                description: 'Label shown while followed',
               },
               {
-                prop: "unfollowLabel",
+                prop: 'unfollowLabel',
                 required: false,
-                type: "string",
+                type: 'string',
                 default: `"Unfollow"`,
-                description: "Label revealed on hover or focus while followed",
+                description: 'Label revealed on hover or focus while followed',
               },
               {
-                prop: "size",
+                prop: 'size',
                 required: false,
                 type: `"sm" | "md" | "lg"`,
                 default: `"md"`,
-                description: "Visual size of the button",
+                description: 'Visual size of the button',
               },
               {
-                prop: "disabled",
+                prop: 'disabled',
                 required: false,
-                type: "boolean",
-                default: "false",
-                description: "Disables pointer and keyboard interaction",
+                type: 'boolean',
+                default: 'false',
+                description: 'Disables pointer and keyboard interaction',
               },
               {
-                prop: "className",
+                prop: 'className',
                 required: false,
-                type: "string",
-                description:
-                  "Additional classes merged with the default button styles",
+                type: 'string',
+                description: 'Additional classes merged with the default button styles',
               },
             ]}
           />
@@ -155,9 +146,7 @@ const page = () => {
 
         {/* Examples */}
         <PageSubTitle>Examples</PageSubTitle>
-        <PageSectionTitle className="mt-0">
-          Sizes and custom labels
-        </PageSectionTitle>
+        <PageSectionTitle className="mt-0">Sizes and custom labels</PageSectionTitle>
         <PreviewCodeCard
           path="app/(docs)/docs/follow-button/follow-button-sizes-demo.tsx"
           withInstallation={false}
@@ -167,7 +156,7 @@ const page = () => {
         </PreviewCodeCard>
       </PageTemplate>
     </SEOWrapper>
-  )
-}
+  );
+};
 
-export default page
+export default page;

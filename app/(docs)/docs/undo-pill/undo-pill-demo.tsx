@@ -1,45 +1,60 @@
-"use client"
+'use client';
 
-import React, { useCallback, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { Trash2 } from "lucide-react"
-import { UndoPill } from "@/components/spectrumui/undo-pill"
+import React, { useCallback, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Trash2 } from 'lucide-react';
+import { UndoPill } from '@/components/spectrumui/undo-pill';
 
 const MESSAGES = [
-  { id: 1, sender: "Ana Wells", preview: "The homepage mock is ready for review" },
-  { id: 2, sender: "Dev Patel", preview: "Standup moved to 10:30 tomorrow" },
-  { id: 3, sender: "Mia Chen", preview: "Shipping notes for the 2.4 release" },
-]
+  {
+    id: 1,
+    sender: 'Ana Wells',
+    avatar: '/avatars/people/01.jpg',
+    preview: 'The homepage mock is ready for review',
+  },
+  {
+    id: 2,
+    sender: 'Dev Patel',
+    avatar: '/avatars/people/03.jpg',
+    preview: 'Standup moved to 10:30 tomorrow',
+  },
+  {
+    id: 3,
+    sender: 'Mia Chen',
+    avatar: '/avatars/people/06.jpg',
+    preview: 'Shipping notes for the 2.4 release',
+  },
+];
 
 export default function UndoPillDemo() {
-  const [deletedIds, setDeletedIds] = useState<number[]>([])
-  const [pendingId, setPendingId] = useState<number | null>(null)
+  const [deletedIds, setDeletedIds] = useState<number[]>([]);
+  const [pendingId, setPendingId] = useState<number | null>(null);
 
   const visibleMessages = MESSAGES.filter(
     (message) => !deletedIds.includes(message.id) && message.id !== pendingId,
-  )
+  );
 
   const handleDelete = useCallback(
     (id: number) => {
       // Deleting while a pill is open commits the previous pending delete
       if (pendingId !== null) {
-        setDeletedIds((prev) => [...prev, pendingId])
+        setDeletedIds((prev) => [...prev, pendingId]);
       }
-      setPendingId(id)
+      setPendingId(id);
     },
     [pendingId],
-  )
+  );
 
   const handleUndo = useCallback(() => {
-    setPendingId(null)
-  }, [])
+    setPendingId(null);
+  }, []);
 
   const handleExpire = useCallback(() => {
     if (pendingId !== null) {
-      setDeletedIds((prev) => [...prev, pendingId])
+      setDeletedIds((prev) => [...prev, pendingId]);
     }
-    setPendingId(null)
-  }, [pendingId])
+    setPendingId(null);
+  }, [pendingId]);
 
   return (
     <div className="relative flex min-h-[280px] w-full max-w-md flex-col justify-center py-10">
@@ -49,12 +64,21 @@ export default function UndoPillDemo() {
             <motion.div
               key={message.id}
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
+              animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 360, damping: 34 }}
+              transition={{ type: 'spring', stiffness: 360, damping: 34 }}
               className="overflow-hidden"
             >
               <div className="flex items-center gap-3 border-b border-neutral-200 py-3 dark:border-neutral-800">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={message.avatar}
+                  alt=""
+                  loading="lazy"
+                  width={36}
+                  height={36}
+                  className="size-9 shrink-0 rounded-full object-cover outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+                />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-neutral-900 dark:text-neutral-100">
                     {message.sender}
@@ -78,9 +102,7 @@ export default function UndoPillDemo() {
 
         {visibleMessages.length === 0 && pendingId === null && (
           <div className="flex flex-col items-center gap-2 py-8 text-center">
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              All messages deleted
-            </p>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">All messages deleted</p>
             <button
               type="button"
               onClick={() => setDeletedIds([])}
@@ -101,5 +123,5 @@ export default function UndoPillDemo() {
         />
       </div>
     </div>
-  )
+  );
 }

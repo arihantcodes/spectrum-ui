@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import React from "react"
-import { FollowButton } from "@/components/spectrumui/follow-button"
+import React from 'react';
+import { FollowButton } from '@/components/spectrumui/follow-button';
 
 export default function FollowButtonSizesDemo() {
   return (
@@ -17,5 +17,5 @@ export default function FollowButtonSizesDemo() {
         unfollowLabel="Unsubscribe"
       />
     </div>
-  )
+  );
 }

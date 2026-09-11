@@ -1,8 +1,4 @@
-import {
-  UI_COMPONENT_CATALOG,
-  componentDocsPath,
-} from "@/lib/component-catalog";
-import { TOPIC_HUB_LINKS, topicHubPath } from "@/lib/topic-hub-links";
+import { UI_COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
 
 interface Documentation {
   groupKey: string;
@@ -69,15 +65,6 @@ export const DOCS: Documentation[] = [
       value: component.slug,
       url: componentDocsPath(component.slug),
       ...(component.new ? { new: true } : {}),
-    })),
-  },
-  {
-    groupKey: 'topicGuides',
-    groupValue: 'Topic Guides',
-    children: TOPIC_HUB_LINKS.map((hub) => ({
-      label: hub.label,
-      value: hub.slug,
-      url: topicHubPath(hub.slug),
     })),
   },
 ];

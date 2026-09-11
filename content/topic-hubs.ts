@@ -101,15 +101,7 @@ export const TOPIC_HUBS: readonly TopicHub[] = [
           'Start from documented behavior, then align spacing, color, type, motion, and variants with your product tokens.',
       },
     ],
-    componentSlugs: [
-      'accordion',
-      'alert',
-      'button',
-      'card',
-      'infinite-scroll',
-      'progress-with-value',
-      'spinner',
-    ],
+    componentSlugs: ['accordion', 'alert', 'button', 'card', 'infinite-scroll', 'spinner'],
     codeExample: {
       title: 'Compose an accessible product FAQ',
       description:
@@ -239,7 +231,7 @@ export function ProductFaq() {
           'Use a block to see how primitives are composed before extracting a smaller component API for your design system.',
       },
     ],
-    componentSlugs: ['login', 'multistepform', 'kanban', 'animateddrawer', 'feedback'],
+    componentSlugs: ['login', 'kanban', 'animateddrawer', 'feedback'],
     codeExample: {
       title: 'Place the login block on an authentication route',
       description:
@@ -610,7 +602,6 @@ export default function SettingsPage() {
       'swipe-to-delete',
       'task-checkbox',
       'undo-pill',
-      'face-rating',
       'star-rating',
     ],
     codeExample: {
@@ -820,10 +811,10 @@ export default function AnalyticsPage() {
       },
     ],
     componentSlugs: [
+      'data-table',
       'datetime-picker',
       'kanban',
       'status-badge',
-      'progress-with-value',
       'notification-bell',
     ],
     codeExample: {
@@ -1178,7 +1169,6 @@ export function ProductHero() {
       'accordion',
       'notification-bell',
       'share-button',
-      'progress-with-value',
     ],
     codeExample: {
       title: 'Render plan data with local card primitives',
@@ -1298,9 +1288,7 @@ export function PricingGrid() {
       'password-strength',
       'button',
       'loading-button',
-      'multistepform',
       'animated-switch',
-      'input-model',
       'alert',
     ],
     codeExample: {
@@ -1420,7 +1408,6 @@ export function CreatePasswordForm() {
       'feedback',
       'loading-button',
       'infinite-scroll',
-      'input-model',
       'reaction-bar',
       'kbd-key',
       'spinner',
@@ -1540,7 +1527,7 @@ export function PromptComposer() {
           'Blocks add no package to your bundle beyond the primitives they import, so there is no library version to track and no upgrade treadmill.',
       },
     ],
-    componentSlugs: ['kanban', 'login', 'multistepform', 'card', 'feedback', 'tilt-card'],
+    componentSlugs: ['kanban', 'login', 'card', 'feedback', 'tilt-card'],
     codeExample: {
       title: 'Install a block and edit it in place',
       description:
@@ -1808,11 +1795,11 @@ export function LicenceFaq() {
     componentSlugs: [
       'accordion',
       'alert',
+      'data-table',
       'task-checkbox',
       'multiple-selector',
       'datetime-picker',
       'kbd-key',
-      'progress-with-value',
     ],
     codeExample: {
       title: 'A checkbox row that stays operable by keyboard',
@@ -2083,14 +2070,7 @@ export function PublishAction() {
           'Owning the source means the throwaway version and the real version are the same codebase, so nothing needs rewriting to ship.',
       },
     ],
-    componentSlugs: [
-      'multistepform',
-      'kanban',
-      'login',
-      'floating-label-input',
-      'loading-button',
-      'feedback',
-    ],
+    componentSlugs: ['kanban', 'login', 'floating-label-input', 'loading-button', 'feedback'],
     codeExample: {
       title: 'Add components from an AI assistant',
       description:

@@ -84,7 +84,7 @@ export function SaveAction() {
 }
 ```
 
-## Component reference (62)
+## Component reference (58)
 
 ### Accordion
 
@@ -214,6 +214,14 @@ A command palette that types queries and live-filters grouped results, with keyb
 - Documentation: https://ui.spectrumhq.in/docs/command-search
 - Verified install command: `npx shadcn@latest add @spectrumui/command-search`
 
+### Data Table
+
+A typed data table with sorting, search and row selection, where rows glide into their new order.
+
+- Category: Data
+- Documentation: https://ui.spectrumhq.in/docs/data-table
+- Verified install command: `npx shadcn@latest add @spectrumui/data-table`
+
 ### Datetime Picker
 
 A date and time picker built on shadcn/ui with no extra dependencies.
@@ -230,14 +238,6 @@ A slider with two draggable thumbs for selecting a range of values.
 - Documentation: https://ui.spectrumhq.in/docs/dual-range-slider
 - Verified install command: `npx shadcn@latest add @spectrumui/dual-range-slider-demo`
 
-### Dynamic Island
-
-An iOS-style island pill that morphs between live activity views with a bouncy resize.
-
-- Category: Status
-- Documentation: https://ui.spectrumhq.in/docs/dynamic-island
-- Verified install command: `npx shadcn@latest add @spectrumui/dynamic-island`
-
 ### Expandable Action Bar
 
 Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.
@@ -245,14 +245,6 @@ Compact icon actions that expand into labeled controls on hover or focus with sh
 - Category: Action
 - Documentation: https://ui.spectrumhq.in/docs/expandable-action-bar
 - Verified install command: `npx shadcn@latest add @spectrumui/expandable-action-bar`
-
-### Face Rating
-
-A five-level rating input where an SVG face morphs between moods.
-
-- Category: Rating
-- Documentation: https://ui.spectrumhq.in/docs/face-rating
-- Verified install command: `npx shadcn@latest add @spectrumui/face-rating`
 
 ### FAQ Tabs Card
 
@@ -309,14 +301,6 @@ An infinite scroll container that loads more content using the IntersectionObser
 - Category: Data
 - Documentation: https://ui.spectrumhq.in/docs/infinite-scroll
 - Verified install command: `npx shadcn@latest add @spectrumui/infinite-scroll-demo`
-
-### Input Model
-
-A modal dialog with an input form for quick data entry.
-
-- Category: Form
-- Documentation: https://ui.spectrumhq.in/docs/input-model
-- Verified install command: `npx shadcn@latest add @spectrumui/input-model`
 
 ### Kanban Board
 
@@ -390,14 +374,6 @@ A multi-select input with async search, grouping, and creatable options.
 - Documentation: https://ui.spectrumhq.in/docs/multiple-selector
 - Verified install command: `npx shadcn@latest add @spectrumui/multiple-selector-demo`
 
-### Multistep Form
-
-A multi-step form with progress indicators for registration and checkout flows.
-
-- Category: Form
-- Documentation: https://ui.spectrumhq.in/docs/multistepform
-- Verified install command: `npx shadcn@latest add @spectrumui/multiple-step-form-demo`
-
 ### Nav List Card
 
 A compact navigation card that lists links with icons, with a spring slide on hover.
@@ -437,14 +413,6 @@ A user profile dropdown menu with avatar, settings, and logout actions.
 - Category: Profile
 - Documentation: https://ui.spectrumhq.in/docs/profile
 - Verified install command: `npx shadcn@latest add @spectrumui/profile-dropdown`
-
-### Progress With Value
-
-A progress bar that displays the current value.
-
-- Category: Progress
-- Documentation: https://ui.spectrumhq.in/docs/progress-with-value
-- Verified install command: `npx shadcn@latest add @spectrumui/progress-with-value`
 
 ### Quantity Stepper
 
@@ -582,7 +550,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## Block reference (34)
+## Block reference (49)
 
 Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.
 
@@ -1209,6 +1177,282 @@ What makes it hard to build well:
 - The torn bottom edge is a clip-path polygon, so padding must clear the zigzag or text gets cut
 - Dotted leaders between item and price need a flexible dotted border, not typed periods
 - The stamp reads as ink only with mix-blend-multiply on paper — and that blend must be undone on dark
+
+## Tables blocks (15) — reference
+
+Fifteen data table sections covering the screens a SaaS product actually ships — payments, team members, invoices, orders, customers, API keys, audit logs, deployments, feature flags, support tickets, analytics, a market watchlist, inventory, a leaderboard, and a file browser. Every one is built on the same typed Data Table engine, so sorting glides rows into place, selection raises a bulk-action bar, and reduced motion is respected — while each block brings its own columns, Iconly glyphs, people avatars and status colors.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/tables and installs with the shadcn CLI or through the MCP server.
+
+### Payments Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#payments-table
+- Category: tables / Billing
+- Install: npx shadcn@latest add @spectrumui/payments-table
+- Variants: Comfortable, Striped
+- Dependencies: motion
+- Added: 2026-09-09
+
+The billing workhorse: each row pairs a customer photo with their email, a colored status pill, method, date and a tabular-figure amount. Status pills in the toolbar filter the list in place, and selecting rows raises a floating export bar over the table.
+
+When to use it: A transactions or payments list for billing dashboards. Selection is page-scoped; wire bulkActions to your export endpoint. Not a ledger — rows carry no running balance.
+
+What makes it hard to build well:
+- Selected rows need a static cue — a tint, a rail and a filled checkbox — not just the bulk bar
+- Amounts only line up when the column switches to tabular figures and end alignment
+- The bulk bar has to survive a phone width without wrapping to two lines
+
+### Team Members Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#team-members-table
+- Category: tables / Settings
+- Install: npx shadcn@latest add @spectrumui/team-members-table
+- Variants: Comfortable, Compact
+- Dependencies: motion
+- Added: 2026-09-09
+
+The settings-page staple: member photos with emails, a neutral role badge sorted by rank rather than alphabet, a shielded two-factor indicator, and last-active times. Role pills filter the list, and selection surfaces a destructive remove action in the bulk bar.
+
+When to use it: Member management for workspace settings. Wire onSelectedChange and bulkActions to your invite/remove endpoints. Role changes belong in a per-row menu you supply via rowActions.
+
+What makes it hard to build well:
+- Roles sort by hierarchy (Owner before Admin before Editor), which needs a rank map, not localeCompare
+- The 2FA cell pairs a green shield with the word Enabled so state never rides on color alone
+- Remove is destructive, so it reads in rose inside the bulk bar while staying keyboard reachable
+
+### Invoices Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#invoices-table
+- Category: tables / Billing
+- Install: npx shadcn@latest add @spectrumui/invoices-table
+- Variants: Panel, Minimal
+- Dependencies: motion
+- Added: 2026-09-09
+
+A quiet billing history: monospaced invoice numbers, billing period, issue date, a paid/due/overdue pill and the amount. Each row reveals a download button on hover that stays reachable by keyboard and visible on touch.
+
+When to use it: A customer-facing billing history. Point the row action at your invoice PDF endpoint. For internal AR work with bulk operations, start from the payments table instead.
+
+What makes it hard to build well:
+- Hover-revealed actions must stay in the tab order and visible where hovering does not exist
+- Overdue needs to read at a glance without turning the whole row red
+- Invoice numbers are identifiers, so they render in mono and never truncate
+
+### Orders Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#orders-table
+- Category: tables / Commerce
+- Install: npx shadcn@latest add @spectrumui/orders-table
+- Variants: Comfortable, Bordered
+- Dependencies: motion
+- Added: 2026-09-09
+
+Orders with the detail where you need it: the row shows id, item count, customer, fulfillment state and total, and a disclosure button unfolds the line items — quantity, item and price — on a spring, one order at a time.
+
+When to use it: An operations-side order list for e-commerce admin panels. The detail panel renders your line items; swap the fixture for your order shape. Customer-facing order history usually wants the invoices table instead.
+
+What makes it hard to build well:
+- The line-item panel animates height to auto, which motion has to measure, not guess
+- Cancelled orders stay neutral — only fulfillment progress earns color
+- Totals and line prices share one currency formatter so they never disagree
+
+### Customers Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#customers-table
+- Category: tables / Revenue
+- Install: npx shadcn@latest add @spectrumui/customers-table
+- Variants: Comfortable, Compact
+- Dependencies: motion
+- Added: 2026-09-09
+
+A revenue view for founders: companies with their owner's photo, a plan badge, MRR in tabular figures sorted descending by default, and a churn-risk indicator that pairs a colored dot with the word it means.
+
+When to use it: An account overview for revenue and success teams. Feed it your accounts with mrr as a number; the risk field is a low/medium/high enum you compute upstream.
+
+What makes it hard to build well:
+- Churn risk sorts by severity, not alphabetically, which needs a rank map behind the cell
+- MRR is the default sort — the table must open on the money, not the alphabet
+- Risk color alone is not state: the dot always carries its label
+
+### API Keys Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#api-keys-table
+- Category: tables / Developer
+- Install: npx shadcn@latest add @spectrumui/api-keys-table
+- Variants: Masked, Revealed
+- Dependencies: motion
+- Added: 2026-09-09
+
+The developer-settings table: key names, secrets masked to dots inside a mono chip, scope chips, last-used times and 30-day call counts. The Revealed variant unmasks every secret at once; the revoke action turns rose on hover.
+
+When to use it: A key-management section for developer settings. Wire rowActions to your revoke mutation and gate the Revealed state behind a click-to-reveal in production — the variant here is for the specimen.
+
+What makes it hard to build well:
+- Masking is display-only — the search haystack still matches the real prefix, never the secret
+- A revoke button that reads as danger on hover but stays quiet in the resting row
+- Secrets live in a mono chip so a key never breaks across two lines
+
+### Audit Log Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#audit-log-table
+- Category: tables / Enterprise
+- Install: npx shadcn@latest add @spectrumui/audit-log-table
+- Variants: Pinned, Paged
+- Dependencies: motion
+- Added: 2026-09-09
+
+The enterprise checkbox: 28 events at compact density under a pinned header that picks up a shadow the moment the body scrolls. Actors mix people and service bots, actions render in mono, and severity pairs a dot with its word. The Paged variant trades the scroll box for pagination.
+
+When to use it: A compliance-grade activity feed for admin and security screens. Feed it events newest-first; the level enum is info/warn/error. For user-facing history, the deployments or orders tables read friendlier.
+
+What makes it hard to build well:
+- A pinned header must be opaque in both themes or rows read straight through it
+- Service accounts have no photo — they get a terminal glyph so the column never jumps
+- Times, IPs and action names each need their own alignment and face to scan in a dense grid
+
+### Deployments Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#deployments-table
+- Category: tables / Developer
+- Install: npx shadcn@latest add @spectrumui/deployments-table
+- Variants: Comfortable, Compact
+- Dependencies: motion
+- Added: 2026-09-09
+
+A deploy feed the way platform dashboards draw it: commit message over a mono sha, a pulsing dot while a build runs, environment and branch badges, duration, and the author's photo tucked against the age column. Environment pills filter production from previews.
+
+When to use it: A deployment history for internal platform tools. Statuses are ready/building/failed; the pulse is CSS animate-pulse gated by motion-reduce. Link rows to build logs with onRowClick.
+
+What makes it hard to build well:
+- The building state pulses its dot — and stops pulsing under reduced motion
+- Commit messages truncate at a fixed measure so one long message cannot stretch the table
+- Failed is a terminal state in rose; building is progress in amber — the two must never share a hue
+
+### Feature Flags Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#feature-flags-table
+- Category: tables / Developer
+- Install: npx shadcn@latest add @spectrumui/feature-flags-table
+- Variants: Comfortable, Compact
+- Dependencies: motion
+- Added: 2026-09-09
+
+A working flags panel: each row carries the flag name over its mono key, environment chips, a rollout meter with its percentage, and a real switch whose knob slides on a spring. Toggles hold live React state, so the specimen actually flips.
+
+When to use it: An internal flags console. Replace the useState with your flags SDK mutation; the switch is controlled and the table re-renders per toggle. Rollout is display-only here.
+
+What makes it hard to build well:
+- The switch is a real role=switch button with aria-checked, not a styled div
+- Toggle state lives outside the column defs, which therefore rebuild through useMemo on change
+- The rollout meter pairs the bar with a number so the value survives without the visual
+
+### Support Tickets Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#tickets-table
+- Category: tables / Support
+- Install: npx shadcn@latest add @spectrumui/tickets-table
+- Variants: Comfortable, Striped
+- Dependencies: motion
+- Added: 2026-09-09
+
+A queue sorted by what burns first: urgent and high priorities carry a warning glyph, the SLA column turns rose when a breach approaches, and each ticket shows requester, assignee photo and a status pill. Status pills filter the queue; default sort is priority, not recency.
+
+When to use it: A support-team queue for help desks. SLA strings are precomputed upstream; the breaching boolean drives the emphasis. Wire onRowClick to open the ticket.
+
+What makes it hard to build well:
+- Priority sorts by severity rank while displaying as words with icons
+- A breaching SLA needs weight and color together — a red you can also read
+- Requester context tucks under the subject so the row stays one scan line
+
+### Top Pages Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#top-pages-table
+- Category: tables / Analytics
+- Install: npx shadcn@latest add @spectrumui/top-pages-table
+- Variants: Bars, Plain
+- Dependencies: motion
+- Added: 2026-09-09
+
+The table every analytics dashboard ends with: paths in mono, visitor counts scaled against the leader as inline bars, and signed deltas with direction chevrons in green and rose. The Plain variant drops the bars for pure figures.
+
+When to use it: A top-content widget for analytics dashboards. Feed rows sorted or let the default visitors sort handle it. The bar is share-of-leader, not share-of-total — swap the divisor if you need the latter.
+
+What makes it hard to build well:
+- Bars scale against the maximum, floored so the smallest page still shows ink
+- Deltas need the sign, the chevron and the color to agree at a glance
+- The minimal surface lets the table sit inside an existing dashboard card
+
+### Market Watchlist Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#market-table
+- Category: tables / Finance
+- Install: npx shadcn@latest add @spectrumui/market-table
+- Variants: Comfortable, Dense
+- Dependencies: motion
+- Added: 2026-09-09
+
+A finance surface in five columns: a dark ticker tile, price in tabular figures, a signed 24-hour change with direction chevron, a seven-day sparkline stroked green or rose by trend, and market cap. Minimal surface, built to sit on a dashboard.
+
+When to use it: A watchlist for fintech and crypto dashboards. Trend arrays are the last seven closes; sparklines are plain SVG polylines with no dependencies. For CJK locales, remap gain/loss colors before shipping.
+
+What makes it hard to build well:
+- Sparklines normalize each row against its own range, or flat assets read as cliffs
+- Gain and loss color must agree across the change cell and the sparkline stroke
+- Prices keep two decimals in tabular figures so columns of digits align
+
+### Inventory Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#inventory-table
+- Category: tables / Commerce
+- Install: npx shadcn@latest add @spectrumui/inventory-table
+- Variants: Comfortable, Bordered
+- Dependencies: motion
+- Added: 2026-09-09
+
+A back-office stock view: product tiles with mono SKUs, a capacity meter that shifts from green through amber to rose as stock thins, the unit count beside it, and a written status so the color never stands alone. Opens sorted by what is running out.
+
+When to use it: A stock screen for commerce back offices. Thresholds are 0 and 20% of capacity; adjust stockState for your reorder points. Pair with the orders table for the demand side.
+
+What makes it hard to build well:
+- Threshold colors derive from stock over capacity, computed in one place for meter and label
+- Default sort is ascending stock — the emergencies float to the top
+- Out of stock keeps its meter at zero width instead of hiding it, so columns stay aligned
+
+### Leaderboard Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#leaderboard-table
+- Category: tables / Community
+- Install: npx shadcn@latest add @spectrumui/leaderboard-table
+- Variants: Comfortable, Striped
+- Dependencies: motion
+- Added: 2026-09-09
+
+A leaderboard that celebrates without shouting: gold, silver and bronze chips for the podium, player photos with handles, scores in tabular figures, star-marked streaks, and weekly movement as signed chevrons. Sits on an elevated panel surface.
+
+When to use it: A rankings section for community, gaming or sales dashboards. Ranks come precomputed in the data; the table sorts by them rather than deriving order. Streak and movement are optional columns to delete.
+
+What makes it hard to build well:
+- Only the top three earn color — from rank four down, the number is just a number
+- Movement of zero renders a dash, not a green zero
+- Rank, score and movement all sort numerically, never as strings
+
+### Files Table
+
+- URL: https://ui.spectrumhq.in/blocks/tables#files-table
+- Category: tables / Productivity
+- Install: npx shadcn@latest add @spectrumui/files-table
+- Variants: Comfortable, Compact
+- Dependencies: motion
+- Added: 2026-09-09
+
+A file browser in table form: folder, document, image and video glyphs in soft tiles, a name over its format line, human-readable sizes, an overlapping stack of collaborator photos, and modified dates. Folders sort with a dash for size instead of a fake number.
+
+When to use it: A drive or attachments browser for productivity tools. Kind is a folder/doc/image/video enum that picks the glyph; extend the map for more types. Wire onRowClick to open entries.
+
+What makes it hard to build well:
+- Four Iconly file-type glyphs pick by kind through one lookup, not a chain of ternaries
+- The avatar stack overlaps with surface-colored rings so it works on white and near-black
+- Folder sizes are null — they sort to the bottom and print as a dash, never 0 KB
 
 ## Charts
 

@@ -1446,9 +1446,7 @@
         "tab",
         "avatar",
         "badge"
-      ],
-      "category": "Form",
-      "docsUrl": "https://ui.spectrumhq.in/docs/input-model"
+      ]
     },
     {
       "name": "multiple-selector-demo",
@@ -2225,9 +2223,7 @@
       ],
       "dependencies": [
         "@radix-ui/react-progress"
-      ],
-      "category": "Progress",
-      "docsUrl": "https://ui.spectrumhq.in/docs/progress-with-value"
+      ]
     },
     {
       "name": "progress-with-value",
@@ -2243,9 +2239,7 @@
       ],
       "registryDependencies": [
         "@spectrumui/progress-with-value-dependencies"
-      ],
-      "category": "Progress",
-      "docsUrl": "https://ui.spectrumhq.in/docs/progress-with-value"
+      ]
     },
     {
       "name": "value-position",
@@ -3149,10 +3143,7 @@
       ],
       "dependencies": [
         "framer-motion"
-      ],
-      "category": "Rating",
-      "docsUrl": "https://ui.spectrumhq.in/docs/face-rating",
-      "new": true
+      ]
     },
     {
       "name": "face-rating-demo",
@@ -3168,10 +3159,7 @@
       ],
       "registryDependencies": [
         "@spectrumui/face-rating"
-      ],
-      "category": "Rating",
-      "docsUrl": "https://ui.spectrumhq.in/docs/face-rating",
-      "new": true
+      ]
     },
     {
       "name": "undo-pill",
@@ -4976,10 +4964,7 @@
         "motion",
         "clsx",
         "tailwind-merge"
-      ],
-      "category": "Status",
-      "docsUrl": "https://ui.spectrumhq.in/docs/dynamic-island",
-      "new": true
+      ]
     },
     {
       "name": "dynamic-island-demo",
@@ -4995,10 +4980,7 @@
       ],
       "registryDependencies": [
         "@spectrumui/dynamic-island"
-      ],
-      "category": "Status",
-      "docsUrl": "https://ui.spectrumhq.in/docs/dynamic-island",
-      "new": true
+      ]
     },
     {
       "name": "expandable-action-bar",
@@ -5220,6 +5202,369 @@
       "category": "Feedback",
       "docsUrl": "https://ui.spectrumhq.in/docs/skeleton-reveal",
       "new": true
+    },
+    {
+      "name": "data-table",
+      "type": "registry:component",
+      "title": "Data Table",
+      "description": "A typed data table with sorting, search and row selection, where rows glide into their new order.",
+      "files": [
+        {
+          "path": "app/registry/data-table/data-table.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/data-table.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/data-table",
+      "new": true
+    },
+    {
+      "name": "data-table-demo",
+      "type": "registry:component",
+      "title": "Data Table Demo",
+      "description": "Demo usage for the Data Table component",
+      "files": [
+        {
+          "path": "app/registry/data-table/data-table-demo.tsx",
+          "type": "registry:component",
+          "target": "components/spectrumui/data-table-demo.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Data",
+      "docsUrl": "https://ui.spectrumhq.in/docs/data-table",
+      "new": true
+    },
+    {
+      "name": "payments-table",
+      "type": "registry:block",
+      "title": "Payments Table",
+      "description": "Transactions with people avatars, status pills, filters, row selection and a bulk export bar.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/payments-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/payments-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "payments",
+        "billing",
+        "transactions"
+      ]
+    },
+    {
+      "name": "team-members-table",
+      "type": "registry:block",
+      "title": "Team Members Table",
+      "description": "Workspace member management with roles, two-factor status, last activity and a remove action.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/team-members-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/team-members-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "members",
+        "settings",
+        "roles"
+      ]
+    },
+    {
+      "name": "invoices-table",
+      "type": "registry:block",
+      "title": "Invoices Table",
+      "description": "Billing history with mono invoice numbers, status pills and a per-row PDF download.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/invoices-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/invoices-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "invoices",
+        "billing"
+      ]
+    },
+    {
+      "name": "orders-table",
+      "type": "registry:block",
+      "title": "Orders Table",
+      "description": "E-commerce orders with fulfillment pills, customer avatars and an expandable line-item panel.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/orders-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/orders-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "orders",
+        "commerce"
+      ]
+    },
+    {
+      "name": "customers-table",
+      "type": "registry:block",
+      "title": "Customers Table",
+      "description": "Accounts ranked by MRR with plan badges, churn-risk indicators and owner avatars.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/customers-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/customers-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "customers",
+        "mrr",
+        "revenue"
+      ]
+    },
+    {
+      "name": "api-keys-table",
+      "type": "registry:block",
+      "title": "API Keys Table",
+      "description": "Key management with masked secrets in mono, scope chips, usage counts and a revoke action.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/api-keys-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/api-keys-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "api-keys",
+        "developer",
+        "settings"
+      ]
+    },
+    {
+      "name": "audit-log-table",
+      "type": "registry:block",
+      "title": "Audit Log Table",
+      "description": "A dense, pinned-header event log with actors, mono action names, IPs and severity levels.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/audit-log-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/audit-log-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "audit-log",
+        "enterprise",
+        "security"
+      ]
+    },
+    {
+      "name": "deployments-table",
+      "type": "registry:block",
+      "title": "Deployments Table",
+      "description": "CI deploys with commit messages, mono shas, environment badges, build status and author avatars.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/deployments-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/deployments-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "deployments",
+        "ci",
+        "developer"
+      ]
+    },
+    {
+      "name": "feature-flags-table",
+      "type": "registry:block",
+      "title": "Feature Flags Table",
+      "description": "Flag management with env chips, rollout meters and a live spring-animated switch per row.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/feature-flags-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/feature-flags-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "feature-flags",
+        "developer"
+      ]
+    },
+    {
+      "name": "tickets-table",
+      "type": "registry:block",
+      "title": "Support Tickets Table",
+      "description": "A support queue with priority icons, SLA countdowns, assignee avatars and status pills.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/tickets-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/tickets-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "tickets",
+        "support",
+        "queue"
+      ]
+    },
+    {
+      "name": "top-pages-table",
+      "type": "registry:block",
+      "title": "Top Pages Table",
+      "description": "An analytics table with mono paths, share-of-traffic bars and signed week-over-week deltas.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/top-pages-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/top-pages-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "analytics",
+        "pages"
+      ]
+    },
+    {
+      "name": "market-table",
+      "type": "registry:block",
+      "title": "Market Watchlist Table",
+      "description": "A price watchlist with ticker tiles, signed 24h changes and seven-day inline sparklines.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/market-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/market-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "finance",
+        "watchlist",
+        "sparkline"
+      ]
+    },
+    {
+      "name": "inventory-table",
+      "type": "registry:block",
+      "title": "Inventory Table",
+      "description": "Stock management with SKU tiles, capacity meters that change color at thresholds and status labels.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/inventory-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/inventory-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "inventory",
+        "stock",
+        "commerce"
+      ]
+    },
+    {
+      "name": "leaderboard-table",
+      "type": "registry:block",
+      "title": "Leaderboard Table",
+      "description": "Rankings with medal chips for the top three, player avatars, streaks and weekly movement.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/leaderboard-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/leaderboard-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "leaderboard",
+        "ranking"
+      ]
+    },
+    {
+      "name": "files-table",
+      "type": "registry:block",
+      "title": "Files Table",
+      "description": "A shared-drive browser with type-glyph tiles, sizes, collaborator stacks and modified dates.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/tables/files-table.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/tables/files-table.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "@spectrumui/data-table"
+      ],
+      "category": "Tables",
+      "tags": [
+        "files",
+        "drive",
+        "browser"
+      ]
     }
   ]
 }

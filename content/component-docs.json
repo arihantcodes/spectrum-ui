@@ -947,6 +947,11 @@
     ],
     "related": [
       {
+        "slug": "data-table",
+        "name": "Data Table",
+        "description": "A typed data table with sorting, search and row selection, where rows glide into their new order."
+      },
+      {
         "slug": "infinite-scroll",
         "name": "Infinite Scroll",
         "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
@@ -960,11 +965,6 @@
         "slug": "number-ticker",
         "name": "Number Ticker",
         "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
-      },
-      {
-        "slug": "recent-activity",
-        "name": "Recent Activity",
-        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -2204,6 +2204,233 @@
     ]
   },
   {
+    "slug": "data-table",
+    "name": "Data Table",
+    "description": "A typed data table with sorting, search and row selection, where rows glide into their new order.",
+    "category": "Data",
+    "new": true,
+    "technologies": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ],
+    "dependencies": [
+      "motion"
+    ],
+    "registryDependencies": [],
+    "installation": {
+      "cliCommands": [
+        "npx shadcn@latest add @spectrumui/data-table"
+      ],
+      "dependencyCommands": [
+        "npm i motion"
+      ],
+      "manualPaths": [
+        "components/spectrumui/data-table.tsx"
+      ]
+    },
+    "coverage": {
+      "installation": true,
+      "usage": true,
+      "props": true
+    },
+    "props": [
+      {
+        "name": "data",
+        "type": "readonly T[]",
+        "required": true,
+        "description": "Value accepted by the data property in the exported source type."
+      },
+      {
+        "name": "columns",
+        "type": "DataTableColumn<T>[]",
+        "required": true,
+        "description": "Value accepted by the columns property in the exported source type."
+      },
+      {
+        "name": "rowId",
+        "type": "(row: T) => string",
+        "required": true,
+        "description": "Stable identity per row. Selection and disclosure are keyed on it."
+      },
+      {
+        "name": "rowLabel",
+        "type": "(row: T) => string",
+        "required": false,
+        "description": "Names a row for screen readers, e.g. on its checkbox. Defaults to the first cell."
+      },
+      {
+        "name": "variant",
+        "type": "DataTableVariant",
+        "required": false,
+        "description": "Value accepted by the variant property in the exported source type."
+      },
+      {
+        "name": "density",
+        "type": "DataTableDensity",
+        "required": false,
+        "description": "Value accepted by the density property in the exported source type."
+      },
+      {
+        "name": "caption",
+        "type": "string",
+        "required": false,
+        "description": "Sentence describing the table for screen readers. Never painted."
+      },
+      {
+        "name": "title",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Heading at the start of the toolbar."
+      },
+      {
+        "name": "toolbar",
+        "type": "React.ReactNode",
+        "required": false,
+        "description": "Controls parked at the end of the toolbar."
+      },
+      {
+        "name": "searchable",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the searchable property in the exported source type."
+      },
+      {
+        "name": "searchPlaceholder",
+        "type": "string",
+        "required": false,
+        "description": "Value accepted by the searchPlaceholder property in the exported source type."
+      },
+      {
+        "name": "searchText",
+        "type": "(row: T) => string",
+        "required": false,
+        "description": "Override the haystack a query runs against."
+      },
+      {
+        "name": "quickFilter",
+        "type": "DataTableQuickFilter<T>",
+        "required": false,
+        "description": "One-tap value pills at the end of the toolbar, with live counts."
+      },
+      {
+        "name": "defaultSort",
+        "type": "DataTableSort | null",
+        "required": false,
+        "description": "Value accepted by the defaultSort property in the exported source type."
+      },
+      {
+        "name": "sort",
+        "type": "DataTableSort | null",
+        "required": false,
+        "description": "Value accepted by the sort property in the exported source type."
+      },
+      {
+        "name": "onSortChange",
+        "type": "(sort: DataTableSort | null) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      },
+      {
+        "name": "selectable",
+        "type": "boolean",
+        "required": false,
+        "description": "Value accepted by the selectable property in the exported source type."
+      },
+      {
+        "name": "defaultSelectedIds",
+        "type": "string[]",
+        "required": false,
+        "description": "Value accepted by the defaultSelectedIds property in the exported source type."
+      },
+      {
+        "name": "selectedIds",
+        "type": "string[]",
+        "required": false,
+        "description": "Value accepted by the selectedIds property in the exported source type."
+      },
+      {
+        "name": "onSelectedChange",
+        "type": "(ids: string[]) => void",
+        "required": false,
+        "description": "Callback exposed by the component source."
+      }
+    ],
+    "useCases": [
+      "interfaces that need a typed data table with sorting, search and row selection, where rows glide into their new order",
+      "analytics dashboards",
+      "reporting views"
+    ],
+    "features": [
+      "Copy-paste source that remains in your repository",
+      "TypeScript source included with the component",
+      "Tailwind CSS classes editable in the component source",
+      "Animation implemented with Motion",
+      "Responsive Tailwind variants present in the source",
+      "Reduced-motion handling present in the source"
+    ],
+    "accessibility": [
+      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
+      "The source includes keyboard event handling; verify it alongside pointer behavior.",
+      "The source checks reduced-motion preferences or includes motion-reduce styles.",
+      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
+    ],
+    "customization": [
+      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
+      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
+      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
+    ],
+    "related": [
+      {
+        "slug": "animatedchart",
+        "name": "Animated SVG Chart",
+        "description": "An animated SVG chart for visualizing data on dashboards and reports."
+      },
+      {
+        "slug": "infinite-scroll",
+        "name": "Infinite Scroll",
+        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
+      },
+      {
+        "slug": "kanban",
+        "name": "Kanban Board",
+        "description": "A drag-and-drop kanban board for organizing tasks into columns."
+      },
+      {
+        "slug": "number-ticker",
+        "name": "Number Ticker",
+        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Is Data Table free to use in commercial projects?",
+        "answer": "Yes. The public Data Table source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
+      },
+      {
+        "question": "How do I install Data Table?",
+        "answer": "Run npx shadcn@latest add @spectrumui/data-table. The page also exposes the source for manual installation."
+      },
+      {
+        "question": "Does Data Table require Motion?",
+        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Data Table."
+      },
+      {
+        "question": "Does Data Table use shadcn/ui or Radix UI?",
+        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Data Table source."
+      },
+      {
+        "question": "Can I use Data Table in Next.js?",
+        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
+      },
+      {
+        "question": "What accessibility checks should I run for Data Table?",
+        "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
+      }
+    ]
+  },
+  {
     "slug": "datetime-picker",
     "name": "Datetime Picker",
     "description": "A date and time picker built on shadcn/ui with no extra dependencies.",
@@ -2549,150 +2776,6 @@
     ]
   },
   {
-    "slug": "dynamic-island",
-    "name": "Dynamic Island",
-    "description": "An iOS-style island pill that morphs between live activity views with a bouncy resize.",
-    "category": "Status",
-    "new": true,
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion"
-    ],
-    "dependencies": [
-      "motion",
-      "clsx",
-      "tailwind-merge"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/dynamic-island"
-      ],
-      "dependencyCommands": [
-        "npm i motion clsx tailwind-merge"
-      ],
-      "manualPaths": [
-        "components/motion/dynamic-island.tsx",
-        "lib/ease.ts"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": true
-    },
-    "props": [
-      {
-        "name": "keyId",
-        "type": "string",
-        "required": true,
-        "description": "Value accepted by the keyId property in the exported source type."
-      },
-      {
-        "name": "children",
-        "type": "ReactNode",
-        "required": true,
-        "description": "Content rendered inside the component."
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      },
-      {
-        "name": "view",
-        "type": "string | null",
-        "required": true,
-        "description": "Active view id. `null` shows the compact pill."
-      },
-      {
-        "name": "compact",
-        "type": "ReactNode",
-        "required": false,
-        "description": "Compact pill content, shown when no view is active."
-      },
-      {
-        "name": "id",
-        "type": "string",
-        "required": true,
-        "description": "Matches the parent `view` prop when active."
-      }
-    ],
-    "useCases": [
-      "interfaces that need an iOS-style island pill that morphs between live activity views with a bouncy resize",
-      "dashboards",
-      "operations tables"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "Reduced-motion handling present in the source"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "The source checks reduced-motion preferences or includes motion-reduce styles.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "alert",
-        "name": "Animated Alert",
-        "description": "An animated alert that displays notifications, warnings, and success messages."
-      },
-      {
-        "slug": "animatedchart",
-        "name": "Animated SVG Chart",
-        "description": "An animated SVG chart for visualizing data on dashboards and reports."
-      },
-      {
-        "slug": "feedback",
-        "name": "Feedback Card",
-        "description": "A feedback card that collects ratings and comments with emoji reactions."
-      },
-      {
-        "slug": "infinite-scroll",
-        "name": "Infinite Scroll",
-        "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Dynamic Island free to use in commercial projects?",
-        "answer": "Yes. The public Dynamic Island source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Dynamic Island?",
-        "answer": "Run npx shadcn@latest add @spectrumui/dynamic-island. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Dynamic Island require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Dynamic Island."
-      },
-      {
-        "question": "Does Dynamic Island use shadcn/ui or Radix UI?",
-        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Dynamic Island source."
-      },
-      {
-        "question": "Can I use Dynamic Island in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Dynamic Island?",
-        "answer": "The source includes ARIA markup, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
     "slug": "expandable-action-bar",
     "name": "Expandable Action Bar",
     "description": "Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.",
@@ -2879,161 +2962,6 @@
       },
       {
         "question": "What accessibility checks should I run for Expandable Action Bar?",
-        "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
-      }
-    ]
-  },
-  {
-    "slug": "face-rating",
-    "name": "Face Rating",
-    "description": "A five-level rating input where an SVG face morphs between moods.",
-    "category": "Rating",
-    "new": true,
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion"
-    ],
-    "dependencies": [
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/face-rating"
-      ],
-      "dependencyCommands": [
-        "npm i framer-motion"
-      ],
-      "manualPaths": [
-        "components/spectrumui/face-rating.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": true
-    },
-    "props": [
-      {
-        "name": "value",
-        "type": "number",
-        "required": false,
-        "description": "Controlled rating from 1-5; 0 means unset. Leave undefined for uncontrolled usage"
-      },
-      {
-        "name": "defaultValue",
-        "type": "number",
-        "required": false,
-        "description": "Initial rating when uncontrolled. Default 0 (unset)"
-      },
-      {
-        "name": "onValueChange",
-        "type": "(value: number) => void",
-        "required": false,
-        "description": "Fires with the next rating on every commit"
-      },
-      {
-        "name": "labels",
-        "type": "[string, string, string, string, string]",
-        "required": false,
-        "description": "Mood names for levels 1-5, shown under the widget and read to screen readers"
-      },
-      {
-        "name": "showLabel",
-        "type": "boolean",
-        "required": false,
-        "description": "Show the mood label under the segments. Default true"
-      },
-      {
-        "name": "size",
-        "type": "\"sm\" | \"md\" | \"lg\"",
-        "required": false,
-        "description": "Visual size of the widget. Default \"md\""
-      },
-      {
-        "name": "label",
-        "type": "string",
-        "required": false,
-        "description": "Accessible name of the radio group. Default \"How was your experience?\""
-      },
-      {
-        "name": "className",
-        "type": "string",
-        "required": false,
-        "description": "Additional classes accepted by the component source."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a five-level rating input where an SVG face morphs between moods",
-      "feedback forms",
-      "review flows"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "Responsive Tailwind variants present in the source",
-      "Reduced-motion handling present in the source"
-    ],
-    "accessibility": [
-      "The source includes ARIA attributes or roles; preserve them when customizing the component.",
-      "The source includes keyboard event handling; verify it alongside pointer behavior.",
-      "The source checks reduced-motion preferences or includes motion-reduce styles.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "star-rating",
-        "name": "Star Rating",
-        "description": "An animated star rating input with hover preview and sparkle burst effects."
-      },
-      {
-        "slug": "account-access-card",
-        "name": "Account Access Card",
-        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
-      },
-      {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
-      },
-      {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Face Rating free to use in commercial projects?",
-        "answer": "Yes. The public Face Rating source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Face Rating?",
-        "answer": "Run npx shadcn@latest add @spectrumui/face-rating. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Face Rating require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Face Rating."
-      },
-      {
-        "question": "Does Face Rating use shadcn/ui or Radix UI?",
-        "answer": "No shadcn/ui or Radix UI dependency was detected in the documented Face Rating source."
-      },
-      {
-        "question": "Can I use Face Rating in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Face Rating?",
         "answer": "The source includes ARIA markup, keyboard handlers, reduced-motion handling. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
@@ -3959,6 +3887,11 @@
         "description": "An animated SVG chart for visualizing data on dashboards and reports."
       },
       {
+        "slug": "data-table",
+        "name": "Data Table",
+        "description": "A typed data table with sorting, search and row selection, where rows glide into their new order."
+      },
+      {
         "slug": "kanban",
         "name": "Kanban Board",
         "description": "A drag-and-drop kanban board for organizing tasks into columns."
@@ -3967,11 +3900,6 @@
         "slug": "number-ticker",
         "name": "Number Ticker",
         "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
-      },
-      {
-        "slug": "recent-activity",
-        "name": "Recent Activity",
-        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -3997,111 +3925,6 @@
       },
       {
         "question": "What accessibility checks should I run for Infinite Scroll?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "input-model",
-    "name": "Input Model",
-    "description": "A modal dialog with an input form for quick data entry.",
-    "category": "Form",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui"
-    ],
-    "dependencies": [],
-    "registryDependencies": [
-      "input",
-      "label",
-      "select",
-      "button",
-      "tab",
-      "avatar",
-      "badge"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/input-model"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "app/(docs)/docs/input-model/input-model.tsx",
-        "components/spectrumui/inputmodel.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a modal dialog with an input form for quick data entry",
-      "authentication flows",
-      "settings forms"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: input, label, select, button, tab, avatar, badge",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes."
-    ],
-    "related": [
-      {
-        "slug": "account-access-card",
-        "name": "Account Access Card",
-        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
-      },
-      {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
-      },
-      {
-        "slug": "dual-range-slider",
-        "name": "Dual Range Slider",
-        "description": "A slider with two draggable thumbs for selecting a range of values."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Input Model free to use in commercial projects?",
-        "answer": "Yes. The public Input Model source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Input Model?",
-        "answer": "Run npx shadcn@latest add @spectrumui/input-model. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Input Model require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Input Model."
-      },
-      {
-        "question": "Does Input Model use shadcn/ui or Radix UI?",
-        "answer": "Input Model uses the input, label, select, button, tab, avatar, badge shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Input Model in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Input Model?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
       }
     ]
@@ -4176,6 +3999,11 @@
         "description": "An animated SVG chart for visualizing data on dashboards and reports."
       },
       {
+        "slug": "data-table",
+        "name": "Data Table",
+        "description": "A typed data table with sorting, search and row selection, where rows glide into their new order."
+      },
+      {
         "slug": "infinite-scroll",
         "name": "Infinite Scroll",
         "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
@@ -4184,11 +4012,6 @@
         "slug": "number-ticker",
         "name": "Number Ticker",
         "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
-      },
-      {
-        "slug": "recent-activity",
-        "name": "Recent Activity",
-        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -5522,120 +5345,6 @@
     ]
   },
   {
-    "slug": "multistepform",
-    "name": "Multistep Form",
-    "description": "A multi-step form with progress indicators for registration and checkout flows.",
-    "category": "Form",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Motion",
-      "shadcn/ui"
-    ],
-    "dependencies": [
-      "framer-motion",
-      "lucide-react",
-      "sonner"
-    ],
-    "registryDependencies": [
-      "button",
-      "card",
-      "input",
-      "label",
-      "radio-group",
-      "textarea",
-      "select"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/multiple-step-form-demo",
-        "npx shadcn@latest add sonner card input label textarea select checkbox radio-group"
-      ],
-      "dependencyCommands": [],
-      "manualPaths": [
-        "lib/utils.ts",
-        "components/spectrumui/multistepformdemo.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": false,
-      "props": false
-    },
-    "props": [],
-    "useCases": [
-      "interfaces that need a multi-step form with progress indicators for registration and checkout flows",
-      "authentication flows",
-      "settings forms"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "Animation implemented with Motion",
-      "shadcn/ui dependencies: button, card, input, label, radio-group, textarea, select",
-      "Responsive Tailwind variants present in the source"
-    ],
-    "accessibility": [
-      "No reduced-motion marker was detected; add or verify a reduced-motion path before production use.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Edit the copied source directly for visual or structural changes.",
-      "Adjust Motion transitions in the source and keep the reduced-motion behavior aligned with the final interaction."
-    ],
-    "related": [
-      {
-        "slug": "account-access-card",
-        "name": "Account Access Card",
-        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
-      },
-      {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "datetime-picker",
-        "name": "Datetime Picker",
-        "description": "A date and time picker built on shadcn/ui with no extra dependencies."
-      },
-      {
-        "slug": "dual-range-slider",
-        "name": "Dual Range Slider",
-        "description": "A slider with two draggable thumbs for selecting a range of values."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Multistep Form free to use in commercial projects?",
-        "answer": "Yes. The public Multistep Form source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Multistep Form?",
-        "answer": "Run npx shadcn@latest add @spectrumui/multiple-step-form-demo or npx shadcn@latest add sonner card input label textarea select checkbox radio-group. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Multistep Form require Motion?",
-        "answer": "Yes. Motion usage was detected in the documented source or registry dependencies for Multistep Form."
-      },
-      {
-        "question": "Does Multistep Form use shadcn/ui or Radix UI?",
-        "answer": "Multistep Form uses the button, card, input, label, radio-group, textarea, select shadcn/ui dependencies."
-      },
-      {
-        "question": "Can I use Multistep Form in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Multistep Form?",
-        "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
     "slug": "nav-list-card",
     "name": "Nav List Card",
     "description": "A compact navigation card that lists links with icons, with a spring slide on hover.",
@@ -6055,6 +5764,11 @@
         "description": "An animated SVG chart for visualizing data on dashboards and reports."
       },
       {
+        "slug": "data-table",
+        "name": "Data Table",
+        "description": "A typed data table with sorting, search and row selection, where rows glide into their new order."
+      },
+      {
         "slug": "infinite-scroll",
         "name": "Infinite Scroll",
         "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
@@ -6063,11 +5777,6 @@
         "slug": "kanban",
         "name": "Kanban Board",
         "description": "A drag-and-drop kanban board for organizing tasks into columns."
-      },
-      {
-        "slug": "recent-activity",
-        "name": "Recent Activity",
-        "description": "An activity feed card that lists agent runs with duration and recency chips."
       }
     ],
     "faqs": [
@@ -6390,134 +6099,6 @@
       {
         "question": "What accessibility checks should I run for Profile Dropdown?",
         "answer": "No component-specific accessibility mechanism was detected automatically. Test keyboard operation, focus, labels, contrast, and screen-reader output before shipping."
-      }
-    ]
-  },
-  {
-    "slug": "progress-with-value",
-    "name": "Progress With Value",
-    "description": "A progress bar that displays the current value.",
-    "category": "Progress",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Radix UI"
-    ],
-    "dependencies": [
-      "@radix-ui/react-progress"
-    ],
-    "registryDependencies": [
-      "@spectrumui/progress-with-value-dependencies"
-    ],
-    "installation": {
-      "cliCommands": [
-        "npx shadcn@latest add @spectrumui/progress-with-value",
-        "npx shadcn@latest add @spectrumui/value-position",
-        "npx shadcn@latest add @spectrumui/custom-label"
-      ],
-      "dependencyCommands": [
-        "npm i @radix-ui/react-progress"
-      ],
-      "manualPaths": [
-        "components/ui/progress-with-value.tsx",
-        "components/spectrumui/progresswithvalue.tsx",
-        "components/spectrumui/progress-with-value-position.tsx",
-        "components/spectrumui/progress-with-value-label.tsx"
-      ]
-    },
-    "coverage": {
-      "installation": true,
-      "usage": true,
-      "props": false
-    },
-    "props": [
-      {
-        "name": "position",
-        "type": "\"start\" | \"start-outside\" | \"follow\" | \"end\" | \"end-outside\"",
-        "required": false,
-        "description": "Value accepted by the position property in the exported source type."
-      },
-      {
-        "name": "label",
-        "type": "(value?: number | null) => React.ReactNode",
-        "required": false,
-        "description": "Value accepted by the label property in the exported source type."
-      },
-      {
-        "name": "valueClassName",
-        "type": "string",
-        "required": false,
-        "description": "Value accepted by the valueClassName property in the exported source type."
-      }
-    ],
-    "useCases": [
-      "interfaces that need a progress bar that displays the current value",
-      "upload flows",
-      "onboarding steps"
-    ],
-    "features": [
-      "Copy-paste source that remains in your repository",
-      "TypeScript source included with the component",
-      "Tailwind CSS classes editable in the component source",
-      "shadcn/ui dependencies: local UI primitives",
-      "Spectrum UI registry dependencies: @spectrumui/progress-with-value-dependencies"
-    ],
-    "accessibility": [
-      "The source uses Radix UI primitives for the interactions detected on this component.",
-      "Test focus order, keyboard operation, labels, contrast, and screen-reader output in the final application context."
-    ],
-    "customization": [
-      "Edit the Tailwind utility classes in the copied source to match your spacing, color, and typography tokens.",
-      "Use the documented className surface for local layout adjustments, then edit the source for structural changes."
-    ],
-    "related": [
-      {
-        "slug": "account-access-card",
-        "name": "Account Access Card",
-        "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
-      },
-      {
-        "slug": "animated-switch",
-        "name": "Animated Switch",
-        "description": "An iOS-style toggle switch with a stretchy knob you can drag or flick."
-      },
-      {
-        "slug": "autosize-textarea",
-        "name": "Autosize Textarea",
-        "description": "A textarea that automatically grows and shrinks to fit its content."
-      },
-      {
-        "slug": "beam-search",
-        "name": "Beam Search Bar",
-        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Is Progress With Value free to use in commercial projects?",
-        "answer": "Yes. The public Progress With Value source is available under the Apache License 2.0, including for commercial use, subject to the LICENSE terms."
-      },
-      {
-        "question": "How do I install Progress With Value?",
-        "answer": "Run npx shadcn@latest add @spectrumui/progress-with-value or npx shadcn@latest add @spectrumui/value-position or npx shadcn@latest add @spectrumui/custom-label. The page also exposes the source for manual installation."
-      },
-      {
-        "question": "Does Progress With Value require Motion?",
-        "answer": "No Motion dependency was detected in the documented source or registry entry for Progress With Value."
-      },
-      {
-        "question": "Does Progress With Value use shadcn/ui or Radix UI?",
-        "answer": "Progress With Value uses local shadcn/ui primitives and imports Radix UI directly."
-      },
-      {
-        "question": "Can I use Progress With Value in Next.js?",
-        "answer": "The documented React source is used in this Next.js application. Keep its use client directive when copying it into the App Router. Install the detected dependencies and verify any application-specific data or image configuration."
-      },
-      {
-        "question": "What accessibility checks should I run for Progress With Value?",
-        "answer": "The source includes Radix UI primitives. Test the finished interface with keyboard and screen-reader workflows."
       }
     ]
   },
@@ -6924,6 +6505,11 @@
         "description": "An animated SVG chart for visualizing data on dashboards and reports."
       },
       {
+        "slug": "data-table",
+        "name": "Data Table",
+        "description": "A typed data table with sorting, search and row selection, where rows glide into their new order."
+      },
+      {
         "slug": "infinite-scroll",
         "name": "Infinite Scroll",
         "description": "An infinite scroll container that loads more content using the IntersectionObserver API."
@@ -6932,11 +6518,6 @@
         "slug": "kanban",
         "name": "Kanban Board",
         "description": "A drag-and-drop kanban board for organizing tasks into columns."
-      },
-      {
-        "slug": "number-ticker",
-        "name": "Number Ticker",
-        "description": "A rolling digit ticker that counts to a value with per-digit stagger, padding and blur."
       }
     ],
     "faqs": [
@@ -7678,11 +7259,6 @@
     ],
     "related": [
       {
-        "slug": "face-rating",
-        "name": "Face Rating",
-        "description": "A five-level rating input where an SVG face morphs between moods."
-      },
-      {
         "slug": "account-access-card",
         "name": "Account Access Card",
         "description": "A credentials card that auto-fills email and password on a loop, with a danger zone."
@@ -7696,6 +7272,11 @@
         "slug": "autosize-textarea",
         "name": "Autosize Textarea",
         "description": "A textarea that automatically grows and shrinks to fit its content."
+      },
+      {
+        "slug": "beam-search",
+        "name": "Beam Search Bar",
+        "description": "A search bar whose bottom edge lights up with a traveling beam while it has focus."
       }
     ],
     "faqs": [

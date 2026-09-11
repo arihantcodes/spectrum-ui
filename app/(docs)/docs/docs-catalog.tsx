@@ -3,8 +3,11 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Component as ComponentIcon } from 'lucide-react';
-import { COMPONENT_CATALOG, compareComponentNames, componentDocsPath } from '@/lib/component-catalog';
-import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
+import {
+  COMPONENT_CATALOG,
+  compareComponentNames,
+  componentDocsPath,
+} from '@/lib/component-catalog';
 
 type ComponentItem = {
   name: string;
@@ -20,9 +23,7 @@ const allComponents: ComponentItem[] = COMPONENT_CATALOG.map((component) => ({
   category: component.category,
 }));
 
-const sortedComponents = [...allComponents].sort((a, b) =>
-  compareComponentNames(a.name, b.name),
-);
+const sortedComponents = [...allComponents].sort((a, b) => compareComponentNames(a.name, b.name));
 
 /** One table cell — component name only, used in both browse and search views */
 function ComponentRow({ item }: { item: ComponentItem }) {
@@ -71,9 +72,9 @@ export function DocsCatalog() {
             panels.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
-            Choose a component, copy its source or add it with the shadcn CLI, and keep the source in
-            your project. Components can be adapted to the project&apos;s design system and application
-            requirements.
+            Choose a component, copy its source or add it with the shadcn CLI, and keep the source
+            in your project. Components can be adapted to the project&apos;s design system and
+            application requirements.
           </p>
           <p className="mt-3 tracking-wide text-[15px] text-neutral-600  font-normal dark:text-neutral-300 leading-7">
             Components are authored in TypeScript, and each documentation page lists the source and
@@ -111,31 +112,6 @@ export function DocsCatalog() {
           )}
         </div> */}
       </div>
-
-      <section className="mb-12 animate-fade-up" aria-labelledby="topic-guides">
-        <h2
-          id="topic-guides"
-          className="scroll-m-24 text-xl font-medium leading-7 tracking-[-0.01em] text-neutral-900 dark:text-neutral-50"
-        >
-          Explore by topic
-        </h2>
-        <p className="mt-1 font-inter text-[13px] leading-5 tracking-wide text-neutral-500 dark:text-neutral-400">
-          Developer guides that connect related components, code examples, and implementation
-          decisions.
-        </p>
-        <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {TOPIC_HUB_LINKS.map((hub) => (
-            <Link
-              key={hub.slug}
-              href={topicHubPath(hub.slug)}
-              className="group flex min-h-12 items-center justify-between gap-3 rounded-[10px] border border-black/8 bg-white px-4 py-3 text-sm font-medium text-neutral-800 transition-colors hover:bg-black/2 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black/20 dark:border-white/10 dark:bg-white/2 dark:text-neutral-200 dark:hover:bg-white/5 dark:focus-visible:ring-white/30"
-            >
-              {hub.label}
-              <ArrowUpRight className="size-3.5 shrink-0 text-neutral-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-          ))}
-        </div>
-      </section>
 
       {/* Components */}
       <div className="mb-4 animate-fade-up" style={{ animationDelay: '60ms' }}>

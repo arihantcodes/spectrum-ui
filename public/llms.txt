@@ -80,6 +80,7 @@ These are stated as verdicts because that is what the question asks for. Where a
 - [Changelog](https://ui.spectrumhq.in/changelog): What is new — releases across blocks, components, docs, and the MCP server
 - [AI Assistants Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Interface surfaces for products built on LLMs. 27 blocks, each with variants and source on one page
 - [Pricing Blocks](https://ui.spectrumhq.in/blocks/pricing): Sections that ask for money and get an answer. 7 blocks, each with variants and source on one page
+- [Tables Blocks](https://ui.spectrumhq.in/blocks/tables): The tables real products run on, ready to copy. 15 blocks, each with variants and source on one page
 - [Charts](https://ui.spectrumhq.in/charts): 20 React chart components — candlestick, order book, market depth, cohort retention, histogram, calendar heatmap, treemap, KPI stat cards, plus bar/line/area/pie/radar/radial. Ten need no charting dependency
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
@@ -95,7 +96,7 @@ npx shadcn@latest add @spectrumui/accordion
 
 Components can also be copied manually from their documentation source. Install only the dependencies listed for that component.
 
-## Component documentation (62 pages, 250+ blocks and variants)
+## Component documentation (58 pages, 250+ blocks and variants)
 
 - [Accordion](https://ui.spectrumhq.in/docs/accordion): A vertically stacked set of interactive headings that each reveal a section of content.
 - [Account Access Card](https://ui.spectrumhq.in/docs/account-access-card): A credentials card that auto-fills email and password on a loop, with a danger zone.
@@ -113,11 +114,10 @@ Components can also be copied manually from their documentation source. Install 
 - [Button](https://ui.spectrumhq.in/docs/button): A set of pre-designed buttons including gradient, outline, loading, and icon styles.
 - [Card](https://ui.spectrumhq.in/docs/card): A set of pre-designed cards for login, signup, pricing, and dashboards.
 - [Command Search](https://ui.spectrumhq.in/docs/command-search): A command palette that types queries and live-filters grouped results, with keyboard navigation.
+- [Data Table](https://ui.spectrumhq.in/docs/data-table): A typed data table with sorting, search and row selection, where rows glide into their new order.
 - [Datetime Picker](https://ui.spectrumhq.in/docs/datetime-picker): A date and time picker built on shadcn/ui with no extra dependencies.
 - [Dual Range Slider](https://ui.spectrumhq.in/docs/dual-range-slider): A slider with two draggable thumbs for selecting a range of values.
-- [Dynamic Island](https://ui.spectrumhq.in/docs/dynamic-island): An iOS-style island pill that morphs between live activity views with a bouncy resize.
 - [Expandable Action Bar](https://ui.spectrumhq.in/docs/expandable-action-bar): Compact icon actions that expand into labeled controls on hover or focus with shared layout motion.
-- [Face Rating](https://ui.spectrumhq.in/docs/face-rating): A five-level rating input where an SVG face morphs between moods.
 - [FAQ Tabs Card](https://ui.spectrumhq.in/docs/faq-tabs-card): A tabbed FAQ card with animated accordion answers and a support footer.
 - [Feedback Card](https://ui.spectrumhq.in/docs/feedback): A feedback card that collects ratings and comments with emoji reactions.
 - [Floating Label Input](https://ui.spectrumhq.in/docs/floating-label-input): An input whose label floats above the field when focused or filled.
@@ -125,7 +125,6 @@ Components can also be copied manually from their documentation source. Install 
 - [Hold to Confirm](https://ui.spectrumhq.in/docs/hold-to-confirm): A press-and-hold button that fills a progress ring before confirming destructive actions.
 - [Image Preview](https://ui.spectrumhq.in/docs/imagepreview): An image preview component with zoom, lightbox, and gallery support.
 - [Infinite Scroll](https://ui.spectrumhq.in/docs/infinite-scroll): An infinite scroll container that loads more content using the IntersectionObserver API.
-- [Input Model](https://ui.spectrumhq.in/docs/input-model): A modal dialog with an input form for quick data entry.
 - [Kanban Board](https://ui.spectrumhq.in/docs/kanban): A drag-and-drop kanban board for organizing tasks into columns.
 - [Kbd Key](https://ui.spectrumhq.in/docs/kbd-key): A 3D keycap that physically depresses when the matching key is pressed.
 - [Like Button](https://ui.spectrumhq.in/docs/like-button): A heart button that pops with a particle burst and rolling count.
@@ -135,13 +134,11 @@ Components can also be copied manually from their documentation source. Install 
 - [Metal Prompt Bar](https://ui.spectrumhq.in/docs/metal-prompt-bar): An AI prompt bar with a live liquid-metal send button that reflects onto the chips beside it.
 - [Morph Button](https://ui.spectrumhq.in/docs/morph-button): An async button that morphs between idle, loading, success, and error states.
 - [Multiple Selector](https://ui.spectrumhq.in/docs/multiple-selector): A multi-select input with async search, grouping, and creatable options.
-- [Multistep Form](https://ui.spectrumhq.in/docs/multistepform): A multi-step form with progress indicators for registration and checkout flows.
 - [Nav List Card](https://ui.spectrumhq.in/docs/nav-list-card): A compact navigation card that lists links with icons, with a spring slide on hover.
 - [Notification Bell](https://ui.spectrumhq.in/docs/notification-bell): A bell button that swings on new notifications with a rolling unread badge.
 - [Number Ticker](https://ui.spectrumhq.in/docs/number-ticker): A rolling digit ticker that counts to a value with per-digit stagger, padding and blur.
 - [Password Strength](https://ui.spectrumhq.in/docs/password-strength): A password input with an animated strength meter and requirements checklist.
 - [Profile Dropdown](https://ui.spectrumhq.in/docs/profile): A user profile dropdown menu with avatar, settings, and logout actions.
-- [Progress With Value](https://ui.spectrumhq.in/docs/progress-with-value): A progress bar that displays the current value.
 - [Quantity Stepper](https://ui.spectrumhq.in/docs/quantity-stepper): A quantity input with rolling digits, hold-to-repeat buttons, and boundary shake.
 - [Reaction Bar](https://ui.spectrumhq.in/docs/reaction-bar): A Slack-style emoji reaction bar with animated chips and rolling counts.
 - [Recent Activity](https://ui.spectrumhq.in/docs/recent-activity): An activity feed card that lists agent runs with duration and recency chips.
@@ -160,7 +157,7 @@ Components can also be copied manually from their documentation source. Install 
 - [Tree Nav](https://ui.spectrumhq.in/docs/tree-nav): A nav list with a tree rail and a spring marker that follows hover and settles on the active link.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
 
-## Blocks (34, a tier above components)
+## Blocks (49, a tier above components)
 
 Blocks are composed interface sections — several components assembled into a section you install whole.
 
@@ -211,6 +208,28 @@ Every block in this category renders live at actual size on https://ui.spectrumh
 - [Serif Tiers](https://ui.spectrumhq.in/blocks/pricing#serif-tiers): Cream serif cards with a black featured card lit by a crimson glow.
 - [Banner Tiers](https://ui.spectrumhq.in/blocks/pricing#banner-tiers): A brutalist plan table whose featured column wears a blue banner on top.
 - [Receipt Tiers](https://ui.spectrumhq.in/blocks/pricing#receipt-tiers): Plans printed as thermal receipts with torn edges, dotted leaders, and a rubber stamp.
+
+## Tables blocks (15)
+
+Fifteen data table sections covering the screens a SaaS product actually ships — payments, team members, invoices, orders, customers, API keys, audit logs, deployments, feature flags, support tickets, analytics, a market watchlist, inventory, a leaderboard, and a file browser. Every one is built on the same typed Data Table engine, so sorting glides rows into place, selection raises a bulk-action bar, and reduced motion is respected — while each block brings its own columns, Iconly glyphs, people avatars and status colors.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/tables and installs with the shadcn CLI or through the MCP server.
+
+- [Payments Table](https://ui.spectrumhq.in/blocks/tables#payments-table): Transactions with people avatars, status pills, filters, row selection and a bulk export bar.
+- [Team Members Table](https://ui.spectrumhq.in/blocks/tables#team-members-table): Workspace member management with roles, two-factor status, last activity and a remove action.
+- [Invoices Table](https://ui.spectrumhq.in/blocks/tables#invoices-table): Billing history with mono invoice numbers, status pills and a per-row PDF download.
+- [Orders Table](https://ui.spectrumhq.in/blocks/tables#orders-table): E-commerce orders with fulfillment pills, customer avatars and an expandable line-item panel.
+- [Customers Table](https://ui.spectrumhq.in/blocks/tables#customers-table): Accounts ranked by MRR with plan badges, churn-risk indicators and owner avatars.
+- [API Keys Table](https://ui.spectrumhq.in/blocks/tables#api-keys-table): Key management with masked secrets in mono, scope chips, usage counts and a revoke action.
+- [Audit Log Table](https://ui.spectrumhq.in/blocks/tables#audit-log-table): A dense, pinned-header event log with actors, mono action names, IPs and severity levels.
+- [Deployments Table](https://ui.spectrumhq.in/blocks/tables#deployments-table): CI deploys with commit messages, mono shas, environment badges, build status and author avatars.
+- [Feature Flags Table](https://ui.spectrumhq.in/blocks/tables#feature-flags-table): Flag management with env chips, rollout meters and a live spring-animated switch per row.
+- [Support Tickets Table](https://ui.spectrumhq.in/blocks/tables#tickets-table): A support queue with priority icons, SLA countdowns, assignee avatars and status pills.
+- [Top Pages Table](https://ui.spectrumhq.in/blocks/tables#top-pages-table): An analytics table with mono paths, share-of-traffic bars and signed week-over-week deltas.
+- [Market Watchlist Table](https://ui.spectrumhq.in/blocks/tables#market-table): A price watchlist with ticker tiles, signed 24h changes and seven-day inline sparklines.
+- [Inventory Table](https://ui.spectrumhq.in/blocks/tables#inventory-table): Stock management with SKU tiles, capacity meters that change color at thresholds and status labels.
+- [Leaderboard Table](https://ui.spectrumhq.in/blocks/tables#leaderboard-table): Rankings with medal chips for the top three, player avatars, streaks and weekly movement.
+- [Files Table](https://ui.spectrumhq.in/blocks/tables#files-table): A shared-drive browser with type-glyph tiles, sizes, collaborator stacks and modified dates.
 
 ## Machine-readable resources
 

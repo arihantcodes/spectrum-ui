@@ -12,6 +12,11 @@ const nonComponentRoutes = new Set([
   'installation',
   'mcp',
   'animatedtestimonials',
+  'dynamic-island',
+  'face-rating',
+  'progress-with-value',
+  'input-model',
+  'multistepform',
   'animatedtext',
   'bento-grid',
   'command-palette',
@@ -43,7 +48,7 @@ const routeSlugs = fs
 
 const catalogSlugs = catalog.map((component) => component.slug).sort();
 
-assert.equal(catalog.length, 62, 'The component catalog should contain 62 routes');
+assert.equal(catalog.length, 58, 'The component catalog should contain 58 routes');
 assert.equal(new Set(catalogSlugs).size, catalog.length, 'Component slugs must be unique');
 assert.equal(
   new Set(catalog.map((component) => component.name)).size,

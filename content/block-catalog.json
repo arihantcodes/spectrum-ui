@@ -14,6 +14,14 @@
       "description": "Seven complete pricing sections, each a different art direction: staggered serif panels on a dot grid, pastel gradient cards, a dark comparison matrix, a Swiss-style table with crop marks, cream serif cards with a glowing featured plan, a brutalist banner table, and plans printed as thermal receipts. Every block ships with realistic plan data, its own palette themed for light and dark, live billing interactions, and scroll-triggered entrances.",
       "order": 2,
       "layout": "wide"
+    },
+    {
+      "slug": "tables",
+      "name": "Tables",
+      "tagline": "The tables real products run on, ready to copy.",
+      "description": "Fifteen data table sections covering the screens a SaaS product actually ships — payments, team members, invoices, orders, customers, API keys, audit logs, deployments, feature flags, support tickets, analytics, a market watchlist, inventory, a leaderboard, and a file browser. Every one is built on the same typed Data Table engine, so sorting glides rows into place, selection raises a bulk-action bar, and reduced motion is respected — while each block brings its own columns, Iconly glyphs, people avatars and status colors.",
+      "order": 3,
+      "layout": "wide"
     }
   ],
   "blocks": [
@@ -882,6 +890,426 @@
       "index": 34,
       "status": "live",
       "addedAt": "2026-08-29"
+    },
+    {
+      "slug": "payments-table",
+      "name": "Payments Table",
+      "category": "tables",
+      "subcategory": "Billing",
+      "description": "Transactions with people avatars, status pills, filters, row selection and a bulk export bar.",
+      "summary": "The billing workhorse: each row pairs a customer photo with their email, a colored status pill, method, date and a tabular-figure amount. Status pills in the toolbar filter the list in place, and selecting rows raises a floating export bar over the table.",
+      "hardParts": [
+        "Selected rows need a static cue — a tint, a rail and a filled checkbox — not just the bulk bar",
+        "Amounts only line up when the column switches to tabular figures and end alignment",
+        "The bulk bar has to survive a phone width without wrapping to two lines"
+      ],
+      "variants": [
+        "Comfortable",
+        "Striped"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A transactions or payments list for billing dashboards. Selection is page-scoped; wire bulkActions to your export endpoint. Not a ledger — rows carry no running balance.",
+      "index": 68,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "team-members-table",
+      "name": "Team Members Table",
+      "category": "tables",
+      "subcategory": "Settings",
+      "description": "Workspace member management with roles, two-factor status, last activity and a remove action.",
+      "summary": "The settings-page staple: member photos with emails, a neutral role badge sorted by rank rather than alphabet, a shielded two-factor indicator, and last-active times. Role pills filter the list, and selection surfaces a destructive remove action in the bulk bar.",
+      "hardParts": [
+        "Roles sort by hierarchy (Owner before Admin before Editor), which needs a rank map, not localeCompare",
+        "The 2FA cell pairs a green shield with the word Enabled so state never rides on color alone",
+        "Remove is destructive, so it reads in rose inside the bulk bar while staying keyboard reachable"
+      ],
+      "variants": [
+        "Comfortable",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Member management for workspace settings. Wire onSelectedChange and bulkActions to your invite/remove endpoints. Role changes belong in a per-row menu you supply via rowActions.",
+      "index": 69,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "invoices-table",
+      "name": "Invoices Table",
+      "category": "tables",
+      "subcategory": "Billing",
+      "description": "Billing history with mono invoice numbers, status pills and a per-row PDF download.",
+      "summary": "A quiet billing history: monospaced invoice numbers, billing period, issue date, a paid/due/overdue pill and the amount. Each row reveals a download button on hover that stays reachable by keyboard and visible on touch.",
+      "hardParts": [
+        "Hover-revealed actions must stay in the tab order and visible where hovering does not exist",
+        "Overdue needs to read at a glance without turning the whole row red",
+        "Invoice numbers are identifiers, so they render in mono and never truncate"
+      ],
+      "variants": [
+        "Panel",
+        "Minimal"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A customer-facing billing history. Point the row action at your invoice PDF endpoint. For internal AR work with bulk operations, start from the payments table instead.",
+      "index": 70,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "orders-table",
+      "name": "Orders Table",
+      "category": "tables",
+      "subcategory": "Commerce",
+      "description": "E-commerce orders with fulfillment pills, customer avatars and an expandable line-item panel.",
+      "summary": "Orders with the detail where you need it: the row shows id, item count, customer, fulfillment state and total, and a disclosure button unfolds the line items — quantity, item and price — on a spring, one order at a time.",
+      "hardParts": [
+        "The line-item panel animates height to auto, which motion has to measure, not guess",
+        "Cancelled orders stay neutral — only fulfillment progress earns color",
+        "Totals and line prices share one currency formatter so they never disagree"
+      ],
+      "variants": [
+        "Comfortable",
+        "Bordered"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "An operations-side order list for e-commerce admin panels. The detail panel renders your line items; swap the fixture for your order shape. Customer-facing order history usually wants the invoices table instead.",
+      "index": 71,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "customers-table",
+      "name": "Customers Table",
+      "category": "tables",
+      "subcategory": "Revenue",
+      "description": "Accounts ranked by MRR with plan badges, churn-risk indicators and owner avatars.",
+      "summary": "A revenue view for founders: companies with their owner's photo, a plan badge, MRR in tabular figures sorted descending by default, and a churn-risk indicator that pairs a colored dot with the word it means.",
+      "hardParts": [
+        "Churn risk sorts by severity, not alphabetically, which needs a rank map behind the cell",
+        "MRR is the default sort — the table must open on the money, not the alphabet",
+        "Risk color alone is not state: the dot always carries its label"
+      ],
+      "variants": [
+        "Comfortable",
+        "Compact"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "An account overview for revenue and success teams. Feed it your accounts with mrr as a number; the risk field is a low/medium/high enum you compute upstream.",
+      "index": 72,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "api-keys-table",
+      "name": "API Keys Table",
+      "category": "tables",
+      "subcategory": "Developer",
+      "description": "Key management with masked secrets in mono, scope chips, usage counts and a revoke action.",
+      "summary": "The developer-settings table: key names, secrets masked to dots inside a mono chip, scope chips, last-used times and 30-day call counts. The Revealed variant unmasks every secret at once; the revoke action turns rose on hover.",
+      "hardParts": [
+        "Masking is display-only — the search haystack still matches the real prefix, never the secret",
+        "A revoke button that reads as danger on hover but stays quiet in the resting row",
+        "Secrets live in a mono chip so a key never breaks across two lines"
+      ],
+      "variants": [
+        "Masked",
+        "Revealed"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A key-management section for developer settings. Wire rowActions to your revoke mutation and gate the Revealed state behind a click-to-reveal in production — the variant here is for the specimen.",
+      "index": 73,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "audit-log-table",
+      "name": "Audit Log Table",
+      "category": "tables",
+      "subcategory": "Enterprise",
+      "description": "A dense, pinned-header event log with actors, mono action names, IPs and severity levels.",
+      "summary": "The enterprise checkbox: 28 events at compact density under a pinned header that picks up a shadow the moment the body scrolls. Actors mix people and service bots, actions render in mono, and severity pairs a dot with its word. The Paged variant trades the scroll box for pagination.",
+      "hardParts": [
+        "A pinned header must be opaque in both themes or rows read straight through it",
+        "Service accounts have no photo — they get a terminal glyph so the column never jumps",
+        "Times, IPs and action names each need their own alignment and face to scan in a dense grid"
+      ],
+      "variants": [
+        "Pinned",
+        "Paged"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A compliance-grade activity feed for admin and security screens. Feed it events newest-first; the level enum is info/warn/error. For user-facing history, the deployments or orders tables read friendlier.",
+      "index": 74,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "deployments-table",
+      "name": "Deployments Table",
+      "category": "tables",
+      "subcategory": "Developer",
+      "description": "CI deploys with commit messages, mono shas, environment badges, build status and author avatars.",
+      "summary": "A deploy feed the way platform dashboards draw it: commit message over a mono sha, a pulsing dot while a build runs, environment and branch badges, duration, and the author's photo tucked against the age column. Environment pills filter production from previews.",
+      "hardParts": [
+        "The building state pulses its dot — and stops pulsing under reduced motion",
+        "Commit messages truncate at a fixed measure so one long message cannot stretch the table",
+        "Failed is a terminal state in rose; building is progress in amber — the two must never share a hue"
+      ],
+      "variants": [
+        "Comfortable",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A deployment history for internal platform tools. Statuses are ready/building/failed; the pulse is CSS animate-pulse gated by motion-reduce. Link rows to build logs with onRowClick.",
+      "index": 75,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "feature-flags-table",
+      "name": "Feature Flags Table",
+      "category": "tables",
+      "subcategory": "Developer",
+      "description": "Flag management with env chips, rollout meters and a live spring-animated switch per row.",
+      "summary": "A working flags panel: each row carries the flag name over its mono key, environment chips, a rollout meter with its percentage, and a real switch whose knob slides on a spring. Toggles hold live React state, so the specimen actually flips.",
+      "hardParts": [
+        "The switch is a real role=switch button with aria-checked, not a styled div",
+        "Toggle state lives outside the column defs, which therefore rebuild through useMemo on change",
+        "The rollout meter pairs the bar with a number so the value survives without the visual"
+      ],
+      "variants": [
+        "Comfortable",
+        "Compact"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "An internal flags console. Replace the useState with your flags SDK mutation; the switch is controlled and the table re-renders per toggle. Rollout is display-only here.",
+      "index": 76,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "tickets-table",
+      "name": "Support Tickets Table",
+      "category": "tables",
+      "subcategory": "Support",
+      "description": "A support queue with priority icons, SLA countdowns, assignee avatars and status pills.",
+      "summary": "A queue sorted by what burns first: urgent and high priorities carry a warning glyph, the SLA column turns rose when a breach approaches, and each ticket shows requester, assignee photo and a status pill. Status pills filter the queue; default sort is priority, not recency.",
+      "hardParts": [
+        "Priority sorts by severity rank while displaying as words with icons",
+        "A breaching SLA needs weight and color together — a red you can also read",
+        "Requester context tucks under the subject so the row stays one scan line"
+      ],
+      "variants": [
+        "Comfortable",
+        "Striped"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A support-team queue for help desks. SLA strings are precomputed upstream; the breaching boolean drives the emphasis. Wire onRowClick to open the ticket.",
+      "index": 77,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "top-pages-table",
+      "name": "Top Pages Table",
+      "category": "tables",
+      "subcategory": "Analytics",
+      "description": "An analytics table with mono paths, share-of-traffic bars and signed week-over-week deltas.",
+      "summary": "The table every analytics dashboard ends with: paths in mono, visitor counts scaled against the leader as inline bars, and signed deltas with direction chevrons in green and rose. The Plain variant drops the bars for pure figures.",
+      "hardParts": [
+        "Bars scale against the maximum, floored so the smallest page still shows ink",
+        "Deltas need the sign, the chevron and the color to agree at a glance",
+        "The minimal surface lets the table sit inside an existing dashboard card"
+      ],
+      "variants": [
+        "Bars",
+        "Plain"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A top-content widget for analytics dashboards. Feed rows sorted or let the default visitors sort handle it. The bar is share-of-leader, not share-of-total — swap the divisor if you need the latter.",
+      "index": 78,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "market-table",
+      "name": "Market Watchlist Table",
+      "category": "tables",
+      "subcategory": "Finance",
+      "description": "A price watchlist with ticker tiles, signed 24h changes and seven-day inline sparklines.",
+      "summary": "A finance surface in five columns: a dark ticker tile, price in tabular figures, a signed 24-hour change with direction chevron, a seven-day sparkline stroked green or rose by trend, and market cap. Minimal surface, built to sit on a dashboard.",
+      "hardParts": [
+        "Sparklines normalize each row against its own range, or flat assets read as cliffs",
+        "Gain and loss color must agree across the change cell and the sparkline stroke",
+        "Prices keep two decimals in tabular figures so columns of digits align"
+      ],
+      "variants": [
+        "Comfortable",
+        "Dense"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A watchlist for fintech and crypto dashboards. Trend arrays are the last seven closes; sparklines are plain SVG polylines with no dependencies. For CJK locales, remap gain/loss colors before shipping.",
+      "index": 79,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "inventory-table",
+      "name": "Inventory Table",
+      "category": "tables",
+      "subcategory": "Commerce",
+      "description": "Stock management with SKU tiles, capacity meters that change color at thresholds and status labels.",
+      "summary": "A back-office stock view: product tiles with mono SKUs, a capacity meter that shifts from green through amber to rose as stock thins, the unit count beside it, and a written status so the color never stands alone. Opens sorted by what is running out.",
+      "hardParts": [
+        "Threshold colors derive from stock over capacity, computed in one place for meter and label",
+        "Default sort is ascending stock — the emergencies float to the top",
+        "Out of stock keeps its meter at zero width instead of hiding it, so columns stay aligned"
+      ],
+      "variants": [
+        "Comfortable",
+        "Bordered"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A stock screen for commerce back offices. Thresholds are 0 and 20% of capacity; adjust stockState for your reorder points. Pair with the orders table for the demand side.",
+      "index": 80,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "leaderboard-table",
+      "name": "Leaderboard Table",
+      "category": "tables",
+      "subcategory": "Community",
+      "description": "Rankings with medal chips for the top three, player avatars, streaks and weekly movement.",
+      "summary": "A leaderboard that celebrates without shouting: gold, silver and bronze chips for the podium, player photos with handles, scores in tabular figures, star-marked streaks, and weekly movement as signed chevrons. Sits on an elevated panel surface.",
+      "hardParts": [
+        "Only the top three earn color — from rank four down, the number is just a number",
+        "Movement of zero renders a dash, not a green zero",
+        "Rank, score and movement all sort numerically, never as strings"
+      ],
+      "variants": [
+        "Comfortable",
+        "Striped"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A rankings section for community, gaming or sales dashboards. Ranks come precomputed in the data; the table sorts by them rather than deriving order. Streak and movement are optional columns to delete.",
+      "index": 81,
+      "addedAt": "2026-09-09",
+      "status": "live"
+    },
+    {
+      "slug": "files-table",
+      "name": "Files Table",
+      "category": "tables",
+      "subcategory": "Productivity",
+      "description": "A shared-drive browser with type-glyph tiles, sizes, collaborator stacks and modified dates.",
+      "summary": "A file browser in table form: folder, document, image and video glyphs in soft tiles, a name over its format line, human-readable sizes, an overlapping stack of collaborator photos, and modified dates. Folders sort with a dash for size instead of a fake number.",
+      "hardParts": [
+        "Four Iconly file-type glyphs pick by kind through one lookup, not a chain of ternaries",
+        "The avatar stack overlaps with surface-colored rings so it works on white and near-black",
+        "Folder sizes are null — they sort to the bottom and print as a dash, never 0 KB"
+      ],
+      "variants": [
+        "Comfortable",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "data-table"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "A drive or attachments browser for productivity tools. Kind is a folder/doc/image/video enum that picks the glyph; extend the map for more types. Wire onRowClick to open entries.",
+      "index": 82,
+      "addedAt": "2026-09-09",
+      "status": "live"
     }
   ]
 }

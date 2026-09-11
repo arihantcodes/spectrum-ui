@@ -1,19 +1,16 @@
-"use client"
+'use client';
 
-import React from "react"
-import {
-  AvatarStack,
-  type AvatarItem,
-} from "@/components/spectrumui/avatar-stack"
+import React from 'react';
+import { AvatarStack, type AvatarItem } from '@/components/spectrumui/avatar-stack';
 
 const CREW: AvatarItem[] = [
-  { name: "Arjun Mehta", src: "/avatars/01.png" },
-  { name: "Sofia Ramirez", src: "/avatars/02.png" },
-  { name: "Priya Nair" },
-  { name: "Noah Kim" },
-  { name: "Emma Fischer" },
-  { name: "David Osei" },
-]
+  { name: 'Arjun Mehta', src: '/avatars/people/01.jpg' },
+  { name: 'Sofia Ramirez', src: '/avatars/people/02.jpg' },
+  { name: 'Priya Nair' },
+  { name: 'Noah Kim' },
+  { name: 'Emma Fischer' },
+  { name: 'David Osei' },
+];
 
 export default function AvatarStackSizesDemo() {
   return (
@@ -39,5 +36,5 @@ export default function AvatarStackSizesDemo() {
         </span>
       </div>
     </div>
-  )
+  );
 }

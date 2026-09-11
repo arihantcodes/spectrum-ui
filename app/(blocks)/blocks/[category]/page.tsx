@@ -111,13 +111,12 @@ export default async function BlockCategoryPage({ params }: PageProps) {
       <JsonLd id={`blocks-${slug}-source`} data={softwareSource} />
 
       <main className={wide ? undefined : 'mx-auto max-w-[760px]'}>
+        {/* Heading only: the description still feeds <meta> and JSON-LD, but the
+            numbered specimens below say it better than a paragraph can. */}
         <header className="mb-12">
           <h1 className="font-spectral text-[30px] leading-[1.1] tracking-[-0.6px] text-neutral-900 dark:text-neutral-50">
             {category.name}
           </h1>
-          <p className="mt-2.5 max-w-[68ch] text-[14px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
-            {category.description}
-          </p>
         </header>
 
         <div className="space-y-20 lg:space-y-24">

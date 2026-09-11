@@ -1,20 +1,17 @@
-"use client"
+'use client';
 
-import React from "react"
-import {
-  AvatarStack,
-  type AvatarItem,
-} from "@/components/spectrumui/avatar-stack"
+import React from 'react';
+import { AvatarStack, type AvatarItem } from '@/components/spectrumui/avatar-stack';
 
 const TEAM: AvatarItem[] = [
-  { name: "Arjun Mehta", src: "/avatars/01.png" },
-  { name: "Sofia Ramirez", src: "/avatars/02.png" },
-  { name: "Liam Carter", src: "/avatars/03.png" },
-  { name: "Priya Nair" },
-  { name: "Noah Kim" },
-  { name: "Emma Fischer" },
-  { name: "David Osei" },
-]
+  { name: 'Arjun Mehta', src: '/avatars/people/01.jpg' },
+  { name: 'Sofia Ramirez', src: '/avatars/people/02.jpg' },
+  { name: 'Liam Carter', src: '/avatars/people/03.jpg' },
+  { name: 'Priya Nair', src: '/avatars/people/05.jpg' },
+  { name: 'Noah Kim', src: '/avatars/people/06.jpg' },
+  { name: 'Emma Fischer', src: '/avatars/people/09.jpg' },
+  { name: 'David Osei', src: '/avatars/people/12.jpg' },
+];
 
 export default function AvatarStackDemo() {
   return (
@@ -34,5 +31,5 @@ export default function AvatarStackDemo() {
         Hover the stack — then hover a face
       </p>
     </div>
-  )
+  );
 }
