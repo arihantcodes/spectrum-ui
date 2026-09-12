@@ -1,7 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { RoutesProps } from "@/types";
 import { Component, FileText, LineChart, ShieldUser } from "lucide-react";
-import { CHART_LIBRARY, chartLibraryPath } from "@/lib/chart-library";
+import { CHART_BLOCKS, CHARTS_CATEGORY_PATH, chartBlockPath } from "@/lib/chart-blocks";
 
 // Define base path only once
 const BASE_PATH = "/docs";
@@ -203,14 +203,14 @@ export const ROUTES: RoutesProps[] = [
     icon: LineChart,
     children: [
       {
-        label: "Overview",
+        label: "All charts",
         value: "charts",
-        url: "/charts",
+        url: CHARTS_CATEGORY_PATH,
       },
-      ...CHART_LIBRARY.map((chart) => ({
+      ...CHART_BLOCKS.map((chart) => ({
         label: chart.name,
         value: chart.slug,
-        url: chartLibraryPath(chart.slug),
+        url: chartBlockPath(chart.slug),
       })),
     ],
   },

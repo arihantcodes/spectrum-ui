@@ -121,8 +121,8 @@ export const LLM_INFO_OFFERINGS: readonly LlmInfoEntry[] = [
   {
     title: 'Charts',
     description:
-      'Recharts charts for product, trading, and onchain UIs — including candlestick, price, and sparkline — copy-paste React source, separate from the component docs.',
-    href: '/charts',
+      'Charts for product, trading, and onchain UIs — candlestick, order book, depth, cohort retention, calendar heatmap, price and sparkline — live in the Blocks section, with copy-paste React source. Ten render in plain SVG with no charting dependency.',
+    href: '/blocks/charts',
   },
   {
     title: 'Page blocks',

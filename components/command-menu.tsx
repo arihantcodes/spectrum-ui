@@ -91,7 +91,7 @@ const ICONS: Record<NonNullable<Row['icon']>, React.ComponentType<{ className?: 
 const RESTING_DESTINATIONS = [
   'page:/docs',
   'page:/blocks',
-  'page:/charts',
+  'page:/blocks/charts',
   'page:/colors',
   'page:/blog',
   'page:/docs/installation',
@@ -104,7 +104,7 @@ const RESTING_DESTINATIONS = [
 const FALLBACK_DOCUMENTS: SearchDocument[] = [
   { id: 'page:/docs', title: 'Components', group: 'Pages', href: '/docs' },
   { id: 'page:/blocks', title: 'Blocks', group: 'Pages', href: '/blocks' },
-  { id: 'page:/charts', title: 'Charts', group: 'Pages', href: '/charts' },
+  { id: 'page:/blocks/charts', title: 'Charts', group: 'Pages', href: '/blocks/charts' },
   { id: 'page:/colors', title: 'Colors', group: 'Pages', href: '/colors' },
   { id: 'page:/blog', title: 'Blog', group: 'Pages', href: '/blog' },
   {

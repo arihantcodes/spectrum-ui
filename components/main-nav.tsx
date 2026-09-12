@@ -32,17 +32,6 @@ export function MainNav() {
         >
           Components
         </Link>
-        <Link
-          href="/charts"
-          className={cn(
-            'transition-colors hover:text-foreground',
-            pathname === '/charts' || pathname?.startsWith('/charts/')
-              ? 'text-foreground'
-              : 'text-foreground/80',
-          )}
-        >
-          Charts
-        </Link>
         {/* <Link
           href="/templates"
           className={cn(
@@ -75,7 +64,7 @@ export function MainNav() {
           href="/blocks"
           className={cn(
             'transition-colors hover:text-foreground whitespace-nowrap',
-            pathname === '/blocks' ? 'text-foreground' : 'text-foreground/80',
+            pathname?.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/80',
           )}
         >
           Blocks

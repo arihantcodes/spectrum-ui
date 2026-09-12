@@ -18,7 +18,7 @@ import {
   compareComponentNames,
   componentDocsPath,
 } from '@/lib/component-catalog';
-import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
+import { CHART_BLOCKS, CHARTS_CATEGORY_PATH, chartBlockPath } from '@/lib/chart-blocks';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -56,8 +56,8 @@ const mainNav = [
     href: '/docs',
   },
   {
-    title: 'Charts',
-    href: '/charts',
+    title: 'Blocks',
+    href: '/blocks',
   },
   {
     title: 'Founder Story',
@@ -104,11 +104,11 @@ const sidebarNav: NavSection[] = [
     groupKey: 'charts',
     groupValue: 'Charts',
     items: [
-      { title: 'Overview', href: '/charts', items: [], new: true },
-      ...CHART_LIBRARY.map((chart) => ({
+      { title: 'All charts', href: CHARTS_CATEGORY_PATH, items: [], new: true },
+      ...CHART_BLOCKS.map((chart) => ({
         label: chart.name,
         value: chart.slug,
-        url: chartLibraryPath(chart.slug),
+        url: chartBlockPath(chart.slug),
         items: [],
         new: true,
       })),

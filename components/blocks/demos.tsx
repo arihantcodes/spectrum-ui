@@ -61,6 +61,7 @@ import { MarketTable } from '@/components/spectrumui/blocks/tables/market-table'
 import { InventoryTable } from '@/components/spectrumui/blocks/tables/inventory-table';
 import { LeaderboardTable } from '@/components/spectrumui/blocks/tables/leaderboard-table';
 import { FilesTable } from '@/components/spectrumui/blocks/tables/files-table';
+import { CHART_BLOCK_DEMOS } from '@/components/blocks/chart-demos';
 import { BannerTiers } from '@/components/spectrumui/blocks/pricing/banner-tiers';
 import { ReceiptTiers } from '@/components/spectrumui/blocks/pricing/receipt-tiers';
 import { BlueprintTiers } from '@/components/spectrumui/blocks/pricing/blueprint-tiers';
@@ -138,6 +139,9 @@ const PAID_TRIO = [
  * A block without a demo here cannot be marked `live` in the catalog.
  */
 export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> = {
+  /* The chart library, one entry per chart type — kept in its own module so the
+     hundred-odd chart exports do not crowd the block imports above. */
+  ...CHART_BLOCK_DEMOS,
   'loading-state': (variant) => <LoadingState variant={variant as 'Drive' | 'Dots' | 'Orbit'} />,
   'reasoning-trace': (variant) => <ReasoningTraceDemo variant={variant as 'Steps' | 'Reasoning'} />,
   'streaming-text': (variant) => <StreamingTextDemo variant={variant as 'Answer' | 'Sources'} />,

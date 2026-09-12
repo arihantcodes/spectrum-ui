@@ -3569,7 +3569,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts"
     },
     {
       "name": "bar-chart",
@@ -3597,7 +3597,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/bar"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#bar"
     },
     {
       "name": "line-chart",
@@ -3625,7 +3625,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/line"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#line"
     },
     {
       "name": "area-chart",
@@ -3653,7 +3653,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/area"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#area"
     },
     {
       "name": "pie-chart",
@@ -3681,7 +3681,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/pie"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#pie"
     },
     {
       "name": "radar-chart",
@@ -3709,7 +3709,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/radar"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#radar"
     },
     {
       "name": "radial-chart",
@@ -3737,7 +3737,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/radial"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#radial"
     },
     {
       "name": "composed-chart",
@@ -3765,7 +3765,7 @@
         "chart",
         "recharts"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/composed"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#composed"
     },
     {
       "name": "chart-data",
@@ -3797,7 +3797,8 @@
         "react-query",
         "websocket",
         "server-component"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#data"
     },
     {
       "name": "chart-states",
@@ -3858,7 +3859,8 @@
         "crypto",
         "ohlc",
         "animated"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#market"
     },
     {
       "name": "indicator-chart",
@@ -3886,7 +3888,8 @@
         "indicators",
         "trading",
         "technical-analysis"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#indicators"
     },
     {
       "name": "depth-chart",
@@ -3914,7 +3917,8 @@
         "liquidity",
         "dex",
         "trading"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#depth"
     },
     {
       "name": "order-book",
@@ -3941,7 +3945,8 @@
         "trading",
         "bid-ask",
         "live"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#order-book"
     },
     {
       "name": "portfolio-chart",
@@ -3968,7 +3973,8 @@
         "pnl",
         "drawdown",
         "cost-basis"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#portfolio"
     },
     {
       "name": "market-heatmap",
@@ -4022,7 +4028,8 @@
         "heatmap",
         "activity",
         "contributions"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#calendar"
     },
     {
       "name": "cohort-chart",
@@ -4049,7 +4056,8 @@
         "retention",
         "analytics",
         "grid"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#cohort"
     },
     {
       "name": "stat-cards",
@@ -4076,7 +4084,8 @@
         "stat-card",
         "sparkline",
         "dashboard"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#stat-cards"
     },
     {
       "name": "histogram-chart",
@@ -4103,7 +4112,8 @@
         "distribution",
         "latency",
         "percentile"
-      ]
+      ],
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#histogram"
     },
     {
       "name": "candlestick-chart",
@@ -4133,7 +4143,7 @@
         "candlestick",
         "trading"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/candlestick"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#candlestick"
     },
     {
       "name": "price-chart",
@@ -4163,7 +4173,7 @@
         "price",
         "token"
       ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/price"
+      "docsUrl": "https://ui.spectrumhq.in/blocks/charts#price"
     },
     {
       "name": "sparkline-chart",
@@ -4192,8 +4202,7 @@
         "recharts",
         "sparkline",
         "watchlist"
-      ],
-      "docsUrl": "https://ui.spectrumhq.in/charts/sparkline"
+      ]
     },
     {
       "name": "offset-tiers",

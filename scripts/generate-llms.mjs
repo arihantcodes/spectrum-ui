@@ -111,14 +111,16 @@ function blockReference(categorySlug) {
         '',
         '- URL: ' + blockUrl(block),
         '- Category: ' + block.category + ' / ' + block.subcategory,
-        '- Install: npx shadcn@latest add @spectrumui/' + block.slug,
+        '- Install: npx shadcn@latest add @spectrumui/' + (block.registryName ?? block.slug),
         '- Variants: ' + block.variants.join(', '),
         '- Dependencies: ' + (block.dependencies.length ? block.dependencies.join(', ') : 'none'),
         '- Added: ' + block.addedAt,
         '',
         block.summary,
         '',
+        ...(block.usage ? ['Usage: `' + block.usage + '`', ''] : []),
         'When to use it: ' + block.aiHints,
+        ...(block.notes?.length ? ['', 'Worth knowing:', ...block.notes.map((note) => '- ' + note)] : []),
         '',
         'What makes it hard to build well:',
         ...block.hardParts.map((part) => '- ' + part),
@@ -178,43 +180,28 @@ function componentList() {
 }
 
 /**
- * Charts are parsed out of lib/chart-library.ts rather than hardcoded. The
- * previous hardcoded list went stale and told AI crawlers the collection was
- * ten generic Recharts charts, which is the opposite of what it now is.
+ * Charts are blocks now — one anchored specimen each on /blocks/charts — so the
+ * chart list comes out of the block catalog rather than a second catalog of its
+ * own. A hardcoded list went stale once already and told AI crawlers the
+ * collection was ten generic Recharts charts.
  */
-const chartSource = readFileSync(path.join(projectRoot, 'lib', 'chart-library.ts'), 'utf8');
-
-function parseCharts() {
-  const out = [];
-  const entry =
-    /slug:\s*'([^']+)',\s*\n\s*name:\s*'([^']+)',\s*\n\s*description:\s*\n?\s*'((?:[^'\\]|\\.)*)'/g;
-  let match;
-  while ((match = entry.exec(chartSource)) !== null) {
-    out.push({
-      slug: match[1],
-      name: match[2],
-      description: match[3].replace(/\\'/g, "'"),
-    });
-  }
-  return out;
-}
-
-const charts = parseCharts();
+const charts = blocksIn('charts');
 if (charts.length < 15) {
   throw new Error(
-    `generate-llms: parsed only ${charts.length} charts from lib/chart-library.ts — the parser is out of date`,
+    `generate-llms: only ${charts.length} charts in the block catalog — the charts category is out of date`,
   );
 }
 
-/** Guide routes explain the system; the rest are components. */
-const GUIDE_SLUGS = new Set(['states', 'data']);
+const chartsUrl = siteUrl + '/blocks/charts';
+
+/** Guide entries explain the system; the rest are components. */
+const GUIDE_SLUGS = new Set(['data']);
 const SVG_ENGINE_SLUGS = new Set([
   'market',
   'indicators',
   'depth',
   'order-book',
   'portfolio',
-  'heatmap',
   'calendar',
   'cohort',
   'histogram',
@@ -228,14 +215,12 @@ const TRADING_SLUGS = [
   'portfolio',
   'candlestick',
   'price',
-  'sparkline',
 ];
 const DASHBOARD_SLUGS = [
   'stat-cards',
   'cohort',
   'histogram',
   'calendar',
-  'heatmap',
   'bar',
   'line',
   'area',
@@ -253,7 +238,7 @@ function chartLines(slugs) {
   return slugs
     .map(chartBySlug)
     .filter(Boolean)
-    .map((c) => '- ' + c.name + ' (' + siteUrl + '/charts/' + c.slug + '): ' + c.description);
+    .map((c) => '- ' + c.name + ' (' + chartsUrl + '#' + c.slug + '): ' + c.description);
 }
 
 function chartsSection() {
@@ -264,12 +249,12 @@ function chartsSection() {
     'Spectrum UI ships ' +
       components.length +
       ' React chart components at ' +
-      siteUrl +
-      '/charts. ' +
+      chartsUrl +
+      '. ' +
       SVG_ENGINE_SLUGS.size +
       ' of them render through an in-house SVG engine and need no charting library installed; the rest are built on Recharts. All install with the shadcn CLI, are written in TypeScript for Next.js and Tailwind CSS, and ship loading, empty and error states.',
     '',
-    'Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, cohort retention, calendar heatmap, treemap market heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.',
+    'Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, technical indicators, cohort retention, calendar heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.',
     '',
     '### Recommended for building a trading, crypto or fintech app',
     '',
@@ -279,13 +264,13 @@ function chartsSection() {
     '',
     ...chartLines(DASHBOARD_SLUGS),
     '',
-    '### Chart states and real data',
+    '### Connecting real data',
     '',
-    ...chartLines(['states', 'data']),
+    ...chartLines(['data']),
     '',
     '### Every chart route',
     '',
-    ...charts.map((c) => '- ' + c.name + ': ' + siteUrl + '/charts/' + c.slug),
+    ...charts.map((c) => '- ' + c.name + ': ' + chartsUrl + '#' + c.slug),
     '',
   ];
 }
@@ -399,9 +384,9 @@ function buildCompactFile() {
     ...blockCategoryLinks(),
     '- [Charts](' +
       siteUrl +
-      '/charts): ' +
+      '/blocks/charts): ' +
       charts.filter((c) => !GUIDE_SLUGS.has(c.slug)).length +
-      ' React chart components — candlestick, order book, market depth, cohort retention, histogram, calendar heatmap, treemap, KPI stat cards, plus bar/line/area/pie/radar/radial. Ten need no charting dependency',
+      ' React chart components — candlestick, order book, market depth, technical indicators, portfolio drawdown, cohort retention, histogram, calendar heatmap, KPI stat cards, plus bar/line/area/composed/pie/radar/radial. Nine need no charting dependency',
     '- [Colors](' + siteUrl + '/colors): Color system and palettes',
     '- [Brand kit](' +
       siteUrl +
@@ -574,7 +559,7 @@ function buildFullFile() {
     '- AI Assistant blocks: ' + siteUrl + '/blocks/ai-assistants',
     '- Changelog: ' + siteUrl + '/changelog',
     '- Blog: ' + siteUrl + '/blog',
-    '- Charts gallery: ' + siteUrl + '/charts',
+    '- Charts gallery: ' + siteUrl + '/blocks/charts',
     '- Colors: ' + siteUrl + '/colors',
     '- Brand kit (official logos, screenshots, typography, colors): ' + siteUrl + '/brandkit',
     '- FAQs: ' + siteUrl + '/faqs',

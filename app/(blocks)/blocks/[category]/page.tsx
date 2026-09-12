@@ -6,7 +6,11 @@ import { Specimen } from '@/components/blocks/specimen';
 import { JsonLd } from '@/components/seo/json-ld';
 import {
   BLOCK_CATEGORIES,
+  type BlockCatalogItem,
   blockCategoryPath,
+  blockInstallPath,
+  blockRegistryName,
+  blockSourcePath,
   blocksInCategory,
   findBlockCategory,
 } from '@/lib/block-catalog';
@@ -42,10 +46,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 /** The code shown and copied is the file the CLI installs, read off disk. */
-async function readSource(category: string, slug: string) {
-  const relative = path.join('components', 'spectrumui', 'blocks', category, `${slug}.tsx`);
+async function readSource(block: BlockCatalogItem) {
   try {
-    return await fs.readFile(path.join(process.cwd(), relative), 'utf8');
+    return await fs.readFile(path.join(process.cwd(), blockSourcePath(block)), 'utf8');
   } catch {
     return null;
   }
@@ -63,7 +66,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
 
   const blocks = blocksInCategory(slug);
   const wide = category.layout === 'wide';
-  const sources = await Promise.all(blocks.map((block) => readSource(slug, block.slug)));
+  const sources = await Promise.all(blocks.map(readSource));
   const url = `${siteConfig.url}${blockCategoryPath(slug)}`;
 
   const breadcrumb = generateBreadcrumbStructuredData([
@@ -101,7 +104,7 @@ export default async function BlockCategoryPage({ params }: PageProps) {
     isAccessibleForFree: true,
     dateCreated: block.addedAt,
     keywords: [block.category, block.subcategory, ...block.variants].join(', '),
-    installUrl: `https://ui.spectrumhq.in/r/${block.slug}.json`,
+    installUrl: `https://ui.spectrumhq.in/r/${blockRegistryName(block)}.json`,
   }));
 
   return (
@@ -137,6 +140,9 @@ export default async function BlockCategoryPage({ params }: PageProps) {
                 variants={block.variants}
                 source={sources[position] ?? '// Source unavailable'}
                 stage={wide ? 'bleed' : 'inset'}
+                stageMaxWidth={category.stageMaxWidth}
+                registryName={blockRegistryName(block)}
+                filePath={blockInstallPath(block)}
               />
             </div>
           ))}

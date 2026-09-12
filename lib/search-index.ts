@@ -10,8 +10,14 @@
  */
 
 import { getAllBlogPosts } from '@/lib/blog';
-import { BLOCK_CATEGORIES, LIVE_BLOCKS, blockCategoryPath, blockPath } from '@/lib/block-catalog';
-import { CHART_LIBRARY, chartLibraryPath } from '@/lib/chart-library';
+import {
+  BLOCK_CATEGORIES,
+  LIVE_BLOCKS,
+  blockCategoryPath,
+  blockPath,
+  blockRegistryName,
+} from '@/lib/block-catalog';
+import { CHART_BLOCKS, chartBlockPath } from '@/lib/chart-blocks';
 import { COMPONENT_CATALOG, componentDocsPath } from '@/lib/component-catalog';
 import { comparisons } from '@/lib/comparisons';
 import { TOPIC_HUB_LINKS, topicHubPath } from '@/lib/topic-hub-links';
@@ -65,11 +71,6 @@ const STATIC_PAGES: readonly Omit<SearchDocument, 'id' | 'group'>[] = [
     href: '/docs/mcp',
     subtitle: 'Integrations',
     keywords: 'mcp cursor claude ai editor agent model context protocol',
-  },
-  {
-    title: 'Charts',
-    href: '/charts',
-    keywords: 'charts graphs data visualisation dashboards recharts svg',
   },
   {
     title: 'Colors',
@@ -130,11 +131,18 @@ export async function buildSearchIndex(): Promise<SearchDocument[]> {
       group: 'Blocks',
       href: blockCategoryPath(category.slug),
       subtitle: 'All blocks',
-      keywords: keywords(category.tagline, category.slug, 'blocks category section'),
+      keywords: keywords(
+        category.tagline,
+        category.description,
+        category.slug,
+        'blocks category section',
+      ),
     });
   }
 
-  for (const block of LIVE_BLOCKS) {
+  // Charts are blocks too, but they get their own group below — listing them
+  // in both puts two identical rows in the palette.
+  for (const block of LIVE_BLOCKS.filter((block) => block.category !== 'charts')) {
     documents.push({
       id: `block:${block.slug}`,
       title: block.name,
@@ -152,15 +160,15 @@ export async function buildSearchIndex(): Promise<SearchDocument[]> {
     });
   }
 
-  for (const chart of CHART_LIBRARY) {
+  for (const chart of CHART_BLOCKS) {
     documents.push({
       id: `chart:${chart.slug}`,
       title: chart.name,
       group: 'Charts',
-      href: chartLibraryPath(chart.slug),
-      subtitle: 'Chart',
+      href: chartBlockPath(chart.slug),
+      subtitle: chart.subcategory,
       keywords: keywords(chart.description, chart.exportName, chart.slug, 'chart graph'),
-      registry: chart.registryName,
+      registry: blockRegistryName(chart),
     });
   }
 

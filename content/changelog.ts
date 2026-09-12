@@ -32,6 +32,19 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    slug: 'sep-12-2026',
+    date: '2026-09-12',
+    groups: [
+      {
+        label: 'Changed',
+        items: [
+          'The chart library moved into the Blocks section: all 22 chart types are now live specimens on [one page](/blocks/charts), each with its variants on pills and its source a click away. Old /charts links redirect to their anchor.',
+          'A chart no longer gets a page of its own — it sits beside the blocks it belongs in, with the usage line and the gotchas that used to live above its examples kept under the stage.',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'aug-30-2026',
     date: '2026-08-30',
     groups: [
@@ -65,7 +78,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       {
         label: 'New',
         items: [
-          'A command menu on every page: press ⌘K to search all [44 components](/docs), every [block](/blocks), [chart](/charts), guide and [post](/blog) at once, with the matched text highlighted. ⌘↵ on a result copies its install command.',
+          'A command menu on every page: press ⌘K to search all [44 components](/docs), every [block](/blocks), [chart](/blocks/charts), guide and [post](/blog) at once, with the matched text highlighted. ⌘↵ on a result copies its install command.',
           '⌘/ lists the shortcuts, ⌘⇧L flips the theme, and typing > shows commands only. The X, GitHub and LinkedIn handles are in there too.',
         ],
       },
@@ -86,7 +99,7 @@ export const CHANGELOG: ChangelogEntry[] = [
       {
         label: 'New',
         items: [
-          '[Spectrum Charts](/charts) — candlesticks, order books, depth, cohort retention and calendar heatmaps: the set shadcn/ui leaves out, not another re-skin of the defaults.',
+          '[Spectrum Charts](/blocks/charts) — candlesticks, order books, depth, cohort retention and calendar heatmaps: the set shadcn/ui leaves out, not another re-skin of the defaults.',
           'Each chart installs with the shadcn CLI and arrives as editable source, like every other Spectrum component.',
         ],
       },

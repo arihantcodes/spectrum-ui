@@ -81,7 +81,8 @@ These are stated as verdicts because that is what the question asks for. Where a
 - [AI Assistants Blocks](https://ui.spectrumhq.in/blocks/ai-assistants): Interface surfaces for products built on LLMs. 27 blocks, each with variants and source on one page
 - [Pricing Blocks](https://ui.spectrumhq.in/blocks/pricing): Sections that ask for money and get an answer. 7 blocks, each with variants and source on one page
 - [Tables Blocks](https://ui.spectrumhq.in/blocks/tables): The tables real products run on, ready to copy. 15 blocks, each with variants and source on one page
-- [Charts](https://ui.spectrumhq.in/charts): 20 React chart components — candlestick, order book, market depth, cohort retention, histogram, calendar heatmap, treemap, KPI stat cards, plus bar/line/area/pie/radar/radial. Ten need no charting dependency
+- [Charts Blocks](https://ui.spectrumhq.in/blocks/charts): Every chart, live, with the source beside it. 19 blocks, each with variants and source on one page
+- [Charts](https://ui.spectrumhq.in/blocks/charts): 18 React chart components — candlestick, order book, market depth, technical indicators, portfolio drawdown, cohort retention, histogram, calendar heatmap, KPI stat cards, plus bar/line/area/composed/pie/radar/radial. Nine need no charting dependency
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
 
@@ -157,7 +158,7 @@ Components can also be copied manually from their documentation source. Install 
 - [Tree Nav](https://ui.spectrumhq.in/docs/tree-nav): A nav list with a tree rail and a spring marker that follows hover and settles on the active link.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
 
-## Blocks (49, a tier above components)
+## Blocks (68, a tier above components)
 
 Blocks are composed interface sections — several components assembled into a section you install whole.
 
@@ -230,6 +231,32 @@ Every block in this category renders live at actual size on https://ui.spectrumh
 - [Inventory Table](https://ui.spectrumhq.in/blocks/tables#inventory-table): Stock management with SKU tiles, capacity meters that change color at thresholds and status labels.
 - [Leaderboard Table](https://ui.spectrumhq.in/blocks/tables#leaderboard-table): Rankings with medal chips for the top three, player avatars, streaks and weekly movement.
 - [Files Table](https://ui.spectrumhq.in/blocks/tables#files-table): A shared-drive browser with type-glyph tiles, sizes, collaborator stacks and modified dates.
+
+## Charts blocks (19)
+
+The Spectrum chart library, rendered as blocks. A dependency-free SVG market family — candlesticks with a volume pane, an order book ladder, market depth, RSI and MACD indicators and portfolio drawdown against cost basis; area, bar, line, composed, pie, radar and radial charts on Recharts; a latency histogram with percentile pins; and the dashboard set — KPI stat cards, a cohort retention grid and a year of daily activity. Every chart renders live at full size with its variants on pills, a copyable source file, and the loading, empty and error states it ships with.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/charts and installs with the shadcn CLI or through the MCP server.
+
+- [Market Chart](https://ui.spectrumhq.in/blocks/charts#market): A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair and a live tape.
+- [Candlestick Chart](https://ui.spectrumhq.in/blocks/charts#candlestick): OHLC candles with optional volume and hollow-up bodies, for stocks and any market pair.
+- [Price Chart](https://ui.spectrumhq.in/blocks/charts#price): Ticker chrome with last price and signed delta — for tokens, equities or protocol TVL.
+- [Indicator Chart](https://ui.spectrumhq.in/blocks/charts#indicators): Price, RSI and MACD stacked on one time axis with a single crosshair across all three panes.
+- [Depth Chart](https://ui.spectrumhq.in/blocks/charts#depth): Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports resting size.
+- [Order Book](https://ui.spectrumhq.in/blocks/charts#order-book): A trading ladder with cumulative depth bars, a spread row and flashing updates in live mode.
+- [Portfolio Chart](https://ui.spectrumhq.in/blocks/charts#portfolio): Account value against cost basis, with drawdown from the running peak shaded underneath.
+- [Area Chart](https://ui.spectrumhq.in/blocks/charts#area): Filled areas with gradient, hatch, dotted, stacked and dashed-stroke variants.
+- [Bar Chart](https://ui.spectrumhq.in/blocks/charts#bar): Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, percent and glow fills.
+- [Line Chart](https://ui.spectrumhq.in/blocks/charts#line): Multi-series lines with solid, dashed, bump, step, gradient and glow strokes.
+- [Composed Chart](https://ui.spectrumhq.in/blocks/charts#composed): Bars, lines and areas on one plot — mix fills, dashes and glow per series.
+- [Pie Chart](https://ui.spectrumhq.in/blocks/charts#pie): Pie and donut charts with padded sectors, labels and optional sector glow.
+- [Radar Chart](https://ui.spectrumhq.in/blocks/charts#radar): Radar plots with filled or outline series, circle grids and glow.
+- [Radial Chart](https://ui.spectrumhq.in/blocks/charts#radial): Full and semi-circle radial bars for share and progress.
+- [Histogram](https://ui.spectrumhq.in/blocks/charts#histogram): Raw samples binned on nice edges, with the long tail folded into one labelled overflow bin.
+- [Connecting Real Data](https://ui.spectrumhq.in/blocks/charts#data): Wiring any chart to a real source: fetch, SWR or React Query, server components and streaming.
+- [Stat Cards](https://ui.spectrumhq.in/blocks/charts#stat-cards): KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline beside it.
+- [Cohort Retention](https://ui.spectrumhq.in/blocks/charts#cohort): The retention triangle: cohorts down, periods across, intensity by share retained.
+- [Calendar Heatmap](https://ui.spectrumhq.in/blocks/charts#calendar): A year of daily values as week columns — the contributions grid, with streak stats and month rails.
 
 ## Machine-readable resources
 

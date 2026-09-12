@@ -11,14 +11,13 @@ import { Icons } from './icon';
  *  chat widget was only reachable through that button, so pointing this at X
  *  retires the widget entirely rather than leaving its script loading unused.
  *
- *  Hidden on auth screens (nothing to pitch mid-signup) and on /charts, whose
- *  full-bleed canvas the pill would overlap. */
+ *  Hidden on auth screens — nothing to pitch mid-signup. */
 export function WorkWithMe() {
   const pathname = usePathname();
   const hideOnRoutes = ['/sign-in', '/sign-up', '/create-user', '/profile'];
-  const hidden =
-    pathname === '/charts' ||
-    hideOnRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
+  const hidden = hideOnRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`),
+  );
 
   if (hidden) return null;
 

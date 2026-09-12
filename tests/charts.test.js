@@ -232,54 +232,93 @@ for (const name of SVG_CHARTS) {
   );
 }
 
-/* -- 6. Every catalogued chart resolves to a page and a registry item ---- */
+/* -- 6. Every chart is a live block with a registry item ------------------ */
 
-const catalogSource = fs.readFileSync(path.join(projectRoot, 'lib', 'chart-library.ts'), 'utf8');
-const slugs = [...catalogSource.matchAll(/slug:\s*'([^']+)'/g)].map((m) => m[1]);
-const registryNames = [...catalogSource.matchAll(/registryName:\s*'([^']+)'/g)].map((m) => m[1]);
-assert.equal(slugs.length, registryNames.length, 'Every chart needs a registryName');
+// Charts moved out of /charts and into the Blocks section: each chart type is
+// an anchored specimen on /blocks/charts. The block catalog is the only
+// catalog now, so the invariants move with it — a chart with no registry item
+// 404s the CLI, and a chart with no demo renders an empty stage.
+const blockCatalog = JSON.parse(
+  fs.readFileSync(path.join(projectRoot, 'content', 'block-catalog.json'), 'utf8'),
+);
+const chartBlocks = blockCatalog.blocks.filter(
+  (block) => block.category === 'charts' && block.status === 'live',
+);
+
+assert.ok(
+  blockCatalog.categories.some((category) => category.slug === 'charts'),
+  'The block catalog must declare a charts category',
+);
+assert.ok(
+  chartBlocks.length >= 15,
+  `Expected the chart library in the block catalog, got ${chartBlocks.length}`,
+);
 
 const registry = JSON.parse(fs.readFileSync(path.join(projectRoot, 'registry.json'), 'utf8'));
 const registered = new Set(registry.items.map((item) => item.name));
 
-for (let i = 0; i < slugs.length; i += 1) {
-  const page = path.join(projectRoot, 'app', 'charts', '(library)', slugs[i], 'page.tsx');
-  assert.ok(fs.existsSync(page), `/charts/${slugs[i]} must have a page.tsx`);
+for (const block of chartBlocks) {
+  const name = block.registryName ?? block.slug;
+  assert.ok(registered.has(name), `${name} must be in registry.json or the CLI 404s`);
+  assert.ok(block.sourceFile, `${block.slug}: chart blocks need a sourceFile — the source lives in app/registry/charts`);
   assert.ok(
-    registered.has(registryNames[i]),
-    `${registryNames[i]} must be in registry.json or the CLI 404s`,
+    fs.existsSync(path.join(projectRoot, block.sourceFile)),
+    `${block.slug}: sourceFile ${block.sourceFile} does not exist, so the page would show "// Source unavailable"`,
   );
+  assert.ok(block.variants.length > 0, `${block.slug} needs at least one variant pill`);
 }
 
-/* -- 7. The /charts index must cover every catalogued chart ------------- */
+/* -- 7. Every chart block has a live demo -------------------------------- */
 
-// A missing cell is invisible in review — the grid just renders one fewer
-// tile, and in a 2-up layout it also leaves a hole in the last row.
-const indexSource = fs.readFileSync(
-  path.join(projectRoot, 'app', 'charts', 'charts-index.tsx'),
+// A block with no demo renders an empty stage: the page still lists it, the
+// pills still switch, and nothing appears.
+const demoSource = fs.readFileSync(
+  path.join(projectRoot, 'components', 'blocks', 'chart-demos.tsx'),
   'utf8',
 );
-const indexSlugs = new Set(
-  [...indexSource.matchAll(/^\s{4}slug: '([^']+)'/gm)].map((m) => m[1]),
-);
-// Guide routes explain the system rather than showing a chart.
-const GUIDE_ROUTES = new Set(['states', 'data']);
 
-for (const slug of slugs) {
-  if (GUIDE_ROUTES.has(slug)) continue;
+for (const block of chartBlocks) {
+  // Prettier strips the quotes from keys that are valid identifiers, so
+  // `sparkline:` and `'stat-cards':` both have to match.
   assert.ok(
-    indexSlugs.has(slug),
-    `/charts index is missing a cell for "${slug}" — every catalogued chart needs one`,
+    new RegExp(`(^|\\s)'?${block.slug}'?: \\(variant\\)`, 'm').test(demoSource),
+    `${block.slug} has no entry in components/blocks/chart-demos.tsx — its stage would render empty`,
+  );
+  for (const variant of block.variants) {
+    assert.ok(
+      demoSource.includes(`case '${variant}':`) || block.variants.indexOf(variant) === 0,
+      `${block.slug}: variant "${variant}" has no case in chart-demos.tsx, so its pill falls back to the default`,
+    );
+  }
+}
+
+/* -- 8. Nothing still links to the retired /charts routes ----------------- */
+
+const LINK_SOURCES = [
+  'lib/search-index.ts',
+  'lib/routes-config.ts',
+  'components/main-nav.tsx',
+  'components/mobile-nav.tsx',
+  'components/footer.tsx',
+  'components/command-menu.tsx',
+  'app/sitemap.ts',
+];
+
+for (const file of LINK_SOURCES) {
+  const source = fs.readFileSync(path.join(projectRoot, file), 'utf8');
+  const stale = source.match(/['"`]\/charts(\/[a-z-]*)?['"`]/g);
+  assert.ok(
+    !stale,
+    `${file} still links to ${stale && stale.join(', ')} — charts live at /blocks/charts now`,
   );
 }
-assert.equal(
-  indexSlugs.size % 2,
-  0,
-  `The /charts index has ${indexSlugs.size} cells; an odd count leaves a hole in the 2-up grid`,
+
+assert.ok(
+  !fs.existsSync(path.join(projectRoot, 'app', 'charts')),
+  'app/charts must not come back — /charts/* redirects into /blocks/charts',
 );
 
 console.log(
   `Charts validated: ${chartFiles.length} sources, ${CARTESIAN.length} cartesian charts with axes, ` +
-    `${SVG_CHARTS.length} dependency-free SVG charts, ${slugs.length} catalogued routes, ` +
-    `${indexSlugs.size} index cells`,
+    `${SVG_CHARTS.length} dependency-free SVG charts, ${chartBlocks.length} chart blocks on /blocks/charts`,
 );

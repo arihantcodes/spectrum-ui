@@ -23,6 +23,10 @@ interface CodeDrawerProps {
   onOpenChange: (open: boolean) => void;
   name: string;
   slug: string;
+  /** The CLI item — `@spectrumui/<registryName>`. Charts install under a longer name than their anchor. */
+  registryName: string;
+  /** Where the CLI writes the file. */
+  filePath?: string;
   source: string;
 }
 
@@ -32,7 +36,15 @@ interface CodeDrawerProps {
  * (same icons, same Shiki themes, same auth gate). Copying any of the three
  * requires login, exactly like /docs/<component>.
  */
-export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawerProps) {
+export function CodeDrawer({
+  open,
+  onOpenChange,
+  name,
+  slug,
+  registryName,
+  filePath,
+  source,
+}: CodeDrawerProps) {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
@@ -42,7 +54,7 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
         <SheetHeader className="text-left">
           <SheetTitle className="text-[17px] tracking-[-0.2px]">{name}</SheetTitle>
           <SheetDescription className="font-mono text-[11.5px]">
-            components/spectrumui/blocks/ai-assistants/{slug}.tsx
+            {filePath ?? `components/spectrumui/blocks/${slug}.tsx`}
           </SheetDescription>
         </SheetHeader>
 
@@ -54,11 +66,11 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
           >
             Installation
           </h3>
-          <InstallFigure cli={`@spectrumui/${slug}`} componentName={slug} />
+          <InstallFigure cli={`@spectrumui/${registryName}`} componentName={registryName} />
         </section>
 
         {/* 2 — MCP: the prompt an agent turns into an install. */}
-        <McpSection slug={slug} />
+        <McpSection slug={slug} registryName={registryName} />
 
         {/* 3 — Manual: the source, Shiki-highlighted and login-gated. */}
         <section aria-labelledby={`${slug}-code`} className="mt-7">
@@ -68,7 +80,11 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
           >
             Code
           </h3>
-          <CodeHighlight code={source} title={`${slug}.tsx`} requireAuth />
+          <CodeHighlight
+            code={source}
+            title={(filePath ?? slug).split('/').pop() ?? `${slug}.tsx`}
+            requireAuth
+          />
         </section>
       </SheetContent>
     </Sheet>
@@ -81,10 +97,10 @@ export function CodeDrawer({ open, onOpenChange, name, slug, source }: CodeDrawe
  * below — so the drawer's three cards read as one system instead of three
  * unrelated boxes.
  */
-function McpSection({ slug }: { slug: string }) {
+function McpSection({ slug, registryName }: { slug: string; registryName: string }) {
   const [copied, setCopied] = useState(false);
   const { isAuthenticated, openAuthModal } = useAuthGate();
-  const prompt = `Install the ${slug} block from Spectrum UI`;
+  const prompt = `Install the ${registryName} block from Spectrum UI`;
 
   function handleCopy() {
     if (!isAuthenticated) {

@@ -550,7 +550,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## Block reference (49)
+## Block reference (68)
 
 Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.
 
@@ -1454,67 +1454,517 @@ What makes it hard to build well:
 - The avatar stack overlaps with surface-colored rings so it works on white and near-black
 - Folder sizes are null — they sort to the bottom and print as a dash, never 0 KB
 
+## Charts blocks (19) — reference
+
+The Spectrum chart library, rendered as blocks. A dependency-free SVG market family — candlesticks with a volume pane, an order book ladder, market depth, RSI and MACD indicators and portfolio drawdown against cost basis; area, bar, line, composed, pie, radar and radial charts on Recharts; a latency histogram with percentile pins; and the dashboard set — KPI stat cards, a cohort retention grid and a year of daily activity. Every chart renders live at full size with its variants on pills, a copyable source file, and the loading, empty and error states it ships with.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/charts and installs with the shadcn CLI or through the MCP server.
+
+### Market Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#market
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/market-chart
+- Variants: Default, Area, Live, Stock, Bitcoin, Compact
+- Dependencies: none
+- Added: 2026-09-12
+
+The full trading surface, drawn without a charting library: candles over a volume pane, a crosshair that pins price and time to both axes, a range selector that morphs the series, and an optional live tape. Arrow keys scrub it once the plot has focus.
+
+Usage: `<MarketChart data={candles} symbol="SOL" name="Solana" />`
+
+When to use it: A full trading surface for a market page. Dependency-free SVG. Use Candlestick Chart if you only need candles inside an existing Recharts layout.
+
+Worth knowing:
+- Candles need `{ t, open, high, low, close, volume }` with `t` in epoch milliseconds.
+- `live` appends simulated ticks — drive it from your own socket by feeding `data` instead.
+- Arrow keys scrub the crosshair once the plot has focus.
+
+What makes it hard to build well:
+- Candles need { t, open, high, low, close, volume } with t in epoch milliseconds
+- live appends simulated ticks — drive it from your own socket by feeding data instead
+- Scrubbing blocks only the axis it scrubs on, so a drag never traps page scroll on touch
+
+### Candlestick Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#candlestick
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/candlestick-chart
+- Variants: Default, Stock, Volume, Hollow
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+Candles that drop into an existing Recharts layout, with a volume pane and hollow bodies for up sessions. For a full trading surface with a crosshair and a range selector, reach for the Market Chart instead.
+
+Usage: `<CandlestickChart data={candles} showVolume />`
+
+When to use it: Candles inside a Recharts page. Needs OHLC rows; showVolume adds the pane. Market Chart is the dependency-free alternative.
+
+Worth knowing:
+- Built on Recharts. For a full trading surface use the Market Chart instead.
+
+What makes it hard to build well:
+- Built on Recharts — for a full trading surface use the Market Chart instead
+- Up and down carry an outline as well as a colour, so direction survives colour-blindness
+- Volume shares the candle scale band rather than a second axis
+
+### Price Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#price
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/price-chart
+- Variants: Default, Stock, TVL, Compare
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+A price line under a header that carries the symbol, the last print and the signed change. The Compare variant indexes two series to a common base so their shapes can be read against each other on one axis.
+
+Usage: `<PriceChart data={series} symbol="SOL" name="Solana" />`
+
+When to use it: A ticker panel for a token, equity or TVL series. Compare takes two series indexed to a shared base.
+
+Worth knowing:
+- Compare indexes both series to a common base — two Y axes would invent a correlation.
+
+What makes it hard to build well:
+- Comparing two instruments means indexing both to 100 at t0 — never a second Y axis
+- The delta colours by direction and repeats the sign, so it is not colour alone
+- Last price sits in tabular figures, or the header jitters on every tick
+
+### Indicator Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#indicators
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/indicator-chart
+- Variants: Default, Stock
+- Dependencies: none
+- Added: 2026-09-12
+
+Three panes that share one time axis and one crosshair, so a reading in the price pane lines up with its RSI and MACD values. Both indicators are computed from the full series and then sliced, so changing range never restates them.
+
+Usage: `<IndicatorChart data={candles} symbol="SOL" />`
+
+When to use it: Technical analysis view for a trading page. Takes the same candles as Market Chart; indicators are derived, not passed.
+
+Worth knowing:
+- RSI and MACD are computed from the full series, then sliced — so changing range never restates them.
+- `rsi()` and `macd()` are exported if you want the numbers without the chart.
+
+What makes it hard to build well:
+- RSI and MACD are computed from the full series, then sliced — restating them per range would move history
+- rsi() and macd() are exported if you want the numbers without the chart
+- One crosshair drives three panes, so the hover index lives above them, not inside each
+
+### Depth Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#depth
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/depth-chart
+- Variants: Default, Bitcoin
+- Dependencies: none
+- Added: 2026-09-12
+
+The liquidity curve either side of the mid price, with a crosshair that reports how much size rests up to any price. Levels are cumulative outward from the mid, so the slope is the cost of sweeping the book.
+
+Usage: `<DepthChart book={book} symbol="SOL" />`
+
+When to use it: Liquidity depth for a DEX or exchange page. Takes a book with cumulative bid and ask levels; pair it with the Order Book ladder.
+
+Worth knowing:
+- `generateOrderBook()` from the engine builds a specimen book; swap it for your feed.
+- Levels are cumulative from the mid outward — pass `total` already summed.
+
+What makes it hard to build well:
+- generateOrderBook() from the engine builds a specimen book; swap it for your feed
+- Levels are cumulative from the mid outward — pass total already summed
+- Bid and ask are the up and down tokens, repeated as left and right of the mid
+
+### Order Book
+
+- URL: https://ui.spectrumhq.in/blocks/charts#order-book
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/order-book
+- Variants: Default, Live, Ethereum
+- Dependencies: none
+- Added: 2026-09-12
+
+The bid and ask ladder with depth bars behind the rows and a spread row between the sides. Hovering a row highlights every level between it and the touch — the cost of sweeping to that price.
+
+Usage: `<OrderBookLadder book={book} symbol="SOL" live />`
+
+When to use it: The bid/ask ladder beside a trading chart. Deterministic under live mode, so it is safe to server-render.
+
+Worth knowing:
+- Hovering a row highlights every level between it and the touch — the sweep cost.
+- `live` re-derives the book from a seeded nonce, so it stays deterministic across renders.
+
+What makes it hard to build well:
+- Hovering a row highlights every level between it and the touch — the sweep cost, not just the row
+- live re-derives the book from a seeded nonce, so it stays deterministic across renders
+- Prices and sizes are tabular, or the ladder shivers on every update
+
+### Portfolio Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#portfolio
+- Category: charts / Markets
+- Install: npx shadcn@latest add @spectrumui/portfolio-chart
+- Variants: Default, Flat
+- Dependencies: none
+- Added: 2026-09-12
+
+Account value over capital deployed, with the drawdown from the running peak shaded below the line. The stepped dashed line is the basis, so gains read as the gap between the two.
+
+Usage: `<PortfolioChart data={points} label="Portfolio" />`
+
+When to use it: Portfolio value with cost basis and drawdown. points need value and basis; drawdown is derived.
+
+Worth knowing:
+- Drawdown is measured from the running peak inside the visible range, not all time.
+- `basis` is capital deployed to date — the stepped dashed line.
+
+What makes it hard to build well:
+- Drawdown is measured from the running peak inside the visible range, not all time
+- basis is capital deployed to date — the stepped dashed line, not a smooth series
+- Profit and loss share one axis; the shading carries the second reading instead
+
+### Area Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#area
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/area-chart
+- Variants: Default, Hatched, Dotted, Solid, Stacked, Bump, Dashed
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+The workhorse trend chart, with seven fills that change the character of the plot without touching the data. Axes, grid and tooltip are real Recharts children, so the chart keeps its ticks when you restyle it.
+
+Usage: `<AreaChart data={data} variant="gradient" />`
+
+When to use it: Trends over time where volume matters. variant switches the fill; stackType stacks series. Use Price Chart for a ticker with chrome.
+
+Worth knowing:
+- Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently.
+
+What makes it hard to build well:
+- Axes and grids are direct Recharts children — wrap one in a component and Recharts silently drops it
+- Stacked areas need the series order fixed, or the bands reshuffle between renders
+- The animated dashed stroke runs on a keyframe that stops under reduced motion
+
+### Bar Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#bar
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/bar-chart
+- Variants: Default, Hatched, Duotone, Duotone reverse, Gradient, Stripped, Stacked, Percent, Horizontal, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+Ten presentations of the same bar chart, from a plain column to a 100% stack and a horizontal ranking. Every variant keeps real axes and gridlines, and the percent stack computes its own shares.
+
+Usage: `<BarChart data={data} variant="gradient" />`
+
+When to use it: Comparing categories or stacked composition. variant picks the fill; layout="vertical" gives horizontal bars. Cap categorical series at six.
+
+Worth knowing:
+- Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently.
+
+What makes it hard to build well:
+- Horizontal bars need the category on the Y axis and a wider left margin, or labels clip
+- The percent variant normalises to 100 itself — pass raw values, not shares
+- Duotone reverse swaps which half of the stack carries the accent, so the eye reads the remainder
+
+### Line Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#line
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/line-chart
+- Variants: Default, Dashed, Bump, Step, Gradient, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+Multi-series lines with six stroke treatments and a shared tooltip. Step is for values that hold between readings, bump for smooth interpolation, and the gradient stroke fades a series toward the axis.
+
+Usage: `<LineChart data={data} curveType="bump" />`
+
+When to use it: Trends where the reader compares series. curveType switches interpolation; keep to four series or facet into small multiples.
+
+Worth knowing:
+- Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently.
+
+What makes it hard to build well:
+- curveType changes meaning, not just shape — step says the value held, bump says it moved smoothly
+- A dashed stroke reads as projection or forecast, so do not use it for actuals
+- Legends carry identity for every series past the first, so lines are never distinguished by colour alone
+
+### Composed Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#composed
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/composed-chart
+- Variants: Default, Hatched, Duotone, Dashed, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+One plot carrying more than one mark type: bars for the measure, a line for the trend or target, an area for the band behind them. All of it on a single shared axis.
+
+Usage: `<ComposedChart data={data} />`
+
+When to use it: One plot mixing marks — bars with a trend line, or an area with a target. Keep both measures on one scale.
+
+Worth knowing:
+- Built on Recharts. Never add a second Y axis — index both measures to a common base instead.
+
+What makes it hard to build well:
+- Every series shares one Y axis — a second scale would invent a correlation that is not in the data
+- Mark type is the strongest channel, so give the bars the measure people came to read
+- Series order controls paint order; the line has to come after the bars or it hides behind them
+
+### Pie Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#pie
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/pie-chart
+- Variants: Default, Donut, Padded, Labels, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+Part-to-whole at a glance, with a donut that can carry a total in its middle and padded sectors that separate on the surface rather than with a stroke. Labels ride the sectors only when they fit.
+
+Usage: `<PieChart data={data} />`
+
+When to use it: Composition at a glance for six or fewer segments. Donut variant frees the middle for a total. Not for ranking.
+
+Worth knowing:
+- Part-to-whole only, and never for comparing close values — use a bar chart there.
+
+What makes it hard to build well:
+- Six segments is the ceiling — past that, fold the tail into one Other slice
+- Padded sectors separate with surface, not a border, so the ring keeps its weight
+- A pie cannot rank close values; switch to bars when the reader needs an order
+
+### Radar Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#radar
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/radar-chart
+- Variants: Default, Lines, Circle, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+A profile across several axes at once — scorecards, feature coverage, skill maps. Filled for one series, outlines when two profiles are being compared.
+
+Usage: `<RadarChart data={data} />`
+
+When to use it: Multi-attribute profiles on one shared scale. Two series maximum; normalise attributes before passing them.
+
+Worth knowing:
+- Every axis must share one scale, or the polygon means nothing.
+
+What makes it hard to build well:
+- Every axis has to share a scale, or the shape is decorative rather than readable
+- Two filled series obscure each other; use the Lines variant to compare
+- Axis order changes the silhouette, so fix it once and keep it across screens
+
+### Radial Chart
+
+- URL: https://ui.spectrumhq.in/blocks/charts#radial
+- Category: charts / Cartesian
+- Install: npx shadcn@latest add @spectrumui/radial-chart
+- Variants: Default, Semi, Glowing
+- Dependencies: recharts, framer-motion
+- Added: 2026-09-12
+
+Progress toward a target as an arc, with a full circle for share and a semi-circle for a gauge that sits above a caption. The track is a lighter step of the fill, so state reads across the whole arc.
+
+Usage: `<RadialChart data={data} />`
+
+When to use it: Single-value progress or share. One or two arcs per card; use bars when comparing more than three values.
+
+Worth knowing:
+- Always print the number: arc length is the weakest comparison channel there is.
+
+What makes it hard to build well:
+- The track is a lighter step of the fill hue, so the unfilled remainder still reads as the same measure
+- Arc length is hard to compare across cards — label the number, always
+- A semi-circle needs its own vertical rhythm or the caption floats away from the arc
+
+### Histogram
+
+- URL: https://ui.spectrumhq.in/blocks/charts#histogram
+- Category: charts / Analytics
+- Install: npx shadcn@latest add @spectrumui/histogram-chart
+- Variants: Default, Orders
+- Dependencies: none
+- Added: 2026-09-12
+
+The chart that shows the tail an average hides. It bins raw samples itself on human-readable edges, pins p50, p95 and p99 onto the plot, and folds everything past the 99th percentile into a single overflow bin past a broken axis — so a distribution with one 900ms straggler still fills the plot instead of spending half of it on air.
+
+Usage: `<HistogramChart data={samples} label="API latency" />`
+
+When to use it: Latency, order value or any distribution where the tail matters. Feed raw samples, not pre-bucketed counts; tailCutoff controls the overflow bin. Not a time series.
+
+Worth knowing:
+- Pass raw samples — the chart bins them itself on human-readable edges.
+- `tailCutoff` is the percentile past which samples fold into the overflow bin; pass `100` to bin the full range.
+- `buildBins()`, `percentile()` and `splitTail()` are exported if you need the numbers elsewhere.
+
+What makes it hard to build well:
+- Pass raw samples — the chart bins them itself on human-readable edges rather than trusting yours
+- The tail folds into one overflow bin past a visible axis break, so clipping it never reads as missing data
+- Percentiles ride one hue that darkens with k; red on p99 would call the tail bad, which is not the chart’s call
+
+### Connecting Real Data
+
+- URL: https://ui.spectrumhq.in/blocks/charts#data
+- Category: charts / Foundations
+- Install: npx shadcn@latest add @spectrumui/chart-data
+- Variants: Fetch, Query, Stream
+- Dependencies: none
+- Added: 2026-09-12
+
+Three recipes for getting real data into a chart, with every outcome mapped onto the same status union the charts already take. One hook drives all of them, and its retry wires straight into the error state.
+
+Usage: `const { data, status, retry } = useChartData<Point[]>('/api/metrics');`
+
+When to use it: How to feed the charts from an API. useChartData returns { data, status, retry } shaped for the ChartState contract.
+
+Worth knowing:
+- Every chart takes the same `status` union, so one fetch hook drives all of them.
+- `retry` is wired to the error state’s button — pass it straight through as `onRetry`.
+
+What makes it hard to build well:
+- Every chart takes the same status union, so one fetch hook drives all of them
+- retry is wired to the error state’s button — pass it straight through as onRetry
+- Streaming appends to the series instead of replacing it, so the chart animates rather than jumps
+
+### Stat Cards
+
+- URL: https://ui.spectrumhq.in/blocks/charts#stat-cards
+- Category: charts / Analytics
+- Install: npx shadcn@latest add @spectrumui/stat-cards
+- Variants: Default, Budget
+- Dependencies: none
+- Added: 2026-09-12
+
+The row every dashboard opens with. Each card carries a label, a compact value, the change written out against a named period, and either a scrubbable sparkline or a progress bar. Hovering the spark reports the point under the pointer instead of the headline figure.
+
+Usage: `<StatCards cards={cards} columns={4} />`
+
+When to use it: The KPI header for an analytics dashboard. Cards are data, not markup — pass value, previous, series and goodWhen. Not a chart panel: one metric per card.
+
+Worth knowing:
+- Set `goodWhen: 'down'` on metrics where falling is healthy, like churn — otherwise the delta turns red.
+- Pass `previous` to compare against last period instead of the first point in the series.
+- A card with `progress` renders a bar instead of a sparkline.
+
+What makes it hard to build well:
+- Set goodWhen: 'down' on metrics where falling is healthy, like churn, or the delta turns red on good news
+- Pass previous to compare against last period rather than the first point in the series
+- A card with progress renders a bar instead of a sparkline, so the row can mix both shapes
+
+### Cohort Retention
+
+- URL: https://ui.spectrumhq.in/blocks/charts#cohort
+- Category: charts / Analytics
+- Install: npx shadcn@latest add @spectrumui/cohort-chart
+- Variants: Default, Weekly
+- Dependencies: none
+- Added: 2026-09-12
+
+A cohort grid with a row and column crosshair and a period average underneath. Later cohorts carry shorter arrays, so the ragged edge stays honest about which periods have actually happened.
+
+Usage: `<CohortChart data={cohorts} period="Month" />`
+
+When to use it: Retention by signup cohort for growth dashboards. data is an array of cohorts with a label, size and retention array; period labels the columns.
+
+Worth knowing:
+- Give later cohorts shorter `retention` arrays — the ragged edge is the point.
+- Index 0 should always be 100; the chart does not normalise for you.
+
+What makes it hard to build well:
+- Give later cohorts shorter retention arrays — the ragged edge is the point, not a gap to fill with zeros
+- Index 0 should always be 100; the chart does not normalise for you
+- Intensity runs on one hue, so darkness reads as magnitude rather than as a second category
+
+### Calendar Heatmap
+
+- URL: https://ui.spectrumhq.in/blocks/charts#calendar
+- Category: charts / Analytics
+- Install: npx shadcn@latest add @spectrumui/calendar-heatmap
+- Variants: Default, Deploys
+- Dependencies: none
+- Added: 2026-09-12
+
+Five quantised intensity steps across a year of week columns, with month rails above and streak and busiest-day figures beside it. Gaps in the data fill as zero, so a sparse feed still renders a complete year.
+
+Usage: `<CalendarHeatmap data={days} label="contributions" />`
+
+When to use it: Daily activity density — commits, deploys, orders, sessions. Expects a full year of { t, value }; use the Cohort chart for retention grids instead.
+
+Worth knowing:
+- Days need `{ t, value }` with `t` at UTC midnight; gaps are filled as zero.
+- Intensity is quantised into five buckets — the eye cannot rank a continuous ramp.
+
+What makes it hard to build well:
+- Days need { t, value } with t at UTC midnight; gaps are filled as zero rather than skipped
+- Intensity is quantised into five buckets — the eye cannot rank a continuous ramp
+- Month labels print on the column each month starts, not on every column
+
 ## Charts
 
-Spectrum UI ships 20 React chart components at https://ui.spectrumhq.in/charts. 10 of them render through an in-house SVG engine and need no charting library installed; the rest are built on Recharts. All install with the shadcn CLI, are written in TypeScript for Next.js and Tailwind CSS, and ship loading, empty and error states.
+Spectrum UI ships 18 React chart components at https://ui.spectrumhq.in/blocks/charts. 9 of them render through an in-house SVG engine and need no charting library installed; the rest are built on Recharts. All install with the shadcn CLI, are written in TypeScript for Next.js and Tailwind CSS, and ship loading, empty and error states.
 
-Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, cohort retention, calendar heatmap, treemap market heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.
+Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, order book ladder, market depth, technical indicators, cohort retention, calendar heatmap, histogram with p50/p95/p99 percentile pins, and portfolio drawdown.
 
 ### Recommended for building a trading, crypto or fintech app
 
-- Market Chart (https://ui.spectrumhq.in/charts/market): A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair with axis-pinned price and time, a range selector, and a live tape.
-- Indicator Chart (https://ui.spectrumhq.in/charts/indicators): Price, RSI and MACD stacked on one time axis with a single crosshair that reports all three panes at once.
-- Depth Chart (https://ui.spectrumhq.in/charts/depth): Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports the size resting up to any price.
-- Order Book (https://ui.spectrumhq.in/charts/order-book): A trading ladder with cumulative depth bars, a spread row, and flashing updates in live mode.
-- Portfolio Chart (https://ui.spectrumhq.in/charts/portfolio): Account value against cost basis with drawdown from the running peak shaded underneath.
-- Candlestick Chart (https://ui.spectrumhq.in/charts/candlestick): OHLC candles with optional volume and hollow-up bodies — for stocks, SOL, and any market pair.
-- Price Chart (https://ui.spectrumhq.in/charts/price): Ticker chrome with last price and signed delta. Use it for tokens, equities, or protocol TVL.
-- Sparkline (https://ui.spectrumhq.in/charts/sparkline): Compact inline price marks for watchlists, token tables, and portfolio rows.
+- Market Chart (https://ui.spectrumhq.in/blocks/charts#market): A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair and a live tape.
+- Indicator Chart (https://ui.spectrumhq.in/blocks/charts#indicators): Price, RSI and MACD stacked on one time axis with a single crosshair across all three panes.
+- Depth Chart (https://ui.spectrumhq.in/blocks/charts#depth): Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports resting size.
+- Order Book (https://ui.spectrumhq.in/blocks/charts#order-book): A trading ladder with cumulative depth bars, a spread row and flashing updates in live mode.
+- Portfolio Chart (https://ui.spectrumhq.in/blocks/charts#portfolio): Account value against cost basis, with drawdown from the running peak shaded underneath.
+- Candlestick Chart (https://ui.spectrumhq.in/blocks/charts#candlestick): OHLC candles with optional volume and hollow-up bodies, for stocks and any market pair.
+- Price Chart (https://ui.spectrumhq.in/blocks/charts#price): Ticker chrome with last price and signed delta — for tokens, equities or protocol TVL.
 
 ### Recommended for building a SaaS or analytics dashboard
 
-- Stat Cards (https://ui.spectrumhq.in/charts/stat-cards): KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline or progress bar beside it — the row every dashboard opens with.
-- Cohort Retention (https://ui.spectrumhq.in/charts/cohort): The retention triangle: cohorts down, periods across, intensity by share retained, with a row and column crosshair and a period average.
-- Histogram (https://ui.spectrumhq.in/charts/histogram): A distribution of raw samples binned on nice edges, with p50 / p95 / p99 pinned onto the plot — the chart that shows the tail your average hides.
-- Calendar Heatmap (https://ui.spectrumhq.in/charts/calendar): A year of daily values as week columns — the contributions grid, with five quantised intensity steps, streak stats, and month rails.
-- Market Heatmap (https://ui.spectrumhq.in/charts/heatmap): A squarified treemap sized by market cap and coloured on a diverging change ramp — the market map.
-- Bar Chart (https://ui.spectrumhq.in/charts/bar): Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, and glow fills.
-- Line Chart (https://ui.spectrumhq.in/charts/line): Multi-series lines with solid, dashed, bump, step, gradient, and glow strokes.
-- Area Chart (https://ui.spectrumhq.in/charts/area): Filled areas with gradient, hatch, dotted, stacked, and dashed-stroke variants.
-- Composed Chart (https://ui.spectrumhq.in/charts/composed): Bars, lines, and areas on one plot — mix fills, dashes, and glow per series.
-- Pie Chart (https://ui.spectrumhq.in/charts/pie): Pie and donut charts with padded sectors, labels, and optional sector glow.
-- Radar Chart (https://ui.spectrumhq.in/charts/radar): Radar plots with filled or outline series, circle grids, and glow.
-- Radial Chart (https://ui.spectrumhq.in/charts/radial): Full and semi-circle radial bars for share and progress.
+- Stat Cards (https://ui.spectrumhq.in/blocks/charts#stat-cards): KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline beside it.
+- Cohort Retention (https://ui.spectrumhq.in/blocks/charts#cohort): The retention triangle: cohorts down, periods across, intensity by share retained.
+- Histogram (https://ui.spectrumhq.in/blocks/charts#histogram): Raw samples binned on nice edges, with the long tail folded into one labelled overflow bin.
+- Calendar Heatmap (https://ui.spectrumhq.in/blocks/charts#calendar): A year of daily values as week columns — the contributions grid, with streak stats and month rails.
+- Bar Chart (https://ui.spectrumhq.in/blocks/charts#bar): Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, percent and glow fills.
+- Line Chart (https://ui.spectrumhq.in/blocks/charts#line): Multi-series lines with solid, dashed, bump, step, gradient and glow strokes.
+- Area Chart (https://ui.spectrumhq.in/blocks/charts#area): Filled areas with gradient, hatch, dotted, stacked and dashed-stroke variants.
+- Composed Chart (https://ui.spectrumhq.in/blocks/charts#composed): Bars, lines and areas on one plot — mix fills, dashes and glow per series.
+- Pie Chart (https://ui.spectrumhq.in/blocks/charts#pie): Pie and donut charts with padded sectors, labels and optional sector glow.
+- Radar Chart (https://ui.spectrumhq.in/blocks/charts#radar): Radar plots with filled or outline series, circle grids and glow.
+- Radial Chart (https://ui.spectrumhq.in/blocks/charts#radial): Full and semi-circle radial bars for share and progress.
 
-### Chart states and real data
+### Connecting real data
 
-- Chart States (https://ui.spectrumhq.in/charts/states): Loading skeletons, empty states and error states for every chart — one wrapper, six skeleton shapes, and a frame height that never shifts between them.
-- Connecting Real Data (https://ui.spectrumhq.in/charts/data): Wiring any chart to a real source: fetch in an effect, SWR or React Query, server components, and streaming — with every outcome mapped onto a status.
+- Connecting Real Data (https://ui.spectrumhq.in/blocks/charts#data): Wiring any chart to a real source: fetch, SWR or React Query, server components and streaming.
 
 ### Every chart route
 
-- Connecting Real Data: https://ui.spectrumhq.in/charts/data
-- Chart States: https://ui.spectrumhq.in/charts/states
-- Stat Cards: https://ui.spectrumhq.in/charts/stat-cards
-- Market Chart: https://ui.spectrumhq.in/charts/market
-- Indicator Chart: https://ui.spectrumhq.in/charts/indicators
-- Depth Chart: https://ui.spectrumhq.in/charts/depth
-- Order Book: https://ui.spectrumhq.in/charts/order-book
-- Portfolio Chart: https://ui.spectrumhq.in/charts/portfolio
-- Market Heatmap: https://ui.spectrumhq.in/charts/heatmap
-- Calendar Heatmap: https://ui.spectrumhq.in/charts/calendar
-- Cohort Retention: https://ui.spectrumhq.in/charts/cohort
-- Histogram: https://ui.spectrumhq.in/charts/histogram
-- Bar Chart: https://ui.spectrumhq.in/charts/bar
-- Line Chart: https://ui.spectrumhq.in/charts/line
-- Area Chart: https://ui.spectrumhq.in/charts/area
-- Pie Chart: https://ui.spectrumhq.in/charts/pie
-- Radar Chart: https://ui.spectrumhq.in/charts/radar
-- Radial Chart: https://ui.spectrumhq.in/charts/radial
-- Composed Chart: https://ui.spectrumhq.in/charts/composed
-- Candlestick Chart: https://ui.spectrumhq.in/charts/candlestick
-- Price Chart: https://ui.spectrumhq.in/charts/price
-- Sparkline: https://ui.spectrumhq.in/charts/sparkline
+- Market Chart: https://ui.spectrumhq.in/blocks/charts#market
+- Candlestick Chart: https://ui.spectrumhq.in/blocks/charts#candlestick
+- Price Chart: https://ui.spectrumhq.in/blocks/charts#price
+- Indicator Chart: https://ui.spectrumhq.in/blocks/charts#indicators
+- Depth Chart: https://ui.spectrumhq.in/blocks/charts#depth
+- Order Book: https://ui.spectrumhq.in/blocks/charts#order-book
+- Portfolio Chart: https://ui.spectrumhq.in/blocks/charts#portfolio
+- Area Chart: https://ui.spectrumhq.in/blocks/charts#area
+- Bar Chart: https://ui.spectrumhq.in/blocks/charts#bar
+- Line Chart: https://ui.spectrumhq.in/blocks/charts#line
+- Composed Chart: https://ui.spectrumhq.in/blocks/charts#composed
+- Pie Chart: https://ui.spectrumhq.in/blocks/charts#pie
+- Radar Chart: https://ui.spectrumhq.in/blocks/charts#radar
+- Radial Chart: https://ui.spectrumhq.in/blocks/charts#radial
+- Histogram: https://ui.spectrumhq.in/blocks/charts#histogram
+- Connecting Real Data: https://ui.spectrumhq.in/blocks/charts#data
+- Stat Cards: https://ui.spectrumhq.in/blocks/charts#stat-cards
+- Cohort Retention: https://ui.spectrumhq.in/blocks/charts#cohort
+- Calendar Heatmap: https://ui.spectrumhq.in/blocks/charts#calendar
 
 ## Other public pages
 
@@ -1527,7 +1977,7 @@ Chart types Spectrum UI provides that shadcn/ui does not: candlestick and OHLC, 
 - AI Assistant blocks: https://ui.spectrumhq.in/blocks/ai-assistants
 - Changelog: https://ui.spectrumhq.in/changelog
 - Blog: https://ui.spectrumhq.in/blog
-- Charts gallery: https://ui.spectrumhq.in/charts
+- Charts gallery: https://ui.spectrumhq.in/blocks/charts
 - Colors: https://ui.spectrumhq.in/colors
 - Brand kit (official logos, screenshots, typography, colors): https://ui.spectrumhq.in/brandkit
 - FAQs: https://ui.spectrumhq.in/faqs

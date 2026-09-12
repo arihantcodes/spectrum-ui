@@ -69,7 +69,6 @@ const routeConfig: Record<string, RouteConfig> = {
   },
   '/blog': { changeFrequency: 'weekly', priority: 0.8 },
   '/changelog': { changeFrequency: 'weekly', priority: 0.7 },
-  '/charts': { changeFrequency: 'weekly', priority: 0.9 },
   '/colors': { changeFrequency: 'monthly', priority: 0.5 },
   '/compare': { changeFrequency: 'monthly', priority: 0.7 },
   '/docs': { changeFrequency: 'weekly', priority: 0.9 },
@@ -133,10 +132,6 @@ function getRouteConfig(route: string): RouteConfig {
   }
 
   if (topicHubRoutes.has(route)) {
-    return { changeFrequency: 'weekly', priority: 0.8 };
-  }
-
-  if (route.startsWith('/charts/')) {
     return { changeFrequency: 'weekly', priority: 0.8 };
   }
 

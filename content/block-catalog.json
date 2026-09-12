@@ -22,6 +22,15 @@
       "description": "Fifteen data table sections covering the screens a SaaS product actually ships — payments, team members, invoices, orders, customers, API keys, audit logs, deployments, feature flags, support tickets, analytics, a market watchlist, inventory, a leaderboard, and a file browser. Every one is built on the same typed Data Table engine, so sorting glides rows into place, selection raises a bulk-action bar, and reduced motion is respected — while each block brings its own columns, Iconly glyphs, people avatars and status colors.",
       "order": 3,
       "layout": "wide"
+    },
+    {
+      "slug": "charts",
+      "name": "Charts",
+      "tagline": "Every chart, live, with the source beside it.",
+      "description": "The Spectrum chart library, rendered as blocks. A dependency-free SVG market family — candlesticks with a volume pane, an order book ladder, market depth, RSI and MACD indicators and portfolio drawdown against cost basis; area, bar, line, composed, pie, radar and radial charts on Recharts; a latency histogram with percentile pins; and the dashboard set — KPI stat cards, a cohort retention grid and a year of daily activity. Every chart renders live at full size with its variants on pills, a copyable source file, and the loading, empty and error states it ships with.",
+      "order": 4,
+      "layout": "wide",
+      "stageMaxWidth": 960
     }
   ],
   "blocks": [
@@ -1310,6 +1319,728 @@
       "index": 82,
       "addedAt": "2026-09-09",
       "status": "live"
+    },
+    {
+      "slug": "market",
+      "name": "Market Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "A trading-desk chart in pure SVG: OHLC candles, a volume pane, a snapping crosshair and a live tape.",
+      "summary": "The full trading surface, drawn without a charting library: candles over a volume pane, a crosshair that pins price and time to both axes, a range selector that morphs the series, and an optional live tape. Arrow keys scrub it once the plot has focus.",
+      "hardParts": [
+        "Candles need { t, open, high, low, close, volume } with t in epoch milliseconds",
+        "live appends simulated ticks — drive it from your own socket by feeding data instead",
+        "Scrubbing blocks only the axis it scrubs on, so a drag never traps page scroll on touch"
+      ],
+      "variants": [
+        "Default",
+        "Area",
+        "Live",
+        "Stock",
+        "Bitcoin",
+        "Compact"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "A full trading surface for a market page. Dependency-free SVG. Use Candlestick Chart if you only need candles inside an existing Recharts layout.",
+      "index": 83,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "market-chart",
+      "sourceFile": "app/registry/charts/market-chart.tsx",
+      "installPath": "components/spectrumui/charts/market-chart.tsx",
+      "exportName": "MarketChart",
+      "usage": "<MarketChart data={candles} symbol=\"SOL\" name=\"Solana\" />",
+      "notes": [
+        "Candles need `{ t, open, high, low, close, volume }` with `t` in epoch milliseconds.",
+        "`live` appends simulated ticks — drive it from your own socket by feeding `data` instead.",
+        "Arrow keys scrub the crosshair once the plot has focus."
+      ]
+    },
+    {
+      "slug": "candlestick",
+      "name": "Candlestick Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "OHLC candles with optional volume and hollow-up bodies, for stocks and any market pair.",
+      "summary": "Candles that drop into an existing Recharts layout, with a volume pane and hollow bodies for up sessions. For a full trading surface with a crosshair and a range selector, reach for the Market Chart instead.",
+      "hardParts": [
+        "Built on Recharts — for a full trading surface use the Market Chart instead",
+        "Up and down carry an outline as well as a colour, so direction survives colour-blindness",
+        "Volume shares the candle scale band rather than a second axis"
+      ],
+      "variants": [
+        "Default",
+        "Stock",
+        "Volume",
+        "Hollow"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Candles inside a Recharts page. Needs OHLC rows; showVolume adds the pane. Market Chart is the dependency-free alternative.",
+      "index": 84,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "candlestick-chart",
+      "sourceFile": "app/registry/charts/candlestick-chart.tsx",
+      "installPath": "components/spectrumui/charts/candlestick-chart.tsx",
+      "exportName": "CandlestickChart",
+      "usage": "<CandlestickChart data={candles} showVolume />",
+      "notes": [
+        "Built on Recharts. For a full trading surface use the Market Chart instead."
+      ]
+    },
+    {
+      "slug": "price",
+      "name": "Price Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "Ticker chrome with last price and signed delta — for tokens, equities or protocol TVL.",
+      "summary": "A price line under a header that carries the symbol, the last print and the signed change. The Compare variant indexes two series to a common base so their shapes can be read against each other on one axis.",
+      "hardParts": [
+        "Comparing two instruments means indexing both to 100 at t0 — never a second Y axis",
+        "The delta colours by direction and repeats the sign, so it is not colour alone",
+        "Last price sits in tabular figures, or the header jitters on every tick"
+      ],
+      "variants": [
+        "Default",
+        "Stock",
+        "TVL",
+        "Compare"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "A ticker panel for a token, equity or TVL series. Compare takes two series indexed to a shared base.",
+      "index": 85,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "price-chart",
+      "sourceFile": "app/registry/charts/price-chart.tsx",
+      "installPath": "components/spectrumui/charts/price-chart.tsx",
+      "exportName": "PriceChart",
+      "usage": "<PriceChart data={series} symbol=\"SOL\" name=\"Solana\" />",
+      "notes": [
+        "Compare indexes both series to a common base — two Y axes would invent a correlation."
+      ]
+    },
+    {
+      "slug": "indicators",
+      "name": "Indicator Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "Price, RSI and MACD stacked on one time axis with a single crosshair across all three panes.",
+      "summary": "Three panes that share one time axis and one crosshair, so a reading in the price pane lines up with its RSI and MACD values. Both indicators are computed from the full series and then sliced, so changing range never restates them.",
+      "hardParts": [
+        "RSI and MACD are computed from the full series, then sliced — restating them per range would move history",
+        "rsi() and macd() are exported if you want the numbers without the chart",
+        "One crosshair drives three panes, so the hover index lives above them, not inside each"
+      ],
+      "variants": [
+        "Default",
+        "Stock"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Technical analysis view for a trading page. Takes the same candles as Market Chart; indicators are derived, not passed.",
+      "index": 86,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "indicator-chart",
+      "sourceFile": "app/registry/charts/indicator-chart.tsx",
+      "installPath": "components/spectrumui/charts/indicator-chart.tsx",
+      "exportName": "IndicatorChart",
+      "usage": "<IndicatorChart data={candles} symbol=\"SOL\" />",
+      "notes": [
+        "RSI and MACD are computed from the full series, then sliced — so changing range never restates them.",
+        "`rsi()` and `macd()` are exported if you want the numbers without the chart."
+      ]
+    },
+    {
+      "slug": "depth",
+      "name": "Depth Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "Cumulative bid and ask liquidity either side of the mid, with a crosshair that reports resting size.",
+      "summary": "The liquidity curve either side of the mid price, with a crosshair that reports how much size rests up to any price. Levels are cumulative outward from the mid, so the slope is the cost of sweeping the book.",
+      "hardParts": [
+        "generateOrderBook() from the engine builds a specimen book; swap it for your feed",
+        "Levels are cumulative from the mid outward — pass total already summed",
+        "Bid and ask are the up and down tokens, repeated as left and right of the mid"
+      ],
+      "variants": [
+        "Default",
+        "Bitcoin"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Liquidity depth for a DEX or exchange page. Takes a book with cumulative bid and ask levels; pair it with the Order Book ladder.",
+      "index": 87,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "depth-chart",
+      "sourceFile": "app/registry/charts/depth-chart.tsx",
+      "installPath": "components/spectrumui/charts/depth-chart.tsx",
+      "exportName": "DepthChart",
+      "usage": "<DepthChart book={book} symbol=\"SOL\" />",
+      "notes": [
+        "`generateOrderBook()` from the engine builds a specimen book; swap it for your feed.",
+        "Levels are cumulative from the mid outward — pass `total` already summed."
+      ]
+    },
+    {
+      "slug": "order-book",
+      "name": "Order Book",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "A trading ladder with cumulative depth bars, a spread row and flashing updates in live mode.",
+      "summary": "The bid and ask ladder with depth bars behind the rows and a spread row between the sides. Hovering a row highlights every level between it and the touch — the cost of sweeping to that price.",
+      "hardParts": [
+        "Hovering a row highlights every level between it and the touch — the sweep cost, not just the row",
+        "live re-derives the book from a seeded nonce, so it stays deterministic across renders",
+        "Prices and sizes are tabular, or the ladder shivers on every update"
+      ],
+      "variants": [
+        "Default",
+        "Live",
+        "Ethereum"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "The bid/ask ladder beside a trading chart. Deterministic under live mode, so it is safe to server-render.",
+      "index": 88,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "order-book",
+      "sourceFile": "app/registry/charts/order-book.tsx",
+      "installPath": "components/spectrumui/charts/order-book.tsx",
+      "exportName": "OrderBookLadder",
+      "usage": "<OrderBookLadder book={book} symbol=\"SOL\" live />",
+      "notes": [
+        "Hovering a row highlights every level between it and the touch — the sweep cost.",
+        "`live` re-derives the book from a seeded nonce, so it stays deterministic across renders."
+      ]
+    },
+    {
+      "slug": "portfolio",
+      "name": "Portfolio Chart",
+      "category": "charts",
+      "subcategory": "Markets",
+      "description": "Account value against cost basis, with drawdown from the running peak shaded underneath.",
+      "summary": "Account value over capital deployed, with the drawdown from the running peak shaded below the line. The stepped dashed line is the basis, so gains read as the gap between the two.",
+      "hardParts": [
+        "Drawdown is measured from the running peak inside the visible range, not all time",
+        "basis is capital deployed to date — the stepped dashed line, not a smooth series",
+        "Profit and loss share one axis; the shading carries the second reading instead"
+      ],
+      "variants": [
+        "Default",
+        "Flat"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Portfolio value with cost basis and drawdown. points need value and basis; drawdown is derived.",
+      "index": 89,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "portfolio-chart",
+      "sourceFile": "app/registry/charts/portfolio-chart.tsx",
+      "installPath": "components/spectrumui/charts/portfolio-chart.tsx",
+      "exportName": "PortfolioChart",
+      "usage": "<PortfolioChart data={points} label=\"Portfolio\" />",
+      "notes": [
+        "Drawdown is measured from the running peak inside the visible range, not all time.",
+        "`basis` is capital deployed to date — the stepped dashed line."
+      ]
+    },
+    {
+      "slug": "area",
+      "name": "Area Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Filled areas with gradient, hatch, dotted, stacked and dashed-stroke variants.",
+      "summary": "The workhorse trend chart, with seven fills that change the character of the plot without touching the data. Axes, grid and tooltip are real Recharts children, so the chart keeps its ticks when you restyle it.",
+      "hardParts": [
+        "Axes and grids are direct Recharts children — wrap one in a component and Recharts silently drops it",
+        "Stacked areas need the series order fixed, or the bands reshuffle between renders",
+        "The animated dashed stroke runs on a keyframe that stops under reduced motion"
+      ],
+      "variants": [
+        "Default",
+        "Hatched",
+        "Dotted",
+        "Solid",
+        "Stacked",
+        "Bump",
+        "Dashed"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Trends over time where volume matters. variant switches the fill; stackType stacks series. Use Price Chart for a ticker with chrome.",
+      "index": 90,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "area-chart",
+      "sourceFile": "app/registry/charts/area-chart.tsx",
+      "installPath": "components/spectrumui/charts/area-chart.tsx",
+      "exportName": "AreaChart",
+      "usage": "<AreaChart data={data} variant=\"gradient\" />",
+      "notes": [
+        "Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently."
+      ]
+    },
+    {
+      "slug": "bar",
+      "name": "Bar Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Vertical and horizontal bars with hatch, duotone, gradient, stripe, stack, percent and glow fills.",
+      "summary": "Ten presentations of the same bar chart, from a plain column to a 100% stack and a horizontal ranking. Every variant keeps real axes and gridlines, and the percent stack computes its own shares.",
+      "hardParts": [
+        "Horizontal bars need the category on the Y axis and a wider left margin, or labels clip",
+        "The percent variant normalises to 100 itself — pass raw values, not shares",
+        "Duotone reverse swaps which half of the stack carries the accent, so the eye reads the remainder"
+      ],
+      "variants": [
+        "Default",
+        "Hatched",
+        "Duotone",
+        "Duotone reverse",
+        "Gradient",
+        "Stripped",
+        "Stacked",
+        "Percent",
+        "Horizontal",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Comparing categories or stacked composition. variant picks the fill; layout=\"vertical\" gives horizontal bars. Cap categorical series at six.",
+      "index": 91,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "bar-chart",
+      "sourceFile": "app/registry/charts/bar-chart.tsx",
+      "installPath": "components/spectrumui/charts/bar-chart.tsx",
+      "exportName": "BarChart",
+      "usage": "<BarChart data={data} variant=\"gradient\" />",
+      "notes": [
+        "Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently."
+      ]
+    },
+    {
+      "slug": "line",
+      "name": "Line Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Multi-series lines with solid, dashed, bump, step, gradient and glow strokes.",
+      "summary": "Multi-series lines with six stroke treatments and a shared tooltip. Step is for values that hold between readings, bump for smooth interpolation, and the gradient stroke fades a series toward the axis.",
+      "hardParts": [
+        "curveType changes meaning, not just shape — step says the value held, bump says it moved smoothly",
+        "A dashed stroke reads as projection or forecast, so do not use it for actuals",
+        "Legends carry identity for every series past the first, so lines are never distinguished by colour alone"
+      ],
+      "variants": [
+        "Default",
+        "Dashed",
+        "Bump",
+        "Step",
+        "Gradient",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Trends where the reader compares series. curveType switches interpolation; keep to four series or facet into small multiples.",
+      "index": 92,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "line-chart",
+      "sourceFile": "app/registry/charts/line-chart.tsx",
+      "installPath": "components/spectrumui/charts/line-chart.tsx",
+      "exportName": "LineChart",
+      "usage": "<LineChart data={data} curveType=\"bump\" />",
+      "notes": [
+        "Built on Recharts. Axes, grid and tooltip must stay direct children — a wrapper component is dropped silently."
+      ]
+    },
+    {
+      "slug": "composed",
+      "name": "Composed Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Bars, lines and areas on one plot — mix fills, dashes and glow per series.",
+      "summary": "One plot carrying more than one mark type: bars for the measure, a line for the trend or target, an area for the band behind them. All of it on a single shared axis.",
+      "hardParts": [
+        "Every series shares one Y axis — a second scale would invent a correlation that is not in the data",
+        "Mark type is the strongest channel, so give the bars the measure people came to read",
+        "Series order controls paint order; the line has to come after the bars or it hides behind them"
+      ],
+      "variants": [
+        "Default",
+        "Hatched",
+        "Duotone",
+        "Dashed",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "One plot mixing marks — bars with a trend line, or an area with a target. Keep both measures on one scale.",
+      "index": 93,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "composed-chart",
+      "sourceFile": "app/registry/charts/composed-chart.tsx",
+      "installPath": "components/spectrumui/charts/composed-chart.tsx",
+      "exportName": "ComposedChart",
+      "usage": "<ComposedChart data={data} />",
+      "notes": [
+        "Built on Recharts. Never add a second Y axis — index both measures to a common base instead."
+      ]
+    },
+    {
+      "slug": "pie",
+      "name": "Pie Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Pie and donut charts with padded sectors, labels and optional sector glow.",
+      "summary": "Part-to-whole at a glance, with a donut that can carry a total in its middle and padded sectors that separate on the surface rather than with a stroke. Labels ride the sectors only when they fit.",
+      "hardParts": [
+        "Six segments is the ceiling — past that, fold the tail into one Other slice",
+        "Padded sectors separate with surface, not a border, so the ring keeps its weight",
+        "A pie cannot rank close values; switch to bars when the reader needs an order"
+      ],
+      "variants": [
+        "Default",
+        "Donut",
+        "Padded",
+        "Labels",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Composition at a glance for six or fewer segments. Donut variant frees the middle for a total. Not for ranking.",
+      "index": 94,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "pie-chart",
+      "sourceFile": "app/registry/charts/pie-chart.tsx",
+      "installPath": "components/spectrumui/charts/pie-chart.tsx",
+      "exportName": "PieChart",
+      "usage": "<PieChart data={data} />",
+      "notes": [
+        "Part-to-whole only, and never for comparing close values — use a bar chart there."
+      ]
+    },
+    {
+      "slug": "radar",
+      "name": "Radar Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Radar plots with filled or outline series, circle grids and glow.",
+      "summary": "A profile across several axes at once — scorecards, feature coverage, skill maps. Filled for one series, outlines when two profiles are being compared.",
+      "hardParts": [
+        "Every axis has to share a scale, or the shape is decorative rather than readable",
+        "Two filled series obscure each other; use the Lines variant to compare",
+        "Axis order changes the silhouette, so fix it once and keep it across screens"
+      ],
+      "variants": [
+        "Default",
+        "Lines",
+        "Circle",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Multi-attribute profiles on one shared scale. Two series maximum; normalise attributes before passing them.",
+      "index": 95,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "radar-chart",
+      "sourceFile": "app/registry/charts/radar-chart.tsx",
+      "installPath": "components/spectrumui/charts/radar-chart.tsx",
+      "exportName": "RadarChart",
+      "usage": "<RadarChart data={data} />",
+      "notes": [
+        "Every axis must share one scale, or the polygon means nothing."
+      ]
+    },
+    {
+      "slug": "radial",
+      "name": "Radial Chart",
+      "category": "charts",
+      "subcategory": "Cartesian",
+      "description": "Full and semi-circle radial bars for share and progress.",
+      "summary": "Progress toward a target as an arc, with a full circle for share and a semi-circle for a gauge that sits above a caption. The track is a lighter step of the fill, so state reads across the whole arc.",
+      "hardParts": [
+        "The track is a lighter step of the fill hue, so the unfilled remainder still reads as the same measure",
+        "Arc length is hard to compare across cards — label the number, always",
+        "A semi-circle needs its own vertical rhythm or the caption floats away from the arc"
+      ],
+      "variants": [
+        "Default",
+        "Semi",
+        "Glowing"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-kit"
+      ],
+      "dependencies": [
+        "recharts",
+        "framer-motion"
+      ],
+      "aiHints": "Single-value progress or share. One or two arcs per card; use bars when comparing more than three values.",
+      "index": 96,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "radial-chart",
+      "sourceFile": "app/registry/charts/radial-chart.tsx",
+      "installPath": "components/spectrumui/charts/radial-chart.tsx",
+      "exportName": "RadialChart",
+      "usage": "<RadialChart data={data} />",
+      "notes": [
+        "Always print the number: arc length is the weakest comparison channel there is."
+      ]
+    },
+    {
+      "slug": "histogram",
+      "name": "Histogram",
+      "category": "charts",
+      "subcategory": "Analytics",
+      "description": "Raw samples binned on nice edges, with the long tail folded into one labelled overflow bin.",
+      "summary": "The chart that shows the tail an average hides. It bins raw samples itself on human-readable edges, pins p50, p95 and p99 onto the plot, and folds everything past the 99th percentile into a single overflow bin past a broken axis — so a distribution with one 900ms straggler still fills the plot instead of spending half of it on air.",
+      "hardParts": [
+        "Pass raw samples — the chart bins them itself on human-readable edges rather than trusting yours",
+        "The tail folds into one overflow bin past a visible axis break, so clipping it never reads as missing data",
+        "Percentiles ride one hue that darkens with k; red on p99 would call the tail bad, which is not the chart’s call"
+      ],
+      "variants": [
+        "Default",
+        "Orders"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Latency, order value or any distribution where the tail matters. Feed raw samples, not pre-bucketed counts; tailCutoff controls the overflow bin. Not a time series.",
+      "index": 97,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "histogram-chart",
+      "sourceFile": "app/registry/charts/histogram-chart.tsx",
+      "installPath": "components/spectrumui/charts/histogram-chart.tsx",
+      "exportName": "HistogramChart",
+      "usage": "<HistogramChart data={samples} label=\"API latency\" />",
+      "notes": [
+        "Pass raw samples — the chart bins them itself on human-readable edges.",
+        "`tailCutoff` is the percentile past which samples fold into the overflow bin; pass `100` to bin the full range.",
+        "`buildBins()`, `percentile()` and `splitTail()` are exported if you need the numbers elsewhere."
+      ]
+    },
+    {
+      "slug": "data",
+      "name": "Connecting Real Data",
+      "category": "charts",
+      "subcategory": "Foundations",
+      "description": "Wiring any chart to a real source: fetch, SWR or React Query, server components and streaming.",
+      "summary": "Three recipes for getting real data into a chart, with every outcome mapped onto the same status union the charts already take. One hook drives all of them, and its retry wires straight into the error state.",
+      "hardParts": [
+        "Every chart takes the same status union, so one fetch hook drives all of them",
+        "retry is wired to the error state’s button — pass it straight through as onRetry",
+        "Streaming appends to the series instead of replacing it, so the chart animates rather than jumps"
+      ],
+      "variants": [
+        "Fetch",
+        "Query",
+        "Stream"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "How to feed the charts from an API. useChartData returns { data, status, retry } shaped for the ChartState contract.",
+      "index": 98,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "chart-data",
+      "sourceFile": "app/registry/charts/chart-data.tsx",
+      "installPath": "components/spectrumui/charts/chart-data.tsx",
+      "exportName": "useChartData",
+      "usage": "const { data, status, retry } = useChartData<Point[]>('/api/metrics');",
+      "notes": [
+        "Every chart takes the same `status` union, so one fetch hook drives all of them.",
+        "`retry` is wired to the error state’s button — pass it straight through as `onRetry`."
+      ]
+    },
+    {
+      "slug": "stat-cards",
+      "name": "Stat Cards",
+      "category": "charts",
+      "subcategory": "Analytics",
+      "description": "KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline beside it.",
+      "summary": "The row every dashboard opens with. Each card carries a label, a compact value, the change written out against a named period, and either a scrubbable sparkline or a progress bar. Hovering the spark reports the point under the pointer instead of the headline figure.",
+      "hardParts": [
+        "Set goodWhen: 'down' on metrics where falling is healthy, like churn, or the delta turns red on good news",
+        "Pass previous to compare against last period rather than the first point in the series",
+        "A card with progress renders a bar instead of a sparkline, so the row can mix both shapes"
+      ],
+      "variants": [
+        "Default",
+        "Budget"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "The KPI header for an analytics dashboard. Cards are data, not markup — pass value, previous, series and goodWhen. Not a chart panel: one metric per card.",
+      "index": 99,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "stat-cards",
+      "sourceFile": "app/registry/charts/stat-cards.tsx",
+      "installPath": "components/spectrumui/charts/stat-cards.tsx",
+      "exportName": "StatCards",
+      "usage": "<StatCards cards={cards} columns={4} />",
+      "notes": [
+        "Set `goodWhen: 'down'` on metrics where falling is healthy, like churn — otherwise the delta turns red.",
+        "Pass `previous` to compare against last period instead of the first point in the series.",
+        "A card with `progress` renders a bar instead of a sparkline."
+      ]
+    },
+    {
+      "slug": "cohort",
+      "name": "Cohort Retention",
+      "category": "charts",
+      "subcategory": "Analytics",
+      "description": "The retention triangle: cohorts down, periods across, intensity by share retained.",
+      "summary": "A cohort grid with a row and column crosshair and a period average underneath. Later cohorts carry shorter arrays, so the ragged edge stays honest about which periods have actually happened.",
+      "hardParts": [
+        "Give later cohorts shorter retention arrays — the ragged edge is the point, not a gap to fill with zeros",
+        "Index 0 should always be 100; the chart does not normalise for you",
+        "Intensity runs on one hue, so darkness reads as magnitude rather than as a second category"
+      ],
+      "variants": [
+        "Default",
+        "Weekly"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Retention by signup cohort for growth dashboards. data is an array of cohorts with a label, size and retention array; period labels the columns.",
+      "index": 100,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "cohort-chart",
+      "sourceFile": "app/registry/charts/cohort-chart.tsx",
+      "installPath": "components/spectrumui/charts/cohort-chart.tsx",
+      "exportName": "CohortChart",
+      "usage": "<CohortChart data={cohorts} period=\"Month\" />",
+      "notes": [
+        "Give later cohorts shorter `retention` arrays — the ragged edge is the point.",
+        "Index 0 should always be 100; the chart does not normalise for you."
+      ]
+    },
+    {
+      "slug": "calendar",
+      "name": "Calendar Heatmap",
+      "category": "charts",
+      "subcategory": "Analytics",
+      "description": "A year of daily values as week columns — the contributions grid, with streak stats and month rails.",
+      "summary": "Five quantised intensity steps across a year of week columns, with month rails above and streak and busiest-day figures beside it. Gaps in the data fill as zero, so a sparse feed still renders a complete year.",
+      "hardParts": [
+        "Days need { t, value } with t at UTC midnight; gaps are filled as zero rather than skipped",
+        "Intensity is quantised into five buckets — the eye cannot rank a continuous ramp",
+        "Month labels print on the column each month starts, not on every column"
+      ],
+      "variants": [
+        "Default",
+        "Deploys"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "chart-engine"
+      ],
+      "dependencies": [],
+      "aiHints": "Daily activity density — commits, deploys, orders, sessions. Expects a full year of { t, value }; use the Cohort chart for retention grids instead.",
+      "index": 101,
+      "addedAt": "2026-09-12",
+      "status": "live",
+      "registryName": "calendar-heatmap",
+      "sourceFile": "app/registry/charts/calendar-heatmap.tsx",
+      "installPath": "components/spectrumui/charts/calendar-heatmap.tsx",
+      "exportName": "CalendarHeatmap",
+      "usage": "<CalendarHeatmap data={days} label=\"contributions\" />",
+      "notes": [
+        "Days need `{ t, value }` with `t` at UTC midnight; gaps are filled as zero.",
+        "Intensity is quantised into five buckets — the eye cannot rank a continuous ramp."
+      ]
     }
   ]
 }

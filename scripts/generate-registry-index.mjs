@@ -24,8 +24,13 @@ const registryPath = path.join(projectRoot, 'registry.json');
 const catalogPath = path.join(projectRoot, 'content', 'component-catalog.json');
 const outputPath = path.join(projectRoot, 'public', 'r', 'registry.json');
 
+const blockCatalogPath = path.join(projectRoot, 'content', 'block-catalog.json');
+
 const registry = JSON.parse(readFileSync(registryPath, 'utf8'));
 const catalog = JSON.parse(readFileSync(catalogPath, 'utf8'));
+const chartBlocks = JSON.parse(readFileSync(blockCatalogPath, 'utf8')).blocks.filter(
+  (block) => block.category === 'charts' && block.status === 'live',
+);
 
 const categoryBySlug = new Map(catalog.map((entry) => [entry.slug, entry.category]));
 const isNewBySlug = new Map(catalog.map((entry) => [entry.slug, Boolean(entry.new)]));
@@ -47,10 +52,14 @@ function catalogSlugFor(name) {
   return null;
 }
 
+/**
+ * Charts moved into the Blocks section, so every chart item documents itself at
+ * its anchor on /blocks/charts rather than at a route of its own.
+ */
 function chartLibraryPathFor(name) {
-  if (name === 'chart-kit') return '/charts';
-  const match = name.match(/^(bar|line|area|pie|radar|radial|composed|candlestick|sparkline|price)-chart$/);
-  return match ? `/charts/${match[1]}` : null;
+  if (name === 'chart-kit' || name === 'chart-engine') return '/blocks/charts';
+  const block = chartBlocks.find((chart) => (chart.registryName ?? chart.slug) === name);
+  return block ? `/blocks/charts#${block.slug}` : null;
 }
 
 const duplicates = [];

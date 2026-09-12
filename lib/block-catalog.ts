@@ -23,6 +23,13 @@ export interface BlockCategory {
    * footers, navbars) read as cards when floated in a padded letterbox.
    */
   layout?: 'default' | 'wide';
+  /**
+   * Caps how wide the demo itself runs inside a `wide` stage. Footers and
+   * pricing tables are page-width designs and want the whole bleed; a chart
+   * stretched to 1300px turns a sparkline into a flat rule across an empty
+   * box, so the charts category holds its demos to a reading width.
+   */
+  stageMaxWidth?: number;
 }
 
 export interface BlockCatalogItem {
@@ -47,6 +54,25 @@ export interface BlockCatalogItem {
    * does not do. Surfaced through the MCP server.
    */
   aiHints: string;
+  /**
+   * CLI item name, when it differs from the slug. The chart blocks install as
+   * `@spectrumui/area-chart` while living at `#area` on the page.
+   */
+  registryName?: string;
+  /**
+   * Repo-relative path of the file shown and copied, when the source does not
+   * live at components/spectrumui/blocks/<category>/<slug>.tsx. The charts are
+   * registry sources under app/registry/charts.
+   */
+  sourceFile?: string;
+  /** Where the CLI writes that file, for the drawer caption. */
+  installPath?: string;
+  /** The component you import — surfaced above the source. */
+  exportName?: string;
+  /** A minimal, real call of that component. */
+  usage?: string;
+  /** Things that bite people, worth saying once on the page. */
+  notes?: string[];
   /** Stable catalog number — drives the "01 / 08" label on cards. */
   index: number;
   /** ISO date the block shipped. Feeds JSON-LD dateCreated and llms.txt. */
@@ -72,6 +98,25 @@ export const BLOCK_CATEGORIES: readonly BlockCategory[] = [...catalog.categories
 export const BLOCK_CATALOG: readonly BlockCatalogItem[] = [...catalog.blocks].sort(
   (a, b) => a.index - b.index,
 );
+
+/**
+ * Where a block's source lives in this repo. Most blocks are one file under
+ * their category; the charts are registry sources shared with the CLI, so they
+ * carry an explicit path.
+ */
+export function blockSourcePath(block: BlockCatalogItem) {
+  return block.sourceFile ?? `components/spectrumui/blocks/${block.category}/${block.slug}.tsx`;
+}
+
+/** Where the CLI writes that file — the path printed in the code drawer. */
+export function blockInstallPath(block: BlockCatalogItem) {
+  return block.installPath ?? blockSourcePath(block);
+}
+
+/** The `npx shadcn add @spectrumui/<name>` item for a block. */
+export function blockRegistryName(block: BlockCatalogItem) {
+  return block.registryName ?? block.slug;
+}
 
 export function blocksIndexPath() {
   return '/blocks';

@@ -24,6 +24,12 @@ interface SpecimenProps {
    * footers — read as cards when floated inside a padded letterbox.
    */
   stage?: 'inset' | 'bleed';
+  /** Caps the demo's width inside the stage; the stage itself still bleeds. */
+  stageMaxWidth?: number;
+  /** CLI item name, when the block installs under a different name than its anchor. */
+  registryName?: string;
+  /** Where the CLI writes the file — printed in the drawer. */
+  filePath?: string;
 }
 
 /**
@@ -40,6 +46,9 @@ export function Specimen({
   variants,
   source,
   stage = 'inset',
+  stageMaxWidth,
+  registryName,
+  filePath,
 }: SpecimenProps) {
   const [variant, setVariant] = useState(variants[0] ?? 'default');
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -124,7 +133,16 @@ export function Specimen({
               : 'min-h-[440px] items-center justify-center px-6 py-14 sm:px-10',
           )}
         >
-          {demo ? demo(variant) : null}
+          {/* The demo is a direct flex child unless a category caps its width:
+              a wrapper that fills the row would swallow the stage's
+              `justify-center` and strand every centred block on the left. */}
+          {stageMaxWidth ? (
+            <div className="mx-auto w-full" style={{ maxWidth: stageMaxWidth }}>
+              {demo ? demo(variant) : null}
+            </div>
+          ) : demo ? (
+            demo(variant)
+          ) : null}
         </div>
 
         {!bleed && pills && (
@@ -137,6 +155,8 @@ export function Specimen({
         onOpenChange={setDrawerOpen}
         name={name}
         slug={slug}
+        registryName={registryName ?? slug}
+        filePath={filePath}
         source={source}
       />
     </section>

@@ -1,3 +1,30 @@
+/**
+ * Chart types that used to live at /charts/<slug> and now have an anchor on
+ * /blocks/charts. Delisted charts are deliberately absent: they fall through to
+ * the catch-all below and land on the category page rather than a dead anchor.
+ */
+const CHART_SLUGS = [
+  'stat-cards',
+  'histogram',
+  'cohort',
+  'calendar',
+  'area',
+  'bar',
+  'line',
+  'composed',
+  'pie',
+  'radar',
+  'radial',
+  'market',
+  'candlestick',
+  'price',
+  'indicators',
+  'depth',
+  'order-book',
+  'portfolio',
+  'data',
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx"],
@@ -67,6 +94,21 @@ const nextConfig = {
         './public/llms*.txt',
       ],
   },
+
+  /*
+   * The chart library moved into the Blocks section: every chart type is now a
+   * live specimen on /blocks/charts instead of a page of its own. These are
+   * permanent — the old URLs are indexed and linked from the registry.
+   */
+  redirects: async () => [
+    ...CHART_SLUGS.map((slug) => ({
+      source: `/charts/${slug}`,
+      destination: `/blocks/charts#${slug}`,
+      permanent: true,
+    })),
+    { source: '/charts', destination: '/blocks/charts', permanent: true },
+    { source: '/charts/:path*', destination: '/blocks/charts', permanent: true },
+  ],
 
   // Compression
   compress: true,
