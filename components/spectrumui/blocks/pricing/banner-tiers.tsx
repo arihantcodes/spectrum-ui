@@ -49,7 +49,7 @@ export function BannerTiers({
             {eyebrow}
           </span>
         </span>
-        <h2 className="mt-7 max-w-[24ch] text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[34px] font-normal leading-[1.08] tracking-[-0.6px] text-[#0a0a0a] dark:text-white @lg:text-[44px]">
+        <h2 className="mt-7 max-w-[24ch] text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[26px] font-normal leading-[1.08] tracking-[-0.6px] text-[#0a0a0a] dark:text-white @sm:text-[34px] @lg:text-[44px]">
           {heading}
         </h2>
 
@@ -134,14 +134,14 @@ export function BannerTiers({
 
                 <div className="mt-5 flex items-end gap-1.5">
                   {amount === null ? (
-                    <span className="text-[48px] font-semibold leading-none tracking-[-2px] text-[#0a0a0a] dark:text-white">
+                    <span className="text-[34px] font-semibold leading-none tracking-[-2px] text-[#0a0a0a] dark:text-white @sm:text-[42px] @lg:text-[48px]">
                       Custom
                     </span>
                   ) : (
                     <>
                       <PriceFigure
                         value={amount}
-                        className="text-[48px] font-semibold tracking-[-2px] text-[#0a0a0a] dark:text-white"
+                        className="text-[34px] font-semibold tracking-[-2px] text-[#0a0a0a] dark:text-white @sm:text-[42px] @lg:text-[48px]"
                       />
                       <span className="pb-1.5 text-[15px] text-[#71717a] dark:text-[#8f8f96]">
                         / mo

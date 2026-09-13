@@ -53,7 +53,7 @@ export function OffsetTiers({
               </span>
             </span>
           )}
-          <h2 className="mt-4 text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[40px] font-normal leading-[1.05] tracking-[-0.5px] text-[#111113] dark:text-[#f4f4f5]">
+          <h2 className="mt-4 text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[28px] font-normal leading-[1.05] tracking-[-0.5px] text-[#111113] @sm:text-[34px] @lg:text-[40px] dark:text-[#f4f4f5]">
             {heading}
           </h2>
           {subheading && (
@@ -64,7 +64,7 @@ export function OffsetTiers({
         </div>
       )}
 
-      <div className="grid gap-8 @3xl:grid-cols-3 @3xl:gap-9">
+      <div className="grid grid-cols-1 gap-8 @3xl:grid-cols-3 @3xl:gap-9">
         {plans.map((plan, position) => (
           <div
             key={plan.id}
@@ -76,8 +76,8 @@ export function OffsetTiers({
               staggered && OFFSETS[position % OFFSETS.length],
             )}
           >
-            <div className="px-8 pb-9 pt-10 @lg:px-9">
-              <h3 className="[font-family:var(--font-spectral,Georgia,serif)] text-[40px] font-normal leading-none tracking-[-0.5px] text-[#111113] dark:text-[#f4f4f5]">
+            <div className="px-5 pb-9 pt-10 @sm:px-8 @lg:px-9">
+              <h3 className="[font-family:var(--font-spectral,Georgia,serif)] text-[30px] font-normal leading-none tracking-[-0.5px] text-[#111113] @sm:text-[36px] @lg:text-[40px] dark:text-[#f4f4f5]">
                 {plan.name}
               </h3>
               <p className="mt-5 text-pretty text-[16px] leading-[1.55] text-[#6b6b70] dark:text-[#9d9da5]">
@@ -85,7 +85,7 @@ export function OffsetTiers({
               </p>
             </div>
 
-            <div className="flex-1 border-t border-[#e4e4e4] dark:border-[#28282d] px-8 py-9 @lg:px-9">
+            <div className="flex-1 border-t border-[#e4e4e4] dark:border-[#28282d] px-5 py-9 @sm:px-8 @lg:px-9">
               {plan.inherits && (
                 <p className="mb-7 text-[16.5px] font-medium leading-snug text-[#26262a] dark:text-[#e7e7ec]">
                   Includes everything in {plan.inherits}, plus:
@@ -108,7 +108,7 @@ export function OffsetTiers({
               </ul>
             </div>
 
-            <div className="border-t border-[#e4e4e4] dark:border-[#28282d] px-8 pb-9 pt-7 @lg:px-9">
+            <div className="border-t border-[#e4e4e4] dark:border-[#28282d] px-5 pb-9 pt-7 @sm:px-8 @lg:px-9">
               <p className="text-center text-[17px] text-[#26262a] dark:text-[#e7e7ec]">
                 {plan.price ? (
                   <>

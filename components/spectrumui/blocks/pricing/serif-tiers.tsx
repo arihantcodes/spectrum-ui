@@ -53,7 +53,7 @@ export function SerifTiers({
         <span className="rounded-full bg-white px-4 py-2 text-[12px] font-medium uppercase tracking-[0.1em] text-[#57534e] shadow-[0_1px_2px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.03)] dark:bg-[#211d21] dark:text-[#b6afa8] dark:shadow-[0_1px_2px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.06)]">
           {eyebrow}
         </span>
-        <h2 className="mt-6 max-w-[20ch] text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[38px] font-normal leading-[1.12] tracking-[-0.5px] text-[#1c1917] dark:text-[#f5f2ee] @lg:text-[46px]">
+        <h2 className="mt-6 max-w-[20ch] text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[28px] font-normal leading-[1.12] tracking-[-0.5px] text-[#1c1917] dark:text-[#f5f2ee] @sm:text-[34px] @lg:text-[46px]">
           {heading}
         </h2>
         {subheading && (
@@ -83,7 +83,7 @@ export function SerifTiers({
         </div>
       </div>
 
-      <div className="mt-10 grid gap-5 @3xl:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 @3xl:grid-cols-3">
         {plans.map((plan, position) => {
           const featured = plan.featured;
           const amount = plan.price ? plan.price[period] : 0;
@@ -117,7 +117,7 @@ export function SerifTiers({
                 <div className="flex items-center gap-3">
                   <h3
                     className={cn(
-                      '[font-family:var(--font-spectral,Georgia,serif)] text-[30px] font-normal leading-none tracking-[-0.3px]',
+                      '[font-family:var(--font-spectral,Georgia,serif)] text-[24px] font-normal leading-none tracking-[-0.3px] @sm:text-[30px]',
                       featured ? 'text-white' : 'text-[#1c1917] dark:text-[#f5f2ee]',
                     )}
                   >
@@ -143,7 +143,7 @@ export function SerifTiers({
                   <PriceFigure
                     value={amount}
                     className={cn(
-                      '[font-family:var(--font-spectral,Georgia,serif)] text-[46px] font-normal tracking-[-1px]',
+                      '[font-family:var(--font-spectral,Georgia,serif)] text-[34px] font-normal tracking-[-1px] @sm:text-[40px] @lg:text-[46px]',
                       featured ? 'text-white' : 'text-[#1c1917] dark:text-[#f5f2ee]',
                     )}
                   />

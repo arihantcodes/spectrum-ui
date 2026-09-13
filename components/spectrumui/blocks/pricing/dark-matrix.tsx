@@ -1,6 +1,7 @@
 'use client';
 
-import { Check, Layers, Sparkles, X, Zap } from 'lucide-react';
+import * as React from 'react';
+import { Check, ChevronDown, Layers, Sparkles, X, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { REVEAL_KEYFRAMES, revealClass, revealDelay, useReveal } from './reveal';
 import type { FeatureGroup, FeatureValue, Plan } from './types';
@@ -59,6 +60,10 @@ export function DarkMatrix({
   className,
 }: DarkMatrixProps) {
   const { ref, shown } = useReveal<HTMLElement>();
+  /* Three plan columns need 720px. Under that the table showed one and a half
+     of them behind a horizontal scroll, so a narrow container gets a plan
+     picker and renders that plan's column against the feature names. */
+  const [shownPlan, setShownPlan] = React.useState(0);
   const rows = groups.flatMap((group) => group.rows);
 
   const body = (rowsToRender: typeof rows) =>
@@ -83,7 +88,10 @@ export function DarkMatrix({
         {row.values.map((value, index) => (
           <td
             key={plans[index]?.id ?? index}
-            className="bg-white px-4 py-4 text-center text-[13.5px] text-[#2a2a2f] [border-bottom:1px_dashed_#dcdce1] [border-left:1px_solid_#e7e7ea] dark:bg-[#131316] dark:text-[#d4d4da] dark:[border-bottom:1px_dashed_#2b2b30] dark:[border-left:1px_solid_#232327]"
+            className={cn(
+              'bg-white px-4 py-4 text-center text-[13.5px] text-[#2a2a2f] [border-bottom:1px_dashed_#dcdce1] [border-left:1px_solid_#e7e7ea] dark:bg-[#131316] dark:text-[#d4d4da] dark:[border-bottom:1px_dashed_#2b2b30] dark:[border-left:1px_solid_#232327]',
+              index === shownPlan ? 'table-cell' : 'hidden @3xl:table-cell',
+            )}
           >
             <Value value={value} />
           </td>
@@ -101,14 +109,58 @@ export function DarkMatrix({
     >
       <style dangerouslySetInnerHTML={{ __html: REVEAL_KEYFRAMES }} />
 
+      {heading && (
+        <div className={cn('mb-5 @3xl:hidden', revealClass(shown))}>
+          {eyebrow && (
+            <span className="block font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-[#0e9f7e] dark:text-[#4be0c0]">
+              {eyebrow}
+            </span>
+          )}
+          <h2 className="mt-2 text-balance text-[24px] font-semibold leading-[1.15] tracking-[-0.4px] text-[#0f0f11] dark:text-white">
+            {heading}
+          </h2>
+          {subheading && (
+            <p className="mt-1.5 text-pretty text-[12.5px] leading-[1.5] text-[#5c5c64] dark:text-[#a5a5ad]">
+              {subheading}
+            </p>
+          )}
+        </div>
+      )}
+
+      <div className={cn('mb-5 @3xl:hidden', revealClass(shown))} style={revealDelay(shown, 0)}>
+        <label className="flex items-center justify-between gap-3 rounded-xl border border-[#e2e2e6] bg-white px-3 py-2.5 dark:border-[#232327] dark:bg-[#131316]">
+          <span className="shrink-0 font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-[#5c5c64] dark:text-[#a5a5ad]">
+            Plan
+          </span>
+          <span className="relative flex min-w-0 flex-1 items-center justify-end gap-1.5">
+            <select
+              value={shownPlan}
+              onChange={(event) => setShownPlan(Number(event.target.value))}
+              className="w-full appearance-none bg-transparent pr-6 text-right text-[14.5px] font-semibold text-[#0f0f11] outline-hidden dark:text-white"
+            >
+              {plans.map((plan, index) => (
+                <option key={plan.id} value={index}>
+                  {plan.name}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              aria-hidden
+              strokeWidth={2}
+              className="pointer-events-none absolute right-0 size-4 text-[#5c5c64] dark:text-[#a5a5ad]"
+            />
+          </span>
+        </label>
+      </div>
+
       <div className={cn('overflow-x-auto', revealClass(shown))} style={revealDelay(shown, 0)}>
-        <table className="w-full min-w-[720px] border-collapse text-left">
+        <table className="w-full border-collapse text-left @3xl:min-w-[720px]">
           <caption className="sr-only">Plan comparison</caption>
           <thead>
             <tr>
               <th scope="col" className="w-[34%] pb-5 pr-6 text-left align-bottom">
                 {heading && (
-                  <span className="block">
+                  <span className="hidden @3xl:block">
                     {eyebrow && (
                       <span className="block font-mono text-[10.5px] font-medium uppercase tracking-[0.16em] text-[#0e9f7e] dark:text-[#4be0c0]">
                         {eyebrow}
@@ -131,9 +183,12 @@ export function DarkMatrix({
                   <th
                     key={plan.id}
                     scope="col"
-                    className="border-l border-[#e2e2e6] px-4 pb-5 dark:border-[#232327]"
+                    className={cn(
+                      'border-l border-[#e2e2e6] px-4 pb-5 dark:border-[#232327]',
+                      index === shownPlan ? 'table-cell' : 'hidden @3xl:table-cell',
+                    )}
                   >
-                    <span className="flex items-center justify-between gap-3">
+                    <span className="flex flex-col items-start gap-2 @3xl:flex-row @3xl:items-center @3xl:justify-between @3xl:gap-3">
                       <span className="flex items-center gap-2">
                         <Icon
                           aria-hidden

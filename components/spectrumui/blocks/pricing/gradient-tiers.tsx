@@ -73,7 +73,7 @@ export function GradientTiers({
               </span>
             </span>
           )}
-          <h2 className="mt-4 text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[38px] font-normal leading-[1.08] tracking-[-0.5px] text-[#1c1b1a] dark:text-[#f5f5f4] @lg:text-[42px]">
+          <h2 className="mt-4 text-balance [font-family:var(--font-spectral,Georgia,serif)] text-[28px] font-normal leading-[1.08] tracking-[-0.5px] text-[#1c1b1a] dark:text-[#f5f5f4] @sm:text-[34px] @lg:text-[42px]">
             {heading}
           </h2>
           {subheading && (
@@ -84,7 +84,7 @@ export function GradientTiers({
         </div>
       )}
 
-      <div className="grid w-full overflow-hidden border border-[#e2e0dd] bg-white @3xl:grid-cols-3 dark:border-[#2b2b30] dark:bg-[#0f0f11]">
+      <div className="grid w-full grid-cols-1 overflow-hidden border border-[#e2e0dd] bg-white @3xl:grid-cols-3 dark:border-[#2b2b30] dark:bg-[#0f0f11]">
         {plans.map((plan, position) => {
           const palette = PALETTE[position % PALETTE.length];
           const Icon = palette.icon;
@@ -119,7 +119,7 @@ export function GradientTiers({
                   )}
                 </div>
 
-                <h3 className="mt-6 [font-family:var(--font-spectral,Georgia,serif)] text-[38px] font-normal leading-none tracking-[-0.5px] text-[#1c1b1a] dark:text-[#f5f5f4]">
+                <h3 className="mt-6 [font-family:var(--font-spectral,Georgia,serif)] text-[30px] font-normal leading-none tracking-[-0.5px] text-[#1c1b1a] dark:text-[#f5f5f4] @sm:text-[34px] @lg:text-[38px]">
                   {plan.name}
                 </h3>
                 <p className="mt-3 text-pretty text-[16.5px] leading-[1.5] text-[#57534e] dark:text-[#a8a29e]">
