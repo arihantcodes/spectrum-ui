@@ -19,7 +19,7 @@ export function MainNav() {
 
         <ScrambleText
           text="Spectrum UI"
-          className="font-mono text-sm font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px] sm:text-base"
+          className="font-mono text-sm font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px] max-[339px]:hidden sm:text-base"
         />
       </Link>
       <nav className="items-center gap-6 xl:gap-8 hidden md:flex font-mono text-[13px] uppercase tracking-wide">

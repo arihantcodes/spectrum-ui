@@ -61,7 +61,10 @@ export function SiteHeader({ session }: { session: Session | null }) {
                     size="sm"
                     className="h-8 px-3 sm:px-5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-100 dark:text-[#0a0a0a] text-xs sm:text-sm font-medium transition-colors shadow-xs"
                   >
-                    Create Account
+                    {/* The header needs 385px to lay out "Create Account", and a
+                        360px Android is the commonest phone there is. */}
+                    <span className="sm:hidden">Sign up</span>
+                    <span className="hidden sm:inline">Create Account</span>
                   </Button>
                 </Link>
               )}
