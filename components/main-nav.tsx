@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Icons } from './icon';
 import { ScrambleText } from './scramble-text';
+import { SITE_NAV, isNavLinkActive } from '@/lib/site-nav';
 
 export function MainNav() {
   const pathname = usePathname();
@@ -22,53 +23,19 @@ export function MainNav() {
           className="font-mono text-sm font-medium uppercase whitespace-nowrap text-foreground/80 tracking-[0.5px] max-[339px]:hidden sm:text-base"
         />
       </Link>
-      <nav className="items-center gap-6 xl:gap-8 hidden md:flex font-mono text-[13px] uppercase tracking-wide">
-        <Link
-          href="/docs"
-          className={cn(
-            'transition-colors hover:text-foreground',
-            pathname === '/docs/installation' ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Components
-        </Link>
-        {/* <Link
-          href="/templates"
-          className={cn(
-            'transition-colors hover:text-foreground/80',
-            pathname?.startsWith('/templates') ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Templates
-        </Link> */}
-
-        <Link
-          href="/blog"
-          className={cn(
-            'transition-colors hover:text-foreground',
-            pathname === '/blog' ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Blogs
-        </Link>
-        <Link
-          href="/colors"
-          className={cn(
-            'transition-colors hover:text-foreground whitespace-nowrap',
-            pathname === '/colors' ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Colors
-        </Link>
-        <Link
-          href="/blocks"
-          className={cn(
-            'transition-colors hover:text-foreground whitespace-nowrap',
-            pathname?.startsWith('/blocks') ? 'text-foreground' : 'text-foreground/80',
-          )}
-        >
-          Blocks
-        </Link>
+      <nav className="hidden items-center gap-6 font-mono text-[13px] uppercase tracking-wide md:flex xl:gap-8">
+        {SITE_NAV.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              'whitespace-nowrap transition-colors hover:text-foreground',
+              isNavLinkActive(link, pathname) ? 'text-foreground' : 'text-foreground/80',
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
     </div>
   );
