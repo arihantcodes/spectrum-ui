@@ -202,7 +202,7 @@ export function MobileNav() {
               setIsOpen(false);
               openCommandMenu({ source: 'mobile_nav' });
             }}
-            className="flex h-10 w-full items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 text-left text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="flex h-11 w-full items-center gap-2.5 rounded-xl border border-border bg-secondary/40 px-3.5 text-left text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <Search className="size-4 shrink-0" aria-hidden />
             <span className="truncate">Search</span>
@@ -280,7 +280,7 @@ function MobileNavSection({
   return (
     <Collapsible open={open} onOpenChange={setOpen} className="space-y-1">
       {section.title && (
-        <CollapsibleTrigger className="flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-left outline-hidden transition-colors hover:bg-secondary/50">
+        <CollapsibleTrigger className="flex min-h-9 w-full items-center justify-between gap-2 rounded-lg px-3 py-1.5 text-left outline-hidden transition-colors hover:bg-secondary/50">
           <span className="flex min-w-0 items-baseline gap-1.5">
             <h4 className="truncate text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
               {section.title}
@@ -324,7 +324,11 @@ function MobileNavSection({
 function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const isActive = pathname === href.toString().split('#')[0];
+  /* An anchored link (/blocks/charts#market) shares its path with nineteen
+     siblings, so matching on the path alone lit every chart row at once.
+     Anchors never claim the active state; the page they sit on does. */
+  const target = href.toString();
+  const isActive = !target.includes('#') && pathname === target;
 
   return (
     <SheetClose asChild>
@@ -335,7 +339,7 @@ function MobileLink({ href, onOpenChange, className, children, ...props }: Mobil
           onOpenChange?.(false);
         }}
         className={cn(
-          'flex items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-[14.5px] transition-colors',
+          'flex min-h-11 items-center justify-between gap-2 rounded-lg px-3 py-2 text-[14.5px] transition-colors',
           isActive
             ? 'bg-secondary font-medium text-foreground'
             : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground',
