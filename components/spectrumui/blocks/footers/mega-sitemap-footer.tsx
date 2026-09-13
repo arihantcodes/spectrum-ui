@@ -1,44 +1,15 @@
 'use client';
 
-import { useId, useState, type CSSProperties, type SVGProps } from 'react';
+import { useId, useState, type CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
-
-/* Iconly Pro (Bold) glyphs, inlined so the block copies out with no icon
-   dependency — the same convention the Tables wave uses. */
-type IconProps = SVGProps<SVGSVGElement>;
-
-function IconArrowRight(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(3, 6)"
-        d="M7.83655568,6.36070466 L7.8350323,6.00660914 C7.8350323,4.53497338 7.92121308,3.19331742 8.05102968,2.31870755 L8.16475558,1.77483018 C8.22802754,1.48678171 8.31120835,1.15880301 8.39793457,0.991371397 C8.71538527,0.378924178 9.33610502,0 10.0004606,0 L10.0582781,0 C10.4913637,0.0143198091 11.4011709,0.394345511 11.4011709,0.407563797 C12.8651531,1.02183092 15.6895424,2.87571834 16.9940026,4.19738844 L17.3730714,4.59418673 C17.4723361,4.70172939 17.5838596,4.82900679 17.6530951,4.92821737 C17.884365,5.23444098 18,5.61336516 18,5.99228933 C18,6.41527446 17.8701834,6.80851845 17.6247318,7.13016339 L17.2352725,7.55047018 L17.2352725,7.55047018 L17.1480103,7.6401689 C15.9643883,8.9234441 12.8738803,11.0218469 11.2571726,11.6640352 L11.0130847,11.7575787 C10.719361,11.8628603 10.3078205,11.988434 10.0582781,12 C9.74082738,12 9.43755833,11.9261979 9.14847093,11.7807968 C8.7873844,11.5770149 8.49938789,11.2553699 8.34011709,10.8764457 C8.23866377,10.6142831 8.07939298,9.82669359 8.07939298,9.81237378 C7.93338076,9.01825987 7.84871691,7.76518207 7.83655568,6.36070466 Z M1.77635684e-15,5.99955939 C1.77635684e-15,5.1612998 0.673082751,4.48165963 1.50325451,4.48165963 L5.20248239,4.80881219 C5.85374723,4.80881219 6.38174083,5.3419497 6.38174083,5.99955939 C6.38174083,6.65827061 5.85374723,7.19030659 5.20248239,7.19030659 L1.50325451,7.51745915 C0.673082751,7.51745915 1.77635684e-15,6.83781898 1.77635684e-15,5.99955939 Z"
-      />
-    </svg>
-  );
-}
-
-function IconChevronDown(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(6, 7)"
-        d="M4.869,9.63078422 C4.811,9.57428154 4.563,9.36093522 4.359,9.16220166 C3.076,7.99707745 0.976,4.95762299 0.335,3.36678032 C0.232,3.12518266 0.014,2.51436922 0,2.18801754 C0,1.87530443 0.072,1.57720409 0.218,1.29274233 C0.422,0.938139308 0.743,0.653677545 1.122,0.497808086 C1.385,0.397467121 2.172,0.241597662 2.186,0.241597662 C3.047,0.0857282026 4.446,0 5.992,0 C7.465,0 8.807,0.0857282026 9.681,0.213346322 C9.695,0.227959084 10.673,0.383828544 11.008,0.554310765 C11.62,0.867023868 12,1.47783731 12,2.13151486 L12,2.18801754 C11.985,2.613736 11.605,3.5090112 11.591,3.5090112 C10.949,5.01412567 8.952,7.98343887 7.625,9.17681442 C7.625,9.17681442 7.284,9.51290794 7.071,9.65903556 C6.765,9.88699464 6.386,10 6.007,10 C5.584,10 5.19,9.87238188 4.869,9.63078422"
-      />
-    </svg>
-  );
-}
-
-function IconLocation(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(3.5, 2)"
-        d="M8.49344564,0 C13.1561184,0 17,3.71789185 17,8.31775805 C17,10.6356906 16.1570081,12.787628 14.7695,14.611575 C13.2388042,16.6235165 11.3521561,18.3764655 9.22854262,19.7524254 C8.74251142,20.0704162 8.3038733,20.0944155 7.77044902,19.7524254 C5.63473516,18.3764655 3.74808708,16.6235165 2.23050003,14.611575 C0.84198351,12.787628 0,10.6356906 0,8.31775805 C0,3.71789185 3.84388161,0 8.49344564,0 Z M8.49344564,5.77683196 C6.95165787,5.77683196 5.6942286,7.04779499 5.6942286,8.57675052 C5.6942286,10.1177057 6.95165787,11.3296704 8.49344564,11.3296704 C10.0362418,11.3296704 11.3057714,10.1177057 11.3057714,8.57675052 C11.3057714,7.04779499 10.0362418,5.77683196 8.49344564,5.77683196 Z"
-      />
-    </svg>
-  );
-}
+import {
+  IconArrowRight,
+  IconChevronDown,
+  IconLocation,
+  BrandLockup,
+  FooterSocials,
+  type FooterSocial,
+} from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-footer-panel { from { opacity: 0; transform: translateY(-4px) } to { opacity: 1; transform: none } }
@@ -83,18 +54,12 @@ export interface MegaSitemapColumn {
   groups: MegaSitemapGroup[];
 }
 
-export interface MegaSitemapSocial {
-  label: string;
-  href: string;
-  icon: React.ReactNode;
-}
-
 export interface MegaSitemapFooterProps {
   brand: string;
   tagline?: string;
   columns: MegaSitemapColumn[];
   legal?: { label: string; href: string }[];
-  socials?: MegaSitemapSocial[];
+  socials?: FooterSocial[];
   regions?: string[];
   languages?: string[];
   newsletter?: { eyebrow: string; blurb: string; cta: string };
@@ -228,7 +193,7 @@ export function MegaSitemapFooter({
   tagline,
   columns,
   legal = [],
-  socials = [],
+  socials,
   regions = ['United States'],
   languages = ['English'],
   newsletter,
@@ -321,6 +286,7 @@ export function MegaSitemapFooter({
 
         <div className="mt-12 flex flex-col gap-5 border-t border-black/[0.07] py-6 dark:border-white/[0.08] lg:flex-row lg:items-center lg:justify-between lg:gap-8">
           <div className="flex min-w-0 flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400">
+            <BrandLockup brand={brand} className="font-sans normal-case tracking-normal" />
             <span className="tabular-nums">{copyright ?? `© ${brand}`}</span>
             {legal.map((link) => (
               <a
@@ -334,21 +300,7 @@ export function MegaSitemapFooter({
           </div>
 
           <div className="flex shrink-0 items-center gap-x-3 gap-y-3 max-sm:flex-wrap">
-            {socials.length > 0 && (
-              <ul className="flex items-center gap-1">
-                {socials.map((social) => (
-                  <li key={social.label}>
-                    <a
-                      href={social.href}
-                      aria-label={social.label}
-                      className="grid size-8 place-items-center rounded-lg text-neutral-500 transition-[color,background-color] duration-150 hover:bg-black/[0.05] hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-white/[0.07] dark:hover:text-neutral-100"
-                    >
-                      {social.icon}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <FooterSocials socials={socials} />
             <Selector
               label="Region"
               options={regions}

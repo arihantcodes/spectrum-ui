@@ -2,21 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore, type SVGProps } from 'react';
 import { cn } from '@/lib/utils';
-
-/* Iconly Pro (Bold) glyphs, inlined so the block copies out with no icon
-   dependency — the same convention the Tables wave uses. */
-type IconProps = SVGProps<SVGSVGElement>;
-
-function IconStar(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(1.99962, 2.5001)"
-        d="M15.9188758,11.82 C15.6598758,12.071 15.5408758,12.434 15.5998758,12.79 L16.4888758,17.71 C16.5638758,18.127 16.3878758,18.549 16.0388758,18.79 C15.6968758,19.04 15.2418758,19.07 14.8688758,18.87 L10.4398758,16.56 C10.2858758,16.478 10.1148758,16.434 9.93987581,16.429 L9.66887581,16.429 C9.57487581,16.443 9.48287581,16.473 9.39887581,16.519 L4.96887581,18.84 C4.74987581,18.95 4.50187581,18.989 4.25887581,18.95 C3.66687581,18.838 3.27187581,18.274 3.36887581,17.679 L4.25887581,12.759 C4.31787581,12.4 4.19887581,12.035 3.93987581,11.78 L0.32887581,8.28 C0.0268758104,7.987 -0.0781241896,7.547 0.0598758104,7.15 C0.19387581,6.754 0.53587581,6.465 0.94887581,6.4 L5.91887581,5.679 C6.29687581,5.64 6.62887581,5.41 6.79887581,5.07 L8.98887581,0.58 C9.04087581,0.48 9.10787581,0.388 9.18887581,0.31 L9.27887581,0.24 C9.32587581,0.188 9.37987581,0.145 9.43987581,0.11 L9.54887581,0.07 L9.71887581,5.32907052e-15 L10.1398758,5.32907052e-15 C10.5158758,0.039 10.8468758,0.264 11.0198758,0.6 L13.2388758,5.07 C13.3988758,5.397 13.7098758,5.624 14.0688758,5.679 L19.0388758,6.4 C19.4588758,6.46 19.8098758,6.75 19.9488758,7.15 C20.0798758,7.551 19.9668758,7.991 19.6588758,8.28 L15.9188758,11.82 Z"
-      />
-    </svg>
-  );
-}
+import { IconStar, FooterBar, type FooterSocial } from './footer-kit';
 
 /**
  * Twelve customer marks, invented and drawn here rather than imported.
@@ -197,9 +183,12 @@ export interface ProofStat {
 }
 
 export interface SocialProofFooterProps {
+  socials?: FooterSocial[];
   brand: string;
   customers?: CustomerLogo[];
   stats: ProofStat[];
+  /** Link columns. A logo wall with no navigation under it is a banner. */
+  groups?: { title: string; links: { label: string; href: string }[] }[];
   eyebrow?: string;
   rating?: number;
   ratingSource?: string;
@@ -280,13 +269,15 @@ function Logo({ logo, className }: { logo: CustomerLogo; className?: string }) {
 }
 
 export function SocialProofFooter({
+  socials,
   brand,
   customers = DEFAULT_CUSTOMERS,
   stats,
+  groups = [],
   eyebrow = 'Trusted by product teams',
   rating = 4.9,
   ratingSource = 'G2 · 214 reviews',
-  links = [],
+  links,
   copyright,
   speed = 42,
   variant = 'Marquee',
@@ -415,21 +406,37 @@ export function SocialProofFooter({
             ))}
           </dl>
 
-          <div className="mt-6 flex flex-col gap-3 text-[12px] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-            <p className="tabular-nums">{copyright ?? `© ${brand}. All rights reserved.`}</p>
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:text-neutral-200"
-                  >
-                    {link.label}
-                  </a>
-                </li>
+          {groups.length > 0 && (
+            <nav aria-label="Footer" className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {groups.map((group) => (
+                <div key={group.title} className="min-w-0">
+                  <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
+                    {group.title}
+                  </p>
+                  <ul className="mt-4 space-y-2.5">
+                    {group.links.map((link) => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          className="text-[13.5px] text-neutral-600 transition-colors duration-150 hover:text-neutral-950 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-50"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
-          </div>
+            </nav>
+          )}
+
+          <FooterBar
+            brand={brand}
+            copyright={copyright}
+            links={links}
+            socials={socials}
+            className="mt-10"
+          />
         </div>
       </div>
     </footer>

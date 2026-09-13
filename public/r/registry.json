@@ -5585,6 +5585,11 @@
           "path": "components/spectrumui/blocks/footers/mega-sitemap-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/mega-sitemap-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5600,12 +5605,17 @@
       "name": "trust-center-footer",
       "type": "registry:block",
       "title": "Trust Center Footer",
-      "description": "Compliance badges that expand on hover, over a customer logo row and link columns.",
+      "description": "Compliance marks that expand to scope, over a logo row and link columns.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/trust-center-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/trust-center-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5628,6 +5638,11 @@
           "path": "components/spectrumui/blocks/footers/region-picker-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/region-picker-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5649,6 +5664,11 @@
           "path": "components/spectrumui/blocks/footers/service-status-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/service-status-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5670,6 +5690,11 @@
           "path": "components/spectrumui/blocks/footers/sales-cta-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/sales-cta-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5691,6 +5716,11 @@
           "path": "components/spectrumui/blocks/footers/link-search-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/link-search-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5711,6 +5741,11 @@
           "path": "components/spectrumui/blocks/footers/careers-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/careers-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5732,6 +5767,11 @@
           "path": "components/spectrumui/blocks/footers/policy-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/policy-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5744,57 +5784,20 @@
       ]
     },
     {
-      "name": "model-status-footer",
-      "type": "registry:block",
-      "title": "Model Status Footer",
-      "description": "A model availability grid with animated latency bars and context sizes.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/model-status-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/model-status-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "ai",
-        "models",
-        "latency",
-        "status"
-      ]
-    },
-    {
-      "name": "command-footer",
-      "type": "registry:block",
-      "title": "Command Footer",
-      "description": "A terminal footer with slash commands, inline completion and Tab to accept.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/command-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/command-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "ai",
-        "terminal",
-        "command",
-        "autocomplete"
-      ]
-    },
-    {
       "name": "ask-docs-footer",
       "type": "registry:block",
       "title": "Ask Docs Footer",
-      "description": "A question input that streams a cited answer in place.",
+      "description": "A docs question box that streams a cited answer, over link columns.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/ask-docs-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/ask-docs-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5816,6 +5819,11 @@
           "path": "components/spectrumui/blocks/footers/wordmark-spotlight-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/wordmark-spotlight-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5831,12 +5839,17 @@
       "name": "token-stream-footer",
       "type": "registry:block",
       "title": "Token Stream Footer",
-      "description": "A manifesto that types itself in word by word when the footer enters view.",
+      "description": "A one-line manifesto that types itself in, over a metric row.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/token-stream-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/token-stream-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5858,6 +5871,11 @@
           "path": "components/spectrumui/blocks/footers/neural-grid-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/neural-grid-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5873,12 +5891,17 @@
       "name": "release-feed-footer",
       "type": "registry:block",
       "title": "Release Feed Footer",
-      "description": "A model and API changelog on a dated rail, with kind chips.",
+      "description": "A changelog list with version, kind and date on hairline rows.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/release-feed-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/release-feed-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5890,36 +5913,20 @@
       ]
     },
     {
-      "name": "api-playground-footer",
-      "type": "registry:block",
-      "title": "API Playground Footer",
-      "description": "A copyable curl or Python snippet with an endpoint switcher and token count.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/api-playground-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/api-playground-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "api",
-        "curl",
-        "snippet",
-        "developer"
-      ]
-    },
-    {
       "name": "newsletter-footer",
       "type": "registry:block",
       "title": "Newsletter Footer",
-      "description": "A newsletter capture with inline validation and a success morph.",
+      "description": "A newsletter panel with a value checklist, reader stack and inline validation.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/newsletter-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/newsletter-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5941,6 +5948,11 @@
           "path": "components/spectrumui/blocks/footers/contact-card-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/contact-card-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5956,12 +5968,17 @@
       "name": "social-proof-footer",
       "type": "registry:block",
       "title": "Logo Wall Footer",
-      "description": "A customer logo wall — scrolling marquee or plotted grid — over a rating row and stats that count up.",
+      "description": "A customer logo wall — marquee or plotted grid — over stats and link columns.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/social-proof-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/social-proof-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5977,12 +5994,17 @@
       "name": "minimal-footer",
       "type": "registry:block",
       "title": "Minimal Footer",
-      "description": "A single-line footer whose link clusters expand on hover or focus.",
+      "description": "A single-line footer with hover-expanding link clusters, status and socials.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/minimal-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/minimal-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",
@@ -5991,88 +6013,6 @@
         "minimal",
         "compact",
         "popover"
-      ]
-    },
-    {
-      "name": "big-type-footer",
-      "type": "registry:block",
-      "title": "Big Type Footer",
-      "description": "An oversized wordmark, justified edge to edge, whose letters lift on hover.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/big-type-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/big-type-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "typography",
-        "wordmark",
-        "big-footer"
-      ]
-    },
-    {
-      "name": "parallax-reveal-footer",
-      "type": "registry:block",
-      "title": "Parallax Reveal Footer",
-      "description": "A footer pinned behind the page that the content slides up to reveal.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/parallax-reveal-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/parallax-reveal-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "parallax",
-        "sticky",
-        "reveal",
-        "scroll"
-      ]
-    },
-    {
-      "name": "marquee-cta-footer",
-      "type": "registry:block",
-      "title": "Marquee CTA Footer",
-      "description": "An infinite CTA band that pauses on hover, over a compact link row.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/marquee-cta-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/marquee-cta-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "marquee",
-        "cta",
-        "ribbon"
-      ]
-    },
-    {
-      "name": "studio-footer",
-      "type": "registry:block",
-      "title": "Studio Footer",
-      "description": "An accent switcher, a now-building ticker and a live studio clock.",
-      "files": [
-        {
-          "path": "components/spectrumui/blocks/footers/studio-footer.tsx",
-          "type": "registry:block",
-          "target": "components/spectrumui/blocks/footers/studio-footer.tsx"
-        }
-      ],
-      "category": "Footers",
-      "tags": [
-        "footer",
-        "theme",
-        "accent",
-        "studio",
-        "small-business"
       ]
     },
     {
@@ -6085,6 +6025,11 @@
           "path": "components/spectrumui/blocks/footers/waitlist-footer.tsx",
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/waitlist-footer.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/footers/footer-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
       "category": "Footers",

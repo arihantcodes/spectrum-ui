@@ -36,7 +36,7 @@
       "slug": "footers",
       "name": "Footers",
       "tagline": "Page-width footers that do something when you touch them.",
-      "description": "Twenty-five interactive footer sections for enterprise platforms, AI products and small teams — mega sitemaps with region and language selectors, trust rows with SOC 2 and ISO scope, live service status with uptime sparklines, model availability grids, terminal and ask-the-docs inputs, oversized wordmarks, marquees, newsletter and waitlist capture. Every glyph is an inlined Iconly Pro Bold path, so a block copies out with no icon dependency, and every entrance, hover and state change is CSS — the links render even if JavaScript never arrives.",
+      "description": "Eighteen interactive footer sections, every one of them Spectrum UI dogfooding its own library — mega sitemaps with region and language selectors, a compliance trust row, thirty days of uptime bars, a customer logo wall, ask-the-docs search, a changelog feed, newsletter and waitlist capture, and a spotlit wordmark. They share one kit: outline utility icons, the Spectrum mark, the social row and the bottom bar, so the set stays identical without eighteen copies of the same markup. Every animation is CSS, so the links render even if JavaScript never arrives.",
       "order": 5,
       "layout": "wide"
     }
@@ -2080,13 +2080,14 @@
       "name": "Trust Center Footer",
       "category": "footers",
       "subcategory": "Enterprise",
-      "description": "Compliance badges that expand on hover, over a customer logo row and link columns.",
+      "description": "Compliance marks that expand to scope, over a logo row and link columns.",
       "summary": "The footer a procurement team reads. Five certifications expand to scope and report date on hover or focus, a row of customer logos says who already runs it, and four link columns keep it a footer rather than a banner.",
       "hardParts": [
         "A badge is worth nothing without scope and a date — the reveal exists so the card can carry both without shouting them",
         "Hover-only disclosure strands keyboard users, so focus and blur drive the same state as pointer enter and leave",
         "The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all",
-        "The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths"
+        "The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths",
+        "Five identical green dots tell a procurement reader nothing — the marks have to be recognisable in each standard’s own colours before the label is read"
       ],
       "variants": [
         "Badges",
@@ -2110,7 +2111,8 @@
       "hardParts": [
         "The clock renders as dashes on the server and fills in after mount — a real time on first paint is a hydration mismatch",
         "The popover closes on outside pointerdown and on Escape, and cleans both listeners up when it closes",
-        "The check mark cross-fades on scale and blur rather than appearing, so switching regions does not flicker"
+        "The check mark cross-fades on scale and blur rather than appearing, so switching regions does not flicker",
+        "The popover opens downward, not up: a picker pinned to the bottom of a real page wants to open up, but inside a section the list was clipped by the section edge and the first regions were unreachable"
       ],
       "variants": [
         "Popover",
@@ -2245,60 +2247,12 @@
       "addedAt": "2026-09-13"
     },
     {
-      "slug": "model-status-footer",
-      "name": "Model Status Footer",
-      "category": "footers",
-      "subcategory": "AI",
-      "description": "A model availability grid with animated latency bars and context sizes.",
-      "summary": "What an inference platform owes its users at the bottom of every page: which models are up, how fast they are answering, and how much context they take. Latency bars are drawn relative to the slowest model in the set, so the comparison is honest.",
-      "hardParts": [
-        "Bars scale against the slowest model rather than a fixed ceiling, so adding a slow model rescales the whole set correctly",
-        "The operational ping is a second absolutely positioned dot; animating the dot itself would move the status indicator",
-        "Latency and context are tabular-nums in a fixed-width column, so the rows stay aligned as numbers change"
-      ],
-      "variants": [
-        "Grid",
-        "Row"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Reach for this on an LLM API or inference product where model health is the headline. Presentational — pass models with latency in milliseconds and a health state. It does not poll a status endpoint; render it from server data.",
-      "index": 110,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "command-footer",
-      "name": "Command Footer",
-      "category": "footers",
-      "subcategory": "AI",
-      "description": "A terminal footer with slash commands, inline completion and Tab to accept.",
-      "summary": "Navigation as a prompt. Type a slash command and the rest of it appears in ghost text behind the caret, Tab accepts, Enter runs, arrow keys move through the list, and run commands stack above as history.",
-      "hardParts": [
-        "The ghost completion is a second absolutely positioned span with the typed prefix rendered invisible, so it tracks the caret at any width",
-        "Tab is intercepted only when a completion exists, so the footer never traps keyboard focus",
-        "The blinking caret is steps(1,end), not a fade — a fading terminal caret reads as a bug"
-      ],
-      "variants": [
-        "Terminal",
-        "Prompt"
-      ],
-      "complexity": "advanced",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Use for developer-facing AI and infrastructure products whose audience lives in a shell. onRun receives the command string; routing is yours. Commands are a static array — it does not fuzzy-match or execute anything.",
-      "index": 111,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
       "slug": "ask-docs-footer",
       "name": "Ask Docs Footer",
       "category": "footers",
       "subcategory": "AI",
-      "description": "A question input that streams a cited answer in place.",
-      "summary": "The footer as a retrieval surface. Ask a question and the panel opens with a searching state, then streams the answer character by character and settles into a row of numbered citation chips.",
+      "description": "A docs question box that streams a cited answer, over link columns.",
+      "summary": "Ask-the-docs, sized as a footer. A centred composer streams a cited answer in place with suggested prompts under it, and four link columns sit below so the block reads as a footer rather than a stranded search box.",
       "hardParts": [
         "Three phases — thinking, streaming, done — because a caret that starts before the first token pretends latency does not exist",
         "Citations appear only once streaming finishes, so the layout does not reflow under the reader mid-sentence",
@@ -2312,7 +2266,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this when documentation search is the main thing readers want from the footer. The answer prop is the text it streams — swap the canned string for your own retrieval result. It performs no fetching and holds no conversation history.",
-      "index": 112,
+      "index": 110,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2336,7 +2290,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Use where the brand is the point and the footer is the last impression — AI labs, studios, design-led products. Pointer only by design; there is nothing to reveal on touch, and the Static variant is the honest fallback.",
-      "index": 113,
+      "index": 111,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2345,8 +2299,8 @@
       "name": "Token Stream Footer",
       "category": "footers",
       "subcategory": "AI",
-      "description": "A manifesto that types itself in word by word when the footer enters view.",
-      "summary": "A closing statement that arrives the way the product's own output does. An IntersectionObserver starts the stream when the footer reaches the viewport, and each word fades up out of a blur, over a row of platform figures.",
+      "description": "A one-line manifesto that types itself in, over a metric row.",
+      "summary": "A short manifesto streams in word by word when the footer enters view, then hands the page over to four metrics in large mono figures. The reserved height means the block never jumps while the text arrives.",
       "hardParts": [
         "The full sentence is on the paragraph's aria-label, so assistive tech reads it whole rather than word by word as it lands",
         "Unlanded words render invisible rather than unmounted, so the paragraph is full height from the first frame and nothing below it reflows mid-stream",
@@ -2360,7 +2314,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this on an AI product landing page where the footer carries a positioning statement. Keep the manifesto under about thirty words; past that the stream outlasts the reader's patience. Purely visual — no data, no callbacks.",
-      "index": 114,
+      "index": 112,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2384,7 +2338,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Use where an AI product wants atmosphere in the footer without shipping a WebGL dependency. Decorative and aria-hidden throughout. Edge count grows quadratically with node count — keep the arrays near the defaults.",
-      "index": 115,
+      "index": 113,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2393,12 +2347,12 @@
       "name": "Release Feed Footer",
       "category": "footers",
       "subcategory": "AI",
-      "description": "A model and API changelog on a dated rail, with kind chips.",
-      "summary": "Fast-moving AI products ship weekly and bury it in a changelog nobody opens. This footer puts the last five releases on a dated rail with a chip marking model, API or platform, and the hovered entry lights its node.",
+      "description": "A changelog list with version, kind and date on hairline rows.",
+      "summary": "The last five releases, as a changelog rather than a timeline. Each row carries the version in mono, a coloured dot for the kind, the title, and the date right-aligned, on hairline rows that survive any column width.",
       "hardParts": [
-        "Dates are in a fixed-width gutter outside the rail, so the timeline stays a straight line whatever the date format",
-        "The rail nodes carry a ring in the surface colour, which is what makes them read as sitting on the line rather than behind it",
-        "Hover and focus set the same active entry, so the rail highlight follows keyboard tabbing as well as the pointer"
+        "A timeline rail needs 86px of gutter for the date and the dot before a word of content fits — hairline rows carry the same information and survive a narrow column",
+        "Version, kind and date are three different kinds of value, so they get three different treatments: mono, a colour dot, and a muted right-aligned column",
+        "Rows stagger in at 40ms, which is under the threshold where a list reads as loading rather than arriving"
       ],
       "variants": [
         "Feed",
@@ -2408,31 +2362,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this when release cadence is itself a selling point. Pass releases newest first with a pre-formatted date string — it does no date parsing or locale formatting. Kind maps to three tones; add your own in KIND_TONE.",
-      "index": 116,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "api-playground-footer",
-      "name": "API Playground Footer",
-      "category": "footers",
-      "subcategory": "AI",
-      "description": "A copyable curl or Python snippet with an endpoint switcher and token count.",
-      "summary": "The shortest path from footer to first API call. Endpoint tabs swap the snippet, the language variant swaps curl for the SDK, a copy button cross-fades to a tick, and the status strip reports the runtime and the input token count.",
-      "hardParts": [
-        "Copy feedback cross-fades two icons that both stay mounted, so the exit animates instead of the tick popping in",
-        "The pre is keyed on endpoint and language so the snippet animates on switch rather than silently swapping text",
-        "Right padding on the pre reserves the copy button's column, so long lines scroll under it instead of behind it"
-      ],
-      "variants": [
-        "Curl",
-        "Python"
-      ],
-      "complexity": "advanced",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Use on developer-first AI and API products where the footer should convert a reader into a caller. Snippets are strings you supply — it does not highlight syntax or run anything. Pair with the Shiki-rendered code block if you need colour.",
-      "index": 117,
+      "index": 114,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2441,12 +2371,13 @@
       "name": "Newsletter Footer",
       "category": "footers",
       "subcategory": "Product",
-      "description": "A newsletter capture with inline validation and a success morph.",
-      "summary": "The conversion footer for a small product. A large capture panel states the cadence and the list size honestly, validates on submit, shakes once on a bad address, and morphs the whole field into a confirmation that quotes the address back.",
+      "description": "A newsletter panel with a value checklist, reader stack and inline validation.",
+      "summary": "The conversion block of the set. A bordered panel carries a display headline, three lines of what actually lands in your inbox, and a large field with a reader stack under it. Bad input shakes the field; a good one morphs the whole form into a confirmation without moving the layout.",
       "hardParts": [
-        "The helper line holds its slot in both states, so the error message does not push the link grid down the page",
-        "aria-invalid and aria-describedby wire the error to the input, so it is announced rather than only shown",
-        "The shake is 320ms and runs once — a looping error animation reads as a broken form"
+        "A newsletter block lives or dies on the reason to subscribe — a headline and a field is a form, the checklist is what makes it an offer",
+        "The success state has to occupy the same footprint as the form or the page jumps under the pointer at the exact moment you want it to feel finished",
+        "An <input> carries an intrinsic min-width of about twenty characters, so the panel needs min-w-0 on both grid items or it pushes past a phone viewport",
+        "The shake is 320ms and fires once; anything longer reads as an error state rather than a correction"
       ],
       "variants": [
         "Panel",
@@ -2456,7 +2387,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this when the footer's job is list growth. onSubscribe receives the validated address; the block never posts anywhere. Validation is a shape check, not a deliverability check — verify server-side.",
-      "index": 118,
+      "index": 115,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2480,7 +2411,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Use for agencies, studios and small SaaS where the footer replaces a contact page. utcOffset is a plain hour offset and does not handle daylight saving — pass the current offset, or drop the prop to hide the clock.",
-      "index": 119,
+      "index": 116,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2489,7 +2420,7 @@
       "name": "Logo Wall Footer",
       "category": "footers",
       "subcategory": "Product",
-      "description": "A customer logo wall — scrolling marquee or plotted grid — over a rating row and stats that count up.",
+      "description": "A customer logo wall — marquee or plotted grid — over stats and link columns.",
       "summary": "The \"trusted by\" block, done properly. Twelve customer marks run as an edge-masked marquee that pauses under the pointer, or settle into a plotted grid whose cells stagger in. Under them a rating row and four counters that animate once when the footer enters view.",
       "hardParts": [
         "A seamless marquee is the list twice over and a keyframe that travels exactly -50%, so the seam lands where the second copy sits pixel-for-pixel on the first",
@@ -2505,7 +2436,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this when a footer needs social proof. Pass `customers` as name plus an SVG component; the bundled set is invented, so replace it with real marks before shipping. Stats are presentational — the count-up is animation only, not live data.",
-      "index": 120,
+      "index": 117,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2514,7 +2445,7 @@
       "name": "Minimal Footer",
       "category": "footers",
       "subcategory": "Product",
-      "description": "A single-line footer whose link clusters expand on hover or focus.",
+      "description": "A single-line footer with hover-expanding link clusters, status and socials.",
       "summary": "Everything a small site needs in one 30px row. Section names sit as quiet buttons; hovering or focusing one lifts a small panel of its links above the bar, so the footer stays one line without losing a page.",
       "hardParts": [
         "Panels open upward, because a footer popover that opens downward opens off the bottom of the document",
@@ -2529,104 +2460,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Use on personal sites, docs and small products where a five-column footer would be theatre. Links live inside the panels, so if crawlability of every footer link matters more than the single line, take the mega sitemap instead.",
-      "index": 121,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "big-type-footer",
-      "name": "Big Type Footer",
-      "category": "footers",
-      "subcategory": "Product",
-      "description": "An oversized wordmark, justified edge to edge, whose letters lift on hover.",
-      "summary": "The editorial masthead footer. The brand name is split into letters spread across the full width, each lifting slightly under the pointer, over a compact set of columns and a call to action.",
-      "hardParts": [
-        "Per-letter font size is derived from the letter count, so a four-letter and a twelve-letter brand both fill the width",
-        "A mount-time entrance on a footer plays to an empty room, so the letters hang off a view() scroll timeline and stagger by shifting each one’s animation-range — animation-delay does nothing on a scroll timeline",
-        "The word is on an aria-label with every letter aria-hidden, otherwise a screen reader spells the brand out",
-        "The root has to be overflow-clip rather than overflow-hidden: hidden makes the footer its own scroll container, which is what the letters’ timeline would then measure against, freezing every one of them"
-      ],
-      "variants": [
-        "Fill",
-        "Outline"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Reach for this when the brand should be the last thing on the page. Best for wordmarks of four to twelve characters; longer names shrink past the point where the effect reads. Purely typographic — no image assets. The scroll-driven reveal is progressive enhancement — browsers without animation-timeline, and anyone on reduced motion, get the resting state.",
-      "index": 122,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "parallax-reveal-footer",
-      "name": "Parallax Reveal Footer",
-      "category": "footers",
-      "subcategory": "Product",
-      "description": "A footer pinned behind the page that the content slides up to reveal.",
-      "summary": "The reveal footer, in about fifteen lines of CSS and no scroll listener. The footer is sticky to the bottom of the scroll container from the start; the page above it carries an opaque background and a lifted shadow, so scrolling uncovers rather than moves.",
-      "hardParts": [
-        "Sticky beats a scroll listener outright — the browser owns the pin, so there is no jank and no rAF budget spent",
-        "The reveal only exists if the content above is opaque and stacked over the footer; a transparent page shows both at once",
-        "It takes the page content as children rather than assuming a page structure, so it works inside a panel as well as a document"
-      ],
-      "variants": [
-        "Reveal",
-        "Fixed"
-      ],
-      "complexity": "advanced",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Use at the bottom of a long marketing page for a closing beat. Pass the scrolling content as children; without children it renders flat, which is also the correct reduced-motion fallback. Needs a scroll container — page or a sized div.",
-      "index": 123,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "marquee-cta-footer",
-      "name": "Marquee CTA Footer",
-      "category": "footers",
-      "subcategory": "Product",
-      "description": "An infinite CTA band that pauses on hover, over a compact link row.",
-      "summary": "A closing band that keeps moving until the reader points at it. Short phrases scroll in a seamless loop across a full-width link, separated by dots, with a straight and a tilted ribbon variant.",
-      "hardParts": [
-        "The loop duplicates the phrase list and translates exactly -50%, the only offset that hides the wrap point",
-        "The whole band is one anchor, so the moving text is a single hit target instead of a row of moving ones",
-        "Pausing on hover uses animation-play-state, which resumes from where it stopped instead of restarting the loop"
-      ],
-      "variants": [
-        "Band",
-        "Ribbon"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Reach for this when the footer should carry one loud call to action. Keep phrases to four or five of about four words; a long phrase list slows the perceived loop to a crawl. Speed is seconds per full pass.",
-      "index": 124,
-      "status": "live",
-      "addedAt": "2026-09-13"
-    },
-    {
-      "slug": "studio-footer",
-      "name": "Studio Footer",
-      "category": "footers",
-      "subcategory": "Product",
-      "description": "An accent switcher, a now-building ticker and a live studio clock.",
-      "summary": "The footer of a product with three people behind it. An accent swatch row recolours the footer live through a CSS variable, a small equaliser sits beside a rotating now-building line, and the copyright row carries the studio's local time.",
-      "hardParts": [
-        "The accent is one CSS custom property on the footer element, so a click recolours every dependent without re-rendering them",
-        "Swatches resize rather than gaining a ring, which keeps the selected state legible against any colour including the pale ones",
-        "The equaliser bars keep a floor height under reduced motion instead of freezing flat, which would read as broken"
-      ],
-      "variants": [
-        "Studio",
-        "Quiet"
-      ],
-      "complexity": "composed",
-      "composedOf": [],
-      "dependencies": [],
-      "aiHints": "Use for indie products, studios and side projects whose footer is allowed a personality. onAccentChange hands back the chosen accent so you can lift it into your own theme; the block only recolours itself.",
-      "index": 125,
+      "index": 118,
       "status": "live",
       "addedAt": "2026-09-13"
     },
@@ -2650,7 +2484,7 @@
       "composedOf": [],
       "dependencies": [],
       "aiHints": "Reach for this before launch, when the footer's only job is the list. onJoin receives the validated address and the count increments locally for feedback only — the real number has to come from your backend.",
-      "index": 126,
+      "index": 119,
       "status": "live",
       "addedAt": "2026-09-13"
     }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { BrandLockup, FooterSocials, type FooterSocial } from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-min-in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
@@ -16,6 +17,7 @@ export interface MinimalFooterCluster {
 
 export interface MinimalFooterProps {
   brand: string;
+  socials?: FooterSocial[];
   clusters: MinimalFooterCluster[];
   status?: string;
   copyright?: string;
@@ -25,6 +27,7 @@ export interface MinimalFooterProps {
 
 export function MinimalFooter({
   brand,
+  socials,
   clusters,
   status = 'All systems normal',
   copyright,
@@ -54,7 +57,7 @@ export function MinimalFooter({
           <div
             className={cn('flex items-center gap-3', centered && 'order-2 w-full justify-center')}
           >
-            <span className="text-[14px] font-semibold tracking-[-0.2px]">{brand}</span>
+            <BrandLockup brand={brand} />
             <span className="text-[12px] tabular-nums text-neutral-500 dark:text-neutral-400">
               {copyright ?? `© ${brand}`}
             </span>
@@ -111,17 +114,15 @@ export function MinimalFooter({
             })}
           </nav>
 
-          {status && (
-            <span
-              className={cn(
-                'inline-flex items-center gap-1.5 text-[12px] text-neutral-500 dark:text-neutral-400',
-                centered && 'order-3',
-              )}
-            >
-              <span aria-hidden className="size-1.5 rounded-full bg-emerald-500" />
-              {status}
-            </span>
-          )}
+          <div className={cn('flex items-center gap-4', centered && 'order-3')}>
+            {status && (
+              <span className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 dark:text-neutral-400">
+                <span aria-hidden className="size-1.5 rounded-full bg-emerald-500" />
+                {status}
+              </span>
+            )}
+            <FooterSocials socials={socials} className="-mr-2" />
+          </div>
         </div>
       </div>
     </footer>

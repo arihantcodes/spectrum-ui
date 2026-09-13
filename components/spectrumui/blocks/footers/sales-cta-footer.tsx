@@ -1,26 +1,14 @@
 'use client';
 
-import { useId, useState, type SVGProps } from 'react';
+import { useId, useState } from 'react';
 import { cn } from '@/lib/utils';
-
-/* Iconly Pro (Bold) glyphs, inlined so the block copies out with no icon
-   dependency — the same convention the Tables wave uses. */
-type IconProps = SVGProps<SVGSVGElement>;
-
-function IconArrowRight(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(3, 6)"
-        d="M7.83655568,6.36070466 L7.8350323,6.00660914 C7.8350323,4.53497338 7.92121308,3.19331742 8.05102968,2.31870755 L8.16475558,1.77483018 C8.22802754,1.48678171 8.31120835,1.15880301 8.39793457,0.991371397 C8.71538527,0.378924178 9.33610502,0 10.0004606,0 L10.0582781,0 C10.4913637,0.0143198091 11.4011709,0.394345511 11.4011709,0.407563797 C12.8651531,1.02183092 15.6895424,2.87571834 16.9940026,4.19738844 L17.3730714,4.59418673 C17.4723361,4.70172939 17.5838596,4.82900679 17.6530951,4.92821737 C17.884365,5.23444098 18,5.61336516 18,5.99228933 C18,6.41527446 17.8701834,6.80851845 17.6247318,7.13016339 L17.2352725,7.55047018 L17.2352725,7.55047018 L17.1480103,7.6401689 C15.9643883,8.9234441 12.8738803,11.0218469 11.2571726,11.6640352 L11.0130847,11.7575787 C10.719361,11.8628603 10.3078205,11.988434 10.0582781,12 C9.74082738,12 9.43755833,11.9261979 9.14847093,11.7807968 C8.7873844,11.5770149 8.49938789,11.2553699 8.34011709,10.8764457 C8.23866377,10.6142831 8.07939298,9.82669359 8.07939298,9.81237378 C7.93338076,9.01825987 7.84871691,7.76518207 7.83655568,6.36070466 Z M1.77635684e-15,5.99955939 C1.77635684e-15,5.1612998 0.673082751,4.48165963 1.50325451,4.48165963 L5.20248239,4.80881219 C5.85374723,4.80881219 6.38174083,5.3419497 6.38174083,5.99955939 C6.38174083,6.65827061 5.85374723,7.19030659 5.20248239,7.19030659 L1.50325451,7.51745915 C0.673082751,7.51745915 1.77635684e-15,6.83781898 1.77635684e-15,5.99955939 Z"
-      />
-    </svg>
-  );
-}
+import { IconArrowRight, FooterBar, type FooterSocial } from './footer-kit';
 
 export type SalesCtaFooterVariant = 'Split' | 'Stacked';
 
 export interface SalesCtaFooterProps {
+  links?: { label: string; href: string }[];
+  socials?: FooterSocial[];
   brand: string;
   headline?: string;
   blurb?: string;
@@ -49,6 +37,8 @@ function tierFor(seats: number) {
 }
 
 export function SalesCtaFooter({
+  links,
+  socials,
   brand,
   headline = 'Priced per seat until it should not be.',
   blurb = 'Move the slider for an indicative annual figure. Anything above four hundred seats is quoted, not listed.',
@@ -187,9 +177,13 @@ export function SalesCtaFooter({
           )}
         </div>
 
-        <p className="mt-10 border-t border-black/[0.07] pt-6 text-[12px] tabular-nums text-neutral-500 dark:border-white/[0.08]">
-          {copyright ?? `© ${brand}. All rights reserved.`}
-        </p>
+        <FooterBar
+          brand={brand}
+          copyright={copyright}
+          links={links}
+          socials={socials}
+          className="mt-10"
+        />
       </div>
     </footer>
   );

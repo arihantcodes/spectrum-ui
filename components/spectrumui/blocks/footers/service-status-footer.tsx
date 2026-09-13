@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { FooterBar, type FooterSocial } from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-status-pulse { 0%, 100% { opacity: 1; transform: scale(1) } 50% { opacity: 0.35; transform: scale(0.82) } }
@@ -20,6 +21,7 @@ export interface FooterService {
 }
 
 export interface ServiceStatusFooterProps {
+  socials?: FooterSocial[];
   brand: string;
   services: FooterService[];
   incidents?: string[];
@@ -84,11 +86,12 @@ function UptimeBars({ service }: { service: FooterService }) {
 }
 
 export function ServiceStatusFooter({
+  socials,
   brand,
   services,
   incidents = [],
   statusHref = '#',
-  links = [],
+  links,
   copyright,
   variant = 'Grid',
   className,
@@ -206,21 +209,13 @@ export function ServiceStatusFooter({
           </ul>
         )}
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-black/[0.07] pt-6 text-[12px] text-neutral-500 dark:border-white/[0.08] sm:flex-row sm:items-center sm:justify-between">
-          <p className="tabular-nums">{copyright ?? `© ${brand}. All rights reserved.`}</p>
-          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            {links.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:text-neutral-200"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <FooterBar
+          brand={brand}
+          copyright={copyright}
+          links={links}
+          socials={socials}
+          className="mt-10"
+        />
       </div>
     </footer>
   );

@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { cn } from '@/lib/utils';
+import { FooterBar, type FooterSocial } from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-token-in { from { opacity: 0; transform: translateY(6px); filter: blur(4px) } to { opacity: 1; transform: none; filter: blur(0) } }
@@ -11,6 +12,8 @@ const KEYFRAMES = `
 export type TokenStreamFooterVariant = 'Stream' | 'Instant';
 
 export interface TokenStreamFooterProps {
+  links?: { label: string; href: string }[];
+  socials?: FooterSocial[];
   brand: string;
   manifesto: string;
   groups?: { title: string; links: { label: string; href: string }[] }[];
@@ -38,6 +41,8 @@ function usePrefersReducedMotion() {
 }
 
 export function TokenStreamFooter({
+  links,
+  socials,
   brand,
   manifesto,
   groups = [],
@@ -97,7 +102,7 @@ export function TokenStreamFooter({
     >
       <style dangerouslySetInnerHTML={{ __html: KEYFRAMES }} />
 
-      <div className="mx-auto w-full max-w-[1180px] px-6 py-14">
+      <div className="mx-auto w-full max-w-[1180px] px-6 py-12">
         <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
           {brand}
         </span>
@@ -105,7 +110,7 @@ export function TokenStreamFooter({
         <span className="sr-only">{manifesto}</span>
         <p
           aria-hidden
-          className="mt-4 max-w-[24ch] text-balance text-[clamp(26px,4.2vw,44px)] font-semibold leading-[1.12] tracking-[-1.2px] sm:max-w-[20ch]"
+          className="mt-4 max-w-[34ch] text-balance text-[clamp(23px,3.1vw,34px)] font-semibold leading-[1.18] tracking-[-0.9px]"
         >
           {tokens.map((token, index) => {
             const landed = index < shown;
@@ -138,13 +143,13 @@ export function TokenStreamFooter({
         </p>
 
         {meta.length > 0 && (
-          <dl className="mt-10 grid gap-6 border-y border-black/[0.07] py-6 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="mt-9 grid gap-6 border-y border-black/[0.07] py-7 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
             {meta.map((entry) => (
               <div key={entry.label}>
                 <dt className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
                   {entry.label}
                 </dt>
-                <dd className="mt-1.5 text-[14px] tabular-nums text-neutral-800 dark:text-neutral-200">
+                <dd className="mt-2 font-mono text-[22px] leading-none tabular-nums tracking-[-0.6px] text-neutral-900 dark:text-neutral-100">
                   {entry.value}
                 </dd>
               </div>
@@ -176,9 +181,13 @@ export function TokenStreamFooter({
           </nav>
         )}
 
-        <p className="mt-10 border-t border-black/[0.07] pt-6 text-[12px] tabular-nums text-neutral-500 dark:border-white/[0.08]">
-          {copyright ?? `© ${brand}. All rights reserved.`}
-        </p>
+        <FooterBar
+          brand={brand}
+          copyright={copyright}
+          links={links}
+          socials={socials}
+          className="mt-10"
+        />
       </div>
     </footer>
   );

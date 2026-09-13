@@ -1,33 +1,8 @@
 'use client';
 
-import { useId, useMemo, useRef, useState, type SVGProps } from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-
-/* Iconly Pro (Bold) glyphs, inlined so the block copies out with no icon
-   dependency — the same convention the Tables wave uses. */
-type IconProps = SVGProps<SVGSVGElement>;
-
-function IconEnter(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(2.5, 2)"
-        d="M4.79052152,10.7699 L0.78150457,10.7699 C0.35522935,10.7699 -1.01696429e-13,10.4299 -1.01696429e-13,9.9999 C-1.01696429e-13,9.5799 0.35522935,9.2299 0.78150457,9.2299 L0.78150457,9.2299 L4.79052152,9.2299 L4.790826,4.45 C4.790826,2 6.85611292,0 9.3860894,0 L9.3860894,0 L14.4253895,0 C16.9450395,0 19,2 19,4.44 L19,4.44 L19,15.56 C19,18.01 16.9450395,20 14.4047366,20 L14.4047366,20 L9.37576296,20 C6.85611292,20 4.790826,18.01 4.790826,15.57 L4.790826,15.57 L4.790826,10.77 L11.1932154,10.77 L9.54098591,12.37 C9.23119288,12.67 9.23119288,13.16 9.54098591,13.46 C9.69588243,13.61 9.90241112,13.68 10.1089398,13.68 C10.3051421,13.68 10.5116708,13.61 10.6665673,13.46 L10.6665673,13.46 L13.6818862,10.55 C13.8367827,10.41 13.9193942,10.21 13.9193942,10 C13.9193942,9.8 13.8367827,9.6 13.6818862,9.46 L13.6818862,9.46 L10.6665673,6.55 C10.3567742,6.25 9.85077895,6.25 9.54098591,6.55 C9.23119288,6.85 9.23119288,7.34 9.54098591,7.64 L9.54098591,7.64 L11.1932154,9.23 L4.790826,9.23 L4.79052152,10.7699 Z"
-      />
-    </svg>
-  );
-}
-
-function IconSearch(props: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path
-        transform="translate(2, 2)"
-        d="M15.6207067,15.6542822 C16.0072308,15.270377 16.6268293,15.270377 17.0133534,15.6542822 L17.0133534,15.6542822 L19.5680176,17.7164156 L19.6123694,17.7164156 C20.1292102,18.2388171 20.1292102,19.0857973 19.6123694,19.6081989 C19.0955285,20.1306004 18.2575639,20.1306004 17.7407231,19.6081989 L17.7407231,19.6081989 L15.6207067,17.1784678 L15.5402577,17.0876967 C15.390397,16.8980019 15.3076306,16.6615115 15.3076306,16.416375 C15.3076306,16.1303824 15.4202849,15.8561581 15.6207067,15.6542822 Z M8.57763961,-7.10542736e-15 C10.8525711,-7.10542736e-15 13.0343273,0.913436016 14.6429467,2.53936255 C16.2515662,4.16528909 17.1552792,6.37051871 17.1552792,8.66992606 C17.1552792,13.458194 13.3149392,17.3398521 8.57763961,17.3398521 C3.84034006,17.3398521 2.13162821e-14,13.458194 2.13162821e-14,8.66992606 C2.13162821e-14,3.88165812 3.84034006,-7.10542736e-15 8.57763961,-7.10542736e-15 Z"
-      />
-    </svg>
-  );
-}
+import { IconEnter, IconSearch, FooterBar, type FooterSocial } from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-link-in { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: none } }
@@ -41,6 +16,8 @@ export interface LinkSearchGroup {
 }
 
 export interface LinkSearchFooterProps {
+  links?: { label: string; href: string }[];
+  socials?: FooterSocial[];
   brand: string;
   groups: LinkSearchGroup[];
   placeholder?: string;
@@ -72,6 +49,8 @@ function highlight(label: string, query: string) {
 }
 
 export function LinkSearchFooter({
+  links,
+  socials,
   brand,
   groups,
   placeholder = 'Search every page…',
@@ -233,9 +212,13 @@ export function LinkSearchFooter({
           </nav>
         )}
 
-        <p className="mt-10 border-t border-black/[0.07] pt-6 text-[12px] tabular-nums text-neutral-500 dark:border-white/[0.08]">
-          {copyright ?? `© ${brand}. All rights reserved.`}
-        </p>
+        <FooterBar
+          brand={brand}
+          copyright={copyright}
+          links={links}
+          socials={socials}
+          className="mt-10"
+        />
       </div>
     </footer>
   );

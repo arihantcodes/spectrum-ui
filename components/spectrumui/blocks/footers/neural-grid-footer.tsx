@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { FooterBar, type FooterSocial } from './footer-kit';
 
 const KEYFRAMES = `
 @keyframes su-node-drift { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-3px) } }
@@ -11,6 +12,7 @@ const KEYFRAMES = `
 export type NeuralGridFooterVariant = 'Lattice' | 'Constellation';
 
 export interface NeuralGridFooterProps {
+  socials?: FooterSocial[];
   brand: string;
   headline?: string;
   groups?: { title: string; links: { label: string; href: string }[] }[];
@@ -132,10 +134,11 @@ function Lattice({
 }
 
 export function NeuralGridFooter({
+  socials,
   brand,
   headline = 'Every request routed, every token accounted for.',
   groups = [],
-  legal = [],
+  legal,
   copyright,
   radius = 190,
   variant = 'Lattice',
@@ -245,21 +248,14 @@ export function NeuralGridFooter({
             </nav>
           )}
 
-          <div className="mt-10 flex flex-col gap-3 border-t border-white/[0.07] pt-6 text-[12px] text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
-            <p className="tabular-nums">{copyright ?? `© ${brand}. All rights reserved.`}</p>
-            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              {legal.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="transition-colors duration-150 hover:text-neutral-200 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-500"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterBar
+            brand={brand}
+            copyright={copyright}
+            links={legal}
+            socials={socials}
+            tone="dark"
+            className="mt-10"
+          />
         </div>
       </div>
     </footer>

@@ -550,7 +550,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## Block reference (93)
+## Block reference (86)
 
 Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.
 
@@ -1910,9 +1910,9 @@ What makes it hard to build well:
 - Intensity is quantised into five buckets — the eye cannot rank a continuous ramp
 - Month labels print on the column each month starts, not on every column
 
-## Footers blocks (25) — reference
+## Footers blocks (18) — reference
 
-Twenty-five interactive footer sections for enterprise platforms, AI products and small teams — mega sitemaps with region and language selectors, trust rows with SOC 2 and ISO scope, live service status with uptime sparklines, model availability grids, terminal and ask-the-docs inputs, oversized wordmarks, marquees, newsletter and waitlist capture. Every glyph is an inlined Iconly Pro Bold path, so a block copies out with no icon dependency, and every entrance, hover and state change is CSS — the links render even if JavaScript never arrives.
+Eighteen interactive footer sections, every one of them Spectrum UI dogfooding its own library — mega sitemaps with region and language selectors, a compliance trust row, thirty days of uptime bars, a customer logo wall, ask-the-docs search, a changelog feed, newsletter and waitlist capture, and a spotlit wordmark. They share one kit: outline utility icons, the Spectrum mark, the social row and the bottom bar, so the set stays identical without eighteen copies of the same markup. Every animation is CSS, so the links render even if JavaScript never arrives.
 
 Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/footers and installs with the shadcn CLI or through the MCP server.
 
@@ -1953,6 +1953,7 @@ What makes it hard to build well:
 - Hover-only disclosure strands keyboard users, so focus and blur drive the same state as pointer enter and leave
 - The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all
 - The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths
+- Five identical green dots tell a procurement reader nothing — the marks have to be recognisable in each standard’s own colours before the label is read
 
 ### Region Picker Footer
 
@@ -1971,6 +1972,7 @@ What makes it hard to build well:
 - The clock renders as dashes on the server and fills in after mount — a real time on first paint is a hydration mismatch
 - The popover closes on outside pointerdown and on Escape, and cleans both listeners up when it closes
 - The check mark cross-fades on scale and blur rather than appearing, so switching regions does not flicker
+- The popover opens downward, not up: a picker pinned to the bottom of a real page wants to open up, but inside a section the list was clipped by the section edge and the first regions were unreachable
 
 ### Service Status Footer
 
@@ -2062,42 +2064,6 @@ What makes it hard to build well:
 - Saved is announced through aria-live and fades rather than appearing, so a screen reader hears the result of the click
 - The switch knob transitions on left rather than transform, which keeps it crisp against the 22px track at any zoom
 
-### Model Status Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#model-status-footer
-- Category: footers / AI
-- Install: npx shadcn@latest add @spectrumui/model-status-footer
-- Variants: Grid, Row
-- Dependencies: none
-- Added: 2026-09-13
-
-What an inference platform owes its users at the bottom of every page: which models are up, how fast they are answering, and how much context they take. Latency bars are drawn relative to the slowest model in the set, so the comparison is honest.
-
-When to use it: Reach for this on an LLM API or inference product where model health is the headline. Presentational — pass models with latency in milliseconds and a health state. It does not poll a status endpoint; render it from server data.
-
-What makes it hard to build well:
-- Bars scale against the slowest model rather than a fixed ceiling, so adding a slow model rescales the whole set correctly
-- The operational ping is a second absolutely positioned dot; animating the dot itself would move the status indicator
-- Latency and context are tabular-nums in a fixed-width column, so the rows stay aligned as numbers change
-
-### Command Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#command-footer
-- Category: footers / AI
-- Install: npx shadcn@latest add @spectrumui/command-footer
-- Variants: Terminal, Prompt
-- Dependencies: none
-- Added: 2026-09-13
-
-Navigation as a prompt. Type a slash command and the rest of it appears in ghost text behind the caret, Tab accepts, Enter runs, arrow keys move through the list, and run commands stack above as history.
-
-When to use it: Use for developer-facing AI and infrastructure products whose audience lives in a shell. onRun receives the command string; routing is yours. Commands are a static array — it does not fuzzy-match or execute anything.
-
-What makes it hard to build well:
-- The ghost completion is a second absolutely positioned span with the typed prefix rendered invisible, so it tracks the caret at any width
-- Tab is intercepted only when a completion exists, so the footer never traps keyboard focus
-- The blinking caret is steps(1,end), not a fade — a fading terminal caret reads as a bug
-
 ### Ask Docs Footer
 
 - URL: https://ui.spectrumhq.in/blocks/footers#ask-docs-footer
@@ -2107,7 +2073,7 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-The footer as a retrieval surface. Ask a question and the panel opens with a searching state, then streams the answer character by character and settles into a row of numbered citation chips.
+Ask-the-docs, sized as a footer. A centred composer streams a cited answer in place with suggested prompts under it, and four link columns sit below so the block reads as a footer rather than a stranded search box.
 
 When to use it: Reach for this when documentation search is the main thing readers want from the footer. The answer prop is the text it streams — swap the canned string for your own retrieval result. It performs no fetching and holds no conversation history.
 
@@ -2143,7 +2109,7 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-A closing statement that arrives the way the product's own output does. An IntersectionObserver starts the stream when the footer reaches the viewport, and each word fades up out of a blur, over a row of platform figures.
+A short manifesto streams in word by word when the footer enters view, then hands the page over to four metrics in large mono figures. The reserved height means the block never jumps while the text arrives.
 
 When to use it: Reach for this on an AI product landing page where the footer carries a positioning statement. Keep the manifesto under about thirty words; past that the stream outlasts the reader's patience. Purely visual — no data, no callbacks.
 
@@ -2179,32 +2145,14 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-Fast-moving AI products ship weekly and bury it in a changelog nobody opens. This footer puts the last five releases on a dated rail with a chip marking model, API or platform, and the hovered entry lights its node.
+The last five releases, as a changelog rather than a timeline. Each row carries the version in mono, a coloured dot for the kind, the title, and the date right-aligned, on hairline rows that survive any column width.
 
 When to use it: Reach for this when release cadence is itself a selling point. Pass releases newest first with a pre-formatted date string — it does no date parsing or locale formatting. Kind maps to three tones; add your own in KIND_TONE.
 
 What makes it hard to build well:
-- Dates are in a fixed-width gutter outside the rail, so the timeline stays a straight line whatever the date format
-- The rail nodes carry a ring in the surface colour, which is what makes them read as sitting on the line rather than behind it
-- Hover and focus set the same active entry, so the rail highlight follows keyboard tabbing as well as the pointer
-
-### API Playground Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#api-playground-footer
-- Category: footers / AI
-- Install: npx shadcn@latest add @spectrumui/api-playground-footer
-- Variants: Curl, Python
-- Dependencies: none
-- Added: 2026-09-13
-
-The shortest path from footer to first API call. Endpoint tabs swap the snippet, the language variant swaps curl for the SDK, a copy button cross-fades to a tick, and the status strip reports the runtime and the input token count.
-
-When to use it: Use on developer-first AI and API products where the footer should convert a reader into a caller. Snippets are strings you supply — it does not highlight syntax or run anything. Pair with the Shiki-rendered code block if you need colour.
-
-What makes it hard to build well:
-- Copy feedback cross-fades two icons that both stay mounted, so the exit animates instead of the tick popping in
-- The pre is keyed on endpoint and language so the snippet animates on switch rather than silently swapping text
-- Right padding on the pre reserves the copy button's column, so long lines scroll under it instead of behind it
+- A timeline rail needs 86px of gutter for the date and the dot before a word of content fits — hairline rows carry the same information and survive a narrow column
+- Version, kind and date are three different kinds of value, so they get three different treatments: mono, a colour dot, and a muted right-aligned column
+- Rows stagger in at 40ms, which is under the threshold where a list reads as loading rather than arriving
 
 ### Newsletter Footer
 
@@ -2215,14 +2163,15 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-The conversion footer for a small product. A large capture panel states the cadence and the list size honestly, validates on submit, shakes once on a bad address, and morphs the whole field into a confirmation that quotes the address back.
+The conversion block of the set. A bordered panel carries a display headline, three lines of what actually lands in your inbox, and a large field with a reader stack under it. Bad input shakes the field; a good one morphs the whole form into a confirmation without moving the layout.
 
 When to use it: Reach for this when the footer's job is list growth. onSubscribe receives the validated address; the block never posts anywhere. Validation is a shape check, not a deliverability check — verify server-side.
 
 What makes it hard to build well:
-- The helper line holds its slot in both states, so the error message does not push the link grid down the page
-- aria-invalid and aria-describedby wire the error to the input, so it is announced rather than only shown
-- The shake is 320ms and runs once — a looping error animation reads as a broken form
+- A newsletter block lives or dies on the reason to subscribe — a headline and a field is a form, the checklist is what makes it an offer
+- The success state has to occupy the same footprint as the form or the page jumps under the pointer at the exact moment you want it to feel finished
+- An <input> carries an intrinsic min-width of about twenty characters, so the panel needs min-w-0 on both grid items or it pushes past a phone viewport
+- The shake is 320ms and fires once; anything longer reads as an error state rather than a correction
 
 ### Contact Card Footer
 
@@ -2278,79 +2227,6 @@ What makes it hard to build well:
 - Panels open upward, because a footer popover that opens downward opens off the bottom of the document
 - Hover opens and focus opens, and pointer-leaving the whole footer closes — otherwise a panel is left hanging
 - Buttons carry aria-expanded, so the disclosure is announced rather than being pure hover decoration
-
-### Big Type Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#big-type-footer
-- Category: footers / Product
-- Install: npx shadcn@latest add @spectrumui/big-type-footer
-- Variants: Fill, Outline
-- Dependencies: none
-- Added: 2026-09-13
-
-The editorial masthead footer. The brand name is split into letters spread across the full width, each lifting slightly under the pointer, over a compact set of columns and a call to action.
-
-When to use it: Reach for this when the brand should be the last thing on the page. Best for wordmarks of four to twelve characters; longer names shrink past the point where the effect reads. Purely typographic — no image assets. The scroll-driven reveal is progressive enhancement — browsers without animation-timeline, and anyone on reduced motion, get the resting state.
-
-What makes it hard to build well:
-- Per-letter font size is derived from the letter count, so a four-letter and a twelve-letter brand both fill the width
-- A mount-time entrance on a footer plays to an empty room, so the letters hang off a view() scroll timeline and stagger by shifting each one’s animation-range — animation-delay does nothing on a scroll timeline
-- The word is on an aria-label with every letter aria-hidden, otherwise a screen reader spells the brand out
-- The root has to be overflow-clip rather than overflow-hidden: hidden makes the footer its own scroll container, which is what the letters’ timeline would then measure against, freezing every one of them
-
-### Parallax Reveal Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#parallax-reveal-footer
-- Category: footers / Product
-- Install: npx shadcn@latest add @spectrumui/parallax-reveal-footer
-- Variants: Reveal, Fixed
-- Dependencies: none
-- Added: 2026-09-13
-
-The reveal footer, in about fifteen lines of CSS and no scroll listener. The footer is sticky to the bottom of the scroll container from the start; the page above it carries an opaque background and a lifted shadow, so scrolling uncovers rather than moves.
-
-When to use it: Use at the bottom of a long marketing page for a closing beat. Pass the scrolling content as children; without children it renders flat, which is also the correct reduced-motion fallback. Needs a scroll container — page or a sized div.
-
-What makes it hard to build well:
-- Sticky beats a scroll listener outright — the browser owns the pin, so there is no jank and no rAF budget spent
-- The reveal only exists if the content above is opaque and stacked over the footer; a transparent page shows both at once
-- It takes the page content as children rather than assuming a page structure, so it works inside a panel as well as a document
-
-### Marquee CTA Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#marquee-cta-footer
-- Category: footers / Product
-- Install: npx shadcn@latest add @spectrumui/marquee-cta-footer
-- Variants: Band, Ribbon
-- Dependencies: none
-- Added: 2026-09-13
-
-A closing band that keeps moving until the reader points at it. Short phrases scroll in a seamless loop across a full-width link, separated by dots, with a straight and a tilted ribbon variant.
-
-When to use it: Reach for this when the footer should carry one loud call to action. Keep phrases to four or five of about four words; a long phrase list slows the perceived loop to a crawl. Speed is seconds per full pass.
-
-What makes it hard to build well:
-- The loop duplicates the phrase list and translates exactly -50%, the only offset that hides the wrap point
-- The whole band is one anchor, so the moving text is a single hit target instead of a row of moving ones
-- Pausing on hover uses animation-play-state, which resumes from where it stopped instead of restarting the loop
-
-### Studio Footer
-
-- URL: https://ui.spectrumhq.in/blocks/footers#studio-footer
-- Category: footers / Product
-- Install: npx shadcn@latest add @spectrumui/studio-footer
-- Variants: Studio, Quiet
-- Dependencies: none
-- Added: 2026-09-13
-
-The footer of a product with three people behind it. An accent swatch row recolours the footer live through a CSS variable, a small equaliser sits beside a rotating now-building line, and the copyright row carries the studio's local time.
-
-When to use it: Use for indie products, studios and side projects whose footer is allowed a personality. onAccentChange hands back the chosen accent so you can lift it into your own theme; the block only recolours itself.
-
-What makes it hard to build well:
-- The accent is one CSS custom property on the footer element, so a click recolours every dependent without re-rendering them
-- Swatches resize rather than gaining a ring, which keeps the selected state legible against any colour including the pale ones
-- The equaliser bars keep a floor height under reduced motion instead of freezing flat, which would read as broken
 
 ### Waitlist Footer
 
