@@ -1,21 +1,21 @@
-"use client"
+'use client';
 
-import React, { useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { Github } from "lucide-react"
-import Image from "next/image"
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { Github } from 'lucide-react';
+import Image from 'next/image';
 
 export interface SponsorsGridProps {
-  className?: string
+  className?: string;
 }
 
 export function SponsorsGrid({ className }: SponsorsGridProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
-    <section ref={ref} className={cn("py-10 w-full max-w-5xl mx-auto", className)}>
+    <section ref={ref} className={cn('py-10 w-full max-w-5xl mx-auto', className)}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
@@ -26,13 +26,12 @@ export function SponsorsGrid({ className }: SponsorsGridProps) {
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
-
           {/* shadcnblocks.com — past sponsor with backlink */}
           <a
             href="https://www.shadcnblocks.com/?utm_source=spectrum-ui&utm_medium=referral&utm_campaign=sponsor"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
+            className="group flex max-w-full flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
           >
             <div className="flex items-center gap-2 shrink-0">
               <div className="relative w-5 h-5 shrink-0 overflow-hidden">
@@ -44,10 +43,12 @@ export function SponsorsGrid({ className }: SponsorsGridProps) {
                   unoptimized
                 />
               </div>
-              <span className="text-sm font-medium text-neutral-900 dark:text-white">shadcnblocks.com</span>
+              <span className="text-sm font-medium text-neutral-900 dark:text-white">
+                shadcnblocks.com
+              </span>
             </div>
-           
-            <div className="w-px h-4 bg-neutral-200 dark:bg-neutral-800 shrink-0" />
+
+            <div className="hidden h-4 w-px shrink-0 bg-neutral-200 min-[380px]:block dark:bg-neutral-800" />
             <div>
               <div className="text-[10px] text-neutral-400 dark:text-neutral-600">
                 Sponsored for 1 year
@@ -76,9 +77,8 @@ export function SponsorsGrid({ className }: SponsorsGridProps) {
               Active
             </span>
           </div>
-
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
