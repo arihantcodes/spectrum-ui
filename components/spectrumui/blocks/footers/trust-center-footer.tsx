@@ -31,6 +31,81 @@ function IconShield(props: IconProps) {
   );
 }
 
+/**
+ * Six customer marks. Invented, not real companies — a logo row that ships with
+ * somebody else's trademarks in it is wrong in every install. Straight lines,
+ * rectangles and circles on a 24px grid, so the set stays crisp at 20px.
+ */
+function MarkNorthwind(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12 2 22 21.5 12 16.6 2 21.5 12 2Z" />
+    </svg>
+  );
+}
+
+function MarkCobalt(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2 22 12 12 22 2 12 12 2Zm0 5.3L7.3 12l4.7 4.7 4.7-4.7L12 7.3Z"
+      />
+    </svg>
+  );
+}
+
+function MarkMeridian(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2.2" />
+      <path d="M3.4 9h17.2M3.4 15h17.2" fill="none" stroke="currentColor" strokeWidth="2.2" />
+    </svg>
+  );
+}
+
+function MarkTessellate(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M3 3h8.4v8.4H3V3Z" />
+      <path d="M12.6 3H21v8.4h-8.4V3Z" opacity="0.45" />
+      <path d="M3 12.6h8.4V21H3v-8.4Z" opacity="0.45" />
+      <path d="M12.6 12.6H21V21h-8.4v-8.4Z" />
+    </svg>
+  );
+}
+
+function MarkLinework(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <rect x="3" y="9" width="4" height="12" rx="2" opacity="0.45" />
+      <rect x="10" y="3.5" width="4" height="17.5" rx="2" />
+      <rect x="17" y="12.5" width="4" height="8.5" rx="2" opacity="0.45" />
+    </svg>
+  );
+}
+
+function MarkHollowCreek(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <circle cx="12" cy="12" r="2.5" />
+    </svg>
+  );
+}
+
+/* One word each. Two-word names truncate to an ellipsis in the two-column
+   mobile grid, and a logo row of half-names reads as broken rather than tight. */
+const DEFAULT_CUSTOMERS = [
+  { name: 'Northwind', mark: MarkNorthwind },
+  { name: 'Cobalt', mark: MarkCobalt },
+  { name: 'Meridian', mark: MarkMeridian },
+  { name: 'Tessellate', mark: MarkTessellate },
+  { name: 'Linework', mark: MarkLinework },
+  { name: 'Hollow', mark: MarkHollowCreek },
+];
+
 const KEYFRAMES = `
 @keyframes su-trust-in { from { opacity: 0; transform: translateY(3px) } to { opacity: 1; transform: none } }
 `;
@@ -45,10 +120,20 @@ export interface TrustBadge {
   href: string;
 }
 
+export interface CustomerMark {
+  name: string;
+  mark: React.ComponentType<IconProps>;
+}
+
 export interface TrustCenterFooterProps {
   brand: string;
   headline?: string;
   badges: TrustBadge[];
+  /** Logos for the "deployed inside" row. Defaults to the bundled set. */
+  customers?: CustomerMark[];
+  customersLabel?: string;
+  /** Link columns. A trust page is still a footer; without them it reads as a banner. */
+  groups?: { title: string; links: { label: string; href: string }[] }[];
   requestLabel?: string;
   onRequestReport?: () => void;
   links?: { label: string; href: string }[];
@@ -61,6 +146,9 @@ export function TrustCenterFooter({
   brand,
   headline = 'Audited, documented, and available for review.',
   badges,
+  customers = DEFAULT_CUSTOMERS,
+  customersLabel = 'Deployed inside',
+  groups = [],
   requestLabel = 'Request full report',
   onRequestReport,
   links = [],
@@ -149,6 +237,59 @@ export function TrustCenterFooter({
           <p className="mt-3 h-4 text-[11.5px] text-neutral-500 dark:text-neutral-400">
             {shown ? shown.scope : 'Hover a certification for scope and report date.'}
           </p>
+        )}
+
+        {customers.length > 0 && (
+          <div className="mt-10 border-t border-black/[0.07] pt-7 dark:border-white/[0.08]">
+            <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
+              {customersLabel}
+            </p>
+            {/* A grid, not a wrapping flex row: six names of uneven length left a
+                single orphan on the second line at most widths. */}
+            <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
+              {customers.map((customer) => {
+                const Glyph = customer.mark;
+                return (
+                  <li
+                    key={customer.name}
+                    className="flex min-w-0 items-center gap-2.5 text-neutral-400 transition-colors duration-150 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-100"
+                  >
+                    <Glyph className="size-[22px] shrink-0" />
+                    <span className="truncate text-[14.5px] font-semibold tracking-[-0.35px]">
+                      {customer.name}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+
+        {groups.length > 0 && (
+          <nav
+            aria-label="Footer"
+            className="mt-10 grid gap-8 border-t border-black/[0.07] pt-8 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {groups.map((group) => (
+              <div key={group.title} className="min-w-0">
+                <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
+                  {group.title}
+                </p>
+                <ul className="mt-4 space-y-2.5">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-[13.5px] text-neutral-600 transition-colors duration-150 hover:text-neutral-950 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-50"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         )}
 
         <div className="mt-10 flex flex-col gap-4 border-t border-black/[0.07] pt-6 text-[12px] text-neutral-500 dark:border-white/[0.08] sm:flex-row sm:items-center sm:justify-between">

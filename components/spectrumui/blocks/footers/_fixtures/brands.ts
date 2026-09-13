@@ -348,31 +348,45 @@ export const NORTHGATE_SERVICES: ServiceStatus[] = [
   {
     name: 'Ingest API',
     health: 'operational',
-    history: [1, 1, 1, 0.99, 1, 1, 1, 1, 1, 1, 1, 1],
+    history: [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 0.99, 1, 1, 1, 1, 1, 1, 0.998, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1,
+    ],
     uptime: '99.99%',
   },
   {
     name: 'Query engine',
     health: 'operational',
-    history: [1, 1, 0.98, 1, 1, 1, 1, 1, 0.99, 1, 1, 1],
+    history: [
+      1, 1, 1, 1, 1, 0.98, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.994, 1, 1, 1, 1, 1, 1, 1, 0.999, 1, 1,
+      1, 1,
+    ],
     uptime: '99.97%',
   },
   {
     name: 'Streaming',
     health: 'degraded',
-    history: [1, 1, 1, 1, 1, 0.96, 0.82, 0.74, 0.88, 0.91, 0.93, 0.9],
+    history: [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.96, 0.82, 0.74, 0.88, 0.91, 0.93, 0.9,
+      0.97, 1, 1, 1, 1, 1,
+    ],
     uptime: '99.42%',
   },
   {
     name: 'Console',
     health: 'operational',
-    history: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    history: [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    ],
     uptime: '100%',
   },
   {
     name: 'Webhooks',
     health: 'maintenance',
-    history: [1, 1, 1, 0.99, 1, 1, 1, 1, 1, 0.6, 0.6, 0.6],
+    history: [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.99, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.6, 0.6,
+      0.6, 0.6,
+    ],
     uptime: '99.81%',
   },
 ];
@@ -697,17 +711,6 @@ export const FERNPOST_SOCIALS: FooterSocial[] = [
   { label: 'GitHub', href: '#', handle: 'fernpost' },
   { label: 'Bluesky', href: '#', handle: '@fernpost.co' },
   { label: 'RSS', href: '#' },
-];
-
-export const FERNPOST_CUSTOMERS = [
-  'Ridgeline',
-  'Postmark Studio',
-  'Calla',
-  'Hollow Creek',
-  'Tessellate',
-  'Bright Harbour',
-  'Nine Yards',
-  'Studio Mono',
 ];
 
 export const FERNPOST_STATS = [

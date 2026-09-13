@@ -5600,7 +5600,7 @@
       "name": "trust-center-footer",
       "type": "registry:block",
       "title": "Trust Center Footer",
-      "description": "Compliance badges that expand to scope and report date on hover or focus.",
+      "description": "Compliance badges that expand on hover, over a customer logo row and link columns.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/trust-center-footer.tsx",
@@ -5643,7 +5643,7 @@
       "name": "service-status-footer",
       "type": "registry:block",
       "title": "Service Status Footer",
-      "description": "Per-service uptime sparklines with a rolling incident ticker.",
+      "description": "Thirty days of per-service uptime bars with a rolling incident ticker.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/service-status-footer.tsx",
@@ -5705,7 +5705,7 @@
       "name": "careers-footer",
       "type": "registry:block",
       "title": "Careers Footer",
-      "description": "An open-roles ticker with department filter chips and a location count.",
+      "description": "A rolling three-role window with department filters, over link columns.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/careers-footer.tsx",
@@ -5955,8 +5955,8 @@
     {
       "name": "social-proof-footer",
       "type": "registry:block",
-      "title": "Social Proof Footer",
-      "description": "A customer marquee with a rating row and stats that count up in view.",
+      "title": "Logo Wall Footer",
+      "description": "A customer logo wall — scrolling marquee or plotted grid — over a rating row and stats that count up.",
       "files": [
         {
           "path": "components/spectrumui/blocks/footers/social-proof-footer.tsx",
@@ -5967,10 +5967,10 @@
       "category": "Footers",
       "tags": [
         "footer",
-        "marquee",
         "logos",
-        "stats",
-        "count-up"
+        "logo wall",
+        "marquee",
+        "social proof"
       ]
     },
     {

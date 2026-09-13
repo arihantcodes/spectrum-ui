@@ -2080,12 +2080,13 @@
       "name": "Trust Center Footer",
       "category": "footers",
       "subcategory": "Enterprise",
-      "description": "Compliance badges that expand to scope and report date on hover or focus.",
-      "summary": "A footer built to survive a security review. SOC 2, ISO 27001, GDPR, HIPAA and PCI sit as cards that reveal their scope line and report date when pointed at or tabbed to, next to a request-report call to action.",
+      "description": "Compliance badges that expand on hover, over a customer logo row and link columns.",
+      "summary": "The footer a procurement team reads. Five certifications expand to scope and report date on hover or focus, a row of customer logos says who already runs it, and four link columns keep it a footer rather than a banner.",
       "hardParts": [
         "A badge is worth nothing without scope and a date — the reveal exists so the card can carry both without shouting them",
         "Hover-only disclosure strands keyboard users, so focus and blur drive the same state as pointer enter and leave",
-        "The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all"
+        "The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all",
+        "The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths"
       ],
       "variants": [
         "Badges",
@@ -2128,12 +2129,12 @@
       "name": "Service Status Footer",
       "category": "footers",
       "subcategory": "Enterprise",
-      "description": "Per-service uptime sparklines with a rolling incident ticker.",
-      "summary": "The status page, compressed into a footer. Grid gives every service a ninety-day sparkline and an uptime figure; Bar collapses the same set into a row of pills. The summary dot takes the worst health in the set, and open incidents rotate through a single line rather than stacking.",
+      "description": "Thirty days of per-service uptime bars with a rolling incident ticker.",
+      "summary": "Statuspage, shrunk to footer height. Each service gets thirty days of uptime as one bar per day graded by colour, a live summary pill that reports the worst service, and an incident ticker that rolls every few seconds.",
       "hardParts": [
-        "The summary is a bordered pill with a pulsing dot, derived from the worst service in the set rather than passed in, so it cannot drift from the rows beneath it",
-        "Sparkline bars stagger in at 28ms each — a simultaneous reveal reads as a bar chart, a staggered one reads as time",
-        "Bars only take a health colour when they dip; a fully green sparkline is visual noise that hides the one bad day"
+        "Uptime lives between 0.98 and 1.00, so mapping it to bar height draws thirty near-identical stubs and reads as noise — the signal has to be colour, with the bars a constant height",
+        "The summary pill reports the worst service, not the first, or a single outage hides behind four green rows",
+        "Bars are flex-1 with a floor rather than a fixed width, so thirty days fill whatever width the card has"
       ],
       "variants": [
         "Grid",
@@ -2200,12 +2201,12 @@
       "name": "Careers Footer",
       "category": "footers",
       "subcategory": "Enterprise",
-      "description": "An open-roles ticker with department filter chips and a location count.",
-      "summary": "Hiring belongs in the footer of a company that is actually hiring. Roles cycle one at a time through a fixed-height slot, department chips narrow the set, and the header keeps a running count of roles and locations.",
+      "description": "A rolling three-role window with department filters, over link columns.",
+      "summary": "Hiring, without turning the footer into a job board. Department chips filter the list, three roles are visible at a time and the window rolls one row every few seconds, and four link columns sit underneath so the block still reads as a footer.",
       "hardParts": [
-        "The slot has a min-height so the footer does not jump as titles of different length rotate through",
-        "Changing department resets the index, otherwise a filter down to two roles lands on a cursor that no longer exists",
-        "The List variant staggers rows in at 34ms rather than animating the container, which reads as one slab"
+        "A one-role ticker leaves a tall card that is mostly empty — three rows rolling one at a time keeps the motion and fills the space",
+        "Rows are keyed on the window offset as well as the role, so only the row that actually changed replays its entrance",
+        "Filtering resets the window, or switching department leaves the ticker pointing past the end of a shorter list"
       ],
       "variants": [
         "Ticker",
@@ -2485,15 +2486,16 @@
     },
     {
       "slug": "social-proof-footer",
-      "name": "Social Proof Footer",
+      "name": "Logo Wall Footer",
       "category": "footers",
       "subcategory": "Product",
-      "description": "A customer marquee with a rating row and stats that count up in view.",
-      "summary": "One last proof point before the reader leaves. Customer names scroll in an edge-masked marquee that pauses on hover, a star row carries the rating and its source, and the stat figures count up once when the footer scrolls into view.",
+      "description": "A customer logo wall — scrolling marquee or plotted grid — over a rating row and stats that count up.",
+      "summary": "The \"trusted by\" block, done properly. Twelve customer marks run as an edge-masked marquee that pauses under the pointer, or settle into a plotted grid whose cells stagger in. Under them a rating row and four counters that animate once when the footer enters view.",
       "hardParts": [
-        "The marquee duplicates the list and translates exactly -50%, which is the only version that loops without a seam",
-        "The duplicate half is aria-hidden, so a screen reader hears each customer once, not twice",
-        "The count-up is rAF with a cubic ease-out and snaps straight to the target under reduced motion"
+        "A seamless marquee is the list twice over and a keyframe that travels exactly -50%, so the seam lands where the second copy sits pixel-for-pixel on the first",
+        "The edge mask is what makes it read as a wall rather than a widget — without it logos are chopped by the viewport edge instead of dissolving",
+        "Logos ship as inlined geometry on a 24px grid rather than image files, so they take theme colour, stay crisp at any size, and add no network requests",
+        "Counters run once on intersection and are skipped entirely under reduced motion, where the final figure is what renders"
       ],
       "variants": [
         "Marquee",
@@ -2502,7 +2504,7 @@
       "complexity": "advanced",
       "composedOf": [],
       "dependencies": [],
-      "aiHints": "Reach for this when logos and numbers are the closing argument. Customers are strings rendered as wordmarks — swap in images if you have permission to use the real marks. Stats count from zero to the value you pass, once.",
+      "aiHints": "Reach for this when a footer needs social proof. Pass `customers` as name plus an SVG component; the bundled set is invented, so replace it with real marks before shipping. Stats are presentational — the count-up is animation only, not live data.",
       "index": 120,
       "status": "live",
       "addedAt": "2026-09-13"

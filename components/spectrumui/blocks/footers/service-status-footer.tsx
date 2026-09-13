@@ -44,21 +44,39 @@ const SEVERITY: Record<ServiceHealth, number> = {
   operational: 0,
 };
 
-function Sparkline({ service }: { service: FooterService }) {
-  const tone = HEALTH_TONE[service.health];
+/** A day's colour band. Thresholds match how status pages actually grade a day. */
+function dayTone(ratio: number) {
+  if (ratio >= 0.999) return 'bg-emerald-500/85';
+  if (ratio >= 0.99) return 'bg-emerald-500/40';
+  if (ratio >= 0.9) return 'bg-amber-400';
+  return 'bg-red-500';
+}
+
+/**
+ * Thirty days, one full-height bar each.
+ *
+ * Uptime lives between 0.98 and 1.00, so mapping it to bar *height* draws thirty
+ * near-identical stubs and reads as noise — which is what this was before. Every
+ * status page worth copying carries the signal in colour and keeps the bars a
+ * constant height, so a bad day is a mark you can find at a glance.
+ */
+function UptimeBars({ service }: { service: FooterService }) {
   return (
-    <span aria-hidden className="flex h-6 items-end gap-[3px]">
+    <span
+      aria-hidden
+      className="flex h-7 w-full items-stretch gap-[2px]"
+      title={`${service.uptime} uptime over the last ${service.history.length} days`}
+    >
       {service.history.map((ratio, index) => (
+        /* flex-1 with a minimum, so thirty days fill whatever width the card
+           has instead of stopping two-thirds of the way across it. */
         <span
           key={index}
           className={cn(
-            'w-[3px] origin-bottom rounded-[1px] animate-[su-status-bar_420ms_cubic-bezier(0.23,1,0.32,1)_backwards] motion-reduce:animate-none',
-            ratio >= 0.995 ? 'bg-black/[0.13] dark:bg-white/[0.16]' : tone.bar,
+            'min-w-[2px] flex-1 origin-bottom rounded-[1.5px] animate-[su-status-bar_420ms_cubic-bezier(0.23,1,0.32,1)_backwards] motion-reduce:animate-none',
+            dayTone(ratio),
           )}
-          style={{
-            height: `${Math.max(12, ratio * 100)}%`,
-            animationDelay: `${index * 28}ms`,
-          }}
+          style={{ animationDelay: `${index * 14}ms` }}
         />
       ))}
     </span>
@@ -134,27 +152,34 @@ export function ServiceStatusFooter({
         </div>
 
         {variant === 'Grid' ? (
-          <ul className="mt-7 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
               const tone = HEALTH_TONE[service.health];
               return (
                 <li
                   key={service.name}
-                  className="flex items-center justify-between gap-4 rounded-xl border border-black/[0.07] px-3.5 py-3 transition-colors duration-150 hover:border-black/[0.13] dark:border-white/[0.08] dark:hover:border-white/[0.16]"
+                  className="rounded-xl border border-black/[0.07] px-4 py-3.5 transition-colors duration-150 hover:border-black/[0.13] dark:border-white/[0.08] dark:hover:border-white/[0.16]"
                 >
-                  <span className="min-w-0">
-                    <span className="flex items-center gap-1.5">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="flex min-w-0 items-center gap-1.5">
                       <span
                         aria-hidden
                         className={cn('size-1.5 shrink-0 rounded-full', tone.dot)}
                       />
                       <span className="truncate text-[12.5px] font-medium">{service.name}</span>
                     </span>
-                    <span className="mt-0.5 block whitespace-nowrap font-mono text-[10.5px] tabular-nums text-neutral-500 dark:text-neutral-400">
-                      {service.uptime} · 90d
+                    <span className="shrink-0 whitespace-nowrap font-mono text-[10.5px] tabular-nums text-neutral-500 dark:text-neutral-400">
+                      {service.uptime}
                     </span>
-                  </span>
-                  <Sparkline service={service} />
+                  </div>
+                  <div className="mt-3">
+                    <UptimeBars service={service} />
+                  </div>
+                  <div className="mt-2 flex items-center justify-between font-mono text-[9.5px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
+                    <span>{service.history.length} days ago</span>
+                    <span>{tone.label}</span>
+                    <span>Today</span>
+                  </div>
                 </li>
               );
             })}

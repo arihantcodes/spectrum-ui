@@ -38,7 +38,6 @@ import {
   CORMORANT_RELEASES,
   FERNPOST,
   FERNPOST_ACCENTS,
-  FERNPOST_CUSTOMERS,
   FERNPOST_LINKS,
   FERNPOST_NOW,
   FERNPOST_SOCIALS,
@@ -146,12 +145,20 @@ function MegaSitemapDemo({ variant }: { variant: 'Expanded' | 'Compact' }) {
 
 /* ── Trust Center ───────────────────────────────────────── */
 
+/* A trust footer's columns are shorter than a sitemap's — four links each, so
+   the row reads as navigation rather than as a second sitemap. */
+const TRUST_COLUMNS = NORTHGATE_SITEMAP.slice(0, 4).map((group) => ({
+  title: group.title,
+  links: group.links.slice(0, 4),
+}));
+
 function TrustCenterDemo({ variant }: { variant: 'Badges' | 'Detailed' }) {
   return (
     <Frame>
       <TrustCenterFooter
         brand={NORTHGATE.name}
         badges={NORTHGATE_COMPLIANCE}
+        groups={TRUST_COLUMNS}
         links={NORTHGATE_UTILITY}
         copyright={NORTHGATE_COPYRIGHT}
         variant={variant}
@@ -232,6 +239,7 @@ function CareersDemo({ variant }: { variant: 'Ticker' | 'List' }) {
       <CareersFooter
         brand={NORTHGATE.name}
         roles={NORTHGATE_ROLES}
+        groups={TRUST_COLUMNS}
         links={NORTHGATE_UTILITY}
         copyright={NORTHGATE_COPYRIGHT}
         variant={variant}
@@ -441,7 +449,6 @@ function SocialProofDemo({ variant }: { variant: 'Marquee' | 'Grid' }) {
     <Frame>
       <SocialProofFooter
         brand={FERNPOST.name}
-        customers={FERNPOST_CUSTOMERS}
         stats={FERNPOST_STATS}
         links={FERNPOST_UTILITY}
         copyright={FERNPOST_COPYRIGHT}

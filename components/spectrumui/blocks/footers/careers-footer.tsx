@@ -49,6 +49,8 @@ export interface CareersFooterProps {
   headline?: string;
   roles: CareersRole[];
   allRolesHref?: string;
+  /** Link columns. Without them a careers footer is a banner, not a footer. */
+  groups?: { title: string; links: { label: string; href: string }[] }[];
   links?: { label: string; href: string }[];
   copyright?: string;
   interval?: number;
@@ -61,6 +63,7 @@ export function CareersFooter({
   headline = 'We are hiring across engineering, security and sales.',
   roles,
   allRolesHref = '#',
+  groups = [],
   links = [],
   copyright,
   interval = 3400,
@@ -90,7 +93,14 @@ export function CareersFooter({
   }, [filtered.length, interval, variant]);
 
   const locations = new Set(roles.map((role) => role.location)).size;
-  const current = filtered[Math.min(index, Math.max(0, filtered.length - 1))];
+  /* Three visible rows rolling one at a time: the ticker keeps its motion, and
+     the card is no longer 76px of mostly nothing. */
+  const visible = filtered.length
+    ? Array.from(
+        { length: Math.min(3, filtered.length) },
+        (_, offset) => filtered[(index + offset) % filtered.length],
+      )
+    : [];
 
   return (
     <footer
@@ -142,35 +152,54 @@ export function CareersFooter({
         </div>
 
         {variant === 'Ticker' ? (
-          <a
-            href={allRolesHref}
-            className="group mt-5 flex min-h-[76px] items-center justify-between gap-4 rounded-xl border border-black/[0.08] bg-[#FAFAFA] px-4 py-3.5 transition-colors duration-200 hover:border-black/[0.16] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.09] dark:bg-white/[0.03] dark:hover:border-white/[0.2]"
-          >
-            <span
-              key={`${department}-${index}`}
-              className="min-w-0 animate-[su-role-in_300ms_cubic-bezier(0.23,1,0.32,1)] motion-reduce:animate-none"
-            >
-              <span className="block truncate text-[15px] font-medium tracking-[-0.2px]">
-                {current?.title ?? 'No open roles in this team'}
-              </span>
-              {current && (
-                <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-neutral-500 dark:text-neutral-400">
-                  <span className="inline-flex items-center gap-1">
-                    <IconLocation className="size-3" />
-                    {current.location}
-                  </span>
-                  <span>{current.department}</span>
-                  <span className="rounded-full bg-black/[0.05] px-2 py-px font-mono text-[10px] uppercase tracking-[0.06em] text-neutral-600 dark:bg-white/[0.08] dark:text-neutral-300">
-                    {current.type}
-                  </span>
-                </span>
+          <div className="mt-5 rounded-xl border border-black/[0.08] bg-[#FAFAFA] p-2 dark:border-white/[0.09] dark:bg-white/[0.03]">
+            <ul className="divide-y divide-black/[0.06] dark:divide-white/[0.07]">
+              {visible.map((role, position) => (
+                <li
+                  /* Keyed on the window offset and the role, so replacing the
+                     oldest row re-runs its entrance while the two rows that
+                     stayed put do not flicker. */
+                  key={`${department}-${index}-${position}-${role.title}`}
+                  className="animate-[su-role-in_320ms_cubic-bezier(0.2,0,0,1)_backwards] motion-reduce:animate-none"
+                  style={{ animationDelay: `${position * 60}ms` }}
+                >
+                  <a
+                    href={allRolesHref}
+                    className="group flex items-center justify-between gap-4 rounded-lg px-2.5 py-3 transition-colors duration-150 hover:bg-black/[0.03] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.04]"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate text-[14px] font-medium tracking-[-0.2px]">
+                        {role.title}
+                      </span>
+                      <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-neutral-500 dark:text-neutral-400">
+                        <span className="inline-flex items-center gap-1">
+                          <IconLocation className="size-3" />
+                          {role.location}
+                        </span>
+                        <span>{role.department}</span>
+                        <span className="rounded-full bg-black/[0.05] px-2 py-px font-mono text-[10px] uppercase tracking-[0.06em] text-neutral-600 dark:bg-white/[0.08] dark:text-neutral-300">
+                          {role.type}
+                        </span>
+                      </span>
+                    </span>
+                    <IconArrowUpRight className="size-4 shrink-0 text-neutral-300 transition-[color,transform] duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-900 motion-reduce:transition-none dark:text-neutral-700 dark:group-hover:text-neutral-100" />
+                  </a>
+                </li>
+              ))}
+              {visible.length === 0 && (
+                <li className="px-2.5 py-6 text-center text-[13px] text-neutral-500 dark:text-neutral-400">
+                  No open roles in this team.
+                </li>
               )}
-            </span>
-            <span className="inline-flex shrink-0 items-center gap-1.5 text-[13px] font-medium">
-              View all
+            </ul>
+            <a
+              href={allRolesHref}
+              className="group mt-1 flex items-center justify-between rounded-lg px-2.5 py-2.5 text-[13px] font-medium transition-colors duration-150 hover:bg-black/[0.03] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:bg-white/[0.04]"
+            >
+              View all {roles.length} roles
               <IconArrowUpRight className="size-4 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" />
-            </span>
-          </a>
+            </a>
+          </div>
         ) : (
           <ul className="mt-5 divide-y divide-black/[0.07] border-y border-black/[0.07] dark:divide-white/[0.08] dark:border-white/[0.08]">
             {filtered.map((role, position) => (
@@ -194,6 +223,33 @@ export function CareersFooter({
               </li>
             ))}
           </ul>
+        )}
+
+        {groups.length > 0 && (
+          <nav
+            aria-label="Footer"
+            className="mt-10 grid gap-8 border-t border-black/[0.07] pt-8 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {groups.map((group) => (
+              <div key={group.title} className="min-w-0">
+                <p className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
+                  {group.title}
+                </p>
+                <ul className="mt-4 space-y-2.5">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-[13.5px] text-neutral-600 transition-colors duration-150 hover:text-neutral-950 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:text-neutral-50"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         )}
 
         <div className="mt-10 flex flex-col gap-4 border-t border-black/[0.07] pt-6 text-[12px] text-neutral-500 dark:border-white/[0.08] sm:flex-row sm:items-center sm:justify-between">

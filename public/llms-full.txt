@@ -1944,7 +1944,7 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-A footer built to survive a security review. SOC 2, ISO 27001, GDPR, HIPAA and PCI sit as cards that reveal their scope line and report date when pointed at or tabbed to, next to a request-report call to action.
+The footer a procurement team reads. Five certifications expand to scope and report date on hover or focus, a row of customer logos says who already runs it, and four link columns keep it a footer rather than a banner.
 
 When to use it: Use on regulated B2B marketing sites where the footer is the first thing a security reviewer scans. Data in, callback out — badges are an array with scope, issue date and href. It renders no certification imagery; supply your own logos if you have the licences.
 
@@ -1952,6 +1952,7 @@ What makes it hard to build well:
 - A badge is worth nothing without scope and a date — the reveal exists so the card can carry both without shouting them
 - Hover-only disclosure strands keyboard users, so focus and blur drive the same state as pointer enter and leave
 - The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all
+- The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths
 
 ### Region Picker Footer
 
@@ -1980,14 +1981,14 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-The status page, compressed into a footer. Grid gives every service a ninety-day sparkline and an uptime figure; Bar collapses the same set into a row of pills. The summary dot takes the worst health in the set, and open incidents rotate through a single line rather than stacking.
+Statuspage, shrunk to footer height. Each service gets thirty days of uptime as one bar per day graded by colour, a live summary pill that reports the worst service, and an incident ticker that rolls every few seconds.
 
 When to use it: Use when uptime is part of the sales argument and the status page deserves a permanent footer slot. Purely presentational: history is an array of 0–1 ratios oldest to newest. It does not poll — feed it from your own status API on the server.
 
 What makes it hard to build well:
-- The summary is a bordered pill with a pulsing dot, derived from the worst service in the set rather than passed in, so it cannot drift from the rows beneath it
-- Sparkline bars stagger in at 28ms each — a simultaneous reveal reads as a bar chart, a staggered one reads as time
-- Bars only take a health colour when they dip; a fully green sparkline is visual noise that hides the one bad day
+- Uptime lives between 0.98 and 1.00, so mapping it to bar height draws thirty near-identical stubs and reads as noise — the signal has to be colour, with the bars a constant height
+- The summary pill reports the worst service, not the first, or a single outage hides behind four green rows
+- Bars are flex-1 with a floor rather than a fixed width, so thirty days fill whatever width the card has
 
 ### Sales CTA Footer
 
@@ -2034,14 +2035,14 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-Hiring belongs in the footer of a company that is actually hiring. Roles cycle one at a time through a fixed-height slot, department chips narrow the set, and the header keeps a running count of roles and locations.
+Hiring, without turning the footer into a job board. Department chips filter the list, three roles are visible at a time and the window rolls one row every few seconds, and four link columns sit underneath so the block still reads as a footer.
 
 When to use it: Reach for this when open roles are worth surfacing on every page. Data in, no fetching — pass roles with title, department, location and type. The ticker pauses for nobody; set variant to List when the full set matters more than the motion.
 
 What makes it hard to build well:
-- The slot has a min-height so the footer does not jump as titles of different length rotate through
-- Changing department resets the index, otherwise a filter down to two roles lands on a cursor that no longer exists
-- The List variant staggers rows in at 34ms rather than animating the container, which reads as one slab
+- A one-role ticker leaves a tall card that is mostly empty — three rows rolling one at a time keeps the motion and fills the space
+- Rows are keyed on the window offset as well as the role, so only the row that actually changed replays its entrance
+- Filtering resets the window, or switching department leaves the ticker pointing past the end of a shorter list
 
 ### Policy Footer
 
@@ -2241,7 +2242,7 @@ What makes it hard to build well:
 - The clock only renders after mount, because a server-rendered time is a hydration mismatch waiting to happen
 - The copy button reveals on group hover but is always visible on focus, otherwise it is unreachable by keyboard
 
-### Social Proof Footer
+### Logo Wall Footer
 
 - URL: https://ui.spectrumhq.in/blocks/footers#social-proof-footer
 - Category: footers / Product
@@ -2250,14 +2251,15 @@ What makes it hard to build well:
 - Dependencies: none
 - Added: 2026-09-13
 
-One last proof point before the reader leaves. Customer names scroll in an edge-masked marquee that pauses on hover, a star row carries the rating and its source, and the stat figures count up once when the footer scrolls into view.
+The "trusted by" block, done properly. Twelve customer marks run as an edge-masked marquee that pauses under the pointer, or settle into a plotted grid whose cells stagger in. Under them a rating row and four counters that animate once when the footer enters view.
 
-When to use it: Reach for this when logos and numbers are the closing argument. Customers are strings rendered as wordmarks — swap in images if you have permission to use the real marks. Stats count from zero to the value you pass, once.
+When to use it: Reach for this when a footer needs social proof. Pass `customers` as name plus an SVG component; the bundled set is invented, so replace it with real marks before shipping. Stats are presentational — the count-up is animation only, not live data.
 
 What makes it hard to build well:
-- The marquee duplicates the list and translates exactly -50%, which is the only version that loops without a seam
-- The duplicate half is aria-hidden, so a screen reader hears each customer once, not twice
-- The count-up is rAF with a cubic ease-out and snaps straight to the target under reduced motion
+- A seamless marquee is the list twice over and a keyframe that travels exactly -50%, so the seam lands where the second copy sits pixel-for-pixel on the first
+- The edge mask is what makes it read as a wall rather than a widget — without it logos are chopped by the viewport edge instead of dissolving
+- Logos ship as inlined geometry on a 24px grid rather than image files, so they take theme colour, stay crisp at any size, and add no network requests
+- Counters run once on intersection and are skipped entirely under reduced motion, where the final figure is what renders
 
 ### Minimal Footer
 

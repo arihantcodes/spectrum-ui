@@ -266,12 +266,12 @@ Twenty-five interactive footer sections for enterprise platforms, AI products an
 Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/footers and installs with the shadcn CLI or through the MCP server.
 
 - [Mega Sitemap Footer](https://ui.spectrumhq.in/blocks/footers#mega-sitemap-footer): A 54-link enterprise sitemap with stacked sub-groups, a newsletter block and a locale bar.
-- [Trust Center Footer](https://ui.spectrumhq.in/blocks/footers#trust-center-footer): Compliance badges that expand to scope and report date on hover or focus.
+- [Trust Center Footer](https://ui.spectrumhq.in/blocks/footers#trust-center-footer): Compliance badges that expand on hover, over a customer logo row and link columns.
 - [Region Picker Footer](https://ui.spectrumhq.in/blocks/footers#region-picker-footer): A region popover with locale, currency, data residency and live local time.
-- [Service Status Footer](https://ui.spectrumhq.in/blocks/footers#service-status-footer): Per-service uptime sparklines with a rolling incident ticker.
+- [Service Status Footer](https://ui.spectrumhq.in/blocks/footers#service-status-footer): Thirty days of per-service uptime bars with a rolling incident ticker.
 - [Sales CTA Footer](https://ui.spectrumhq.in/blocks/footers#sales-cta-footer): A seat slider that prices a tier live, beside the link grid.
 - [Link Search Footer](https://ui.spectrumhq.in/blocks/footers#link-search-footer): Type-to-filter across every footer link, with arrow-key navigation.
-- [Careers Footer](https://ui.spectrumhq.in/blocks/footers#careers-footer): An open-roles ticker with department filter chips and a location count.
+- [Careers Footer](https://ui.spectrumhq.in/blocks/footers#careers-footer): A rolling three-role window with department filters, over link columns.
 - [Policy Footer](https://ui.spectrumhq.in/blocks/footers#policy-footer): Cookie-category switches with a save state, over a layered legal row.
 - [Model Status Footer](https://ui.spectrumhq.in/blocks/footers#model-status-footer): A model availability grid with animated latency bars and context sizes.
 - [Command Footer](https://ui.spectrumhq.in/blocks/footers#command-footer): A terminal footer with slash commands, inline completion and Tab to accept.
@@ -283,7 +283,7 @@ Every block in this category renders live at actual size on https://ui.spectrumh
 - [API Playground Footer](https://ui.spectrumhq.in/blocks/footers#api-playground-footer): A copyable curl or Python snippet with an endpoint switcher and token count.
 - [Newsletter Footer](https://ui.spectrumhq.in/blocks/footers#newsletter-footer): A newsletter capture with inline validation and a success morph.
 - [Contact Card Footer](https://ui.spectrumhq.in/blocks/footers#contact-card-footer): Copyable email, phone and address rows with opening hours and local time.
-- [Social Proof Footer](https://ui.spectrumhq.in/blocks/footers#social-proof-footer): A customer marquee with a rating row and stats that count up in view.
+- [Logo Wall Footer](https://ui.spectrumhq.in/blocks/footers#social-proof-footer): A customer logo wall — scrolling marquee or plotted grid — over a rating row and stats that count up.
 - [Minimal Footer](https://ui.spectrumhq.in/blocks/footers#minimal-footer): A single-line footer whose link clusters expand on hover or focus.
 - [Big Type Footer](https://ui.spectrumhq.in/blocks/footers#big-type-footer): An oversized wordmark, justified edge to edge, whose letters lift on hover.
 - [Parallax Reveal Footer](https://ui.spectrumhq.in/blocks/footers#parallax-reveal-footer): A footer pinned behind the page that the content slides up to reveal.
