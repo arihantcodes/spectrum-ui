@@ -108,7 +108,7 @@ export function BlueprintTiers({
             {eyebrow}
           </span>
         </span>
-        <h2 className="mt-7 max-w-[22ch] text-balance text-[38px] font-semibold leading-[1.05] tracking-[-2px] text-[#0a0a0a] dark:text-white @lg:text-[46px]">
+        <h2 className="mt-7 max-w-[22ch] text-balance text-[28px] font-semibold leading-[1.05] tracking-[-2px] text-[#0a0a0a] dark:text-white @sm:text-[34px] @lg:text-[46px]">
           {heading}
         </h2>
         {subheading && (
@@ -126,7 +126,7 @@ export function BlueprintTiers({
           </>
         )}
 
-        <div className="grid @3xl:grid-cols-3">
+        <div className="grid grid-cols-1 @3xl:grid-cols-3">
           {plans.map((plan, position) => {
             const isYearly = yearly[plan.id] ?? true;
             const amount = plan.price ? (isYearly ? plan.price.annual : plan.price.monthly) : 0;
@@ -145,7 +145,7 @@ export function BlueprintTiers({
                   <CropMark position="left-0 top-0 -translate-x-1/2 -translate-y-1/2 hidden @3xl:block" />
                 )}
 
-                <div className="px-8 pb-8 pt-9 @lg:px-10">
+                <div className="px-5 pb-8 pt-9 @sm:px-8 @lg:px-10">
                   <div className="flex items-center gap-3">
                     <h3 className="text-[17px] font-medium text-[#18181b] dark:text-[#f4f4f5]">
                       {plan.name}
@@ -161,11 +161,11 @@ export function BlueprintTiers({
                   </p>
                 </div>
 
-                <div className="border-t border-[#d4d4d8] dark:border-[#2d2d33] px-8 pb-9 pt-8 @lg:px-10">
+                <div className="border-t border-[#d4d4d8] dark:border-[#2d2d33] px-5 pb-9 pt-8 @sm:px-8 @lg:px-10">
                   <div className="flex items-end gap-1.5">
                     <PriceFigure
                       value={amount}
-                      className="text-[52px] font-semibold tracking-[-2.5px] text-[#0a0a0a] dark:text-white"
+                      className="text-[36px] font-semibold tracking-[-2.5px] text-[#0a0a0a] dark:text-white @sm:text-[44px] @lg:text-[52px]"
                     />
                     <span className="pb-1.5 text-[14px] text-[#71717a] dark:text-[#8f8f96]">
                       /{free ? 'forever' : 'monthly'}
@@ -218,7 +218,7 @@ export function BlueprintTiers({
                   {plan.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center gap-4 border-t border-[#e2e2e6] px-8 py-[18px] first:border-t-0 dark:border-[#232328] @lg:px-10"
+                      className="flex items-center gap-4 border-t border-[#e2e2e6] px-5 py-[18px] first:border-t-0 dark:border-[#232328] @sm:px-8 @lg:px-10"
                     >
                       <span
                         aria-hidden

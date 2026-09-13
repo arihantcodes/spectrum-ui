@@ -72,7 +72,7 @@ export function ReceiptTiers({
         </div>
       )}
 
-      <div className="mx-auto grid max-w-[1040px] items-start gap-8 font-mono @3xl:grid-cols-3 @3xl:gap-7">
+      <div className="mx-auto grid max-w-[1040px] grid-cols-1 items-start gap-8 font-mono @3xl:grid-cols-3 @3xl:gap-7">
         {plans.map((plan, position) => (
           <div
             key={plan.id}
