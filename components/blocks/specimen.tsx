@@ -57,7 +57,11 @@ export function Specimen({
 
   const pills =
     variants.length > 1 ? (
-      <div role="tablist" aria-label={`${name} variants`} className="flex gap-1">
+      <div
+        role="tablist"
+        aria-label={`${name} variants`}
+        className="flex flex-wrap items-center gap-1"
+      >
         {variants.map((v) => {
           const active = v === variant;
           return (
@@ -110,9 +114,12 @@ export function Specimen({
         </h2>
         <p className="text-[13.5px] text-neutral-500 dark:text-neutral-400">{description}</p>
         {bleed && (
-          <div className="ml-auto flex items-center gap-2">
-            {pills}
-            {controls}
+          <div className="flex w-full items-start gap-2 sm:ml-auto sm:w-auto sm:items-center">
+            {/* Below sm the pills take the width left over and wrap into it,
+                so ten variants stack instead of pushing the page sideways —
+                the code buttons stay pinned to the first line. */}
+            <div className="min-w-0 flex-1 sm:flex-initial">{pills}</div>
+            <div className="shrink-0">{controls}</div>
           </div>
         )}
       </div>
@@ -146,7 +153,7 @@ export function Specimen({
         </div>
 
         {!bleed && pills && (
-          <div className="absolute inset-x-0 bottom-4 flex justify-center">{pills}</div>
+          <div className="absolute inset-x-0 bottom-4 flex justify-center px-4">{pills}</div>
         )}
       </div>
 

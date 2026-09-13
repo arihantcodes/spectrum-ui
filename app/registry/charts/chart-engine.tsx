@@ -995,34 +995,40 @@ export function ChartDataTable({
   columns: string[];
   rows: (string | number)[][];
 }) {
+  /* The wrapper carries `sr-only`, not the table. `width: 1px` on a <table> is
+     a minimum, not a width — table layout still sizes to its content, so an
+     sr-only table stays 900px wide and widens the page on a phone even though
+     nothing of it is visible. A div clips it for real. */
   return (
-    <table className="sr-only">
-      <caption>{caption}</caption>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <th key={column} scope="col">
-              {column}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((row, index) => (
-          <tr key={index}>
-            {row.map((cell, cellIndex) =>
-              cellIndex === 0 ? (
-                <th key={cellIndex} scope="row">
-                  {cell}
-                </th>
-              ) : (
-                <td key={cellIndex}>{cell}</td>
-              ),
-            )}
+    <div className="sr-only">
+      <table>
+        <caption>{caption}</caption>
+        <thead>
+          <tr>
+            {columns.map((column) => (
+              <th key={column} scope="col">
+                {column}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((row, index) => (
+            <tr key={index}>
+              {row.map((cell, cellIndex) =>
+                cellIndex === 0 ? (
+                  <th key={cellIndex} scope="row">
+                    {cell}
+                  </th>
+                ) : (
+                  <td key={cellIndex}>{cell}</td>
+                ),
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
