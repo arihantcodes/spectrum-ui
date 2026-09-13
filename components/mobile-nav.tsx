@@ -4,18 +4,46 @@ import Link, { LinkProps } from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import * as React from 'react';
-import { Search } from 'lucide-react';
+import { ChevronDown, ChevronRight, Search } from 'lucide-react';
 
 import { Icons } from '@/components/icon';
 
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 import { cn } from '@/lib/utils';
 import { SITE_NAV, isNavLinkActive } from '@/lib/site-nav';
+import {
+  UI_COMPONENT_CATALOG,
+  compareComponentNames,
+  componentDocsPath,
+} from '@/lib/component-catalog';
+import { BLOCK_CATEGORIES, blockCategoryPath } from '@/lib/block-catalog';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SponsorButton } from '@/components/sponsor-button';
 import { openCommandMenu } from '@/lib/command-menu';
+
+interface CatalogSection {
+  title: string;
+  items: { label: string; href: string }[];
+}
+
+const CATALOG_SECTIONS: CatalogSection[] = [
+  {
+    title: 'Components',
+    items: [...UI_COMPONENT_CATALOG]
+      .sort((a, b) => compareComponentNames(a.name, b.name))
+      .map((component) => ({ label: component.name, href: componentDocsPath(component.slug) })),
+  },
+  {
+    title: 'Blocks',
+    items: BLOCK_CATEGORIES.map((category) => ({
+      label: category.name,
+      href: blockCategoryPath(category.slug),
+    })),
+  },
+];
 
 /**
  * The header's menu on phones: the same four destinations the desktop bar
@@ -95,12 +123,20 @@ export function MobileNav() {
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto p-4">
-          {SITE_NAV.map((link) => (
-            <MobileLink key={link.href} href={link.href} onOpenChange={setIsOpen}>
-              {link.label}
-            </MobileLink>
-          ))}
+        <nav className="flex flex-1 flex-col gap-5 overflow-y-auto p-4">
+          <div className="flex flex-col gap-0.5">
+            {SITE_NAV.map((link) => (
+              <MobileLink key={link.href} href={link.href} onOpenChange={setIsOpen}>
+                {link.label}
+              </MobileLink>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {CATALOG_SECTIONS.map((section) => (
+              <CatalogGroup key={section.title} section={section} onOpenChange={setIsOpen} />
+            ))}
+          </div>
         </nav>
 
         <div className="space-y-3 border-t border-border px-4 py-3">
@@ -113,6 +149,53 @@ export function MobileNav() {
         </div>
       </SheetContent>
     </Sheet>
+  );
+}
+
+/**
+ * A catalog the desktop header only links to: 58 components, four block
+ * categories. Closed unless it holds the page you are on, so the sheet opens
+ * on four destinations rather than on a wall of rows.
+ */
+function CatalogGroup({
+  section,
+  onOpenChange,
+}: {
+  section: CatalogSection;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const pathname = usePathname();
+  const holdsCurrentPage = section.items.some((item) => item.href === pathname);
+  const [open, setOpen] = React.useState(holdsCurrentPage);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} className="space-y-1">
+      <CollapsibleTrigger className="flex min-h-9 w-full items-center justify-between gap-2 rounded-lg px-3 py-1.5 text-left outline-hidden transition-colors hover:bg-secondary/50">
+        <span className="flex min-w-0 items-baseline gap-1.5">
+          <span className="truncate text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
+            {section.title}
+          </span>
+          <span className="text-[11px] tabular-nums text-muted-foreground/60">
+            {section.items.length}
+          </span>
+        </span>
+        {open ? (
+          <ChevronDown className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+        ) : (
+          <ChevronRight className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+        )}
+      </CollapsibleTrigger>
+
+      <CollapsibleContent>
+        <div className="flex flex-col gap-0.5">
+          {section.items.map((item) => (
+            <MobileLink key={item.href} href={item.href} onOpenChange={onOpenChange}>
+              <span className="truncate">{item.label}</span>
+            </MobileLink>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 }
 
