@@ -82,6 +82,7 @@ These are stated as verdicts because that is what the question asks for. Where a
 - [Pricing Blocks](https://ui.spectrumhq.in/blocks/pricing): Sections that ask for money and get an answer. 7 blocks, each with variants and source on one page
 - [Tables Blocks](https://ui.spectrumhq.in/blocks/tables): The tables real products run on, ready to copy. 15 blocks, each with variants and source on one page
 - [Charts Blocks](https://ui.spectrumhq.in/blocks/charts): Every chart, live, with the source beside it. 19 blocks, each with variants and source on one page
+- [Footers Blocks](https://ui.spectrumhq.in/blocks/footers): Page-width footers that do something when you touch them. 25 blocks, each with variants and source on one page
 - [Charts](https://ui.spectrumhq.in/blocks/charts): 18 React chart components — candlestick, order book, market depth, technical indicators, portfolio drawdown, cohort retention, histogram, calendar heatmap, KPI stat cards, plus bar/line/area/composed/pie/radar/radial. Nine need no charting dependency
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
@@ -158,7 +159,7 @@ Components can also be copied manually from their documentation source. Install 
 - [Tree Nav](https://ui.spectrumhq.in/docs/tree-nav): A nav list with a tree rail and a spring marker that follows hover and settles on the active link.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
 
-## Blocks (68, a tier above components)
+## Blocks (93, a tier above components)
 
 Blocks are composed interface sections — several components assembled into a section you install whole.
 
@@ -257,6 +258,38 @@ Every block in this category renders live at actual size on https://ui.spectrumh
 - [Stat Cards](https://ui.spectrumhq.in/blocks/charts#stat-cards): KPI cards with a big value, the delta written as a sentence, and a scrubbable sparkline beside it.
 - [Cohort Retention](https://ui.spectrumhq.in/blocks/charts#cohort): The retention triangle: cohorts down, periods across, intensity by share retained.
 - [Calendar Heatmap](https://ui.spectrumhq.in/blocks/charts#calendar): A year of daily values as week columns — the contributions grid, with streak stats and month rails.
+
+## Footers blocks (25)
+
+Twenty-five interactive footer sections for enterprise platforms, AI products and small teams — mega sitemaps with region and language selectors, trust rows with SOC 2 and ISO scope, live service status with uptime sparklines, model availability grids, terminal and ask-the-docs inputs, oversized wordmarks, marquees, newsletter and waitlist capture. Every glyph is an inlined Iconly Pro Bold path, so a block copies out with no icon dependency, and every entrance, hover and state change is CSS — the links render even if JavaScript never arrives.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/footers and installs with the shadcn CLI or through the MCP server.
+
+- [Mega Sitemap Footer](https://ui.spectrumhq.in/blocks/footers#mega-sitemap-footer): A 54-link enterprise sitemap with stacked sub-groups, a newsletter block and a locale bar.
+- [Trust Center Footer](https://ui.spectrumhq.in/blocks/footers#trust-center-footer): Compliance badges that expand to scope and report date on hover or focus.
+- [Region Picker Footer](https://ui.spectrumhq.in/blocks/footers#region-picker-footer): A region popover with locale, currency, data residency and live local time.
+- [Service Status Footer](https://ui.spectrumhq.in/blocks/footers#service-status-footer): Per-service uptime sparklines with a rolling incident ticker.
+- [Sales CTA Footer](https://ui.spectrumhq.in/blocks/footers#sales-cta-footer): A seat slider that prices a tier live, beside the link grid.
+- [Link Search Footer](https://ui.spectrumhq.in/blocks/footers#link-search-footer): Type-to-filter across every footer link, with arrow-key navigation.
+- [Careers Footer](https://ui.spectrumhq.in/blocks/footers#careers-footer): An open-roles ticker with department filter chips and a location count.
+- [Policy Footer](https://ui.spectrumhq.in/blocks/footers#policy-footer): Cookie-category switches with a save state, over a layered legal row.
+- [Model Status Footer](https://ui.spectrumhq.in/blocks/footers#model-status-footer): A model availability grid with animated latency bars and context sizes.
+- [Command Footer](https://ui.spectrumhq.in/blocks/footers#command-footer): A terminal footer with slash commands, inline completion and Tab to accept.
+- [Ask Docs Footer](https://ui.spectrumhq.in/blocks/footers#ask-docs-footer): A question input that streams a cited answer in place.
+- [Wordmark Spotlight Footer](https://ui.spectrumhq.in/blocks/footers#wordmark-spotlight-footer): A full-bleed wordmark lit by a spotlight that follows the pointer.
+- [Token Stream Footer](https://ui.spectrumhq.in/blocks/footers#token-stream-footer): A manifesto that types itself in word by word when the footer enters view.
+- [Neural Grid Footer](https://ui.spectrumhq.in/blocks/footers#neural-grid-footer): An SVG node lattice that lights up under the pointer.
+- [Release Feed Footer](https://ui.spectrumhq.in/blocks/footers#release-feed-footer): A model and API changelog on a dated rail, with kind chips.
+- [API Playground Footer](https://ui.spectrumhq.in/blocks/footers#api-playground-footer): A copyable curl or Python snippet with an endpoint switcher and token count.
+- [Newsletter Footer](https://ui.spectrumhq.in/blocks/footers#newsletter-footer): A newsletter capture with inline validation and a success morph.
+- [Contact Card Footer](https://ui.spectrumhq.in/blocks/footers#contact-card-footer): Copyable email, phone and address rows with opening hours and local time.
+- [Social Proof Footer](https://ui.spectrumhq.in/blocks/footers#social-proof-footer): A customer marquee with a rating row and stats that count up in view.
+- [Minimal Footer](https://ui.spectrumhq.in/blocks/footers#minimal-footer): A single-line footer whose link clusters expand on hover or focus.
+- [Big Type Footer](https://ui.spectrumhq.in/blocks/footers#big-type-footer): An oversized wordmark, justified edge to edge, whose letters lift on hover.
+- [Parallax Reveal Footer](https://ui.spectrumhq.in/blocks/footers#parallax-reveal-footer): A footer pinned behind the page that the content slides up to reveal.
+- [Marquee CTA Footer](https://ui.spectrumhq.in/blocks/footers#marquee-cta-footer): An infinite CTA band that pauses on hover, over a compact link row.
+- [Studio Footer](https://ui.spectrumhq.in/blocks/footers#studio-footer): An accent switcher, a now-building ticker and a live studio clock.
+- [Waitlist Footer](https://ui.spectrumhq.in/blocks/footers#waitlist-footer): Waitlist capture with an avatar stack and a live position counter.
 
 ## Machine-readable resources
 

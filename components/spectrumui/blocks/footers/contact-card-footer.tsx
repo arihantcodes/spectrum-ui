@@ -1,0 +1,294 @@
+'use client';
+
+import { useEffect, useRef, useState, type SVGProps } from 'react';
+import { cn } from '@/lib/utils';
+
+/* Iconly Pro (Bold) glyphs, inlined so the block copies out with no icon
+   dependency — the same convention the Tables wave uses. */
+type IconProps = SVGProps<SVGSVGElement>;
+
+function IconCheck(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8.72123 18.1441C8.36923 18.1441 8.04323 17.9591 7.86223 17.6561C6.94423 16.1161 5.76323 14.7311 4.35423 13.5401C3.93223 13.1831 3.88023 12.5521 4.23623 12.1301C4.59323 11.7071 5.22323 11.6551 5.64523 12.0121C6.78923 12.9791 7.80023 14.0621 8.66223 15.2441C10.2992 12.5971 13.5172 8.40012 18.5642 5.95512C19.0612 5.71612 19.6592 5.92112 19.9002 6.41912C20.1402 6.91612 19.9332 7.51412 19.4362 7.75512C13.8602 10.4561 10.7022 15.5491 9.60423 17.6141C9.43423 17.9321 9.10623 18.1351 8.74523 18.1441H8.72123Z"
+      />
+    </svg>
+  );
+}
+
+function IconClock(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        transform="translate(2, 2.0001)"
+        d="M10,0 C15.53,0 20,4.48 20,10 C20,15.53 15.53,20 10,20 C4.48,20 0,15.53 0,10 C0,4.48 4.48,0 10,0 Z M9.65,4.93 C9.24,4.93 8.9,5.26 8.9,5.68 L8.9,5.68 L8.9,10.73 C8.9,10.99 9.04,11.23 9.27,11.37 L9.27,11.37 L13.19,13.71 C13.31,13.78 13.44,13.82 13.58,13.82 C13.83,13.82 14.08,13.69 14.22,13.45 C14.43,13.1 14.32,12.64 13.96,12.42 L13.96,12.42 L10.4,10.3 L10.4,5.68 C10.4,5.26 10.06,4.93 9.65,4.93 Z"
+      />
+    </svg>
+  );
+}
+
+function IconCopy(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15.2103 6.10084C15.3756 6.10037 15.5105 5.96557 15.5002 5.80053C15.3768 3.81644 14.0223 2.5 12.0594 2.5H6.86943C4.79943 2.5 3.41943 3.95 3.41943 6.1V12.79C3.41943 14.7988 4.74678 16.2448 6.68923 16.3797C6.85451 16.3912 6.98943 16.2557 6.98943 16.09V11.21C6.98943 8.26 9.06943 6.11 11.9394 6.11L15.2103 6.10084Z"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M17.1347 7.61328H11.9397C9.87871 7.61328 8.49371 9.05828 8.49371 11.2093V17.9043C8.49371 20.0543 9.87871 21.5003 11.9397 21.5003H17.1337C19.1957 21.5003 20.5807 20.0543 20.5807 17.9043V11.2093C20.5807 9.05828 19.1957 7.61328 17.1347 7.61328Z"
+      />
+    </svg>
+  );
+}
+
+function IconMessage(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        transform="translate(2.0004, 3)"
+        d="M14.939,0 C16.28,0 17.57,0.53 18.519,1.481 C19.469,2.43 20,3.71 20,5.05 L20,5.05 L20,12.95 C20,15.74 17.73,18 14.939,18 L14.939,18 L5.06,18 C2.269,18 0,15.74 0,12.95 L0,12.95 L0,5.05 C0,2.26 2.259,0 5.06,0 L5.06,0 Z M16.07,5.2 C15.86,5.189 15.66,5.26 15.509,5.4 L15.509,5.4 L11,9 C10.42,9.481 9.589,9.481 9,9 L9,9 L4.5,5.4 C4.189,5.17 3.759,5.2 3.5,5.47 C3.23,5.74 3.2,6.17 3.429,6.47 L3.429,6.47 L3.56,6.6 L8.11,10.15 C8.67,10.59 9.349,10.83 10.06,10.83 C10.769,10.83 11.46,10.59 12.019,10.15 L12.019,10.15 L16.53,6.54 L16.61,6.46 C16.849,6.17 16.849,5.75 16.599,5.46 C16.46,5.311 16.269,5.22 16.07,5.2 Z"
+      />
+    </svg>
+  );
+}
+
+function IconLocation(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        transform="translate(3.5, 2)"
+        d="M8.49344564,0 C13.1561184,0 17,3.71789185 17,8.31775805 C17,10.6356906 16.1570081,12.787628 14.7695,14.611575 C13.2388042,16.6235165 11.3521561,18.3764655 9.22854262,19.7524254 C8.74251142,20.0704162 8.3038733,20.0944155 7.77044902,19.7524254 C5.63473516,18.3764655 3.74808708,16.6235165 2.23050003,14.611575 C0.84198351,12.787628 0,10.6356906 0,8.31775805 C0,3.71789185 3.84388161,0 8.49344564,0 Z M8.49344564,5.77683196 C6.95165787,5.77683196 5.6942286,7.04779499 5.6942286,8.57675052 C5.6942286,10.1177057 6.95165787,11.3296704 8.49344564,11.3296704 C10.0362418,11.3296704 11.3057714,10.1177057 11.3057714,8.57675052 C11.3057714,7.04779499 10.0362418,5.77683196 8.49344564,5.77683196 Z"
+      />
+    </svg>
+  );
+}
+
+function IconCalling(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path
+        transform="translate(13, 2)"
+        d="M1.41809107,3.48993846 C0.942050064,3.40199885 0.504849228,3.70579022 0.414222175,4.17047109 C0.323595122,4.63515197 0.628341036,5.0888404 1.09143532,5.17977794 C2.48569766,5.45159127 3.56226737,6.53085008 3.83514443,7.92988928 L3.83514443,7.93088859 C3.91282476,8.33361201 4.26736576,8.62641093 4.67568545,8.62641093 C4.73046004,8.62641093 4.78523463,8.62141436 4.84100513,8.61142123 C5.30409941,8.51848505 5.60884532,8.06579594 5.51821827,7.60011575 C5.11089448,5.51055078 3.50251327,3.89665914 1.41809107,3.48993846"
+      />
+      <path
+        transform="translate(13, 2)"
+        d="M1.35584721,0.00792976387 C1.13276523,-0.0240482749 0.908687357,0.04190643 0.730420957,0.183808977 C0.547175049,0.327710151 0.432646356,0.535567403 0.407748814,0.768407498 C0.354966025,1.23908426 0.694568497,1.6647919 1.16463409,1.71775552 C4.40629405,2.07950709 6.92592529,4.60477283 7.2904253,7.85653965 C7.33922448,8.29224043 7.7047204,8.62101464 8.14092533,8.62101464 C8.17379009,8.62101464 8.20565894,8.61901601 8.2385237,8.61501876 C8.46658518,8.59003591 8.66974912,8.47711346 8.81315896,8.297237 C8.9555729,8.11736053 9.02030651,7.89351426 8.99441307,7.66467142 C8.54028191,3.60745775 5.40020392,0.458620247 1.35584721,0.00792976387"
+      />
+      <path
+        transform="translate(13, 2)"
+        d="M9.03174073,9.97238745 C13.0208243,13.9603606 13.9257751,9.34671782 16.4656491,11.8848116 C18.9142765,14.3327574 20.32162,14.8232052 17.2192381,17.9247236 C16.8306352,18.2370218 14.3616115,21.9942591 5.68460336,13.3196663 C-2.99347825,4.64400029 0.761584769,2.17244427 1.07396994,1.78394958 C4.18386634,-1.32615434 4.6658627,0.0893829491 7.11449014,2.53732879 C9.6543641,5.07649576 5.04265719,5.9844143 9.03174073,9.97238745 Z"
+      />
+    </svg>
+  );
+}
+
+export type ContactCardFooterVariant = 'Card' | 'Row';
+
+export interface ContactCardFooterProps {
+  brand: string;
+  blurb?: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  hours?: string;
+  utcOffset?: number;
+  links?: { label: string; href: string }[];
+  copyright?: string;
+  variant?: ContactCardFooterVariant;
+  className?: string;
+}
+
+function useLocalTime(utcOffset?: number) {
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (utcOffset === undefined) return;
+    function tick() {
+      const now = new Date();
+      const shifted = new Date(now.getTime() + (utcOffset! * 60 + now.getTimezoneOffset()) * 60000);
+      setTime(
+        `${String(shifted.getHours()).padStart(2, '0')}:${String(shifted.getMinutes()).padStart(2, '0')}`,
+      );
+    }
+    tick();
+    const timer = setInterval(tick, 15000);
+    return () => clearInterval(timer);
+  }, [utcOffset]);
+
+  return time;
+}
+
+function CopyRow({
+  icon,
+  label,
+  value,
+  href,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  href: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch {
+      return;
+    }
+    setCopied(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), 1600);
+  }
+
+  return (
+    <div className="group flex items-center gap-3 rounded-xl border border-black/[0.07] px-3.5 py-2.5 transition-colors duration-200 hover:border-black/[0.14] dark:border-white/[0.08] dark:hover:border-white/[0.16]">
+      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-black/[0.04] text-neutral-500 dark:bg-white/[0.06] dark:text-neutral-400">
+        {icon}
+      </span>
+      <a
+        href={href}
+        className="min-w-0 flex-1 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400"
+      >
+        <span className="block font-mono text-[10px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          {label}
+        </span>
+        <span className="block truncate text-[13.5px] text-neutral-800 dark:text-neutral-200">
+          {value}
+        </span>
+      </a>
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={copied ? `${label} copied` : `Copy ${label.toLowerCase()}`}
+        className="grid size-8 shrink-0 place-items-center rounded-lg text-neutral-300 opacity-0 transition-[color,opacity,transform] duration-150 ease-out hover:text-neutral-700 focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 group-hover:opacity-100 active:scale-[0.96] dark:text-neutral-600 dark:hover:text-neutral-200"
+      >
+        <span className="relative grid size-3.5 place-items-center">
+          <IconCheck
+            aria-hidden
+            className={cn(
+              'absolute size-3.5 text-emerald-600 transition-[opacity,scale,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:transition-none dark:text-emerald-400',
+              copied ? 'scale-100 opacity-100 blur-0' : 'scale-[0.25] opacity-0 blur-[4px]',
+            )}
+          />
+          <IconCopy
+            aria-hidden
+            className={cn(
+              'size-3.5 transition-[opacity,scale,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:transition-none',
+              copied ? 'scale-[0.25] opacity-0 blur-[4px]' : 'scale-100 opacity-100 blur-0',
+            )}
+          />
+        </span>
+      </button>
+    </div>
+  );
+}
+
+export function ContactCardFooter({
+  brand,
+  blurb = 'Real people answer. Usually within a working day.',
+  email,
+  phone,
+  address,
+  hours,
+  utcOffset,
+  links = [],
+  copyright,
+  variant = 'Card',
+  className,
+}: ContactCardFooterProps) {
+  const time = useLocalTime(utcOffset);
+
+  return (
+    <footer
+      className={cn(
+        'w-full border-t border-black/[0.08] bg-white text-neutral-900 dark:border-white/[0.09] dark:bg-[#0A0A0B] dark:text-neutral-100',
+        className,
+      )}
+    >
+      <div className="mx-auto w-full max-w-[1180px] px-6 py-12">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
+          <div>
+            <p className="text-[17px] font-semibold tracking-[-0.3px]">{brand}</p>
+            <p className="mt-2 max-w-[34ch] text-pretty text-[13.5px] leading-[1.65] text-neutral-500 dark:text-neutral-400">
+              {blurb}
+            </p>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] text-neutral-500 dark:text-neutral-400">
+              {hours && (
+                <span className="inline-flex items-center gap-1.5">
+                  <IconClock className="size-3.5 text-neutral-400" />
+                  {hours}
+                </span>
+              )}
+              {time && (
+                <span className="inline-flex items-center gap-1.5 font-mono tabular-nums">
+                  <span aria-hidden className="size-1.5 rounded-full bg-emerald-500" />
+                  {time} local
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div
+            className={cn(
+              'grid gap-2',
+              variant === 'Row' ? 'sm:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-1',
+            )}
+          >
+            <CopyRow
+              icon={<IconMessage className="size-4" />}
+              label="Email"
+              value={email}
+              href={`mailto:${email}`}
+            />
+            {phone && (
+              <CopyRow
+                icon={<IconCalling className="size-4" />}
+                label="Phone"
+                value={phone}
+                href={`tel:${phone.replace(/[^\d+]/g, '')}`}
+              />
+            )}
+            {address && (
+              <CopyRow
+                icon={<IconLocation className="size-4" />}
+                label="Studio"
+                value={address}
+                href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
+              />
+            )}
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-3 border-t border-black/[0.07] pt-6 text-[12px] text-neutral-500 dark:border-white/[0.08] sm:flex-row sm:items-center sm:justify-between">
+          <p className="tabular-nums">{copyright ?? `© ${brand}. All rights reserved.`}</p>
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:text-neutral-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default ContactCardFooter;
