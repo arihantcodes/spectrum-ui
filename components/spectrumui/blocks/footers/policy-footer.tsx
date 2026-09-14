@@ -1,6 +1,8 @@
 'use client';
 
 import { useId, useState } from 'react';
+import { Switch } from '@/components/ui/switch';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconCheck, IconShield, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -42,28 +44,18 @@ function Toggle({
   const id = useId();
   return (
     <div className="flex items-start gap-3 py-3">
-      <button
-        type="button"
+      {/* shadcn's Switch rather than a hand-rolled button with role="switch".
+          It animates the thumb with a transform instead of `left`, which the
+          compositor can run, and it brings the disabled and focus states with
+          it. */}
+      <Switch
         id={id}
-        role="switch"
-        aria-checked={checked}
-        aria-label={category.label}
+        checked={checked}
         disabled={category.locked}
-        onClick={onToggle}
-        className={cn(
-          'relative mt-0.5 h-[22px] w-[38px] shrink-0 rounded-full transition-colors duration-200 ease-out focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
-          checked ? 'bg-neutral-900 dark:bg-neutral-100' : 'bg-black/[0.12] dark:bg-white/[0.16]',
-          category.locked && 'cursor-not-allowed opacity-55',
-        )}
-      >
-        <span
-          aria-hidden
-          className={cn(
-            'absolute top-[3px] size-4 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2)] transition-[left] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none dark:bg-neutral-900',
-            checked ? 'left-[19px]' : 'left-[3px]',
-          )}
-        />
-      </button>
+        onCheckedChange={onToggle}
+        aria-label={category.label}
+        className={cn('mt-0.5 shrink-0', category.locked && 'cursor-not-allowed opacity-55')}
+      />
       <label htmlFor={id} className="min-w-0 cursor-pointer select-none">
         <span className="flex items-center gap-1.5 text-[13px] font-medium text-neutral-900 dark:text-neutral-100">
           {category.label}
@@ -135,7 +127,7 @@ export function PolicyFooter({
             type="button"
             aria-expanded={open}
             onClick={() => setOpen((current) => !current)}
-            className="inline-flex h-9 w-fit items-center gap-2 rounded-full border border-black/[0.09] px-3.5 text-[12.5px] font-medium text-neutral-700 transition-[color,border-color,scale] duration-150 ease-out hover:border-black/[0.2] hover:text-neutral-950 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:text-neutral-300 dark:hover:border-white/[0.22] dark:hover:text-neutral-50"
+            className="inline-flex h-9 w-fit cursor-pointer items-center gap-2 rounded-full border border-black/[0.09] px-3.5 text-[12.5px] font-medium text-neutral-700 transition-[color,border-color,scale] duration-150 ease-out hover:border-black/[0.2] hover:text-neutral-950 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:text-neutral-300 dark:hover:border-white/[0.22] dark:hover:text-neutral-50"
           >
             <IconShield className="size-3.5" />
             Cookie preferences
@@ -158,13 +150,13 @@ export function PolicyFooter({
               ))}
             </div>
             <div className="flex items-center gap-2.5 border-t border-black/[0.06] py-3 dark:border-white/[0.07]">
-              <button
+              <Button
                 type="button"
                 onClick={save}
-                className="inline-flex h-8 items-center gap-1.5 rounded-full bg-neutral-900 px-3.5 text-[12.5px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+                className="h-8 gap-1.5 rounded-full px-3.5 text-[12.5px] transition-transform duration-150 ease-out active:scale-[0.96]"
               >
                 Save preferences
-              </button>
+              </Button>
               <button
                 type="button"
                 onClick={() => {

@@ -1,6 +1,8 @@
 'use client';
 
 import { useId, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconCheck, IconSparkle, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -123,7 +125,7 @@ export function WaitlistFooter({
                   : 'border-white/[0.1] focus-within:border-white/[0.28] focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.04)]',
               )}
             >
-              <input
+              <Input
                 id={inputId}
                 type="email"
                 inputMode="email"
@@ -135,18 +137,18 @@ export function WaitlistFooter({
                   setEmail(event.target.value);
                   if (error) setError(false);
                 }}
-                className="h-9 min-w-0 flex-1 bg-transparent px-2.5 text-[14px] text-neutral-100 placeholder:text-neutral-400 focus:outline-hidden min-[420px]:h-auto min-[420px]:px-0"
+                className="h-9 min-w-0 flex-1 border-0 bg-transparent px-2.5 text-[14px] text-neutral-100 shadow-none ring-offset-0 placeholder:text-neutral-400 focus-visible:ring-0 focus-visible:ring-offset-0 min-[420px]:h-auto min-[420px]:px-0"
               />
-              <button
+              <Button
                 type="submit"
-                className="relative h-9 shrink-0 overflow-hidden rounded-xl bg-neutral-100 px-4 text-center text-[13px] font-medium text-neutral-900 transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-500"
+                className="relative h-9 shrink-0 overflow-hidden rounded-xl bg-neutral-100 px-4 text-center text-[13px] text-neutral-900 transition-transform duration-150 ease-out hover:bg-white active:scale-[0.96]"
               >
                 <span
                   aria-hidden
                   className="absolute inset-y-0 -left-1/2 w-1/2 skew-x-[-18deg] animate-[su-wait-sheen_3.4s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/70 to-transparent motion-reduce:animate-none"
                 />
                 <span className="relative">{ctaLabel}</span>
-              </button>
+              </Button>
             </div>
             <p
               aria-live="polite"

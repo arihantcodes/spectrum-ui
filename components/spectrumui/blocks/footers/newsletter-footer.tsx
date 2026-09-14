@@ -1,6 +1,20 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { IconArrowRight, IconCheck, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -29,7 +43,23 @@ export interface NewsletterFooterProps {
   className?: string;
 }
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+/**
+ * react-hook-form + zod through the shadcn `Form`, rather than a `useState`
+ * string and a regex.
+ *
+ * It is the same three fields of markup either way, but the resolver owns
+ * validation, `FormMessage` owns the error text and its `aria-describedby`
+ * wiring, and the field stops being invalid the moment it becomes valid
+ * instead of on the next keystroke.
+ */
+const subscribeSchema = z.object({
+  email: z
+    .string()
+    .min(1, 'Enter your email address.')
+    .email('That does not look like an email address.'),
+});
+
+type SubscribeValues = z.infer<typeof subscribeSchema>;
 
 const DEFAULT_PERKS = [
   'New blocks the week they ship',
@@ -52,19 +82,18 @@ export function NewsletterFooter({
   variant = 'Panel',
   className,
 }: NewsletterFooterProps) {
-  const [email, setEmail] = useState('');
-  const [state, setState] = useState<'idle' | 'error' | 'done'>('idle');
-  const inputId = useId();
-  const errorId = `${inputId}-error`;
+  const [done, setDone] = useState<string | null>(null);
+  const form = useForm<SubscribeValues>({
+    resolver: zodResolver(subscribeSchema),
+    defaultValues: { email: '' },
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
+  });
+  const invalid = Boolean(form.formState.errors.email);
 
-  function submit(event: React.FormEvent) {
-    event.preventDefault();
-    if (!EMAIL.test(email.trim())) {
-      setState('error');
-      return;
-    }
-    setState('done');
-    onSubscribe?.(email.trim());
+  function submit(values: SubscribeValues) {
+    setDone(values.email.trim());
+    onSubscribe?.(values.email.trim());
   }
 
   const panel = variant === 'Panel';
@@ -113,7 +142,7 @@ export function NewsletterFooter({
             </div>
 
             <div className="min-w-0 lg:w-full lg:max-w-[400px] lg:justify-self-end">
-              {state === 'done' ? (
+              {done ? (
                 <div
                   role="status"
                   className="flex animate-[su-news-success_280ms_cubic-bezier(0.23,1,0.32,1)] items-center gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-3.5 motion-reduce:animate-none"
@@ -124,87 +153,85 @@ export function NewsletterFooter({
                   <span className="min-w-0">
                     <span className="block text-[13.5px] font-medium">Check your inbox</span>
                     <span className="block truncate text-[12px] text-neutral-500 dark:text-neutral-400">
-                      Confirmation sent to {email.trim()}
+                      Confirmation sent to {done}
                     </span>
                   </span>
                 </div>
               ) : (
-                <form onSubmit={submit} noValidate>
-                  <label htmlFor={inputId} className="sr-only">
-                    Email address
-                  </label>
-                  <div
-                    className={cn(
-                      /* Stacked under 420px: an inline submit leaves about
-                       120px for the field on a phone, which is not enough to
-                       see the address you just typed. */
-                      'flex flex-col gap-2 rounded-xl border bg-white p-1.5 transition-[border-color,box-shadow] duration-200 min-[420px]:h-[52px] min-[420px]:flex-row min-[420px]:items-center min-[420px]:py-0 min-[420px]:pl-4 min-[420px]:pr-1.5 dark:bg-white/[0.04]',
-                      state === 'error'
-                        ? 'animate-[su-news-shake_320ms_ease-out] border-red-500/45 motion-reduce:animate-none'
-                        : 'border-black/[0.1] focus-within:border-black/[0.3] focus-within:shadow-[0_0_0_4px_rgba(0,0,0,0.05)] dark:border-white/[0.1] dark:focus-within:border-white/[0.32] dark:focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.05)]',
-                    )}
-                  >
-                    <input
-                      id={inputId}
-                      type="email"
-                      inputMode="email"
-                      autoComplete="email"
-                      placeholder="you@company.com"
-                      value={email}
-                      aria-invalid={state === 'error'}
-                      aria-describedby={state === 'error' ? errorId : undefined}
-                      onChange={(event) => {
-                        setEmail(event.target.value);
-                        if (state === 'error') setState('idle');
-                      }}
-                      className="h-10 min-w-0 flex-1 bg-transparent px-2.5 text-[14px] text-neutral-900 placeholder:text-neutral-400 focus:outline-hidden min-[420px]:h-auto min-[420px]:px-0 dark:text-neutral-100 dark:placeholder:text-neutral-600"
-                    />
-                    <button
-                      type="submit"
-                      className="group inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-[9px] bg-neutral-900 px-4 text-[13.5px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
-                    >
-                      Subscribe
-                      <IconArrowRight className="size-3.5 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 motion-reduce:transition-none" />
-                    </button>
-                  </div>
-                  <p
-                    id={errorId}
-                    aria-live="polite"
-                    className={cn(
-                      'mt-2 text-[12px] transition-opacity duration-150',
-                      state === 'error'
-                        ? 'text-red-600 opacity-100 dark:text-red-400'
-                        : 'text-neutral-500 opacity-100 dark:text-neutral-400',
-                    )}
-                  >
-                    {state === 'error'
-                      ? 'That does not look like an email address.'
-                      : 'Unsubscribe in one click. We never sell the list.'}
-                  </p>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(submit)} noValidate>
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="sr-only">Email address</FormLabel>
+                          <div
+                            className={cn(
+                              /* Stacked under 420px: an inline submit leaves about
+                                 120px for the field on a phone, which is not enough
+                                 to see the address you just typed. */
+                              'flex flex-col gap-2 rounded-xl border bg-white p-1.5 transition-[border-color,box-shadow] duration-200 min-[420px]:h-[52px] min-[420px]:flex-row min-[420px]:items-center min-[420px]:py-0 min-[420px]:pl-4 min-[420px]:pr-1.5 dark:bg-white/[0.04]',
+                              invalid
+                                ? 'animate-[su-news-shake_320ms_ease-out] border-red-500/45 motion-reduce:animate-none'
+                                : 'border-black/[0.1] focus-within:border-black/[0.3] focus-within:shadow-[0_0_0_4px_rgba(0,0,0,0.05)] dark:border-white/[0.1] dark:focus-within:border-white/[0.32] dark:focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.05)]',
+                            )}
+                          >
+                            <FormControl>
+                              <Input
+                                type="email"
+                                inputMode="email"
+                                autoComplete="email"
+                                placeholder="you@company.com"
+                                {...field}
+                                className="h-10 min-w-0 flex-1 border-0 bg-transparent px-2.5 text-[14px] shadow-none ring-offset-0 placeholder:text-neutral-400 focus-visible:ring-0 focus-visible:ring-offset-0 min-[420px]:h-auto min-[420px]:px-0 dark:placeholder:text-neutral-600"
+                              />
+                            </FormControl>
+                            <Button
+                              type="submit"
+                              className="group h-10 shrink-0 gap-1.5 rounded-[9px] px-4 text-[13.5px] transition-transform duration-150 ease-out active:scale-[0.96]"
+                            >
+                              Subscribe
+                              <IconArrowRight className="size-3.5 transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] group-hover:translate-x-0.5 motion-reduce:transition-none" />
+                            </Button>
+                          </div>
 
-                  {readers.length > 0 && (
-                    <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:items-start">
-                      <span aria-hidden className="flex shrink-0 -space-x-2">
-                        {readers.map((reader, index) => (
-                          /* eslint-disable-next-line @next/next/no-img-element */
-                          <img
-                            key={reader.initials}
-                            src={reader.src}
-                            alt=""
-                            loading="lazy"
-                            width={28}
-                            height={28}
-                            className="size-7 rounded-full object-cover outline outline-1 -outline-offset-1 outline-black/10 ring-2 ring-[#FAFAFA] transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 motion-reduce:transition-none dark:outline-white/10 dark:ring-[#0B0B0C]"
-                            style={{ zIndex: readers.length - index }}
-                          />
-                        ))}
-                      </span>
-                      <span className="text-[12.5px] text-neutral-500 dark:text-neutral-400">
-                        Read by design engineers at large teams and two-person studios.
-                      </span>
-                    </div>
-                  )}
-                </form>
+                          {/* One line either way, so the layout does not move when
+                              the message swaps from the note to the error. */}
+                          {invalid ? (
+                            <FormMessage className="mt-2 text-[12px]" />
+                          ) : (
+                            <p className="mt-2 text-[12px] text-neutral-500 dark:text-neutral-400">
+                              Unsubscribe in one click. We never sell the list.
+                            </p>
+                          )}
+                        </FormItem>
+                      )}
+                    />
+
+                    {readers.length > 0 && (
+                      <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:items-start">
+                        <span aria-hidden className="flex shrink-0 -space-x-2">
+                          {readers.map((reader, index) => (
+                            <Avatar
+                              key={reader.initials}
+                              className="size-7 outline outline-1 -outline-offset-1 outline-black/10 ring-2 ring-[#FAFAFA] transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 motion-reduce:transition-none dark:outline-white/10 dark:ring-[#0B0B0C]"
+                              style={{ zIndex: readers.length - index }}
+                            >
+                              <AvatarImage src={reader.src} alt="" loading="lazy" />
+                              <AvatarFallback className="text-[10px]">
+                                {reader.initials}
+                              </AvatarFallback>
+                            </Avatar>
+                          ))}
+                        </span>
+                        <span className="text-[12.5px] text-neutral-500 dark:text-neutral-400">
+                          Read by design engineers at large teams and two-person studios.
+                        </span>
+                      </div>
+                    )}
+                  </form>
+                </Form>
               )}
             </div>
           </div>

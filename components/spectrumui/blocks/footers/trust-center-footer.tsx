@@ -1,9 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-type IconProps = React.SVGProps<SVGSVGElement>;
 import { IconArrowUpRight, IconShield, FooterBar, type FooterSocial } from './footer-kit';
+
+type IconProps = React.SVGProps<SVGSVGElement>;
 
 /**
  * Six customer marks. Invented, not real companies — a logo row that ships with
@@ -244,9 +246,7 @@ export function TrustCenterFooter({
   variant = 'Badges',
   className,
 }: TrustCenterFooterProps) {
-  const [active, setActive] = useState<string | null>(null);
   const detailed = variant === 'Detailed';
-  const shown = badges.find((badge) => badge.id === active);
 
   return (
     <footer
@@ -269,47 +269,40 @@ export function TrustCenterFooter({
             </h2>
           </div>
 
-          <button
+          <Button
             type="button"
             onClick={onRequestReport}
-            className="group inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full bg-neutral-900 px-4 text-[13px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+            className="group h-9 shrink-0 cursor-pointer gap-1.5 rounded-full px-4 text-[13px] transition-transform duration-150 ease-out active:scale-[0.96]"
           >
             {requestLabel}
-            <IconArrowUpRight className="size-3.5 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" />
-          </button>
+            <IconArrowUpRight className="size-3.5 transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none" />
+          </Button>
         </div>
 
-        <ul
-          className={cn(
-            'mt-8 grid gap-2.5',
-            detailed ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-3 lg:grid-cols-5',
-          )}
-        >
-          {badges.map((badge) => {
-            const open = detailed || active === badge.id;
-            return (
-              <li key={badge.id}>
+        <TooltipProvider delayDuration={120} skipDelayDuration={300}>
+          <ul
+            className={cn(
+              'mt-8 grid gap-2.5',
+              detailed ? 'sm:grid-cols-2 lg:grid-cols-3' : 'sm:grid-cols-3 lg:grid-cols-5',
+            )}
+          >
+            {badges.map((badge) => {
+              const Glyph = BADGE_MARKS[badge.id] ?? IconShield;
+              const card = (
                 <a
                   href={badge.href}
-                  onMouseEnter={() => setActive(badge.id)}
-                  onMouseLeave={() => setActive(null)}
-                  onFocus={() => setActive(badge.id)}
-                  onBlur={() => setActive(null)}
                   className={cn(
-                    'flex h-full flex-col rounded-xl border px-3.5 py-3 transition-[border-color,box-shadow,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 motion-reduce:transition-none',
-                    'border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:-translate-y-px hover:border-black/[0.14] hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)]',
+                    'flex h-full cursor-pointer flex-col rounded-xl border px-3.5 py-3 transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.2,0,0,1)] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 motion-reduce:transition-none',
+                    'border-black/[0.08] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:border-black/[0.14] hover:shadow-[0_2px_10px_rgba(0,0,0,0.06)]',
                     'dark:border-white/[0.09] dark:bg-white/[0.03] dark:shadow-none dark:hover:border-white/[0.18]',
                   )}
                 >
                   <span className="flex items-center gap-2.5">
-                    {(() => {
-                      const Glyph = BADGE_MARKS[badge.id] ?? IconShield;
-                      return <Glyph className="size-[22px] shrink-0" />;
-                    })()}
+                    <Glyph className="size-[22px] shrink-0" />
                     <span className="text-[13px] font-medium tracking-[-0.1px]">{badge.label}</span>
                   </span>
-                  {open && (
-                    <span className="mt-1.5 animate-[su-trust-in_180ms_cubic-bezier(0.23,1,0.32,1)] motion-reduce:animate-none">
+                  {detailed && (
+                    <span className="mt-1.5">
                       <span className="block text-pretty text-[11.5px] leading-[1.5] text-neutral-500 dark:text-neutral-400">
                         {badge.scope}
                       </span>
@@ -319,14 +312,37 @@ export function TrustCenterFooter({
                     </span>
                   )}
                 </a>
-              </li>
-            );
-          })}
-        </ul>
+              );
+
+              return (
+                <li key={badge.id}>
+                  {detailed ? (
+                    card
+                  ) : (
+                    /* The scope and date float in a tooltip rather than expanding
+                     the card. Expanding grew the row by 60px on hover, so the
+                     grid reflowed and every badge you were about to reach for
+                     jumped out from under the pointer. A tooltip is the same
+                     information with no layout involved. */
+                    <Tooltip>
+                      <TooltipTrigger asChild>{card}</TooltipTrigger>
+                      <TooltipContent side="bottom" sideOffset={8} className="max-w-[260px]">
+                        <p className="text-pretty text-[12px] leading-[1.5]">{badge.scope}</p>
+                        <p className="mt-1 font-mono text-[10.5px] tabular-nums opacity-70">
+                          {badge.issued}
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </TooltipProvider>
 
         {!detailed && (
-          <p className="mt-3 h-4 text-[11.5px] text-neutral-500 dark:text-neutral-400">
-            {shown ? shown.scope : 'Hover a certification for scope and report date.'}
+          <p className="mt-3 text-[11.5px] text-neutral-500 dark:text-neutral-400">
+            Hover or focus a certification for its scope and report date.
           </p>
         )}
 

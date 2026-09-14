@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { IconArrowUp, IconSparkle, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -110,18 +111,18 @@ export function AskDocsFooter({
           }}
           className="group mx-auto mt-6 flex h-[52px] max-w-[580px] items-center gap-2 rounded-2xl border border-black/[0.1] bg-white pl-4 pr-2 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-[border-color,box-shadow] duration-200 focus-within:border-black/[0.28] focus-within:shadow-[0_2px_16px_-4px_rgba(0,0,0,0.12)] dark:border-white/[0.1] dark:bg-white/[0.03] dark:shadow-none dark:focus-within:border-white/[0.3]"
         >
-          <input
+          <Input
             ref={inputRef}
             value={question}
             placeholder={placeholder}
             aria-label="Ask the documentation"
             onChange={(event) => setQuestion(event.target.value)}
-            className="min-w-0 flex-1 bg-transparent text-[14px] text-neutral-900 placeholder:text-neutral-400 focus:outline-hidden dark:text-neutral-100 dark:placeholder:text-neutral-600"
+            className="min-w-0 flex-1 border-0 bg-transparent px-0 text-[14px] shadow-none ring-offset-0 placeholder:text-neutral-400 focus-visible:ring-0 focus-visible:ring-offset-0 dark:placeholder:text-neutral-600"
           />
           <button
             type="submit"
             aria-label="Ask"
-            className="grid size-9 shrink-0 place-items-center rounded-xl bg-neutral-900 text-white transition-[transform,opacity] duration-150 ease-out active:scale-[0.96] disabled:opacity-35 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+            className="cursor-pointer grid size-9 shrink-0 place-items-center rounded-xl bg-neutral-900 text-white transition-[transform,opacity] duration-150 ease-out active:scale-[0.96] disabled:opacity-35 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
             disabled={!question.trim()}
           >
             <IconArrowUp className="size-4" />
@@ -135,7 +136,7 @@ export function AskDocsFooter({
                 key={suggestion}
                 type="button"
                 onClick={() => ask(suggestion)}
-                className="h-7 rounded-full border border-black/[0.08] px-3 text-[12px] text-neutral-500 transition-[color,border-color,scale] duration-150 ease-out hover:border-black/[0.18] hover:text-neutral-900 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:text-neutral-400 dark:hover:border-white/[0.2] dark:hover:text-neutral-100"
+                className="h-7 cursor-pointer rounded-full border border-black/[0.08] px-3 text-[12px] text-neutral-500 transition-[color,border-color,scale] duration-150 ease-out hover:border-black/[0.18] hover:text-neutral-900 active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-white/[0.1] dark:text-neutral-400 dark:hover:border-white/[0.2] dark:hover:text-neutral-100"
               >
                 {suggestion}
               </button>

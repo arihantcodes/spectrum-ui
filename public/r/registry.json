@@ -5592,6 +5592,9 @@
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "category": "Footers",
       "tags": [
         "footer",
@@ -5617,6 +5620,10 @@
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
       ],
       "category": "Footers",
       "tags": [
@@ -5644,6 +5651,9 @@
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "popover"
       ],
       "category": "Footers",
       "tags": [
@@ -5697,6 +5707,9 @@
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
+      "registryDependencies": [
+        "button"
+      ],
       "category": "Footers",
       "tags": [
         "footer",
@@ -5722,6 +5735,9 @@
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "input"
       ],
       "category": "Footers",
       "tags": [
@@ -5774,6 +5790,10 @@
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
+      "registryDependencies": [
+        "button",
+        "switch"
+      ],
       "category": "Footers",
       "tags": [
         "footer",
@@ -5799,6 +5819,9 @@
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "input"
       ],
       "category": "Footers",
       "tags": [
@@ -5929,6 +5952,17 @@
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
+      "dependencies": [
+        "@hookform/resolvers",
+        "react-hook-form",
+        "zod"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "form",
+        "input"
+      ],
       "category": "Footers",
       "tags": [
         "footer",
@@ -6007,6 +6041,9 @@
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
       ],
+      "registryDependencies": [
+        "popover"
+      ],
       "category": "Footers",
       "tags": [
         "footer",
@@ -6031,6 +6068,10 @@
           "type": "registry:block",
           "target": "components/spectrumui/blocks/footers/footer-kit.tsx"
         }
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
       ],
       "category": "Footers",
       "tags": [
