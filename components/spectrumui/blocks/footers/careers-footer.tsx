@@ -114,7 +114,7 @@ export function CareersFooter({
                   setIndex(0);
                 }}
                 className={cn(
-                  'h-8 rounded-full border px-3 text-[12.5px] transition-[color,background-color,border-color,scale] duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
+                  'h-8 cursor-pointer rounded-full border px-3 text-[12.5px] transition-[color,background-color,border-color,scale] duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400',
                   active
                     ? 'border-transparent bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900'
                     : 'border-black/[0.09] text-neutral-500 hover:border-black/[0.18] hover:text-neutral-900 dark:border-white/[0.1] dark:text-neutral-400 dark:hover:border-white/[0.2] dark:hover:text-neutral-100',

@@ -100,7 +100,7 @@ function CopyRow({
         type="button"
         onClick={copy}
         aria-label={copied ? `${label} copied` : `Copy ${label.toLowerCase()}`}
-        className="grid size-8 shrink-0 place-items-center rounded-lg text-neutral-300 opacity-0 transition-[color,opacity,transform] duration-150 ease-out hover:text-neutral-700 focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 group-hover:opacity-100 active:scale-[0.96] dark:text-neutral-600 dark:hover:text-neutral-200"
+        className="cursor-pointer grid size-8 shrink-0 place-items-center rounded-lg text-neutral-300 opacity-0 transition-[color,opacity,transform] duration-150 ease-out hover:text-neutral-700 focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 group-hover:opacity-100 active:scale-[0.96] dark:text-neutral-600 dark:hover:text-neutral-200"
       >
         <span className="relative grid size-3.5 place-items-center">
           <IconCheck

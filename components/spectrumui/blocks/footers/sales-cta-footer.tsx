@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { IconArrowRight, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -132,14 +133,14 @@ export function SalesCtaFooter({
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <button
+              <Button
                 type="button"
                 onClick={() => onContact?.(seats)}
-                className="group inline-flex h-10 items-center gap-2 rounded-full bg-neutral-900 px-5 text-[13.5px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+                className="group h-10 gap-2 rounded-full px-5 text-[13.5px] transition-transform duration-150 ease-out active:scale-[0.96]"
               >
                 {ctaLabel}
-                <IconArrowRight className="size-4 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 motion-reduce:transition-none" />
-              </button>
+                <IconArrowRight className="size-4 transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] group-hover:translate-x-0.5 motion-reduce:transition-none" />
+              </Button>
               <p className="text-[12px] text-neutral-500 dark:text-neutral-400">
                 Indicative only. Volume, term and support tier change the number.
               </p>

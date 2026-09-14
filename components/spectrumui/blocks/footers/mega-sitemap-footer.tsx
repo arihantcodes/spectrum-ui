@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState, type CSSProperties } from 'react';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import {
   IconArrowRight,
@@ -122,7 +123,7 @@ function AccordionGroup({ group, index }: { group: MegaSitemapGroup; index: numb
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="group/acc flex h-12 w-full items-center justify-between text-left focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400"
+        className="group/acc flex h-12 w-full cursor-pointer items-center justify-between text-left focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400"
       >
         <span className="font-mono text-[11px] font-medium uppercase tracking-[0.09em] text-neutral-600 transition-colors duration-150 group-hover/acc:text-neutral-950 dark:text-neutral-300 dark:group-hover/acc:text-neutral-50">
           {group.title}
@@ -168,7 +169,7 @@ function Selector({
   return (
     <label
       htmlFor={id}
-      className="group relative inline-flex h-8 items-center gap-1.5 rounded-full border border-black/[0.1] pl-2.5 pr-6 transition-colors duration-150 hover:border-black/[0.2] focus-within:border-black/[0.28] dark:border-white/[0.12] dark:hover:border-white/[0.24] dark:focus-within:border-white/[0.32]"
+      className="group relative inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full border border-black/[0.1] pl-2.5 pr-6 transition-colors duration-150 hover:border-black/[0.2] focus-within:border-black/[0.28] dark:border-white/[0.12] dark:hover:border-white/[0.24] dark:focus-within:border-white/[0.32]"
     >
       <span className="sr-only">{label}</span>
       {icon}
@@ -238,13 +239,13 @@ export function MegaSitemapFooter({
                 <p className="mt-2.5 text-pretty text-[13px] leading-[1.6] text-neutral-600 dark:text-neutral-300">
                   {newsletter.blurb}
                 </p>
-                <button
+                <Button
                   type="button"
                   onClick={onSubscribe}
-                  className="mt-3.5 inline-flex h-9 items-center rounded-lg bg-neutral-900 px-4 text-[13px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+                  className="mt-3.5 h-9 rounded-lg px-4 text-[13px] transition-transform duration-150 ease-out active:scale-[0.96]"
                 >
                   {newsletter.cta}
-                </button>
+                </Button>
               </div>
             )}
           </div>

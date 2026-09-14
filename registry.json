@@ -5322,6 +5322,9 @@
         "enterprise",
         "navigation",
         "accordion"
+      ],
+      "registryDependencies": [
+        "button"
       ]
     },
     {
@@ -5349,6 +5352,10 @@
         "iso27001",
         "trust",
         "enterprise"
+      ],
+      "registryDependencies": [
+        "button",
+        "tooltip"
       ]
     },
     {
@@ -5375,6 +5382,9 @@
         "locale",
         "i18n",
         "data-residency"
+      ],
+      "registryDependencies": [
+        "popover"
       ]
     },
     {
@@ -5427,6 +5437,9 @@
         "slider",
         "sales",
         "enterprise"
+      ],
+      "registryDependencies": [
+        "button"
       ]
     },
     {
@@ -5452,6 +5465,9 @@
         "search",
         "combobox",
         "navigation"
+      ],
+      "registryDependencies": [
+        "input"
       ]
     },
     {
@@ -5504,6 +5520,10 @@
         "cookies",
         "consent",
         "privacy"
+      ],
+      "registryDependencies": [
+        "button",
+        "switch"
       ]
     },
     {
@@ -5530,6 +5550,9 @@
         "search",
         "streaming",
         "citations"
+      ],
+      "registryDependencies": [
+        "input"
       ]
     },
     {
@@ -5659,6 +5682,17 @@
         "email",
         "form",
         "validation"
+      ],
+      "registryDependencies": [
+        "avatar",
+        "button",
+        "form",
+        "input"
+      ],
+      "dependencies": [
+        "@hookform/resolvers",
+        "react-hook-form",
+        "zod"
       ]
     },
     {
@@ -5736,6 +5770,9 @@
         "minimal",
         "compact",
         "popover"
+      ],
+      "registryDependencies": [
+        "popover"
       ]
     },
     {
@@ -5762,6 +5799,10 @@
         "email",
         "launch",
         "avatars"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
       ]
     }
   ]

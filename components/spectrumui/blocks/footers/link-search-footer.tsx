@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useMemo, useRef, useState } from 'react';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { IconEnter, IconSearch, FooterBar, type FooterSocial } from './footer-kit';
 
@@ -120,7 +121,7 @@ export function LinkSearchFooter({
               onClick={() => inputRef.current?.focus()}
             >
               <IconSearch className="size-4 shrink-0 text-neutral-400" />
-              <input
+              <Input
                 ref={inputRef}
                 type="search"
                 role="combobox"
@@ -134,7 +135,7 @@ export function LinkSearchFooter({
                   setCursor(0);
                 }}
                 onKeyDown={onKeyDown}
-                className="min-w-0 flex-1 bg-transparent text-[13.5px] text-neutral-900 placeholder:text-neutral-400 focus:outline-hidden dark:text-neutral-100 dark:placeholder:text-neutral-600 [&::-webkit-search-cancel-button]:appearance-none"
+                className="h-auto min-w-0 flex-1 border-0 bg-transparent px-0 text-[13.5px] shadow-none ring-offset-0 placeholder:text-neutral-400 focus-visible:ring-0 focus-visible:ring-offset-0 dark:placeholder:text-neutral-600 [&::-webkit-search-cancel-button]:appearance-none"
               />
               <kbd className="hidden shrink-0 rounded-md border border-black/[0.08] px-1.5 py-0.5 font-mono text-[10px] text-neutral-400 dark:border-white/[0.1] dark:text-neutral-600 sm:block">
                 /
