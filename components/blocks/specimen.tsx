@@ -124,10 +124,17 @@ export function Specimen({
         )}
       </div>
 
-      {/* Stage */}
+      {/* Stage.
+
+          `overflow-clip`, not `overflow-hidden`: hidden makes the stage a scroll
+          container, and a scroll container is what `animation-timeline: view()`
+          resolves against — so every scroll-driven entrance inside a block (the
+          footers' column and wordmark reveals) measured itself against a box
+          that never scrolls and sat frozen at its end state. Clip trims the
+          corners identically without creating a scrollport. */}
       <div
         className={cn(
-          'relative mt-4 overflow-hidden rounded-2xl border border-black/[0.06] bg-[#F2F2F3] dark:border-white/[0.07] dark:bg-white/[0.035]',
+          'relative mt-4 overflow-clip rounded-2xl border border-black/[0.06] bg-[#F2F2F3] dark:border-white/[0.07] dark:bg-white/[0.035]',
         )}
       >
         {!bleed && <div className="absolute right-3 top-3 z-10">{controls}</div>}

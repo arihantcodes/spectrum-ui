@@ -550,7 +550,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## Block reference (68)
+## Block reference (86)
 
 Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.
 
@@ -1909,6 +1909,342 @@ What makes it hard to build well:
 - Days need { t, value } with t at UTC midnight; gaps are filled as zero rather than skipped
 - Intensity is quantised into five buckets — the eye cannot rank a continuous ramp
 - Month labels print on the column each month starts, not on every column
+
+## Footers blocks (18) — reference
+
+Eighteen interactive footer sections, every one of them Spectrum UI dogfooding its own library — mega sitemaps with region and language selectors, a compliance trust row, thirty days of uptime bars, a customer logo wall, ask-the-docs search, a changelog feed, newsletter and waitlist capture, and a spotlit wordmark. They share one kit: outline utility icons, the Spectrum mark, the social row and the bottom bar, so the set stays identical without eighteen copies of the same markup. Every animation is CSS, so the links render even if JavaScript never arrives.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/footers and installs with the shadcn CLI or through the MCP server.
+
+### Mega Sitemap Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#mega-sitemap-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/mega-sitemap-footer
+- Variants: Expanded, Compact
+- Dependencies: none
+- Added: 2026-09-13
+
+The footer an enterprise site actually ships: five ruled columns each stacking two sub-groups, fifty-four links, per-group 'see all' links, a newsletter block beside the brand, and a bottom bar carrying mono-caps legal, social glyphs and region and language pills. Below lg every sub-group becomes an accordion.
+
+When to use it: Reach for this when a large B2B site needs its whole information architecture in the footer. Presentational — pass groups, legal links and the region and language option lists. It does not persist the selection or route on change; wire onChange yourself via the native select.
+
+What makes it hard to build well:
+- Density is the design — twenty links reads as a placeholder, so columns stack sub-groups the way Razorpay, GitHub and Stripe do rather than padding one list each
+- A per-column top rule beats a full-width one: it survives columns of wildly different height without leaving a rule floating over whitespace
+- The legal list wraps and the locale controls do not, or the language pill drops to its own line the moment a company name gets long
+- The five columns resolve left to right on a view() timeline as the footer scrolls in, and cannot strand a link mid-fade: for anything at the end of a document the entry range is guaranteed to reach 100% at maximum scroll
+
+### Trust Center Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#trust-center-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/trust-center-footer
+- Variants: Badges, Detailed
+- Dependencies: none
+- Added: 2026-09-13
+
+The footer a procurement team reads. Five certifications expand to scope and report date on hover or focus, a row of customer logos says who already runs it, and four link columns keep it a footer rather than a banner.
+
+When to use it: Use on regulated B2B marketing sites where the footer is the first thing a security reviewer scans. Data in, callback out — badges are an array with scope, issue date and href. It renders no certification imagery; supply your own logos if you have the licences.
+
+What makes it hard to build well:
+- A badge is worth nothing without scope and a date — the reveal exists so the card can carry both without shouting them
+- Hover-only disclosure strands keyboard users, so focus and blur drive the same state as pointer enter and leave
+- The Detailed variant renders every card open, because print and reduced-interaction contexts get no hover at all
+- The logo row is a grid rather than a wrapping flex row: six names of uneven length left a single orphan on the second line at most widths
+- Five identical green dots tell a procurement reader nothing — the marks have to be recognisable in each standard’s own colours before the label is read
+
+### Region Picker Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#region-picker-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/region-picker-footer
+- Variants: Popover, Inline
+- Dependencies: none
+- Added: 2026-09-13
+
+Multi-region products owe the reader a residency answer in the footer. This one lists regions with their locale, currency and cloud region, and ticks a live local clock beside each so a reader in Osaka can see who is awake.
+
+When to use it: Reach for this when a product has genuine data-residency choices to state. Controlled or uncontrolled — pass value plus onChange, or let it hold its own. Optional groups render link columns above the utility row. It does not route, set a cookie, or migrate anything; the copy says so, and you should keep that line.
+
+What makes it hard to build well:
+- The clock renders as dashes on the server and fills in after mount — a real time on first paint is a hydration mismatch
+- The popover closes on outside pointerdown and on Escape, and cleans both listeners up when it closes
+- The check mark cross-fades on scale and blur rather than appearing, so switching regions does not flicker
+- The popover opens downward, not up: a picker pinned to the bottom of a real page wants to open up, but inside a section the list was clipped by the section edge and the first regions were unreachable
+
+### Service Status Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#service-status-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/service-status-footer
+- Variants: Grid, Bar
+- Dependencies: none
+- Added: 2026-09-13
+
+Statuspage, shrunk to footer height. Each service gets thirty days of uptime as one bar per day graded by colour, a live summary pill that reports the worst service, and an incident ticker that rolls every few seconds.
+
+When to use it: Use when uptime is part of the sales argument and the status page deserves a permanent footer slot. Purely presentational: history is an array of 0–1 ratios oldest to newest. It does not poll — feed it from your own status API on the server.
+
+What makes it hard to build well:
+- Uptime lives between 0.98 and 1.00, so mapping it to bar height draws thirty near-identical stubs and reads as noise — the signal has to be colour, with the bars a constant height
+- The summary pill reports the worst service, not the first, or a single outage hides behind four green rows
+- Bars are flex-1 with a floor rather than a fixed width, so thirty days fill whatever width the card has
+
+### Sales CTA Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#sales-cta-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/sales-cta-footer
+- Variants: Split, Stacked
+- Dependencies: none
+- Added: 2026-09-13
+
+Enterprise pricing is quoted, not listed, which leaves prospects guessing. This footer lets them move a seat slider and watch a tier and an indicative annual figure resolve, then hands them a contact button that knows the number they picked.
+
+When to use it: Reach for this on a per-seat B2B product whose real price is negotiated. onContact receives the current seat count so the lead arrives pre-qualified. Tier thresholds and discounts are hard-coded in the file — edit TIERS to match your rate card.
+
+What makes it hard to build well:
+- Both readouts are tabular-nums; proportional figures wobble the layout on every step of the drag
+- The filled track is a separate absolutely positioned span so the range input keeps its native keyboard behaviour
+- The estimate is labelled indicative in the block itself — a footer calculator that reads as a quote is a support ticket
+
+### Link Search Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#link-search-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/link-search-footer
+- Variants: Search, Browse
+- Dependencies: none
+- Added: 2026-09-13
+
+Past about forty links a footer stops being navigation and becomes a wall. This one puts a combobox in front of the wall: type and the columns are replaced by ranked matches with the hit highlighted and the section named, arrow keys move the cursor, Escape restores the grid.
+
+When to use it: Use on documentation-heavy or multi-product sites whose footer link count has outgrown scanning. Client-side filter over the groups you pass — no index, no fetch. Results cap at seven; raise the slice if your sections are broader.
+
+What makes it hard to build well:
+- The full grid stays in the DOM until a query exists, so crawlers and no-JS readers still see every link
+- Matching runs over the label and the section title, so typing a section name surfaces its pages
+- Highlighting slices the label around the match rather than using dangerouslySetInnerHTML on user input
+
+### Careers Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#careers-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/careers-footer
+- Variants: Ticker, List
+- Dependencies: none
+- Added: 2026-09-13
+
+Hiring, without turning the footer into a job board. Department chips filter the list, three roles are visible at a time and the window rolls one row every few seconds, and four link columns sit underneath so the block still reads as a footer.
+
+When to use it: Reach for this when open roles are worth surfacing on every page. Data in, no fetching — pass roles with title, department, location and type. The ticker pauses for nobody; set variant to List when the full set matters more than the motion.
+
+What makes it hard to build well:
+- A one-role ticker leaves a tall card that is mostly empty — three rows rolling one at a time keeps the motion and fills the space
+- Rows are keyed on the window offset as well as the role, so only the row that actually changed replays its entrance
+- Filtering resets the window, or switching department leaves the ticker pointing past the end of a shorter list
+
+### Policy Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#policy-footer
+- Category: footers / Enterprise
+- Install: npx shadcn@latest add @spectrumui/policy-footer
+- Variants: Bar, Panel
+- Dependencies: none
+- Added: 2026-09-13
+
+The legal floor of a multi-entity company: registered names, a cookie preferences panel with per-category switches, and a policy row covering DPA, sub-processors and accessibility. Strictly necessary is locked on and says so.
+
+When to use it: Use where consent management has to be reachable from every page. onSave receives the enabled category ids; it stores nothing itself, so connect it to your CMP. Not a substitute for a consent banner on first visit.
+
+What makes it hard to build well:
+- The locked category renders as a disabled switch with an Always on marker instead of vanishing, so the list stays honest
+- Saved is announced through aria-live and fades rather than appearing, so a screen reader hears the result of the click
+- The switch knob transitions on left rather than transform, which keeps it crisp against the 22px track at any zoom
+
+### Ask Docs Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#ask-docs-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/ask-docs-footer
+- Variants: Inline, Expanded
+- Dependencies: none
+- Added: 2026-09-13
+
+Ask-the-docs, sized as a footer. A centred composer streams a cited answer in place with suggested prompts under it, and four link columns sit below so the block reads as a footer rather than a stranded search box.
+
+When to use it: Reach for this when documentation search is the main thing readers want from the footer. The answer prop is the text it streams — swap the canned string for your own retrieval result. It performs no fetching and holds no conversation history.
+
+What makes it hard to build well:
+- Three phases — thinking, streaming, done — because a caret that starts before the first token pretends latency does not exist
+- Citations appear only once streaming finishes, so the layout does not reflow under the reader mid-sentence
+- The streaming caret is inline and baseline-shifted, so it sits on the text rather than floating above the descenders
+
+### Wordmark Spotlight Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#wordmark-spotlight-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/wordmark-spotlight-footer
+- Variants: Spotlight, Static
+- Dependencies: none
+- Added: 2026-09-13
+
+The big-footer masthead, done without a canvas. A near-invisible wordmark spans the page, and a second copy at full brightness is revealed through a radial mask that tracks the pointer.
+
+When to use it: Use where the brand is the point and the footer is the last impression — AI labs, studios, design-led products. Pointer only by design; there is nothing to reveal on touch, and the Static variant is the honest fallback.
+
+What makes it hard to build well:
+- Two stacked copies with a CSS mask beats any per-letter approach — the light crosses letterforms instead of switching them
+- The visible text is aria-hidden twice over with one screen-reader-only copy, so the wordmark is announced once, not three times
+- Font size is a clamp against viewport width, so the wordmark stays edge-to-edge from phone to ultrawide without a resize listener
+
+### Token Stream Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#token-stream-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/token-stream-footer
+- Variants: Stream, Instant
+- Dependencies: none
+- Added: 2026-09-13
+
+A short manifesto streams in word by word when the footer enters view, then hands the page over to four metrics in large mono figures. The reserved height means the block never jumps while the text arrives.
+
+When to use it: Reach for this on an AI product landing page where the footer carries a positioning statement. Keep the manifesto under about thirty words; past that the stream outlasts the reader's patience. Purely visual — no data, no callbacks.
+
+What makes it hard to build well:
+- The full sentence is on the paragraph's aria-label, so assistive tech reads it whole rather than word by word as it lands
+- Unlanded words render invisible rather than unmounted, so the paragraph is full height from the first frame and nothing below it reflows mid-stream
+- Reduced motion is checked before the observer is even attached, and settles the sentence complete instead of streaming it
+
+### Neural Grid Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#neural-grid-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/neural-grid-footer
+- Variants: Lattice, Constellation
+- Dependencies: none
+- Added: 2026-09-13
+
+Generative texture without a canvas or a render loop. A deterministic SVG lattice of nodes and short edges sits behind the links, and a bright duplicate is revealed through a pointer-tracked mask with its edges flowing.
+
+When to use it: Use where an AI product wants atmosphere in the footer without shipping a WebGL dependency. Decorative and aria-hidden throughout. Edge count grows quadratically with node count — keep the arrays near the defaults.
+
+What makes it hard to build well:
+- Node jitter comes from a seeded sine, not Math.random, so the server and client draw the same lattice and hydration holds
+- Nodes live in normalised 0–1 space and a ResizeObserver feeds the viewBox the container's real aspect — a fixed viewBox stretches every circle into an ellipse
+- The pointer handler writes the mask straight to the DOM inside a rAF, so moving the mouse never re-renders React
+
+### Release Feed Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#release-feed-footer
+- Category: footers / AI
+- Install: npx shadcn@latest add @spectrumui/release-feed-footer
+- Variants: Feed, Compact
+- Dependencies: none
+- Added: 2026-09-13
+
+The last five releases, as a changelog rather than a timeline. Each row carries the version in mono, a coloured dot for the kind, the title, and the date right-aligned, on hairline rows that survive any column width.
+
+When to use it: Reach for this when release cadence is itself a selling point. Pass releases newest first with a pre-formatted date string — it does no date parsing or locale formatting. Kind maps to three tones; add your own in KIND_TONE.
+
+What makes it hard to build well:
+- A timeline rail needs 86px of gutter for the date and the dot before a word of content fits — hairline rows carry the same information and survive a narrow column
+- Version, kind and date are three different kinds of value, so they get three different treatments: mono, a colour dot, and a muted right-aligned column
+- Rows stagger in at 40ms, which is under the threshold where a list reads as loading rather than arriving
+
+### Newsletter Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#newsletter-footer
+- Category: footers / Product
+- Install: npx shadcn@latest add @spectrumui/newsletter-footer
+- Variants: Panel, Inline
+- Dependencies: none
+- Added: 2026-09-13
+
+The conversion block of the set. A bordered panel carries a display headline, three lines of what actually lands in your inbox, and a large field with a reader stack under it. Bad input shakes the field; a good one morphs the whole form into a confirmation without moving the layout.
+
+When to use it: Reach for this when the footer's job is list growth. onSubscribe receives the validated address; the block never posts anywhere. Validation is a shape check, not a deliverability check — verify server-side.
+
+What makes it hard to build well:
+- A newsletter block lives or dies on the reason to subscribe — a headline and a field is a form, the checklist is what makes it an offer
+- The success state has to occupy the same footprint as the form or the page jumps under the pointer at the exact moment you want it to feel finished
+- An <input> carries an intrinsic min-width of about twenty characters, so the panel needs min-w-0 on both grid items or it pushes past a phone viewport
+- The shake is 320ms and fires once; anything longer reads as an error state rather than a correction
+
+### Contact Card Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#contact-card-footer
+- Category: footers / Product
+- Install: npx shadcn@latest add @spectrumui/contact-card-footer
+- Variants: Card, Row
+- Dependencies: none
+- Added: 2026-09-13
+
+For teams small enough that contact is a person, not a portal. Each row is both a link and a copy target, the copy button appears on hover and on focus, and a live local clock next to the opening hours says whether anyone is actually there.
+
+When to use it: Use for agencies, studios and small SaaS where the footer replaces a contact page. utcOffset is a plain hour offset and does not handle daylight saving — pass the current offset, or drop the prop to hide the clock.
+
+What makes it hard to build well:
+- Every row is a link and a copy button — one hit target for each, never overlapping, both keyboard reachable
+- The clock only renders after mount, because a server-rendered time is a hydration mismatch waiting to happen
+- The copy button reveals on group hover but is always visible on focus, otherwise it is unreachable by keyboard
+
+### Logo Wall Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#social-proof-footer
+- Category: footers / Product
+- Install: npx shadcn@latest add @spectrumui/social-proof-footer
+- Variants: Marquee, Grid
+- Dependencies: none
+- Added: 2026-09-13
+
+The "trusted by" block, done properly. Twelve customer marks run as an edge-masked marquee that pauses under the pointer, or settle into a plotted grid whose cells stagger in. Under them a rating row and four counters that animate once when the footer enters view.
+
+When to use it: Reach for this when a footer needs social proof. Pass `customers` as name plus an SVG component; the bundled set is invented, so replace it with real marks before shipping. Stats are presentational — the count-up is animation only, not live data.
+
+What makes it hard to build well:
+- A seamless marquee is the list twice over and a keyframe that travels exactly -50%, so the seam lands where the second copy sits pixel-for-pixel on the first
+- The edge mask is what makes it read as a wall rather than a widget — without it logos are chopped by the viewport edge instead of dissolving
+- Logos ship as inlined geometry on a 24px grid rather than image files, so they take theme colour, stay crisp at any size, and add no network requests
+- Counters run once on intersection and are skipped entirely under reduced motion, where the final figure is what renders
+
+### Minimal Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#minimal-footer
+- Category: footers / Product
+- Install: npx shadcn@latest add @spectrumui/minimal-footer
+- Variants: Bar, Centered
+- Dependencies: none
+- Added: 2026-09-13
+
+Everything a small site needs in one 30px row. Section names sit as quiet buttons; hovering or focusing one lifts a small panel of its links above the bar, so the footer stays one line without losing a page.
+
+When to use it: Use on personal sites, docs and small products where a five-column footer would be theatre. Links live inside the panels, so if crawlability of every footer link matters more than the single line, take the mega sitemap instead.
+
+What makes it hard to build well:
+- Panels open upward, because a footer popover that opens downward opens off the bottom of the document
+- Hover opens and focus opens, and pointer-leaving the whole footer closes — otherwise a panel is left hanging
+- Buttons carry aria-expanded, so the disclosure is announced rather than being pure hover decoration
+
+### Waitlist Footer
+
+- URL: https://ui.spectrumhq.in/blocks/footers#waitlist-footer
+- Category: footers / Product
+- Install: npx shadcn@latest add @spectrumui/waitlist-footer
+- Variants: Waitlist, Launched
+- Dependencies: none
+- Added: 2026-09-13
+
+A pre-launch footer that tells the truth about the queue. An email field under an ambient glow, an avatar stack with a running total, and on submit the field becomes the reader's position in line.
+
+When to use it: Reach for this before launch, when the footer's only job is the list. onJoin receives the validated address and the count increments locally for feedback only — the real number has to come from your backend.
+
+What makes it hard to build well:
+- The submitted state names a position rather than saying thanks, which is the only part of a waitlist a reader wants
+- The sheen is a skewed span clipped by the button, so it sweeps the fill instead of animating the button itself
+- Avatars carry an explicit z-index descending by index, so the overlap stacks left over right at any list length
 
 ## Charts
 
