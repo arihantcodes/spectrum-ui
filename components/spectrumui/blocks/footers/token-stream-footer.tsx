@@ -143,13 +143,13 @@ export function TokenStreamFooter({
         </p>
 
         {meta.length > 0 && (
-          <dl className="mt-9 grid gap-6 border-y border-black/[0.07] py-7 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="mt-9 grid grid-cols-2 gap-6 border-y border-black/[0.07] py-7 dark:border-white/[0.08] lg:grid-cols-4">
             {meta.map((entry) => (
               <div key={entry.label}>
                 <dt className="font-mono text-[10.5px] font-medium uppercase tracking-[0.09em] text-neutral-500 dark:text-neutral-400">
                   {entry.label}
                 </dt>
-                <dd className="mt-2 font-mono text-[22px] leading-none tabular-nums tracking-[-0.6px] text-neutral-900 dark:text-neutral-100">
+                <dd className="mt-2 font-mono text-[18px] leading-none tabular-nums tracking-[-0.4px] text-neutral-900 sm:text-[22px] sm:tracking-[-0.6px] dark:text-neutral-100">
                   {entry.value}
                 </dd>
               </div>

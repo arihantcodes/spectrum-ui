@@ -76,7 +76,7 @@ export function SalesCtaFooter({
               'lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]',
           )}
         >
-          <div className="rounded-2xl border border-black/[0.08] bg-[#FAFAFA] p-6 dark:border-white/[0.09] dark:bg-white/[0.03]">
+          <div className="min-w-0 rounded-2xl border border-black/[0.08] bg-[#FAFAFA] p-5 dark:border-white/[0.09] dark:bg-white/[0.03] sm:p-6">
             <h2 className="text-balance text-[20px] font-semibold leading-[1.2] tracking-[-0.4px]">
               {headline}
             </h2>
@@ -84,7 +84,7 @@ export function SalesCtaFooter({
               {blurb}
             </p>
 
-            <div className="mt-6 flex items-end justify-between gap-4">
+            <div className="mt-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
               <div>
                 <label
                   htmlFor={sliderId}
@@ -150,7 +150,7 @@ export function SalesCtaFooter({
             <nav
               aria-label="Footer"
               className={cn(
-                'grid gap-8 self-center',
+                'grid min-w-0 gap-8 self-center',
                 variant === 'Split' ? 'sm:grid-cols-3' : 'sm:grid-cols-3 lg:grid-cols-6',
               )}
             >

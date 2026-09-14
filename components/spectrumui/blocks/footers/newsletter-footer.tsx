@@ -135,7 +135,10 @@ export function NewsletterFooter({
                   </label>
                   <div
                     className={cn(
-                      'flex h-[52px] items-center gap-2 rounded-xl border bg-white pl-4 pr-1.5 transition-[border-color,box-shadow] duration-200 dark:bg-white/[0.04]',
+                      /* Stacked under 420px: an inline submit leaves about
+                       120px for the field on a phone, which is not enough to
+                       see the address you just typed. */
+                      'flex flex-col gap-2 rounded-xl border bg-white p-1.5 transition-[border-color,box-shadow] duration-200 min-[420px]:h-[52px] min-[420px]:flex-row min-[420px]:items-center min-[420px]:py-0 min-[420px]:pl-4 min-[420px]:pr-1.5 dark:bg-white/[0.04]',
                       state === 'error'
                         ? 'animate-[su-news-shake_320ms_ease-out] border-red-500/45 motion-reduce:animate-none'
                         : 'border-black/[0.1] focus-within:border-black/[0.3] focus-within:shadow-[0_0_0_4px_rgba(0,0,0,0.05)] dark:border-white/[0.1] dark:focus-within:border-white/[0.32] dark:focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.05)]',
@@ -154,11 +157,11 @@ export function NewsletterFooter({
                         setEmail(event.target.value);
                         if (state === 'error') setState('idle');
                       }}
-                      className="min-w-0 flex-1 bg-transparent text-[14px] text-neutral-900 placeholder:text-neutral-400 focus:outline-hidden dark:text-neutral-100 dark:placeholder:text-neutral-600"
+                      className="h-10 min-w-0 flex-1 bg-transparent px-2.5 text-[14px] text-neutral-900 placeholder:text-neutral-400 focus:outline-hidden min-[420px]:h-auto min-[420px]:px-0 dark:text-neutral-100 dark:placeholder:text-neutral-600"
                     />
                     <button
                       type="submit"
-                      className="group inline-flex h-10 shrink-0 items-center gap-1.5 rounded-[9px] bg-neutral-900 px-4 text-[13.5px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
+                      className="group inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-[9px] bg-neutral-900 px-4 text-[13.5px] font-medium text-white transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:bg-neutral-100 dark:text-neutral-900"
                     >
                       Subscribe
                       <IconArrowRight className="size-3.5 transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 motion-reduce:transition-none" />
@@ -180,7 +183,7 @@ export function NewsletterFooter({
                   </p>
 
                   {readers.length > 0 && (
-                    <div className="mt-5 flex items-start gap-3">
+                    <div className="mt-5 flex flex-col gap-3 min-[420px]:flex-row min-[420px]:items-start">
                       <span aria-hidden className="flex shrink-0 -space-x-2">
                         {readers.map((reader, index) => (
                           /* eslint-disable-next-line @next/next/no-img-element */

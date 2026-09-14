@@ -337,7 +337,7 @@ export function TrustCenterFooter({
             </p>
             {/* A grid, not a wrapping flex row: six names of uneven length left a
                 single orphan on the second line at most widths. */}
-            <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-6">
+            <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6">
               {customers.map((customer) => {
                 const Glyph = customer.mark;
                 return (
@@ -346,7 +346,7 @@ export function TrustCenterFooter({
                     className="flex min-w-0 items-center gap-2.5 text-neutral-400 transition-colors duration-150 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-100"
                   >
                     <Glyph className="size-[22px] shrink-0" />
-                    <span className="truncate text-[14.5px] font-semibold tracking-[-0.35px]">
+                    <span className="truncate text-[13px] font-semibold tracking-[-0.3px] sm:text-[14.5px] sm:tracking-[-0.35px]">
                       {customer.name}
                     </span>
                   </li>

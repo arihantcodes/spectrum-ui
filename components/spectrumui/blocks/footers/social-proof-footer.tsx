@@ -393,7 +393,7 @@ export function SocialProofFooter({
         )}
 
         <div className="mx-auto mt-12 w-full max-w-[1180px] px-6">
-          <dl className="grid gap-6 border-y border-black/[0.07] py-8 dark:border-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="grid grid-cols-2 gap-6 border-y border-black/[0.07] py-8 dark:border-white/[0.08] lg:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label}>
                 <dd>

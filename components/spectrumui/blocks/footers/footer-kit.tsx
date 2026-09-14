@@ -333,7 +333,9 @@ export function BrandLockup({
       >
         <SpectrumLogo className="h-3.5 w-auto" />
       </span>
-      <span className="text-[14.5px] font-semibold tracking-[-0.3px]">{brand}</span>
+      <span className="whitespace-nowrap text-[14.5px] font-semibold tracking-[-0.3px]">
+        {brand}
+      </span>
     </a>
   );
 }

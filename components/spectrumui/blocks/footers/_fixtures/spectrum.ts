@@ -418,7 +418,7 @@ export const SPECTRUM_META = [
   { label: 'Components', value: '58' },
   { label: 'Blocks', value: '93' },
   { label: 'Dependencies added', value: '0' },
-  { label: 'License', value: 'Apache-2.0' },
+  { label: 'License', value: 'Apache 2.0' },
 ];
 
 /* ── Social proof ───────────────────────────────────────── */

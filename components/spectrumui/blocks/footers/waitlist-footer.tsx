@@ -114,7 +114,10 @@ export function WaitlistFooter({
             </label>
             <div
               className={cn(
-                'flex h-12 items-center gap-2 rounded-2xl border bg-white/[0.04] pl-4 pr-1.5 transition-[border-color,box-shadow] duration-200',
+                /* Stacked under 420px, same reason as the newsletter: an
+                   inline CTA this wide leaves no room to read your own
+                   address back. */
+                'flex flex-col gap-2 rounded-2xl border bg-white/[0.04] p-1.5 transition-[border-color,box-shadow] duration-200 min-[420px]:h-12 min-[420px]:flex-row min-[420px]:items-center min-[420px]:py-0 min-[420px]:pl-4 min-[420px]:pr-1.5',
                 error
                   ? 'border-red-500/50'
                   : 'border-white/[0.1] focus-within:border-white/[0.28] focus-within:shadow-[0_0_0_4px_rgba(255,255,255,0.04)]',
@@ -132,11 +135,11 @@ export function WaitlistFooter({
                   setEmail(event.target.value);
                   if (error) setError(false);
                 }}
-                className="min-w-0 flex-1 bg-transparent text-[14px] text-neutral-100 placeholder:text-neutral-400 focus:outline-hidden"
+                className="h-9 min-w-0 flex-1 bg-transparent px-2.5 text-[14px] text-neutral-100 placeholder:text-neutral-400 focus:outline-hidden min-[420px]:h-auto min-[420px]:px-0"
               />
               <button
                 type="submit"
-                className="relative h-9 shrink-0 overflow-hidden rounded-xl bg-neutral-100 px-4 text-[13px] font-medium text-neutral-900 transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-500"
+                className="relative h-9 shrink-0 overflow-hidden rounded-xl bg-neutral-100 px-4 text-center text-[13px] font-medium text-neutral-900 transition-transform duration-150 ease-out active:scale-[0.96] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-500"
               >
                 <span
                   aria-hidden

@@ -78,7 +78,10 @@ function CopyRow({
   }
 
   return (
-    <div className="group flex items-center gap-3 rounded-xl border border-black/[0.07] px-3.5 py-2.5 transition-colors duration-200 hover:border-black/[0.14] dark:border-white/[0.08] dark:hover:border-white/[0.16]">
+    /* min-w-0: the value below is `truncate`, which sets white-space: nowrap —
+       so this row's min-content is the whole unbroken address, and as a grid
+       item with the default min-width:auto it refused to shrink below it. */
+    <div className="group flex min-w-0 items-center gap-3 rounded-xl border border-black/[0.07] px-3.5 py-2.5 transition-colors duration-200 hover:border-black/[0.14] dark:border-white/[0.08] dark:hover:border-white/[0.16]">
       <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-black/[0.04] text-neutral-500 dark:bg-white/[0.06] dark:text-neutral-400">
         {icon}
       </span>
@@ -145,7 +148,7 @@ export function ContactCardFooter({
     >
       <div className="mx-auto w-full max-w-[1180px] px-6 py-12">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)]">
-          <div>
+          <div className="min-w-0">
             <p className="text-[17px] font-semibold tracking-[-0.3px]">{brand}</p>
             <p className="mt-2 max-w-[34ch] text-pretty text-[13.5px] leading-[1.65] text-neutral-500 dark:text-neutral-400">
               {blurb}
@@ -169,7 +172,7 @@ export function ContactCardFooter({
 
           <div
             className={cn(
-              'grid gap-2',
+              'grid min-w-0 gap-2',
               variant === 'Row' ? 'sm:grid-cols-3' : 'sm:grid-cols-2 lg:grid-cols-1',
             )}
           >

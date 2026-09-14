@@ -285,21 +285,31 @@ export function MegaSitemapFooter({
         </nav>
 
         <div className="mt-12 flex flex-col gap-5 border-t border-black/[0.07] py-6 dark:border-white/[0.08] lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-          <div className="flex min-w-0 flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-neutral-500 dark:text-neutral-400">
-            <BrandLockup brand={brand} className="font-sans normal-case tracking-normal" />
-            <span className="tabular-nums">{copyright ?? `© ${brand}`}</span>
-            {legal.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:text-neutral-100"
-              >
-                {link.label}
-              </a>
-            ))}
+          {/* Two groups, not one wrapping row. Mono-caps legal links beside a
+              sans lockup mixed two registers in one line, and the last link
+              orphaned onto a second line under the mark. */}
+          <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <BrandLockup brand={brand} />
+              <span className="text-[12px] tabular-nums text-neutral-500 dark:text-neutral-400">
+                {copyright ?? `© ${brand}`}
+              </span>
+            </div>
+            <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-neutral-500 dark:text-neutral-400">
+              {legal.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="transition-colors duration-150 hover:text-neutral-900 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 dark:hover:text-neutral-100"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="flex shrink-0 items-center gap-x-3 gap-y-3 max-sm:flex-wrap">
+          <div className="flex shrink-0 flex-wrap items-center gap-3">
             <FooterSocials socials={socials} />
             <Selector
               label="Region"
