@@ -79,6 +79,8 @@ export function CodeDrawer({
           headingRef.current?.focus();
         }}
         className={cn(
+          /* Inter, not the site's Geist: this is reading copy. */
+          '[font-family:var(--font-inter),Inter,system-ui,sans-serif]',
           'flex w-full flex-col gap-0 overflow-y-auto overscroll-contain p-0 sm:max-w-[640px]',
           'ease-[cubic-bezier(0.32,0.72,0,1)] data-[state=open]:duration-[380ms] data-[state=closed]:duration-[240ms]',
         )}
@@ -109,7 +111,7 @@ export function CodeDrawer({
             index={0}
             id={`${slug}-cli`}
             heading="Install with the CLI"
-            hint="Writes the file into your project and pulls in anything it depends on."
+            hint="Writes the file and everything it depends on."
             badge="Fastest"
           >
             <InstallFigure cli={`@spectrumui/${registryName}`} componentName={registryName} />
@@ -121,7 +123,7 @@ export function CodeDrawer({
             index={2}
             id={`${slug}-source`}
             heading="Or copy the source"
-            hint={`${lines} lines of TSX. Nothing here is generated — this is the file the CLI writes.`}
+            hint={`The same ${lines} lines the CLI writes. Nothing here is generated.`}
           >
             <CodeHighlight
               code={source}
@@ -145,7 +147,7 @@ function FileMeta({ path, lines }: { path: string; lines: number }) {
   const file = parts.pop();
 
   return (
-    <p className="mt-3.5 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 font-mono text-[12px] leading-[1.5]">
+    <p className="mt-3.5 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 font-mono text-[13px] leading-[1.5] tracking-[-0.01em]">
       <span className="text-neutral-600 dark:text-neutral-400">{parts.join('/')}/</span>
       <span className="font-medium text-neutral-800 dark:text-neutral-100">{file}</span>
       <span aria-hidden className="text-neutral-400 dark:text-neutral-600">
@@ -193,7 +195,7 @@ function Step({
           </span>
         )}
       </div>
-      <p className="mb-3 max-w-[56ch] text-pretty text-[12.5px] leading-[1.6] tracking-[-0.002em] text-neutral-600 dark:text-neutral-400">
+      <p className="mb-3 max-w-[60ch] text-pretty text-[14px] leading-[1.6] tracking-[-0.004em] text-neutral-600 dark:text-neutral-400">
         {hint}
       </p>
       {children}
@@ -236,7 +238,7 @@ function McpStep({ slug, registryName }: { slug: string; registryName: string })
       index={1}
       id={`${slug}-mcp`}
       heading="Install with an agent"
-      hint="Paste this into Cursor, Claude Code, or any editor connected to the Spectrum UI MCP server."
+      hint="For Cursor, Claude Code, Codex, or any editor on the MCP server."
     >
       <figure className="overflow-hidden rounded-lg border border-black/[0.08] dark:border-white/[0.1]">
         <div className="flex items-center justify-between gap-3 border-b border-black/[0.07] px-2.5 py-1.5 dark:border-white/[0.08]">

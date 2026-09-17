@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { cn } from "@/lib/utils";
-import CommandFigure from "@/app/(docs)/docs/components/code-card/parts/command-figure";
-import CodeHighlight from "@/app/(docs)/docs/components/code-card/parts/code-highlight";
-import { InlineCode } from "@/components/ui/inline-code";
+import React, { useState } from 'react';
+import { cn } from '@/lib/utils';
+import CommandFigure from '@/app/(docs)/docs/components/code-card/parts/command-figure';
+import CodeHighlight from '@/app/(docs)/docs/components/code-card/parts/code-highlight';
+import { InlineCode } from '@/components/ui/inline-code';
 
 export const MCP_CONFIG = `{
   "mcpServers": {
@@ -14,6 +14,15 @@ export const MCP_CONFIG = `{
     }
   }
 }`;
+
+/**
+ * Codex reads TOML, not JSON, and keys the table `mcp_servers` rather than
+ * `mcpServers`. Pasting the JSON config into `config.toml` silently does
+ * nothing, which is the failure everyone hits first.
+ */
+export const CODEX_CONFIG = `[mcp_servers.spectrum-ui]
+command = "npx"
+args = ["-y", "@spectrumui/mcp"]`;
 
 const VSCODE_CONFIG = `{
   "servers": {
@@ -26,17 +35,15 @@ const VSCODE_CONFIG = `{
 }`;
 
 const PROMPTS = [
-  "Show me all available components in the Spectrum UI registry",
-  "Add the kanban board and animated drawer to my project",
-  "Build a testimonial section using Spectrum UI components",
+  'Show me all available components in the Spectrum UI registry',
+  'Add the kanban board and animated drawer to my project',
+  'Build a testimonial section using Spectrum UI components',
 ];
 
 function Lead({ strong, rest }: { strong: string; rest: string }) {
   return (
-    <p className="text-[15px] leading-[26px] text-neutral-600 dark:text-neutral-400">
-      <strong className="font-medium text-neutral-900 dark:text-neutral-50">
-        {strong}
-      </strong>
+    <p className="text-[16px] leading-[27px] text-neutral-600 dark:text-neutral-400">
+      <strong className="font-medium text-neutral-900 dark:text-neutral-50">{strong}</strong>
       {rest}
     </p>
   );
@@ -46,7 +53,7 @@ function PromptList({ restart }: { restart: string }) {
   return (
     <>
       <Lead strong={`Restart ${restart}`} rest=" and try the following prompts:" />
-      <ul className="my-1 flex list-disc flex-col gap-2.5 pl-5 text-[15px] leading-[26px] text-neutral-600 marker:text-neutral-300 dark:text-neutral-400 dark:marker:text-neutral-600">
+      <ul className="my-1 flex list-disc flex-col gap-2.5 pl-5 text-[16px] leading-[27px] text-neutral-600 marker:text-neutral-300 dark:text-neutral-400 dark:marker:text-neutral-600">
         {PROMPTS.map((p) => (
           <li key={p}>{p}</li>
         ))}
@@ -57,26 +64,23 @@ function PromptList({ restart }: { restart: string }) {
 
 const CLIENTS = [
   {
-    id: "claude-code",
-    name: "Claude Code",
+    id: 'claude-code',
+    name: 'Claude Code',
     content: (
       <div className="flex flex-col gap-4">
         <Lead strong="Run the following command" rest=" in your project:" />
         <CommandFigure command="claude mcp add spectrum-ui -- npx -y @spectrumui/mcp" />
         <PromptList restart="Claude Code" />
-        <p className="text-[15px] leading-[26px] text-neutral-600 dark:text-neutral-400">
-          <strong className="font-medium text-neutral-900 dark:text-neutral-50">
-            Note:
-          </strong>{" "}
-          You can use the <InlineCode>/mcp</InlineCode> command in Claude Code
-          to debug the MCP server.
+        <p className="text-[16px] leading-[27px] text-neutral-600 dark:text-neutral-400">
+          <strong className="font-medium text-neutral-900 dark:text-neutral-50">Note:</strong> You
+          can use the <InlineCode>/mcp</InlineCode> command in Claude Code to debug the MCP server.
         </p>
       </div>
     ),
   },
   {
-    id: "claude-desktop",
-    name: "Claude Desktop",
+    id: 'claude-desktop',
+    name: 'Claude Desktop',
     content: (
       <div className="flex flex-col gap-4">
         <Lead
@@ -90,44 +94,34 @@ const CLIENTS = [
           requireAuth={false}
         />
         <PromptList restart="Claude Desktop" />
-        <p className="text-[15px] leading-[26px] text-neutral-600 dark:text-neutral-400">
-          <strong className="font-medium text-neutral-900 dark:text-neutral-50">
-            Note:
-          </strong>{" "}
-          You should see <InlineCode>spectrum-ui</InlineCode> listed in the
-          tools panel (hammer icon) after restarting.
+        <p className="text-[16px] leading-[27px] text-neutral-600 dark:text-neutral-400">
+          <strong className="font-medium text-neutral-900 dark:text-neutral-50">Note:</strong> You
+          should see <InlineCode>spectrum-ui</InlineCode> listed in the tools panel (hammer icon)
+          after restarting.
         </p>
       </div>
     ),
   },
   {
-    id: "cursor",
-    name: "Cursor",
+    id: 'cursor',
+    name: 'Cursor',
     content: (
       <div className="flex flex-col gap-4">
         <Lead
           strong="Add the following"
           rest=" to your project root, then enable the server in Cursor Settings → MCP:"
         />
-        <CodeHighlight
-          code={MCP_CONFIG}
-          lang="json"
-          title=".cursor/mcp.json"
-          requireAuth={false}
-        />
+        <CodeHighlight code={MCP_CONFIG} lang="json" title=".cursor/mcp.json" requireAuth={false} />
         <PromptList restart="Cursor" />
       </div>
     ),
   },
   {
-    id: "windsurf",
-    name: "Windsurf",
+    id: 'windsurf',
+    name: 'Windsurf',
     content: (
       <div className="flex flex-col gap-4">
-        <Lead
-          strong="Add the following"
-          rest=" to your Windsurf MCP config file:"
-        />
+        <Lead strong="Add the following" rest=" to your Windsurf MCP config file:" />
         <CodeHighlight
           code={MCP_CONFIG}
           lang="json"
@@ -139,8 +133,29 @@ const CLIENTS = [
     ),
   },
   {
-    id: "vscode",
-    name: "VS Code",
+    id: 'codex',
+    name: 'Codex',
+    content: (
+      <div className="flex flex-col gap-4">
+        <Lead strong="Run the following command" rest=" in your project:" />
+        <CommandFigure command="codex mcp add spectrum-ui -- npx -y @spectrumui/mcp" />
+        <Lead
+          strong="Or add it by hand"
+          rest=" to ~/.codex/config.toml — note the TOML table, not the JSON the other clients use:"
+        />
+        <CodeHighlight
+          code={CODEX_CONFIG}
+          lang="toml"
+          title="~/.codex/config.toml"
+          requireAuth={false}
+        />
+        <PromptList restart="Codex" />
+      </div>
+    ),
+  },
+  {
+    id: 'vscode',
+    name: 'VS Code',
     content: (
       <div className="flex flex-col gap-4">
         <Lead
@@ -165,8 +180,10 @@ export default function QuickStart() {
 
   return (
     <div>
+      {/* A radiogroup, not a tablist: there are no tabpanels and no
+          `aria-controls` here, just one selection driving one block of copy. */}
       <div
-        role="tablist"
+        role="radiogroup"
         aria-label="MCP client"
         className="mb-5 flex gap-6 overflow-x-auto border-b border-black/8 dark:border-white/10"
       >
@@ -174,14 +191,15 @@ export default function QuickStart() {
           <button
             key={client.id}
             type="button"
-            role="tab"
-            aria-selected={active === client.id}
+            role="radio"
+            aria-checked={active === client.id}
             onClick={() => setActive(client.id)}
             className={cn(
-              "-mb-px whitespace-nowrap border-b-2 pb-2.5 text-sm leading-5 transition-colors",
+              '-mb-px cursor-pointer whitespace-nowrap border-b-2 pb-2.5 text-[15px] leading-5 transition-colors',
+              'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300',
               active === client.id
-                ? "border-[#262626] font-medium text-[#262626] dark:border-white dark:text-white"
-                : "border-transparent text-muted-foreground hover:text-[#262626] dark:hover:text-neutral-200",
+                ? 'border-[#262626] font-medium text-[#262626] dark:border-white dark:text-white'
+                : 'border-transparent text-neutral-600 hover:text-[#262626] dark:text-neutral-400 dark:hover:text-neutral-200',
             )}
           >
             {client.name}

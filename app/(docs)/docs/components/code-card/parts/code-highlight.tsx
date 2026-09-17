@@ -53,7 +53,7 @@ const CodeHighlight = ({
       const { createHighlighter } = await import('shiki');
       const h = await createHighlighter({
         themes: ['vesper', 'github-light'],
-        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash', 'json'],
+        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash', 'json', 'toml'],
       });
       setHighlighter(h);
     };
@@ -195,7 +195,10 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[13px] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-normal',
+              // Geist Mono runs wide. At 13px with `leading-normal` the result reads
+              // loose and hard to scan; 14px with a hair of negative tracking and a
+              // 1.6 line-height is the same code, legible.
+              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px] [&_code]:tracking-[-0.015em] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.6]',
               lang,
             )}
           />
