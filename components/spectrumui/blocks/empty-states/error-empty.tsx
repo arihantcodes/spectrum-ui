@@ -91,7 +91,7 @@ export function ErrorEmpty({
           transition={SPRING_FLUID}
           className="mx-auto w-full max-w-[420px]"
         >
-          <p className="mb-4 flex items-center justify-center gap-1.5 text-[13px] text-emerald-700 dark:text-emerald-400">
+          <p className="mb-4 flex items-center justify-center gap-1.5 text-[14px] text-emerald-700 dark:text-emerald-400">
             <span className="[&_svg]:size-4">
               <IconTickSquare />
             </span>
@@ -131,7 +131,7 @@ export function ErrorEmpty({
             type="button"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
-            className="cursor-pointer text-[12px] text-neutral-400 underline-offset-4 transition-colors duration-150 hover:text-neutral-700 hover:underline focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus-visible:ring-neutral-300"
+            className="cursor-pointer text-[13px] text-neutral-400 underline-offset-4 transition-colors duration-150 hover:text-neutral-700 hover:underline focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus-visible:ring-neutral-300"
           >
             {open ? 'Hide technical detail' : 'Show technical detail'}
           </button>
@@ -139,10 +139,10 @@ export function ErrorEmpty({
       >
         <div className="w-full max-w-[440px]">
           <div className="flex min-w-0 items-center gap-2 rounded-xl border border-black/[0.08] bg-neutral-50 px-3 py-2 dark:border-white/[0.09] dark:bg-white/[0.04]">
-            <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
+            <span className="shrink-0 font-mono text-[12.5px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
               id
             </span>
-            <code className="min-w-0 flex-1 truncate text-left font-mono text-[12px] text-neutral-700 dark:text-neutral-200">
+            <code className="min-w-0 flex-1 truncate text-left font-mono text-[13px] text-neutral-700 dark:text-neutral-200">
               {errorId}
             </code>
             <motion.button
@@ -177,7 +177,7 @@ export function ErrorEmpty({
               {/* A div, not a <pre>: host stylesheets love to !important their
                   own padding onto <pre> and this box has to keep its own. */}
               <div className="mt-2 overflow-x-auto rounded-xl border border-black/[0.08] bg-neutral-50 px-3 py-2 text-left dark:border-white/[0.09] dark:bg-white/[0.04]">
-                <code className="whitespace-pre-wrap font-mono text-[11.5px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
+                <code className="whitespace-pre-wrap font-mono text-[12.5px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
                   {detail}
                 </code>
               </div>

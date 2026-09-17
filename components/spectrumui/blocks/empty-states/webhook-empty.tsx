@@ -13,6 +13,8 @@ import {
   SPRING_ENTRANCE,
   StatusDot,
   usePropState,
+  EASE_IN_OUT,
+  EASE_OUT,
 } from './empty-state-kit';
 
 export type WebhookEmptyVariant = 'Listening' | 'Received';
@@ -89,7 +91,7 @@ export function WebhookEmpty({
       toolbar={
         <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2 py-1 dark:border-white/[0.09]">
           <StatusDot tone={live ? 'caution' : 'positive'} />
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
             {live ? 'waiting' : 'active'}
           </span>
         </span>
@@ -119,7 +121,7 @@ export function WebhookEmpty({
         }
       >
         <div className="w-full max-w-[460px] text-left">
-          <code className="block overflow-x-auto whitespace-nowrap rounded-xl border border-black/[0.08] bg-neutral-50 px-3 py-2 font-mono text-[11.5px] text-neutral-600 dark:border-white/[0.09] dark:bg-white/[0.04] dark:text-neutral-300">
+          <code className="block overflow-x-auto whitespace-nowrap rounded-xl border border-black/[0.08] bg-neutral-50 px-3 py-2 font-mono text-[12.5px] text-neutral-600 dark:border-white/[0.09] dark:bg-white/[0.04] dark:text-neutral-300">
             {snippet}
           </code>
 
@@ -138,10 +140,10 @@ export function WebhookEmpty({
                   <span className="shrink-0 text-emerald-600 [&_svg]:size-4 dark:text-emerald-400">
                     <IconTickSquare />
                   </span>
-                  <span className="min-w-0 flex-1 truncate font-mono text-[12px] text-neutral-700 dark:text-neutral-200">
+                  <span className="min-w-0 flex-1 truncate font-mono text-[13px] text-neutral-700 dark:text-neutral-200">
                     {event.type}
                   </span>
-                  <span className="shrink-0 font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500">
+                  <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
                     {event.status} · {event.at}
                   </span>
                 </motion.div>
@@ -156,7 +158,7 @@ export function WebhookEmpty({
                 )}
               >
                 <Equaliser running={!reduced} />
-                <span className="font-mono text-[11.5px] text-neutral-400 dark:text-neutral-500">
+                <span className="text-[12.5px] text-neutral-400 dark:text-neutral-500">
                   no deliveries yet
                 </span>
               </div>
@@ -178,7 +180,7 @@ function Equaliser({ running }: { running: boolean }) {
           animate={running ? { scaleY: [0.35, 1, 0.35] } : { scaleY: 0.5 }}
           transition={
             running
-              ? { duration: 1.1, repeat: Infinity, ease: 'easeInOut', delay: bar * 0.14 }
+              ? { duration: 1.1, repeat: Infinity, ease: EASE_IN_OUT, delay: bar * 0.14 }
               : { duration: 0 }
           }
           style={{ originY: 1 }}
@@ -197,7 +199,7 @@ function Pulse() {
         <motion.span
           aria-hidden
           animate={{ scale: [1, 2.1], opacity: [0.5, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: EASE_OUT }}
           className="absolute size-2 rounded-full bg-amber-500"
         />
       )}

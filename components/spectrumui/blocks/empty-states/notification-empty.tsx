@@ -115,7 +115,7 @@ export function NotificationEmpty({
               <span className="min-w-0 flex-1">
                 <span
                   className={cn(
-                    'block truncate text-[12.5px] font-medium transition-colors duration-200',
+                    'block truncate text-[13.5px] font-medium transition-colors duration-200',
                     channel.enabled && !quiet
                       ? 'text-neutral-800 dark:text-neutral-100'
                       : 'text-neutral-400 dark:text-neutral-500',
@@ -123,7 +123,7 @@ export function NotificationEmpty({
                 >
                   {channel.label}
                 </span>
-                <span className="block truncate text-[11px] text-neutral-400 dark:text-neutral-500">
+                <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
                   {quiet && channel.enabled ? 'Held until morning' : channel.detail}
                 </span>
               </span>

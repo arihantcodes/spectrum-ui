@@ -205,10 +205,10 @@ export function UploadEmpty({
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="flex min-w-0 items-baseline justify-between gap-3">
-                        <span className="truncate text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+                        <span className="truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                           {file.name}
                         </span>
-                        <span className="shrink-0 font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500">
+                        <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
                           {file.size}
                         </span>
                       </span>

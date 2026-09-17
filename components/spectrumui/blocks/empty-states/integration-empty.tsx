@@ -12,6 +12,7 @@ import {
   IconTickSquare,
   SPRING_FLUID,
   SPRING_SNAPPY,
+  EASE_IN_OUT,
 } from './empty-state-kit';
 
 export type IntegrationEmptyVariant = 'Catalog' | 'Featured' | 'Minimal';
@@ -198,11 +199,12 @@ export function IntegrationEmpty({
                   type="button"
                   onClick={() => connect(connector.id)}
                   disabled={isDone || Boolean(connecting)}
-                  whileHover={reduced || isDone ? undefined : { y: -2 }}
                   whileTap={reduced || isDone ? undefined : { scale: 0.98 }}
                   transition={SPRING_SNAPPY}
                   className={cn(
                     'group relative flex cursor-pointer items-center gap-2.5 overflow-hidden rounded-xl border px-3 py-2.5 text-left',
+                    'transition-transform duration-150 ease-out',
+                    !isDone && 'hover:-translate-y-0.5',
                     'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300',
                     'disabled:cursor-default',
                     isDone
@@ -215,7 +217,7 @@ export function IntegrationEmpty({
                       aria-hidden
                       initial={{ x: '-110%' }}
                       animate={{ x: '110%' }}
-                      transition={{ duration: 0.85, ease: 'easeInOut' }}
+                      transition={{ duration: 0.85, ease: EASE_IN_OUT }}
                       className="pointer-events-none absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-black/[0.06] to-transparent dark:via-white/[0.09]"
                     />
                   )}
@@ -230,10 +232,10 @@ export function IntegrationEmpty({
                     {connector.mark}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+                    <span className="block truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                       {connector.name}
                     </span>
-                    <span className="block truncate text-[11px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
                       {isBusy ? 'Connecting…' : isDone ? 'Connected' : connector.kind}
                     </span>
                   </span>

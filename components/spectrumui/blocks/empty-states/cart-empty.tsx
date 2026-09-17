@@ -76,7 +76,7 @@ export function CartEmpty({
           <span className="text-neutral-400 [&_svg]:size-3.5 dark:text-neutral-500">
             <IconBag />
           </span>
-          <span className="overflow-hidden font-mono text-[11.5px] tabular-nums text-neutral-600 dark:text-neutral-300">
+          <span className="overflow-hidden font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-300">
             <AnimatePresence initial={false} mode="popLayout">
               <motion.span
                 key={subtotal}
@@ -106,7 +106,7 @@ export function CartEmpty({
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={VIEWPORT}
               transition={SPRING_SNAPPY}
-              className="grid size-[18px] place-items-center rounded-full bg-neutral-900 font-mono text-[10px] font-medium tabular-nums text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900"
+              className="grid size-[18px] place-items-center rounded-full bg-neutral-900 font-mono text-[12px] font-medium tabular-nums text-neutral-50 dark:bg-neutral-100 dark:text-neutral-900"
             >
               {lines.length}
             </motion.span>
@@ -158,14 +158,14 @@ export function CartEmpty({
                     aria-hidden
                     className="mb-2.5 h-14 rounded-lg bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.045)_0_6px,transparent_6px_12px)] dark:bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.06)_0_6px,transparent_6px_12px)]"
                   />
-                  <span className="truncate text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+                  <span className="truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                     {product.name}
                   </span>
-                  <span className="truncate text-[11px] text-neutral-400 dark:text-neutral-500">
+                  <span className="truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
                     {product.detail}
                   </span>
                   <span className="mt-2 flex items-center justify-between gap-2">
-                    <span className="font-mono text-[12px] tabular-nums text-neutral-700 dark:text-neutral-200">
+                    <span className="font-mono text-[13px] tabular-nums text-neutral-700 dark:text-neutral-200">
                       {currency}
                       {product.price}
                     </span>
@@ -174,7 +174,7 @@ export function CartEmpty({
                       icon={<IconPlus />}
                       onClick={() => add(product.id)}
                       aria-label={`Add ${product.name} to the bag`}
-                      className="h-7 px-2 text-[11.5px]"
+                      className="h-7 px-2 text-[12.5px]"
                     >
                       {count ? `${count}` : 'Add'}
                     </EmptyAction>

@@ -90,7 +90,7 @@ export function ScheduleEmpty({
           emphasis="secondary"
           icon={<IconPlus />}
           onClick={() => open(hours[2] ?? hours[0])}
-          className="h-8 px-3 text-[12.5px]"
+          className="h-8 px-3 text-[13.5px]"
         >
           {createLabel}
         </EmptyAction>
@@ -107,7 +107,7 @@ export function ScheduleEmpty({
                   <span
                     key={day}
                     className={cn(
-                      'rounded-lg py-1 text-center font-mono text-[10.5px] uppercase tracking-[0.07em]',
+                      'rounded-lg py-1 text-center font-mono text-[12px] uppercase tracking-[0.07em]',
                       index === 3
                         ? 'bg-black/[0.05] text-neutral-700 dark:bg-white/[0.08] dark:text-neutral-200'
                         : 'text-neutral-300 dark:text-neutral-600',
@@ -124,7 +124,7 @@ export function ScheduleEmpty({
                 const slotted = events.filter((event) => event.hour === hour);
                 return (
                   <div key={hour} className="flex items-stretch gap-3">
-                    <span className="w-9 shrink-0 pt-1 text-right font-mono text-[10.5px] tabular-nums text-neutral-300 dark:text-neutral-600">
+                    <span className="w-9 shrink-0 pt-1 text-right font-mono text-[12px] tabular-nums text-neutral-300 dark:text-neutral-600">
                       {String(hour).padStart(2, '0')}:00
                     </span>
                     <div className="relative z-10 min-w-0 flex-1 border-t border-black/[0.06] py-1 dark:border-white/[0.07]">
@@ -142,13 +142,13 @@ export function ScheduleEmpty({
                               if (key.key === 'Escape') setComposing(null);
                             }}
                             className={cn(
-                              'h-8 min-w-0 flex-1 rounded-xl border-black/[0.12] bg-white text-[12.5px] shadow-none',
+                              'h-8 min-w-0 flex-1 rounded-xl border-black/[0.12] bg-white text-[13.5px] shadow-none',
                               'dark:border-white/[0.14] dark:bg-white/[0.05]',
                               'focus-visible:border-neutral-400 focus-visible:ring-1 focus-visible:ring-neutral-400/40',
                               'dark:focus-visible:border-white/30 dark:focus-visible:ring-white/20',
                             )}
                           />
-                          <EmptyAction type="submit" className="h-8 px-3 text-[12px]">
+                          <EmptyAction type="submit" className="h-8 px-3 text-[13px]">
                             Add
                           </EmptyAction>
                         </form>
@@ -170,14 +170,14 @@ export function ScheduleEmpty({
                                 animate={{ opacity: 1, scale: 1, x: 0 }}
                                 exit={{ opacity: 0 }}
                                 transition={SPRING_ENTRANCE}
-                                className="mr-1.5 truncate rounded-lg border-l-2 border-neutral-900 bg-black/[0.05] px-2 py-1 text-[12px] font-medium text-neutral-800 dark:border-neutral-200 dark:bg-white/[0.08] dark:text-neutral-100"
+                                className="mr-1.5 truncate rounded-lg border-l-2 border-neutral-900 bg-black/[0.05] px-2 py-1 text-[13px] font-medium text-neutral-800 dark:border-neutral-200 dark:bg-white/[0.08] dark:text-neutral-100"
                               >
                                 {event.title}
                               </motion.span>
                             ))}
                           </AnimatePresence>
                           {slotted.length === 0 && (
-                            <span className="text-[11.5px] text-transparent transition-colors duration-150 group-hover:text-neutral-400 dark:group-hover:text-neutral-500">
+                            <span className="text-[12.5px] text-transparent transition-colors duration-150 group-hover:text-neutral-400 dark:group-hover:text-neutral-500">
                               + add
                             </span>
                           )}
@@ -199,7 +199,7 @@ export function ScheduleEmpty({
                    it does not get to draw itself across an open composer. */
                 className="pointer-events-none absolute inset-x-0 z-0 flex items-center gap-3"
               >
-                <span className="w-9 shrink-0 text-right font-mono text-[10.5px] tabular-nums text-red-500">
+                <span className="w-9 shrink-0 text-right font-mono text-[12px] tabular-nums text-red-500">
                   {nowLabel}
                 </span>
                 <span className="h-px flex-1 bg-red-500/60" />

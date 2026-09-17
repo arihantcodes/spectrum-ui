@@ -101,10 +101,10 @@ export function TableEmpty({
     >
       <header className="flex items-center justify-between gap-3 border-b border-black/[0.06] px-4 py-3 dark:border-white/[0.07]">
         <div className="min-w-0">
-          <p className="truncate text-[13px] font-semibold tracking-[-0.1px] text-neutral-800 dark:text-neutral-100">
+          <p className="truncate text-[14px] font-semibold tracking-[-0.1px] text-neutral-800 dark:text-neutral-100">
             {panelTitle}
           </p>
-          <p className="mt-0.5 font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500">
+          <p className="mt-0.5 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
             {loading ? 'loading…' : `${rows.length} rows`}
           </p>
         </div>
@@ -113,7 +113,7 @@ export function TableEmpty({
           icon={<IconPlus />}
           onClick={addRow}
           disabled={rows.length >= seedRows.length}
-          className="h-8 px-3 text-[12.5px]"
+          className="h-8 px-3 text-[13.5px]"
         >
           {addLabel}
         </EmptyAction>
@@ -129,7 +129,7 @@ export function TableEmpty({
                   scope="col"
                   style={{ width: column.width }}
                   className={cn(
-                    'px-4 py-2.5 text-[11.5px] font-medium uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500',
+                    'px-4 py-2.5 text-[12.5px] font-medium uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500',
                     column.align === 'right' ? 'text-right' : 'text-left',
                   )}
                 >
@@ -154,7 +154,7 @@ export function TableEmpty({
                     <td
                       key={columns[index]?.id ?? index}
                       className={cn(
-                        'truncate px-4 py-3 text-[13px] text-neutral-700 dark:text-neutral-200',
+                        'truncate px-4 py-3 text-[14px] text-neutral-700 dark:text-neutral-200',
                         columns[index]?.align === 'right' && 'text-right font-mono tabular-nums',
                       )}
                     >

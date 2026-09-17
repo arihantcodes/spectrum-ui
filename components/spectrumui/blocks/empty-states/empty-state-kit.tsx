@@ -37,6 +37,13 @@ export const SPRING_SNAPPY: Transition = { type: 'spring', stiffness: 500, dampi
 export const VIEWPORT = { once: true, amount: 0.3 } as const;
 
 /**
+ * The built-in `easeOut` and `easeInOut` are too soft to read as deliberate.
+ * These are the stronger variants everything duration-based in this file uses.
+ */
+export const EASE_OUT = [0.23, 1, 0.32, 1] as const;
+export const EASE_IN_OUT = [0.77, 0, 0.175, 1] as const;
+
+/**
  * Inter, with the tracking it actually wants.
  *
  * The family is named through a variable first so a project that already loads
@@ -812,7 +819,7 @@ function DotGrid({ phase, reduced }: PartProps) {
           initial="hidden"
           animate={phase}
           variants={{
-            hidden: reduced ? { opacity: 0 } : { opacity: 0, scale: 0.2 },
+            hidden: reduced ? { opacity: 0 } : { opacity: 0, scale: 0.6 },
             shown: {
               opacity: 1,
               scale: 1,
@@ -876,7 +883,7 @@ function Scan({ phase, reduced }: PartProps) {
           shown: {
             y: 150,
             opacity: [0, 1, 1, 0],
-            transition: reduced ? { duration: 0 } : { duration: 1.1, ease: [0.4, 0, 0.2, 1] },
+            transition: reduced ? { duration: 0 } : { duration: 1.1, ease: EASE_OUT },
           },
         }}
         className="absolute inset-x-0 h-px bg-black/20 dark:bg-white/25"
@@ -898,7 +905,7 @@ function Orbit({ phase, reduced }: PartProps) {
           shown: {
             rotate: 240,
             opacity: 1,
-            transition: reduced ? { duration: 0 } : { duration: 1.3, ease: [0.33, 1, 0.68, 1] },
+            transition: reduced ? { duration: 0 } : { duration: 1.3, ease: EASE_OUT },
           },
         }}
         className="absolute size-[120px]"
@@ -1028,7 +1035,7 @@ function Ripple({ phase, reduced }: PartProps) {
               scale: [0.4, 1, 1.25],
               transition: reduced
                 ? { duration: 0 }
-                : { duration: 1.5, delay: index * 0.22, ease: [0.22, 1, 0.36, 1] },
+                : { duration: 1.5, delay: index * 0.22, ease: EASE_OUT },
             },
           }}
           className={cn('absolute size-[150px] rounded-full border', HAIRLINE)}
@@ -1069,7 +1076,7 @@ function Beam({ phase, reduced }: PartProps) {
               y: -34 - index * 8,
               transition: reduced
                 ? { duration: 0 }
-                : { duration: 1.2, delay: 0.1 + index * 0.16, ease: 'easeOut' },
+                : { duration: 1.2, delay: 0.1 + index * 0.16, ease: EASE_OUT },
             },
           }}
           style={{ left: `calc(50% + ${(index - 1) * 18}px)` }}
@@ -1115,7 +1122,7 @@ function Chime({ phase, reduced }: PartProps) {
                 : {
                     duration: 0.5,
                     delay: 0.08 + Math.floor(index / 2) * 0.12,
-                    ease: [0.23, 1, 0.32, 1],
+                    ease: EASE_OUT,
                   },
             },
           }}
@@ -1139,7 +1146,7 @@ function Comet({ phase, reduced }: PartProps) {
           shown: {
             rotate: 320,
             opacity: [0, 1, 1, 0],
-            transition: reduced ? { duration: 0 } : { duration: 1.6, ease: [0.4, 0, 0.2, 1] },
+            transition: reduced ? { duration: 0 } : { duration: 1.6, ease: EASE_OUT },
           },
         }}
         className="absolute size-[136px]"
@@ -1170,7 +1177,7 @@ function Sparks({ phase, reduced }: PartProps) {
           initial="hidden"
           animate={phase}
           variants={{
-            hidden: { opacity: 0, x: 0, y: 0, scale: 0.4 },
+            hidden: { opacity: 0, x: 0, y: 0, scale: 0.6 },
             shown: {
               opacity: [0, 1, 0],
               x: Math.cos((angle * Math.PI) / 180) * 66,
@@ -1178,7 +1185,7 @@ function Sparks({ phase, reduced }: PartProps) {
               scale: 1,
               transition: reduced
                 ? { duration: 0 }
-                : { duration: 0.95, delay: 0.12 + index * 0.02, ease: [0.16, 1, 0.3, 1] },
+                : { duration: 0.95, delay: 0.12 + index * 0.02, ease: EASE_OUT },
             },
           }}
           className={cn('absolute size-[4px] rounded-full', INK)}
@@ -1281,7 +1288,7 @@ function Wave({ phase, reduced }: PartProps) {
           shown: {
             pathLength: 1,
             opacity: 1,
-            transition: reduced ? { duration: 0 } : { duration: 1.25, ease: [0.22, 1, 0.36, 1] },
+            transition: reduced ? { duration: 0 } : { duration: 1.25, ease: EASE_OUT },
           },
         }}
         className="stroke-black/[0.14] dark:stroke-white/[0.18]"
@@ -1413,7 +1420,7 @@ function Drip({ phase, reduced }: PartProps) {
               y: 150,
               transition: reduced
                 ? { duration: 0 }
-                : { duration: 1.5, delay: index * 0.13, ease: [0.4, 0, 0.6, 1] },
+                : { duration: 1.5, delay: index * 0.13, ease: EASE_IN_OUT },
             },
           }}
           style={{ left: `calc(50% + ${offset}px)` }}
@@ -1470,7 +1477,7 @@ function Sieve({ phase, reduced }: PartProps) {
               initial="hidden"
               animate={phase}
               variants={{
-                hidden: reduced ? { opacity: 0 } : { opacity: 0, y: -5, scale: 0.4 },
+                hidden: reduced ? { opacity: 0 } : { opacity: 0, y: -5, scale: 0.6 },
                 shown: {
                   opacity: 1,
                   y: 0,
@@ -1532,7 +1539,7 @@ function Pulse({ reduced }: { reduced: boolean }) {
           key={index}
           initial={{ opacity: 0, scale: 0.42 }}
           animate={{ opacity: [0, 0.75, 0], scale: [0.42, 1.15] }}
-          transition={{ duration: 2.6, repeat: Infinity, delay: index * 1.3, ease: 'easeOut' }}
+          transition={{ duration: 2.6, repeat: Infinity, delay: index * 1.3, ease: EASE_OUT }}
           className={cn('absolute size-[150px] rounded-full border', HAIRLINE)}
         />
       ))}
@@ -1683,7 +1690,7 @@ export function EmptyState({
       {eyebrow && (
         <motion.p
           variants={item}
-          className="mb-2 font-mono text-[10.5px] font-medium uppercase leading-[1.4] tracking-[0.12em] text-neutral-400 dark:text-neutral-500"
+          className="mb-2 font-mono text-[12px] font-medium uppercase leading-[1.4] tracking-[0.12em] text-neutral-400 dark:text-neutral-500"
         >
           {eyebrow}
         </motion.p>
@@ -1732,7 +1739,7 @@ export function EmptyState({
       {footnote && (
         <motion.div
           variants={item}
-          className="mt-5 text-pretty text-[12px] leading-[1.55] tracking-[-0.002em] text-neutral-500 dark:text-neutral-500"
+          className="mt-5 text-pretty text-[13px] leading-[1.55] tracking-[-0.002em] text-neutral-500 dark:text-neutral-500"
         >
           {footnote}
         </motion.div>
@@ -1796,11 +1803,14 @@ export function EmptyAction({
   return (
     <MotionButton
       variant="ghost"
-      whileHover={reduced ? undefined : { scale: 1.02 }}
-      whileTap={reduced ? undefined : { scale: 0.97 }}
+      /* Press only. `whileHover` has no (hover: hover) gate, so on a phone the
+         scale fires on touch and the button is left sitting at 1.02 after the
+         finger lifts. The hover state it used to carry is a colour change now,
+         which Tailwind v4 already gates for us. */
+      whileTap={reduced ? undefined : { scale: 0.96 }}
       transition={SPRING_TACTILE}
       className={cn(
-        'h-9 gap-1.5 rounded-xl px-3.5 text-[13px] font-medium tracking-[-0.006em] shadow-none',
+        'h-9 gap-1.5 rounded-xl px-3.5 text-[14px] font-medium tracking-[-0.006em] shadow-none',
         'focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-0 dark:focus-visible:ring-neutral-300',
         '[&_svg]:size-[15px]',
         EMPHASIS[emphasis],
@@ -1850,12 +1860,16 @@ export function EmptyPanel({
         <header className="flex min-w-0 items-center gap-3 border-b border-black/[0.06] px-4 py-3 dark:border-white/[0.07]">
           <div className="min-w-0 flex-1">
             {title && (
-              <p className="truncate text-[13px] font-semibold leading-[1.35] tracking-[-0.008em] text-neutral-800 dark:text-neutral-100">
+              <p className="truncate text-[14px] font-semibold leading-[1.35] tracking-[-0.008em] text-neutral-800 dark:text-neutral-100">
                 {title}
               </p>
             )}
+            {/* Inter, not mono. This line is a caption — a count, a date, a
+                path — not code, and mono at caption size reads as a terminal
+                dropped into the corner of a product panel. Tabular figures keep
+                the numbers from shifting when they change. */}
             {meta && (
-              <p className="mt-0.5 truncate font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+              <p className="mt-0.5 truncate text-[12.5px] leading-[1.4] tracking-[-0.002em] tabular-nums text-neutral-500 dark:text-neutral-400">
                 {meta}
               </p>
             )}
@@ -1907,7 +1921,7 @@ export function Kbd({ children, className }: { children: React.ReactNode; classN
     <kbd
       className={cn(
         'inline-flex h-5 min-w-[20px] items-center justify-center rounded-[6px] border border-black/[0.09] bg-white px-1.5',
-        'font-mono text-[10.5px] font-medium text-neutral-500',
+        'font-mono text-[12px] font-medium text-neutral-500',
         'dark:border-white/[0.14] dark:bg-white/[0.06] dark:text-neutral-300',
         className,
       )}
@@ -1927,7 +1941,7 @@ export function EmptyHint({
   className?: string;
 }) {
   return (
-    <span className={cn('inline-flex items-center gap-1.5 text-[12px]', className)}>
+    <span className={cn('inline-flex items-center gap-1.5 text-[13px]', className)}>
       {keys?.map((key) => (
         <Kbd key={key}>{key}</Kbd>
       ))}

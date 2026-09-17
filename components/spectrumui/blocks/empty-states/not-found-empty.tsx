@@ -77,7 +77,7 @@ export function NotFoundEmpty({
           </>
         }
         footnote={
-          <span className="font-mono text-[11.5px]">
+          <span className="font-mono text-[12.5px]">
             tried <span className="text-neutral-500 dark:text-neutral-400">{attempted}</span>
           </span>
         }
@@ -97,7 +97,7 @@ export function NotFoundEmpty({
                   value={term}
                   placeholder="Search for what you wanted"
                   onChange={(event) => setTerm(event.target.value)}
-                  className="h-9 rounded-xl border-black/[0.1] bg-white pl-9 text-[13px] shadow-none placeholder:text-neutral-400 dark:border-white/[0.12] dark:bg-white/[0.04]"
+                  className="h-9 rounded-xl border-black/[0.1] bg-white pl-9 text-[14px] shadow-none placeholder:text-neutral-400 dark:border-white/[0.12] dark:bg-white/[0.04]"
                 />
               </div>
             </>
@@ -124,10 +124,10 @@ export function NotFoundEmpty({
                       'dark:hover:bg-white/[0.05] dark:focus-visible:ring-neutral-300',
                     )}
                   >
-                    <span className="min-w-0 flex-1 truncate text-[13px] text-neutral-700 dark:text-neutral-200">
+                    <span className="min-w-0 flex-1 truncate text-[14px] text-neutral-700 dark:text-neutral-200">
                       {destination.label}
                     </span>
-                    <span className="shrink-0 truncate font-mono text-[11px] text-neutral-300 dark:text-neutral-600">
+                    <span className="shrink-0 truncate font-mono text-[12.5px] text-neutral-300 dark:text-neutral-600">
                       {destination.path}
                     </span>
                     <span className="shrink-0 text-neutral-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100 [&_svg]:size-3.5 dark:text-neutral-500">
@@ -146,7 +146,7 @@ export function NotFoundEmpty({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={SPRING_FLUID}
-                className="py-3 text-center text-[12.5px] text-neutral-400 dark:text-neutral-500"
+                className="py-3 text-center text-[13.5px] text-neutral-400 dark:text-neutral-500"
               >
                 Nothing here matches that either.
               </motion.p>

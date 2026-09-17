@@ -13,6 +13,7 @@ import {
   SPRING_FLUID,
   SPRING_SNAPPY,
   usePropState,
+  EASE_OUT,
 } from './empty-state-kit';
 
 export type FilterEmptyVariant = 'Chips' | 'Summary';
@@ -91,7 +92,7 @@ export function FilterEmpty({
                   onChange?.([]);
                 }
           }
-          className="h-8 px-2.5 text-[12px]"
+          className="h-8 px-2.5 text-[13px]"
         >
           {cleared ? 'Restore filters' : clearLabel}
         </EmptyAction>
@@ -106,7 +107,7 @@ export function FilterEmpty({
           transition={SPRING_FLUID}
           className="mx-auto w-full max-w-[460px]"
         >
-          <p className="mb-4 text-center text-[13px] text-neutral-500 dark:text-neutral-400">
+          <p className="mb-4 text-center text-[14px] text-neutral-500 dark:text-neutral-400">
             <motion.span
               key={matches}
               initial={reduced ? false : { opacity: 0, y: -6 }}
@@ -159,22 +160,31 @@ export function FilterEmpty({
                     onClick={() => drop(filter.id)}
                     initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.85, y: -6 }}
-                    whileHover={reduced ? undefined : { y: -1 }}
+                    exit={
+                      reduced
+                        ? { opacity: 0 }
+                        : {
+                            opacity: 0,
+                            scale: 0.94,
+                            y: -4,
+                            transition: { duration: 0.14, ease: EASE_OUT },
+                          }
+                    }
                     whileTap={reduced ? undefined : { scale: 0.96 }}
                     transition={SPRING_SNAPPY}
                     aria-label={`Remove filter ${filter.label} ${filter.value}`}
                     className={cn(
                       'group flex cursor-pointer items-center gap-1.5 rounded-full border border-black/[0.09] bg-white py-1 pl-2.5 pr-1.5',
+                      'transition-transform duration-150 ease-out hover:-translate-y-px',
                       'transition-colors duration-150 hover:border-black/20',
                       'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950',
                       'dark:border-white/[0.12] dark:bg-white/[0.04] dark:hover:border-white/25 dark:focus-visible:ring-neutral-300',
                     )}
                   >
-                    <span className="text-[11.5px] text-neutral-400 dark:text-neutral-500">
+                    <span className="text-[12.5px] text-neutral-400 dark:text-neutral-500">
                       {filter.label}
                     </span>
-                    <span className="text-[12px] font-medium text-neutral-800 dark:text-neutral-100">
+                    <span className="text-[13px] font-medium text-neutral-800 dark:text-neutral-100">
                       {filter.value}
                     </span>
                     <span className="grid size-4 place-items-center rounded-full text-neutral-400 transition-colors duration-150 group-hover:bg-black/[0.06] group-hover:text-neutral-700 [&_svg]:size-3 dark:text-neutral-500 dark:group-hover:bg-white/10 dark:group-hover:text-neutral-100">

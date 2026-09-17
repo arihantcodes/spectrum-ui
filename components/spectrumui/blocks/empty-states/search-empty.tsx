@@ -87,7 +87,7 @@ export function SearchEmpty({
               animate={{ opacity: 1, y: 0 }}
               exit={reduced ? { opacity: 0 } : { opacity: 0, y: -6 }}
               transition={SPRING_SNAPPY}
-              className="truncate font-mono text-[12px] text-neutral-700 dark:text-neutral-200"
+              className="truncate font-mono text-[13px] text-neutral-700 dark:text-neutral-200"
             >
               {term}
             </motion.span>
@@ -106,7 +106,7 @@ export function SearchEmpty({
             transition={SPRING_FLUID}
             className="mx-auto w-full max-w-[440px]"
           >
-            <p className="mb-3 text-center text-[12.5px] text-neutral-500 dark:text-neutral-400">
+            <p className="mb-3 text-center text-[13.5px] text-neutral-500 dark:text-neutral-400">
               {hits.length} results for{' '}
               <span className="font-mono text-neutral-800 dark:text-neutral-100">{term}</span>
             </p>
@@ -125,10 +125,10 @@ export function SearchEmpty({
                     <IconDocument />
                   </span>
                   <span className="min-w-0">
-                    <span className="block truncate text-[13px] font-medium text-neutral-800 dark:text-neutral-100">
+                    <span className="block truncate text-[14px] font-medium text-neutral-800 dark:text-neutral-100">
                       {hit.title}
                     </span>
-                    <span className="block truncate font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate font-mono text-[12.5px] text-neutral-400 dark:text-neutral-500">
                       {hit.path}
                     </span>
                   </span>
@@ -172,7 +172,7 @@ export function SearchEmpty({
             >
               {variant !== 'Minimal' && (
                 <div className="flex flex-wrap items-center justify-center gap-1.5">
-                  <span className="text-[12px] text-neutral-400 dark:text-neutral-500">
+                  <span className="text-[13px] text-neutral-400 dark:text-neutral-500">
                     {variant === 'Scoped' ? 'Try another scope:' : 'Did you mean'}
                   </span>
                   {suggestions.map((suggestion) => (
@@ -180,11 +180,11 @@ export function SearchEmpty({
                       key={suggestion}
                       type="button"
                       onClick={() => pick(suggestion)}
-                      whileHover={reduced ? undefined : { y: -1 }}
                       whileTap={reduced ? undefined : { scale: 0.96 }}
                       transition={SPRING_SNAPPY}
                       className={cn(
-                        'cursor-pointer rounded-full border border-black/[0.09] px-2.5 py-1 font-mono text-[11.5px] text-neutral-600',
+                        'cursor-pointer rounded-full border border-black/[0.09] px-2.5 py-1 font-mono text-[12.5px] text-neutral-600',
+                        'transition-transform duration-150 ease-out hover:-translate-y-px',
                         'transition-colors duration-150 hover:border-black/20 hover:text-neutral-900',
                         'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950',
                         'dark:border-white/[0.12] dark:text-neutral-300 dark:hover:border-white/25 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300',

@@ -13,6 +13,7 @@ import {
   SPRING_ENTRANCE,
   SPRING_SNAPPY,
   VIEWPORT,
+  EASE_OUT,
 } from './empty-state-kit';
 
 export type SavedEmptyVariant = 'Teach' | 'Minimal';
@@ -75,7 +76,7 @@ export function SavedEmpty({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={SPRING_SNAPPY}
-            className="font-mono text-[11.5px] tabular-nums text-neutral-600 dark:text-neutral-300"
+            className="font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-300"
           >
             {saved.length}
           </motion.span>
@@ -127,10 +128,10 @@ export function SavedEmpty({
                     <IconDocument />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+                    <span className="block truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                       {item.title}
                     </span>
-                    <span className="block truncate text-[11px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
                       {item.meta}
                     </span>
                   </span>
@@ -159,7 +160,7 @@ export function SavedEmpty({
                           initial={{ scale: 0.6, opacity: 0.45 }}
                           whileInView={{ scale: 1.8, opacity: 0 }}
                           viewport={VIEWPORT}
-                          transition={{ duration: 0.45, ease: 'easeOut' }}
+                          transition={{ duration: 0.45, ease: EASE_OUT }}
                           className="absolute size-5 rounded-full bg-neutral-900/25 dark:bg-white/25"
                         />
                       )}

@@ -90,7 +90,7 @@ export function QuotaEmpty({
       >
         <div className="w-full max-w-[400px] text-left">
           <div className="mb-2 flex items-baseline justify-between">
-            <span className="font-mono text-[12px] tabular-nums text-neutral-900 dark:text-neutral-50">
+            <span className="font-mono text-[13px] tabular-nums text-neutral-900 dark:text-neutral-50">
               {shown.toLocaleString('en-US')}
               <span className="text-neutral-400 dark:text-neutral-500">
                 {' '}
@@ -99,7 +99,7 @@ export function QuotaEmpty({
             </span>
             <span
               className={cn(
-                'font-mono text-[11.5px] tabular-nums',
+                'font-mono text-[12.5px] tabular-nums',
                 approaching
                   ? 'text-amber-600 dark:text-amber-400'
                   : 'text-red-600 dark:text-red-400',
@@ -136,7 +136,7 @@ export function QuotaEmpty({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={reduced ? { duration: 0.15 } : { ...SPRING_FLUID, delay: 0.5 }}
-            className="mt-1.5 font-mono text-[10.5px] text-neutral-300 dark:text-neutral-600"
+            className="mt-1.5 text-[12px] text-neutral-400 dark:text-neutral-500"
           >
             last 7 days
           </motion.p>

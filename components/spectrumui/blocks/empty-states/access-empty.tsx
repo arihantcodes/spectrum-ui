@@ -65,7 +65,7 @@ export function AccessEmpty({
       title={panelTitle}
       meta={resource}
       toolbar={
-        <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-neutral-500 dark:border-white/[0.09] dark:text-neutral-400">
+        <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:border-white/[0.09] dark:text-neutral-400">
           restricted
         </span>
       }
@@ -120,10 +120,10 @@ export function AccessEmpty({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={owner.src} alt="" className="size-9 shrink-0 rounded-full object-cover" />
           <span className="min-w-0 flex-1">
-            <span className="block truncate text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+            <span className="block truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
               {owner.name}
             </span>
-            <span className="block truncate text-[11px] text-neutral-400 dark:text-neutral-500">
+            <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
               {requested ? 'Asked just now' : owner.role}
             </span>
           </span>

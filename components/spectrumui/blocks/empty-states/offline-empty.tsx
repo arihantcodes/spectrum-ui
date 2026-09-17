@@ -91,7 +91,7 @@ export function OfflineEmpty({
       toolbar={
         <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2.5 py-1 dark:border-white/[0.09]">
           <StatusDot tone={restored ? 'positive' : busy ? 'caution' : 'critical'} />
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
             {restored ? 'online' : busy ? 'connecting' : 'offline'}
           </span>
         </span>
@@ -155,11 +155,11 @@ export function OfflineEmpty({
                   'dark:border-white/[0.1]',
                 )}
               >
-                <span className="text-[12px] text-neutral-500 dark:text-neutral-400">
+                <span className="text-[13px] text-neutral-500 dark:text-neutral-400">
                   {busy ? 'Attempt in flight' : 'Next attempt in'}
                 </span>
                 {!busy && (
-                  <span className="font-mono text-[12.5px] font-medium tabular-nums text-neutral-900 dark:text-neutral-50">
+                  <span className="font-mono text-[13.5px] font-medium tabular-nums text-neutral-900 dark:text-neutral-50">
                     {String(Math.max(0, seconds)).padStart(2, '0')}s
                   </span>
                 )}

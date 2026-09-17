@@ -137,7 +137,7 @@ export function ApiKeyEmpty({
               className="w-full max-w-[460px] text-left"
             >
               <div className="flex min-w-0 items-center gap-1.5 rounded-xl border border-black/[0.08] bg-neutral-50 px-3 py-2 dark:border-white/[0.09] dark:bg-white/[0.04]">
-                <code className="min-w-0 flex-1 truncate font-mono text-[12.5px] text-neutral-700 dark:text-neutral-200">
+                <code className="min-w-0 flex-1 truncate font-mono text-[13.5px] text-neutral-700 dark:text-neutral-200">
                   {revealed ? sampleKey : mask(sampleKey)}
                 </code>
                 <IconToggle
@@ -154,7 +154,7 @@ export function ApiKeyEmpty({
                   </SwapGlyph>
                 </IconToggle>
               </div>
-              <p className="mt-2 flex items-start gap-1.5 text-[11.5px] leading-[1.5] text-amber-700 dark:text-amber-400">
+              <p className="mt-2 flex items-start gap-1.5 text-[12.5px] leading-[1.5] text-amber-700 dark:text-amber-400">
                 <span className="mt-px shrink-0 [&_svg]:size-3.5">
                   <IconDanger />
                 </span>
@@ -204,8 +204,10 @@ function IconToggle({
 function SwapGlyph({ swapped, children }: { swapped: boolean; children: React.ReactNode }) {
   const [before, after] = React.Children.toArray(children);
   const reduced = useReducedMotion();
+  /* scale 0.25 → 1, opacity 0 → 1, blur 4px → 0, on a spring with no bounce.
+     The blur is what stops it reading as two glyphs overlapping. */
   const enter = reduced ? { opacity: 1 } : { opacity: 1, filter: 'blur(0px)', scale: 1 };
-  const exit = reduced ? { opacity: 0 } : { opacity: 0, filter: 'blur(3px)', scale: 0.7 };
+  const exit = reduced ? { opacity: 0 } : { opacity: 0, filter: 'blur(4px)', scale: 0.25 };
 
   return (
     <span className="relative grid size-[15px] place-items-center">
@@ -215,7 +217,7 @@ function SwapGlyph({ swapped, children }: { swapped: boolean; children: React.Re
           initial={exit}
           animate={enter}
           exit={exit}
-          transition={SPRING_SNAPPY}
+          transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
           className={cn(
             'absolute inset-0 grid place-items-center',
             swapped && 'text-emerald-600 dark:text-emerald-400',

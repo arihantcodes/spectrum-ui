@@ -130,10 +130,10 @@ export function BoardEmpty({
           return (
             <div key={column.id} className="min-w-0">
               <div className="mb-2 flex items-center justify-between px-1">
-                <span className="text-[12px] font-medium text-neutral-600 dark:text-neutral-300">
+                <span className="text-[13px] font-medium text-neutral-600 dark:text-neutral-300">
                   {column.name}
                 </span>
-                <span className="font-mono text-[11px] tabular-nums text-neutral-300 dark:text-neutral-600">
+                <span className="font-mono text-[12.5px] tabular-nums text-neutral-300 dark:text-neutral-600">
                   {column.cards.length}
                 </span>
               </div>
@@ -182,10 +182,10 @@ export function BoardEmpty({
                         onDragEnd={() => setDragging(null)}
                         className="cursor-grab rounded-xl border border-black/[0.08] bg-white px-3 py-2.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] active:cursor-grabbing dark:border-white/[0.1] dark:bg-neutral-900"
                       >
-                        <p className="text-[12.5px] font-medium text-neutral-800 dark:text-neutral-100">
+                        <p className="text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                           {card.title}
                         </p>
-                        <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
+                        <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
                           {card.tag}
                         </p>
                       </div>
@@ -212,7 +212,7 @@ export function BoardEmpty({
                           emphasis="secondary"
                           icon={<IconPlus />}
                           onClick={() => setComposing(true)}
-                          className="h-8 px-3 text-[12px]"
+                          className="h-8 px-3 text-[13px]"
                         >
                           {addLabel}
                         </EmptyAction>
@@ -240,17 +240,17 @@ export function BoardEmpty({
                           setDraft('');
                         }
                       }}
-                      className="h-8 rounded-xl border-black/[0.12] bg-white text-[12.5px] shadow-none dark:border-white/[0.14] dark:bg-white/[0.05]"
+                      className="h-8 rounded-xl border-black/[0.12] bg-white text-[13.5px] shadow-none dark:border-white/[0.14] dark:bg-white/[0.05]"
                     />
                     <div className="flex gap-1.5">
-                      <EmptyAction type="submit" className="h-8 px-3 text-[12px]">
+                      <EmptyAction type="submit" className="h-8 px-3 text-[13px]">
                         Add
                       </EmptyAction>
                       <EmptyAction
                         emphasis="quiet"
                         type="button"
                         onClick={() => setComposing(false)}
-                        className="h-8 px-2.5 text-[12px]"
+                        className="h-8 px-2.5 text-[13px]"
                       >
                         Cancel
                       </EmptyAction>
@@ -263,7 +263,7 @@ export function BoardEmpty({
                     emphasis="quiet"
                     icon={<IconPlus />}
                     onClick={() => setComposing(true)}
-                    className="h-8 justify-start px-2 text-[12px]"
+                    className="h-8 justify-start px-2 text-[13px]"
                   >
                     {addLabel}
                   </EmptyAction>

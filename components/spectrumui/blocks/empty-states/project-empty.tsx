@@ -92,7 +92,7 @@ export function ProjectEmpty({
           emphasis="secondary"
           icon={<IconPlus />}
           onClick={() => onCreate?.(selected)}
-          className="h-8 px-3 text-[12.5px]"
+          className="h-8 px-3 text-[13.5px]"
         >
           New
         </EmptyAction>
@@ -130,11 +130,11 @@ export function ProjectEmpty({
                   type="button"
                   aria-pressed={active}
                   onClick={() => setSelected(active ? null : template.id)}
-                  whileHover={reduced ? undefined : { y: -2 }}
                   whileTap={reduced ? undefined : { scale: 0.98 }}
                   transition={SPRING_SNAPPY}
                   className={cn(
                     'group relative cursor-pointer rounded-xl border px-3 py-3 text-left',
+                    'transition-transform duration-150 ease-out hover:-translate-y-0.5',
                     'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300',
                     active
                       ? 'border-neutral-900/20 bg-black/[0.035] dark:border-white/25 dark:bg-white/[0.07]'
@@ -159,10 +159,10 @@ export function ProjectEmpty({
                       )}
                     </AnimatePresence>
                   </span>
-                  <span className="mt-2.5 block text-[13px] font-medium text-neutral-800 dark:text-neutral-100">
+                  <span className="mt-2.5 block text-[14px] font-medium text-neutral-800 dark:text-neutral-100">
                     {template.name}
                   </span>
-                  <span className="mt-0.5 block text-[11.5px] text-neutral-400 dark:text-neutral-500">
+                  <span className="mt-0.5 block text-[12.5px] text-neutral-400 dark:text-neutral-500">
                     {template.detail}
                   </span>
                 </motion.button>
@@ -174,10 +174,10 @@ export function ProjectEmpty({
         {variant === 'Checklist' && (
           <div className="w-full max-w-[420px] text-left">
             <div className="mb-3 flex items-baseline justify-between">
-              <span className="text-[12px] font-medium text-neutral-600 dark:text-neutral-300">
+              <span className="text-[13px] font-medium text-neutral-600 dark:text-neutral-300">
                 Setup
               </span>
-              <span className="font-mono text-[11.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+              <span className="font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
                 {done.length}/{steps.length}
               </span>
             </div>
@@ -220,7 +220,7 @@ export function ProjectEmpty({
                       <span className="min-w-0">
                         <span
                           className={cn(
-                            'block text-[13px] font-medium transition-colors duration-200',
+                            'block text-[14px] font-medium transition-colors duration-200',
                             complete
                               ? 'text-neutral-400 line-through dark:text-neutral-500'
                               : 'text-neutral-800 dark:text-neutral-100',
@@ -228,7 +228,7 @@ export function ProjectEmpty({
                         >
                           {step.label}
                         </span>
-                        <span className="block text-[11.5px] text-neutral-400 dark:text-neutral-500">
+                        <span className="block text-[12.5px] text-neutral-400 dark:text-neutral-500">
                           {step.detail}
                         </span>
                       </span>

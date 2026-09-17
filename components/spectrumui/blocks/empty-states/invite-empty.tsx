@@ -161,7 +161,7 @@ export function InviteEmpty({
         }
         footnote={
           variant === 'Link' ? (
-            <span className="font-mono text-[11.5px] text-neutral-400 dark:text-neutral-500">
+            <span className="font-mono text-[12.5px] text-neutral-400 dark:text-neutral-500">
               {inviteLink} · expires in 7 days
             </span>
           ) : (
@@ -213,7 +213,7 @@ export function InviteEmpty({
                   }}
                   aria-invalid={error}
                   className={cn(
-                    'h-9 min-w-0 flex-1 rounded-xl border-black/[0.1] bg-white text-[13px] shadow-none placeholder:text-neutral-400',
+                    'h-9 min-w-0 flex-1 rounded-xl border-black/[0.1] bg-white text-[14px] shadow-none placeholder:text-neutral-400',
                     'dark:border-white/[0.12] dark:bg-white/[0.04]',
                     error && 'border-red-500/60 dark:border-red-500/60',
                   )}
@@ -231,7 +231,7 @@ export function InviteEmpty({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       transition={SPRING_SNAPPY}
-                      className="text-[11.5px] text-red-600 dark:text-red-400"
+                      className="text-[12.5px] text-red-600 dark:text-red-400"
                     >
                       That address is missing an @ or a domain.
                     </motion.p>
@@ -245,7 +245,7 @@ export function InviteEmpty({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       transition={SPRING_SNAPPY}
-                      className="truncate text-[11.5px] text-neutral-500 dark:text-neutral-400"
+                      className="truncate text-[12.5px] text-neutral-500 dark:text-neutral-400"
                     >
                       Invited {address}
                     </motion.p>
@@ -344,7 +344,7 @@ function Seat({
       )}
       <span
         className={cn(
-          'w-full truncate text-center text-[10.5px] leading-[1.3] tracking-[-0.002em]',
+          'w-full truncate text-center text-[12px] leading-[1.3] tracking-[-0.002em]',
           state === 'invited'
             ? 'text-emerald-600 dark:text-emerald-400'
             : 'text-neutral-400 dark:text-neutral-500',
