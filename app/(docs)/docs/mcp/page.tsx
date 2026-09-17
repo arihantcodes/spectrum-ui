@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
+import { cn } from '@/lib/utils';
 import { baseMetadata } from '@/app/(docs)/layout-parts/base-metadata';
 import { SEOWrapper } from '@/app/(docs)/docs/components/seo-wrapper';
 import { PageSectionTitle } from '@/app/(docs)/docs/components/page-template';
@@ -36,12 +37,26 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9-]/g, '');
 
 /** Major section: hairline separator + generous grouping + Cal Sans h2 */
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({
+  title,
+  display = false,
+  children,
+}: {
+  title: string;
+  /** Spectral, larger — for the section that is the page's actual job. */
+  display?: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <section className="mt-8 border-t border-black/6 pt-8 dark:border-white/[0.07]">
       <h2
         id={slugify(title)}
-        className="mb-3 scroll-m-24 text-xl font-semibold leading-7 tracking-[-0.02em] text-neutral-900 dark:text-neutral-50"
+        className={cn(
+          'mb-3 scroll-m-24 text-neutral-900 dark:text-neutral-50',
+          display
+            ? 'font-spectral text-[24px] font-medium leading-8 tracking-[-0.01em]'
+            : 'text-xl font-semibold leading-7 tracking-[-0.02em]',
+        )}
       >
         {title}
       </h2>
@@ -142,9 +157,9 @@ export default function McpPage() {
         </div>
 
         {/* Quick Start */}
-        <Section title="Quick Start">
+        <Section title="Pick your AI tool" display>
           <P>
-            Pick your client. To wire it up by hand instead, see{' '}
+            We&apos;ll give you the exact command to run — or wire it by hand in{' '}
             <A href="#configuration">Configuration</A>.
           </P>
           <QuickStart />

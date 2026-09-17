@@ -196,7 +196,7 @@ export function InstallFigure({ cli, componentName, className }: InstallFigurePr
       {/* Not a <pre>: an unlayered global `pre { padding:12px !important; width:inherit !important }`
           overrides utilities and, in this flex context, forces the one-line command to wrap. */}
       <div className="overflow-x-auto">
-        <code className="block whitespace-nowrap px-3.5 py-3 font-mono text-[14px] leading-normal tracking-[-0.015em]">
+        <code className="block whitespace-nowrap px-4 py-3.5 font-mono text-[15px] leading-relaxed tracking-[0.015em] [word-spacing:0.08em]">
           {tokens.map((token, index) => (
             <span key={index} className={tokenClass(tokens, index)}>
               {token}

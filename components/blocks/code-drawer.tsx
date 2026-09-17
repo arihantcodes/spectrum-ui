@@ -257,7 +257,7 @@ function McpStep({ slug, registryName }: { slug: string; registryName: string })
         </div>
 
         <div className="overflow-x-auto">
-          <code className="block whitespace-nowrap px-3.5 py-3 font-mono text-[12.5px] leading-normal">
+          <code className="block whitespace-nowrap px-4 py-3.5 font-mono text-[15px] leading-relaxed tracking-[0.015em] [word-spacing:0.08em]">
             <span aria-hidden className="mr-2 select-none text-neutral-400 dark:text-neutral-600">
               ❯
             </span>

@@ -163,7 +163,7 @@ const CommandFigure = ({
         </button>
       </div>
       <div className="overflow-x-auto px-4 py-[18px]">
-        <code className="whitespace-pre font-mono text-[14px] leading-normal tracking-[-0.015em]">
+        <code className="whitespace-pre font-mono text-[15px] leading-relaxed tracking-[0.015em] [word-spacing:0.08em]">
           {fullCommand.split(' ').map((token, i, tokens) => (
             <span key={`${token}-${i}`} className={tokenClass(tokens, i)}>
               {i > 0 ? ' ' : ''}

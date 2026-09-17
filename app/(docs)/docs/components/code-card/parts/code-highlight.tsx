@@ -195,10 +195,10 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              // Geist Mono runs wide. At 13px with `leading-normal` the result reads
-              // loose and hard to scan; 14px with a hair of negative tracking and a
-              // 1.6 line-height is the same code, legible.
-              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[14px] [&_code]:tracking-[-0.015em] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.6]',
+              // The code recipe, shared with the terminal figures: 15px, a 1.85 line
+              // height, and slightly positive letter- and word-spacing. Mono at this
+              // size wants air between lines and words, not compression.
+              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[15px] [&_code]:tracking-[0.015em] [&_code]:[word-spacing:0.08em] [&_pre]:overflow-auto [&_pre]:p-5 [&_pre]:pr-12 [&_pre]:leading-[1.85]',
               lang,
             )}
           />
