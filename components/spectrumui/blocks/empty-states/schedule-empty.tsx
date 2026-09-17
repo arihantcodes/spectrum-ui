@@ -127,9 +127,12 @@ export function ScheduleEmpty({
                     <span className="w-9 shrink-0 pt-1 text-right font-mono text-[10.5px] tabular-nums text-neutral-300 dark:text-neutral-600">
                       {String(hour).padStart(2, '0')}:00
                     </span>
-                    <div className="min-w-0 flex-1 border-t border-black/[0.06] py-1 dark:border-white/[0.07]">
+                    <div className="relative z-10 min-w-0 flex-1 border-t border-black/[0.06] py-1 dark:border-white/[0.07]">
                       {composing === hour ? (
-                        <form onSubmit={commit} className="flex gap-1.5">
+                        <form
+                          onSubmit={commit}
+                          className="flex gap-1.5 rounded-xl bg-white dark:bg-neutral-950"
+                        >
                           <Input
                             autoFocus
                             value={draft}
@@ -138,7 +141,12 @@ export function ScheduleEmpty({
                             onKeyDown={(key) => {
                               if (key.key === 'Escape') setComposing(null);
                             }}
-                            className="h-8 min-w-0 flex-1 rounded-xl border-black/[0.12] bg-white text-[12.5px] shadow-none dark:border-white/[0.14] dark:bg-white/[0.05]"
+                            className={cn(
+                              'h-8 min-w-0 flex-1 rounded-xl border-black/[0.12] bg-white text-[12.5px] shadow-none',
+                              'dark:border-white/[0.14] dark:bg-white/[0.05]',
+                              'focus-visible:border-neutral-400 focus-visible:ring-1 focus-visible:ring-neutral-400/40',
+                              'dark:focus-visible:border-white/30 dark:focus-visible:ring-white/20',
+                            )}
                           />
                           <EmptyAction type="submit" className="h-8 px-3 text-[12px]">
                             Add
@@ -149,7 +157,7 @@ export function ScheduleEmpty({
                           type="button"
                           onClick={() => open(hour)}
                           aria-label={`Add an event at ${hour}:00`}
-                          className="group flex h-8 w-full cursor-pointer items-center rounded-xl px-2 text-left transition-colors duration-150 hover:bg-black/[0.03] focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-white/[0.05] dark:focus-visible:ring-neutral-300"
+                          className="group relative flex h-8 w-full cursor-pointer items-center rounded-xl px-2 text-left transition-colors duration-150 hover:bg-black/[0.03] focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-neutral-950 dark:hover:bg-white/[0.05] dark:focus-visible:ring-neutral-300"
                         >
                           <AnimatePresence initial={false}>
                             {slotted.map((event) => (
@@ -187,10 +195,14 @@ export function ScheduleEmpty({
                 viewport={VIEWPORT}
                 transition={reduced ? { duration: 0.2 } : { ...SPRING_SNAPPY, delay: 0.25 }}
                 style={{ top: `${railTop}%` }}
-                className="pointer-events-none absolute inset-x-0 flex items-center gap-1.5 pl-9"
+                /* z-0, and every row above it: the line marks the empty track,
+                   it does not get to draw itself across an open composer. */
+                className="pointer-events-none absolute inset-x-0 z-0 flex items-center gap-3"
               >
-                <span className="font-mono text-[10px] tabular-nums text-red-500">{nowLabel}</span>
-                <span className="h-px flex-1 bg-red-500/70" />
+                <span className="w-9 shrink-0 text-right font-mono text-[10.5px] tabular-nums text-red-500">
+                  {nowLabel}
+                </span>
+                <span className="h-px flex-1 bg-red-500/60" />
               </motion.div>
             </div>
           </div>
@@ -200,7 +212,7 @@ export function ScheduleEmpty({
           <EmptyState
             icon={<IconCalendar />}
             medallionSize={variant === 'Minimal' ? 'md' : 'sm'}
-            backdrop={variant === 'Minimal' ? 'grid' : 'crosshair'}
+            backdrop={variant === 'Minimal' ? 'crosshair' : 'none'}
             align={variant === 'Minimal' ? 'center' : 'start'}
             title={clear ? title : `${events.length} event${events.length > 1 ? 's' : ''} today`}
             description={

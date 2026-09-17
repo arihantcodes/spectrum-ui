@@ -36,6 +36,19 @@ export const SPRING_SNAPPY: Transition = { type: 'spring', stiffness: 500, dampi
  */
 export const VIEWPORT = { once: true, amount: 0.3 } as const;
 
+/**
+ * Inter, with the tracking it actually wants.
+ *
+ * The family is named through a variable first so a project that already loads
+ * Inter (this one does, as `--font-inter`) gets its own optimised face, and a
+ * project that does not still resolves to Inter or the system UI font rather
+ * than to nothing. Tracking is set per size in `em` so it scales with the text:
+ * Inter is drawn loose for small sizes and wants a touch of negative tracking
+ * everywhere above a caption.
+ */
+export const EMPTY_FONT =
+  'font-[var(--font-inter),Inter,system-ui,sans-serif] antialiased [font-feature-settings:"cv05","ss01"]';
+
 /* ── Icons ────────────────────────────────────────────────────────────────── */
 
 type IconProps = React.SVGProps<SVGSVGElement>;
@@ -43,6 +56,32 @@ type IconProps = React.SVGProps<SVGSVGElement>;
 function Bold({ children, ...props }: IconProps & { children: React.ReactNode }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      {children}
+    </svg>
+  );
+}
+
+/**
+ * Two icon styles on purpose, the same split footer-kit makes.
+ *
+ * The **filled** Iconly glyphs are the heroes: one per block, 24px inside a
+ * medallion, where mass is exactly what you want. Everything that sits beside a
+ * label — the arrow on a button, the magnifier in a field — is **outline**,
+ * because a filled arrow at 15px collapses into a dash with a wedge on it and a
+ * filled magnifier reads as a blob with a stick.
+ */
+function Outline({ children, ...props }: IconProps & { children: React.ReactNode }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.9}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
       {children}
     </svg>
   );
@@ -72,12 +111,9 @@ export function IconAddUser(props: IconProps) {
 
 export function IconArrowRight(props: IconProps) {
   return (
-    <Bold {...props}>
-      <path
-        transform="translate(3, 6)"
-        d="M7.837,6.361 L7.835,6.007 C7.835,4.535 7.921,3.193 8.051,2.319 L8.165,1.775 C8.228,1.487 8.311,1.159 8.398,0.991 C8.715,0.379 9.336,0 10,0 L10.058,0 C10.491,0.014 11.401,0.394 11.401,0.408 C12.865,1.022 15.69,2.876 16.994,4.197 L17.373,4.594 C17.472,4.702 17.584,4.829 17.653,4.928 C17.884,5.234 18,5.613 18,5.992 C18,6.415 17.87,6.809 17.625,7.13 L17.235,7.55 L17.148,7.64 C15.964,8.923 12.874,11.022 11.257,11.664 L11.013,11.758 C10.719,11.863 10.308,11.988 10.058,12 C9.741,12 9.438,11.926 9.148,11.781 C8.787,11.577 8.499,11.255 8.34,10.876 C8.239,10.614 8.079,9.827 8.079,9.812 C7.933,9.018 7.849,7.765 7.837,6.361 Z M0,6 C0,5.161 0.673,4.482 1.503,4.482 L5.202,4.809 C5.854,4.809 6.382,5.342 6.382,6 C6.382,6.658 5.854,7.19 5.202,7.19 L1.503,7.517 C0.673,7.517 0,6.838 0,6 Z"
-      />
-    </Bold>
+    <Outline {...props}>
+      <path d="M4.5 12h14M12.5 5.75 18.75 12l-6.25 6.25" />
+    </Outline>
   );
 }
 
@@ -155,6 +191,14 @@ export function IconChat(props: IconProps) {
         d="M10.02,0 C15.7,0 20,4.657 20,9.985 C20,16.164 14.96,20 10,20 C8.36,20 6.54,19.559 5.08,18.698 C4.57,18.388 4.14,18.157 3.59,18.338 L1.57,18.938 C1.06,19.099 0.6,18.698 0.75,18.157 L1.42,15.914 C1.53,15.603 1.51,15.273 1.35,15.013 C0.49,13.43 0,11.698 0,10.015 C0,4.747 4.21,0 10.02,0 Z M14.59,8.743 C13.88,8.743 13.31,9.314 13.31,10.025 C13.31,10.726 13.88,11.307 14.59,11.307 C15.3,11.307 15.87,10.726 15.87,10.025 C15.87,9.314 15.3,8.743 14.59,8.743 Z M9.98,8.743 C9.28,8.733 8.7,9.314 8.7,10.015 C8.7,10.726 9.27,11.297 9.98,11.307 C10.69,11.307 11.26,10.726 11.26,10.025 C11.26,9.314 10.69,8.743 9.98,8.743 Z M5.37,8.743 C4.66,8.743 4.09,9.314 4.09,10.025 C4.09,10.726 4.67,11.307 5.37,11.307 C6.08,11.297 6.65,10.726 6.65,10.025 C6.65,9.314 6.08,8.743 5.37,8.743 Z"
       />
     </Bold>
+  );
+}
+
+export function IconClose(props: IconProps) {
+  return (
+    <Outline {...props}>
+      <path d="m6.5 6.5 11 11M17.5 6.5l-11 11" />
+    </Outline>
   );
 }
 
@@ -342,12 +386,10 @@ export function IconPlus(props: IconProps) {
 
 export function IconSearch(props: IconProps) {
   return (
-    <Bold {...props}>
-      <path
-        transform="translate(2, 2)"
-        d="M15.621,15.654 C16.007,15.27 16.627,15.27 17.013,15.654 L19.568,17.716 L19.612,17.716 C20.129,18.239 20.129,19.086 19.612,19.608 C19.096,20.131 18.258,20.131 17.741,19.608 L15.621,17.178 L15.54,17.088 C15.39,16.898 15.308,16.662 15.308,16.416 C15.308,16.13 15.42,15.856 15.621,15.654 Z M8.578,0 C10.853,0 13.034,0.913 14.643,2.539 C16.252,4.165 17.155,6.371 17.155,8.67 C17.155,13.458 13.315,17.34 8.578,17.34 C3.84,17.34 0,13.458 0,8.67 C0,3.882 3.84,0 8.578,0 Z"
-      />
-    </Bold>
+    <Outline {...props}>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.55-3.55" />
+    </Outline>
   );
 }
 
@@ -567,7 +609,7 @@ export type MedallionBackdrop =
   | 'stack'
   | 'ripple'
   | 'beam'
-  | 'arc'
+  | 'chime'
   | 'comet'
   | 'sparks'
   | 'dashes'
@@ -578,7 +620,7 @@ export type MedallionBackdrop =
   | 'corners'
   | 'drip'
   | 'contour'
-  | 'strata'
+  | 'sieve'
   | 'spotlight'
   | 'pulse';
 
@@ -652,8 +694,8 @@ function Backdrop({ kind, phase, reduced }: BackdropProps & PartProps) {
       return <Ripple phase={phase} reduced={reduced} />;
     case 'beam':
       return <Beam phase={phase} reduced={reduced} />;
-    case 'arc':
-      return <Arc phase={phase} reduced={reduced} />;
+    case 'chime':
+      return <Chime phase={phase} reduced={reduced} />;
     case 'comet':
       return <Comet phase={phase} reduced={reduced} />;
     case 'sparks':
@@ -674,8 +716,8 @@ function Backdrop({ kind, phase, reduced }: BackdropProps & PartProps) {
       return <Drip phase={phase} reduced={reduced} />;
     case 'contour':
       return <Contour phase={phase} reduced={reduced} />;
-    case 'strata':
-      return <Strata phase={phase} reduced={reduced} />;
+    case 'sieve':
+      return <Sieve phase={phase} reduced={reduced} />;
     case 'spotlight':
       return <Spotlight phase={phase} reduced={reduced} />;
     case 'pulse':
@@ -1038,37 +1080,48 @@ function Beam({ phase, reduced }: PartProps) {
   );
 }
 
-/** An arc drawing three quarters of the way round. */
-function Arc({ phase, reduced }: PartProps) {
+/**
+ * Two short arcs either side of the bell — resonance, not a progress ring.
+ *
+ * This was a 72%-complete circle, which at a glance is a spinner stuck at
+ * three quarters. On a panel whose whole message is "nothing is happening",
+ * that is precisely the wrong thing to draw.
+ */
+function Chime({ phase, reduced }: PartProps) {
+  const arcs = [
+    'M92.8 37 A40 40 0 0 1 92.8 83',
+    'M27.2 83 A40 40 0 0 1 27.2 37',
+    'M102.6 30.2 A52 52 0 0 1 102.6 89.8',
+    'M17.4 89.8 A52 52 0 0 1 17.4 30.2',
+  ];
   return (
-    <svg viewBox="0 0 100 100" className="absolute size-[132px] -rotate-90 overflow-visible">
-      <circle
-        cx="50"
-        cy="50"
-        r="46"
-        fill="none"
-        strokeWidth="1"
-        className="stroke-black/[0.05] dark:stroke-white/[0.07]"
-      />
-      <motion.circle
-        cx="50"
-        cy="50"
-        r="46"
-        fill="none"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        initial="hidden"
-        animate={phase}
-        variants={{
-          hidden: { pathLength: 0, opacity: 0 },
-          shown: {
-            pathLength: 0.72,
-            opacity: 1,
-            transition: reduced ? { duration: 0 } : { duration: 1, ease: [0.22, 1, 0.36, 1] },
-          },
-        }}
-        className="stroke-black/20 dark:stroke-white/25"
-      />
+    <svg viewBox="0 0 120 120" className="absolute size-[128px] overflow-visible">
+      {arcs.map((d, index) => (
+        <motion.path
+          key={d}
+          d={d}
+          fill="none"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          initial="hidden"
+          animate={phase}
+          variants={{
+            hidden: { pathLength: 0, opacity: 0 },
+            shown: {
+              pathLength: 1,
+              opacity: index > 1 ? 0.45 : 1,
+              transition: reduced
+                ? { duration: 0 }
+                : {
+                    duration: 0.5,
+                    delay: 0.08 + Math.floor(index / 2) * 0.12,
+                    ease: [0.23, 1, 0.32, 1],
+                  },
+            },
+          }}
+          className="stroke-black/[0.16] dark:stroke-white/25"
+        />
+      ))}
     </svg>
   );
 }
@@ -1398,37 +1451,44 @@ function Contour({ phase, reduced }: PartProps) {
   );
 }
 
-/** Layers narrowing toward the middle. */
-function Strata({ phase, reduced }: PartProps) {
-  const rows = [
-    { width: 164, y: -46 },
-    { width: 128, y: -26 },
-    { width: 96, y: 24 },
-    { width: 60, y: 42 },
-  ];
+/**
+ * Rows of dots narrowing on the way down — many in, few out.
+ *
+ * The version this replaces was four hairlines at different widths, which read
+ * as stray rules crossing the tile rather than as anything being filtered. Dots
+ * stay clear of the tile entirely and carry the idea on their own.
+ */
+function Sieve({ phase, reduced }: PartProps) {
+  const rows = [9, 6, 3];
   return (
-    <>
-      {rows.map((row, index) => (
-        <motion.span
-          key={row.y}
-          initial="hidden"
-          animate={phase}
-          variants={{
-            hidden: reduced ? { opacity: 0, y: row.y } : { opacity: 0, scaleX: 0.3, y: row.y },
-            shown: {
-              opacity: 1,
-              scaleX: 1,
-              y: row.y,
-              transition: reduced
-                ? { duration: 0.2 }
-                : { ...SPRING_FLUID, delay: 0.05 + index * 0.06 },
-            },
-          }}
-          style={{ width: row.width }}
-          className={cn('absolute h-px rounded-full', INK)}
-        />
+    <div className="absolute bottom-[calc(100%+2px)] flex flex-col items-center gap-2">
+      {rows.map((count, row) => (
+        <div key={count} className="flex gap-2">
+          {Array.from({ length: count }).map((_, index) => (
+            <motion.span
+              key={index}
+              initial="hidden"
+              animate={phase}
+              variants={{
+                hidden: reduced ? { opacity: 0 } : { opacity: 0, y: -5, scale: 0.4 },
+                shown: {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  transition: reduced
+                    ? { duration: 0.2 }
+                    : {
+                        ...SPRING_SNAPPY,
+                        delay: 0.05 + row * 0.08 + Math.abs(index - (count - 1) / 2) * 0.02,
+                      },
+                },
+              }}
+              className={cn('size-[3px] rounded-full', row === rows.length - 1 ? INK : INK_SOFT)}
+            />
+          ))}
+        </div>
       ))}
-    </>
+    </div>
   );
 }
 
@@ -1531,9 +1591,12 @@ export function EmptyMedallion({
         viewport={VIEWPORT}
         transition={reduced ? { duration: 0.15 } : SPRING_ENTRANCE}
         className={cn(
+          /* Opaque in both themes. A translucent tile lets whatever the backdrop
+             is doing show straight through the glyph's own surface, which is how
+             the stack behind it ended up drawing lines across the folder. */
           'relative grid place-items-center border border-black/[0.07] bg-white',
           'shadow-[0_1px_2px_rgba(0,0,0,0.05),0_14px_30px_-18px_rgba(0,0,0,0.5)]',
-          'dark:border-white/[0.09] dark:bg-white/[0.045] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4)]',
+          'dark:border-white/[0.11] dark:bg-[#151515] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4)]',
           TILE[size],
           TONE_GLYPH[tone],
         )}
@@ -1599,6 +1662,7 @@ export function EmptyState({
       whileInView="shown"
       viewport={VIEWPORT}
       className={cn(
+        EMPTY_FONT,
         'flex w-full flex-col',
         centred ? 'items-center text-center' : 'items-start text-left',
         className,
@@ -1619,7 +1683,7 @@ export function EmptyState({
       {eyebrow && (
         <motion.p
           variants={item}
-          className="mb-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.11em] text-neutral-400 dark:text-neutral-500"
+          className="mb-2 font-mono text-[10.5px] font-medium uppercase leading-[1.4] tracking-[0.12em] text-neutral-400 dark:text-neutral-500"
         >
           {eyebrow}
         </motion.p>
@@ -1627,7 +1691,7 @@ export function EmptyState({
 
       <motion.h3
         variants={item}
-        className="text-[16px] font-semibold leading-[1.3] tracking-[-0.2px] text-neutral-900 dark:text-neutral-50"
+        className="text-balance text-[17px] font-semibold leading-[1.3] tracking-[-0.014em] text-neutral-900 dark:text-neutral-50"
       >
         {title}
       </motion.h3>
@@ -1636,7 +1700,10 @@ export function EmptyState({
         <motion.p
           variants={item}
           className={cn(
-            'mt-2 max-w-[46ch] text-pretty text-[13.5px] leading-[1.6] text-neutral-500 dark:text-neutral-400',
+            /* 46ch keeps the measure inside the 60–75 character band once the
+               panel's own padding is taken off. */
+            'mt-2.5 max-w-[46ch] text-pretty text-[13.5px] leading-[1.62] tracking-[-0.003em]',
+            'text-neutral-600 dark:text-neutral-400',
             centred && 'mx-auto',
           )}
         >
@@ -1665,7 +1732,7 @@ export function EmptyState({
       {footnote && (
         <motion.div
           variants={item}
-          className="mt-5 text-[12px] leading-[1.5] text-neutral-400 dark:text-neutral-500"
+          className="mt-5 text-pretty text-[12px] leading-[1.55] tracking-[-0.002em] text-neutral-500 dark:text-neutral-500"
         >
           {footnote}
         </motion.div>
@@ -1733,7 +1800,7 @@ export function EmptyAction({
       whileTap={reduced ? undefined : { scale: 0.97 }}
       transition={SPRING_TACTILE}
       className={cn(
-        'h-9 gap-1.5 rounded-xl px-3.5 text-[13px] font-medium shadow-none',
+        'h-9 gap-1.5 rounded-xl px-3.5 text-[13px] font-medium tracking-[-0.006em] shadow-none',
         'focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-0 dark:focus-visible:ring-neutral-300',
         '[&_svg]:size-[15px]',
         EMPHASIS[emphasis],
@@ -1772,6 +1839,7 @@ export function EmptyPanel({
   return (
     <section
       className={cn(
+        EMPTY_FONT,
         'w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-white',
         'shadow-[0_1px_2px_rgba(0,0,0,0.04),0_18px_40px_-28px_rgba(0,0,0,0.35)]',
         'dark:border-white/[0.09] dark:bg-neutral-950 dark:shadow-none',
@@ -1782,7 +1850,7 @@ export function EmptyPanel({
         <header className="flex min-w-0 items-center gap-3 border-b border-black/[0.06] px-4 py-3 dark:border-white/[0.07]">
           <div className="min-w-0 flex-1">
             {title && (
-              <p className="truncate text-[13px] font-semibold tracking-[-0.1px] text-neutral-800 dark:text-neutral-100">
+              <p className="truncate text-[13px] font-semibold leading-[1.35] tracking-[-0.008em] text-neutral-800 dark:text-neutral-100">
                 {title}
               </p>
             )}

@@ -51,7 +51,7 @@ const CHANNELS: NotificationChannel[] = [
 export function NotificationEmpty({
   panelTitle = 'Notifications',
   title = 'Nothing new',
-  description = 'You have read everything. What lands here is up to you — three channels are on, and the rest stay quiet.',
+  description = 'You have read everything. What lands here is up to you, and everything you leave off stays quiet.',
   channels = CHANNELS,
   quietUntil = '09:00',
   settingsLabel = 'Notification settings',
@@ -80,7 +80,7 @@ export function NotificationEmpty({
     >
       <EmptyState
         icon={<IconNotification />}
-        backdrop="arc"
+        backdrop="chime"
         tone={quiet ? 'caution' : 'neutral'}
         badge={
           quiet ? (

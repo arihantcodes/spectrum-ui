@@ -4,6 +4,7 @@ import * as React from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import {
+  EMPTY_FONT,
   EmptyAction,
   EmptyState,
   IconDocument,
@@ -91,6 +92,7 @@ export function TableEmpty({
   return (
     <section
       className={cn(
+        EMPTY_FONT,
         'w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-white',
         'shadow-[0_1px_2px_rgba(0,0,0,0.04),0_18px_40px_-28px_rgba(0,0,0,0.35)]',
         'dark:border-white/[0.09] dark:bg-neutral-950 dark:shadow-none',

@@ -8,7 +8,7 @@ import {
   EmptyPanel,
   EmptyState,
   GhostRows,
-  IconCloseSquare,
+  IconClose,
   IconFilter,
   SPRING_FLUID,
   SPRING_SNAPPY,
@@ -128,7 +128,7 @@ export function FilterEmpty({
       ) : (
         <EmptyState
           icon={<IconFilter />}
-          backdrop="strata"
+          backdrop="sieve"
           title={title}
           description={
             variant === 'Summary'
@@ -177,8 +177,8 @@ export function FilterEmpty({
                     <span className="text-[12px] font-medium text-neutral-800 dark:text-neutral-100">
                       {filter.value}
                     </span>
-                    <span className="text-neutral-300 transition-colors duration-150 group-hover:text-neutral-600 [&_svg]:size-3.5 dark:text-neutral-600 dark:group-hover:text-neutral-200">
-                      <IconCloseSquare />
+                    <span className="grid size-4 place-items-center rounded-full text-neutral-400 transition-colors duration-150 group-hover:bg-black/[0.06] group-hover:text-neutral-700 [&_svg]:size-3 dark:text-neutral-500 dark:group-hover:bg-white/10 dark:group-hover:text-neutral-100">
+                      <IconClose />
                     </span>
                   </motion.button>
                 ))}
