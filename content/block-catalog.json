@@ -39,6 +39,15 @@
       "description": "Eighteen interactive footer sections, every one of them Spectrum UI dogfooding its own library — mega sitemaps with region and language selectors, a compliance trust row, thirty days of uptime bars, a customer logo wall, ask-the-docs search, a changelog feed, newsletter and waitlist capture, and a spotlit wordmark. They share one kit: outline utility icons, the Spectrum mark, the social row and the bottom bar, so the set stays identical without eighteen copies of the same markup. Every animation is CSS, so the links render even if JavaScript never arrives.",
       "order": 5,
       "layout": "wide"
+    },
+    {
+      "slug": "empty-states",
+      "name": "Empty States",
+      "tagline": "The screen your product shows most often, and ships worst.",
+      "description": "Twenty-five empty states for the moments a product has nothing to show: first run, no search results, a filter that matched nothing, an inbox at zero, a paywall, a 404, an outage. Every one is a real panel with its own chrome rather than a centred icon on a blank page, every one carries a filled Iconly glyph in a raised medallion, and every one does something — templates that select, filters that come off, files that drop, rows that appear, a key that is revealed once. They share one kit, so the set stays identical without twenty-five copies of the same markup, and every entrance is a spring that settles under 400ms and collapses to a fade under reduced motion.",
+      "order": 6,
+      "layout": "wide",
+      "stageMaxWidth": 880
     }
   ],
   "blocks": [
@@ -2487,6 +2496,725 @@
       "index": 119,
       "status": "live",
       "addedAt": "2026-09-13"
+    },
+    {
+      "slug": "project-empty",
+      "name": "First Project",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "First-run project screen with selectable templates and a setup checklist.",
+      "summary": "The screen a new account lands on. Three templates that select in place and rename the primary action, or a setup checklist whose ticks drive a progress meter — because the fastest way out of an empty state is a decision already half made.",
+      "hardParts": [
+        "A template card that only highlights teaches nothing — selecting one has to change the button's label, or the choice has no consequence",
+        "The checklist is state the host owns, so the ticks are local and onCreate carries the selection out",
+        "Press feedback lives on whileTap, which fires on pointerdown — the card answers before React does"
+      ],
+      "variants": [
+        "Templates",
+        "Checklist",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Reach for this on the first screen of a new workspace or project list. The templates and steps are props; selection state is local and surfaced through onCreate. It does not create anything itself.",
+      "index": 120,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "invite-empty",
+      "name": "Invite Teammates",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "A one-seat team with an avatar rail, live invite field and copyable join link.",
+      "summary": "An avatar rail with one real face and dashed seats beside it. A validated email field drops a pending chip into the rail with a spring and the seat count follows; the Link variant swaps the form for a copyable join URL with an icon that crossfades on copy.",
+      "hardParts": [
+        "Pending invites and open seats share one rail, so the layout has to reflow without the avatars jumping — popLayout plus layout does it",
+        "Email validation has to fail quietly and recover on the next keystroke, not shout on blur",
+        "Below 420px the submit stacks under the field: an inline button leaves no room to read your own address back"
+      ],
+      "variants": [
+        "Invite",
+        "Link",
+        "Sent"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty members or team screen. onInvite receives the validated address; the chip and count are optimistic local state, so reconcile with your server response.",
+      "index": 121,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "integration-empty",
+      "name": "Connect a Source",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "A connector grid where tiles run a real connect sequence and settle into connected.",
+      "summary": "Six drawn connector marks in a grid. Pressing one sweeps a sheen across the tile, then it lands as connected with a check and the headline recounts itself — the empty state narrates its own exit instead of disappearing.",
+      "hardParts": [
+        "The marks are invented and drawn inline on a 24-grid, because a registry block that ships real logos hands its installers someone else's trademarks",
+        "Only one connect can be in flight, or the shimmer of two overlapping tiles reads as a broken loading state",
+        "The reduced-motion branch shortens the sequence to 200ms rather than removing it — the state change still needs to be legible"
+      ],
+      "variants": [
+        "Catalog",
+        "Featured",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty integrations or data-sources screen. Swap the drawn marks for your own artwork. onConnect fires immediately; the success state here is simulated on a timer.",
+      "index": 122,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "upload-empty",
+      "name": "Drop Files",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "A drop zone with real drag handling and per-file upload meters.",
+      "summary": "The whole panel is the target. Real dragenter, dragover and drop handlers light the dashed border, dropped files land as rows with their own progress meters, and the headline turns positive when the last one finishes.",
+      "hardParts": [
+        "dragenter fires again for every child the pointer crosses, so leaving is only real when a depth counter returns to zero",
+        "One interval drives every row: per-row timers drift apart and the bars stop looking like one upload",
+        "The file input is visually hidden but still focusable, so the keyboard path to it is the same as the mouse's"
+      ],
+      "variants": [
+        "Dropzone",
+        "Compact",
+        "Uploading"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty files, assets or import screen. onFiles receives the real File objects; the progress here is simulated, so replace it with your upload's own events.",
+      "index": 123,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "api-key-empty",
+      "name": "No API Keys",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "Key creation that reveals the secret once, masked, with a copy that confirms itself.",
+      "summary": "Creating a key swaps the empty state for the key itself: masked by default, revealed by an eye toggle, copied by a button whose glyph blur-crossfades into a check. The warning under it says the thing every key screen should say once.",
+      "hardParts": [
+        "Mask and reveal must not change the row's width, or the copy button walks away from the pointer",
+        "The copy confirmation is a crossfade in a fixed 15px box — a swap that resizes makes the whole row twitch",
+        "Clipboard writes reject on insecure origins, so the confirmation only fires after the promise resolves"
+      ],
+      "variants": [
+        "Default",
+        "Created",
+        "Compact"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty API keys or credentials screen. The sample key is a prop and never leaves the client; wire onCreate to your key service and pass the real value in.",
+      "index": 124,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "webhook-empty",
+      "name": "Waiting for Events",
+      "category": "empty-states",
+      "subcategory": "First run",
+      "description": "A live endpoint waiting for its first delivery, with a test event that lands.",
+      "summary": "The endpoint, a curl line to hit it with, and a listening indicator that is honest about doing nothing. Sending a test event drops a delivery row in from above and the panel flips from waiting to active.",
+      "hardParts": [
+        "A listening indicator is the one loop this set allows, because it reports a live state rather than decorating a dead one",
+        "The first event enters from negative y so it reads as arriving, not as being revealed",
+        "The status pill in the header and the medallion badge have to agree, or the panel tells two stories"
+      ],
+      "variants": [
+        "Listening",
+        "Received"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on a webhook endpoint that has never fired. onTest is called immediately; the arriving event is simulated locally, so replace it with your own delivery stream.",
+      "index": 125,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "search-empty",
+      "name": "No Search Results",
+      "category": "empty-states",
+      "subcategory": "No results",
+      "description": "A no-results state that echoes the query and resolves when a suggestion is taken.",
+      "summary": "The query is printed in mono, because a no-results screen that hides what it searched for is a shrug. Suggestions are real: taking one crossfades the term in the header and, for the term that matches, the panel becomes a result list.",
+      "hardParts": [
+        "The query has to be visible in the header and in the copy, and both have to animate on the same swap",
+        "Suggestion pills are buttons, not chips — the keyboard path to a correction matters most to the people who mistype",
+        "Resolving to results and going back has to be reversible, or the specimen is a one-shot"
+      ],
+      "variants": [
+        "Suggestions",
+        "Scoped",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use when a search returns nothing. Pass the reader's query and a suggestions list; the results map here is a fixture, so wire onSearch to your own index.",
+      "index": 126,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "filter-empty",
+      "name": "No Matching Filters",
+      "category": "empty-states",
+      "subcategory": "No results",
+      "description": "Filter chips you can drop one at a time, with the match count coming back as you do.",
+      "summary": "Four filters are narrowing a table to nothing. Each chip removes with a spring, and the count that comes back is attributed to the filter that released it — so the reader learns which one was too tight instead of clearing everything and starting over.",
+      "hardParts": [
+        "Every chip has to own the rows it releases, or the recovered count is a number with no explanation",
+        "The count rolls on a keyed element so it re-enters rather than swapping in place",
+        "Clearing everything and restoring it both have to work, because a filter state you cannot get back is worse than no filters"
+      ],
+      "variants": [
+        "Chips",
+        "Summary"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use above a list or table that filtered to zero. Each filter declares the rows it alone is excluding; onChange receives the remaining filter ids.",
+      "index": 127,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "table-empty",
+      "name": "Empty Table",
+      "category": "empty-states",
+      "subcategory": "No results",
+      "description": "A table that keeps its header and column widths, with rows that spring in.",
+      "summary": "The columns stay, the ghost rows hold the height, and the message floats over a gradient rather than replacing the table. Adding a row inserts a real one and the overlay fades out from under it.",
+      "hardParts": [
+        "Dropping the header on an empty table hides the shape of what goes in it — the columns are the documentation",
+        "Ghost rows hold the box's height so the first real row does not jolt the page below",
+        "The Loading variant shimmers the same ghost rows, so empty and loading are one layout in two states"
+      ],
+      "variants": [
+        "Overlay",
+        "Inline",
+        "Loading"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use inside a data table with no rows. Columns and the rows the demo inserts are props; onAdd fires per insert. It renders its own table, so drop it in place of your tbody or wrap your own.",
+      "index": 128,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "chart-empty",
+      "name": "No Chart Data",
+      "category": "empty-states",
+      "subcategory": "No results",
+      "description": "Ghost axes with a sample series that springs up on request.",
+      "summary": "Gridlines and day labels stay so the chart keeps its footprint. Loading the sample springs seven bars up on a stagger — or draws a line by pathLength — and the seven-day average settles in as a dashed rule.",
+      "hardParts": [
+        "An empty chart that collapses to a message loses the one thing it can still communicate: its scale",
+        "The overlay sits on a gradient wash, because centred text on gridlines is unreadable in both themes",
+        "Bars animate scaleY from an origin at the baseline, so nothing has to be measured to grow the right way"
+      ],
+      "variants": [
+        "Bars",
+        "Line"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use inside a chart card with no events in range. The sample array is a prop, values 0 to 1. Purely presentational — onLoad is where you would fetch the real series.",
+      "index": 129,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "activity-empty",
+      "name": "No Activity Yet",
+      "category": "empty-states",
+      "subcategory": "No results",
+      "description": "An audit timeline with a dashed rail above its one real event.",
+      "summary": "Every account has one event: it was created. The rail runs dashed above it to say the timeline has a past and simply has not been given anything to show, which reads as working rather than broken.",
+      "hardParts": [
+        "A timeline with no nodes reads as a failed fetch; one real node and a dashed rail reads as a young account",
+        "The rail scales from its bottom origin so it grows toward the event rather than away from it",
+        "Retention belongs in the header, not the copy — it is a fact about the panel, not about the emptiness"
+      ],
+      "variants": [
+        "Timeline",
+        "Compact"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an audit log, activity feed or history panel with nothing recorded. The seed event is a prop — pass the account's real creation event.",
+      "index": 130,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "inbox-empty",
+      "name": "Inbox Zero",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "A cleared inbox where the last three cards sweep out and the stats land.",
+      "summary": "On mount, three message cards sweep off to the right on a stagger and the medallion lands where they were — the panel shows you clearing it rather than telling you it is clear. Three counters settle underneath.",
+      "hardParts": [
+        "The gesture plays once and then unmounts; a celebration that repeats on every render stops being one",
+        "Reduced motion skips the sweep entirely rather than slowing it — the cards are the animation",
+        "Snoozed is a different state, not a footnote: the count belongs in the title because it is the reason the inbox is empty"
+      ],
+      "variants": [
+        "Cleared",
+        "Snoozed",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on a cleared inbox, queue or task list. Stats are props. The sweep is decorative and plays once per mount — key the component if you want it to replay.",
+      "index": 131,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "notification-empty",
+      "name": "No Notifications",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "An empty notification tray with working channel switches and a quiet-hours state.",
+      "summary": "Nothing new, and the reason is on screen: three channels with real switches, dimmed when quiet hours are on. The medallion takes a clock badge and the copy promises the held notifications are waiting, not lost.",
+      "hardParts": [
+        "Turning a channel off has to dim its row without collapsing it, or the list jumps under the finger that toggled it",
+        "Quiet hours changes what every row means, so the detail line rewrites itself rather than adding a banner",
+        "The header count and the switch states are one source of truth, derived not stored twice"
+      ],
+      "variants": [
+        "Default",
+        "Quiet hours"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "switch"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty notifications tray. Channels are props and onToggle reports every change; the switches are controlled locally, so lift the state if it belongs to the server.",
+      "index": 132,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "trash-empty",
+      "name": "Trash Is Empty",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "An empty trash that explains the retention window instead of celebrating.",
+      "summary": "Nothing waiting means nothing about to be destroyed, which is the reassurance this screen owes. The Retention variant draws the thirty-day window as a meter at zero, labelled from deleted to purged.",
+      "hardParts": [
+        "An empty trash is good news that needs a policy attached, or the reader wonders what already went",
+        "The meter reads zero and still has to look deliberate — a bar at 0% must not read as a failed render",
+        "Recovery is a real path for admins, so the footnote names it rather than implying the data is gone"
+      ],
+      "variants": [
+        "Default",
+        "Retention"
+      ],
+      "complexity": "simple",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty trash, bin or archive screen. Retention days and the scheduled count are props — pass the real policy rather than the default 30.",
+      "index": 133,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "schedule-empty",
+      "name": "Nothing Scheduled",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "A day rail with a now marker where any hour opens an inline composer.",
+      "summary": "Eight hours with a red now line across them. Any slot opens a composer in place; Enter drops a real event block into that hour with a spring and Escape backs out, so a clear day is one keystroke from being a used one.",
+      "hardParts": [
+        "The now marker is a fixed prop, not new Date(): a server-rendered clock hydrates to a different position and React warns",
+        "The composer replaces the slot rather than floating over it, so nothing below moves when it opens",
+        "Escape has to close it — a composer with only a cancel button is a trap on a keyboard"
+      ],
+      "variants": [
+        "Day",
+        "Week",
+        "Minimal"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on a calendar day or agenda with nothing booked. Hours, the date label and the now marker are all props. onCreate receives each event; nothing is persisted.",
+      "index": 134,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "saved-empty",
+      "name": "Nothing Saved",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "An empty saved list that teaches the gesture on three real rows.",
+      "summary": "Rather than describing how to save something, it hands the reader three rows with working bookmarks. The first press rings out from the button, the counter in the header rolls, and the headline turns into the count.",
+      "hardParts": [
+        "Teaching by doing means the rows have to be genuinely interactive, not a picture of an interaction",
+        "The ring is an absolutely positioned sibling so it never contributes to layout while it expands",
+        "The counter rolls on a keyed element, which is the only way a number change reads as counting rather than replacing"
+      ],
+      "variants": [
+        "Teach",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty saved, bookmarks or favourites list. Items are props; onSave reports every toggle. Saved state is local, so reconcile it with your own store.",
+      "index": 135,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "cart-empty",
+      "name": "Empty Cart",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "An empty bag with three recently viewed products that add for real.",
+      "summary": "An empty cart with no way back to the shop is a dead end, so this one carries the last three things the reader looked at. Adding one rolls the subtotal in the header, badges the medallion with the count and turns the actions into a checkout.",
+      "hardParts": [
+        "The subtotal is a rolling figure in a fixed box — tabular numerals, or the whole pill shifts on every digit",
+        "The badge count enters on a keyed spring so it pops rather than incrementing silently",
+        "Empty and filled are the same component, because a cart that swaps layouts on the first add loses the reader's place"
+      ],
+      "variants": [
+        "Recent",
+        "Minimal"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on an empty cart or bag. Products and currency are props; onAdd fires per press and the subtotal is derived locally. There is no real checkout behind it.",
+      "index": 136,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "board-empty",
+      "name": "Empty Board Column",
+      "category": "empty-states",
+      "subcategory": "All clear",
+      "description": "A kanban column that accepts real drags from its neighbours and composes cards inline.",
+      "summary": "The middle column is empty and the backlog beside it is a genuine source: cards drag across with the native API, the target lights up, and the dropped card lands with a layout spring. An inline composer writes one straight in.",
+      "hardParts": [
+        "Framer owns onDragStart for its own gesture, so the native handlers live on a plain child — the two events are not the same shape",
+        "The empty column has to keep its height while empty, or dropping the first card collapses the row it is in",
+        "Escape cancels the composer, and the add button stays available once the column has cards"
+      ],
+      "variants": [
+        "Board",
+        "Column"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use for an empty column on a board. Columns and cards are props; onMove reports drops. Uses the native HTML drag API, so it works with a mouse — pair it with a keyboard move for parity.",
+      "index": 137,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "offline-empty",
+      "name": "Offline",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "An offline panel that counts down, retries itself and recovers on screen.",
+      "summary": "A retry clock that actually ticks, retries on zero, and resolves into a Back online state with a positive medallion. Between them it says the thing that matters: your cached data is still here and your edits are queued.",
+      "hardParts": [
+        "The countdown only runs in the offline state, or a recovered panel sits there counting toward nothing",
+        "The state swap is a keyed crossfade, so the medallion changes meaning without the panel resizing",
+        "Recovery has to be reversible on a specimen page, so dropping the connection again is a first-class action"
+      ],
+      "variants": [
+        "Offline",
+        "Reconnecting",
+        "Restored"
+      ],
+      "complexity": "advanced",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use when a fetch fails because the client is offline. Retry timing and attempt count are props; onRetry is your hook for a real request. The recovery here is on a timer.",
+      "index": 138,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "error-empty",
+      "name": "Failed to Load",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A load failure with a copyable request id and a details panel that opens to fit.",
+      "summary": "The error id is the one string support will ask for, so it sits in a mono row with a copy button that confirms in place. Technical detail expands from 0fr to 1fr, and retrying resolves the panel into the rows that were meant to be there.",
+      "hardParts": [
+        "0fr to 1fr opens the panel to exactly its content height without measuring anything",
+        "The detail is a div and a code element, not a pre — host stylesheets love to force padding onto pre and win",
+        "A retry that only spins is not a demo: the second attempt has to succeed and the panel has to show what loaded"
+      ],
+      "variants": [
+        "Error",
+        "Details",
+        "Recovered"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use when a panel's request failed. Error id and detail string are props. onRetry fires immediately; the recovery is simulated, so drive the state from your own request.",
+      "index": 139,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "not-found-empty",
+      "name": "Page Not Found",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A 404 that prints the path it tried and filters real destinations as you type.",
+      "summary": "The attempted path is printed, because people mistype and want to see what they typed. Below it, a field filters a short list of the places people actually end up looking for, with an honest message when even that matches nothing.",
+      "hardParts": [
+        "A 404 with no destinations is a dead end with a number on it",
+        "The list filters on every keystroke and reflows with layout, so entries slide rather than snap",
+        "It has a second empty state inside it — when the filter matches nothing, saying so beats an empty box"
+      ],
+      "variants": [
+        "Search",
+        "Links"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use on a 404 route or a missing resource. Destinations, the attempted path and the code are props. The links are plain anchors — swap them for your router's.",
+      "index": 140,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "access-empty",
+      "name": "No Access",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A permission wall that names the owner and turns request into requested.",
+      "summary": "Being locked out is only useful if you know who can unlock it, so the owner's face and role sit under the message. Requesting flips the card to a positive state that says who was asked and when, and the lock becomes an unlock.",
+      "hardParts": [
+        "The owner card changes tone and its trailing glyph on the same state change, and neither may resize the row",
+        "The request must be cancellable — an irreversible button on a permissions screen is a support ticket",
+        "The resource path belongs in the header, so the admin reading over a shoulder knows exactly what was tried"
+      ],
+      "variants": [
+        "Request",
+        "Requested",
+        "Admin"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use for a 403 or an unauthorised resource. Owner and resource are props; onRequest fires once. The requested state is local, so drive it from your own approval flow.",
+      "index": 141,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "quota-empty",
+      "name": "Limit Reached",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A quota wall with a full meter, seven days of history and a reset clock.",
+      "summary": "A full bar, the number that filled it, and seven days of usage showing how it got there — a limit screen that only says upgrade is an ad. The reset window sits in the footnote so waiting stays a real option.",
+      "hardParts": [
+        "The history bars have to make the trend visible at 48px tall, which means a shared origin and a marked final day",
+        "Approaching and reached are the same layout at different values, so the caution and critical tones do the talking",
+        "The percentage and the meter both derive from one value — two places to round is two places to disagree"
+      ],
+      "variants": [
+        "Reached",
+        "Approaching"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use when an account has hit a plan limit. Used, limit, reset window and the history array are props. onUpgrade is where your billing flow starts.",
+      "index": 142,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "locked-empty",
+      "name": "Locked Feature",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A paywall over a blurred preview of the feature it is selling.",
+      "summary": "The report is drawn and then blurred behind glass, so the reader sees the shape of what they are buying instead of reading about it. Hovering lifts the blur a little; nothing in the box resizes, so the panel never moves away from the pointer.",
+      "hardParts": [
+        "Only the blur and opacity change on hover — an expanding preview reflows the grid and the panel walks away from the cursor",
+        "The hover is gated on pointerType mouse, because a tap fires a synthetic mouseenter and leaves the peek stuck on",
+        "What the plan includes is three literal lines, not a pitch — a paywall that oversells reads as a trick"
+      ],
+      "variants": [
+        "Locked",
+        "Trial"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use where a feature is gated by plan. Replace the drawn preview with a real screenshot or a blurred render of your own component. onUpgrade starts the billing flow.",
+      "index": 143,
+      "status": "live",
+      "addedAt": "2026-09-16"
+    },
+    {
+      "slug": "maintenance-empty",
+      "name": "Scheduled Maintenance",
+      "category": "empty-states",
+      "subcategory": "Interrupted",
+      "description": "A maintenance window with a ticking ETA, a stage rail and a notify-me field.",
+      "summary": "A countdown in tabular mono, three stages on a rail with the current one marked, and a single-email subscribe that promises one message rather than a newsletter. Scheduled, in progress and done are one panel in three states.",
+      "hardParts": [
+        "The countdown starts from a prop and ticks on the client, so the server render stays stable and hydration is quiet",
+        "Stage state is derived from one index — storing per-stage booleans lets the rail contradict the header",
+        "The subscribe form and its confirmation swap in place inside a fixed block, so the panel does not resize on submit"
+      ],
+      "variants": [
+        "In progress",
+        "Scheduled",
+        "Done"
+      ],
+      "complexity": "composed",
+      "composedOf": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "aiHints": "Use when a surface is down for planned work. Stages, ETA minutes and labels are props. onSubscribe receives the validated address; the countdown is local and stops at zero.",
+      "index": 144,
+      "status": "live",
+      "addedAt": "2026-09-16"
     }
   ]
 }

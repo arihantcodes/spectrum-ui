@@ -550,7 +550,7 @@ An inline undo pill with a draining countdown ring that pauses on hover.
 - Documentation: https://ui.spectrumhq.in/docs/undo-pill
 - Verified install command: `npx shadcn@latest add @spectrumui/undo-pill`
 
-## Block reference (86)
+## Block reference (111)
 
 Composed interface sections, a tier above components. All are presentational — data in, callbacks out — so they drop into an existing app without a data layer.
 
@@ -2245,6 +2245,462 @@ What makes it hard to build well:
 - The submitted state names a position rather than saying thanks, which is the only part of a waitlist a reader wants
 - The sheen is a skewed span clipped by the button, so it sweeps the fill instead of animating the button itself
 - Avatars carry an explicit z-index descending by index, so the overlap stacks left over right at any list length
+
+## Empty States blocks (25) — reference
+
+Twenty-five empty states for the moments a product has nothing to show: first run, no search results, a filter that matched nothing, an inbox at zero, a paywall, a 404, an outage. Every one is a real panel with its own chrome rather than a centred icon on a blank page, every one carries a filled Iconly glyph in a raised medallion, and every one does something — templates that select, filters that come off, files that drop, rows that appear, a key that is revealed once. They share one kit, so the set stays identical without twenty-five copies of the same markup, and every entrance is a spring that settles under 400ms and collapses to a fade under reduced motion.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/empty-states and installs with the shadcn CLI or through the MCP server.
+
+### First Project
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#project-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/project-empty
+- Variants: Templates, Checklist, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+The screen a new account lands on. Three templates that select in place and rename the primary action, or a setup checklist whose ticks drive a progress meter — because the fastest way out of an empty state is a decision already half made.
+
+When to use it: Reach for this on the first screen of a new workspace or project list. The templates and steps are props; selection state is local and surfaced through onCreate. It does not create anything itself.
+
+What makes it hard to build well:
+- A template card that only highlights teaches nothing — selecting one has to change the button's label, or the choice has no consequence
+- The checklist is state the host owns, so the ticks are local and onCreate carries the selection out
+- Press feedback lives on whileTap, which fires on pointerdown — the card answers before React does
+
+### Invite Teammates
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#invite-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/invite-empty
+- Variants: Invite, Link, Sent
+- Dependencies: motion
+- Added: 2026-09-16
+
+An avatar rail with one real face and dashed seats beside it. A validated email field drops a pending chip into the rail with a spring and the seat count follows; the Link variant swaps the form for a copyable join URL with an icon that crossfades on copy.
+
+When to use it: Use on an empty members or team screen. onInvite receives the validated address; the chip and count are optimistic local state, so reconcile with your server response.
+
+What makes it hard to build well:
+- Pending invites and open seats share one rail, so the layout has to reflow without the avatars jumping — popLayout plus layout does it
+- Email validation has to fail quietly and recover on the next keystroke, not shout on blur
+- Below 420px the submit stacks under the field: an inline button leaves no room to read your own address back
+
+### Connect a Source
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#integration-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/integration-empty
+- Variants: Catalog, Featured, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+Six drawn connector marks in a grid. Pressing one sweeps a sheen across the tile, then it lands as connected with a check and the headline recounts itself — the empty state narrates its own exit instead of disappearing.
+
+When to use it: Use on an empty integrations or data-sources screen. Swap the drawn marks for your own artwork. onConnect fires immediately; the success state here is simulated on a timer.
+
+What makes it hard to build well:
+- The marks are invented and drawn inline on a 24-grid, because a registry block that ships real logos hands its installers someone else's trademarks
+- Only one connect can be in flight, or the shimmer of two overlapping tiles reads as a broken loading state
+- The reduced-motion branch shortens the sequence to 200ms rather than removing it — the state change still needs to be legible
+
+### Drop Files
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#upload-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/upload-empty
+- Variants: Dropzone, Compact, Uploading
+- Dependencies: motion
+- Added: 2026-09-16
+
+The whole panel is the target. Real dragenter, dragover and drop handlers light the dashed border, dropped files land as rows with their own progress meters, and the headline turns positive when the last one finishes.
+
+When to use it: Use on an empty files, assets or import screen. onFiles receives the real File objects; the progress here is simulated, so replace it with your upload's own events.
+
+What makes it hard to build well:
+- dragenter fires again for every child the pointer crosses, so leaving is only real when a depth counter returns to zero
+- One interval drives every row: per-row timers drift apart and the bars stop looking like one upload
+- The file input is visually hidden but still focusable, so the keyboard path to it is the same as the mouse's
+
+### No API Keys
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#api-key-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/api-key-empty
+- Variants: Default, Created, Compact
+- Dependencies: motion
+- Added: 2026-09-16
+
+Creating a key swaps the empty state for the key itself: masked by default, revealed by an eye toggle, copied by a button whose glyph blur-crossfades into a check. The warning under it says the thing every key screen should say once.
+
+When to use it: Use on an empty API keys or credentials screen. The sample key is a prop and never leaves the client; wire onCreate to your key service and pass the real value in.
+
+What makes it hard to build well:
+- Mask and reveal must not change the row's width, or the copy button walks away from the pointer
+- The copy confirmation is a crossfade in a fixed 15px box — a swap that resizes makes the whole row twitch
+- Clipboard writes reject on insecure origins, so the confirmation only fires after the promise resolves
+
+### Waiting for Events
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#webhook-empty
+- Category: empty-states / First run
+- Install: npx shadcn@latest add @spectrumui/webhook-empty
+- Variants: Listening, Received
+- Dependencies: motion
+- Added: 2026-09-16
+
+The endpoint, a curl line to hit it with, and a listening indicator that is honest about doing nothing. Sending a test event drops a delivery row in from above and the panel flips from waiting to active.
+
+When to use it: Use on a webhook endpoint that has never fired. onTest is called immediately; the arriving event is simulated locally, so replace it with your own delivery stream.
+
+What makes it hard to build well:
+- A listening indicator is the one loop this set allows, because it reports a live state rather than decorating a dead one
+- The first event enters from negative y so it reads as arriving, not as being revealed
+- The status pill in the header and the medallion badge have to agree, or the panel tells two stories
+
+### No Search Results
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#search-empty
+- Category: empty-states / No results
+- Install: npx shadcn@latest add @spectrumui/search-empty
+- Variants: Suggestions, Scoped, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+The query is printed in mono, because a no-results screen that hides what it searched for is a shrug. Suggestions are real: taking one crossfades the term in the header and, for the term that matches, the panel becomes a result list.
+
+When to use it: Use when a search returns nothing. Pass the reader's query and a suggestions list; the results map here is a fixture, so wire onSearch to your own index.
+
+What makes it hard to build well:
+- The query has to be visible in the header and in the copy, and both have to animate on the same swap
+- Suggestion pills are buttons, not chips — the keyboard path to a correction matters most to the people who mistype
+- Resolving to results and going back has to be reversible, or the specimen is a one-shot
+
+### No Matching Filters
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#filter-empty
+- Category: empty-states / No results
+- Install: npx shadcn@latest add @spectrumui/filter-empty
+- Variants: Chips, Summary
+- Dependencies: motion
+- Added: 2026-09-16
+
+Four filters are narrowing a table to nothing. Each chip removes with a spring, and the count that comes back is attributed to the filter that released it — so the reader learns which one was too tight instead of clearing everything and starting over.
+
+When to use it: Use above a list or table that filtered to zero. Each filter declares the rows it alone is excluding; onChange receives the remaining filter ids.
+
+What makes it hard to build well:
+- Every chip has to own the rows it releases, or the recovered count is a number with no explanation
+- The count rolls on a keyed element so it re-enters rather than swapping in place
+- Clearing everything and restoring it both have to work, because a filter state you cannot get back is worse than no filters
+
+### Empty Table
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#table-empty
+- Category: empty-states / No results
+- Install: npx shadcn@latest add @spectrumui/table-empty
+- Variants: Overlay, Inline, Loading
+- Dependencies: motion
+- Added: 2026-09-16
+
+The columns stay, the ghost rows hold the height, and the message floats over a gradient rather than replacing the table. Adding a row inserts a real one and the overlay fades out from under it.
+
+When to use it: Use inside a data table with no rows. Columns and the rows the demo inserts are props; onAdd fires per insert. It renders its own table, so drop it in place of your tbody or wrap your own.
+
+What makes it hard to build well:
+- Dropping the header on an empty table hides the shape of what goes in it — the columns are the documentation
+- Ghost rows hold the box's height so the first real row does not jolt the page below
+- The Loading variant shimmers the same ghost rows, so empty and loading are one layout in two states
+
+### No Chart Data
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#chart-empty
+- Category: empty-states / No results
+- Install: npx shadcn@latest add @spectrumui/chart-empty
+- Variants: Bars, Line
+- Dependencies: motion
+- Added: 2026-09-16
+
+Gridlines and day labels stay so the chart keeps its footprint. Loading the sample springs seven bars up on a stagger — or draws a line by pathLength — and the seven-day average settles in as a dashed rule.
+
+When to use it: Use inside a chart card with no events in range. The sample array is a prop, values 0 to 1. Purely presentational — onLoad is where you would fetch the real series.
+
+What makes it hard to build well:
+- An empty chart that collapses to a message loses the one thing it can still communicate: its scale
+- The overlay sits on a gradient wash, because centred text on gridlines is unreadable in both themes
+- Bars animate scaleY from an origin at the baseline, so nothing has to be measured to grow the right way
+
+### No Activity Yet
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#activity-empty
+- Category: empty-states / No results
+- Install: npx shadcn@latest add @spectrumui/activity-empty
+- Variants: Timeline, Compact
+- Dependencies: motion
+- Added: 2026-09-16
+
+Every account has one event: it was created. The rail runs dashed above it to say the timeline has a past and simply has not been given anything to show, which reads as working rather than broken.
+
+When to use it: Use on an audit log, activity feed or history panel with nothing recorded. The seed event is a prop — pass the account's real creation event.
+
+What makes it hard to build well:
+- A timeline with no nodes reads as a failed fetch; one real node and a dashed rail reads as a young account
+- The rail scales from its bottom origin so it grows toward the event rather than away from it
+- Retention belongs in the header, not the copy — it is a fact about the panel, not about the emptiness
+
+### Inbox Zero
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#inbox-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/inbox-empty
+- Variants: Cleared, Snoozed, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+On mount, three message cards sweep off to the right on a stagger and the medallion lands where they were — the panel shows you clearing it rather than telling you it is clear. Three counters settle underneath.
+
+When to use it: Use on a cleared inbox, queue or task list. Stats are props. The sweep is decorative and plays once per mount — key the component if you want it to replay.
+
+What makes it hard to build well:
+- The gesture plays once and then unmounts; a celebration that repeats on every render stops being one
+- Reduced motion skips the sweep entirely rather than slowing it — the cards are the animation
+- Snoozed is a different state, not a footnote: the count belongs in the title because it is the reason the inbox is empty
+
+### No Notifications
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#notification-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/notification-empty
+- Variants: Default, Quiet hours
+- Dependencies: motion
+- Added: 2026-09-16
+
+Nothing new, and the reason is on screen: three channels with real switches, dimmed when quiet hours are on. The medallion takes a clock badge and the copy promises the held notifications are waiting, not lost.
+
+When to use it: Use on an empty notifications tray. Channels are props and onToggle reports every change; the switches are controlled locally, so lift the state if it belongs to the server.
+
+What makes it hard to build well:
+- Turning a channel off has to dim its row without collapsing it, or the list jumps under the finger that toggled it
+- Quiet hours changes what every row means, so the detail line rewrites itself rather than adding a banner
+- The header count and the switch states are one source of truth, derived not stored twice
+
+### Trash Is Empty
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#trash-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/trash-empty
+- Variants: Default, Retention
+- Dependencies: motion
+- Added: 2026-09-16
+
+Nothing waiting means nothing about to be destroyed, which is the reassurance this screen owes. The Retention variant draws the thirty-day window as a meter at zero, labelled from deleted to purged.
+
+When to use it: Use on an empty trash, bin or archive screen. Retention days and the scheduled count are props — pass the real policy rather than the default 30.
+
+What makes it hard to build well:
+- An empty trash is good news that needs a policy attached, or the reader wonders what already went
+- The meter reads zero and still has to look deliberate — a bar at 0% must not read as a failed render
+- Recovery is a real path for admins, so the footnote names it rather than implying the data is gone
+
+### Nothing Scheduled
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#schedule-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/schedule-empty
+- Variants: Day, Week, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+Eight hours with a red now line across them. Any slot opens a composer in place; Enter drops a real event block into that hour with a spring and Escape backs out, so a clear day is one keystroke from being a used one.
+
+When to use it: Use on a calendar day or agenda with nothing booked. Hours, the date label and the now marker are all props. onCreate receives each event; nothing is persisted.
+
+What makes it hard to build well:
+- The now marker is a fixed prop, not new Date(): a server-rendered clock hydrates to a different position and React warns
+- The composer replaces the slot rather than floating over it, so nothing below moves when it opens
+- Escape has to close it — a composer with only a cancel button is a trap on a keyboard
+
+### Nothing Saved
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#saved-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/saved-empty
+- Variants: Teach, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+Rather than describing how to save something, it hands the reader three rows with working bookmarks. The first press rings out from the button, the counter in the header rolls, and the headline turns into the count.
+
+When to use it: Use on an empty saved, bookmarks or favourites list. Items are props; onSave reports every toggle. Saved state is local, so reconcile it with your own store.
+
+What makes it hard to build well:
+- Teaching by doing means the rows have to be genuinely interactive, not a picture of an interaction
+- The ring is an absolutely positioned sibling so it never contributes to layout while it expands
+- The counter rolls on a keyed element, which is the only way a number change reads as counting rather than replacing
+
+### Empty Cart
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#cart-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/cart-empty
+- Variants: Recent, Minimal
+- Dependencies: motion
+- Added: 2026-09-16
+
+An empty cart with no way back to the shop is a dead end, so this one carries the last three things the reader looked at. Adding one rolls the subtotal in the header, badges the medallion with the count and turns the actions into a checkout.
+
+When to use it: Use on an empty cart or bag. Products and currency are props; onAdd fires per press and the subtotal is derived locally. There is no real checkout behind it.
+
+What makes it hard to build well:
+- The subtotal is a rolling figure in a fixed box — tabular numerals, or the whole pill shifts on every digit
+- The badge count enters on a keyed spring so it pops rather than incrementing silently
+- Empty and filled are the same component, because a cart that swaps layouts on the first add loses the reader's place
+
+### Empty Board Column
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#board-empty
+- Category: empty-states / All clear
+- Install: npx shadcn@latest add @spectrumui/board-empty
+- Variants: Board, Column
+- Dependencies: motion
+- Added: 2026-09-16
+
+The middle column is empty and the backlog beside it is a genuine source: cards drag across with the native API, the target lights up, and the dropped card lands with a layout spring. An inline composer writes one straight in.
+
+When to use it: Use for an empty column on a board. Columns and cards are props; onMove reports drops. Uses the native HTML drag API, so it works with a mouse — pair it with a keyboard move for parity.
+
+What makes it hard to build well:
+- Framer owns onDragStart for its own gesture, so the native handlers live on a plain child — the two events are not the same shape
+- The empty column has to keep its height while empty, or dropping the first card collapses the row it is in
+- Escape cancels the composer, and the add button stays available once the column has cards
+
+### Offline
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#offline-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/offline-empty
+- Variants: Offline, Reconnecting, Restored
+- Dependencies: motion
+- Added: 2026-09-16
+
+A retry clock that actually ticks, retries on zero, and resolves into a Back online state with a positive medallion. Between them it says the thing that matters: your cached data is still here and your edits are queued.
+
+When to use it: Use when a fetch fails because the client is offline. Retry timing and attempt count are props; onRetry is your hook for a real request. The recovery here is on a timer.
+
+What makes it hard to build well:
+- The countdown only runs in the offline state, or a recovered panel sits there counting toward nothing
+- The state swap is a keyed crossfade, so the medallion changes meaning without the panel resizing
+- Recovery has to be reversible on a specimen page, so dropping the connection again is a first-class action
+
+### Failed to Load
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#error-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/error-empty
+- Variants: Error, Details, Recovered
+- Dependencies: motion
+- Added: 2026-09-16
+
+The error id is the one string support will ask for, so it sits in a mono row with a copy button that confirms in place. Technical detail expands from 0fr to 1fr, and retrying resolves the panel into the rows that were meant to be there.
+
+When to use it: Use when a panel's request failed. Error id and detail string are props. onRetry fires immediately; the recovery is simulated, so drive the state from your own request.
+
+What makes it hard to build well:
+- 0fr to 1fr opens the panel to exactly its content height without measuring anything
+- The detail is a div and a code element, not a pre — host stylesheets love to force padding onto pre and win
+- A retry that only spins is not a demo: the second attempt has to succeed and the panel has to show what loaded
+
+### Page Not Found
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#not-found-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/not-found-empty
+- Variants: Search, Links
+- Dependencies: motion
+- Added: 2026-09-16
+
+The attempted path is printed, because people mistype and want to see what they typed. Below it, a field filters a short list of the places people actually end up looking for, with an honest message when even that matches nothing.
+
+When to use it: Use on a 404 route or a missing resource. Destinations, the attempted path and the code are props. The links are plain anchors — swap them for your router's.
+
+What makes it hard to build well:
+- A 404 with no destinations is a dead end with a number on it
+- The list filters on every keystroke and reflows with layout, so entries slide rather than snap
+- It has a second empty state inside it — when the filter matches nothing, saying so beats an empty box
+
+### No Access
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#access-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/access-empty
+- Variants: Request, Requested, Admin
+- Dependencies: motion
+- Added: 2026-09-16
+
+Being locked out is only useful if you know who can unlock it, so the owner's face and role sit under the message. Requesting flips the card to a positive state that says who was asked and when, and the lock becomes an unlock.
+
+When to use it: Use for a 403 or an unauthorised resource. Owner and resource are props; onRequest fires once. The requested state is local, so drive it from your own approval flow.
+
+What makes it hard to build well:
+- The owner card changes tone and its trailing glyph on the same state change, and neither may resize the row
+- The request must be cancellable — an irreversible button on a permissions screen is a support ticket
+- The resource path belongs in the header, so the admin reading over a shoulder knows exactly what was tried
+
+### Limit Reached
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#quota-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/quota-empty
+- Variants: Reached, Approaching
+- Dependencies: motion
+- Added: 2026-09-16
+
+A full bar, the number that filled it, and seven days of usage showing how it got there — a limit screen that only says upgrade is an ad. The reset window sits in the footnote so waiting stays a real option.
+
+When to use it: Use when an account has hit a plan limit. Used, limit, reset window and the history array are props. onUpgrade is where your billing flow starts.
+
+What makes it hard to build well:
+- The history bars have to make the trend visible at 48px tall, which means a shared origin and a marked final day
+- Approaching and reached are the same layout at different values, so the caution and critical tones do the talking
+- The percentage and the meter both derive from one value — two places to round is two places to disagree
+
+### Locked Feature
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#locked-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/locked-empty
+- Variants: Locked, Trial
+- Dependencies: motion
+- Added: 2026-09-16
+
+The report is drawn and then blurred behind glass, so the reader sees the shape of what they are buying instead of reading about it. Hovering lifts the blur a little; nothing in the box resizes, so the panel never moves away from the pointer.
+
+When to use it: Use where a feature is gated by plan. Replace the drawn preview with a real screenshot or a blurred render of your own component. onUpgrade starts the billing flow.
+
+What makes it hard to build well:
+- Only the blur and opacity change on hover — an expanding preview reflows the grid and the panel walks away from the cursor
+- The hover is gated on pointerType mouse, because a tap fires a synthetic mouseenter and leaves the peek stuck on
+- What the plan includes is three literal lines, not a pitch — a paywall that oversells reads as a trick
+
+### Scheduled Maintenance
+
+- URL: https://ui.spectrumhq.in/blocks/empty-states#maintenance-empty
+- Category: empty-states / Interrupted
+- Install: npx shadcn@latest add @spectrumui/maintenance-empty
+- Variants: In progress, Scheduled, Done
+- Dependencies: motion
+- Added: 2026-09-16
+
+A countdown in tabular mono, three stages on a rail with the current one marked, and a single-email subscribe that promises one message rather than a newsletter. Scheduled, in progress and done are one panel in three states.
+
+When to use it: Use when a surface is down for planned work. Stages, ETA minutes and labels are props. onSubscribe receives the validated address; the countdown is local and stops at zero.
+
+What makes it hard to build well:
+- The countdown starts from a prop and ticks on the client, so the server render stays stable and hydration is quiet
+- Stage state is derived from one index — storing per-stage booleans lets the rail contradict the header
+- The subscribe form and its confirmation swap in place inside a fixed block, so the panel does not resize on submit
 
 ## Charts
 

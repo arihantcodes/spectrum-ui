@@ -6081,6 +6081,812 @@
         "launch",
         "avatars"
       ]
+    },
+    {
+      "name": "project-empty",
+      "type": "registry:block",
+      "title": "First Project",
+      "description": "First-run project screen with selectable templates and a setup checklist.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/project-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/project-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "onboarding",
+        "first run",
+        "templates",
+        "projects"
+      ]
+    },
+    {
+      "name": "invite-empty",
+      "type": "registry:block",
+      "title": "Invite Teammates",
+      "description": "A one-seat team with an avatar rail, live invite field and copyable join link.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/invite-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/invite-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "team",
+        "invite",
+        "seats",
+        "onboarding"
+      ]
+    },
+    {
+      "name": "integration-empty",
+      "type": "registry:block",
+      "title": "Connect a Source",
+      "description": "A connector grid where tiles run a real connect sequence and settle into connected.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/integration-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/integration-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "integrations",
+        "connectors",
+        "data sources",
+        "onboarding"
+      ]
+    },
+    {
+      "name": "upload-empty",
+      "type": "registry:block",
+      "title": "Drop Files",
+      "description": "A drop zone with real drag handling and per-file upload meters.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/upload-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/upload-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "upload",
+        "drag and drop",
+        "files",
+        "dropzone"
+      ]
+    },
+    {
+      "name": "api-key-empty",
+      "type": "registry:block",
+      "title": "No API Keys",
+      "description": "Key creation that reveals the secret once, masked, with a copy that confirms itself.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/api-key-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/api-key-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "api keys",
+        "secrets",
+        "developer",
+        "security"
+      ]
+    },
+    {
+      "name": "webhook-empty",
+      "type": "registry:block",
+      "title": "Waiting for Events",
+      "description": "A live endpoint waiting for its first delivery, with a test event that lands.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/webhook-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/webhook-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "webhooks",
+        "events",
+        "developer",
+        "logs"
+      ]
+    },
+    {
+      "name": "search-empty",
+      "type": "registry:block",
+      "title": "No Search Results",
+      "description": "A no-results state that echoes the query and resolves when a suggestion is taken.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/search-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/search-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "search",
+        "no results",
+        "suggestions",
+        "did you mean"
+      ]
+    },
+    {
+      "name": "filter-empty",
+      "type": "registry:block",
+      "title": "No Matching Filters",
+      "description": "Filter chips you can drop one at a time, with the match count coming back as you do.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/filter-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/filter-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "filters",
+        "no results",
+        "table",
+        "faceted search"
+      ]
+    },
+    {
+      "name": "table-empty",
+      "type": "registry:block",
+      "title": "Empty Table",
+      "description": "A table that keeps its header and column widths, with rows that spring in.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/table-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/table-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "table",
+        "no rows",
+        "data",
+        "loading"
+      ]
+    },
+    {
+      "name": "chart-empty",
+      "type": "registry:block",
+      "title": "No Chart Data",
+      "description": "Ghost axes with a sample series that springs up on request.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/chart-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/chart-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "charts",
+        "analytics",
+        "no data",
+        "sample data"
+      ]
+    },
+    {
+      "name": "activity-empty",
+      "type": "registry:block",
+      "title": "No Activity Yet",
+      "description": "An audit timeline with a dashed rail above its one real event.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/activity-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/activity-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "activity",
+        "audit log",
+        "timeline",
+        "history"
+      ]
+    },
+    {
+      "name": "inbox-empty",
+      "type": "registry:block",
+      "title": "Inbox Zero",
+      "description": "A cleared inbox where the last three cards sweep out and the stats land.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/inbox-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/inbox-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "inbox",
+        "inbox zero",
+        "messages",
+        "all caught up"
+      ]
+    },
+    {
+      "name": "notification-empty",
+      "type": "registry:block",
+      "title": "No Notifications",
+      "description": "An empty notification tray with working channel switches and a quiet-hours state.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/notification-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/notification-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "switch"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "notifications",
+        "quiet hours",
+        "settings",
+        "preferences"
+      ]
+    },
+    {
+      "name": "trash-empty",
+      "type": "registry:block",
+      "title": "Trash Is Empty",
+      "description": "An empty trash that explains the retention window instead of celebrating.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/trash-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/trash-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "trash",
+        "deleted",
+        "retention",
+        "recovery"
+      ]
+    },
+    {
+      "name": "schedule-empty",
+      "type": "registry:block",
+      "title": "Nothing Scheduled",
+      "description": "A day rail with a now marker where any hour opens an inline composer.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/schedule-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/schedule-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "calendar",
+        "schedule",
+        "agenda",
+        "events"
+      ]
+    },
+    {
+      "name": "saved-empty",
+      "type": "registry:block",
+      "title": "Nothing Saved",
+      "description": "An empty saved list that teaches the gesture on three real rows.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/saved-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/saved-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "bookmarks",
+        "saved",
+        "favorites",
+        "onboarding"
+      ]
+    },
+    {
+      "name": "cart-empty",
+      "type": "registry:block",
+      "title": "Empty Cart",
+      "description": "An empty bag with three recently viewed products that add for real.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/cart-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/cart-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "cart",
+        "ecommerce",
+        "checkout",
+        "recently viewed"
+      ]
+    },
+    {
+      "name": "board-empty",
+      "type": "registry:block",
+      "title": "Empty Board Column",
+      "description": "A kanban column that accepts real drags from its neighbours and composes cards inline.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/board-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/board-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "kanban",
+        "board",
+        "drag and drop",
+        "tasks"
+      ]
+    },
+    {
+      "name": "offline-empty",
+      "type": "registry:block",
+      "title": "Offline",
+      "description": "An offline panel that counts down, retries itself and recovers on screen.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/offline-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/offline-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "offline",
+        "connection",
+        "retry",
+        "error"
+      ]
+    },
+    {
+      "name": "error-empty",
+      "type": "registry:block",
+      "title": "Failed to Load",
+      "description": "A load failure with a copyable request id and a details panel that opens to fit.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/error-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/error-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "error",
+        "retry",
+        "failed to load",
+        "diagnostics"
+      ]
+    },
+    {
+      "name": "not-found-empty",
+      "type": "registry:block",
+      "title": "Page Not Found",
+      "description": "A 404 that prints the path it tried and filters real destinations as you type.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/not-found-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/not-found-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "404",
+        "not found",
+        "navigation",
+        "search"
+      ]
+    },
+    {
+      "name": "access-empty",
+      "type": "registry:block",
+      "title": "No Access",
+      "description": "A permission wall that names the owner and turns request into requested.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/access-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/access-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "permissions",
+        "access",
+        "403",
+        "request access"
+      ]
+    },
+    {
+      "name": "quota-empty",
+      "type": "registry:block",
+      "title": "Limit Reached",
+      "description": "A quota wall with a full meter, seven days of history and a reset clock.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/quota-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/quota-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "quota",
+        "rate limit",
+        "usage",
+        "upgrade"
+      ]
+    },
+    {
+      "name": "locked-empty",
+      "type": "registry:block",
+      "title": "Locked Feature",
+      "description": "A paywall over a blurred preview of the feature it is selling.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/locked-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/locked-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "paywall",
+        "upgrade",
+        "locked",
+        "plan"
+      ]
+    },
+    {
+      "name": "maintenance-empty",
+      "type": "registry:block",
+      "title": "Scheduled Maintenance",
+      "description": "A maintenance window with a ticking ETA, a stage rail and a notify-me field.",
+      "files": [
+        {
+          "path": "components/spectrumui/blocks/empty-states/maintenance-empty.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/maintenance-empty.tsx"
+        },
+        {
+          "path": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx",
+          "type": "registry:block",
+          "target": "components/spectrumui/blocks/empty-states/empty-state-kit.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "category": "Empty States",
+      "tags": [
+        "empty state",
+        "maintenance",
+        "status",
+        "downtime",
+        "incident"
+      ]
     }
   ]
 }

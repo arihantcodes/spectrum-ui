@@ -83,6 +83,7 @@ These are stated as verdicts because that is what the question asks for. Where a
 - [Tables Blocks](https://ui.spectrumhq.in/blocks/tables): The tables real products run on, ready to copy. 15 blocks, each with variants and source on one page
 - [Charts Blocks](https://ui.spectrumhq.in/blocks/charts): Every chart, live, with the source beside it. 19 blocks, each with variants and source on one page
 - [Footers Blocks](https://ui.spectrumhq.in/blocks/footers): Page-width footers that do something when you touch them. 18 blocks, each with variants and source on one page
+- [Empty States Blocks](https://ui.spectrumhq.in/blocks/empty-states): The screen your product shows most often, and ships worst. 25 blocks, each with variants and source on one page
 - [Charts](https://ui.spectrumhq.in/blocks/charts): 18 React chart components — candlestick, order book, market depth, technical indicators, portfolio drawdown, cohort retention, histogram, calendar heatmap, KPI stat cards, plus bar/line/area/composed/pie/radar/radial. Nine need no charting dependency
 - [Colors](https://ui.spectrumhq.in/colors): Color system and palettes
 - [Brand kit](https://ui.spectrumhq.in/brandkit): Official logos (SVG and PNG, light and dark), product screenshots, typography, brand colors, and social links
@@ -159,7 +160,7 @@ Components can also be copied manually from their documentation source. Install 
 - [Tree Nav](https://ui.spectrumhq.in/docs/tree-nav): A nav list with a tree rail and a spring marker that follows hover and settles on the active link.
 - [Undo Pill](https://ui.spectrumhq.in/docs/undo-pill): An inline undo pill with a draining countdown ring that pauses on hover.
 
-## Blocks (86, a tier above components)
+## Blocks (111, a tier above components)
 
 Blocks are composed interface sections — several components assembled into a section you install whole.
 
@@ -283,6 +284,38 @@ Every block in this category renders live at actual size on https://ui.spectrumh
 - [Logo Wall Footer](https://ui.spectrumhq.in/blocks/footers#social-proof-footer): A customer logo wall — marquee or plotted grid — over stats and link columns.
 - [Minimal Footer](https://ui.spectrumhq.in/blocks/footers#minimal-footer): A single-line footer with hover-expanding link clusters, status and socials.
 - [Waitlist Footer](https://ui.spectrumhq.in/blocks/footers#waitlist-footer): Waitlist capture with an avatar stack and a live position counter.
+
+## Empty States blocks (25)
+
+Twenty-five empty states for the moments a product has nothing to show: first run, no search results, a filter that matched nothing, an inbox at zero, a paywall, a 404, an outage. Every one is a real panel with its own chrome rather than a centred icon on a blank page, every one carries a filled Iconly glyph in a raised medallion, and every one does something — templates that select, filters that come off, files that drop, rows that appear, a key that is revealed once. They share one kit, so the set stays identical without twenty-five copies of the same markup, and every entrance is a spring that settles under 400ms and collapses to a fade under reduced motion.
+
+Every block in this category renders live at actual size on https://ui.spectrumhq.in/blocks/empty-states and installs with the shadcn CLI or through the MCP server.
+
+- [First Project](https://ui.spectrumhq.in/blocks/empty-states#project-empty): First-run project screen with selectable templates and a setup checklist.
+- [Invite Teammates](https://ui.spectrumhq.in/blocks/empty-states#invite-empty): A one-seat team with an avatar rail, live invite field and copyable join link.
+- [Connect a Source](https://ui.spectrumhq.in/blocks/empty-states#integration-empty): A connector grid where tiles run a real connect sequence and settle into connected.
+- [Drop Files](https://ui.spectrumhq.in/blocks/empty-states#upload-empty): A drop zone with real drag handling and per-file upload meters.
+- [No API Keys](https://ui.spectrumhq.in/blocks/empty-states#api-key-empty): Key creation that reveals the secret once, masked, with a copy that confirms itself.
+- [Waiting for Events](https://ui.spectrumhq.in/blocks/empty-states#webhook-empty): A live endpoint waiting for its first delivery, with a test event that lands.
+- [No Search Results](https://ui.spectrumhq.in/blocks/empty-states#search-empty): A no-results state that echoes the query and resolves when a suggestion is taken.
+- [No Matching Filters](https://ui.spectrumhq.in/blocks/empty-states#filter-empty): Filter chips you can drop one at a time, with the match count coming back as you do.
+- [Empty Table](https://ui.spectrumhq.in/blocks/empty-states#table-empty): A table that keeps its header and column widths, with rows that spring in.
+- [No Chart Data](https://ui.spectrumhq.in/blocks/empty-states#chart-empty): Ghost axes with a sample series that springs up on request.
+- [No Activity Yet](https://ui.spectrumhq.in/blocks/empty-states#activity-empty): An audit timeline with a dashed rail above its one real event.
+- [Inbox Zero](https://ui.spectrumhq.in/blocks/empty-states#inbox-empty): A cleared inbox where the last three cards sweep out and the stats land.
+- [No Notifications](https://ui.spectrumhq.in/blocks/empty-states#notification-empty): An empty notification tray with working channel switches and a quiet-hours state.
+- [Trash Is Empty](https://ui.spectrumhq.in/blocks/empty-states#trash-empty): An empty trash that explains the retention window instead of celebrating.
+- [Nothing Scheduled](https://ui.spectrumhq.in/blocks/empty-states#schedule-empty): A day rail with a now marker where any hour opens an inline composer.
+- [Nothing Saved](https://ui.spectrumhq.in/blocks/empty-states#saved-empty): An empty saved list that teaches the gesture on three real rows.
+- [Empty Cart](https://ui.spectrumhq.in/blocks/empty-states#cart-empty): An empty bag with three recently viewed products that add for real.
+- [Empty Board Column](https://ui.spectrumhq.in/blocks/empty-states#board-empty): A kanban column that accepts real drags from its neighbours and composes cards inline.
+- [Offline](https://ui.spectrumhq.in/blocks/empty-states#offline-empty): An offline panel that counts down, retries itself and recovers on screen.
+- [Failed to Load](https://ui.spectrumhq.in/blocks/empty-states#error-empty): A load failure with a copyable request id and a details panel that opens to fit.
+- [Page Not Found](https://ui.spectrumhq.in/blocks/empty-states#not-found-empty): A 404 that prints the path it tried and filters real destinations as you type.
+- [No Access](https://ui.spectrumhq.in/blocks/empty-states#access-empty): A permission wall that names the owner and turns request into requested.
+- [Limit Reached](https://ui.spectrumhq.in/blocks/empty-states#quota-empty): A quota wall with a full meter, seven days of history and a reset clock.
+- [Locked Feature](https://ui.spectrumhq.in/blocks/empty-states#locked-empty): A paywall over a blurred preview of the feature it is selling.
+- [Scheduled Maintenance](https://ui.spectrumhq.in/blocks/empty-states#maintenance-empty): A maintenance window with a ticking ETA, a stage rail and a notify-me field.
 
 ## Machine-readable resources
 

@@ -63,6 +63,7 @@ import { LeaderboardTable } from '@/components/spectrumui/blocks/tables/leaderbo
 import { FilesTable } from '@/components/spectrumui/blocks/tables/files-table';
 import { CHART_BLOCK_DEMOS } from '@/components/blocks/chart-demos';
 import { FOOTER_DEMOS } from '@/components/blocks/demos-footers';
+import { EMPTY_STATE_DEMOS } from '@/components/blocks/demos-empty-states';
 import { BannerTiers } from '@/components/spectrumui/blocks/pricing/banner-tiers';
 import { ReceiptTiers } from '@/components/spectrumui/blocks/pricing/receipt-tiers';
 import { BlueprintTiers } from '@/components/spectrumui/blocks/pricing/blueprint-tiers';
@@ -146,6 +147,9 @@ export const BLOCK_DEMOS: Record<string, (variant: string) => React.ReactNode> =
   /* Footers, likewise: twenty-five page-width demos, each with its own fixture
      brand, would bury the AI blocks under their own imports. */
   ...FOOTER_DEMOS,
+  /* Empty states: twenty-five panels that all key off their variant, so the
+     pills reset the interaction as well as changing it. */
+  ...EMPTY_STATE_DEMOS,
   'loading-state': (variant) => <LoadingState variant={variant as 'Drive' | 'Dots' | 'Orbit'} />,
   'reasoning-trace': (variant) => <ReasoningTraceDemo variant={variant as 'Steps' | 'Reasoning'} />,
   'streaming-text': (variant) => <StreamingTextDemo variant={variant as 'Answer' | 'Sources'} />,
