@@ -224,7 +224,7 @@ export default function QuickStart() {
         role="radiogroup"
         aria-label="AI tool"
         onKeyDown={onArrowKey}
-        className="mb-6 flex flex-wrap gap-2.5"
+        className="mb-6 flex flex-wrap gap-2"
       >
         {CLIENTS.map((client) => {
           const selected = active === client.id;
@@ -241,7 +241,7 @@ export default function QuickStart() {
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(client.id)}
               className={cn(
-                'flex h-10 cursor-pointer items-center gap-2 rounded-full pl-3.5 pr-4 text-[15px]',
+                'flex h-8 cursor-pointer items-center gap-1.5 rounded-full pl-2.5 pr-3 text-[13.5px]',
                 'transition-[background-color,color,border-color,transform] duration-150 active:scale-[0.96]',
                 'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-300 dark:focus-visible:ring-offset-neutral-950',
                 selected
@@ -249,7 +249,7 @@ export default function QuickStart() {
                   : 'border border-black/[0.09] bg-white text-neutral-800 shadow-xs hover:border-black/[0.18] dark:border-white/[0.12] dark:bg-white/[0.04] dark:text-neutral-200 dark:hover:border-white/25',
               )}
             >
-              <Mark aria-hidden className="size-[18px] shrink-0" strokeWidth={1.8} />
+              <Mark aria-hidden className="size-[15px] shrink-0" strokeWidth={1.8} />
               {client.name}
             </button>
           );

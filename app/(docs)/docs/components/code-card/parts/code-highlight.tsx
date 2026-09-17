@@ -195,10 +195,15 @@ const CodeHighlight = ({
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              // The code recipe, shared with the terminal figures: 15px, a 1.85 line
-              // height, and slightly positive letter- and word-spacing. Mono at this
-              // size wants air between lines and words, not compression.
-              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[15px] [&_code]:tracking-[0.015em] [&_code]:[word-spacing:0.08em] [&_pre]:overflow-auto [&_pre]:p-5 [&_pre]:pr-12 [&_pre]:leading-[1.85]',
+              // The code recipe, shared with the terminal figures: 15px, +0.015em
+              // tracking, +0.08em word-spacing.
+              //
+              // The size goes on the `pre` as well as the `code`. A unitless
+              // line-height resolves against the element that declares it, so with
+              // only `code` sized down the `pre` was computing 1.75 against the
+              // inherited 16px — 28px of leading on 15px text, which is what made
+              // every block on the page twice as tall as its content.
+              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_pre]:text-[15px] [&_code]:text-[15px] [&_code]:tracking-[0.015em] [&_code]:[word-spacing:0.08em] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.75]',
               lang,
             )}
           />
