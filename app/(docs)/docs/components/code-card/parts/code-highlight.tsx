@@ -19,6 +19,14 @@ interface CodeHighlightProps {
    * Pass requireAuth={false} for public blocks like install bash commands.
    */
   requireAuth?: boolean;
+  /** Height of the scroll window. The drawer gives the source more room than a docs tab. */
+  maxHeightClassName?: string;
+  /**
+   * Names the scroll region for assistive technology. A scrollable box that is
+   * not focusable cannot be scrolled from the keyboard at all (WCAG 2.1.1), so
+   * passing this also puts the region in the tab order.
+   */
+  scrollLabel?: string;
 }
 
 const CodeHighlight = ({
@@ -28,6 +36,8 @@ const CodeHighlight = ({
   lang = 'tsx',
   title = '',
   requireAuth = true,
+  maxHeightClassName,
+  scrollLabel,
 }: CodeHighlightProps) => {
   const [copied, setCopied] = useState(false);
   const [expand, setExpanded] = useState(!withExpand);
@@ -43,7 +53,7 @@ const CodeHighlight = ({
       const { createHighlighter } = await import('shiki');
       const h = await createHighlighter({
         themes: ['vesper', 'github-light'],
-        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash', 'json'],
+        langs: ['typescript', 'tsx', 'javascript', 'jsx', 'shell', 'bash', 'json', 'toml'],
       });
       setHighlighter(h);
     };
@@ -172,16 +182,28 @@ const CodeHighlight = ({
 
       {/* Code */}
       <div
+        {...(scrollLabel ? { tabIndex: 0, role: 'region', 'aria-label': scrollLabel } : {})}
         className={cn(
           'max-h-[130px] overflow-hidden',
           expand && (inTab ? 'max-h-[450px] overflow-auto' : 'max-h-[400px] overflow-auto'),
+          expand && maxHeightClassName,
+          scrollLabel &&
+            'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300',
         )}
       >
         {highlightedCode ? (
           <div
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
             className={cn(
-              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_code]:text-[13px] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-normal',
+              // The code recipe, shared with the terminal figures: 15px, +0.015em
+              // tracking, +0.08em word-spacing.
+              //
+              // The size goes on the `pre` as well as the `code`. A unitless
+              // line-height resolves against the element that declares it, so with
+              // only `code` sized down the `pre` was computing 1.75 against the
+              // inherited 16px — 28px of leading on 15px text, which is what made
+              // every block on the page twice as tall as its content.
+              '[&_pre]:bg-white! dark:[&_pre]:bg-[#101010]! [&_code]:font-normal [&_code]:font-mono [&_pre]:text-[15px] [&_code]:text-[15px] [&_code]:tracking-[0.015em] [&_code]:[word-spacing:0.08em] [&_pre]:overflow-auto [&_pre]:p-4 [&_pre]:pr-12 [&_pre]:leading-[1.75]',
               lang,
             )}
           />

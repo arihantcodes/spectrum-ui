@@ -54,7 +54,7 @@ export const EASE_IN_OUT = [0.77, 0, 0.175, 1] as const;
  * everywhere above a caption.
  */
 export const EMPTY_FONT =
-  'font-[var(--font-inter),Inter,system-ui,sans-serif] antialiased [font-feature-settings:"cv05","ss01"]';
+  '[font-family:var(--font-inter),Inter,system-ui,sans-serif] antialiased [font-feature-settings:"cv05","ss01"]';
 
 /* ── Icons ────────────────────────────────────────────────────────────────── */
 

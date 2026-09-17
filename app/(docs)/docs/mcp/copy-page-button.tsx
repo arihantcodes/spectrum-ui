@@ -84,7 +84,7 @@ export default function CopyPageButton() {
       ) : (
         <Copy1Icon className="size-3.5" />
       )}
-      {copied ? "Copied!" : "Copy Page"}
+      {copied ? "Copied" : "Copy Page"}
     </button>
   );
 }

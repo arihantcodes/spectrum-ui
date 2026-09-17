@@ -169,6 +169,7 @@ export function Specimen({
         onOpenChange={setDrawerOpen}
         name={name}
         slug={slug}
+        description={description}
         registryName={registryName ?? slug}
         filePath={filePath}
         source={source}
