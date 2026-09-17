@@ -19,6 +19,14 @@ interface CodeHighlightProps {
    * Pass requireAuth={false} for public blocks like install bash commands.
    */
   requireAuth?: boolean;
+  /** Height of the scroll window. The drawer gives the source more room than a docs tab. */
+  maxHeightClassName?: string;
+  /**
+   * Names the scroll region for assistive technology. A scrollable box that is
+   * not focusable cannot be scrolled from the keyboard at all (WCAG 2.1.1), so
+   * passing this also puts the region in the tab order.
+   */
+  scrollLabel?: string;
 }
 
 const CodeHighlight = ({
@@ -28,6 +36,8 @@ const CodeHighlight = ({
   lang = 'tsx',
   title = '',
   requireAuth = true,
+  maxHeightClassName,
+  scrollLabel,
 }: CodeHighlightProps) => {
   const [copied, setCopied] = useState(false);
   const [expand, setExpanded] = useState(!withExpand);
@@ -172,9 +182,13 @@ const CodeHighlight = ({
 
       {/* Code */}
       <div
+        {...(scrollLabel ? { tabIndex: 0, role: 'region', 'aria-label': scrollLabel } : {})}
         className={cn(
           'max-h-[130px] overflow-hidden',
           expand && (inTab ? 'max-h-[450px] overflow-auto' : 'max-h-[400px] overflow-auto'),
+          expand && maxHeightClassName,
+          scrollLabel &&
+            'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-neutral-950 dark:focus-visible:ring-neutral-300',
         )}
       >
         {highlightedCode ? (
