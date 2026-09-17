@@ -94,7 +94,7 @@ export function ProjectEmpty({
           onClick={() => onCreate?.(selected)}
           className="h-8 px-3 text-[13.5px]"
         >
-          New
+          New project
         </EmptyAction>
       }
       className={className}
@@ -162,7 +162,7 @@ export function ProjectEmpty({
                   <span className="mt-2.5 block text-[14px] font-medium text-neutral-800 dark:text-neutral-100">
                     {template.name}
                   </span>
-                  <span className="mt-0.5 block text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                  <span className="mt-0.5 block text-[12.5px] text-neutral-600 dark:text-neutral-400">
                     {template.detail}
                   </span>
                 </motion.button>
@@ -174,10 +174,10 @@ export function ProjectEmpty({
         {variant === 'Checklist' && (
           <div className="w-full max-w-[420px] text-left">
             <div className="mb-3 flex items-baseline justify-between">
-              <span className="text-[13px] font-medium text-neutral-600 dark:text-neutral-300">
+              <span className="text-[13px] font-medium text-neutral-700 dark:text-neutral-300">
                 Setup
               </span>
-              <span className="font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+              <span className="font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
                 {done.length}/{steps.length}
               </span>
             </div>
@@ -228,7 +228,7 @@ export function ProjectEmpty({
                         >
                           {step.label}
                         </span>
-                        <span className="block text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                        <span className="block text-[12.5px] text-neutral-600 dark:text-neutral-400">
                           {step.detail}
                         </span>
                       </span>

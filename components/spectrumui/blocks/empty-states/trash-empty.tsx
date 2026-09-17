@@ -77,15 +77,15 @@ export function TrashEmpty({
             className="w-full max-w-[380px] text-left"
           >
             <div className="mb-2 flex items-baseline justify-between">
-              <span className="text-[13px] text-neutral-500 dark:text-neutral-400">
+              <span className="text-[13px] text-neutral-600 dark:text-neutral-400">
                 Retention window
               </span>
-              <span className="font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+              <span className="font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
                 0 / {retentionDays} days used
               </span>
             </div>
             <EmptyMeter value={0} />
-            <div className="mt-2 flex justify-between text-[12px] text-neutral-400 dark:text-neutral-500">
+            <div className="mt-2 flex justify-between text-[12px] text-neutral-600 dark:text-neutral-400">
               <span>deleted</span>
               <span>purged</span>
             </div>

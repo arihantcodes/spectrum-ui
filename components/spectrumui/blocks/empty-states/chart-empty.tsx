@@ -132,7 +132,7 @@ export function ChartEmpty({
           {labels.map((label) => (
             <span
               key={label}
-              className="flex-1 text-center text-[12px] tracking-[0.01em] text-neutral-400 dark:text-neutral-500"
+              className="flex-1 text-center text-[12px] tracking-[0.01em] text-neutral-600 dark:text-neutral-400"
             >
               {label}
             </span>
@@ -180,7 +180,7 @@ export function ChartEmpty({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={SPRING_FLUID}
-            className="mt-6 text-center text-[13.5px] text-neutral-500 dark:text-neutral-400"
+            className="mt-6 text-center text-[13.5px] text-neutral-600 dark:text-neutral-400"
           >
             Sample data only — the dashed line is the seven-day average.
           </motion.p>

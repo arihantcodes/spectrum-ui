@@ -86,7 +86,7 @@ export function ActivityEmpty({
                 style={{ originY: 1 }}
                 className="absolute left-[7px] top-0 h-9 w-px border-l border-dashed border-black/[0.16] dark:border-white/[0.18]"
               />
-              <p className="mb-4 h-9 text-[13px] leading-[1.5] text-neutral-300 dark:text-neutral-600">
+              <p className="mb-4 h-9 text-[13px] leading-[1.5] text-neutral-600 dark:text-neutral-400">
                 nothing recorded
               </p>
               <motion.div
@@ -109,10 +109,10 @@ export function ActivityEmpty({
                 <p className="text-[14px] font-medium text-neutral-800 dark:text-neutral-100">
                   {seed.label}
                 </p>
-                <p className="mt-0.5 text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                <p className="mt-0.5 text-[12.5px] text-neutral-600 dark:text-neutral-400">
                   {seed.detail}
                 </p>
-                <p className="mt-0.5 font-mono text-[12.5px] text-neutral-300 dark:text-neutral-600">
+                <p className="mt-0.5 font-mono text-[12.5px] text-neutral-600 dark:text-neutral-400">
                   {seed.at}
                 </p>
               </motion.div>

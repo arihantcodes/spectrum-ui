@@ -110,7 +110,7 @@ export function ScheduleEmpty({
                       'rounded-lg py-1 text-center font-mono text-[12px] uppercase tracking-[0.07em]',
                       index === 3
                         ? 'bg-black/[0.05] text-neutral-700 dark:bg-white/[0.08] dark:text-neutral-200'
-                        : 'text-neutral-300 dark:text-neutral-600',
+                        : 'text-neutral-600 dark:text-neutral-400',
                     )}
                   >
                     {day}
@@ -124,7 +124,7 @@ export function ScheduleEmpty({
                 const slotted = events.filter((event) => event.hour === hour);
                 return (
                   <div key={hour} className="flex items-stretch gap-3">
-                    <span className="w-9 shrink-0 pt-1 text-right font-mono text-[12px] tabular-nums text-neutral-300 dark:text-neutral-600">
+                    <span className="w-9 shrink-0 pt-1 text-right font-mono text-[12px] tabular-nums text-neutral-600 dark:text-neutral-400">
                       {String(hour).padStart(2, '0')}:00
                     </span>
                     <div className="relative z-10 min-w-0 flex-1 border-t border-black/[0.06] py-1 dark:border-white/[0.07]">
@@ -176,8 +176,11 @@ export function ScheduleEmpty({
                               </motion.span>
                             ))}
                           </AnimatePresence>
+                          {/* Visible at rest, not only on hover: a phone has no
+                              hover, so a transparent affordance is one nobody on
+                              a phone ever sees. */}
                           {slotted.length === 0 && (
-                            <span className="text-[12.5px] text-transparent transition-colors duration-150 group-hover:text-neutral-400 dark:group-hover:text-neutral-500">
+                            <span className="text-[12.5px] text-neutral-600 transition-colors duration-150 group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-100">
                               + add
                             </span>
                           )}
@@ -199,10 +202,10 @@ export function ScheduleEmpty({
                    it does not get to draw itself across an open composer. */
                 className="pointer-events-none absolute inset-x-0 z-0 flex items-center gap-3"
               >
-                <span className="w-9 shrink-0 text-right font-mono text-[12px] tabular-nums text-red-500">
+                <span className="w-9 shrink-0 text-right font-mono text-[12px] tabular-nums text-red-600 dark:text-red-400">
                   {nowLabel}
                 </span>
-                <span className="h-px flex-1 bg-red-500/60" />
+                <span className="h-px flex-1 bg-red-500/70 dark:bg-red-400/70" />
               </motion.div>
             </div>
           </div>

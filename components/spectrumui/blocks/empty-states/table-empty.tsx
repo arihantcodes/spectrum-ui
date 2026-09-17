@@ -104,7 +104,7 @@ export function TableEmpty({
           <p className="truncate text-[14px] font-semibold tracking-[-0.1px] text-neutral-800 dark:text-neutral-100">
             {panelTitle}
           </p>
-          <p className="mt-0.5 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+          <p className="mt-0.5 font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
             {loading ? 'loading…' : `${rows.length} rows`}
           </p>
         </div>
@@ -129,7 +129,7 @@ export function TableEmpty({
                   scope="col"
                   style={{ width: column.width }}
                   className={cn(
-                    'px-4 py-2.5 text-[12.5px] font-medium uppercase tracking-[0.06em] text-neutral-400 dark:text-neutral-500',
+                    'px-4 py-2.5 text-[12.5px] font-medium uppercase tracking-[0.06em] text-neutral-600 dark:text-neutral-400',
                     column.align === 'right' ? 'text-right' : 'text-left',
                   )}
                 >

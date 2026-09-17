@@ -161,7 +161,7 @@ export function InviteEmpty({
         }
         footnote={
           variant === 'Link' ? (
-            <span className="font-mono text-[12.5px] text-neutral-400 dark:text-neutral-500">
+            <span className="font-mono text-[12.5px] text-neutral-600 dark:text-neutral-400">
               {inviteLink} · expires in 7 days
             </span>
           ) : (
@@ -233,7 +233,7 @@ export function InviteEmpty({
                       transition={SPRING_SNAPPY}
                       className="text-[12.5px] text-red-600 dark:text-red-400"
                     >
-                      That address is missing an @ or a domain.
+                      Enter an address like name@example.com
                     </motion.p>
                   )}
                 </AnimatePresence>
@@ -245,7 +245,7 @@ export function InviteEmpty({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       transition={SPRING_SNAPPY}
-                      className="truncate text-[12.5px] text-neutral-500 dark:text-neutral-400"
+                      className="truncate text-[12.5px] text-neutral-600 dark:text-neutral-400"
                     >
                       Invited {address}
                     </motion.p>
@@ -347,7 +347,7 @@ function Seat({
           'w-full truncate text-center text-[12px] leading-[1.3] tracking-[-0.002em]',
           state === 'invited'
             ? 'text-emerald-600 dark:text-emerald-400'
-            : 'text-neutral-400 dark:text-neutral-500',
+            : 'text-neutral-600 dark:text-neutral-400',
         )}
       >
         {caption}

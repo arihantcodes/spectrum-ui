@@ -198,7 +198,7 @@ export function UploadEmpty({
                         'shrink-0 [&_svg]:size-4',
                         file.progress >= 1
                           ? 'text-emerald-600 dark:text-emerald-400'
-                          : 'text-neutral-400 dark:text-neutral-500',
+                          : 'text-neutral-600 dark:text-neutral-400',
                       )}
                     >
                       {file.progress >= 1 ? <IconTickSquare /> : <IconDocument />}
@@ -208,7 +208,7 @@ export function UploadEmpty({
                         <span className="truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                           {file.name}
                         </span>
-                        <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+                        <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
                           {file.size}
                         </span>
                       </span>

@@ -92,7 +92,7 @@ export function QuotaEmpty({
           <div className="mb-2 flex items-baseline justify-between">
             <span className="font-mono text-[13px] tabular-nums text-neutral-900 dark:text-neutral-50">
               {shown.toLocaleString('en-US')}
-              <span className="text-neutral-400 dark:text-neutral-500">
+              <span className="text-neutral-600 dark:text-neutral-400">
                 {' '}
                 / {limit.toLocaleString('en-US')}
               </span>
@@ -136,7 +136,7 @@ export function QuotaEmpty({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={reduced ? { duration: 0.15 } : { ...SPRING_FLUID, delay: 0.5 }}
-            className="mt-1.5 text-[12px] text-neutral-400 dark:text-neutral-500"
+            className="mt-1.5 text-[12px] text-neutral-600 dark:text-neutral-400"
           >
             last 7 days
           </motion.p>

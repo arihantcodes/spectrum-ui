@@ -76,7 +76,7 @@ export function SavedEmpty({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={SPRING_SNAPPY}
-            className="font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-300"
+            className="font-mono text-[12.5px] tabular-nums text-neutral-700 dark:text-neutral-300"
           >
             {saved.length}
           </motion.span>
@@ -131,7 +131,7 @@ export function SavedEmpty({
                     <span className="block truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                       {item.title}
                     </span>
-                    <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate text-[12.5px] text-neutral-600 dark:text-neutral-400">
                       {item.meta}
                     </span>
                   </span>
@@ -148,7 +148,7 @@ export function SavedEmpty({
                       'dark:hover:bg-white/[0.08] dark:focus-visible:ring-neutral-300',
                       isSaved
                         ? 'text-neutral-900 dark:text-neutral-50'
-                        : 'text-neutral-300 dark:text-neutral-600',
+                        : 'text-neutral-600 dark:text-neutral-400',
                       '[&_svg]:size-[15px]',
                     )}
                   >

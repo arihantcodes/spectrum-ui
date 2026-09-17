@@ -76,7 +76,7 @@ export function CartEmpty({
           <span className="text-neutral-400 [&_svg]:size-3.5 dark:text-neutral-500">
             <IconBag />
           </span>
-          <span className="overflow-hidden font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-300">
+          <span className="overflow-hidden font-mono text-[12.5px] tabular-nums text-neutral-700 dark:text-neutral-300">
             <AnimatePresence initial={false} mode="popLayout">
               <motion.span
                 key={subtotal}
@@ -161,7 +161,7 @@ export function CartEmpty({
                   <span className="truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                     {product.name}
                   </span>
-                  <span className="truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                  <span className="truncate text-[12.5px] text-neutral-600 dark:text-neutral-400">
                     {product.detail}
                   </span>
                   <span className="mt-2 flex items-center justify-between gap-2">

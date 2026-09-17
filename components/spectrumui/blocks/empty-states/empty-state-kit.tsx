@@ -1690,7 +1690,7 @@ export function EmptyState({
       {eyebrow && (
         <motion.p
           variants={item}
-          className="mb-2 font-mono text-[12px] font-medium uppercase leading-[1.4] tracking-[0.12em] text-neutral-400 dark:text-neutral-500"
+          className="mb-2 font-mono text-[12px] font-medium uppercase leading-[1.4] tracking-[0.12em] text-neutral-600 dark:text-neutral-400"
         >
           {eyebrow}
         </motion.p>
@@ -1739,7 +1739,7 @@ export function EmptyState({
       {footnote && (
         <motion.div
           variants={item}
-          className="mt-5 text-pretty text-[13px] leading-[1.55] tracking-[-0.002em] text-neutral-500 dark:text-neutral-500"
+          className="mt-5 text-pretty text-[13px] leading-[1.55] tracking-[-0.002em] text-neutral-600 dark:text-neutral-400"
         >
           {footnote}
         </motion.div>
@@ -1776,13 +1776,29 @@ export interface EmptyActionProps extends Omit<
   trailing?: React.ReactNode;
 }
 
+/**
+ * Every emphasis states its hover *text* colour as well as its hover fill.
+ *
+ * These ride on shadcn's `ghost` variant, which carries
+ * `hover:text-accent-foreground`. tailwind-merge keeps that class, because a
+ * plain `text-*` and a `hover:text-*` are not the same utility — so a button
+ * that only set `text-neutral-50` kept its white label at rest and repainted it
+ * near-black the moment a pointer touched it. Black on black. Anything layered
+ * over a variant has to close every state that variant opens.
+ */
 const EMPHASIS: Record<'primary' | 'secondary' | 'quiet', string> = {
-  primary:
-    'bg-neutral-900 text-neutral-50 hover:bg-neutral-800 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white',
-  secondary:
-    'border border-black/[0.09] bg-white text-neutral-800 hover:bg-neutral-50 dark:border-white/[0.12] dark:bg-white/[0.04] dark:text-neutral-100 dark:hover:bg-white/[0.08]',
-  quiet:
-    'bg-transparent text-neutral-500 hover:bg-black/[0.04] hover:text-neutral-800 dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-100',
+  primary: cn(
+    'bg-neutral-900 text-neutral-50 hover:bg-neutral-800 hover:text-white',
+    'dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white dark:hover:text-neutral-900',
+  ),
+  secondary: cn(
+    'border border-black/[0.09] bg-white text-neutral-800 hover:bg-neutral-50 hover:text-neutral-900',
+    'dark:border-white/[0.12] dark:bg-white/[0.04] dark:text-neutral-100 dark:hover:bg-white/[0.08] dark:hover:text-white',
+  ),
+  quiet: cn(
+    'bg-transparent text-neutral-500 hover:bg-black/[0.04] hover:text-neutral-900',
+    'dark:text-neutral-400 dark:hover:bg-white/[0.06] dark:hover:text-neutral-100',
+  ),
 };
 
 /**
@@ -1869,7 +1885,7 @@ export function EmptyPanel({
                 dropped into the corner of a product panel. Tabular figures keep
                 the numbers from shifting when they change. */}
             {meta && (
-              <p className="mt-0.5 truncate text-[12.5px] leading-[1.4] tracking-[-0.002em] tabular-nums text-neutral-500 dark:text-neutral-400">
+              <p className="mt-0.5 truncate text-[12.5px] leading-[1.4] tracking-[-0.002em] tabular-nums text-neutral-600 dark:text-neutral-400">
                 {meta}
               </p>
             )}
@@ -1945,7 +1961,7 @@ export function EmptyHint({
       {keys?.map((key) => (
         <Kbd key={key}>{key}</Kbd>
       ))}
-      <span className="text-neutral-400 dark:text-neutral-500">{children}</span>
+      <span className="text-neutral-600 dark:text-neutral-400">{children}</span>
     </span>
   );
 }

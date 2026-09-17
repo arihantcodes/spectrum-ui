@@ -106,7 +106,7 @@ export function SearchEmpty({
             transition={SPRING_FLUID}
             className="mx-auto w-full max-w-[440px]"
           >
-            <p className="mb-3 text-center text-[13.5px] text-neutral-500 dark:text-neutral-400">
+            <p className="mb-3 text-center text-[13.5px] text-neutral-600 dark:text-neutral-400">
               {hits.length} results for{' '}
               <span className="font-mono text-neutral-800 dark:text-neutral-100">{term}</span>
             </p>
@@ -128,7 +128,7 @@ export function SearchEmpty({
                     <span className="block truncate text-[14px] font-medium text-neutral-800 dark:text-neutral-100">
                       {hit.title}
                     </span>
-                    <span className="block truncate font-mono text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate font-mono text-[12.5px] text-neutral-600 dark:text-neutral-400">
                       {hit.path}
                     </span>
                   </span>
@@ -137,7 +137,7 @@ export function SearchEmpty({
             </ul>
             <div className="mt-4 flex justify-center">
               <EmptyAction emphasis="quiet" onClick={() => setTerm(query)}>
-                Back to the empty result
+                Show the empty state again
               </EmptyAction>
             </div>
           </motion.div>
@@ -172,7 +172,7 @@ export function SearchEmpty({
             >
               {variant !== 'Minimal' && (
                 <div className="flex flex-wrap items-center justify-center gap-1.5">
-                  <span className="text-[13px] text-neutral-400 dark:text-neutral-500">
+                  <span className="text-[13px] text-neutral-600 dark:text-neutral-400">
                     {variant === 'Scoped' ? 'Try another scope:' : 'Did you mean'}
                   </span>
                   {suggestions.map((suggestion) => (

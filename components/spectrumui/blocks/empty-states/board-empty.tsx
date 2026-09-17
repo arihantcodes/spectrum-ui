@@ -130,10 +130,10 @@ export function BoardEmpty({
           return (
             <div key={column.id} className="min-w-0">
               <div className="mb-2 flex items-center justify-between px-1">
-                <span className="text-[13px] font-medium text-neutral-600 dark:text-neutral-300">
+                <span className="text-[13px] font-medium text-neutral-700 dark:text-neutral-300">
                   {column.name}
                 </span>
-                <span className="font-mono text-[12.5px] tabular-nums text-neutral-300 dark:text-neutral-600">
+                <span className="font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
                   {column.cards.length}
                 </span>
               </div>
@@ -185,7 +185,7 @@ export function BoardEmpty({
                         <p className="text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                           {card.title}
                         </p>
-                        <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.07em] text-neutral-400 dark:text-neutral-500">
+                        <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.07em] text-neutral-600 dark:text-neutral-400">
                           {card.tag}
                         </p>
                       </div>

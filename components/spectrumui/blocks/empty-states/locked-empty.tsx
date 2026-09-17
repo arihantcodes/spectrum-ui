@@ -96,7 +96,7 @@ export function LockedEmpty({
           <span className="text-amber-500 [&_svg]:size-3">
             <IconStar />
           </span>
-          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-600 dark:text-neutral-400">
             {planName}
           </span>
         </span>
@@ -152,7 +152,7 @@ export function LockedEmpty({
               {includes.map((line) => (
                 <li
                   key={line}
-                  className="flex items-center gap-1.5 text-[13px] text-neutral-500 dark:text-neutral-400"
+                  className="flex items-center gap-1.5 text-[13px] text-neutral-600 dark:text-neutral-400"
                 >
                   <span className="text-neutral-400 [&_svg]:size-3.5 dark:text-neutral-500">
                     <IconTickSquare />

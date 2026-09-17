@@ -107,7 +107,7 @@ export function FilterEmpty({
           transition={SPRING_FLUID}
           className="mx-auto w-full max-w-[460px]"
         >
-          <p className="mb-4 text-center text-[14px] text-neutral-500 dark:text-neutral-400">
+          <p className="mb-4 text-center text-[14px] text-neutral-600 dark:text-neutral-400">
             <motion.span
               key={matches}
               initial={reduced ? false : { opacity: 0, y: -6 }}
@@ -181,7 +181,7 @@ export function FilterEmpty({
                       'dark:border-white/[0.12] dark:bg-white/[0.04] dark:hover:border-white/25 dark:focus-visible:ring-neutral-300',
                     )}
                   >
-                    <span className="text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                    <span className="text-[12.5px] text-neutral-600 dark:text-neutral-400">
                       {filter.label}
                     </span>
                     <span className="text-[13px] font-medium text-neutral-800 dark:text-neutral-100">

@@ -104,7 +104,7 @@ export function MaintenanceEmpty({
       toolbar={
         <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2.5 py-1 dark:border-white/[0.09]">
           <StatusDot tone={done ? 'positive' : 'caution'} />
-          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-600 dark:text-neutral-400">
             {done ? 'operational' : scheduled ? 'planned' : 'degraded'}
           </span>
         </span>
@@ -138,7 +138,7 @@ export function MaintenanceEmpty({
               <span className="font-mono text-[26px] font-medium leading-none tabular-nums text-neutral-900 dark:text-neutral-50">
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
               </span>
-              <span className="text-[13px] text-neutral-400 dark:text-neutral-500">
+              <span className="text-[13px] text-neutral-600 dark:text-neutral-400">
                 estimated remaining
               </span>
             </div>
@@ -179,12 +179,12 @@ export function MaintenanceEmpty({
                       'text-[13.5px] font-medium',
                       complete || current
                         ? 'text-neutral-800 dark:text-neutral-100'
-                        : 'text-neutral-400 dark:text-neutral-500',
+                        : 'text-neutral-600 dark:text-neutral-400',
                     )}
                   >
                     {stage.label}
                   </p>
-                  <p className="font-mono text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                  <p className="font-mono text-[12.5px] text-neutral-600 dark:text-neutral-400">
                     {stage.at}
                   </p>
                 </motion.li>
@@ -233,6 +233,7 @@ export function MaintenanceEmpty({
                           if (error) setError(false);
                         }}
                         aria-invalid={error}
+                        aria-describedby={error ? `${inputId}-error` : undefined}
                         className={cn(
                           'h-9 min-w-0 flex-1 rounded-xl border-black/[0.1] bg-white text-[14px] shadow-none dark:border-white/[0.12] dark:bg-white/[0.04]',
                           error && 'border-red-500/60 dark:border-red-500/60',
@@ -241,6 +242,18 @@ export function MaintenanceEmpty({
                       <EmptyAction type="submit" emphasis="secondary" className="shrink-0">
                         Notify me
                       </EmptyAction>
+                    </div>
+                    {/* aria-invalid with no message tells a screen reader the
+                        field is wrong and never says how to fix it. */}
+                    <div className="min-h-[18px] pt-1.5">
+                      {error && (
+                        <p
+                          id={`${inputId}-error`}
+                          className="text-[12.5px] text-red-600 dark:text-red-400"
+                        >
+                          Enter an address like you@company.com
+                        </p>
+                      )}
                     </div>
                   </motion.form>
                 )}

@@ -91,7 +91,7 @@ export function OfflineEmpty({
       toolbar={
         <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2.5 py-1 dark:border-white/[0.09]">
           <StatusDot tone={restored ? 'positive' : busy ? 'caution' : 'critical'} />
-          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-600 dark:text-neutral-400">
             {restored ? 'online' : busy ? 'connecting' : 'offline'}
           </span>
         </span>
@@ -155,7 +155,7 @@ export function OfflineEmpty({
                   'dark:border-white/[0.1]',
                 )}
               >
-                <span className="text-[13px] text-neutral-500 dark:text-neutral-400">
+                <span className="text-[13px] text-neutral-600 dark:text-neutral-400">
                   {busy ? 'Attempt in flight' : 'Next attempt in'}
                 </span>
                 {!busy && (

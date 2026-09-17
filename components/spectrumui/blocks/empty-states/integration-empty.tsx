@@ -235,7 +235,7 @@ export function IntegrationEmpty({
                     <span className="block truncate text-[13.5px] font-medium text-neutral-800 dark:text-neutral-100">
                       {connector.name}
                     </span>
-                    <span className="block truncate text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                    <span className="block truncate text-[12.5px] text-neutral-600 dark:text-neutral-400">
                       {isBusy ? 'Connecting…' : isDone ? 'Connected' : connector.kind}
                     </span>
                   </span>

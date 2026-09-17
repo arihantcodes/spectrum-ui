@@ -146,7 +146,7 @@ export function InboxEmpty({
                   <dd className="font-mono text-[17px] font-medium tabular-nums text-neutral-900 dark:text-neutral-50">
                     {stat.value}
                   </dd>
-                  <dt className="mt-0.5 text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                  <dt className="mt-0.5 text-[12.5px] text-neutral-600 dark:text-neutral-400">
                     {stat.label}
                   </dt>
                 </motion.div>

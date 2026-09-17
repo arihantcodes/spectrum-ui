@@ -78,7 +78,7 @@ export function NotFoundEmpty({
         }
         footnote={
           <span className="font-mono text-[12.5px]">
-            tried <span className="text-neutral-500 dark:text-neutral-400">{attempted}</span>
+            tried <span className="text-neutral-600 dark:text-neutral-400">{attempted}</span>
           </span>
         }
       >
@@ -127,7 +127,7 @@ export function NotFoundEmpty({
                     <span className="min-w-0 flex-1 truncate text-[14px] text-neutral-700 dark:text-neutral-200">
                       {destination.label}
                     </span>
-                    <span className="shrink-0 truncate font-mono text-[12.5px] text-neutral-300 dark:text-neutral-600">
+                    <span className="shrink-0 truncate font-mono text-[12.5px] text-neutral-600 dark:text-neutral-400">
                       {destination.path}
                     </span>
                     <span className="shrink-0 text-neutral-300 opacity-0 transition-opacity duration-150 group-hover:opacity-100 [&_svg]:size-3.5 dark:text-neutral-500">
@@ -146,7 +146,7 @@ export function NotFoundEmpty({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={SPRING_FLUID}
-                className="py-3 text-center text-[13.5px] text-neutral-400 dark:text-neutral-500"
+                className="py-3 text-center text-[13.5px] text-neutral-600 dark:text-neutral-400"
               >
                 Nothing here matches that either.
               </motion.p>

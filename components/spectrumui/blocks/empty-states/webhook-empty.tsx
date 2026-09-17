@@ -91,7 +91,7 @@ export function WebhookEmpty({
       toolbar={
         <span className="flex items-center gap-1.5 rounded-full border border-black/[0.07] px-2 py-1 dark:border-white/[0.09]">
           <StatusDot tone={live ? 'caution' : 'positive'} />
-          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-500 dark:text-neutral-400">
+          <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-neutral-600 dark:text-neutral-400">
             {live ? 'waiting' : 'active'}
           </span>
         </span>
@@ -143,7 +143,7 @@ export function WebhookEmpty({
                   <span className="min-w-0 flex-1 truncate font-mono text-[13px] text-neutral-700 dark:text-neutral-200">
                     {event.type}
                   </span>
-                  <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-400 dark:text-neutral-500">
+                  <span className="shrink-0 font-mono text-[12.5px] tabular-nums text-neutral-600 dark:text-neutral-400">
                     {event.status} · {event.at}
                   </span>
                 </motion.div>
@@ -158,7 +158,7 @@ export function WebhookEmpty({
                 )}
               >
                 <Equaliser running={!reduced} />
-                <span className="text-[12.5px] text-neutral-400 dark:text-neutral-500">
+                <span className="text-[12.5px] text-neutral-600 dark:text-neutral-400">
                   no deliveries yet
                 </span>
               </div>
