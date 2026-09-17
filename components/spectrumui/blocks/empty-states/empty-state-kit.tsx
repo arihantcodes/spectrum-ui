@@ -584,6 +584,13 @@ export type MedallionBackdrop =
 
 const HAIRLINE = 'border-black/[0.07] dark:border-white/[0.1]';
 const HAIRLINE_SOFT = 'border-black/[0.045] dark:border-white/[0.06]';
+const HAIRLINE_FAINT = 'border-black/[0.028] dark:border-white/[0.04]';
+/**
+ * EmptyPanel's own surface. Any backdrop whose parts overlap has to be filled
+ * with it: an outlined-but-transparent shape turns into a lattice of crossing
+ * hairlines the moment a second one lands on top of it.
+ */
+const SURFACE = 'bg-white dark:bg-neutral-950';
 const INK = 'bg-black/[0.09] dark:bg-white/[0.13]';
 const INK_SOFT = 'bg-black/[0.055] dark:bg-white/[0.08]';
 const FADE_DOWN = '[mask-image:linear-gradient(to_bottom,black_15%,transparent_95%)]';
@@ -922,38 +929,41 @@ function Rays({ phase, reduced }: PartProps) {
   );
 }
 
-/** Three cards fanning out behind the tile, the shape of a template picker. */
+/**
+ * A cascade of cards behind the tile — the shape of a template picker.
+ *
+ * Two earlier versions failed the same way: anything rotated about its own
+ * centre, or fanned from its bottom edge, throws corners out on every side and
+ * reads as a rosette rather than a stack at 56px. Straight offsets, each card a
+ * little smaller than the one in front and filled with the panel surface, are
+ * unmistakable — you see two slivers of paper and nothing else.
+ */
 function Stack({ phase, reduced }: PartProps) {
   const cards = [
-    { x: -48, y: -4, rotate: -9 },
-    { x: 48, y: -4, rotate: 9 },
-    { x: 0, y: 6, rotate: 0 },
+    { y: -17, scale: 0.82, border: HAIRLINE_SOFT },
+    { y: -9, scale: 0.91, border: HAIRLINE },
   ];
   return (
     <>
       {cards.map((card, index) => (
         <motion.span
-          key={index}
+          key={card.y}
           initial="hidden"
           animate={phase}
           variants={{
             hidden: reduced
-              ? { opacity: 0, x: card.x, y: card.y, rotate: card.rotate }
-              : { opacity: 0, x: 0, y: 0, rotate: 0 },
+              ? { opacity: 0, y: card.y, scale: card.scale }
+              : { opacity: 0, y: 0, scale: 1 },
             shown: {
               opacity: 1,
-              x: card.x,
               y: card.y,
-              rotate: card.rotate,
+              scale: card.scale,
               transition: reduced
                 ? { duration: 0.2 }
-                : { ...SPRING_FLUID, delay: 0.06 + index * 0.06 },
+                : { ...SPRING_FLUID, delay: 0.12 + index * 0.07 },
             },
           }}
-          className={cn(
-            'absolute h-[74px] w-[58px] rounded-2xl border bg-white/60 dark:bg-white/[0.02]',
-            HAIRLINE,
-          )}
+          className={cn('absolute size-14 rounded-2xl border', SURFACE, card.border)}
         />
       ))}
     </>
@@ -1253,26 +1263,38 @@ function Shards({ phase, reduced }: PartProps) {
   );
 }
 
-/** Ghost tiles left behind, so the glyph reads as having just arrived. */
+/**
+ * Ghost tiles left behind, so the glyph reads as having just arrived.
+ *
+ * Painted far to near and filled with the panel surface, so each ghost covers
+ * the trailing edge of the one behind it; the fade is carried by the border
+ * alone, because fading the whole element would make the fills transparent and
+ * put every outline back on top of every other one.
+ */
 function Trail({ phase, reduced }: PartProps) {
+  const steps: { step: number; border: string }[] = [
+    { step: 3, border: HAIRLINE_FAINT },
+    { step: 2, border: HAIRLINE_SOFT },
+    { step: 1, border: HAIRLINE },
+  ];
   return (
     <>
-      {[1, 2, 3].map((step) => (
+      {steps.map(({ step, border }) => (
         <motion.span
           key={step}
           initial="hidden"
           animate={phase}
           variants={{
-            hidden: reduced ? { opacity: 0, x: -step * 26 } : { opacity: 0, x: 0 },
+            hidden: reduced ? { opacity: 0, x: -step * 24 } : { opacity: 0, x: 0 },
             shown: {
-              opacity: 0.55 - step * 0.14,
-              x: -step * 26,
+              opacity: 1,
+              x: -step * 24,
               transition: reduced
                 ? { duration: 0.2 }
-                : { ...SPRING_FLUID, delay: 0.06 + (3 - step) * 0.05 },
+                : { ...SPRING_FLUID, delay: 0.06 + (3 - step) * 0.06 },
             },
           }}
-          className={cn('absolute size-14 rounded-2xl border', HAIRLINE)}
+          className={cn('absolute size-14 rounded-2xl border', SURFACE, border)}
         />
       ))}
     </>
