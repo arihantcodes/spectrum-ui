@@ -51,3 +51,11 @@ export function IconlyEmailDocument(props: IconProps) {
     </svg>
   );
 }
+
+export function IconlyHeart(props: IconProps) {
+  return (
+    <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M24 42.2c-.62 0-1.24-.15-1.8-.46-1.86-1.02-6.9-4.1-11.3-8.55C6.28 28.55 3.2 23.3 3.2 17.72 3.2 10.7 8.62 5 15.3 5c3.4 0 6.5 1.48 8.7 3.87A11.82 11.82 0 0 1 32.7 5C39.38 5 44.8 10.7 44.8 17.72c0 5.58-3.08 10.83-7.7 15.47-4.4 4.45-9.44 7.53-11.3 8.55-.56.31-1.18.46-1.8.46Z" />
+    </svg>
+  );
+}

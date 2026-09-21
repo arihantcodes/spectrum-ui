@@ -1,6 +1,7 @@
 import LeftSide from "@/app/(docs)/layout-parts/left-side/left-side";
 import OnThisPage from "@/app/(docs)/layout-parts/on-this-page";
 import DocsPager from "@/app/(docs)/layout-parts/docs-pager";
+import SponsorCard from "@/components/sponsor-card";
 import React from "react";
 
 import type { Viewport } from "next";
@@ -45,6 +46,7 @@ export default function DocsLayout({
         <aside className="sticky top-14 hidden h-[calc(100vh-3.5rem)] shrink-0 xl:block">
           <div className="no-scrollbar h-full overflow-auto py-6 lg:py-8">
             <OnThisPage />
+            <SponsorCard className="mt-6" source="docs_sidebar" />
           </div>
         </aside>
       </div>
