@@ -1,5 +1,6 @@
 import React from 'react';
 import { BlocksNav } from '@/app/(blocks)/layout-parts/blocks-nav';
+import SponsorCard from '@/components/sponsor-card';
 import {
   BLOCK_CATEGORIES,
   blockCategoryPath,
@@ -31,9 +32,15 @@ export default function BlocksLayout({ children }: { children: React.ReactNode }
   return (
     <div className="container-wrapper">
       <div className="container flex-1 items-start md:grid md:grid-cols-[188px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[212px_minmax(0,1fr)] lg:gap-8">
-        <aside className="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block">
-          <div className="no-scrollbar h-full overflow-auto pr-2">
+        <aside className="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:flex md:flex-col">
+          <div className="no-scrollbar min-h-0 flex-1 overflow-auto pr-2">
             <BlocksNav groups={groups} />
+          </div>
+          {/* Pinned to the rail rather than trailing the nav: the category list
+              is long enough that anything after it sits below the fold. This
+              section has no third rail, so this is the only gutter going. */}
+          <div className="shrink-0 py-4 pr-2">
+            <SponsorCard source="blocks_sidebar" />
           </div>
         </aside>
 

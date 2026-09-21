@@ -10,6 +10,7 @@ import {
 } from "@/lib/seo-utils"
 import { JsonLd } from "@/components/seo/json-ld"
 import OnThisPage from "@/app/(docs)/layout-parts/on-this-page"
+import SponsorCard from "@/components/sponsor-card"
 import { BlogHighlighter } from "@/components/blog/highlighter"
 import { PostCard } from "@/components/blog/post-card"
 import {
@@ -256,6 +257,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           <aside className="hidden xl:block">
             <div className="sticky top-24">
               <OnThisPage containerSelector="#post-body" />
+              <SponsorCard className="mt-6" source="blog_sidebar" />
             </div>
           </aside>
         </div>
